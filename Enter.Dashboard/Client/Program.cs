@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using OptimumDashboard;
-using Pro.Dashboard;
+using Enter.Dashboard;
 
 namespace OptimumDashboard
 {

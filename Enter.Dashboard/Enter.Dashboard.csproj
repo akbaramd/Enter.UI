@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+    <RootNamespace>Enter.Dashboard</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,8 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Optimum.UI\Pro.UI.csproj" />
-    <ProjectReference Include="..\Pro.UI\Pro.UI.csproj" />
+    <ProjectReference Include="..\Enter.UI\Enter.UI.csproj" />
   </ItemGroup>
 
   <ItemGroup>

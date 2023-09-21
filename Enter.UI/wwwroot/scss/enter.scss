@@ -2,39 +2,59 @@
 @import "_variables.scss";
 
 @each $utility, $config in $utilities {
-  $property: map-get($config, property);
-  $propertyRtl: map-get($config, propertyRtl);
+  $properties: map-get($config, property);
+  $propertiesRtl: map-get($config, propertyRtl);
   $cssName: map-get($config, cssName);
   $values: map-get($config, values);
 
   @each $size, $value in $values {
+
     .#{$cssName}-#{$size} {
-      #{$property}: $value;
+      @each $property in $properties {
+        #{$property}: $value;
+      }
     }
+
     [dir="rtl"] .#{$cssName}-#{$size} {
-      #{$propertyRtl}: $value;
+      @each $property in $propertiesRtl {
+        #{$property}: $value;
+      } 
     }
     .rtl\:#{$cssName}-#{$size} {
-      #{$propertyRtl}: $value;
+      @each $property in $propertiesRtl {
+        #{$property}: $value;
+      } 
     }
+    
   }
+
   @if map-get($config, breakpoint) {
     @each $bp, $width in $breakpoints {
       @media (min-width: $width) {
         @each $size, $value in $values {
+
           .#{$bp}\:#{$cssName}-#{$size} {
-            #{$property}: $value;
+            @each $property in $properties {
+              #{$property}: $value;
+            }
           }
 
+
           [dir="rtl"] .#{$bp}\:#{$cssName}-#{$size} {
-            #{$propertyRtl}: $value;
+            @each $property in $propertiesRtl {
+              #{$property}: $value;
+            }
           }
 
           .rtl\:#{$bp}\:#{$cssName}-#{$size} {
-            #{$propertyRtl}: $value;
+            @each $property in $propertiesRtl {
+              #{$property}: $value;
+            }
           }
+
         }
       }
     }
   }
 }
+
