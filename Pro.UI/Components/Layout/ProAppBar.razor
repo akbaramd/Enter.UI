@@ -1,0 +1,11 @@
+﻿@namespace Pro.UI.Components.Layout
+<div class="app-bar">
+    <b>سیستم کمسیون پزشکی</b>
+    @ChildContent
+</div>
+
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+}
