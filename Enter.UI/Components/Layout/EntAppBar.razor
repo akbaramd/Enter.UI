@@ -1,0 +1,14 @@
+﻿@namespace Enter.UI.Components.Layout
+<div class="h-12  d-flex gap-4 bg-white item-center px-8">
+    <b class="cl-mute">@Title</b>
+    @ChildContent
+</div>
+
+@code {
+    
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+    [Parameter]
+    public string Title { get; set; }
+
+} 

@@ -1,0 +1,26 @@
+﻿<CascadingValue Value="@this">
+    <div class="ent-tab @TabDirectionCss @Class">
+        <ul class="ent-tab-item-container">
+            @foreach (var tabPanels in TabPanels)
+            {
+                var activeClass = (IsActivePanel(tabPanels.TabId) ? "active " + ActiveItemClass : "");
+                <li class="ent-tab-item  @TabItemDirectionCss @activeClass" @onclick="()=>ActiveTab(tabPanels.TabId)">
+                    <i class="@tabPanels.Icon"></i> 
+                    <span>@tabPanels.Title</span>
+                    @if (Closeable)
+                    {
+                        <div @onclick="()=>OnTabClose(tabPanels.TabId)" class="ent-tab-btn-close">
+                            <i class="fa-light fa-close"></i>
+                        </div>
+                    }
+                </li>
+            }
+        </ul>
+        @{
+            var tabContentContianerClass = (Expandable) ? " " : "flex-grow-1 ";
+        }
+        <div class="ent-tab-panel-container @PanelClass">
+            @ChildContent
+        </div>
+    </div>
+</CascadingValue>

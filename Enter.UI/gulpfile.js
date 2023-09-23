@@ -30,7 +30,7 @@ function fonts() {
 }
 
 function watch() {
-    gulp.watch('./wwwroot/**/*.scss', gulp.series(compileSass, minifyCSS));
+    gulp.watch('./wwwroot/**/*.scss', gulp.series(compileSass));
 }
 
 exports.default =  gulp.series(fonts,watch);

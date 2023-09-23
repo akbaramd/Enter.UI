@@ -5,26 +5,26 @@
 <div class="border-y h-full">
     <EntAppBar Title="پلتفرم مدیریتی پیشرفته" />
     <div class="border-x h-full d-flex">
-        <EntTab ItemDirection="EntTabItemDirection.Vertical"
-                Direction="EntTabDirection.Horizontal"
-                Expandable=true
-                Class="">
-            <EntTabPanel Title="صفحه اصلی" Icon="fa-light fa-home">
-                <div class="bg-white p-4 m-4 border w-60 mb-2">اطلاعات مربوط به صفحه اصلی اینجا قرار میگیرد</div>
-                <div class="border d-flex flex-column divider-y">
-                   @foreach (var item in Items)
-                    {
-                        <div class="h-8 d-flex item-center px-4" @onclick="()=>AddNewTab(item.Type,item.Title)">
-                            @item.Title
-                        </div>
-                    }
-                    
-                </div>
-            </EntTabPanel>
-            <EntTabPanel Title="حساب کاربری" Icon="fa-light fa-user">
-                <div class="bg-white p-4 m-4 border w-60">اطلاعات مربوط به حساب کاربری اینجا قرار میگیرد</div>
-            </EntTabPanel>
-        </EntTab>
+        <div><EntTab ItemDirection="EntTabItemDirection.Vertical"
+                             Direction="EntTabDirection.Horizontal"
+                             Expandable=true
+                             ActiveItemClass="bg-light-sm"
+                             Class="border-0">
+                         <EntTabPanel Title="صفحه اصلی" Icon="fa-light fa-home">
+                             <div class="border d-flex flex-column border-y w-60 m-4">
+                                @foreach (var item in Items)
+                                 {
+                                     <div class="h-8 d-flex item-center px-4" @onclick="()=>AddNewTab(item.Type,item.Title)">
+                                         @item.Title
+                                     </div>
+                                 }
+                                 
+                             </div>
+                         </EntTabPanel>
+                         <EntTabPanel Title="حساب کاربری" Icon="fa-light fa-user">
+                             <div class="bg-white p-4 m-4 border w-60">اطلاعات مربوط به حساب کاربری اینجا قرار میگیرد</div>
+                         </EntTabPanel>
+                     </EntTab></div>
         <div class="flex-grow-1">
             @Body
         </div>

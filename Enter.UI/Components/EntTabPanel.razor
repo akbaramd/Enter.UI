@@ -1,0 +1,12 @@
+﻿@namespace Enter.UI.Components
+@{
+    var css = !Parent.IsActivePanel(TabId) ? "d-none" : "";
+}
+<div class="@css">
+    @ChildContent
+</div>
+    
+
+
+
+

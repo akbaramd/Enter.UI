@@ -27,7 +27,7 @@ $font-sizes:  (
         tiny: $font-size * 0.5,
         huge: $font-size * 2,
       ) !default;
-$border-radius: 16px !default;
+$border-radius: 1rem !default;
 
 $border-radiuses: (
   0: 0,
@@ -48,7 +48,7 @@ $border-widths: (
 $border-style: solid !default;
 $border-color: #dddddd !default;
 
-$size: 16px;
+$size: 1rem ;
 $sizes: (
   0: 0,
   1: $size * 0.25,
