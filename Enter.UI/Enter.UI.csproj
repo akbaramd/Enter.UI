@@ -25,6 +25,10 @@
     <_ContentIncludedByDefault Remove="Components\Layout\ProMenuBar.razor" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\dist\css\" />
+  </ItemGroup>
+
 
 
 </Project>

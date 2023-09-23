@@ -1,0 +1,19 @@
+﻿
+<EntTab @ref="Tab"
+        Direction="@Direction"
+        ItemDirection="@ItemDirection"
+        Expandable="@Expandable"
+        Closeable=true
+        Class="@Class"
+        PanelClass="bg-light-sm"
+        ActiveItemClass="bg-light-sm"
+        OnTabActived="OnTabActivated"
+        OnTabClosed="OnTabClosed"
+        OnTabAdded="OnTabAdded">
+    @foreach (var item in Items)
+    {
+        <EntTabPanel Icon="@item.Icon" Title="@item.Title" TabId="@item.TabId" @key="item.Key">
+            <DynamicComponent Type="@item.ComponentType" Parameters="@item.ComponentParameters" />
+        </EntTabPanel>
+    }
+</EntTab>
