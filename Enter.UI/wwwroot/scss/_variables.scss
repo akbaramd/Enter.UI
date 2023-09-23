@@ -1,364 +1,604 @@
 $breakpoints: (
-        mobile: 600px,
-        tablet: 768px,
-        desktop: 992px,
-        screen: 1200px,
+  mobile: 600px,
+  tablet: 768px,
+  desktop: 992px,
+  screen: 1200px,
 );
 
 $colors: (
-        "white": #ffffff,
-        "black": #000000,
-        "dark": #222222,
-        "mute": #777777,
-        "light": #f2f2f2,
-        "light-sm": #f8f8f8,
-        "light-lg": #eeeeee,
+  "white": #ffffff,
+  "black": #000000,
+  "dark": #222222,
+  "mute": #555,
+  "light": #f2f2f2,
+  "light-sm": #f8f8f8,
+  "light-lg": #eeeeee,
 );
+$font-size : 14px  !default;
+$font-family:  Vazirmatn !default;
+$font-families:  (
+        Vazirmatn: $font-family,
+      ) !default;
+
+$font-sizes:  (
+        base: $font-size,
+        subtitle: $font-size * 0.9,
+        title: $font-size * 1.25,
+        tiny: $font-size * 0.5,
+        huge: $font-size * 2,
+      ) !default;
+$border-radius: 16px !default;
+
+$border-radiuses: (
+  0: 0,
+  1: $border-radius * 0.25,
+  2: $border-radius * 0.5,
+  3: $border-radius * 0.75,
+  4: $border-radius * 1,
+) !default;
+
+$border-width: 1px !default;
+$border-widths: (
+  1: 1px,
+  2: 2px,
+  3: 3px,
+  4: 4px,
+  5: 5px,
+) !default;
+$border-style: solid !default;
+$border-color: #dddddd !default;
 
 $size: 16px;
 $sizes: (
-        0: 0,
-        1: $size * 0.25,
-        2: $size * 0.5,
-        3: $size * 0.75,
-        4: $size * 1,
-        5: $size * 1.25,
-        6: $size * 1.5,
-        7: $size * 1.75,
-        8: $size * 2,
-        9: $size * 2.25,
-        10: $size * 2.5,
-        11: $size * 2.75,
-        12: $size * 3,
-        13: $size * 3.25,
-        14: $size * 3.5,
-        15: $size * 3.75,
-        16: $size * 4,
-        unset: unset,
+  0: 0,
+  1: $size * 0.25,
+  2: $size * 0.5,
+  3: $size * 0.75,
+  4: $size * 1,
+  5: $size * 1.25,
+  6: $size * 1.5,
+  7: $size * 1.75,
+  8: $size * 2,
+  9: $size * 2.25,
+  10: $size * 2.5,
+  11: $size * 2.75,
+  12: $size * 3,
+  13: $size * 3.25,
+  14: $size * 3.5,
+  15: $size * 3.75,
+  16: $size * 4,
+  17: $size * 4.25,
+  18: $size * 4.5,
+  19: $size * 4.75,
+  20: $size * 5,
+  21: $size * 5.25,
+  22: $size * 5.5,
+  23: $size * 5.75,
+  24: $size * 6,
+  25: $size * 6.25,
+  26: $size * 6.5,
+  27: $size * 6.75,
+  28: $size * 7,
+  29: $size * 7.25,
+  30: $size * 7.5,
+  31: $size * 7.75,
+  32: $size * 8,
+  33: $size * 8.25,
+  34: $size * 8.5,
+  35: $size * 8.75,
+  36: $size * 9,
+  37: $size * 9.25,
+  38: $size * 9.5,
+  39: $size * 9.75,
+  40: $size * 10,
+  41: $size * 10.25,
+  42: $size * 10.5,
+  43: $size * 10.75,
+  44: $size * 11,
+  45: $size * 11.25,
+  46: $size * 11.5,
+  47: $size * 11.75,
+  48: $size * 12,
+  49: $size * 12.25,
+  50: $size * 12.5,
+  51: $size * 12.75,
+  52: $size * 13,
+  53: $size * 13.25,
+  54: $size * 13.5,
+  55: $size * 13.75,
+  56: $size * 14,
+  57: $size * 14.25,
+  58: $size * 14.5,
+  59: $size * 14.75,
+  60: $size * 15,
+  61: $size * 15.25,
+  62: $size * 15.5,
+  63: $size * 15.75,
+  64: $size * 16,
+  65: $size * 16.25,
+  66: $size * 16.5,
+  67: $size * 16.75,
+  68: $size * 17,
+  69: $size * 17.25,
+  70: $size * 17.5,
+  71: $size * 17.75,
+  72: $size * 18,
+  73: $size * 18.25,
+  74: $size * 18.5,
+  75: $size * 18.75,
+  76: $size * 19,
+  77: $size * 19.25,
+  78: $size * 19.5,
+  79: $size * 19.75,
+  80: $size * 20,
+  fit-content: fit-content,
+  unset: unset,
+  full: 100%,
+  half: 50%,
 );
 
 $utilities: (
   // height
-        height:
-        (
-                property: height,
-                propertyRtl: height,
-                cssName: h,
-                breakpoint: true,
-                values: $sizes,
-        ),
-        width:
-        (
-                property: height,
-                propertyRtl: height,
-                cssName: h,
-                breakpoint: true,
-                values: $sizes,
-        ),
-        max-width:
-        (
-                property: max-width,
-                propertyRtl: max-width,
-                cssName: max-w,
-                breakpoint: true,
-                values: $sizes,
-        ),
-        min-width:
-        (
-                property: min-width,
-                propertyRtl: min-width,
-                cssName: min-w,
-                breakpoint: true,
-                values: $sizes,
-        ),
+  height:
+    (
+      property: height,
+      propertyRtl: height,
+      cssName: h,
+      breakpoint: true,
+      values: $sizes,
+    ),
+  width: (
+    property: width,
+    propertyRtl: width,
+    cssName: w,
+    breakpoint: true,
+    values: $sizes,
+  ),
+  max-width: (
+    property: max-width,
+    propertyRtl: max-width,
+    cssName: max-w,
+    breakpoint: true,
+    values: $sizes,
+  ),
+  min-width: (
+    property: min-width,
+    propertyRtl: min-width,
+    cssName: min-w,
+    breakpoint: true,
+    values: $sizes,
+  ),
   // padding
-        padding:
-        (
-                property: padding,
-                propertyRtl: padding,
-                cssName: p,
-                breakpoint: true,
-                values: $sizes,
-        ),
-        padding-right: (
-                property: padding-right,
-                propertyRtl: padding-right,
-                cssName: pr,
-                breakpoint: true,
-                values: $sizes,
-        ),
-        padding-bottom: (
-                property: padding-bottom,
-                propertyRtl: padding-bottom,
-                cssName: pb,
-                breakpoint: true,
-                values: $sizes,
-        ),
-        padding-top: (
-                property: padding-top,
-                propertyRtl: padding-top,
-                cssName: pt,
-                breakpoint: true,
-                values: $sizes,
-        ),
-        padding-left: (
-                property: padding-left,
-                propertyRtl: padding-left,
-                cssName: pl,
-                breakpoint: true,
-                values: $sizes,
-        ),
-        padding-start: (
-                property: padding-inline-start,
-                propertyRtl: padding-inline-start,
-                cssName: ps,
-                breakpoint: true,
-                values: $sizes,
-        ),
-        padding-end: (
-                property: padding-inline-end,
-                propertyRtl: padding-inline-end,
-                cssName: pe,
-                breakpoint: true,
-                values: $sizes,
-        ),
-        padding-y: (
-                property: padding-top padding-bottom,
-                propertyRtl: padding-top padding-bottom,
-                cssName: py,
-                breakpoint: true,
-                values: map,
-        ),
-        padding-x: (
-                property: padding-left padding-right,
-                propertyRtl: padding-left padding-right,
-                cssName: px,
-                breakpoint: true,
-                values: $sizes,
-        ),
+  padding:
+    (
+      property: padding,
+      propertyRtl: padding,
+      cssName: p,
+      breakpoint: true,
+      values: $sizes,
+    ),
+  padding-right: (
+    property: padding-right,
+    propertyRtl: padding-right,
+    cssName: pr,
+    breakpoint: true,
+    values: $sizes,
+  ),
+  padding-bottom: (
+    property: padding-bottom,
+    propertyRtl: padding-bottom,
+    cssName: pb,
+    breakpoint: true,
+    values: $sizes,
+  ),
+  padding-top: (
+    property: padding-top,
+    propertyRtl: padding-top,
+    cssName: pt,
+    breakpoint: true,
+    values: $sizes,
+  ),
+  padding-left: (
+    property: padding-left,
+    propertyRtl: padding-left,
+    cssName: pl,
+    breakpoint: true,
+    values: $sizes,
+  ),
+  padding-start: (
+    property: padding-inline-start,
+    propertyRtl: padding-inline-start,
+    cssName: ps,
+    breakpoint: true,
+    values: $sizes,
+  ),
+  padding-end: (
+    property: padding-inline-end,
+    propertyRtl: padding-inline-end,
+    cssName: pe,
+    breakpoint: true,
+    values: $sizes,
+  ),
+  padding-y: (
+    property: padding-top padding-bottom,
+    propertyRtl: padding-top padding-bottom,
+    cssName: py,
+    breakpoint: true,
+    values: map,
+  ),
+  padding-x: (
+    property: padding-left padding-right,
+    propertyRtl: padding-left padding-right,
+    cssName: px,
+    breakpoint: true,
+    values: $sizes,
+  ),
   // margin
-        margin:
+  margin:
+    (
+      property: margin,
+      propertyRtl: margin,
+      cssName: m,
+      breakpoint: true,
+      values:
+        map-merge(
+          $sizes,
+          (
+            auto: auto,
+          )
+        ),
+    ),
+  margin-right: (
+    property: margin-right,
+    propertyRtl: margin-right,
+    cssName: mr,
+    breakpoint: true,
+    values:
+      map-merge(
+        $sizes,
         (
-                property: margin,
-                propertyRtl: margin,
-                cssName: m,
-                breakpoint: true,
-                values: map-merge($sizes, (auto: auto)),
-        ),
-        margin-right: (
-                property: margin-right,
-                propertyRtl: margin-right,
-                cssName: mr,
-                breakpoint: true,
-                values: map-merge($sizes, (auto: auto)),
-        ),
-        margin-bottom: (
-                property: margin-bottom,
-                propertyRtl: margin-bottom,
-                cssName: mb,
-                breakpoint: true,
-                values: map-merge($sizes, (auto: auto)),
-        ),
-        margin-top: (
-                property: margin-top,
-                propertyRtl: margin-top,
-                cssName: mt,
-                breakpoint: true,
-                values: map-merge($sizes, (auto: auto)),
-        ),
-        margin-left: (
-                property: margin-left,
-                propertyRtl: margin-left,
-                cssName: ml,
-                breakpoint: true,
-                values: map-merge($sizes, (auto: auto)),
-        ),
-        margin-start: (
-                property: margin-left,
-                propertyRtl: margin-right,
-                cssName: ms,
-                breakpoint: true,
-                values: map-merge($sizes, (auto: auto)),
-        ),
-        margin-end: (
-                property: margin-right,
-                propertyRtl: margin-left,
-                cssName: me,
-                breakpoint: true,
-                values: map-merge($sizes, (auto: auto)),
-        ),
+          auto: auto,
+        )
+      ),
+  ),
+  margin-bottom: (
+    property: margin-bottom,
+    propertyRtl: margin-bottom,
+    cssName: mb,
+    breakpoint: true,
+    values:
+      map-merge(
+        $sizes,
+        (
+          auto: auto,
+        )
+      ),
+  ),
+  margin-top: (
+    property: margin-top,
+    propertyRtl: margin-top,
+    cssName: mt,
+    breakpoint: true,
+    values:
+      map-merge(
+        $sizes,
+        (
+          auto: auto,
+        )
+      ),
+  ),
+  margin-left: (
+    property: margin-left,
+    propertyRtl: margin-left,
+    cssName: ml,
+    breakpoint: true,
+    values:
+      map-merge(
+        $sizes,
+        (
+          auto: auto,
+        )
+      ),
+  ),
+  margin-start: (
+    property: margin-left,
+    propertyRtl: margin-right,
+    cssName: ms,
+    breakpoint: true,
+    values:
+      map-merge(
+        $sizes,
+        (
+          auto: auto,
+        )
+      ),
+  ),
+  margin-end: (
+    property: margin-right,
+    propertyRtl: margin-left,
+    cssName: me,
+    breakpoint: true,
+    values:
+      map-merge(
+        $sizes,
+        (
+          auto: auto,
+        )
+      ),
+  ),
   // Position
-        position:
-        (
-                property: position,
-                propertyRtl: position,
-                cssName: position,
-                breakpoint: true,
-                values: (
-                        relative: relative,
-                        absolute: absolute,
-                        fixed: fixed,
-                        static: static,
-                ),
-        ),
-        bottom: (
-                property: bottom,
-                propertyRtl: bottom,
-                cssName: b,
-                breakpoint: true,
-                values: $sizes,
-        ),
-        top: (
-                property: top,
-                propertyRtl: top,
-                cssName: top,
-                breakpoint: true,
-                values: $sizes,
-        ),
-        right: (
-                property: right,
-                propertyRtl: right,
-                cssName: right,
-                breakpoint: true,
-                values: $sizes,
-        ),
-        left: (
-                property: left,
-                propertyRtl: left,
-                cssName: left,
-                breakpoint: true,
-                values: $sizes,
-        ),
+  position:
+    (
+      property: position,
+      propertyRtl: position,
+      cssName: position,
+      breakpoint: true,
+      values: (
+        relative: relative,
+        absolute: absolute,
+        fixed: fixed,
+        static: static,
+      ),
+    ),
+  bottom: (
+    property: bottom,
+    propertyRtl: bottom,
+    cssName: b,
+    breakpoint: true,
+    values: $sizes,
+  ),
+  top: (
+    property: top,
+    propertyRtl: top,
+    cssName: top,
+    breakpoint: true,
+    values: $sizes,
+  ),
+  right: (
+    property: right,
+    propertyRtl: right,
+    cssName: right,
+    breakpoint: true,
+    values: $sizes,
+  ),
+  left: (
+    property: left,
+    propertyRtl: left,
+    cssName: left,
+    breakpoint: true,
+    values: $sizes,
+  ),
   // Display
-        display:
-        (
-                property: display,
-                propertyRtl: display,
-                cssName: display,
-                breakpoint: true,
-                values: (
-                        flex: flex,
-                        block: block,
-                        inline: inline,
-                        inline-block: inline-block,
-                        inline-flex: inline-flex,
-                        grid: grid,
-                        inline-grid: inline-grid,
-                ),
-        ),
+  display:
+    (
+      property: display,
+      propertyRtl: display,
+      cssName: d,
+      breakpoint: true,
+      values: (
+        none: none,
+        flex: flex,
+        block: block,
+        inline: inline,
+        inline-block: inline-block,
+        inline-flex: inline-flex,
+        grid: grid,
+        inline-grid: inline-grid,
+      ),
+    ),
   // Flexbox
-        flex-grow:
-        (
-                property: flex-grow,
-                propertyRtl: flex-grow,
-                cssName: flex-grow,
-                breakpoint: true,
-                values: (
-                        0: 0,
-                        1: 1,
-                        initial: initial,
-                        inherit: inherit,
-                ),
-        ),
+  flex-direction:
+  (
+    property: flex-direction,
+    propertyRtl: flex-direction,
+    cssName: flex,
+    breakpoint: true,
+    values: (
+      row: row,
+      column: column,
+      reverse-row: reverse-row,
+      reverse-column: reverse-column,
+    ),
+  ),
+  
+  flex-grow:
+    (
+      property: flex-grow,
+      propertyRtl: flex-grow,
+      cssName: flex-grow,
+      breakpoint: true,
+      values: (
+        0: 0,
+        1: 1,
+        initial: initial,
+        inherit: inherit,
+      ),
+    ),
   // Align Items
-        align-items:
-        (
-                property: align-items,
-                propertyRtl: align-items,
-                cssName: item,
-                breakpoint: true,
-                values: (
-                        start: flex-start,
-                        end: flex-end,
-                        center: center,
-                        baseline: baseline,
-                        stretch: stretch,
-                ),
-        ),
+  align-items:
+    (
+      property: align-items,
+      propertyRtl: align-items,
+      cssName: item,
+      breakpoint: true,
+      values: (
+        start: flex-start,
+        end: flex-end,
+        center: center,
+        baseline: baseline,
+        stretch: stretch,
+      ),
+    ),
   // Justify Content
-        justify-content:
-        (
-                property: justify-content,
-                propertyRtl: justify-content,
-                cssName: justify,
-                breakpoint: true,
-                values: (
-                        start: flex-start,
-                        end: flex-end,
-                        center: center,
-                        between: space-between,
-                        around: space-around,
-                ),
-        ),
+  justify-content:
+    (
+      property: justify-content,
+      propertyRtl: justify-content,
+      cssName: justify,
+      breakpoint: true,
+      values: (
+        start: flex-start,
+        end: flex-end,
+        center: center,
+        between: space-between,
+        around: space-around,
+      ),
+    ),
+    flex-center:
+    (
+      property: justify-content align-items,
+      propertyRtl: justify-content align-items,
+      cssName: flex,
+      breakpoint: true,
+      values: (
+        center: center,
+      ),
+    ),
+    
   // Flex Shrink
-        flex-shrink:
-        (
-                property: flex-shrink,
-                propertyRtl: flex-shrink,
-                cssName: flex-s,
-                breakpoint: true,
-                values: (
-                        0: 0,
-                        1: 1,
-                        initial: initial,
-                        inherit: inherit,
-                ),
-        ),
-        font-wighet:
-        (
-                property: font-wighet,
-                propertyRtl: font-wighet,
-                cssName: fw,
-                breakpoint: true,
-                values: (
-                        100: 100,
-                        200: 200,
-                        300: 300,
-                        400: 400,
-                        500: 500,
-                        600: 600,
-                        700: 700,
-                        800: 800,
-                        900: 900,
-                        unset: unset,
-                ),
-        ),
-        font-size:
-        (
-                property: font-size,
-                propertyRtl: font-size,
-                cssName: fs,
-                breakpoint: true,
-                values: (
-                        base: 14px,
-                        subtitle: 10px,
-                        title:18px,
-                        tiny: 8px,
-                        huge: 24px
-                ),
-        ),
-        color:
-        (
-                property: color,
-                propertyRtl: color,
-                cssName: cl,
-                breakpoint: true,
-                values: $colors,
-        ),
-        background:
-        (
-                property: background,
-                propertyRtl: background,
-                cssName: bg,
-                breakpoint: true,
-                values: $colors,
-        ),
-        border:
-        (
-                property: border,
-                propertyRtl: border,
-                cssName: b,
-                breakpoint: true,
-                values: $colors,
-        ),
+  flex-shrink:
+    (
+      property: flex-shrink,
+      propertyRtl: flex-shrink,
+      cssName: flex-s,
+      breakpoint: true,
+      values: (
+        0: 0,
+        1: 1,
+        initial: initial,
+        inherit: inherit,
+      ),
+    ),
+    gap:
+    (
+      property: gap,
+      propertyRtl: gap,
+      cssName: gap,
+      breakpoint: true,
+      values: $sizes,
+    ),
+  font-wighet: (
+    property: font-wighet,
+    propertyRtl: font-wighet,
+    cssName: fw,
+    breakpoint: true,
+    values: (
+      100: 100,
+      200: 200,
+      300: 300,
+      400: 400,
+      500: 500,
+      600: 600,
+      700: 700,
+      800: 800,
+      900: 900,
+      unset: unset,
+    ),
+  ),
+  font-size: (
+    property: font-size,
+    propertyRtl: font-size,
+    cssName: fs,
+    breakpoint: true,
+    values:$font-sizes,
+  ),
+  color: (
+    property: color,
+    propertyRtl: color,
+    cssName: cl,
+    breakpoint: true,
+    values: $colors,
+  ),
+  background: (
+    property: background,
+    propertyRtl: background,
+    cssName: bg,
+    breakpoint: true,
+    values: $colors,
+  ),
+  border: (
+    property: border,
+    propertyRtl: border,
+    cssName: border,
+    breakpoint: true,
+    values: (
+      null: $border-width solid $border-color,
+      0: 0,
+    ),
+  ),
+
+  border-top: (
+    property: border-top,
+    propertyRtl: border-top,
+    cssName: border-top,
+    breakpoint: true,
+    values: (
+      null: $border-width solid $border-color,
+      0: 0,
+    ),
+  ),
+  border-bottom: (
+    property: border-bottom,
+    propertyRtl: border-bottom,
+    cssName: border-bottom,
+    breakpoint: true,
+    values: (
+      null: $border-width solid $border-color,
+      0: 0,
+    ),
+  ),
+  border-right: (
+    property: border-right,
+    propertyRtl: border-right,
+    cssName: border-right,
+    breakpoint: true,
+    values: (
+      null: $border-width solid $border-color,
+      0: 0,
+    ),
+  ),
+  border-left: (
+    property: border-left,
+    propertyRtl: border-left,
+    cssName: border-left,
+    breakpoint: true,
+    values: (
+      null: $border-width solid $border-color,
+      0: 0,
+    ),
+  ),
+  border-start: (
+    property: border-inline-start,
+    propertyRtl: border-inline-start,
+    cssName: border-start,
+    breakpoint: true,
+    values: (
+      null: $border-width solid $border-color,
+      0: 0,
+    ),
+  ),
+  border-end: (
+    property: border-inline-end,
+    propertyRtl: border-inline-end,
+    cssName: border-end,
+    breakpoint: true,
+    values: (
+      null: $border-width solid $border-color,
+      0: 0,
+    ),
+  ),
+  border-widths: (
+    property: border-width,
+    propertyRtl: border-width,
+    cssName: border,
+    breakpoint: true,
+    values: $border-widths,
+  ),
+  rounded: (
+    property: border-radius,
+    propertyRtl: border-radius,
+    cssName: rounded,
+    breakpoint: true,
+    values: $border-radiuses,
+  )
 );

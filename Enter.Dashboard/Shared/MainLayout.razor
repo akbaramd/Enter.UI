@@ -1,30 +1,53 @@
-﻿@inherits LayoutComponentBase
-<ProAppBar>
-    <div class="">
-        <ProButton Size="ProButton.ButtonSize.Small">حساب کاربری</ProButton>
-    </div>
-</ProAppBar>
-
-<ProMenuBar>
-    <Item>
-aaaa
-    </Item>
-    <Item>
-        ss
-    </Item>
-</ProMenuBar>
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
-
-    <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
+﻿@using Enter.Dashboard.Pages;
+@using Enter.UI.Models;
+@using Enter.UI.Services.Contracts;
+@inherits LayoutComponentBase
+<div class="border-y h-full">
+    <EntAppBar Title="پلتفرم مدیریتی پیشرفته" />
+    <div class="border-x h-full d-flex">
+        <EntTab ItemDirection="EntTabItemDirection.Vertical"
+                Direction="EntTabDirection.Horizontal"
+                Expandable=true
+                Class="">
+            <EntTabPanel Title="صفحه اصلی" Icon="fa-light fa-home">
+                <div class="bg-white p-4 m-4 border w-60 mb-2">اطلاعات مربوط به صفحه اصلی اینجا قرار میگیرد</div>
+                <div class="border d-flex flex-column divider-y">
+                   @foreach (var item in Items)
+                    {
+                        <div class="h-8 d-flex item-center px-4" @onclick="()=>AddNewTab(item.Type,item.Title)">
+                            @item.Title
+                        </div>
+                    }
+                    
+                </div>
+            </EntTabPanel>
+            <EntTabPanel Title="حساب کاربری" Icon="fa-light fa-user">
+                <div class="bg-white p-4 m-4 border w-60">اطلاعات مربوط به حساب کاربری اینجا قرار میگیرد</div>
+            </EntTabPanel>
+        </EntTab>
+        <div class="flex-grow-1">
             @Body
-        </article>
-    </main>
+        </div>
+    </div>
+
 </div>
+
+
+@code {
+
+    public NemNavigationMenuItem[] Items = new NemNavigationMenuItem[]
+    {
+        new() {Type=typeof(Counter) , Title="محاسبه گر"}    ,
+        new () {Type=typeof(FetchData) , Title="دریافت اطلاعات"}    ,
+
+    };
+
+    [Inject]
+    public IMdiService MdiService { get; set; }
+
+
+    public void AddNewTab(Type type, string title) 
+    {
+        MdiService.AddNewTab(type,title, "fa-light fa-user");
+    }
+}

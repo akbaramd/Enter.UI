@@ -24,8 +24,13 @@ function minifyCSS() {
         .pipe(gulp.dest('./wwwroot/dist/css'));
 }
 
+function fonts() {
+    return gulp.src(['./wwwroot/fonts/**/*'])
+        .pipe(gulp.dest('./wwwroot/dist/fonts'));
+}
+
 function watch() {
     gulp.watch('./wwwroot/**/*.scss', gulp.series(compileSass, minifyCSS));
 }
 
-exports.default = watch;
+exports.default =  gulp.series(fonts,watch);
