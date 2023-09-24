@@ -6,63 +6,44 @@ using Microsoft.AspNetCore.Components.Web;
 using Enter.UI.Components.Controllers;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
+using Enter.UI.Bases;
+using Enter.UI.Core;
 
 namespace Enter.UI.Components
 {
-    public partial class EntTab : ComponentBase
+    public partial class EntTab : EntTabBase
     {
-        
-        private string TabExpandableCss => (Expandable && Direction == EntTabDirection.Horizontal) ? "w-fit-content " : "";
-        
-        private string TabDirectionCss => Direction switch
-        {
-            EntTabDirection.Horizontal => "ent-tab-horizontal",
-            EntTabDirection.Vertical => "ent-tab-vertical"
-        };
-        
-        private string TabItemDirectionCss => ItemDirection switch
-        {
-            EntTabItemDirection.Horizontal => "ent-tab-item-horizontal",
-            EntTabItemDirection.Vertical => "ent-tab-item-vertical"
-        };
-        
-        
-        private List<EntTabPanel> TabPanels = new List<EntTabPanel>();
-        private Guid? ActiveTabId = null;
 
-        [Parameter]
-        public string Class { get; set; }
-        
-        [Parameter]
-        public string PanelClass { get; set; }
-        [Parameter]
-        public string ActiveItemClass { get; set; }
-        
+
+        protected string tabCssClass => new CssClassBuilder("ent-tab")
+          .AddClass($"ent-tab-horizontal", Direction == EntTabDirection.Horizontal)
+          .AddClass($"ent-tab-vertical", Direction == EntTabDirection.Vertical)
+          .AddClass($"ent-tab-expandable", Direction == EntTabDirection.Vertical)
+          .AddClass(Class)
+          .Build();
+
+        protected string tabItemCssClass => new CssClassBuilder("ent-tab-item")
+         .AddClass($"ent-tab-item-horizontal", ItemDirection == EntTabItemDirection.Horizontal)
+         .AddClass($"ent-tab-item-vertical", ItemDirection == EntTabItemDirection.Vertical)
+          .AddClass(ItemClass)
+         .Build();
+
+        protected string tabPanelCssClass => new CssClassBuilder("ent-tab-panel-container")
+         .AddClass(PanelClass)
+         .Build();
+
         [Parameter]
         public RenderFragment ChildContent { get; set; }
 
-        [Parameter]
-        public bool Expandable { get; set; } = false;
 
-        [Parameter]
-        public bool Closeable { get; set; } = false;
+        private List<EntTabPanel> TabPanels = new List<EntTabPanel>();
+        private Guid? ActiveTabId = null;
 
-        [Parameter]
-        public EntTabDirection Direction { get; set; } = EntTabDirection.Vertical;
-        [Parameter]
-        public EntTabItemDirection ItemDirection { get; set; } = EntTabItemDirection.Horizontal;
-
-        [Parameter]
-        public EventCallback<Guid?> OnTabActived { get; set; }
-        [Parameter]
-        public EventCallback<EntTabPanel> OnTabAdded{ get; set; }
-        [Parameter]
-        public EventCallback<Guid> OnTabClosed { get; set; }
 
         public async Task AddNewTab(EntTabPanel panel)
         {
             TabPanels.Add(panel);
-            
+
             if (TabPanels.Count == 1)
                 ActiveTab(panel.TabId);
 
@@ -117,5 +98,33 @@ namespace Enter.UI.Components
     public enum EntTabItemDirection
     {
         Vertical, Horizontal
+    }
+
+    public class EntTabBase : EntBaseComponent
+    {
+        [Parameter]
+        public bool KeepPanelAlive { get; set; } = false;
+        [Parameter]
+        public bool Closeable { get; set; } = false;
+        [Parameter]
+        public string ItemClass { get; set; }
+        [Parameter]
+        public string PanelClass { get; set; }
+        [Parameter]
+        public string ActiveClass { get; set; }
+        [Parameter]
+        public bool Expandable { get; set; } = false;
+        [Parameter]
+        public EntTabDirection Direction { get; set; } = EntTabDirection.Vertical;
+        [Parameter]
+        public EntTabItemDirection ItemDirection { get; set; } = EntTabItemDirection.Horizontal;
+
+        [Parameter]
+        public EventCallback<Guid?> OnTabActived { get; set; }
+        [Parameter]
+        public EventCallback<EntTabPanel> OnTabAdded { get; set; }
+        [Parameter]
+        public EventCallback<Guid> OnTabClosed { get; set; }
+
     }
 }
