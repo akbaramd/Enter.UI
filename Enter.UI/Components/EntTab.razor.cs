@@ -30,6 +30,7 @@ namespace Enter.UI.Components
 
         protected string tabPanelCssClass => new CssClassBuilder("ent-tab-panel-container")
          .AddClass(PanelClass)
+         .AddClass($"ent-tab-panel-container-collapse", Expandable && ActiveTabId == null)
          .Build();
 
         [Parameter]

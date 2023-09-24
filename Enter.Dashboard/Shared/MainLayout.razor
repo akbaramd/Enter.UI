@@ -11,9 +11,8 @@
                     Expandable="true"
                     KeepPanelAlive="true"
                     ActiveClass="bg-light-sm"
-                    PanelClass="w-70"
                     Class="border-0">
-                <EntTabPanel Title="صفحه اصلی" Icon="fa-light fa-home">
+                <EntTabPanel Title="صفحه اصلی" Icon="fa-light fa-home" Class="w-60">
                     <div class=" d-flex flex-column border-y">
                         @foreach (var item in Items)
                         {
@@ -24,7 +23,7 @@
 
                     </div>
                 </EntTabPanel>
-                <EntTabPanel Title="حساب کاربری" Icon="fa-light fa-user">
+                <EntTabPanel Title="حساب کاربری" Icon="fa-light fa-user" Class="w-60">
                     <div class="bg-white p-4 m-4 border ">اطلاعات مربوط به حساب کاربری اینجا قرار میگیرد</div>
                 </EntTabPanel>
             </EntTab>
