@@ -1,11 +1,10 @@
 @import "_normalize.scss";
 @import "_variables.scss";
+@import "_core.scss";
 @import "_mixins.scss";
-@import "fonts";
 html,
 body {
   font-size: $font-size;
-  font-family: Vazirmatn;
   color: map-get($map: $colors, $key: mute);
 }
 
@@ -19,68 +18,8 @@ body {
 .cursor-pointer {
   cursor: pointer;
 }
-@each $utility, $config in $utilities {
-  $properties: map-get($config, property);
-  $propertiesRtl: map-get($config, propertyRtl);
-  $cssName: map-get($config, cssName);
-  $values: map-get($config, values);
 
-  @each $size, $value in $values {
-    @if $size != null {
-      $size: -#{$size};
-    } @else {
-      $size: "";
-    }
-    .#{$cssName}#{$size} {
-      @each $property in $properties {
-        #{$property}: $value;
-      }
-    }
 
-    [dir="rtl"] .#{$cssName}#{$size} {
-      @each $property in $propertiesRtl {
-        #{$property}: $value;
-      }
-    }
-    .rtl\:#{$cssName}#{$size} {
-      @each $property in $propertiesRtl {
-        #{$property}: $value;
-      }
-    }
-  }
-
-  @if map-get($config, breakpoint) {
-    @each $bp, $width in $breakpoints {
-      @media (min-width: $width) {
-        @each $size, $value in $values {
-          @if $size != null {
-            $size: -#{$size};
-          } @else {
-            $size: "";
-          }
-
-          .#{$bp}\:#{$cssName}#{$size} {
-            @each $property in $properties {
-              #{$property}: $value;
-            }
-          }
-
-          [dir="rtl"] .#{$bp}\:#{$cssName}#{$size} {
-            @each $property in $propertiesRtl {
-              #{$property}: $value;
-            }
-          }
-
-          .rtl\:#{$bp}\:#{$cssName}#{$size} {
-            @each $property in $propertiesRtl {
-              #{$property}: $value;
-            }
-          }
-        }
-      }
-    }
-  }
-}
 
 .divider-x > * {
   border-inline-end: $border-width $border-style $border-color;
@@ -106,30 +45,6 @@ body {
   border-bottom: $border-width $border-style $border-color;
 }
 
-@function str_split($str, $substr) {
-  $nList: ();
-
-  @while str-index("#{$str}", "#{$substr}") != null {
-    @if (str-index("#{$str}", "#{$substr}") > 1) {
-      $nList: append(
-                      $nList,
-                      str-slice("#{$str}", 1, str-index("#{$str}", "#{$substr}") - 1)
-      );
-    }
-
-    $str: str-slice(
-                    "#{$str}",
-                    str-index("#{$str}", "#{$substr}") + 1,
-                    str-length("#{$str}")
-    );
-  }
-
-  @if (str-slice("#{$str}", 1, str-length("#{$str}")) != "") {
-    $nList: append($nList, str-slice("#{$str}", 1, str-length("#{$str}")));
-  }
-
-  @return $nList;
-}
 
 
 @import "components/components";

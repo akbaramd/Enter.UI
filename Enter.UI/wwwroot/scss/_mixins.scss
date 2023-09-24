@@ -5,3 +5,26 @@
   align-items: $align;
 }
 
+
+@function normalizeString($string, $delimiter) {
+  $list: ();
+  $word: '';
+
+  @for $i from 1 through str-length($string) {
+    $char: str-slice($string, $i, $i);
+    @if $char == $delimiter {
+      @if $word != '' {
+        $list: append($list, $word);
+        $word: '';
+      }
+    } @else {
+      $word: #{$word}#{$char};
+    }
+  }
+
+  @if $word != '' {  
+    $list: append($list, $word);
+  }
+
+  @return $list;
+}

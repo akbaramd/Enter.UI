@@ -23,25 +23,25 @@ namespace Enter.UI.Services
 
         public void AddNewTab<TComponent>(string title, string icon, Dictionary<string, object>? parameters = null) where TComponent : ComponentBase
         {
-             AddNewTab(typeof(TComponent), title, icon, parameters);
+            AddNewTab(typeof(TComponent), title, icon, parameters);
         }
 
-        public  void AddNewTab(Type type, string title, string icon, Dictionary<string, object>? parameters = null)
+        public void AddNewTab(Type type, string title, string icon, Dictionary<string, object>? parameters = null)
         {
             var item = new EntMdiTabItem() { ComponentType = type, Icon = icon, Title = title, ComponentParameters = parameters, TabId = Guid.NewGuid() };
             TabPanels.Add(item);
             OnTabAdded.Invoke(item);
         }
 
-        public  void RemoveTab(Guid id)
+        public void RemoveTab(Guid id)
         {
             TabPanels.Remove(TabPanels.First(x => x.TabId == id));
             OnTabRemoved.Invoke();
         }
 
-        public  void SetActiveTab(Guid? id,bool notify = true)
+        public void SetActiveTab(Guid? id, bool notify = true)
         {
-            ActiveTabPanel = TabPanels.FirstOrDefault(x=>x.TabId == id);
+            ActiveTabPanel = TabPanels.FirstOrDefault(x => x.TabId == id);
 
             if (notify)
             {

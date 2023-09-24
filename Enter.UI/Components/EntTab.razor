@@ -1,25 +1,33 @@
-﻿<CascadingValue Value="@this">
-    <div class="ent-tab @TabDirectionCss @Class">
-        <ul class="ent-tab-item-container">
-            @foreach (var tabPanels in TabPanels)
-            {
-                var activeClass = (IsActivePanel(tabPanels.TabId) ? "active " + ActiveItemClass : "");
-                <li class="ent-tab-item  @TabItemDirectionCss @activeClass" @onclick="()=>ActiveTab(tabPanels.TabId)">
-                    <i class="@tabPanels.Icon"></i> 
-                    <span>@tabPanels.Title</span>
-                    @if (Closeable)
-                    {
-                        <div @onclick="()=>OnTabClose(tabPanels.TabId)" class="ent-tab-btn-close">
-                            <i class="fa-light fa-close"></i>
-                        </div>
-                    }
-                </li>
-            }
-        </ul>
-        @{
-            var tabContentContianerClass = (Expandable) ? " " : "flex-grow-1 ";
+﻿@inherits EntTabBase
+<CascadingValue Value="@this">
+    <div class="@tabCssClass">
+        @if (TabPanels.Count > 0)
+        {
+            <ul class="ent-tab-item-container">
+                @foreach (var tabPanels in TabPanels)
+                {
+                    var activeClass = (IsActivePanel(tabPanels.TabId) ? "active " + ActiveClass : "");
+                    <li class="@tabItemCssClass @activeClass" @onclick="()=>ActiveTab(tabPanels.TabId)">
+                        <i class="@tabPanels.Icon"></i>
+                        <span>@tabPanels.Title</span>
+                        @if (Closeable)
+                        {
+                            <div @onclick="()=>OnTabClose(tabPanels.TabId)" class="ent-tab-btn-close">
+                                <i class="fa-light fa-close"></i>
+                            </div>
+                        }
+                    </li>
+                }
+            </ul>
         }
-        <div class="ent-tab-panel-container @PanelClass">
+        else
+        {
+            <div class="ent-tab-item-container-message">
+                <p>پنجره ای برای نمایش باز نشده است</p>
+            </div>
+        }
+
+        <div class="@tabPanelCssClass">
             @ChildContent
         </div>
     </div>

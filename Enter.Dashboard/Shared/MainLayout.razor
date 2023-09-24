@@ -5,26 +5,30 @@
 <div class="border-y h-full">
     <EntAppBar Title="پلتفرم مدیریتی پیشرفته" />
     <div class="border-x h-full d-flex">
-        <div><EntTab ItemDirection="EntTabItemDirection.Vertical"
-                             Direction="EntTabDirection.Horizontal"
-                             Expandable=true
-                             ActiveItemClass="bg-light-sm"
-                             Class="border-0">
-                         <EntTabPanel Title="صفحه اصلی" Icon="fa-light fa-home">
-                             <div class="border d-flex flex-column border-y w-60 m-4">
-                                @foreach (var item in Items)
-                                 {
-                                     <div class="h-8 d-flex item-center px-4" @onclick="()=>AddNewTab(item.Type,item.Title)">
-                                         @item.Title
-                                     </div>
-                                 }
-                                 
-                             </div>
-                         </EntTabPanel>
-                         <EntTabPanel Title="حساب کاربری" Icon="fa-light fa-user">
-                             <div class="bg-white p-4 m-4 border w-60">اطلاعات مربوط به حساب کاربری اینجا قرار میگیرد</div>
-                         </EntTabPanel>
-                     </EntTab></div>
+        <div>
+            <EntTab ItemDirection="EntTabItemDirection.Vertical"
+                    Direction="EntTabDirection.Horizontal"
+                    Expandable="true"
+                    KeepPanelAlive="true"
+                    ActiveClass="bg-light-sm"
+                    PanelClass="w-70"
+                    Class="border-0">
+                <EntTabPanel Title="صفحه اصلی" Icon="fa-light fa-home">
+                    <div class=" d-flex flex-column border-y">
+                        @foreach (var item in Items)
+                        {
+                            <div class="h-8 d-flex item-center px-4" @onclick="()=>AddNewTab(item.Type,item.Title)">
+                                @item.Title
+                            </div>
+                        }
+
+                    </div>
+                </EntTabPanel>
+                <EntTabPanel Title="حساب کاربری" Icon="fa-light fa-user">
+                    <div class="bg-white p-4 m-4 border ">اطلاعات مربوط به حساب کاربری اینجا قرار میگیرد</div>
+                </EntTabPanel>
+            </EntTab>
+        </div>
         <div class="flex-grow-1">
             @Body
         </div>
@@ -46,8 +50,8 @@
     public IMdiService MdiService { get; set; }
 
 
-    public void AddNewTab(Type type, string title) 
+    public void AddNewTab(Type type, string title)
     {
-        MdiService.AddNewTab(type,title, "fa-light fa-user");
+        MdiService.AddNewTab(type, title, "fa-light fa-user");
     }
 }

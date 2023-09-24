@@ -1,0 +1,58 @@
+@each $utility, $config in $utilities {
+  $properties: map-get($config, property);
+  $propertiesRtl: map-get($config, propertyRtl);
+  $cssName: map-get($config, cssName);
+  $values: map-get($config, values);
+
+  @each $size, $value in $values { 
+    @if $size != null {
+      $size: -#{$size};
+    } @else {
+      $size: "";
+    }
+     
+
+    [dir="rtl"] .#{$cssName}#{$size} {
+      @each $property in $propertiesRtl {
+        #{$property}: $value;
+      }
+    }
+    .rtl\:#{$cssName}#{$size} {
+      @each $property in $propertiesRtl {
+        #{$property}: $value;
+      }
+    }
+  }
+
+  @if map-get($config, breakpoint) {
+    @each $bp, $width in $breakpoints {
+      @media (min-width: $width) {
+        @each $size, $value in $values {
+          @if $size != null {
+            $size: -#{$size};
+          } @else {
+            $size: "";
+          }
+
+          .#{$bp}\:#{$cssName}#{$size} {
+            @each $property in $properties {
+              #{$property}: $value;
+            }
+          }
+
+          [dir="rtl"] .#{$bp}\:#{$cssName}#{$size} {
+            @each $property in $propertiesRtl {
+              #{$property}: $value;
+            }
+          }
+
+          .rtl\:#{$bp}\:#{$cssName}#{$size} {
+            @each $property in $propertiesRtl {
+              #{$property}: $value;
+            }
+          }
+        }
+      }
+    }
+  }
+}

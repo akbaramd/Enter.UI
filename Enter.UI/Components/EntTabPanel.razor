@@ -1,11 +1,22 @@
-﻿@namespace Enter.UI.Components
-@{
-    var css = !Parent.IsActivePanel(TabId) ? "d-none" : "";
-}
-<div class="@css">
-    @ChildContent
-</div>
+﻿@inherits EntBaseComponent
+@namespace Enter.UI.Components
+
+<div class="@cssClass" style="@Style" @attributes="@UserAttributes">
+@if (Parent.KeepPanelAlive)
+{
     
+        @ChildContent
+    
+}else
+{
+    @if (Parent.IsActivePanel(TabId))
+    {
+        @ChildContent
+    }
+}
+</div>
+
+
 
 
 

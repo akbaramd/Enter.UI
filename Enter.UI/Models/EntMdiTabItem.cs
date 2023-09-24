@@ -13,6 +13,6 @@ namespace Enter.UI.Models
         public string Title { get; set; }
         public string Icon { get; set; }
         public Type ComponentType { get; set; }
-        public Dictionary<string,object>? ComponentParameters{ get; set; }
+        public Dictionary<string, object>? ComponentParameters { get; set; }
     }
 }

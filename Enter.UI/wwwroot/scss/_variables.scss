@@ -37,6 +37,7 @@ $border-radiuses: (
   4: $border-radius * 1,
 ) !default;
 
+
 $border-width: 1px !default;
 $border-widths: (
   1: 1px,
@@ -47,7 +48,7 @@ $border-widths: (
 ) !default;
 $border-style: solid !default;
 $border-color: #dddddd !default;
-
+$border : $border-width $border-style $border-color;
 $size: 1rem ;
 $sizes: (
   0: 0,
@@ -224,7 +225,7 @@ $utilities: (
     propertyRtl: padding-top padding-bottom,
     cssName: py,
     breakpoint: true,
-    values: map,
+    values: $sizes,
   ),
   padding-x: (
     property: padding-left padding-right,
@@ -419,7 +420,7 @@ $utilities: (
     (
       property: align-items,
       propertyRtl: align-items,
-      cssName: item,
+      cssName: items,
       breakpoint: true,
       values: (
         start: flex-start,
@@ -600,5 +601,14 @@ $utilities: (
     cssName: rounded,
     breakpoint: true,
     values: $border-radiuses,
+  ),
+  list-style: (
+    property: list-style,
+    propertyRtl: list-style,
+    cssName: list-style,
+    breakpoint: true,
+    values: (
+      none: none,
+    ),
   )
 );

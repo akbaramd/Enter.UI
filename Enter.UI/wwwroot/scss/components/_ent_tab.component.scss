@@ -1,64 +1,99 @@
 ﻿.ent-tab {
   display: flex;
   height: 100%;
-  border: 1px solid #ddd;
-
-  .ent-tab-item-container {
+  border: $border;
+  > .ent-tab-item-container-message {
+    display: flex;
+    align-items: center;
+    > * {
+      padding: 0;
+      margin: 0;
+    }
+  }
+  > .ent-tab-item-container {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
 
-    .ent-tab-item {
+    > .ent-tab-item {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: .5rem;
-      font-size:12px;
-      padding :1rem;
-      
+      gap: calc($size / 2);
+      font-size: map-get($font-sizes, "subtitle");
+      padding: calc($size / 2) $size;
+      cursor: pointer;
       i {
-        font-size:12px;     
+        font-size: map-get($font-sizes, "subtitle");
       }
+    }
+
+    > .ent-tab-item-vertical {
+      flex-direction: column;
+      padding-top: $size;
+      padding-bottom: $size;
+    }
+  
+    > .ent-tab-item-horizontal {
+      flex-direction: row;
     }
 
   }
 
-  .ent-tab-item-vertical {
-    flex-direction: column;
-  }
-
-  .ent-tab-item-horizontal {
-    flex-direction: row;
-    height: 2rem;
-  }
   
-  .ent-tab-panel-container{
+
+  > .ent-tab-panel-container {
     flex-grow: 1;
   }
 }
 
 .ent-tab-horizontal {
-  .ent-tab-item-container {
+  flex-direction: row;
+  > .ent-tab-item-container {
     flex-direction: column;
-    border-inline-end: 1px solid #ddd;
+    border-inline-end: $border;
 
     > * {
-      border-bottom: 1px solid #ddd;
+      border-bottom: $border;
     }
   }
+
+  > .ent-tab-item-container-message {
+    border-inline-end: $border;
+    font-size: map-get($font-sizes, "subtitle");
+    padding: $size calc($size / 2);
+    writing-mode: sideways-rl;
+    > * {
+      transform: rotate(90deg);
+    }
+  }
+
 }
 
 .ent-tab-vertical {
   flex-direction: column;
 
-    .ent-tab-item-container {
-      height: 2rem;
-      flex-direction: row;
-      border-bottom: 1px solid #ddd;
+  > .ent-tab-item-container {
+    flex-direction: row;
+    border-bottom: $border;
 
-      > * {
-        border-inline-end: 1px solid #ddd;
-      }
+    > * {
+      border-inline-end: $border;
     }
+  }
+
+  > .ent-tab-item-container-message {
+    border-bottom: $border;
+    font-size: map-get($font-sizes, "subtitle");
+
+    padding: calc($size / 2) $size;
+  }
+}
+
+.ent-tab-panel {
+  display: none;
+}
+.ent-tab-panel.active {
+  display: block;
 }

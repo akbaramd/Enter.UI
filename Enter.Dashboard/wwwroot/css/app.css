@@ -1,8 +1,8 @@
-@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
-
+@import url('../fonts/vazirmatn/Vazirmatn-font-face.css');
 
 body,html {
     height: 100%;
+    font-family:Vazirmatn,serif;
 }
 
 #app {
