@@ -1,0 +1,21 @@
+.ent-nav-menu {
+    display: flex;
+    flex-direction: column;
+    border:$border;
+    border-bottom: 0;
+    font-size: map-get($font-sizes, "subtitle");
+
+    > * {
+        border-bottom: $border;
+    }
+
+   
+
+    .ent-nav-menu-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: calc($size / 2) $size;
+    }
+
+}

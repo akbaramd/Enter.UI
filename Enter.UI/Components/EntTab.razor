@@ -8,12 +8,12 @@
                 {
                     var activeClass = (IsActivePanel(tabPanels.TabId) ? "active " + ActiveClass : "");
                     <li class="@tabItemCssClass @activeClass" @onclick="()=>ActiveTab(tabPanels.TabId)">
-                        <i class="@tabPanels.Icon"></i>
+                        <EntIcon Data="@tabPanels.Icon.Data" Type="@tabPanels.Icon.Type" />
                         <span>@tabPanels.Title</span>
                         @if (Closeable)
                         {
                             <div @onclick="()=>OnTabClose(tabPanels.TabId)" class="ent-tab-btn-close">
-                                <i class="fa-light fa-close"></i>
+                                <EntIcon Data="fa-light fa-close" Type="EntIconType.IconTag" />
                             </div>
                         }
                     </li>

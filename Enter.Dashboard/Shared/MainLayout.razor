@@ -12,18 +12,14 @@
                     KeepPanelAlive="true"
                     ActiveClass="bg-light-sm"
                     Class="border-0">
-                <EntTabPanel Title="صفحه اصلی" Icon="fa-light fa-home" Class="w-60">
-                    <div class=" d-flex flex-column border-y">
-                        @foreach (var item in Items)
-                        {
-                            <div class="h-8 d-flex item-center px-4" @onclick="()=>AddNewTab(item.Type,item.Title)">
-                                @item.Title
-                            </div>
-                        }
+                <EntTabPanel Title="صفحه اصلی" Icon='EntIcon.Create(EntIconType.IconTag,"fa-light fa-home")' Class="w-60">
+                    <EntNavMenu Class="border-0">
+                            <EntNavMenuTextItem Text="شمارنده"  Click="()=>AddNewTab<Counter>()"/>
+                            <EntNavMenuTextItem Text="دریافت اطلاعات"  Click="()=>AddNewTab<FetchData>()"/>
 
-                    </div>
+                    </EntNavMenu>
                 </EntTabPanel>
-                <EntTabPanel Title="حساب کاربری" Icon="fa-light fa-user" Class="w-60">
+                <EntTabPanel Title="حساب کاربری" Icon='EntIcon.Create(EntIconType.IconTag,"fa-light fa-user")' Class="w-60">
                     <div class="bg-white p-4 m-4 border ">اطلاعات مربوط به حساب کاربری اینجا قرار میگیرد</div>
                 </EntTabPanel>
             </EntTab>
@@ -38,19 +34,21 @@
 
 @code {
 
-    public NemNavigationMenuItem[] Items = new NemNavigationMenuItem[]
-    {
-        new() {Type=typeof(Counter) , Title="محاسبه گر"}    ,
-        new () {Type=typeof(FetchData) , Title="دریافت اطلاعات"}    ,
 
-    };
 
     [Inject]
     public IMdiService MdiService { get; set; }
 
 
-    public void AddNewTab(Type type, string title)
+    public void AddNewTab<T>()
     {
-        MdiService.AddNewTab(type, title, "fa-light fa-user");
+        if (typeof(T) == typeof(Counter))
+        {
+            MdiService.AddNewTab<Counter>("شمارنده", EntIcon.Create(EntIconType.IconTag, "fa-light fa-clock"));
+        }
+        else if (typeof(T) == typeof(FetchData))
+        {
+            MdiService.AddNewTab<FetchData>("دریافت اطلاعات", EntIcon.Create(EntIconType.IconTag, "fa-light fa-arrow-down"));
+        }
     }
 }

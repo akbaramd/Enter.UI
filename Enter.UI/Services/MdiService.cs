@@ -21,12 +21,12 @@ namespace Enter.UI.Services
         public event Action<EntMdiTabItem?> OnTabActivated;
         public event Action OnTabRemoved;
 
-        public void AddNewTab<TComponent>(string title, string icon, Dictionary<string, object>? parameters = null) where TComponent : ComponentBase
+        public void AddNewTab<TComponent>(string title, EntIcon icon, Dictionary<string, object>? parameters = null) where TComponent : ComponentBase
         {
             AddNewTab(typeof(TComponent), title, icon, parameters);
         }
 
-        public void AddNewTab(Type type, string title, string icon, Dictionary<string, object>? parameters = null)
+        public void AddNewTab(Type type, string title, EntIcon icon, Dictionary<string, object>? parameters = null)
         {
             var item = new EntMdiTabItem() { ComponentType = type, Icon = icon, Title = title, ComponentParameters = parameters, TabId = Guid.NewGuid() };
             TabPanels.Add(item);

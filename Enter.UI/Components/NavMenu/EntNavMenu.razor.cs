@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Enter.UI.Components
+namespace Enter.UI.Components.NavMenu
 {
     public partial class EntNavMenu : EntBaseComponent
     {

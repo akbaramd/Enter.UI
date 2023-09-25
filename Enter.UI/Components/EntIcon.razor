@@ -1,0 +1,24 @@
+﻿@inherits EntBaseComponent
+@namespace Enter.UI.Components
+
+
+@if (Type == EntIconType.IconTag)
+{
+    <i style="@Style" @attributes="UserAttributes" class="@cssClass @Data"></i>
+}else if (Type == EntIconType.ImageTag)
+{
+    <img style="@Style" @attributes="UserAttributes" class="@cssClass" src="@Data" />
+
+}else if(Type == EntIconType.SvgContent)
+{
+    <svg style="@Style" @attributes="UserAttributes" class="@cssClass">
+        @Data
+    </svg>
+}
+
+
+
+
+
+
+
