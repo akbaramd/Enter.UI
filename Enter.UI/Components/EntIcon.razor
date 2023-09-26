@@ -4,14 +4,14 @@
 
 @if (Type == EntIconType.IconTag)
 {
-    <i style="@Style" @attributes="UserAttributes" class="@cssClass @Data"></i>
+    <i style="@Style" @attributes="Attributes" class="@RootCss @Data"></i>
 }else if (Type == EntIconType.ImageTag)
 {
-    <img style="@Style" @attributes="UserAttributes" class="@cssClass" src="@Data" />
+    <img style="@Style" @attributes="Attributes" class="@RootCss" src="@Data" />
 
 }else if(Type == EntIconType.SvgContent)
 {
-    <svg style="@Style" @attributes="UserAttributes" class="@cssClass">
+    <svg style="@Style" @attributes="Attributes" class="@RootCss">
         @Data
     </svg>
 }

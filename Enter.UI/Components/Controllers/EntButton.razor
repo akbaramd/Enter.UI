@@ -1,33 +1,28 @@
-﻿@namespace Enter.UI.Components.Controllers
-
-<button class="h-8 display-flex item-center justify-center px-4 bg-light border-0 rounded-1" @onclick="@Click">@ChildContent</button>
+﻿@namespace Enter.UI.Components
+@inherits EntBaseComponent
+<div  @attributes="@Attributes" class="@RootClass" style="@Style"  @onclick="@Click">@ChildContent</div>
 
 @code {
+
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
-    [Parameter]
-    public ButtonSize Size { get; set; }
 
     [Parameter]
     public EventCallback Click { get; set; }
 
-
-    public string SizeClass
+    protected override void OnAfterRender(bool firstRender)
     {
-        get
+        if (firstRender)
         {
-            return Size switch
-            {
-                ButtonSize.Default => "",
-                ButtonSize.Small => "pro-button-sm",
-                ButtonSize.Large => "pro-button-lg",
-            };
+            var attr = Attributes;
         }
+        base.OnAfterRender(firstRender);
     }
 
-    public enum ButtonSize
-    {
-        Default, Small, Large
-    }
+    private string RootClass => CssClassBuilder
+    .AddClass("h-8 display-flex item-center justify-center px-4 bg-light border-0 rounded-1")
+        .Build();
+    
+   
 }

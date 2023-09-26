@@ -1,16 +1,16 @@
 ﻿@inherits EntBaseComponent
-@namespace Enter.UI.Components.Layout
+@namespace Enter.UI.Components
 @using Enter.UI.Core;
-<div @attributes="@UserAttributes" style="@Style" class="@cssClass">
+<div @attributes="@Attributes" style="@Style" class="@cssClass">
     <b class="cl-mute">@Title</b>
     @ChildContent
 </div>
 
 @code {
     
-    protected string cssClass => new CssClassBuilder("ent-app-bar")
-      .AddClass(Class)
-      .Build();
+    protected string cssClass => CssClassBuilder
+        .AddClass("ent-app-bar")
+        .Build();
 
     [Parameter]
     public RenderFragment? ChildContent { get; set; }

@@ -1,14 +1,12 @@
 ﻿@inherits EntTabBase
 
 <EntTab @ref="Tab"
-        Style="@Style"
-        UserAttributes="UserAttributes"
+        @attributes="@Attributes"
         ItemClass="@ItemClass"
         Direction="@Direction"
         ItemDirection="@ItemDirection"
         Expandable="@Expandable"
         Closeable="@Closeable"
-        Class="@cssClass"
         ActiveClass="@ActiveClass"
         PanelClass="@PanelClass"
         KeepPanelAlive="@KeepPanelAlive"
@@ -17,7 +15,7 @@
         OnTabAdded="OnTabAddedCallback">
     @foreach (var item in Items)
     {
-        <EntTabPanel  Icon="@item.Icon" Title="@item.Title" TabId="@item.TabId" @key="item.Key">
+        <EntTabPanel  Icon="@item.Icon" Title="@item.Title" Id="@item.Id" @key="item.Key">
             <DynamicComponent Type="@item.ComponentType" Parameters="@item.ComponentParameters" />
         </EntTabPanel>
     }
