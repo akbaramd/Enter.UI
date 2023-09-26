@@ -1,4 +1,5 @@
 .ent-nav-menu {
+    background-color: white;
     display: flex;
     flex-direction: column;
     border:$border;
@@ -16,6 +17,21 @@
         justify-content: center;
         align-items: center;
         padding: calc($size / 2) $size;
+        background-color: white;
+        cursor: pointer;
+        
+        .ent-nav-menu-item-icon {
+            
+        }
+        
+        .ent-nav-menu-item-content { 
+            flex-grow: 1;
+            margin-inline-start: 1rem;
+        }
+    }
+
+    .ent-nav-menu-item:hover {
+        background-color: map-get($colors, "light-sm");
     }
 
 }

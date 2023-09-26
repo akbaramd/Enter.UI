@@ -18,9 +18,9 @@ namespace Enter.UI.Services.Contracts
         //public event Action<EntMdiTabItem> OnTabActivated;
         //public event Action OnTabRemoved;
 
-        public void AddNewTab<TComponent>(string title, EntIcon icon, Dictionary<string, object>? parameters = null) where TComponent : ComponentBase;
-        public void AddNewTab(Type type, string title, EntIcon icon, Dictionary<string, object>? parameters = null);
-        public void RemoveTab(Guid id);
-        public void SetActiveTab(Guid? guid, bool notify = true);
+        public void AddNewTab<TComponent>(string id , string title, EntIcon icon, Dictionary<string, object>? parameters = null) where TComponent : ComponentBase;
+        public void AddNewTab(string id , Type type, string title, EntIcon icon, Dictionary<string, object>? parameters = null);
+        public void RemoveTab(string id);
+        public void SetActiveTab(string id, bool notify = true);
     }
 }

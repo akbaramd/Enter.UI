@@ -3,30 +3,27 @@ using global::System.Collections.Generic;
 using global::System.Linq;
 using global::System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.Web;
-using Enter.UI.Components.Controllers;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
-using Enter.UI.Bases;
 using Enter.UI.Core;
+using Enter.UI.Core.Bases;
 
 namespace Enter.UI.Components
 {
     public partial class EntTabPanel : EntBaseComponent
     {
 
-        protected string cssClass => new CssClassBuilder("ent-tab-panel")
-           .AddClass($"active", Parent.IsActivePanel(TabId))
-           .AddClass(Class)
+        protected string RootCss => CssClassBuilder
+            .AddClass("ent-tab-panel")
+           .AddClass($"active", Parent.IsActivePanel(Id))
            .Build();
+        
 
         [Parameter]
-        public Guid TabId { get; set; }
+        public string Id { get; set; }
 
         [CascadingParameter]
-        public EntTab Parent { get; set; }
-
-       
-       
+        public EntTab? Parent { get; set; }
 
         [Parameter]
         public RenderFragment ChildContent { get; set; }
@@ -43,9 +40,9 @@ namespace Enter.UI.Components
             await base.OnInitializedAsync();
             if (Parent != null)
             {
-                if (TabId == Guid.Empty)
+                if (string.IsNullOrWhiteSpace(Id))
                 {
-                    TabId = Guid.NewGuid();
+                    Id = Guid.NewGuid().ToString();
                 }
 
                 await Parent.AddNewTab(this);

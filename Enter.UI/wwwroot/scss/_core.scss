@@ -10,16 +10,20 @@
     } @else {
       $size: "";
     }
-     
+    .#{$cssName}#{$size} {
+      @each $property in $properties {
+        #{$property}: $value !important;
+      }
+    }
 
     [dir="rtl"] .#{$cssName}#{$size} {
       @each $property in $propertiesRtl {
-        #{$property}: $value;
+        #{$property}: $value !important;
       }
     }
     .rtl\:#{$cssName}#{$size} {
       @each $property in $propertiesRtl {
-        #{$property}: $value;
+        #{$property}: $value !important;
       }
     }
   }
@@ -36,19 +40,19 @@
 
           .#{$bp}\:#{$cssName}#{$size} {
             @each $property in $properties {
-              #{$property}: $value;
+              #{$property}: $value !important;
             }
           }
 
           [dir="rtl"] .#{$bp}\:#{$cssName}#{$size} {
             @each $property in $propertiesRtl {
-              #{$property}: $value;
+              #{$property}: $value !important;
             }
           }
 
           .rtl\:#{$bp}\:#{$cssName}#{$size} {
             @each $property in $propertiesRtl {
-              #{$property}: $value;
+              #{$property}: $value !important;
             }
           }
         }

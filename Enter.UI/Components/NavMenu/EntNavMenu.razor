@@ -1,4 +1,5 @@
-﻿@inherits EntBaseComponent
-<div @attributes="UserAttributes" class="@cssClass" style="@Style">
+﻿@namespace Enter.UI.Components
+@inherits Enter.UI.Core.Bases.EntBaseComponent
+<div @attributes="Attributes" class="@RootCss" style="@Style">
     @ChildContent
 </div>

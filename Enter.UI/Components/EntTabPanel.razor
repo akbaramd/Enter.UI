@@ -1,7 +1,7 @@
 ﻿@inherits EntBaseComponent
 @namespace Enter.UI.Components
 
-<div class="@cssClass" style="@Style" @attributes="@UserAttributes">
+<div @attributes="@Attributes" class="@RootCss" style="@Style"  >
 @if (Parent.KeepPanelAlive)
 {
     
@@ -9,7 +9,7 @@
     
 }else
 {
-    @if (Parent.IsActivePanel(TabId))
+    @if (Parent.IsActivePanel(Id))
     {
         @ChildContent
     }

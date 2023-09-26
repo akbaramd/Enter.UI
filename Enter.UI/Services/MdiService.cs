@@ -16,32 +16,47 @@ namespace Enter.UI.Services
         public EntMdiTabItem? ActiveTabPanel { get; set; }
 
 
-
         public event Action<EntMdiTabItem> OnTabAdded;
         public event Action<EntMdiTabItem?> OnTabActivated;
         public event Action OnTabRemoved;
 
-        public void AddNewTab<TComponent>(string title, EntIcon icon, Dictionary<string, object>? parameters = null) where TComponent : ComponentBase
+        public void AddNewTab<TComponent>(string id , string title, EntIcon icon, Dictionary<string, object>? parameters = null)
+            where TComponent : ComponentBase
         {
-            AddNewTab(typeof(TComponent), title, icon, parameters);
+            AddNewTab(id,typeof(TComponent), title, icon, parameters);
         }
 
-        public void AddNewTab(Type type, string title, EntIcon icon, Dictionary<string, object>? parameters = null)
+        public void AddNewTab(string id , Type type, string title, EntIcon icon, Dictionary<string, object>? parameters = null)
         {
-            var item = new EntMdiTabItem() { ComponentType = type, Icon = icon, Title = title, ComponentParameters = parameters, TabId = Guid.NewGuid() };
+
+            if (TabPanels.Any(x=>x.Id == id))
+            {
+                SetActiveTab(id,true);
+                return;
+            }
+            
+            var item = new EntMdiTabItem()
+            {
+                ComponentType = type, 
+                Icon = icon, 
+                Title = title, 
+                ComponentParameters = parameters, 
+                Id = id
+            };
             TabPanels.Add(item);
             OnTabAdded.Invoke(item);
         }
 
-        public void RemoveTab(Guid id)
+        public void RemoveTab(string id)
         {
-            TabPanels.Remove(TabPanels.First(x => x.TabId == id));
+            TabPanels.Remove(TabPanels.First(x => x.Id == id));
             OnTabRemoved.Invoke();
         }
 
-        public void SetActiveTab(Guid? id, bool notify = true)
+        public void SetActiveTab(string id,bool notify = true)
         {
-            ActiveTabPanel = TabPanels.FirstOrDefault(x => x.TabId == id);
+            
+            ActiveTabPanel = TabPanels.FirstOrDefault(x => x.Id == id);
 
             if (notify)
             {
