@@ -14,22 +14,24 @@ namespace Enter.UI.Components
     {
         protected string RootCss => CssClassBuilder
             .AddClass("ent-tab")
-            .AddClass($"ent-tab-horizontal", Direction == EntTabDirection.Horizontal)
-            .AddClass($"ent-tab-vertical", Direction == EntTabDirection.Vertical)
-            .AddClass($"ent-tab-expandable", Expandable)
+            .AddClass("ent-tab-horizontal", Direction == EntTabDirection.Horizontal)
+            .AddClass("ent-tab-vertical", Direction == EntTabDirection.Vertical)
+            .AddClass("ent-tab-expandable", Expandable)
             .Build();
 
-        protected string ItemCss => new CssClassBuilder()
+        protected string ItemCss => CssClassBuilder
+            .Clear()
             .AddClass("ent-tab-item")
-            .AddClass($"ent-tab-item-horizontal", ItemDirection == EntTabItemDirection.Horizontal)
-            .AddClass($"ent-tab-item-vertical", ItemDirection == EntTabItemDirection.Vertical)
+            .AddClass("ent-tab-item-horizontal", ItemDirection == EntTabItemDirection.Horizontal)
+            .AddClass("ent-tab-item-vertical", ItemDirection == EntTabItemDirection.Vertical)
             .AddClass(ItemClass)
             .Build();
 
-        protected string PanelCss => new CssClassBuilder()
+        protected string PanelCss => CssClassBuilder
+            .Clear()
             .AddClass("ent-tab-panel-container")
             .AddClass(PanelClass)
-            .AddClass($"ent-tab-panel-container-collapse", Expandable && ActiveTabId == null)
+            .AddClass($"active", Expandable && ActiveTabId != null)
             .Build();
 
         [Parameter] public RenderFragment ChildContent { get; set; }

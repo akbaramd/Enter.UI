@@ -24,37 +24,55 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 0.5rem;
-      
-      padding: 0.5rem 1rem;
       cursor: pointer;
-
-    
-      &:hover {
-        .ent-tab-btn-close {
+     
+      .ent-tab-content {
+        padding: 0.5rem 1rem;
+        display: flex;
+        gap: 0.5rem;
+        text-wrap: nowrap;
+      }
+      &.active {
+       > .ent-tab-close {
           display: flex;
-          opacity: 1;
+          padding: 0.5rem;
+          width: fit-content;
+          transition: all 0.25s ease-in;
+          border-inline-start: $border;
         }
       }
-      .ent-tab-btn-close {
-        margin-inline-start: 0.5rem;
+      .ent-tab-close {
+        background-color: map-get($colors,"light-sm");
+        border-inline-start: $border;
+        border-color: transparent;
+        overflow: hidden;
+        width: 0;
+        padding: 0.5rem 0rem;
         display: flex;
-        opacity: 0;
         align-items: center;
         justify-content: center;
+        transition: all 0.25s ease-in;
       }
       
       
     }
 
     > .ent-tab-item-vertical {
-      flex-direction: column;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
+     
+      >.ent-tab-content {
+        flex-direction: column;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+      }
+      
+     
     }
 
     > .ent-tab-item-horizontal {
-      flex-direction: row;
+      >.ent-tab-content {
+        flex-direction: row;
+      }
+     
     }
 
   }
@@ -63,10 +81,11 @@
   > .ent-tab-panel-container {
     flex-grow: 1;
     background-color: #f2f2f2;
-
-    &.ent-tab-panel-container-collapse {
-      display: none;
-      border: 0;
+    overflow: hidden;
+    transition: all 0.25s ease-in;
+    
+    &.active {
+      transition: all 0.25s ease-in;
     }
   }
 }

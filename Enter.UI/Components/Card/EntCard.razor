@@ -1,0 +1,40 @@
+﻿@namespace Enter.UI.Components
+@inherits EntBaseComponent
+<div @attributes="@Attributes" class="@RootClass" style="@Style">
+    <div class="ent-card-header">
+        @Header
+    </div>
+    <div class="ent-card-content">
+        @Content
+    </div>
+    <div class="ent-card-footer">
+        @Footer
+    </div>
+</div>
+
+@code {
+
+    private string RootClass => CssClassBuilder
+        .AddClass("ent-card")
+        .Build();
+
+    [Parameter]
+    public RenderFragment? Content { get; set; }
+
+    [Parameter]
+    public RenderFragment? Header { get; set; }
+
+    [Parameter]
+    public RenderFragment? Footer { get; set; }
+
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var attr = Attributes;
+        }
+        base.OnAfterRender(firstRender);
+    }
+
+}

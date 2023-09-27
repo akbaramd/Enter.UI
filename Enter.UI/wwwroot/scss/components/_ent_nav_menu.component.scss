@@ -1,37 +1,98 @@
 .ent-nav-menu {
-    background-color: white;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  border: $border;
+  border-bottom: 0;
+  font-size: map-get($font-sizes, "medium");
+
+  > * {
+    border-bottom: $border;
+  }
+
+  .ent-nav-menu-group {
     display: flex;
     flex-direction: column;
-    border:$border;
-    border-bottom: 0;
-    font-size: map-get($font-sizes, "medium");
-
-    > * {
-        border-bottom: $border;
-    }
+    background-color: white;
 
    
+    > .ent-nav-menu-group-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      background-color: white;
+      cursor: pointer;
 
-    .ent-nav-menu-item {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0.5rem 1rem;
-        background-color: white;
-        cursor: pointer;
-        
-        .ent-nav-menu-item-icon {
-            
-        }
-        
-        .ent-nav-menu-item-content { 
-            flex-grow: 1;
-            margin-inline-start: 1rem;
-        }
+
+      > .ent-nav-menu-group-item-title {
+        flex-grow: 1;
+        margin-inline-start: 1rem;
+      }
+
+      > .ent-nav-menu-group-item-arrow-icon {
+        margin-inline-start: 1rem;
+        transform: rotate(0deg);
+        transition: all 0.25s ease-in;
+      }
+
     }
 
-    .ent-nav-menu-item:hover {
+    &.active {
+     > .ent-nav-menu-group-item {
+       > .ent-nav-menu-group-item-arrow-icon {
+         margin-inline-start: 1rem;
+         transform: rotate(180deg);
+         transition: all 0.25s ease-in;
+       }
+     }
+    }
+    
+    > .ent-nav-menu-group-container {
+      border-top: 0;
+      height: 0;
+      overflow: hidden;
+      transition: all 0.25s ease-in;
+      
+      &.active {
+        border-top: $border;
+        height: 100%;
+        transition: all 0.25s ease-in;
+      }
+      .ent-nav-menu-item {
         background-color: map-get($colors, "light-sm");
+      }
+
+      > * {
+        border-bottom: $border;
+      }
+
+      > *:last-child {
+        border-bottom: 0;
+      }
     }
+  }
+
+  .ent-nav-menu-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: white;
+    cursor: pointer;
+
+    .ent-nav-menu-item-icon {
+
+    }
+
+    .ent-nav-menu-item-content {
+      flex-grow: 1;
+      margin-inline-start: 1rem;
+    }
+  }
+
+  .ent-nav-menu-item:hover {
+    background-color: map-get($colors, "light-sm");
+  }
 
 }

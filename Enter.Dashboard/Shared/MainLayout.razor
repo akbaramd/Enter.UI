@@ -7,13 +7,12 @@
     <EntAppBar Title="پلتفرم مدیریتی پیشرفته">
         <div class="d-flex w-full">
             <div class="flex-grow-1">
-                <EntButton Size="ButtonSize.Small">حساب کاربری</EntButton>
             </div>
-            <div>
+            <div class="d-flex gap-2">
+                <EntButton Icon="fa-light fa-user" Size="ButtonSize.Small">حساب کاربری</EntButton>
                 <EntButton Icon="fa-light fa-user" Size="ButtonSize.Small">حساب کاربری</EntButton>
             </div>
         </div>
-        
     </EntAppBar>
     <div class="border-x h-full d-flex">
         <div>
@@ -25,10 +24,14 @@
                     PanelClass="bg-white"
                     class="border-0">
                 <EntTabPanel Title="صفحه اصلی" Icon="fa-light fa-home" class="w-60">
-                    <EntNavMenu class="border-0">
-                            <EntNavMenuTextItem IconData="fa-light fa-clock" Text="شمارنده"  Click="()=>AddNewTab<Counter>()"/>
-                            <EntNavMenuTextItem IconData="fa-light fa-arrow-down" Text="دریافت اطلاعات"  Click="()=>AddNewTab<FetchData>()"/>
-                            <EntNavMenuTextItem IconData="fa-light fa-note" Text="صفحه فرم"  Click="()=>AddNewTab<FormLayout>()"/>
+                    <EntNavMenu Title="صفحات فرم" class="border-0">
+                        <EntNavMenuGroup Title="تعاریف" Icon="fa-light fa-home">
+                            <EntNavMenuTextItem IconData="fa-light fa-clock" Text="شمارنده" Click="() => AddNewTab<Counter>()"/>
+                            <EntNavMenuTextItem IconData="fa-light fa-arrow-down" Text="دریافت اطلاعات" Click="() => AddNewTab<FetchData>()"/>
+                        </EntNavMenuGroup>
+                        <EntNavMenuGroup Title="صفحات فرم" Icon="fa-light fa-note" IconType="EntIconType.IconTag">
+                            <EntNavMenuTextItem Text="فرم معمولی" Click="() => AddNewTab<FormLayout>()"/>
+                        </EntNavMenuGroup>
                     </EntNavMenu>
                 </EntTabPanel>
                 <EntTabPanel Title="حساب کاربری" Icon="fa-light fa-user" class="w-60">
@@ -51,15 +54,16 @@
     {
         if (typeof(T) == typeof(Counter))
         {
-            MdiService.AddNewTab<Counter>("counter","شمارنده","fa-light fa-clock");
+            MdiService.AddNewTab<Counter>("counter", "شمارنده", "fa-light fa-clock");
         }
         else if (typeof(T) == typeof(FetchData))
         {
-            MdiService.AddNewTab<FetchData>(Guid.NewGuid().ToString() ,"دریافت اطلاعات","fa-light fa-arrow-down");
+            MdiService.AddNewTab<FetchData>(Guid.NewGuid().ToString(), "دریافت اطلاعات", "fa-light fa-arrow-down");
         }
         else if (typeof(T) == typeof(FormLayout))
         {
-            MdiService.AddNewTab<FormLayout>("FormLayout" ,"صفحه فرم","fa-light fa-note");
+            MdiService.AddNewTab<FormLayout>("FormLayout", "فرم معمولی", "fa-light fa-note");
         }
     }
+
 }

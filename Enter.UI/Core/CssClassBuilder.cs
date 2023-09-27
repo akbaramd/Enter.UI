@@ -37,7 +37,12 @@ namespace Enter.UI.Core
             }
             return this;
         }
-
+        
+        public CssClassBuilder Clear()
+        {
+            _cssClasses.Clear();
+            return this;
+        }
 
         public string Build()
         {

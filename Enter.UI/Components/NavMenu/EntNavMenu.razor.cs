@@ -14,7 +14,38 @@ namespace Enter.UI.Components
         protected string RootCss => CssClassBuilder.AddClass("ent-nav-menu")
             .Build();
 
+        private readonly List<EntNavMenuGroup> _groups = new List<EntNavMenuGroup>();
+
         [Parameter]
         public RenderFragment ChildContent { get; set; }
+
+
+        public void AddGroup(EntNavMenuGroup group)
+        {
+            _groups.Add(group);
+        }
+        
+        
+        public void Toggle(string id)
+        {
+            foreach (var group in _groups)
+            {
+                if (group.Id == id)
+                {
+                    group.IsShow = !group.IsShow;
+                }
+                else
+                {
+                    group.IsShow = false;
+                }
+            }
+            StateHasChanged();
+        }
+
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+            _groups.Clear();
+        }
     }
 }
