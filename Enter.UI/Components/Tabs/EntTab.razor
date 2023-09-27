@@ -1,4 +1,5 @@
 ﻿@inherits EntTabBase
+@namespace Enter.UI.Components
 <CascadingValue Value="@this">
     <div @attributes="@Attributes" class="@RootCss" style="@Style">
         @if (TabPanels.Count > 0)
@@ -10,7 +11,7 @@
 
                     <li class="@ItemCss @activeClass" @onclick="()=>ActiveTab(tabPanels.Id)" @key="@tabPanels.Id">
 
-                        <EntIcon Data="@tabPanels.Icon.Data" Type="@tabPanels.Icon.Type" />
+                        <EntIcon Data="@tabPanels.Icon" Type="@tabPanels.IconType" />
 
                         <span>@tabPanels.Title</span>
                         @if (Closeable)

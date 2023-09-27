@@ -14,18 +14,21 @@ $colors: (
   "light-sm": #f8f8f8,
   "light-lg": #eeeeee,
 );
-$font-size : 14px  !default;
 $font-family:  Vazirmatn !default;
 $font-families:  (
         Vazirmatn: $font-family,
       ) !default;
 
 $font-sizes:  (
-        base: $font-size,
-        subtitle: $font-size * 0.9,
-        title: $font-size * 1.25,
-        tiny: $font-size * 0.5,
-        huge: $font-size * 2,
+        title-lg: 1.602rem,
+        title: 1.424rem,
+        title-sm: 1.266rem,
+        medium-lg: 1.125rem,
+        medium: 1rem,
+        medium-sm: 0.889rem,
+        subtitle-lg: 0.79rem,
+        subtitle: 0.702rem,
+        subtitle-sm: 0.624rem,
       ) !default;
 $border-radius: 1rem !default;
 

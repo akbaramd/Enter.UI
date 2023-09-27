@@ -13,7 +13,7 @@ namespace Enter.UI.Core.Bases
         public Dictionary<string, object?> Attributes { get; set; } = new Dictionary<string, object?>();
 
         protected CssClassBuilder CssClassBuilder =>
-            new CssClassBuilder().AddClass(Attributes.TryGetValue("class", out var @class) ? @class.ToString() : "");
+            new CssClassBuilder().AddClass(Attributes.TryGetValue("class", out var @class) ? @class.ToString() : string.Empty);
         public string Id => (Attributes?.ContainsKey("id") == true ? Attributes["id"]?.ToString() ?? $"ent-{Guid.NewGuid()}" : $"ent-{Guid.NewGuid()}");
 
     }

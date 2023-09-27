@@ -20,13 +20,13 @@ namespace Enter.UI.Services
         public event Action<EntMdiTabItem?> OnTabActivated;
         public event Action OnTabRemoved;
 
-        public void AddNewTab<TComponent>(string id , string title, EntIcon icon, Dictionary<string, object>? parameters = null)
+        public void AddNewTab<TComponent>(string id , string title,string icon, EntIconType iconType= EntIconType.IconTag,Dictionary<string, object>? parameters = null)
             where TComponent : ComponentBase
         {
-            AddNewTab(id,typeof(TComponent), title, icon, parameters);
+            AddNewTab(id,typeof(TComponent), title, icon,iconType, parameters);
         }
 
-        public void AddNewTab(string id , Type type, string title, EntIcon icon, Dictionary<string, object>? parameters = null)
+        public void AddNewTab(string id , Type type, string title, string icon, EntIconType iconType= EntIconType.IconTag, Dictionary<string, object>? parameters = null)
         {
 
             if (TabPanels.Any(x=>x.Id == id))

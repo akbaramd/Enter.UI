@@ -19,14 +19,14 @@ namespace Enter.UI.Components
             .AddClass($"ent-tab-expandable", Expandable)
             .Build();
 
-        protected string ItemCss => CssClassBuilder
+        protected string ItemCss => new CssClassBuilder()
             .AddClass("ent-tab-item")
             .AddClass($"ent-tab-item-horizontal", ItemDirection == EntTabItemDirection.Horizontal)
             .AddClass($"ent-tab-item-vertical", ItemDirection == EntTabItemDirection.Vertical)
             .AddClass(ItemClass)
             .Build();
 
-        protected string PanelCss => CssClassBuilder
+        protected string PanelCss => new CssClassBuilder()
             .AddClass("ent-tab-panel-container")
             .AddClass(PanelClass)
             .AddClass($"ent-tab-panel-container-collapse", Expandable && ActiveTabId == null)
@@ -49,7 +49,6 @@ namespace Enter.UI.Components
 
         public void ActiveTab(string? id)
         {
-            Console.WriteLine(id);
             if (id == null)
             {
                 return;
@@ -83,6 +82,13 @@ namespace Enter.UI.Components
             if (panel == null) return;
 
             TabPanels.Remove(panel);
+            
+            // navigate to next tab when active tab remove
+            if (TabPanels.Count >= 1 && ActiveTabId == id)
+            {
+                ActiveTab(TabPanels.First().Id);
+            }
+            
             StateHasChanged();
         }
 
@@ -92,6 +98,7 @@ namespace Enter.UI.Components
             {
                 return false;
             }
+
             return ActiveTabId != null && ActiveTabId.Equals(id);
         }
 

@@ -32,7 +32,9 @@ namespace Enter.UI.Components
         public string Title { get; set; }
 
         [Parameter]
-        public EntIcon Icon { get; set; }
+        public string Icon { get; set; }
+
+        [Parameter] public EntIconType IconType { get; set; } = EntIconType.IconTag;
 
         protected override async Task OnInitializedAsync()
         {

@@ -21,6 +21,10 @@
     <Folder Include="wwwroot\dist\css\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Components\Layout\ProMenuBar.razor" />
+  </ItemGroup>
+
 
 
 </Project>

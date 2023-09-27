@@ -4,7 +4,7 @@
     flex-direction: column;
     border:$border;
     border-bottom: 0;
-    font-size: map-get($font-sizes, "subtitle");
+    font-size: map-get($font-sizes, "medium");
 
     > * {
         border-bottom: $border;
@@ -16,7 +16,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: calc($size / 2) $size;
+        padding: 0.5rem 1rem;
         background-color: white;
         cursor: pointer;
         

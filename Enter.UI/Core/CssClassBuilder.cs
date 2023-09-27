@@ -23,7 +23,7 @@ namespace Enter.UI.Core
         {
             if (condition)
             {
-                _cssClasses.Add(@class);
+                AddClass(@class);
             }
 
             return this;
@@ -31,7 +31,10 @@ namespace Enter.UI.Core
 
         public CssClassBuilder AddClass(string @class)
         {
-            _cssClasses.Add(@class);
+            if (!string.IsNullOrWhiteSpace(@class))
+            {
+                _cssClasses.Add(@class);    
+            }
             return this;
         }
 

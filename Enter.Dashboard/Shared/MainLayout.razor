@@ -1,9 +1,20 @@
 ﻿@using Enter.Dashboard.Pages;
 @using Enter.UI.Models;
 @using Enter.UI.Services.Contracts;
+@using Enter.Dashboard.Components
 @inherits LayoutComponentBase
 <div class="border-y h-full">
-    <EntAppBar Title="پلتفرم مدیریتی پیشرفته" />
+    <EntAppBar Title="پلتفرم مدیریتی پیشرفته">
+        <div class="d-flex w-full">
+            <div class="flex-grow-1">
+                <EntButton Size="ButtonSize.Small">حساب کاربری</EntButton>
+            </div>
+            <div>
+                <EntButton Icon="fa-light fa-user" Size="ButtonSize.Small">حساب کاربری</EntButton>
+            </div>
+        </div>
+        
+    </EntAppBar>
     <div class="border-x h-full d-flex">
         <div>
             <EntTab ItemDirection="EntTabItemDirection.Vertical"
@@ -13,13 +24,14 @@
                     ActiveClass="bg-light-sm"
                     PanelClass="bg-white"
                     class="border-0">
-                <EntTabPanel Title="صفحه اصلی" Icon='EntIcon.Create(EntIconType.IconTag,"fa-light fa-home")' class="w-60">
+                <EntTabPanel Title="صفحه اصلی" Icon="fa-light fa-home" class="w-60">
                     <EntNavMenu class="border-0">
                             <EntNavMenuTextItem IconData="fa-light fa-clock" Text="شمارنده"  Click="()=>AddNewTab<Counter>()"/>
                             <EntNavMenuTextItem IconData="fa-light fa-arrow-down" Text="دریافت اطلاعات"  Click="()=>AddNewTab<FetchData>()"/>
+                            <EntNavMenuTextItem IconData="fa-light fa-note" Text="صفحه فرم"  Click="()=>AddNewTab<FormLayout>()"/>
                     </EntNavMenu>
                 </EntTabPanel>
-                <EntTabPanel Title="حساب کاربری" Icon='EntIcon.Create(EntIconType.IconTag,"fa-light fa-user")' class="w-60">
+                <EntTabPanel Title="حساب کاربری" Icon="fa-light fa-user" class="w-60">
                     <div class="bg-white p-4 m-4 border ">اطلاعات مربوط به حساب کاربری اینجا قرار میگیرد</div>
                 </EntTabPanel>
             </EntTab>
@@ -39,11 +51,15 @@
     {
         if (typeof(T) == typeof(Counter))
         {
-            MdiService.AddNewTab<Counter>("counter","شمارنده", EntIcon.Create(EntIconType.IconTag, "fa-light fa-clock"));
+            MdiService.AddNewTab<Counter>("counter","شمارنده","fa-light fa-clock");
         }
         else if (typeof(T) == typeof(FetchData))
         {
-            MdiService.AddNewTab<FetchData>(Guid.NewGuid().ToString() ,"دریافت اطلاعات", EntIcon.Create(EntIconType.IconTag, "fa-light fa-arrow-down"));
+            MdiService.AddNewTab<FetchData>(Guid.NewGuid().ToString() ,"دریافت اطلاعات","fa-light fa-arrow-down");
+        }
+        else if (typeof(T) == typeof(FormLayout))
+        {
+            MdiService.AddNewTab<FormLayout>("FormLayout" ,"صفحه فرم","fa-light fa-note");
         }
     }
 }

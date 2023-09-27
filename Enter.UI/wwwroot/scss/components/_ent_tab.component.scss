@@ -2,10 +2,12 @@
   display: flex;
   height: 100%;
   border: $border;
-  background-color: #fff;
+  background-color: white;
+
   > .ent-tab-item-container-message {
     display: flex;
     align-items: center;
+
     > * {
       padding: 0;
       margin: 0;
@@ -22,37 +24,46 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: calc($size / 2);
-      font-size: map-get($font-sizes, "subtitle");
-      padding: calc($size / 2) $size;
+      gap: 0.5rem;
+      
+      padding: 0.5rem 1rem;
       cursor: pointer;
-      i {
-        font-size: map-get($font-sizes, "subtitle");
+
+    
+      &:hover {
+        .ent-tab-btn-close {
+          display: flex;
+          opacity: 1;
+        }
       }
-
-
       .ent-tab-btn-close {
-        margin-inline-start: calc($size / 2) ;
+        margin-inline-start: 0.5rem;
+        display: flex;
+        opacity: 0;
+        align-items: center;
+        justify-content: center;
       }
+      
+      
     }
 
     > .ent-tab-item-vertical {
       flex-direction: column;
-      padding-top: $size;
-      padding-bottom: $size;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
     }
-  
+
     > .ent-tab-item-horizontal {
       flex-direction: row;
     }
 
   }
 
-  
 
   > .ent-tab-panel-container {
     flex-grow: 1;
-  background-color: #f2f2f2;
+    background-color: #f2f2f2;
+
     &.ent-tab-panel-container-collapse {
       display: none;
       border: 0;
@@ -62,9 +73,10 @@
 
 .ent-tab-horizontal {
   flex-direction: row;
+
   > .ent-tab-item-container {
     flex-direction: column;
-    
+
 
     > * {
       border-bottom: $border;
@@ -72,14 +84,14 @@
   }
 
   > .ent-tab-item-container-message {
-   
-    font-size: map-get($font-sizes, "subtitle");
-    padding: $size calc($size / 2);
+    padding: 1rem 0.5rem;
     writing-mode: sideways-rl;
+
     > * {
       transform: rotate(90deg);
     }
   }
+
   > .ent-tab-panel-container {
     border-inline-start: $border;
   }
@@ -87,7 +99,6 @@
 
 .ent-tab-vertical {
   flex-direction: column;
-
 
 
   > .ent-tab-item-container {
@@ -101,15 +112,15 @@
 
   > .ent-tab-item-container-message {
     border-bottom: $border;
-    font-size: map-get($font-sizes, "subtitle");
 
-    padding: calc($size / 2) $size;
+    padding: 0.5rem 1rem;
   }
 }
 
 .ent-tab-panel {
   display: none;
 }
+
 .ent-tab-panel.active {
   display: block;
 }

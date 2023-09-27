@@ -16,12 +16,7 @@ namespace Enter.UI.Components
         public EntIcon()
         {
         }
-
-        public EntIcon(EntIconType type, string data)
-        {
-            Data = data;
-            Type = type;
-        }
+        
 
         [Required] [Parameter] public string Data { get; set; }
 
@@ -33,11 +28,7 @@ namespace Enter.UI.Components
             .AddClass($"ent-icon-image-tag", Type == EntIconType.ImageTag)
             .AddClass($"ent-icon-svg-content", Type == EntIconType.SvgContent)
             .Build();
-
-        public static EntIcon Create(EntIconType type, string data)
-        {
-            return new EntIcon(type, data);
-        }
+        
     }
 
 
