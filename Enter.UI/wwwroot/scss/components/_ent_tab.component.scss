@@ -1,0 +1,145 @@
+﻿.ent-tab {
+  display: flex;
+  height: 100%;
+  border: $border;
+  background-color: white;
+
+  > .ent-tab-item-container-message {
+    display: flex;
+    align-items: center;
+
+    > * {
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  > .ent-tab-item-container {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+
+    > .ent-tab-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+     
+      .ent-tab-content {
+        padding: 0.5rem 1rem;
+        display: flex;
+        gap: 0.5rem;
+        text-wrap: nowrap;
+      }
+      &.active {
+       > .ent-tab-close {
+          display: flex;
+          padding: 0.5rem;
+          width: fit-content;
+          transition: all 0.25s ease-in;
+          border-inline-start: $border;
+        }
+      }
+      .ent-tab-close {
+        background-color: map-get($colors,"light-sm");
+        border-inline-start: $border;
+        border-color: transparent;
+        overflow: hidden;
+        width: 0;
+        padding: 0.5rem 0rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.25s ease-in;
+      }
+      
+      
+    }
+
+    > .ent-tab-item-vertical {
+     
+      >.ent-tab-content {
+        flex-direction: column;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+      }
+      
+     
+    }
+
+    > .ent-tab-item-horizontal {
+      >.ent-tab-content {
+        flex-direction: row;
+      }
+     
+    }
+
+  }
+
+
+  > .ent-tab-panel-container {
+    flex-grow: 1;
+    background-color: #f2f2f2;
+    overflow: hidden;
+    transition: all 0.25s ease-in;
+    
+    &.active {
+      transition: all 0.25s ease-in;
+    }
+  }
+}
+
+.ent-tab-horizontal {
+  flex-direction: row;
+
+  > .ent-tab-item-container {
+    flex-direction: column;
+
+
+    > * {
+      border-bottom: $border;
+    }
+  }
+
+  > .ent-tab-item-container-message {
+    padding: 1rem 0.5rem;
+    writing-mode: sideways-rl;
+
+    > * {
+      transform: rotate(90deg);
+    }
+  }
+
+  > .ent-tab-panel-container {
+    border-inline-start: $border;
+  }
+}
+
+.ent-tab-vertical {
+  flex-direction: column;
+
+
+  > .ent-tab-item-container {
+    flex-direction: row;
+    border-bottom: $border;
+
+    > * {
+      border-inline-end: $border;
+    }
+  }
+
+  > .ent-tab-item-container-message {
+    border-bottom: $border;
+
+    padding: 0.5rem 1rem;
+  }
+}
+
+.ent-tab-panel {
+  display: none;
+}
+
+.ent-tab-panel.active {
+  display: block;
+}

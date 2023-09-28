@@ -1,0 +1,37 @@
+﻿<EntCard class="m-4">
+    <Header>صفحه فرم</Header>
+    <Content>
+        <EditForm class="ent-edit-form" Model="Input" OnSubmit="() => { }">
+            <div class="row">
+                <div class="tablet:col-1/3 mb-4">
+                    <label class="d-block fs-medium-sm mb-2">نام</label>
+                    <InputText class="ent-input" @bind-Value="Input.FirstName"/>
+                </div>
+                <div class="tablet:col-1/3 mb-4">
+                    <label class="d-block fs-medium-sm mb-2">نام خانوادگی</label>
+                    <InputText class="ent-input" @bind-Value="Input.LastName"/>
+                </div>
+                <div class="tablet:col-1/3 mb-4">
+                    <label class="d-block fs-medium-sm mb-2">سن</label>
+                    <InputNumber class="ent-input" @bind-Value="Input.Age"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="tablet:col-1/3">
+                    <EntButton type="submit">ارسال</EntButton>
+                </div>
+            </div>
+        </EditForm>
+    </Content>
+</EntCard>
+@code {
+
+    public class InputModel
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int Age { get; set; }
+    }
+
+    public InputModel Input { get; set; } = new InputModel();
+}

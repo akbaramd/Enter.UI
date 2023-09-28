@@ -1,0 +1,56 @@
+﻿@namespace Enter.UI.Components
+
+<div class="ent-modal-provider ">
+    @foreach (var item in @_modalService.Items)
+    {
+        <CascadingValue Value="item" IsFixed="true">
+    <div class="ent-modal-container">
+        <div class="ent-modal">
+            <div class="ent-modal-header">
+                <b class="title">@item.Title</b>
+                <EntIcon class="icon" Click="()=>OnCloseClick(item.Key)" Type="EntIconType.IconTag" Data="fa-light fa-close"/>
+            </div>
+            <div class="ent-modal-content">
+                <DynamicComponent Type="@item.Type" Parameters="@item.Parameters"/>
+            </div>
+        </div>
+    </div>
+    </CascadingValue>
+    }
+</div>
+
+@code {
+
+    [Inject]
+    private IModalService ModalService { get; set; }
+
+    private ModalService _modalService { get; set; }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        _modalService = (ModalService)ModalService ?? throw new InvalidOperationException("AddEnterUI is not added to your program.cs");
+
+        await base.OnInitializedAsync();
+
+        _modalService.OnModalShowed += ModalServiceOnOnModalShowed;
+        _modalService.OnModalClosed += ModalServiceOnOnModalClosed;;
+    }
+
+    private void ModalServiceOnOnModalClosed(string obj)
+    {
+        StateHasChanged();
+    }
+
+    private void ModalServiceOnOnModalShowed(string obj)
+    {
+        StateHasChanged();
+    }
+    
+    
+    private async Task OnCloseClick(string id)
+    {
+        await _modalService.CloseAsync(id);
+    }
+
+}

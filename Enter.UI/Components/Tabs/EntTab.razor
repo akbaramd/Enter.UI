@@ -1,0 +1,38 @@
+﻿@inherits EntTabBase
+@namespace Enter.UI.Components
+<CascadingValue Value="@this">
+    <div @attributes="@Attributes" class="@RootCss" style="@Style">
+        @if (TabPanels.Count > 0)
+        {
+            <ul class="ent-tab-item-container">
+                @foreach (var tabPanels in TabPanels)
+                {
+                    var activeClass = (IsActivePanel(tabPanels.Id) ? "active " + ActiveClass : "");
+
+                    <li class="@ItemCss @activeClass" @onclick="() => ActiveTab(tabPanels.Id)" @key="@tabPanels.Id">
+                        <div class="ent-tab-content">
+                            <EntIcon Data="@tabPanels.Icon" Type="@tabPanels.IconType"/>
+                            <span>@tabPanels.Title</span>
+                        </div>
+                        @if (Closeable)
+                        {
+                            <div @onclick="() => OnTabClose(tabPanels.Id)" class="ent-tab-close">
+                                <EntIcon Data="fa-light fa-close" Type="EntIconType.IconTag"/>
+                            </div>
+                        }
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <div class="ent-tab-item-container-message">
+                <p>پنجره ای برای نمایش باز نشده است</p>
+            </div>
+        }
+
+        <div class="@PanelCss">
+            @ChildContent
+        </div>
+    </div>
+</CascadingValue>

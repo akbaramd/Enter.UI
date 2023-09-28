@@ -1,0 +1,102 @@
+@import "_normalize.scss";
+@import "_variables.scss";
+@import "_core.scss";
+@import "_mixins.scss";
+
+html,
+body {
+  color: map-get($map: $colors, $key: mute);
+  background-color: #f2f2f2;
+}
+
+* {
+  box-sizing: border-box !important;
+}
+
+[dir="rtl"] body {
+  direction: rtl;
+}
+
+
+p {
+  margin-bottom: map-get($font-sizes, "medium");
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 3rem 0 1.38rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: map-get($font-sizes, "title-lg");
+}
+
+h2 {
+  font-size: map-get($font-sizes, "title");
+}
+
+h3 {
+  font-size: map-get($font-sizes, "title-sm");
+}
+
+h4 {
+  font-size: map-get($font-sizes, "medium-lg");
+}
+
+h5 {
+  font-size: map-get($font-sizes, "medium")
+}
+
+h6 
+{
+  font-size: map-get($font-sizes, "medium-sm")
+}
+
+small, .text_small {
+  font-size: map-get($font-sizes, "subtitle")
+}
+
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+
+.divider-x > * {
+  border-inline-end: $border-width $border-style $border-color;
+}
+
+.divider-x > *:last-child {
+  border-inline-end: 0;
+}
+
+.divider-y > * {
+  border-bottom: $border-width $border-style $border-color;
+}
+
+.divider-y > *:last-child {
+  border-bottom: 0;
+}
+
+.border-x > * {
+  border-inline-end: $border-width $border-style $border-color;
+}
+
+.border-y > * {
+  border-bottom: $border-width $border-style $border-color;
+}
+
+
+.ent-input {
+
+    width: 100%;
+    background-color: #f8f8f8;
+    border: $border;
+    padding: 0.35rem 1rem;  
+
+}
+
+@import "components/components";

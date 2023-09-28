@@ -1,0 +1,23 @@
+﻿@inherits EntBaseComponent
+@namespace Enter.UI.Components
+
+<div @attributes="@Attributes" class="@RootCss" style="@Style"  >
+@if (Parent.KeepPanelAlive)
+{
+    
+        @ChildContent
+    
+}else
+{
+    @if (Parent.IsActivePanel(Id))
+    {
+        @ChildContent
+    }
+}
+</div>
+
+
+
+
+
+

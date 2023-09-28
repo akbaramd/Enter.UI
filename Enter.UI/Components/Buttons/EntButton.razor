@@ -1,0 +1,42 @@
+﻿@namespace Enter.UI.Components
+@inherits EntBaseComponent
+<button @attributes="@Attributes" class="@RootClass" style="@Style" @onclick="@Click">
+    @if (Icon != null)
+    {
+        <EntIcon Data="@Icon" Type="@IconType"/>
+    }
+    @ChildContent
+</button>
+
+@code {
+
+    private string RootClass => CssClassBuilder
+        .AddClass("btn")
+        .AddClass("btn-lg",Size==ButtonSize.Large)
+        .AddClass("btn-sm",Size==ButtonSize.Small)
+        .Build();
+    
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public ButtonSize Size { get; set; } = ButtonSize.Default;
+    
+    [Parameter]
+    public EntIconType IconType { get; set; } = EntIconType.IconTag;
+    
+    [Parameter]
+    public string? Icon { get; set; }
+
+    [Parameter]
+    public EventCallback Click { get; set; }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var attr = Attributes;
+        }
+        base.OnAfterRender(firstRender);
+    }
+}
