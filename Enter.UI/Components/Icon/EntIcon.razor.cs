@@ -19,6 +19,9 @@ namespace Enter.UI.Components
         
 
         [Required] [Parameter] public string Data { get; set; }
+        
+        [Parameter]
+        public EventCallback Click { get; set; }
 
         [Parameter] public EntIconType Type { get; set; } = EntIconType.IconTag;
 

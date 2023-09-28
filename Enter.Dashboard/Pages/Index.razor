@@ -15,8 +15,8 @@
     [Inject]
     public IModalService ModalService { get; set; }
 
-    public void OpenModal()
+    public async  Task OpenModal()
     {
-        ModalService.ShowAsync<Counter>("sada");
+        var result = await ModalService.ShowAsync<Counter>("sada");
     }
 }

@@ -114631,26 +114631,49 @@ small, .text_small {
   border-top: 1px solid #dddddd;
 }
 
-.ent-modal-provider {
-  position: relative;
-}
-.ent-modal-provider .ent-modal {
-  position: absolute;
-  left: auto;
-  right: auto;
-  bottom: auto;
-  top: auto;
+.ent-modal-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+  background-color: rgba(51, 51, 51, 0.2);
+}
+.ent-modal-container .ent-modal {
   width: 400px;
   background-color: white;
+}
+.ent-modal-container .ent-modal .ent-modal-header {
+  padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 1.125rem;
+  border-bottom: 1px solid #dddddd;
+}
+.ent-modal-container .ent-modal .ent-modal-header .title {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+.ent-modal-container .ent-modal .ent-modal-header .icon {
+  cursor: pointer;
+  font-size: 1.424rem;
+}
+.ent-modal-container .ent-modal .ent-modal-content {
+  padding: 1rem;
 }
 
 .ent-nav-menu {

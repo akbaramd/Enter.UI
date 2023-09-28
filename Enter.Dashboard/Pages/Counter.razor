@@ -12,10 +12,16 @@
 
 
 @code {
+    [CascadingParameter]
+    public EntModalInstance? ModalItem { get; set; }
+    
     private int currentCount = 0;
 
-    private void IncrementCount()
+    private async  Task IncrementCount()
     {
         currentCount++;
+
+        if (currentCount == 3 && ModalItem != null)
+           await ModalItem.CloseAsync();
     }
 }
