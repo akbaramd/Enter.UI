@@ -1,0 +1,44 @@
+﻿@namespace Enter.UI.Components
+@{
+    var style = _modalService.Items.Any() ? "" : "d-none";
+}
+<div class="ent-modal-provider @style">
+    @foreach (var item in @_modalService.Items)
+    {
+       
+             <div class="ent-modal">
+                        <div class="ent-modal-header">
+                            @item.Title
+                        </div>
+                        <div class="ent-modal-content">
+                            <DynamicComponent Type="@item.Type" Parameters="@item.Parameters" />
+                        </div>
+                    </div>
+       
+    }
+</div>
+
+@code {
+
+    [Inject]
+    private IModalService ModalService { get; set; }
+    private ModalService _modalService { get; set; }
+    
+    
+    
+    protected override async Task OnInitializedAsync()
+    {
+        _modalService = (ModalService) ModalService ?? throw new InvalidOperationException("AddEnterUI is not added to your program.cs");
+
+        await base.OnInitializedAsync();
+        
+        _modalService.OnModalShowed += ModalServiceOnOnModalShowed;
+
+    }
+
+    private void ModalServiceOnOnModalShowed(string obj)
+    {
+        StateHasChanged();
+    }
+
+}

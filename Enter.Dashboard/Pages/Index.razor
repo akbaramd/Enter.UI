@@ -1,6 +1,8 @@
 ﻿@page "/"
 @using Enter.UI.Services.Contracts;
+@using Enter.UI.Components
 <PageTitle>Index</PageTitle>
+<EntButton type="button" Click="@OpenModal">sss</EntButton>
 <EntMdiTab ItemDirection="EntTabItemDirection.Horizontal"
            KeepPanelAlive="true"
            ActiveClass="bg-light"
@@ -9,3 +11,12 @@
    
 </EntMdiTab>
 
+@code {
+    [Inject]
+    public IModalService ModalService { get; set; }
+
+    public void OpenModal()
+    {
+        ModalService.ShowAsync<Counter>("sada");
+    }
+}

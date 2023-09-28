@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Enter.UI.Components;
 
 namespace Enter.UI
 {
@@ -14,6 +15,7 @@ namespace Enter.UI
         public static void AddEnterUI(this IServiceCollection services)
         {
             services.AddSingleton<IMdiService, MdiService>();
+            services.AddSingleton<IModalService, ModalService>();
         }
     }
 }

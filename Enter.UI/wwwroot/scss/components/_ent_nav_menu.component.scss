@@ -23,7 +23,7 @@
       padding: 0.5rem 1rem;
       background-color: white;
       cursor: pointer;
-
+      
 
       > .ent-nav-menu-group-item-title {
         flex-grow: 1;
@@ -49,15 +49,14 @@
     }
     
     > .ent-nav-menu-group-container {
-      border-top: 0;
       height: 0;
       overflow: hidden;
-      transition: all 0.25s ease-in;
+  
       
       &.active {
-        border-top: $border;
+       
         height: 100%;
-        transition: all 0.25s ease-in;
+        
       }
       .ent-nav-menu-item {
         background-color: map-get($colors, "light-sm");
@@ -82,7 +81,7 @@
     cursor: pointer;
 
     .ent-nav-menu-item-icon {
-
+      
     }
 
     .ent-nav-menu-item-content {
