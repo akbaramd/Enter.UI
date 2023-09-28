@@ -8,7 +8,7 @@ public class EntModalInstance
     public Dictionary<string,object>? Parameters { get; set; }
     internal Func<string, Task> OnClose { get; set; }
     
-    internal TaskCompletionSource<dynamic?>? DialogResultTCS;
+    internal TaskCompletionSource<dynamic?>? DialogResultTCS; 
 
     public Task CloseAsync()
     {
