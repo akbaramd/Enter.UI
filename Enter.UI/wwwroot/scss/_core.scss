@@ -12,20 +12,20 @@
     }
     .#{$cssName}#{$size} {
       @each $property in $properties {
-        #{$property}: $value !important;
+        #{$property}: $value;
       }
     }
 
-    [dir="rtl"] .#{$cssName}#{$size} {
-      @each $property in $propertiesRtl {
-        #{$property}: $value !important;
-      }
-    }
-    .rtl\:#{$cssName}#{$size} {
-      @each $property in $propertiesRtl {
-        #{$property}: $value !important;
-      }
-    }
+    //[dir="rtl"] .#{$cssName}#{$size} {
+    //  @each $property in $propertiesRtl {
+    //    #{$property}: $value;
+    //  }
+    //}
+    //.rtl\:#{$cssName}#{$size} {
+    //  @each $property in $propertiesRtl {
+    //    #{$property}: $value;
+    //  }
+    //}
   }
 
   @if map-get($config, breakpoint) {
@@ -40,21 +40,21 @@
 
           .#{$bp}\:#{$cssName}#{$size} {
             @each $property in $properties {
-              #{$property}: $value !important;
+              #{$property}: $value;
             }
           }
 
-          [dir="rtl"] .#{$bp}\:#{$cssName}#{$size} {
-            @each $property in $propertiesRtl {
-              #{$property}: $value !important;
-            }
-          }
-
-          .rtl\:#{$bp}\:#{$cssName}#{$size} {
-            @each $property in $propertiesRtl {
-              #{$property}: $value !important;
-            }
-          }
+          //[dir="rtl"] .#{$bp}\:#{$cssName}#{$size} {
+          //  @each $property in $propertiesRtl {
+          //    #{$property}: $value;
+          //  }
+          //}
+          //
+          //.rtl\:#{$bp}\:#{$cssName}#{$size} {
+          //  @each $property in $propertiesRtl {
+          //    #{$property}: $value;
+          //  }
+          //}
         }
       }
     }

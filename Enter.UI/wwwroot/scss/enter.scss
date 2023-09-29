@@ -1,7 +1,8 @@
 @import "_normalize.scss";
 @import "_variables.scss";
-@import "_core.scss";
 @import "_mixins.scss";
+@import "components/components";
+@import "_core.scss";
 
 html,
 body {
@@ -10,7 +11,7 @@ body {
 }
 
 * {
-  box-sizing: border-box !important;
+  box-sizing: border-box ;
 }
 
 [dir="rtl"] body {
@@ -89,6 +90,21 @@ small, .text_small {
   border-bottom: $border-width $border-style $border-color;
 }
 
+.space-x > * {
+  margin-inline-end: 1rem;
+}
+
+.space-x > *:last-child {
+  margin-inline-end: 0;
+}
+
+.space-y > * {
+  margin-bottom: 1rem;
+}
+
+.space-y > *:last-child {
+  margin-bottom: 0;
+}
 
 .ent-input {
 
@@ -99,4 +115,3 @@ small, .text_small {
 
 }
 
-@import "components/components";

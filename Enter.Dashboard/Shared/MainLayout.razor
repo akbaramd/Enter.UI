@@ -3,7 +3,7 @@
 @using Enter.UI.Services.Contracts;
 @using Enter.Dashboard.Components
 @inherits LayoutComponentBase
-<div class="border-y h-full">
+<div class="border-y d-flex flex-column h-full">
     <EntAppBar Title="پلتفرم مدیریتی پیشرفته">
         <div class="d-flex w-full">
             <div class="flex-grow-1">
@@ -14,8 +14,7 @@
             </div>
         </div>
     </EntAppBar>
-    <div class="border-x h-full d-flex">
-        <div>
+    <div class="border-x flex-grow-1 d-flex">
             <EntTab ItemDirection="EntTabItemDirection.Vertical"
                     Direction="EntTabDirection.Horizontal"
                     Expandable="true"
@@ -38,7 +37,6 @@
                     <div class="bg-white p-4 m-4 border ">اطلاعات مربوط به حساب کاربری اینجا قرار میگیرد</div>
                 </EntTabPanel>
             </EntTab>
-        </div>
         <div class="flex-grow-1">
             @Body
         </div>

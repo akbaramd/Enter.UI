@@ -18,6 +18,9 @@ namespace Enter.UI.Components
             .AddClass("ent-mdi-tab")
             .Build();
 
+        [Parameter]
+        public RenderFragment? ChildContent { get; set; }
+        
         private MdiService _mdiService = default!;
         public List<EntMdiTabItem> Items { get; set; } = new List<EntMdiTabItem>();
         [Inject] public IMdiService MdiService { get; set; } = default!;

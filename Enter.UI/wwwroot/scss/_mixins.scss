@@ -5,7 +5,11 @@
   align-items: $align;
 }
 
-
+@mixin media($breakpoint) {
+  @media (min-width: map-get($breakpoints,$breakpoint)) {
+    @content
+  }
+}
 @function normalizeString($string, $delimiter) {
   $list: ();
   $word: '';

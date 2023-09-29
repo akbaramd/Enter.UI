@@ -2,21 +2,58 @@
 @using Enter.UI.Services.Contracts;
 @using Enter.UI.Components
 <PageTitle>Index</PageTitle>
-<EntButton type="button" Click="@OpenModal">sss</EntButton>
-<EntMdiTab ItemDirection="EntTabItemDirection.Horizontal"
-           KeepPanelAlive="true"
-           ActiveClass="bg-light"
-           Closeable
-           Direction="EntTabDirection.Vertical" class="border-0">
-   
-</EntMdiTab>
+<div class="d-flex flex-column">
+    <EntMdiTab ItemDirection="EntTabItemDirection.Horizontal"
+               KeepPanelAlive="true"
+               ActiveClass="bg-light"
+               Closeable="true"
+               Direction="EntTabDirection.Vertical" class="border-0 flex-grow-1">
+        <div class="p-4">
+            <EntCard class="mb-4">
+                <Content>
+                    <div class="d-flex flex-column">
+                        <b>این صفحه پیشفرض EntMdiTab میباشد</b>
+                    </div>
+                </Content>
+            </EntCard>
+            <EntCard class="mt-4">
+                <Header>کامپوننت - دکمه</Header>
+                <Content>
+                    <div class="d-flex space-x items-center">
+                        <EntButton type="button" Size="ButtonSize.Large">دکمه بزرگ</EntButton>
+                        <EntButton type="button" Size="ButtonSize.Default">دکمه معمولی</EntButton>
+                        <EntButton type="button" Size="ButtonSize.Small">دکمه کوچک</EntButton>
+                    </div>
+                </Content>
+            </EntCard>
+            <EntCard class="mt-4">
+                <Header>کامپوننت - مدال</Header>
+                <Content>
+                    <div class="d-flex space-x">
+                        <EntButton type="button" Click="() => OpenModal(EntModalSize.ExtraLarge)">باز کردن مدال ExtraLarge</EntButton>
+                        <EntButton type="button" Click="() => OpenModal(EntModalSize.Large)">باز کردن مدال Large</EntButton>
+                        <EntButton type="button" Click="() => OpenModal(EntModalSize.Medium)">باز کردن مدال Medium</EntButton>
+                        <EntButton type="button" Click="() => OpenModal(EntModalSize.Small)">باز کردن مدال Small</EntButton>
+                        <EntButton type="button" Click="() => OpenModal(EntModalSize.Fullscreen)">باز کردن مدال FullScreen</EntButton>
+                    </div>
+                </Content>
+            </EntCard>
+        </div>
+    </EntMdiTab>
+</div>
+
 
 @code {
+
     [Inject]
     public IModalService ModalService { get; set; }
 
-    public async  Task OpenModal()
+    public async Task OpenModal(EntModalSize size)
     {
-        var result = await ModalService.ShowAsync<Counter>("sada"); 
+        var result = await ModalService.ShowAsync<Counter>("sada", new EntModalOptions()
+        {
+            Size = size
+        });
     }
+
 }

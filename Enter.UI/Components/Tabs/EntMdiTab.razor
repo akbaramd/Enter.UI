@@ -13,10 +13,15 @@
         OnTabActived="OnTabActivatedCallback"
         OnTabClosed="OnTabClosedCallback"
         OnTabAdded="OnTabAddedCallback">
-    @foreach (var item in Items)
-    {
-        <EntTabPanel  Icon="@item.Icon" Title="@item.Title" Id="@item.Id" @key="item.Key">
-            <DynamicComponent Type="@item.ComponentType" Parameters="@item.ComponentParameters" />
-        </EntTabPanel>
-    }
+    <ChildContent>
+        @foreach (var item in Items)
+        {
+            <EntTabPanel Icon="@item.Icon" Title="@item.Title" Id="@item.Id" @key="item.Key">
+                <DynamicComponent Type="@item.ComponentType" Parameters="@item.ComponentParameters"/>
+            </EntTabPanel>
+        }
+    </ChildContent>
+    <DefaultPanel>
+        @ChildContent
+    </DefaultPanel>
 </EntTab>

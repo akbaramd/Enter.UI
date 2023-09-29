@@ -4,18 +4,10 @@
     @foreach (var item in @_modalService.Items)
     {
         <CascadingValue Value="item" IsFixed="true">
-    <div class="ent-modal-container">
-        <div class="ent-modal">
-            <div class="ent-modal-header">
-                <b class="title">@item.Title</b>
-                <EntIcon class="icon" Click="()=>OnCloseClick(item.Key)" Type="EntIconType.IconTag" Data="fa-light fa-close"/>
-            </div>
-            <div class="ent-modal-content">
+            <EntModal Title="@item.Title" OnCancelClick="() => OnCancelClick(item.Key)" Options="item.Options">
                 <DynamicComponent Type="@item.Type" Parameters="@item.Parameters"/>
-            </div>
-        </div>
-    </div>
-    </CascadingValue>
+            </EntModal>
+        </CascadingValue>
     }
 </div>
 
@@ -34,8 +26,16 @@
         await base.OnInitializedAsync();
 
         _modalService.OnModalShowed += ModalServiceOnOnModalShowed;
-        _modalService.OnModalClosed += ModalServiceOnOnModalClosed;;
+        _modalService.OnModalClosed += ModalServiceOnOnModalClosed;
+        _modalService.OnModalCanceled += ModalServiceOnOnModalCanceled;
+        ;
     }
+
+    private void ModalServiceOnOnModalCanceled(string obj)
+    {
+        StateHasChanged();
+    }
+
 
     private void ModalServiceOnOnModalClosed(string obj)
     {
@@ -46,11 +46,16 @@
     {
         StateHasChanged();
     }
-    
-    
+
+
     private async Task OnCloseClick(string id)
     {
         await _modalService.CloseAsync(id);
+    }
+
+    private async Task OnCancelClick(string id)
+    {
+        await _modalService.CancelAsync(id);
     }
 
 }

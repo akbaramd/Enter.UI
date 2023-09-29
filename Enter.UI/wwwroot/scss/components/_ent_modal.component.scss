@@ -11,11 +11,11 @@
   top: 0;
   align-items: center;
   justify-content: center;
-  background-color: #3333;
+  background-color: #33333366;
   
   .ent-modal {
 
-    width: 400px;
+    
     background-color: white;
 
     .ent-modal-header {
@@ -33,12 +33,81 @@
       .icon {
         cursor: pointer;
         font-size: map-get($font-sizes,"title");
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       
     }
-
+    
     .ent-modal-content {
       padding: 1rem;
+    }
+    
+    $modal-space : 32px;
+    &.ent-modal-sm {
+      width: 98%;
+      
+      @include media("mobile"){
+        width: map-get($breakpoints,"mobile");
+      }
+      @include media("tablet"){
+        width: map-get($breakpoints,"tablet")- $modal-space;
+      }
+    }
+
+    &.ent-modal-md {
+      width: 98%;
+
+      @include media("mobile"){
+        width: map-get($breakpoints,"mobile")
+      }
+      @include media("tablet"){
+        width: map-get($breakpoints,"tablet")
+      }
+      @include media("laptop"){
+        width: map-get($breakpoints,"laptop") 
+      }
+    }
+
+    &.ent-modal-lg {
+      width: 98%;
+
+      @include media("mobile"){
+        width: map-get($breakpoints,"mobile")
+      }
+      @include media("tablet"){
+        width: map-get($breakpoints,"tablet")
+      }
+      @include media("laptop"){
+        width: map-get($breakpoints,"laptop") 
+      }
+      @include media("desktop"){
+        width: map-get($breakpoints,"desktop")
+      }
+    }
+    &.ent-modal-xl {
+      width: 98%;
+
+      @include media("mobile"){
+        width: map-get($breakpoints,"mobile") 
+      }
+      @include media("tablet"){
+        width: map-get($breakpoints,"tablet") 
+      }
+      @include media("laptop"){
+        width: map-get($breakpoints,"laptop")
+      }
+      @include media("desktop"){
+        width: map-get($breakpoints,"desktop")
+      }
+      @include media("screen"){
+        width: map-get($breakpoints,"screen")
+      }
+    }
+    &.ent-modal-fs {
+      width: 98%;
+      height: 98%;
     }
   }
 }

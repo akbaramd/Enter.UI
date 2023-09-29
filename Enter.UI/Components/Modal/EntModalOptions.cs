@@ -2,5 +2,9 @@
 
 public class EntModalOptions
 {
-    public Dictionary<string,object>? Parameters { get; set; }
+    
+
+    public bool CloseOnEscapeKey { get; set; } = true;
+
+    public EntModalSize Size { get; set; }
 }

@@ -33,6 +33,10 @@
 
         <div class="@PanelCss">
             @ChildContent
+            @if (!TabPanels.Any())
+            {
+                @DefaultPanel
+            }
         </div>
     </div>
 </CascadingValue>

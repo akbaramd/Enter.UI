@@ -1,15 +1,22 @@
 ﻿@namespace Enter.UI.Components
 @inherits EntBaseComponent
 <div @attributes="@Attributes" class="@RootClass" style="@Style">
-    <div class="ent-card-header">
-        @Header
-    </div>
+    @if (Header != null)
+    {
+        <div class="ent-card-header">
+            @Header
+        </div>
+    }
     <div class="ent-card-content">
         @Content
     </div>
-    <div class="ent-card-footer">
-        @Footer
-    </div>
+    @if (Footer != null)
+    {
+        <div class="ent-card-footer">
+            @Footer
+        </div>
+    }
+
 </div>
 
 @code {

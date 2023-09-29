@@ -35,6 +35,8 @@ namespace Enter.UI.Components
             .Build();
 
         [Parameter] public RenderFragment ChildContent { get; set; }
+        
+        [Parameter] public RenderFragment? DefaultPanel { get; set; }
         private List<EntTabPanel> TabPanels = new List<EntTabPanel>();
         private string? ActiveTabId = null;
 

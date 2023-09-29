@@ -1,0 +1,65 @@
+﻿@namespace Enter.UI.Components
+@inherits EntBaseComponent
+<div class="ent-modal-container" @onclick="OnContainerClick">
+                <div class="@RootCss" @onclick:stopPropagation="true" @onclick="OnModalClick">
+                    <div class="ent-modal-header">
+                        <b class="title">@Title</b>
+                        <EntIcon class="icon" Click="OnCancelClick" Type="EntIconType.IconTag" Data="fa-light fa-close"/>
+                    </div>
+                    <div class="ent-modal-content">
+                        @ChildContent
+                    </div>
+                </div>
+            </div>
+
+@code {
+
+    private string RootCss => CssClassBuilder
+        .AddClass("ent-modal")
+        .AddClass("ent-modal-sm", Options?.Size == EntModalSize.Small)
+        .AddClass("ent-modal-md", Options?.Size == EntModalSize.Medium)
+        .AddClass("ent-modal-lg", Options?.Size == EntModalSize.Large)
+        .AddClass("ent-modal-xl", Options?.Size == EntModalSize.ExtraLarge)
+        .AddClass("ent-modal-fs", Options?.Size == EntModalSize.Fullscreen).Build();
+    
+    [CascadingParameter]
+    public EntModalInstance? Instance { get; set; }
+    
+    [Parameter]
+    public string Title { get; set; }
+    
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+    
+    [Parameter]
+    public EventCallback OnCancelClick { get; set; }
+
+    [Parameter]
+    public EntModalOptions? Options { get; set; }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        Options ??= new EntModalOptions
+        {
+            Size = EntModalSize.Medium,
+            CloseOnEscapeKey = true
+        };
+        
+        await base.OnInitializedAsync();
+    }
+
+    private async Task OnContainerClick(MouseEventArgs args)
+    {
+        if (Instance !=null)
+        {
+            await Instance.CancelAsync();
+        }
+    }
+
+    private async Task OnModalClick(MouseEventArgs arg)
+    {
+        
+    }
+
+}

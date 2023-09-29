@@ -4,8 +4,9 @@ namespace Enter.UI.Components;
 
 public interface IModalService
 {
-    Task<dynamic?> ShowAsync<TComponent>(string title, EntModalOptions? options = null, string? id = null) where TComponent : ComponentBase;
+    Task<ModalResult?> ShowAsync<TComponent>(string title, EntModalOptions? options = null, string? id = null,Dictionary<string, object>? parameters = null) where TComponent : ComponentBase;
 
-    Task CloseAsync(string id);
+    Task CloseAsync(string id , ModalResult? result = null);
+    Task CancelAsync(string id);
 
 }
