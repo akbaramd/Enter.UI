@@ -3,14 +3,14 @@
 @using Enter.UI.Services.Contracts;
 @using Enter.Dashboard.Components
 @inherits LayoutComponentBase
-<div class="border-y d-flex flex-column h-full">
+<div dir="@Direction" class="border-y d-flex flex-column h-full">
     <EntAppBar Title="پلتفرم مدیریتی پیشرفته">
         <div class="d-flex w-full">
             <div class="flex-grow-1">
             </div>
             <div class="d-flex gap-2">
-                <EntButton Icon="fa-light fa-user" Size="ButtonSize.Small">حساب کاربری</EntButton>
-                <EntButton Icon="fa-light fa-user" Size="ButtonSize.Small">حساب کاربری</EntButton>
+                <EntButton Click="ToRtl" Icon="fa-light fa-align-right" Size="ButtonSize.Small">راست چین</EntButton>
+                <EntButton Click="ToLtr" Icon="fa-light fa-align-left" Size="ButtonSize.Small">چپ چین</EntButton>
             </div>
         </div>
     </EntAppBar>
@@ -25,11 +25,11 @@
                 <EntTabPanel Title="صفحه اصلی" Icon="fa-light fa-home" class="w-60">
                     <EntNavMenu Title="صفحات فرم" class="border-0">
                         <EntNavMenuGroup Title="تعاریف" Icon="fa-light fa-home">
-                            <EntNavMenuTextItem IconData="fa-light fa-clock" Text="شمارنده" Click="() => AddNewTab<Counter>()"/>
-                            <EntNavMenuTextItem IconData="fa-light fa-arrow-down" Text="دریافت اطلاعات" Click="() => AddNewTab<FetchData>()"/>
+                            <EntNavMenuTextItem class="bg-light"  IconData="fa-light fa-clock" Text="شمارنده" Click="() => AddNewTab<Counter>()"/>
+                            <EntNavMenuTextItem class="bg-light"  IconData="fa-light fa-arrow-down" Text="دریافت اطلاعات" Click="() => AddNewTab<FetchData>()"/>
                         </EntNavMenuGroup>
                         <EntNavMenuGroup Title="صفحات فرم" Icon="fa-light fa-note" IconType="EntIconType.IconTag">
-                            <EntNavMenuTextItem Text="فرم معمولی" Click="() => AddNewTab<FormLayout>()"/>
+                            <EntNavMenuTextItem class="bg-light"  Text="فرم معمولی" Click="() => AddNewTab<FormLayout>()"/>
                         </EntNavMenuGroup>
                     </EntNavMenu>
                 </EntTabPanel>
@@ -49,6 +49,8 @@
     [Inject]
     public IMdiService MdiService { get; set; }
 
+    public string Direction { get; set; } = "rtl";
+    
     public void AddNewTab<T>()
     {
         if (typeof(T) == typeof(Counter))
@@ -63,6 +65,16 @@
         {
             MdiService.AddNewTab<FormLayout>("FormLayout", "فرم معمولی", "fa-light fa-note");
         }
+    }
+
+    private void ToRtl()
+    {
+        Direction = "rtl";
+    }
+    
+    private void ToLtr()
+    {
+        Direction = "ltr";
     }
 
 }

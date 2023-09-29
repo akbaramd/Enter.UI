@@ -1,0 +1,46 @@
+﻿.ent-form-group {
+  display: flex;
+  flex-direction: column;
+  
+  > * {
+    margin-bottom: 0.5rem;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+  
+  > label {
+    font-size: map-get($font-sizes,"medium-sm");
+  }
+
+  > label {
+    font-size: map-get($font-sizes,"medium-sm");
+  }
+  > .validation-message {
+    font-size: map-get($font-sizes,"subtitle-lg");
+    color: red;
+  }
+
+
+}
+
+
+.ent-input {
+
+  width: 100%;
+  background-color: #f8f8f8;
+  border: $border;
+  padding: 0.35rem 1rem;
+
+  &.modified.valid {
+    border-color: green;
+  }
+
+  &.invalid {
+    border-color: red;
+  }
+
+}
+
+ 

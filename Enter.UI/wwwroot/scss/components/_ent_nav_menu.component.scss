@@ -1,10 +1,8 @@
 .ent-nav-menu {
-  background-color: white;
   display: flex;
   flex-direction: column;
   border: $border;
-  border-bottom: 0;
-  font-size: map-get($font-sizes, "medium");
+  background-color: white;
 
   > * {
     border-bottom: $border;
@@ -13,7 +11,6 @@
   .ent-nav-menu-group {
     display: flex;
     flex-direction: column;
-    background-color: white;
 
    
     > .ent-nav-menu-group-item {
@@ -21,8 +18,8 @@
       justify-content: center;
       align-items: center;
       padding: 0.5rem 1rem;
-      background-color: white;
       cursor: pointer;
+      
       
 
       > .ent-nav-menu-group-item-title {
@@ -59,13 +56,14 @@
         
       }
       .ent-nav-menu-item {
-        background-color: map-get($colors, "light-sm");
       }
 
       > * {
         border-bottom: $border;
       }
-
+      > *:first-child {
+        border-top: $border;
+      }
       > *:last-child {
         border-bottom: 0;
       }
@@ -77,9 +75,12 @@
     justify-content: center;
     align-items: center;
     padding: 0.5rem 1rem;
-    background-color: white;
     cursor: pointer;
 
+    &:hover {
+      background-color: map-get($colors,"lighteen");
+    }
+    
     .ent-nav-menu-item-icon {
       
     }
@@ -88,10 +89,6 @@
       flex-grow: 1;
       margin-inline-start: 1rem;
     }
-  }
-
-  .ent-nav-menu-item:hover {
-    background-color: map-get($colors, "light-sm");
   }
 
 }

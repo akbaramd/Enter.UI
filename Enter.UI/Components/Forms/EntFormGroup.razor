@@ -1,0 +1,9 @@
+﻿@inherits EntBaseComponent
+@namespace Enter.UI.Components
+@typeparam TValue
+<div @attributes="@Attributes" class="@RootClass" style="@Style">
+    <label >@Label</label>
+    @ChildContent
+    <ValidationMessage  For="@For" />
+</div>
+

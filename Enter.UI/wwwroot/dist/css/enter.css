@@ -313,8 +313,7 @@ template {
 
 .btn {
   padding: 0.5rem 1rem;
-  border: 1px solid #dddddd;
-  font-size: 1rem;
+  border: 1px solid #e5e5e5;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -326,18 +325,16 @@ template {
 }
 .btn.btn-sm {
   padding: 0.35rem 0.85rem;
-  font-size: 0.889rem;
 }
 .btn.btn-lg {
   padding: 0.65rem 1.15rem;
-  font-size: 1.125rem;
 }
 
 .ent-tab {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border: 1px solid #dddddd;
+  border: 1px solid #e5e5e5;
   background-color: white;
 }
 .ent-tab > .ent-tab-item-container-message {
@@ -361,16 +358,13 @@ template {
   display: flex;
 }
 .ent-tab > .ent-tab-item-container > .ent-tab-item {
+  cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  cursor: pointer;
+}
+.ent-tab > .ent-tab-item-container > .ent-tab-item:hover {
+  background-color: #fafafa;
 }
 .ent-tab > .ent-tab-item-container > .ent-tab-item .ent-tab-content {
   padding: 0.5rem 1rem;
@@ -379,6 +373,12 @@ template {
   display: flex;
   gap: 0.5rem;
   text-wrap: nowrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 .ent-tab > .ent-tab-item-container > .ent-tab-item.active > .ent-tab-close {
   display: -webkit-box;
@@ -388,15 +388,12 @@ template {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  -webkit-transition: all 0.25s ease-in;
-  transition: all 0.25s ease-in;
-  -webkit-border-start: 1px solid #dddddd;
-  border-inline-start: 1px solid #dddddd;
+  -webkit-border-start: 1px solid #e5e5e5;
+  border-inline-start: 1px solid #e5e5e5;
 }
 .ent-tab > .ent-tab-item-container > .ent-tab-item .ent-tab-close {
-  background-color: #f8f8f8;
-  -webkit-border-start: 1px solid #dddddd;
-  border-inline-start: 1px solid #dddddd;
+  -webkit-border-start: 1px solid #e5e5e5;
+  border-inline-start: 1px solid #e5e5e5;
   border-color: transparent;
   overflow: hidden;
   width: 0;
@@ -410,8 +407,25 @@ template {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-transition: all 0.25s ease-in;
-  transition: all 0.25s ease-in;
+}
+.ent-tab > .ent-tab-item-container > .ent-tab-item .ent-tab-action {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.5rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-border-start: 1px solid #e5e5e5;
+  border-inline-start: 1px solid #e5e5e5;
+  border-color: transparent;
+  overflow: hidden;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 .ent-tab > .ent-tab-item-container > .ent-tab-item-vertical > .ent-tab-content {
   -webkit-box-orient: vertical;
@@ -431,7 +445,6 @@ template {
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
-  background-color: #f2f2f2;
   overflow: hidden;
   -webkit-transition: all 0.25s ease-in;
   transition: all 0.25s ease-in;
@@ -454,7 +467,7 @@ template {
   flex-direction: column;
 }
 .ent-tab-horizontal > .ent-tab-item-container > * {
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #e5e5e5;
 }
 .ent-tab-horizontal > .ent-tab-item-container-message {
   padding: 1rem 0.5rem;
@@ -467,8 +480,8 @@ template {
   transform: rotate(90deg);
 }
 .ent-tab-horizontal > .ent-tab-panel-container {
-  -webkit-border-start: 1px solid #dddddd;
-  border-inline-start: 1px solid #dddddd;
+  -webkit-border-start: 1px solid #e5e5e5;
+  border-inline-start: 1px solid #e5e5e5;
 }
 
 .ent-tab-vertical {
@@ -482,14 +495,14 @@ template {
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #e5e5e5;
 }
 .ent-tab-vertical > .ent-tab-item-container > * {
-  -webkit-border-end: 1px solid #dddddd;
-  border-inline-end: 1px solid #dddddd;
+  -webkit-border-end: 1px solid #e5e5e5;
+  border-inline-end: 1px solid #e5e5e5;
 }
 .ent-tab-vertical > .ent-tab-item-container-message {
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #e5e5e5;
   padding: 0.5rem 1rem;
 }
 
@@ -532,19 +545,51 @@ template {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  border: 1px solid #dddddd;
+  border: 1px solid #e5e5e5;
   background-color: #fff;
 }
 .ent-card > .ent-card-header {
   padding: 1rem;
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #e5e5e5;
 }
 .ent-card > .ent-card-content {
   padding: 1rem;
 }
 .ent-card > .ent-card-footer {
   padding: 1rem;
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid #e5e5e5;
+}
+
+.ent-form-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.ent-form-group > * {
+  margin-bottom: 0.5rem;
+}
+.ent-form-group > *:last-child {
+  margin-bottom: 0;
+}
+.ent-form-group > .validation-message {
+  color: red;
+}
+
+.ent-input {
+  width: 100%;
+  background-color: #f8f8f8;
+  border: 1px solid #e5e5e5;
+  padding: 0.35rem 1rem;
+}
+.ent-input.modified.valid {
+  border-color: green;
+}
+.ent-input.invalid {
+  border-color: red;
 }
 
 .ent-modal-container {
@@ -575,8 +620,7 @@ template {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  font-size: 1.125rem;
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #e5e5e5;
 }
 .ent-modal-container .ent-modal .ent-modal-header .title {
   -webkit-box-flex: 1;
@@ -585,7 +629,7 @@ template {
 }
 .ent-modal-container .ent-modal .ent-modal-header .icon {
   cursor: pointer;
-  font-size: 1.424rem;
+  font-size: 1.266rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -687,7 +731,6 @@ template {
 }
 
 .ent-nav-menu {
-  background-color: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -695,12 +738,11 @@ template {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  border: 1px solid #dddddd;
-  border-bottom: 0;
-  font-size: 1rem;
+  border: 1px solid #e5e5e5;
+  background-color: white;
 }
 .ent-nav-menu > * {
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #e5e5e5;
 }
 .ent-nav-menu .ent-nav-menu-group {
   display: -webkit-box;
@@ -710,7 +752,6 @@ template {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  background-color: white;
 }
 .ent-nav-menu .ent-nav-menu-group > .ent-nav-menu-group-item {
   display: -webkit-box;
@@ -723,7 +764,6 @@ template {
   -ms-flex-align: center;
   align-items: center;
   padding: 0.5rem 1rem;
-  background-color: white;
   cursor: pointer;
 }
 .ent-nav-menu .ent-nav-menu-group > .ent-nav-menu-group-item > .ent-nav-menu-group-item-title {
@@ -756,11 +796,11 @@ template {
 .ent-nav-menu .ent-nav-menu-group > .ent-nav-menu-group-container.active {
   height: 100%;
 }
-.ent-nav-menu .ent-nav-menu-group > .ent-nav-menu-group-container .ent-nav-menu-item {
-  background-color: #f8f8f8;
-}
 .ent-nav-menu .ent-nav-menu-group > .ent-nav-menu-group-container > * {
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #e5e5e5;
+}
+.ent-nav-menu .ent-nav-menu-group > .ent-nav-menu-group-container > *:first-child {
+  border-top: 1px solid #e5e5e5;
 }
 .ent-nav-menu .ent-nav-menu-group > .ent-nav-menu-group-container > *:last-child {
   border-bottom: 0;
@@ -776,8 +816,10 @@ template {
   -ms-flex-align: center;
   align-items: center;
   padding: 0.5rem 1rem;
-  background-color: white;
   cursor: pointer;
+}
+.ent-nav-menu .ent-nav-menu-item:hover {
+  background-color: #fafafa;
 }
 .ent-nav-menu .ent-nav-menu-item .ent-nav-menu-item-content {
   -webkit-box-flex: 1;
@@ -785,9 +827,6 @@ template {
   flex-grow: 1;
   -webkit-margin-start: 1rem;
   margin-inline-start: 1rem;
-}
-.ent-nav-menu .ent-nav-menu-item:hover {
-  background-color: #f8f8f8;
 }
 
 .h-0 {
@@ -44893,475 +44932,9785 @@ template {
     font-wighet: unset;
   }
 }
-.fs-title-lg {
+.fs-heading {
   font-size: 1.602rem;
 }
 
-.fs-title {
+.fs-sub-heading {
   font-size: 1.424rem;
 }
 
-.fs-title-sm {
+.fs-title {
   font-size: 1.266rem;
 }
 
-.fs-medium-lg {
+.fs-caption {
   font-size: 1.125rem;
 }
 
-.fs-medium {
+.fs {
   font-size: 1rem;
 }
 
-.fs-medium-sm {
+.fs-description {
   font-size: 0.889rem;
 }
 
-.fs-subtitle-lg {
+.fs-subtitle {
   font-size: 0.79rem;
 }
 
-.fs-subtitle {
-  font-size: 0.702rem;
-}
-
-.fs-subtitle-sm {
-  font-size: 0.624rem;
-}
-
 @media (min-width: 480px) {
-  .mobile\:fs-title-lg {
+  .mobile\:fs-heading {
     font-size: 1.602rem;
   }
-  .mobile\:fs-title {
+  .mobile\:fs-sub-heading {
     font-size: 1.424rem;
   }
-  .mobile\:fs-title-sm {
+  .mobile\:fs-title {
     font-size: 1.266rem;
   }
-  .mobile\:fs-medium-lg {
+  .mobile\:fs-caption {
     font-size: 1.125rem;
   }
-  .mobile\:fs-medium {
+  .mobile\:fs {
     font-size: 1rem;
   }
-  .mobile\:fs-medium-sm {
+  .mobile\:fs-description {
     font-size: 0.889rem;
   }
-  .mobile\:fs-subtitle-lg {
-    font-size: 0.79rem;
-  }
   .mobile\:fs-subtitle {
-    font-size: 0.702rem;
-  }
-  .mobile\:fs-subtitle-sm {
-    font-size: 0.624rem;
+    font-size: 0.79rem;
   }
 }
 @media (min-width: 768px) {
-  .tablet\:fs-title-lg {
+  .tablet\:fs-heading {
     font-size: 1.602rem;
   }
-  .tablet\:fs-title {
+  .tablet\:fs-sub-heading {
     font-size: 1.424rem;
   }
-  .tablet\:fs-title-sm {
+  .tablet\:fs-title {
     font-size: 1.266rem;
   }
-  .tablet\:fs-medium-lg {
+  .tablet\:fs-caption {
     font-size: 1.125rem;
   }
-  .tablet\:fs-medium {
+  .tablet\:fs {
     font-size: 1rem;
   }
-  .tablet\:fs-medium-sm {
+  .tablet\:fs-description {
     font-size: 0.889rem;
   }
-  .tablet\:fs-subtitle-lg {
-    font-size: 0.79rem;
-  }
   .tablet\:fs-subtitle {
-    font-size: 0.702rem;
-  }
-  .tablet\:fs-subtitle-sm {
-    font-size: 0.624rem;
+    font-size: 0.79rem;
   }
 }
 @media (min-width: 1024px) {
-  .laptop\:fs-title-lg {
+  .laptop\:fs-heading {
     font-size: 1.602rem;
   }
-  .laptop\:fs-title {
+  .laptop\:fs-sub-heading {
     font-size: 1.424rem;
   }
-  .laptop\:fs-title-sm {
+  .laptop\:fs-title {
     font-size: 1.266rem;
   }
-  .laptop\:fs-medium-lg {
+  .laptop\:fs-caption {
     font-size: 1.125rem;
   }
-  .laptop\:fs-medium {
+  .laptop\:fs {
     font-size: 1rem;
   }
-  .laptop\:fs-medium-sm {
+  .laptop\:fs-description {
     font-size: 0.889rem;
   }
-  .laptop\:fs-subtitle-lg {
-    font-size: 0.79rem;
-  }
   .laptop\:fs-subtitle {
-    font-size: 0.702rem;
-  }
-  .laptop\:fs-subtitle-sm {
-    font-size: 0.624rem;
+    font-size: 0.79rem;
   }
 }
 @media (min-width: 1280px) {
-  .desktop\:fs-title-lg {
+  .desktop\:fs-heading {
     font-size: 1.602rem;
   }
-  .desktop\:fs-title {
+  .desktop\:fs-sub-heading {
     font-size: 1.424rem;
   }
-  .desktop\:fs-title-sm {
+  .desktop\:fs-title {
     font-size: 1.266rem;
   }
-  .desktop\:fs-medium-lg {
+  .desktop\:fs-caption {
     font-size: 1.125rem;
   }
-  .desktop\:fs-medium {
+  .desktop\:fs {
     font-size: 1rem;
   }
-  .desktop\:fs-medium-sm {
+  .desktop\:fs-description {
     font-size: 0.889rem;
   }
-  .desktop\:fs-subtitle-lg {
-    font-size: 0.79rem;
-  }
   .desktop\:fs-subtitle {
-    font-size: 0.702rem;
-  }
-  .desktop\:fs-subtitle-sm {
-    font-size: 0.624rem;
+    font-size: 0.79rem;
   }
 }
 @media (min-width: 1536px) {
-  .screen\:fs-title-lg {
+  .screen\:fs-heading {
     font-size: 1.602rem;
   }
-  .screen\:fs-title {
+  .screen\:fs-sub-heading {
     font-size: 1.424rem;
   }
-  .screen\:fs-title-sm {
+  .screen\:fs-title {
     font-size: 1.266rem;
   }
-  .screen\:fs-medium-lg {
+  .screen\:fs-caption {
     font-size: 1.125rem;
   }
-  .screen\:fs-medium {
+  .screen\:fs {
     font-size: 1rem;
   }
-  .screen\:fs-medium-sm {
+  .screen\:fs-description {
     font-size: 0.889rem;
   }
-  .screen\:fs-subtitle-lg {
-    font-size: 0.79rem;
-  }
   .screen\:fs-subtitle {
-    font-size: 0.702rem;
-  }
-  .screen\:fs-subtitle-sm {
-    font-size: 0.624rem;
+    font-size: 0.79rem;
   }
 }
 .cl-white {
-  color: #ffffff;
+  color: white;
 }
 
 .cl-black {
-  color: #000000;
+  color: black;
 }
 
-.cl-dark {
-  color: #222222;
-}
-
-.cl-mute {
-  color: #555;
+.cl-lighteen {
+  color: #fafafa;
 }
 
 .cl-light {
-  color: #f2f2f2;
+  color: #f5f5f5;
 }
 
-.cl-light-sm {
-  color: #f8f8f8;
+.cl-mute {
+  color: #404040;
 }
 
-.cl-light-lg {
-  color: #eeeeee;
+.cl-dark {
+  color: #171717;
+}
+
+.cl-darker {
+  color: #0a0a0a;
+}
+
+.cl-success {
+  color: #22c55e;
+}
+
+.cl-danger {
+  color: #ef4444;
+}
+
+.cl-warning {
+  color: #f97316;
+}
+
+.cl-info {
+  color: #3b82f6;
+}
+
+.cl-late-50 {
+  color: #f8fafc;
+}
+
+.cl-late-100 {
+  color: #f1f5f9;
+}
+
+.cl-late-200 {
+  color: #e2e8f0;
+}
+
+.cl-late-300 {
+  color: #cbd5e1;
+}
+
+.cl-late-400 {
+  color: #94a3b8;
+}
+
+.cl-late-500 {
+  color: #64748b;
+}
+
+.cl-late-600 {
+  color: #475569;
+}
+
+.cl-late-700 {
+  color: #334155;
+}
+
+.cl-late-800 {
+  color: #1e293b;
+}
+
+.cl-late-900 {
+  color: #0f172a;
+}
+
+.cl-late-950 {
+  color: #020617;
+}
+
+.cl-gray-50 {
+  color: #f9fafb;
+}
+
+.cl-gray-100 {
+  color: #f3f4f6;
+}
+
+.cl-gray-200 {
+  color: #e5e7eb;
+}
+
+.cl-gray-300 {
+  color: #d1d5db;
+}
+
+.cl-gray-400 {
+  color: #9ca3af;
+}
+
+.cl-gray-500 {
+  color: #6b7280;
+}
+
+.cl-gray-600 {
+  color: #4b5563;
+}
+
+.cl-gray-700 {
+  color: #374151;
+}
+
+.cl-gray-800 {
+  color: #1f2937;
+}
+
+.cl-gray-900 {
+  color: #111827;
+}
+
+.cl-gray-950 {
+  color: #030712;
+}
+
+.cl-zinc-50 {
+  color: #fafafa;
+}
+
+.cl-zinc-100 {
+  color: #f4f4f5;
+}
+
+.cl-zinc-200 {
+  color: #e4e4e7;
+}
+
+.cl-zinc-300 {
+  color: #d4d4d8;
+}
+
+.cl-zinc-400 {
+  color: #a1a1aa;
+}
+
+.cl-zinc-500 {
+  color: #71717a;
+}
+
+.cl-zinc-600 {
+  color: #52525b;
+}
+
+.cl-zinc-700 {
+  color: #3f3f46;
+}
+
+.cl-zinc-800 {
+  color: #27272a;
+}
+
+.cl-zinc-900 {
+  color: #18181b;
+}
+
+.cl-zinc-950 {
+  color: #09090b;
+}
+
+.cl-neutral-50 {
+  color: #fafafa;
+}
+
+.cl-neutral-100 {
+  color: #f5f5f5;
+}
+
+.cl-neutral-200 {
+  color: #e5e5e5;
+}
+
+.cl-neutral-300 {
+  color: #d4d4d4;
+}
+
+.cl-neutral-400 {
+  color: #a3a3a3;
+}
+
+.cl-neutral-500 {
+  color: #737373;
+}
+
+.cl-neutral-600 {
+  color: #525252;
+}
+
+.cl-neutral-700 {
+  color: #404040;
+}
+
+.cl-neutral-800 {
+  color: #262626;
+}
+
+.cl-neutral-900 {
+  color: #171717;
+}
+
+.cl-neutral-950 {
+  color: #0a0a0a;
+}
+
+.cl-stone-50 {
+  color: #fafaf9;
+}
+
+.cl-stone-100 {
+  color: #f5f5f4;
+}
+
+.cl-stone-200 {
+  color: #e7e5e4;
+}
+
+.cl-stone-300 {
+  color: #d6d3d1;
+}
+
+.cl-stone-400 {
+  color: #a8a29e;
+}
+
+.cl-stone-500 {
+  color: #78716c;
+}
+
+.cl-stone-600 {
+  color: #57534e;
+}
+
+.cl-stone-700 {
+  color: #44403c;
+}
+
+.cl-stone-800 {
+  color: #292524;
+}
+
+.cl-stone-900 {
+  color: #1c1917;
+}
+
+.cl-stone-950 {
+  color: #0c0a09;
+}
+
+.cl-red-50 {
+  color: #fef2f2;
+}
+
+.cl-red-100 {
+  color: #fee2e2;
+}
+
+.cl-red-200 {
+  color: #fecaca;
+}
+
+.cl-red-300 {
+  color: #fca5a5;
+}
+
+.cl-red-400 {
+  color: #f87171;
+}
+
+.cl-red-500 {
+  color: #ef4444;
+}
+
+.cl-red-600 {
+  color: #dc2626;
+}
+
+.cl-red-700 {
+  color: #b91c1c;
+}
+
+.cl-red-800 {
+  color: #991b1b;
+}
+
+.cl-red-900 {
+  color: #7f1d1d;
+}
+
+.cl-red-950 {
+  color: #450a0a;
+}
+
+.cl-orange-50 {
+  color: #fff7ed;
+}
+
+.cl-orange-100 {
+  color: #ffedd5;
+}
+
+.cl-orange-200 {
+  color: #fed7aa;
+}
+
+.cl-orange-300 {
+  color: #fdba74;
+}
+
+.cl-orange-400 {
+  color: #fb923c;
+}
+
+.cl-orange-500 {
+  color: #f97316;
+}
+
+.cl-orange-600 {
+  color: #ea580c;
+}
+
+.cl-orange-700 {
+  color: #c2410c;
+}
+
+.cl-orange-800 {
+  color: #9a3412;
+}
+
+.cl-orange-900 {
+  color: #7c2d12;
+}
+
+.cl-orange-950 {
+  color: #431407;
+}
+
+.cl-amber-50 {
+  color: #fffbeb;
+}
+
+.cl-amber-100 {
+  color: #fef3c7;
+}
+
+.cl-amber-200 {
+  color: #fde68a;
+}
+
+.cl-amber-300 {
+  color: #fcd34d;
+}
+
+.cl-amber-400 {
+  color: #fbbf24;
+}
+
+.cl-amber-500 {
+  color: #f59e0b;
+}
+
+.cl-amber-600 {
+  color: #d97706;
+}
+
+.cl-amber-700 {
+  color: #b45309;
+}
+
+.cl-amber-800 {
+  color: #92400e;
+}
+
+.cl-amber-900 {
+  color: #78350f;
+}
+
+.cl-amber-950 {
+  color: #451a03;
+}
+
+.cl-yellow-50 {
+  color: #fefce8;
+}
+
+.cl-yellow-100 {
+  color: #fef9c3;
+}
+
+.cl-yellow-200 {
+  color: #fef08a;
+}
+
+.cl-yellow-300 {
+  color: #fde047;
+}
+
+.cl-yellow-400 {
+  color: #facc15;
+}
+
+.cl-yellow-500 {
+  color: #eab308;
+}
+
+.cl-yellow-600 {
+  color: #ca8a04;
+}
+
+.cl-yellow-700 {
+  color: #a16207;
+}
+
+.cl-yellow-800 {
+  color: #854d0e;
+}
+
+.cl-yellow-900 {
+  color: #713f12;
+}
+
+.cl-yellow-950 {
+  color: #422006;
+}
+
+.cl-lime-50 {
+  color: #f7fee7;
+}
+
+.cl-lime-100 {
+  color: #ecfccb;
+}
+
+.cl-lime-200 {
+  color: #d9f99d;
+}
+
+.cl-lime-300 {
+  color: #bef264;
+}
+
+.cl-lime-400 {
+  color: #a3e635;
+}
+
+.cl-lime-500 {
+  color: #84cc16;
+}
+
+.cl-lime-600 {
+  color: #65a30d;
+}
+
+.cl-lime-700 {
+  color: #4d7c0f;
+}
+
+.cl-lime-800 {
+  color: #3f6212;
+}
+
+.cl-lime-900 {
+  color: #365314;
+}
+
+.cl-lime-950 {
+  color: #1a2e05;
+}
+
+.cl-green-50 {
+  color: #f0fdf4;
+}
+
+.cl-green-100 {
+  color: #dcfce7;
+}
+
+.cl-green-200 {
+  color: #bbf7d0;
+}
+
+.cl-green-300 {
+  color: #86efac;
+}
+
+.cl-green-400 {
+  color: #4ade80;
+}
+
+.cl-green-500 {
+  color: #22c55e;
+}
+
+.cl-green-600 {
+  color: #16a34a;
+}
+
+.cl-green-700 {
+  color: #15803d;
+}
+
+.cl-green-800 {
+  color: #166534;
+}
+
+.cl-green-900 {
+  color: #14532d;
+}
+
+.cl-green-950 {
+  color: #052e16;
+}
+
+.cl-emerald-50 {
+  color: #ecfdf5;
+}
+
+.cl-emerald-100 {
+  color: #d1fae5;
+}
+
+.cl-emerald-200 {
+  color: #a7f3d0;
+}
+
+.cl-emerald-300 {
+  color: #6ee7b7;
+}
+
+.cl-emerald-400 {
+  color: #34d399;
+}
+
+.cl-emerald-500 {
+  color: #10b981;
+}
+
+.cl-emerald-600 {
+  color: #059669;
+}
+
+.cl-emerald-700 {
+  color: #047857;
+}
+
+.cl-emerald-800 {
+  color: #065f46;
+}
+
+.cl-emerald-900 {
+  color: #064e3b;
+}
+
+.cl-emerald-950 {
+  color: #022c22;
+}
+
+.cl-teal-50 {
+  color: #f0fdfa;
+}
+
+.cl-teal-100 {
+  color: #ccfbf1;
+}
+
+.cl-teal-200 {
+  color: #99f6e4;
+}
+
+.cl-teal-300 {
+  color: #5eead4;
+}
+
+.cl-teal-400 {
+  color: #2dd4bf;
+}
+
+.cl-teal-500 {
+  color: #14b8a6;
+}
+
+.cl-teal-600 {
+  color: #0d9488;
+}
+
+.cl-teal-700 {
+  color: #0f766e;
+}
+
+.cl-teal-800 {
+  color: #115e59;
+}
+
+.cl-teal-900 {
+  color: #134e4a;
+}
+
+.cl-teal-950 {
+  color: #042f2e;
+}
+
+.cl-cyan-50 {
+  color: #ecfeff;
+}
+
+.cl-cyan-100 {
+  color: #cffafe;
+}
+
+.cl-cyan-200 {
+  color: #a5f3fc;
+}
+
+.cl-cyan-300 {
+  color: #67e8f9;
+}
+
+.cl-cyan-400 {
+  color: #22d3ee;
+}
+
+.cl-cyan-500 {
+  color: #06b6d4;
+}
+
+.cl-cyan-600 {
+  color: #0891b2;
+}
+
+.cl-cyan-700 {
+  color: #0e7490;
+}
+
+.cl-cyan-800 {
+  color: #155e75;
+}
+
+.cl-cyan-900 {
+  color: #164e63;
+}
+
+.cl-cyan-950 {
+  color: #083344;
+}
+
+.cl-sky-50 {
+  color: #f0f9ff;
+}
+
+.cl-sky-100 {
+  color: #e0f2fe;
+}
+
+.cl-sky-200 {
+  color: #bae6fd;
+}
+
+.cl-sky-300 {
+  color: #7dd3fc;
+}
+
+.cl-sky-400 {
+  color: #38bdf8;
+}
+
+.cl-sky-500 {
+  color: #0ea5e9;
+}
+
+.cl-sky-600 {
+  color: #0284c7;
+}
+
+.cl-sky-700 {
+  color: #0369a1;
+}
+
+.cl-sky-800 {
+  color: #075985;
+}
+
+.cl-sky-900 {
+  color: #0c4a6e;
+}
+
+.cl-sky-950 {
+  color: #082f49;
+}
+
+.cl-blue-50 {
+  color: #eff6ff;
+}
+
+.cl-blue-100 {
+  color: #dbeafe;
+}
+
+.cl-blue-200 {
+  color: #bfdbfe;
+}
+
+.cl-blue-300 {
+  color: #93c5fd;
+}
+
+.cl-blue-400 {
+  color: #60a5fa;
+}
+
+.cl-blue-500 {
+  color: #3b82f6;
+}
+
+.cl-blue-600 {
+  color: #2563eb;
+}
+
+.cl-blue-700 {
+  color: #1d4ed8;
+}
+
+.cl-blue-800 {
+  color: #1e40af;
+}
+
+.cl-blue-900 {
+  color: #1e3a8a;
+}
+
+.cl-blue-950 {
+  color: #172554;
+}
+
+.cl-indigo-50 {
+  color: #eef2ff;
+}
+
+.cl-indigo-100 {
+  color: #e0e7ff;
+}
+
+.cl-indigo-200 {
+  color: #c7d2fe;
+}
+
+.cl-indigo-300 {
+  color: #a5b4fc;
+}
+
+.cl-indigo-400 {
+  color: #818cf8;
+}
+
+.cl-indigo-500 {
+  color: #6366f1;
+}
+
+.cl-indigo-600 {
+  color: #4f46e5;
+}
+
+.cl-indigo-700 {
+  color: #4338ca;
+}
+
+.cl-indigo-800 {
+  color: #3730a3;
+}
+
+.cl-indigo-900 {
+  color: #312e81;
+}
+
+.cl-indigo-950 {
+  color: #1e1b4b;
+}
+
+.cl-violet-50 {
+  color: #f5f3ff;
+}
+
+.cl-violet-100 {
+  color: #ede9fe;
+}
+
+.cl-violet-200 {
+  color: #ddd6fe;
+}
+
+.cl-violet-300 {
+  color: #c4b5fd;
+}
+
+.cl-violet-400 {
+  color: #a78bfa;
+}
+
+.cl-violet-500 {
+  color: #8b5cf6;
+}
+
+.cl-violet-600 {
+  color: #7c3aed;
+}
+
+.cl-violet-700 {
+  color: #6d28d9;
+}
+
+.cl-violet-800 {
+  color: #5b21b6;
+}
+
+.cl-violet-900 {
+  color: #4c1d95;
+}
+
+.cl-violet-950 {
+  color: #2e1065;
+}
+
+.cl-purple-50 {
+  color: #faf5ff;
+}
+
+.cl-purple-100 {
+  color: #f3e8ff;
+}
+
+.cl-purple-200 {
+  color: #e9d5ff;
+}
+
+.cl-purple-300 {
+  color: #d8b4fe;
+}
+
+.cl-purple-400 {
+  color: #c084fc;
+}
+
+.cl-purple-500 {
+  color: #a855f7;
+}
+
+.cl-purple-600 {
+  color: #9333ea;
+}
+
+.cl-purple-700 {
+  color: #7e22ce;
+}
+
+.cl-purple-800 {
+  color: #6b21a8;
+}
+
+.cl-purple-900 {
+  color: #581c87;
+}
+
+.cl-purple-950 {
+  color: #3b0764;
+}
+
+.cl-fuchsia-50 {
+  color: #fdf4ff;
+}
+
+.cl-fuchsia-100 {
+  color: #fae8ff;
+}
+
+.cl-fuchsia-200 {
+  color: #f5d0fe;
+}
+
+.cl-fuchsia-300 {
+  color: #f0abfc;
+}
+
+.cl-fuchsia-400 {
+  color: #e879f9;
+}
+
+.cl-fuchsia-500 {
+  color: #d946ef;
+}
+
+.cl-fuchsia-600 {
+  color: #c026d3;
+}
+
+.cl-fuchsia-700 {
+  color: #a21caf;
+}
+
+.cl-fuchsia-800 {
+  color: #86198f;
+}
+
+.cl-fuchsia-900 {
+  color: #701a75;
+}
+
+.cl-fuchsia-950 {
+  color: #4a044e;
+}
+
+.cl-pink-50 {
+  color: #fdf2f8;
+}
+
+.cl-pink-100 {
+  color: #fce7f3;
+}
+
+.cl-pink-200 {
+  color: #fbcfe8;
+}
+
+.cl-pink-300 {
+  color: #f9a8d4;
+}
+
+.cl-pink-400 {
+  color: #f472b6;
+}
+
+.cl-pink-500 {
+  color: #ec4899;
+}
+
+.cl-pink-600 {
+  color: #db2777;
+}
+
+.cl-pink-700 {
+  color: #be185d;
+}
+
+.cl-pink-800 {
+  color: #9d174d;
+}
+
+.cl-pink-900 {
+  color: #831843;
+}
+
+.cl-pink-950 {
+  color: #500724;
+}
+
+.cl-rose-50 {
+  color: #fff1f2;
+}
+
+.cl-rose-100 {
+  color: #ffe4e6;
+}
+
+.cl-rose-200 {
+  color: #fecdd3;
+}
+
+.cl-rose-300 {
+  color: #fda4af;
+}
+
+.cl-rose-400 {
+  color: #fb7185;
+}
+
+.cl-rose-500 {
+  color: #f43f5e;
+}
+
+.cl-rose-600 {
+  color: #e11d48;
+}
+
+.cl-rose-700 {
+  color: #be123c;
+}
+
+.cl-rose-800 {
+  color: #9f1239;
+}
+
+.cl-rose-900 {
+  color: #881337;
+}
+
+.cl-rose-950 {
+  color: #4c0519;
 }
 
 @media (min-width: 480px) {
   .mobile\:cl-white {
-    color: #ffffff;
+    color: white;
   }
   .mobile\:cl-black {
-    color: #000000;
+    color: black;
   }
-  .mobile\:cl-dark {
-    color: #222222;
-  }
-  .mobile\:cl-mute {
-    color: #555;
+  .mobile\:cl-lighteen {
+    color: #fafafa;
   }
   .mobile\:cl-light {
-    color: #f2f2f2;
+    color: #f5f5f5;
   }
-  .mobile\:cl-light-sm {
-    color: #f8f8f8;
+  .mobile\:cl-mute {
+    color: #404040;
   }
-  .mobile\:cl-light-lg {
-    color: #eeeeee;
+  .mobile\:cl-dark {
+    color: #171717;
+  }
+  .mobile\:cl-darker {
+    color: #0a0a0a;
+  }
+  .mobile\:cl-success {
+    color: #22c55e;
+  }
+  .mobile\:cl-danger {
+    color: #ef4444;
+  }
+  .mobile\:cl-warning {
+    color: #f97316;
+  }
+  .mobile\:cl-info {
+    color: #3b82f6;
+  }
+  .mobile\:cl-late-50 {
+    color: #f8fafc;
+  }
+  .mobile\:cl-late-100 {
+    color: #f1f5f9;
+  }
+  .mobile\:cl-late-200 {
+    color: #e2e8f0;
+  }
+  .mobile\:cl-late-300 {
+    color: #cbd5e1;
+  }
+  .mobile\:cl-late-400 {
+    color: #94a3b8;
+  }
+  .mobile\:cl-late-500 {
+    color: #64748b;
+  }
+  .mobile\:cl-late-600 {
+    color: #475569;
+  }
+  .mobile\:cl-late-700 {
+    color: #334155;
+  }
+  .mobile\:cl-late-800 {
+    color: #1e293b;
+  }
+  .mobile\:cl-late-900 {
+    color: #0f172a;
+  }
+  .mobile\:cl-late-950 {
+    color: #020617;
+  }
+  .mobile\:cl-gray-50 {
+    color: #f9fafb;
+  }
+  .mobile\:cl-gray-100 {
+    color: #f3f4f6;
+  }
+  .mobile\:cl-gray-200 {
+    color: #e5e7eb;
+  }
+  .mobile\:cl-gray-300 {
+    color: #d1d5db;
+  }
+  .mobile\:cl-gray-400 {
+    color: #9ca3af;
+  }
+  .mobile\:cl-gray-500 {
+    color: #6b7280;
+  }
+  .mobile\:cl-gray-600 {
+    color: #4b5563;
+  }
+  .mobile\:cl-gray-700 {
+    color: #374151;
+  }
+  .mobile\:cl-gray-800 {
+    color: #1f2937;
+  }
+  .mobile\:cl-gray-900 {
+    color: #111827;
+  }
+  .mobile\:cl-gray-950 {
+    color: #030712;
+  }
+  .mobile\:cl-zinc-50 {
+    color: #fafafa;
+  }
+  .mobile\:cl-zinc-100 {
+    color: #f4f4f5;
+  }
+  .mobile\:cl-zinc-200 {
+    color: #e4e4e7;
+  }
+  .mobile\:cl-zinc-300 {
+    color: #d4d4d8;
+  }
+  .mobile\:cl-zinc-400 {
+    color: #a1a1aa;
+  }
+  .mobile\:cl-zinc-500 {
+    color: #71717a;
+  }
+  .mobile\:cl-zinc-600 {
+    color: #52525b;
+  }
+  .mobile\:cl-zinc-700 {
+    color: #3f3f46;
+  }
+  .mobile\:cl-zinc-800 {
+    color: #27272a;
+  }
+  .mobile\:cl-zinc-900 {
+    color: #18181b;
+  }
+  .mobile\:cl-zinc-950 {
+    color: #09090b;
+  }
+  .mobile\:cl-neutral-50 {
+    color: #fafafa;
+  }
+  .mobile\:cl-neutral-100 {
+    color: #f5f5f5;
+  }
+  .mobile\:cl-neutral-200 {
+    color: #e5e5e5;
+  }
+  .mobile\:cl-neutral-300 {
+    color: #d4d4d4;
+  }
+  .mobile\:cl-neutral-400 {
+    color: #a3a3a3;
+  }
+  .mobile\:cl-neutral-500 {
+    color: #737373;
+  }
+  .mobile\:cl-neutral-600 {
+    color: #525252;
+  }
+  .mobile\:cl-neutral-700 {
+    color: #404040;
+  }
+  .mobile\:cl-neutral-800 {
+    color: #262626;
+  }
+  .mobile\:cl-neutral-900 {
+    color: #171717;
+  }
+  .mobile\:cl-neutral-950 {
+    color: #0a0a0a;
+  }
+  .mobile\:cl-stone-50 {
+    color: #fafaf9;
+  }
+  .mobile\:cl-stone-100 {
+    color: #f5f5f4;
+  }
+  .mobile\:cl-stone-200 {
+    color: #e7e5e4;
+  }
+  .mobile\:cl-stone-300 {
+    color: #d6d3d1;
+  }
+  .mobile\:cl-stone-400 {
+    color: #a8a29e;
+  }
+  .mobile\:cl-stone-500 {
+    color: #78716c;
+  }
+  .mobile\:cl-stone-600 {
+    color: #57534e;
+  }
+  .mobile\:cl-stone-700 {
+    color: #44403c;
+  }
+  .mobile\:cl-stone-800 {
+    color: #292524;
+  }
+  .mobile\:cl-stone-900 {
+    color: #1c1917;
+  }
+  .mobile\:cl-stone-950 {
+    color: #0c0a09;
+  }
+  .mobile\:cl-red-50 {
+    color: #fef2f2;
+  }
+  .mobile\:cl-red-100 {
+    color: #fee2e2;
+  }
+  .mobile\:cl-red-200 {
+    color: #fecaca;
+  }
+  .mobile\:cl-red-300 {
+    color: #fca5a5;
+  }
+  .mobile\:cl-red-400 {
+    color: #f87171;
+  }
+  .mobile\:cl-red-500 {
+    color: #ef4444;
+  }
+  .mobile\:cl-red-600 {
+    color: #dc2626;
+  }
+  .mobile\:cl-red-700 {
+    color: #b91c1c;
+  }
+  .mobile\:cl-red-800 {
+    color: #991b1b;
+  }
+  .mobile\:cl-red-900 {
+    color: #7f1d1d;
+  }
+  .mobile\:cl-red-950 {
+    color: #450a0a;
+  }
+  .mobile\:cl-orange-50 {
+    color: #fff7ed;
+  }
+  .mobile\:cl-orange-100 {
+    color: #ffedd5;
+  }
+  .mobile\:cl-orange-200 {
+    color: #fed7aa;
+  }
+  .mobile\:cl-orange-300 {
+    color: #fdba74;
+  }
+  .mobile\:cl-orange-400 {
+    color: #fb923c;
+  }
+  .mobile\:cl-orange-500 {
+    color: #f97316;
+  }
+  .mobile\:cl-orange-600 {
+    color: #ea580c;
+  }
+  .mobile\:cl-orange-700 {
+    color: #c2410c;
+  }
+  .mobile\:cl-orange-800 {
+    color: #9a3412;
+  }
+  .mobile\:cl-orange-900 {
+    color: #7c2d12;
+  }
+  .mobile\:cl-orange-950 {
+    color: #431407;
+  }
+  .mobile\:cl-amber-50 {
+    color: #fffbeb;
+  }
+  .mobile\:cl-amber-100 {
+    color: #fef3c7;
+  }
+  .mobile\:cl-amber-200 {
+    color: #fde68a;
+  }
+  .mobile\:cl-amber-300 {
+    color: #fcd34d;
+  }
+  .mobile\:cl-amber-400 {
+    color: #fbbf24;
+  }
+  .mobile\:cl-amber-500 {
+    color: #f59e0b;
+  }
+  .mobile\:cl-amber-600 {
+    color: #d97706;
+  }
+  .mobile\:cl-amber-700 {
+    color: #b45309;
+  }
+  .mobile\:cl-amber-800 {
+    color: #92400e;
+  }
+  .mobile\:cl-amber-900 {
+    color: #78350f;
+  }
+  .mobile\:cl-amber-950 {
+    color: #451a03;
+  }
+  .mobile\:cl-yellow-50 {
+    color: #fefce8;
+  }
+  .mobile\:cl-yellow-100 {
+    color: #fef9c3;
+  }
+  .mobile\:cl-yellow-200 {
+    color: #fef08a;
+  }
+  .mobile\:cl-yellow-300 {
+    color: #fde047;
+  }
+  .mobile\:cl-yellow-400 {
+    color: #facc15;
+  }
+  .mobile\:cl-yellow-500 {
+    color: #eab308;
+  }
+  .mobile\:cl-yellow-600 {
+    color: #ca8a04;
+  }
+  .mobile\:cl-yellow-700 {
+    color: #a16207;
+  }
+  .mobile\:cl-yellow-800 {
+    color: #854d0e;
+  }
+  .mobile\:cl-yellow-900 {
+    color: #713f12;
+  }
+  .mobile\:cl-yellow-950 {
+    color: #422006;
+  }
+  .mobile\:cl-lime-50 {
+    color: #f7fee7;
+  }
+  .mobile\:cl-lime-100 {
+    color: #ecfccb;
+  }
+  .mobile\:cl-lime-200 {
+    color: #d9f99d;
+  }
+  .mobile\:cl-lime-300 {
+    color: #bef264;
+  }
+  .mobile\:cl-lime-400 {
+    color: #a3e635;
+  }
+  .mobile\:cl-lime-500 {
+    color: #84cc16;
+  }
+  .mobile\:cl-lime-600 {
+    color: #65a30d;
+  }
+  .mobile\:cl-lime-700 {
+    color: #4d7c0f;
+  }
+  .mobile\:cl-lime-800 {
+    color: #3f6212;
+  }
+  .mobile\:cl-lime-900 {
+    color: #365314;
+  }
+  .mobile\:cl-lime-950 {
+    color: #1a2e05;
+  }
+  .mobile\:cl-green-50 {
+    color: #f0fdf4;
+  }
+  .mobile\:cl-green-100 {
+    color: #dcfce7;
+  }
+  .mobile\:cl-green-200 {
+    color: #bbf7d0;
+  }
+  .mobile\:cl-green-300 {
+    color: #86efac;
+  }
+  .mobile\:cl-green-400 {
+    color: #4ade80;
+  }
+  .mobile\:cl-green-500 {
+    color: #22c55e;
+  }
+  .mobile\:cl-green-600 {
+    color: #16a34a;
+  }
+  .mobile\:cl-green-700 {
+    color: #15803d;
+  }
+  .mobile\:cl-green-800 {
+    color: #166534;
+  }
+  .mobile\:cl-green-900 {
+    color: #14532d;
+  }
+  .mobile\:cl-green-950 {
+    color: #052e16;
+  }
+  .mobile\:cl-emerald-50 {
+    color: #ecfdf5;
+  }
+  .mobile\:cl-emerald-100 {
+    color: #d1fae5;
+  }
+  .mobile\:cl-emerald-200 {
+    color: #a7f3d0;
+  }
+  .mobile\:cl-emerald-300 {
+    color: #6ee7b7;
+  }
+  .mobile\:cl-emerald-400 {
+    color: #34d399;
+  }
+  .mobile\:cl-emerald-500 {
+    color: #10b981;
+  }
+  .mobile\:cl-emerald-600 {
+    color: #059669;
+  }
+  .mobile\:cl-emerald-700 {
+    color: #047857;
+  }
+  .mobile\:cl-emerald-800 {
+    color: #065f46;
+  }
+  .mobile\:cl-emerald-900 {
+    color: #064e3b;
+  }
+  .mobile\:cl-emerald-950 {
+    color: #022c22;
+  }
+  .mobile\:cl-teal-50 {
+    color: #f0fdfa;
+  }
+  .mobile\:cl-teal-100 {
+    color: #ccfbf1;
+  }
+  .mobile\:cl-teal-200 {
+    color: #99f6e4;
+  }
+  .mobile\:cl-teal-300 {
+    color: #5eead4;
+  }
+  .mobile\:cl-teal-400 {
+    color: #2dd4bf;
+  }
+  .mobile\:cl-teal-500 {
+    color: #14b8a6;
+  }
+  .mobile\:cl-teal-600 {
+    color: #0d9488;
+  }
+  .mobile\:cl-teal-700 {
+    color: #0f766e;
+  }
+  .mobile\:cl-teal-800 {
+    color: #115e59;
+  }
+  .mobile\:cl-teal-900 {
+    color: #134e4a;
+  }
+  .mobile\:cl-teal-950 {
+    color: #042f2e;
+  }
+  .mobile\:cl-cyan-50 {
+    color: #ecfeff;
+  }
+  .mobile\:cl-cyan-100 {
+    color: #cffafe;
+  }
+  .mobile\:cl-cyan-200 {
+    color: #a5f3fc;
+  }
+  .mobile\:cl-cyan-300 {
+    color: #67e8f9;
+  }
+  .mobile\:cl-cyan-400 {
+    color: #22d3ee;
+  }
+  .mobile\:cl-cyan-500 {
+    color: #06b6d4;
+  }
+  .mobile\:cl-cyan-600 {
+    color: #0891b2;
+  }
+  .mobile\:cl-cyan-700 {
+    color: #0e7490;
+  }
+  .mobile\:cl-cyan-800 {
+    color: #155e75;
+  }
+  .mobile\:cl-cyan-900 {
+    color: #164e63;
+  }
+  .mobile\:cl-cyan-950 {
+    color: #083344;
+  }
+  .mobile\:cl-sky-50 {
+    color: #f0f9ff;
+  }
+  .mobile\:cl-sky-100 {
+    color: #e0f2fe;
+  }
+  .mobile\:cl-sky-200 {
+    color: #bae6fd;
+  }
+  .mobile\:cl-sky-300 {
+    color: #7dd3fc;
+  }
+  .mobile\:cl-sky-400 {
+    color: #38bdf8;
+  }
+  .mobile\:cl-sky-500 {
+    color: #0ea5e9;
+  }
+  .mobile\:cl-sky-600 {
+    color: #0284c7;
+  }
+  .mobile\:cl-sky-700 {
+    color: #0369a1;
+  }
+  .mobile\:cl-sky-800 {
+    color: #075985;
+  }
+  .mobile\:cl-sky-900 {
+    color: #0c4a6e;
+  }
+  .mobile\:cl-sky-950 {
+    color: #082f49;
+  }
+  .mobile\:cl-blue-50 {
+    color: #eff6ff;
+  }
+  .mobile\:cl-blue-100 {
+    color: #dbeafe;
+  }
+  .mobile\:cl-blue-200 {
+    color: #bfdbfe;
+  }
+  .mobile\:cl-blue-300 {
+    color: #93c5fd;
+  }
+  .mobile\:cl-blue-400 {
+    color: #60a5fa;
+  }
+  .mobile\:cl-blue-500 {
+    color: #3b82f6;
+  }
+  .mobile\:cl-blue-600 {
+    color: #2563eb;
+  }
+  .mobile\:cl-blue-700 {
+    color: #1d4ed8;
+  }
+  .mobile\:cl-blue-800 {
+    color: #1e40af;
+  }
+  .mobile\:cl-blue-900 {
+    color: #1e3a8a;
+  }
+  .mobile\:cl-blue-950 {
+    color: #172554;
+  }
+  .mobile\:cl-indigo-50 {
+    color: #eef2ff;
+  }
+  .mobile\:cl-indigo-100 {
+    color: #e0e7ff;
+  }
+  .mobile\:cl-indigo-200 {
+    color: #c7d2fe;
+  }
+  .mobile\:cl-indigo-300 {
+    color: #a5b4fc;
+  }
+  .mobile\:cl-indigo-400 {
+    color: #818cf8;
+  }
+  .mobile\:cl-indigo-500 {
+    color: #6366f1;
+  }
+  .mobile\:cl-indigo-600 {
+    color: #4f46e5;
+  }
+  .mobile\:cl-indigo-700 {
+    color: #4338ca;
+  }
+  .mobile\:cl-indigo-800 {
+    color: #3730a3;
+  }
+  .mobile\:cl-indigo-900 {
+    color: #312e81;
+  }
+  .mobile\:cl-indigo-950 {
+    color: #1e1b4b;
+  }
+  .mobile\:cl-violet-50 {
+    color: #f5f3ff;
+  }
+  .mobile\:cl-violet-100 {
+    color: #ede9fe;
+  }
+  .mobile\:cl-violet-200 {
+    color: #ddd6fe;
+  }
+  .mobile\:cl-violet-300 {
+    color: #c4b5fd;
+  }
+  .mobile\:cl-violet-400 {
+    color: #a78bfa;
+  }
+  .mobile\:cl-violet-500 {
+    color: #8b5cf6;
+  }
+  .mobile\:cl-violet-600 {
+    color: #7c3aed;
+  }
+  .mobile\:cl-violet-700 {
+    color: #6d28d9;
+  }
+  .mobile\:cl-violet-800 {
+    color: #5b21b6;
+  }
+  .mobile\:cl-violet-900 {
+    color: #4c1d95;
+  }
+  .mobile\:cl-violet-950 {
+    color: #2e1065;
+  }
+  .mobile\:cl-purple-50 {
+    color: #faf5ff;
+  }
+  .mobile\:cl-purple-100 {
+    color: #f3e8ff;
+  }
+  .mobile\:cl-purple-200 {
+    color: #e9d5ff;
+  }
+  .mobile\:cl-purple-300 {
+    color: #d8b4fe;
+  }
+  .mobile\:cl-purple-400 {
+    color: #c084fc;
+  }
+  .mobile\:cl-purple-500 {
+    color: #a855f7;
+  }
+  .mobile\:cl-purple-600 {
+    color: #9333ea;
+  }
+  .mobile\:cl-purple-700 {
+    color: #7e22ce;
+  }
+  .mobile\:cl-purple-800 {
+    color: #6b21a8;
+  }
+  .mobile\:cl-purple-900 {
+    color: #581c87;
+  }
+  .mobile\:cl-purple-950 {
+    color: #3b0764;
+  }
+  .mobile\:cl-fuchsia-50 {
+    color: #fdf4ff;
+  }
+  .mobile\:cl-fuchsia-100 {
+    color: #fae8ff;
+  }
+  .mobile\:cl-fuchsia-200 {
+    color: #f5d0fe;
+  }
+  .mobile\:cl-fuchsia-300 {
+    color: #f0abfc;
+  }
+  .mobile\:cl-fuchsia-400 {
+    color: #e879f9;
+  }
+  .mobile\:cl-fuchsia-500 {
+    color: #d946ef;
+  }
+  .mobile\:cl-fuchsia-600 {
+    color: #c026d3;
+  }
+  .mobile\:cl-fuchsia-700 {
+    color: #a21caf;
+  }
+  .mobile\:cl-fuchsia-800 {
+    color: #86198f;
+  }
+  .mobile\:cl-fuchsia-900 {
+    color: #701a75;
+  }
+  .mobile\:cl-fuchsia-950 {
+    color: #4a044e;
+  }
+  .mobile\:cl-pink-50 {
+    color: #fdf2f8;
+  }
+  .mobile\:cl-pink-100 {
+    color: #fce7f3;
+  }
+  .mobile\:cl-pink-200 {
+    color: #fbcfe8;
+  }
+  .mobile\:cl-pink-300 {
+    color: #f9a8d4;
+  }
+  .mobile\:cl-pink-400 {
+    color: #f472b6;
+  }
+  .mobile\:cl-pink-500 {
+    color: #ec4899;
+  }
+  .mobile\:cl-pink-600 {
+    color: #db2777;
+  }
+  .mobile\:cl-pink-700 {
+    color: #be185d;
+  }
+  .mobile\:cl-pink-800 {
+    color: #9d174d;
+  }
+  .mobile\:cl-pink-900 {
+    color: #831843;
+  }
+  .mobile\:cl-pink-950 {
+    color: #500724;
+  }
+  .mobile\:cl-rose-50 {
+    color: #fff1f2;
+  }
+  .mobile\:cl-rose-100 {
+    color: #ffe4e6;
+  }
+  .mobile\:cl-rose-200 {
+    color: #fecdd3;
+  }
+  .mobile\:cl-rose-300 {
+    color: #fda4af;
+  }
+  .mobile\:cl-rose-400 {
+    color: #fb7185;
+  }
+  .mobile\:cl-rose-500 {
+    color: #f43f5e;
+  }
+  .mobile\:cl-rose-600 {
+    color: #e11d48;
+  }
+  .mobile\:cl-rose-700 {
+    color: #be123c;
+  }
+  .mobile\:cl-rose-800 {
+    color: #9f1239;
+  }
+  .mobile\:cl-rose-900 {
+    color: #881337;
+  }
+  .mobile\:cl-rose-950 {
+    color: #4c0519;
   }
 }
 @media (min-width: 768px) {
   .tablet\:cl-white {
-    color: #ffffff;
+    color: white;
   }
   .tablet\:cl-black {
-    color: #000000;
+    color: black;
   }
-  .tablet\:cl-dark {
-    color: #222222;
-  }
-  .tablet\:cl-mute {
-    color: #555;
+  .tablet\:cl-lighteen {
+    color: #fafafa;
   }
   .tablet\:cl-light {
-    color: #f2f2f2;
+    color: #f5f5f5;
   }
-  .tablet\:cl-light-sm {
-    color: #f8f8f8;
+  .tablet\:cl-mute {
+    color: #404040;
   }
-  .tablet\:cl-light-lg {
-    color: #eeeeee;
+  .tablet\:cl-dark {
+    color: #171717;
+  }
+  .tablet\:cl-darker {
+    color: #0a0a0a;
+  }
+  .tablet\:cl-success {
+    color: #22c55e;
+  }
+  .tablet\:cl-danger {
+    color: #ef4444;
+  }
+  .tablet\:cl-warning {
+    color: #f97316;
+  }
+  .tablet\:cl-info {
+    color: #3b82f6;
+  }
+  .tablet\:cl-late-50 {
+    color: #f8fafc;
+  }
+  .tablet\:cl-late-100 {
+    color: #f1f5f9;
+  }
+  .tablet\:cl-late-200 {
+    color: #e2e8f0;
+  }
+  .tablet\:cl-late-300 {
+    color: #cbd5e1;
+  }
+  .tablet\:cl-late-400 {
+    color: #94a3b8;
+  }
+  .tablet\:cl-late-500 {
+    color: #64748b;
+  }
+  .tablet\:cl-late-600 {
+    color: #475569;
+  }
+  .tablet\:cl-late-700 {
+    color: #334155;
+  }
+  .tablet\:cl-late-800 {
+    color: #1e293b;
+  }
+  .tablet\:cl-late-900 {
+    color: #0f172a;
+  }
+  .tablet\:cl-late-950 {
+    color: #020617;
+  }
+  .tablet\:cl-gray-50 {
+    color: #f9fafb;
+  }
+  .tablet\:cl-gray-100 {
+    color: #f3f4f6;
+  }
+  .tablet\:cl-gray-200 {
+    color: #e5e7eb;
+  }
+  .tablet\:cl-gray-300 {
+    color: #d1d5db;
+  }
+  .tablet\:cl-gray-400 {
+    color: #9ca3af;
+  }
+  .tablet\:cl-gray-500 {
+    color: #6b7280;
+  }
+  .tablet\:cl-gray-600 {
+    color: #4b5563;
+  }
+  .tablet\:cl-gray-700 {
+    color: #374151;
+  }
+  .tablet\:cl-gray-800 {
+    color: #1f2937;
+  }
+  .tablet\:cl-gray-900 {
+    color: #111827;
+  }
+  .tablet\:cl-gray-950 {
+    color: #030712;
+  }
+  .tablet\:cl-zinc-50 {
+    color: #fafafa;
+  }
+  .tablet\:cl-zinc-100 {
+    color: #f4f4f5;
+  }
+  .tablet\:cl-zinc-200 {
+    color: #e4e4e7;
+  }
+  .tablet\:cl-zinc-300 {
+    color: #d4d4d8;
+  }
+  .tablet\:cl-zinc-400 {
+    color: #a1a1aa;
+  }
+  .tablet\:cl-zinc-500 {
+    color: #71717a;
+  }
+  .tablet\:cl-zinc-600 {
+    color: #52525b;
+  }
+  .tablet\:cl-zinc-700 {
+    color: #3f3f46;
+  }
+  .tablet\:cl-zinc-800 {
+    color: #27272a;
+  }
+  .tablet\:cl-zinc-900 {
+    color: #18181b;
+  }
+  .tablet\:cl-zinc-950 {
+    color: #09090b;
+  }
+  .tablet\:cl-neutral-50 {
+    color: #fafafa;
+  }
+  .tablet\:cl-neutral-100 {
+    color: #f5f5f5;
+  }
+  .tablet\:cl-neutral-200 {
+    color: #e5e5e5;
+  }
+  .tablet\:cl-neutral-300 {
+    color: #d4d4d4;
+  }
+  .tablet\:cl-neutral-400 {
+    color: #a3a3a3;
+  }
+  .tablet\:cl-neutral-500 {
+    color: #737373;
+  }
+  .tablet\:cl-neutral-600 {
+    color: #525252;
+  }
+  .tablet\:cl-neutral-700 {
+    color: #404040;
+  }
+  .tablet\:cl-neutral-800 {
+    color: #262626;
+  }
+  .tablet\:cl-neutral-900 {
+    color: #171717;
+  }
+  .tablet\:cl-neutral-950 {
+    color: #0a0a0a;
+  }
+  .tablet\:cl-stone-50 {
+    color: #fafaf9;
+  }
+  .tablet\:cl-stone-100 {
+    color: #f5f5f4;
+  }
+  .tablet\:cl-stone-200 {
+    color: #e7e5e4;
+  }
+  .tablet\:cl-stone-300 {
+    color: #d6d3d1;
+  }
+  .tablet\:cl-stone-400 {
+    color: #a8a29e;
+  }
+  .tablet\:cl-stone-500 {
+    color: #78716c;
+  }
+  .tablet\:cl-stone-600 {
+    color: #57534e;
+  }
+  .tablet\:cl-stone-700 {
+    color: #44403c;
+  }
+  .tablet\:cl-stone-800 {
+    color: #292524;
+  }
+  .tablet\:cl-stone-900 {
+    color: #1c1917;
+  }
+  .tablet\:cl-stone-950 {
+    color: #0c0a09;
+  }
+  .tablet\:cl-red-50 {
+    color: #fef2f2;
+  }
+  .tablet\:cl-red-100 {
+    color: #fee2e2;
+  }
+  .tablet\:cl-red-200 {
+    color: #fecaca;
+  }
+  .tablet\:cl-red-300 {
+    color: #fca5a5;
+  }
+  .tablet\:cl-red-400 {
+    color: #f87171;
+  }
+  .tablet\:cl-red-500 {
+    color: #ef4444;
+  }
+  .tablet\:cl-red-600 {
+    color: #dc2626;
+  }
+  .tablet\:cl-red-700 {
+    color: #b91c1c;
+  }
+  .tablet\:cl-red-800 {
+    color: #991b1b;
+  }
+  .tablet\:cl-red-900 {
+    color: #7f1d1d;
+  }
+  .tablet\:cl-red-950 {
+    color: #450a0a;
+  }
+  .tablet\:cl-orange-50 {
+    color: #fff7ed;
+  }
+  .tablet\:cl-orange-100 {
+    color: #ffedd5;
+  }
+  .tablet\:cl-orange-200 {
+    color: #fed7aa;
+  }
+  .tablet\:cl-orange-300 {
+    color: #fdba74;
+  }
+  .tablet\:cl-orange-400 {
+    color: #fb923c;
+  }
+  .tablet\:cl-orange-500 {
+    color: #f97316;
+  }
+  .tablet\:cl-orange-600 {
+    color: #ea580c;
+  }
+  .tablet\:cl-orange-700 {
+    color: #c2410c;
+  }
+  .tablet\:cl-orange-800 {
+    color: #9a3412;
+  }
+  .tablet\:cl-orange-900 {
+    color: #7c2d12;
+  }
+  .tablet\:cl-orange-950 {
+    color: #431407;
+  }
+  .tablet\:cl-amber-50 {
+    color: #fffbeb;
+  }
+  .tablet\:cl-amber-100 {
+    color: #fef3c7;
+  }
+  .tablet\:cl-amber-200 {
+    color: #fde68a;
+  }
+  .tablet\:cl-amber-300 {
+    color: #fcd34d;
+  }
+  .tablet\:cl-amber-400 {
+    color: #fbbf24;
+  }
+  .tablet\:cl-amber-500 {
+    color: #f59e0b;
+  }
+  .tablet\:cl-amber-600 {
+    color: #d97706;
+  }
+  .tablet\:cl-amber-700 {
+    color: #b45309;
+  }
+  .tablet\:cl-amber-800 {
+    color: #92400e;
+  }
+  .tablet\:cl-amber-900 {
+    color: #78350f;
+  }
+  .tablet\:cl-amber-950 {
+    color: #451a03;
+  }
+  .tablet\:cl-yellow-50 {
+    color: #fefce8;
+  }
+  .tablet\:cl-yellow-100 {
+    color: #fef9c3;
+  }
+  .tablet\:cl-yellow-200 {
+    color: #fef08a;
+  }
+  .tablet\:cl-yellow-300 {
+    color: #fde047;
+  }
+  .tablet\:cl-yellow-400 {
+    color: #facc15;
+  }
+  .tablet\:cl-yellow-500 {
+    color: #eab308;
+  }
+  .tablet\:cl-yellow-600 {
+    color: #ca8a04;
+  }
+  .tablet\:cl-yellow-700 {
+    color: #a16207;
+  }
+  .tablet\:cl-yellow-800 {
+    color: #854d0e;
+  }
+  .tablet\:cl-yellow-900 {
+    color: #713f12;
+  }
+  .tablet\:cl-yellow-950 {
+    color: #422006;
+  }
+  .tablet\:cl-lime-50 {
+    color: #f7fee7;
+  }
+  .tablet\:cl-lime-100 {
+    color: #ecfccb;
+  }
+  .tablet\:cl-lime-200 {
+    color: #d9f99d;
+  }
+  .tablet\:cl-lime-300 {
+    color: #bef264;
+  }
+  .tablet\:cl-lime-400 {
+    color: #a3e635;
+  }
+  .tablet\:cl-lime-500 {
+    color: #84cc16;
+  }
+  .tablet\:cl-lime-600 {
+    color: #65a30d;
+  }
+  .tablet\:cl-lime-700 {
+    color: #4d7c0f;
+  }
+  .tablet\:cl-lime-800 {
+    color: #3f6212;
+  }
+  .tablet\:cl-lime-900 {
+    color: #365314;
+  }
+  .tablet\:cl-lime-950 {
+    color: #1a2e05;
+  }
+  .tablet\:cl-green-50 {
+    color: #f0fdf4;
+  }
+  .tablet\:cl-green-100 {
+    color: #dcfce7;
+  }
+  .tablet\:cl-green-200 {
+    color: #bbf7d0;
+  }
+  .tablet\:cl-green-300 {
+    color: #86efac;
+  }
+  .tablet\:cl-green-400 {
+    color: #4ade80;
+  }
+  .tablet\:cl-green-500 {
+    color: #22c55e;
+  }
+  .tablet\:cl-green-600 {
+    color: #16a34a;
+  }
+  .tablet\:cl-green-700 {
+    color: #15803d;
+  }
+  .tablet\:cl-green-800 {
+    color: #166534;
+  }
+  .tablet\:cl-green-900 {
+    color: #14532d;
+  }
+  .tablet\:cl-green-950 {
+    color: #052e16;
+  }
+  .tablet\:cl-emerald-50 {
+    color: #ecfdf5;
+  }
+  .tablet\:cl-emerald-100 {
+    color: #d1fae5;
+  }
+  .tablet\:cl-emerald-200 {
+    color: #a7f3d0;
+  }
+  .tablet\:cl-emerald-300 {
+    color: #6ee7b7;
+  }
+  .tablet\:cl-emerald-400 {
+    color: #34d399;
+  }
+  .tablet\:cl-emerald-500 {
+    color: #10b981;
+  }
+  .tablet\:cl-emerald-600 {
+    color: #059669;
+  }
+  .tablet\:cl-emerald-700 {
+    color: #047857;
+  }
+  .tablet\:cl-emerald-800 {
+    color: #065f46;
+  }
+  .tablet\:cl-emerald-900 {
+    color: #064e3b;
+  }
+  .tablet\:cl-emerald-950 {
+    color: #022c22;
+  }
+  .tablet\:cl-teal-50 {
+    color: #f0fdfa;
+  }
+  .tablet\:cl-teal-100 {
+    color: #ccfbf1;
+  }
+  .tablet\:cl-teal-200 {
+    color: #99f6e4;
+  }
+  .tablet\:cl-teal-300 {
+    color: #5eead4;
+  }
+  .tablet\:cl-teal-400 {
+    color: #2dd4bf;
+  }
+  .tablet\:cl-teal-500 {
+    color: #14b8a6;
+  }
+  .tablet\:cl-teal-600 {
+    color: #0d9488;
+  }
+  .tablet\:cl-teal-700 {
+    color: #0f766e;
+  }
+  .tablet\:cl-teal-800 {
+    color: #115e59;
+  }
+  .tablet\:cl-teal-900 {
+    color: #134e4a;
+  }
+  .tablet\:cl-teal-950 {
+    color: #042f2e;
+  }
+  .tablet\:cl-cyan-50 {
+    color: #ecfeff;
+  }
+  .tablet\:cl-cyan-100 {
+    color: #cffafe;
+  }
+  .tablet\:cl-cyan-200 {
+    color: #a5f3fc;
+  }
+  .tablet\:cl-cyan-300 {
+    color: #67e8f9;
+  }
+  .tablet\:cl-cyan-400 {
+    color: #22d3ee;
+  }
+  .tablet\:cl-cyan-500 {
+    color: #06b6d4;
+  }
+  .tablet\:cl-cyan-600 {
+    color: #0891b2;
+  }
+  .tablet\:cl-cyan-700 {
+    color: #0e7490;
+  }
+  .tablet\:cl-cyan-800 {
+    color: #155e75;
+  }
+  .tablet\:cl-cyan-900 {
+    color: #164e63;
+  }
+  .tablet\:cl-cyan-950 {
+    color: #083344;
+  }
+  .tablet\:cl-sky-50 {
+    color: #f0f9ff;
+  }
+  .tablet\:cl-sky-100 {
+    color: #e0f2fe;
+  }
+  .tablet\:cl-sky-200 {
+    color: #bae6fd;
+  }
+  .tablet\:cl-sky-300 {
+    color: #7dd3fc;
+  }
+  .tablet\:cl-sky-400 {
+    color: #38bdf8;
+  }
+  .tablet\:cl-sky-500 {
+    color: #0ea5e9;
+  }
+  .tablet\:cl-sky-600 {
+    color: #0284c7;
+  }
+  .tablet\:cl-sky-700 {
+    color: #0369a1;
+  }
+  .tablet\:cl-sky-800 {
+    color: #075985;
+  }
+  .tablet\:cl-sky-900 {
+    color: #0c4a6e;
+  }
+  .tablet\:cl-sky-950 {
+    color: #082f49;
+  }
+  .tablet\:cl-blue-50 {
+    color: #eff6ff;
+  }
+  .tablet\:cl-blue-100 {
+    color: #dbeafe;
+  }
+  .tablet\:cl-blue-200 {
+    color: #bfdbfe;
+  }
+  .tablet\:cl-blue-300 {
+    color: #93c5fd;
+  }
+  .tablet\:cl-blue-400 {
+    color: #60a5fa;
+  }
+  .tablet\:cl-blue-500 {
+    color: #3b82f6;
+  }
+  .tablet\:cl-blue-600 {
+    color: #2563eb;
+  }
+  .tablet\:cl-blue-700 {
+    color: #1d4ed8;
+  }
+  .tablet\:cl-blue-800 {
+    color: #1e40af;
+  }
+  .tablet\:cl-blue-900 {
+    color: #1e3a8a;
+  }
+  .tablet\:cl-blue-950 {
+    color: #172554;
+  }
+  .tablet\:cl-indigo-50 {
+    color: #eef2ff;
+  }
+  .tablet\:cl-indigo-100 {
+    color: #e0e7ff;
+  }
+  .tablet\:cl-indigo-200 {
+    color: #c7d2fe;
+  }
+  .tablet\:cl-indigo-300 {
+    color: #a5b4fc;
+  }
+  .tablet\:cl-indigo-400 {
+    color: #818cf8;
+  }
+  .tablet\:cl-indigo-500 {
+    color: #6366f1;
+  }
+  .tablet\:cl-indigo-600 {
+    color: #4f46e5;
+  }
+  .tablet\:cl-indigo-700 {
+    color: #4338ca;
+  }
+  .tablet\:cl-indigo-800 {
+    color: #3730a3;
+  }
+  .tablet\:cl-indigo-900 {
+    color: #312e81;
+  }
+  .tablet\:cl-indigo-950 {
+    color: #1e1b4b;
+  }
+  .tablet\:cl-violet-50 {
+    color: #f5f3ff;
+  }
+  .tablet\:cl-violet-100 {
+    color: #ede9fe;
+  }
+  .tablet\:cl-violet-200 {
+    color: #ddd6fe;
+  }
+  .tablet\:cl-violet-300 {
+    color: #c4b5fd;
+  }
+  .tablet\:cl-violet-400 {
+    color: #a78bfa;
+  }
+  .tablet\:cl-violet-500 {
+    color: #8b5cf6;
+  }
+  .tablet\:cl-violet-600 {
+    color: #7c3aed;
+  }
+  .tablet\:cl-violet-700 {
+    color: #6d28d9;
+  }
+  .tablet\:cl-violet-800 {
+    color: #5b21b6;
+  }
+  .tablet\:cl-violet-900 {
+    color: #4c1d95;
+  }
+  .tablet\:cl-violet-950 {
+    color: #2e1065;
+  }
+  .tablet\:cl-purple-50 {
+    color: #faf5ff;
+  }
+  .tablet\:cl-purple-100 {
+    color: #f3e8ff;
+  }
+  .tablet\:cl-purple-200 {
+    color: #e9d5ff;
+  }
+  .tablet\:cl-purple-300 {
+    color: #d8b4fe;
+  }
+  .tablet\:cl-purple-400 {
+    color: #c084fc;
+  }
+  .tablet\:cl-purple-500 {
+    color: #a855f7;
+  }
+  .tablet\:cl-purple-600 {
+    color: #9333ea;
+  }
+  .tablet\:cl-purple-700 {
+    color: #7e22ce;
+  }
+  .tablet\:cl-purple-800 {
+    color: #6b21a8;
+  }
+  .tablet\:cl-purple-900 {
+    color: #581c87;
+  }
+  .tablet\:cl-purple-950 {
+    color: #3b0764;
+  }
+  .tablet\:cl-fuchsia-50 {
+    color: #fdf4ff;
+  }
+  .tablet\:cl-fuchsia-100 {
+    color: #fae8ff;
+  }
+  .tablet\:cl-fuchsia-200 {
+    color: #f5d0fe;
+  }
+  .tablet\:cl-fuchsia-300 {
+    color: #f0abfc;
+  }
+  .tablet\:cl-fuchsia-400 {
+    color: #e879f9;
+  }
+  .tablet\:cl-fuchsia-500 {
+    color: #d946ef;
+  }
+  .tablet\:cl-fuchsia-600 {
+    color: #c026d3;
+  }
+  .tablet\:cl-fuchsia-700 {
+    color: #a21caf;
+  }
+  .tablet\:cl-fuchsia-800 {
+    color: #86198f;
+  }
+  .tablet\:cl-fuchsia-900 {
+    color: #701a75;
+  }
+  .tablet\:cl-fuchsia-950 {
+    color: #4a044e;
+  }
+  .tablet\:cl-pink-50 {
+    color: #fdf2f8;
+  }
+  .tablet\:cl-pink-100 {
+    color: #fce7f3;
+  }
+  .tablet\:cl-pink-200 {
+    color: #fbcfe8;
+  }
+  .tablet\:cl-pink-300 {
+    color: #f9a8d4;
+  }
+  .tablet\:cl-pink-400 {
+    color: #f472b6;
+  }
+  .tablet\:cl-pink-500 {
+    color: #ec4899;
+  }
+  .tablet\:cl-pink-600 {
+    color: #db2777;
+  }
+  .tablet\:cl-pink-700 {
+    color: #be185d;
+  }
+  .tablet\:cl-pink-800 {
+    color: #9d174d;
+  }
+  .tablet\:cl-pink-900 {
+    color: #831843;
+  }
+  .tablet\:cl-pink-950 {
+    color: #500724;
+  }
+  .tablet\:cl-rose-50 {
+    color: #fff1f2;
+  }
+  .tablet\:cl-rose-100 {
+    color: #ffe4e6;
+  }
+  .tablet\:cl-rose-200 {
+    color: #fecdd3;
+  }
+  .tablet\:cl-rose-300 {
+    color: #fda4af;
+  }
+  .tablet\:cl-rose-400 {
+    color: #fb7185;
+  }
+  .tablet\:cl-rose-500 {
+    color: #f43f5e;
+  }
+  .tablet\:cl-rose-600 {
+    color: #e11d48;
+  }
+  .tablet\:cl-rose-700 {
+    color: #be123c;
+  }
+  .tablet\:cl-rose-800 {
+    color: #9f1239;
+  }
+  .tablet\:cl-rose-900 {
+    color: #881337;
+  }
+  .tablet\:cl-rose-950 {
+    color: #4c0519;
   }
 }
 @media (min-width: 1024px) {
   .laptop\:cl-white {
-    color: #ffffff;
+    color: white;
   }
   .laptop\:cl-black {
-    color: #000000;
+    color: black;
   }
-  .laptop\:cl-dark {
-    color: #222222;
-  }
-  .laptop\:cl-mute {
-    color: #555;
+  .laptop\:cl-lighteen {
+    color: #fafafa;
   }
   .laptop\:cl-light {
-    color: #f2f2f2;
+    color: #f5f5f5;
   }
-  .laptop\:cl-light-sm {
-    color: #f8f8f8;
+  .laptop\:cl-mute {
+    color: #404040;
   }
-  .laptop\:cl-light-lg {
-    color: #eeeeee;
+  .laptop\:cl-dark {
+    color: #171717;
+  }
+  .laptop\:cl-darker {
+    color: #0a0a0a;
+  }
+  .laptop\:cl-success {
+    color: #22c55e;
+  }
+  .laptop\:cl-danger {
+    color: #ef4444;
+  }
+  .laptop\:cl-warning {
+    color: #f97316;
+  }
+  .laptop\:cl-info {
+    color: #3b82f6;
+  }
+  .laptop\:cl-late-50 {
+    color: #f8fafc;
+  }
+  .laptop\:cl-late-100 {
+    color: #f1f5f9;
+  }
+  .laptop\:cl-late-200 {
+    color: #e2e8f0;
+  }
+  .laptop\:cl-late-300 {
+    color: #cbd5e1;
+  }
+  .laptop\:cl-late-400 {
+    color: #94a3b8;
+  }
+  .laptop\:cl-late-500 {
+    color: #64748b;
+  }
+  .laptop\:cl-late-600 {
+    color: #475569;
+  }
+  .laptop\:cl-late-700 {
+    color: #334155;
+  }
+  .laptop\:cl-late-800 {
+    color: #1e293b;
+  }
+  .laptop\:cl-late-900 {
+    color: #0f172a;
+  }
+  .laptop\:cl-late-950 {
+    color: #020617;
+  }
+  .laptop\:cl-gray-50 {
+    color: #f9fafb;
+  }
+  .laptop\:cl-gray-100 {
+    color: #f3f4f6;
+  }
+  .laptop\:cl-gray-200 {
+    color: #e5e7eb;
+  }
+  .laptop\:cl-gray-300 {
+    color: #d1d5db;
+  }
+  .laptop\:cl-gray-400 {
+    color: #9ca3af;
+  }
+  .laptop\:cl-gray-500 {
+    color: #6b7280;
+  }
+  .laptop\:cl-gray-600 {
+    color: #4b5563;
+  }
+  .laptop\:cl-gray-700 {
+    color: #374151;
+  }
+  .laptop\:cl-gray-800 {
+    color: #1f2937;
+  }
+  .laptop\:cl-gray-900 {
+    color: #111827;
+  }
+  .laptop\:cl-gray-950 {
+    color: #030712;
+  }
+  .laptop\:cl-zinc-50 {
+    color: #fafafa;
+  }
+  .laptop\:cl-zinc-100 {
+    color: #f4f4f5;
+  }
+  .laptop\:cl-zinc-200 {
+    color: #e4e4e7;
+  }
+  .laptop\:cl-zinc-300 {
+    color: #d4d4d8;
+  }
+  .laptop\:cl-zinc-400 {
+    color: #a1a1aa;
+  }
+  .laptop\:cl-zinc-500 {
+    color: #71717a;
+  }
+  .laptop\:cl-zinc-600 {
+    color: #52525b;
+  }
+  .laptop\:cl-zinc-700 {
+    color: #3f3f46;
+  }
+  .laptop\:cl-zinc-800 {
+    color: #27272a;
+  }
+  .laptop\:cl-zinc-900 {
+    color: #18181b;
+  }
+  .laptop\:cl-zinc-950 {
+    color: #09090b;
+  }
+  .laptop\:cl-neutral-50 {
+    color: #fafafa;
+  }
+  .laptop\:cl-neutral-100 {
+    color: #f5f5f5;
+  }
+  .laptop\:cl-neutral-200 {
+    color: #e5e5e5;
+  }
+  .laptop\:cl-neutral-300 {
+    color: #d4d4d4;
+  }
+  .laptop\:cl-neutral-400 {
+    color: #a3a3a3;
+  }
+  .laptop\:cl-neutral-500 {
+    color: #737373;
+  }
+  .laptop\:cl-neutral-600 {
+    color: #525252;
+  }
+  .laptop\:cl-neutral-700 {
+    color: #404040;
+  }
+  .laptop\:cl-neutral-800 {
+    color: #262626;
+  }
+  .laptop\:cl-neutral-900 {
+    color: #171717;
+  }
+  .laptop\:cl-neutral-950 {
+    color: #0a0a0a;
+  }
+  .laptop\:cl-stone-50 {
+    color: #fafaf9;
+  }
+  .laptop\:cl-stone-100 {
+    color: #f5f5f4;
+  }
+  .laptop\:cl-stone-200 {
+    color: #e7e5e4;
+  }
+  .laptop\:cl-stone-300 {
+    color: #d6d3d1;
+  }
+  .laptop\:cl-stone-400 {
+    color: #a8a29e;
+  }
+  .laptop\:cl-stone-500 {
+    color: #78716c;
+  }
+  .laptop\:cl-stone-600 {
+    color: #57534e;
+  }
+  .laptop\:cl-stone-700 {
+    color: #44403c;
+  }
+  .laptop\:cl-stone-800 {
+    color: #292524;
+  }
+  .laptop\:cl-stone-900 {
+    color: #1c1917;
+  }
+  .laptop\:cl-stone-950 {
+    color: #0c0a09;
+  }
+  .laptop\:cl-red-50 {
+    color: #fef2f2;
+  }
+  .laptop\:cl-red-100 {
+    color: #fee2e2;
+  }
+  .laptop\:cl-red-200 {
+    color: #fecaca;
+  }
+  .laptop\:cl-red-300 {
+    color: #fca5a5;
+  }
+  .laptop\:cl-red-400 {
+    color: #f87171;
+  }
+  .laptop\:cl-red-500 {
+    color: #ef4444;
+  }
+  .laptop\:cl-red-600 {
+    color: #dc2626;
+  }
+  .laptop\:cl-red-700 {
+    color: #b91c1c;
+  }
+  .laptop\:cl-red-800 {
+    color: #991b1b;
+  }
+  .laptop\:cl-red-900 {
+    color: #7f1d1d;
+  }
+  .laptop\:cl-red-950 {
+    color: #450a0a;
+  }
+  .laptop\:cl-orange-50 {
+    color: #fff7ed;
+  }
+  .laptop\:cl-orange-100 {
+    color: #ffedd5;
+  }
+  .laptop\:cl-orange-200 {
+    color: #fed7aa;
+  }
+  .laptop\:cl-orange-300 {
+    color: #fdba74;
+  }
+  .laptop\:cl-orange-400 {
+    color: #fb923c;
+  }
+  .laptop\:cl-orange-500 {
+    color: #f97316;
+  }
+  .laptop\:cl-orange-600 {
+    color: #ea580c;
+  }
+  .laptop\:cl-orange-700 {
+    color: #c2410c;
+  }
+  .laptop\:cl-orange-800 {
+    color: #9a3412;
+  }
+  .laptop\:cl-orange-900 {
+    color: #7c2d12;
+  }
+  .laptop\:cl-orange-950 {
+    color: #431407;
+  }
+  .laptop\:cl-amber-50 {
+    color: #fffbeb;
+  }
+  .laptop\:cl-amber-100 {
+    color: #fef3c7;
+  }
+  .laptop\:cl-amber-200 {
+    color: #fde68a;
+  }
+  .laptop\:cl-amber-300 {
+    color: #fcd34d;
+  }
+  .laptop\:cl-amber-400 {
+    color: #fbbf24;
+  }
+  .laptop\:cl-amber-500 {
+    color: #f59e0b;
+  }
+  .laptop\:cl-amber-600 {
+    color: #d97706;
+  }
+  .laptop\:cl-amber-700 {
+    color: #b45309;
+  }
+  .laptop\:cl-amber-800 {
+    color: #92400e;
+  }
+  .laptop\:cl-amber-900 {
+    color: #78350f;
+  }
+  .laptop\:cl-amber-950 {
+    color: #451a03;
+  }
+  .laptop\:cl-yellow-50 {
+    color: #fefce8;
+  }
+  .laptop\:cl-yellow-100 {
+    color: #fef9c3;
+  }
+  .laptop\:cl-yellow-200 {
+    color: #fef08a;
+  }
+  .laptop\:cl-yellow-300 {
+    color: #fde047;
+  }
+  .laptop\:cl-yellow-400 {
+    color: #facc15;
+  }
+  .laptop\:cl-yellow-500 {
+    color: #eab308;
+  }
+  .laptop\:cl-yellow-600 {
+    color: #ca8a04;
+  }
+  .laptop\:cl-yellow-700 {
+    color: #a16207;
+  }
+  .laptop\:cl-yellow-800 {
+    color: #854d0e;
+  }
+  .laptop\:cl-yellow-900 {
+    color: #713f12;
+  }
+  .laptop\:cl-yellow-950 {
+    color: #422006;
+  }
+  .laptop\:cl-lime-50 {
+    color: #f7fee7;
+  }
+  .laptop\:cl-lime-100 {
+    color: #ecfccb;
+  }
+  .laptop\:cl-lime-200 {
+    color: #d9f99d;
+  }
+  .laptop\:cl-lime-300 {
+    color: #bef264;
+  }
+  .laptop\:cl-lime-400 {
+    color: #a3e635;
+  }
+  .laptop\:cl-lime-500 {
+    color: #84cc16;
+  }
+  .laptop\:cl-lime-600 {
+    color: #65a30d;
+  }
+  .laptop\:cl-lime-700 {
+    color: #4d7c0f;
+  }
+  .laptop\:cl-lime-800 {
+    color: #3f6212;
+  }
+  .laptop\:cl-lime-900 {
+    color: #365314;
+  }
+  .laptop\:cl-lime-950 {
+    color: #1a2e05;
+  }
+  .laptop\:cl-green-50 {
+    color: #f0fdf4;
+  }
+  .laptop\:cl-green-100 {
+    color: #dcfce7;
+  }
+  .laptop\:cl-green-200 {
+    color: #bbf7d0;
+  }
+  .laptop\:cl-green-300 {
+    color: #86efac;
+  }
+  .laptop\:cl-green-400 {
+    color: #4ade80;
+  }
+  .laptop\:cl-green-500 {
+    color: #22c55e;
+  }
+  .laptop\:cl-green-600 {
+    color: #16a34a;
+  }
+  .laptop\:cl-green-700 {
+    color: #15803d;
+  }
+  .laptop\:cl-green-800 {
+    color: #166534;
+  }
+  .laptop\:cl-green-900 {
+    color: #14532d;
+  }
+  .laptop\:cl-green-950 {
+    color: #052e16;
+  }
+  .laptop\:cl-emerald-50 {
+    color: #ecfdf5;
+  }
+  .laptop\:cl-emerald-100 {
+    color: #d1fae5;
+  }
+  .laptop\:cl-emerald-200 {
+    color: #a7f3d0;
+  }
+  .laptop\:cl-emerald-300 {
+    color: #6ee7b7;
+  }
+  .laptop\:cl-emerald-400 {
+    color: #34d399;
+  }
+  .laptop\:cl-emerald-500 {
+    color: #10b981;
+  }
+  .laptop\:cl-emerald-600 {
+    color: #059669;
+  }
+  .laptop\:cl-emerald-700 {
+    color: #047857;
+  }
+  .laptop\:cl-emerald-800 {
+    color: #065f46;
+  }
+  .laptop\:cl-emerald-900 {
+    color: #064e3b;
+  }
+  .laptop\:cl-emerald-950 {
+    color: #022c22;
+  }
+  .laptop\:cl-teal-50 {
+    color: #f0fdfa;
+  }
+  .laptop\:cl-teal-100 {
+    color: #ccfbf1;
+  }
+  .laptop\:cl-teal-200 {
+    color: #99f6e4;
+  }
+  .laptop\:cl-teal-300 {
+    color: #5eead4;
+  }
+  .laptop\:cl-teal-400 {
+    color: #2dd4bf;
+  }
+  .laptop\:cl-teal-500 {
+    color: #14b8a6;
+  }
+  .laptop\:cl-teal-600 {
+    color: #0d9488;
+  }
+  .laptop\:cl-teal-700 {
+    color: #0f766e;
+  }
+  .laptop\:cl-teal-800 {
+    color: #115e59;
+  }
+  .laptop\:cl-teal-900 {
+    color: #134e4a;
+  }
+  .laptop\:cl-teal-950 {
+    color: #042f2e;
+  }
+  .laptop\:cl-cyan-50 {
+    color: #ecfeff;
+  }
+  .laptop\:cl-cyan-100 {
+    color: #cffafe;
+  }
+  .laptop\:cl-cyan-200 {
+    color: #a5f3fc;
+  }
+  .laptop\:cl-cyan-300 {
+    color: #67e8f9;
+  }
+  .laptop\:cl-cyan-400 {
+    color: #22d3ee;
+  }
+  .laptop\:cl-cyan-500 {
+    color: #06b6d4;
+  }
+  .laptop\:cl-cyan-600 {
+    color: #0891b2;
+  }
+  .laptop\:cl-cyan-700 {
+    color: #0e7490;
+  }
+  .laptop\:cl-cyan-800 {
+    color: #155e75;
+  }
+  .laptop\:cl-cyan-900 {
+    color: #164e63;
+  }
+  .laptop\:cl-cyan-950 {
+    color: #083344;
+  }
+  .laptop\:cl-sky-50 {
+    color: #f0f9ff;
+  }
+  .laptop\:cl-sky-100 {
+    color: #e0f2fe;
+  }
+  .laptop\:cl-sky-200 {
+    color: #bae6fd;
+  }
+  .laptop\:cl-sky-300 {
+    color: #7dd3fc;
+  }
+  .laptop\:cl-sky-400 {
+    color: #38bdf8;
+  }
+  .laptop\:cl-sky-500 {
+    color: #0ea5e9;
+  }
+  .laptop\:cl-sky-600 {
+    color: #0284c7;
+  }
+  .laptop\:cl-sky-700 {
+    color: #0369a1;
+  }
+  .laptop\:cl-sky-800 {
+    color: #075985;
+  }
+  .laptop\:cl-sky-900 {
+    color: #0c4a6e;
+  }
+  .laptop\:cl-sky-950 {
+    color: #082f49;
+  }
+  .laptop\:cl-blue-50 {
+    color: #eff6ff;
+  }
+  .laptop\:cl-blue-100 {
+    color: #dbeafe;
+  }
+  .laptop\:cl-blue-200 {
+    color: #bfdbfe;
+  }
+  .laptop\:cl-blue-300 {
+    color: #93c5fd;
+  }
+  .laptop\:cl-blue-400 {
+    color: #60a5fa;
+  }
+  .laptop\:cl-blue-500 {
+    color: #3b82f6;
+  }
+  .laptop\:cl-blue-600 {
+    color: #2563eb;
+  }
+  .laptop\:cl-blue-700 {
+    color: #1d4ed8;
+  }
+  .laptop\:cl-blue-800 {
+    color: #1e40af;
+  }
+  .laptop\:cl-blue-900 {
+    color: #1e3a8a;
+  }
+  .laptop\:cl-blue-950 {
+    color: #172554;
+  }
+  .laptop\:cl-indigo-50 {
+    color: #eef2ff;
+  }
+  .laptop\:cl-indigo-100 {
+    color: #e0e7ff;
+  }
+  .laptop\:cl-indigo-200 {
+    color: #c7d2fe;
+  }
+  .laptop\:cl-indigo-300 {
+    color: #a5b4fc;
+  }
+  .laptop\:cl-indigo-400 {
+    color: #818cf8;
+  }
+  .laptop\:cl-indigo-500 {
+    color: #6366f1;
+  }
+  .laptop\:cl-indigo-600 {
+    color: #4f46e5;
+  }
+  .laptop\:cl-indigo-700 {
+    color: #4338ca;
+  }
+  .laptop\:cl-indigo-800 {
+    color: #3730a3;
+  }
+  .laptop\:cl-indigo-900 {
+    color: #312e81;
+  }
+  .laptop\:cl-indigo-950 {
+    color: #1e1b4b;
+  }
+  .laptop\:cl-violet-50 {
+    color: #f5f3ff;
+  }
+  .laptop\:cl-violet-100 {
+    color: #ede9fe;
+  }
+  .laptop\:cl-violet-200 {
+    color: #ddd6fe;
+  }
+  .laptop\:cl-violet-300 {
+    color: #c4b5fd;
+  }
+  .laptop\:cl-violet-400 {
+    color: #a78bfa;
+  }
+  .laptop\:cl-violet-500 {
+    color: #8b5cf6;
+  }
+  .laptop\:cl-violet-600 {
+    color: #7c3aed;
+  }
+  .laptop\:cl-violet-700 {
+    color: #6d28d9;
+  }
+  .laptop\:cl-violet-800 {
+    color: #5b21b6;
+  }
+  .laptop\:cl-violet-900 {
+    color: #4c1d95;
+  }
+  .laptop\:cl-violet-950 {
+    color: #2e1065;
+  }
+  .laptop\:cl-purple-50 {
+    color: #faf5ff;
+  }
+  .laptop\:cl-purple-100 {
+    color: #f3e8ff;
+  }
+  .laptop\:cl-purple-200 {
+    color: #e9d5ff;
+  }
+  .laptop\:cl-purple-300 {
+    color: #d8b4fe;
+  }
+  .laptop\:cl-purple-400 {
+    color: #c084fc;
+  }
+  .laptop\:cl-purple-500 {
+    color: #a855f7;
+  }
+  .laptop\:cl-purple-600 {
+    color: #9333ea;
+  }
+  .laptop\:cl-purple-700 {
+    color: #7e22ce;
+  }
+  .laptop\:cl-purple-800 {
+    color: #6b21a8;
+  }
+  .laptop\:cl-purple-900 {
+    color: #581c87;
+  }
+  .laptop\:cl-purple-950 {
+    color: #3b0764;
+  }
+  .laptop\:cl-fuchsia-50 {
+    color: #fdf4ff;
+  }
+  .laptop\:cl-fuchsia-100 {
+    color: #fae8ff;
+  }
+  .laptop\:cl-fuchsia-200 {
+    color: #f5d0fe;
+  }
+  .laptop\:cl-fuchsia-300 {
+    color: #f0abfc;
+  }
+  .laptop\:cl-fuchsia-400 {
+    color: #e879f9;
+  }
+  .laptop\:cl-fuchsia-500 {
+    color: #d946ef;
+  }
+  .laptop\:cl-fuchsia-600 {
+    color: #c026d3;
+  }
+  .laptop\:cl-fuchsia-700 {
+    color: #a21caf;
+  }
+  .laptop\:cl-fuchsia-800 {
+    color: #86198f;
+  }
+  .laptop\:cl-fuchsia-900 {
+    color: #701a75;
+  }
+  .laptop\:cl-fuchsia-950 {
+    color: #4a044e;
+  }
+  .laptop\:cl-pink-50 {
+    color: #fdf2f8;
+  }
+  .laptop\:cl-pink-100 {
+    color: #fce7f3;
+  }
+  .laptop\:cl-pink-200 {
+    color: #fbcfe8;
+  }
+  .laptop\:cl-pink-300 {
+    color: #f9a8d4;
+  }
+  .laptop\:cl-pink-400 {
+    color: #f472b6;
+  }
+  .laptop\:cl-pink-500 {
+    color: #ec4899;
+  }
+  .laptop\:cl-pink-600 {
+    color: #db2777;
+  }
+  .laptop\:cl-pink-700 {
+    color: #be185d;
+  }
+  .laptop\:cl-pink-800 {
+    color: #9d174d;
+  }
+  .laptop\:cl-pink-900 {
+    color: #831843;
+  }
+  .laptop\:cl-pink-950 {
+    color: #500724;
+  }
+  .laptop\:cl-rose-50 {
+    color: #fff1f2;
+  }
+  .laptop\:cl-rose-100 {
+    color: #ffe4e6;
+  }
+  .laptop\:cl-rose-200 {
+    color: #fecdd3;
+  }
+  .laptop\:cl-rose-300 {
+    color: #fda4af;
+  }
+  .laptop\:cl-rose-400 {
+    color: #fb7185;
+  }
+  .laptop\:cl-rose-500 {
+    color: #f43f5e;
+  }
+  .laptop\:cl-rose-600 {
+    color: #e11d48;
+  }
+  .laptop\:cl-rose-700 {
+    color: #be123c;
+  }
+  .laptop\:cl-rose-800 {
+    color: #9f1239;
+  }
+  .laptop\:cl-rose-900 {
+    color: #881337;
+  }
+  .laptop\:cl-rose-950 {
+    color: #4c0519;
   }
 }
 @media (min-width: 1280px) {
   .desktop\:cl-white {
-    color: #ffffff;
+    color: white;
   }
   .desktop\:cl-black {
-    color: #000000;
+    color: black;
   }
-  .desktop\:cl-dark {
-    color: #222222;
-  }
-  .desktop\:cl-mute {
-    color: #555;
+  .desktop\:cl-lighteen {
+    color: #fafafa;
   }
   .desktop\:cl-light {
-    color: #f2f2f2;
+    color: #f5f5f5;
   }
-  .desktop\:cl-light-sm {
-    color: #f8f8f8;
+  .desktop\:cl-mute {
+    color: #404040;
   }
-  .desktop\:cl-light-lg {
-    color: #eeeeee;
+  .desktop\:cl-dark {
+    color: #171717;
+  }
+  .desktop\:cl-darker {
+    color: #0a0a0a;
+  }
+  .desktop\:cl-success {
+    color: #22c55e;
+  }
+  .desktop\:cl-danger {
+    color: #ef4444;
+  }
+  .desktop\:cl-warning {
+    color: #f97316;
+  }
+  .desktop\:cl-info {
+    color: #3b82f6;
+  }
+  .desktop\:cl-late-50 {
+    color: #f8fafc;
+  }
+  .desktop\:cl-late-100 {
+    color: #f1f5f9;
+  }
+  .desktop\:cl-late-200 {
+    color: #e2e8f0;
+  }
+  .desktop\:cl-late-300 {
+    color: #cbd5e1;
+  }
+  .desktop\:cl-late-400 {
+    color: #94a3b8;
+  }
+  .desktop\:cl-late-500 {
+    color: #64748b;
+  }
+  .desktop\:cl-late-600 {
+    color: #475569;
+  }
+  .desktop\:cl-late-700 {
+    color: #334155;
+  }
+  .desktop\:cl-late-800 {
+    color: #1e293b;
+  }
+  .desktop\:cl-late-900 {
+    color: #0f172a;
+  }
+  .desktop\:cl-late-950 {
+    color: #020617;
+  }
+  .desktop\:cl-gray-50 {
+    color: #f9fafb;
+  }
+  .desktop\:cl-gray-100 {
+    color: #f3f4f6;
+  }
+  .desktop\:cl-gray-200 {
+    color: #e5e7eb;
+  }
+  .desktop\:cl-gray-300 {
+    color: #d1d5db;
+  }
+  .desktop\:cl-gray-400 {
+    color: #9ca3af;
+  }
+  .desktop\:cl-gray-500 {
+    color: #6b7280;
+  }
+  .desktop\:cl-gray-600 {
+    color: #4b5563;
+  }
+  .desktop\:cl-gray-700 {
+    color: #374151;
+  }
+  .desktop\:cl-gray-800 {
+    color: #1f2937;
+  }
+  .desktop\:cl-gray-900 {
+    color: #111827;
+  }
+  .desktop\:cl-gray-950 {
+    color: #030712;
+  }
+  .desktop\:cl-zinc-50 {
+    color: #fafafa;
+  }
+  .desktop\:cl-zinc-100 {
+    color: #f4f4f5;
+  }
+  .desktop\:cl-zinc-200 {
+    color: #e4e4e7;
+  }
+  .desktop\:cl-zinc-300 {
+    color: #d4d4d8;
+  }
+  .desktop\:cl-zinc-400 {
+    color: #a1a1aa;
+  }
+  .desktop\:cl-zinc-500 {
+    color: #71717a;
+  }
+  .desktop\:cl-zinc-600 {
+    color: #52525b;
+  }
+  .desktop\:cl-zinc-700 {
+    color: #3f3f46;
+  }
+  .desktop\:cl-zinc-800 {
+    color: #27272a;
+  }
+  .desktop\:cl-zinc-900 {
+    color: #18181b;
+  }
+  .desktop\:cl-zinc-950 {
+    color: #09090b;
+  }
+  .desktop\:cl-neutral-50 {
+    color: #fafafa;
+  }
+  .desktop\:cl-neutral-100 {
+    color: #f5f5f5;
+  }
+  .desktop\:cl-neutral-200 {
+    color: #e5e5e5;
+  }
+  .desktop\:cl-neutral-300 {
+    color: #d4d4d4;
+  }
+  .desktop\:cl-neutral-400 {
+    color: #a3a3a3;
+  }
+  .desktop\:cl-neutral-500 {
+    color: #737373;
+  }
+  .desktop\:cl-neutral-600 {
+    color: #525252;
+  }
+  .desktop\:cl-neutral-700 {
+    color: #404040;
+  }
+  .desktop\:cl-neutral-800 {
+    color: #262626;
+  }
+  .desktop\:cl-neutral-900 {
+    color: #171717;
+  }
+  .desktop\:cl-neutral-950 {
+    color: #0a0a0a;
+  }
+  .desktop\:cl-stone-50 {
+    color: #fafaf9;
+  }
+  .desktop\:cl-stone-100 {
+    color: #f5f5f4;
+  }
+  .desktop\:cl-stone-200 {
+    color: #e7e5e4;
+  }
+  .desktop\:cl-stone-300 {
+    color: #d6d3d1;
+  }
+  .desktop\:cl-stone-400 {
+    color: #a8a29e;
+  }
+  .desktop\:cl-stone-500 {
+    color: #78716c;
+  }
+  .desktop\:cl-stone-600 {
+    color: #57534e;
+  }
+  .desktop\:cl-stone-700 {
+    color: #44403c;
+  }
+  .desktop\:cl-stone-800 {
+    color: #292524;
+  }
+  .desktop\:cl-stone-900 {
+    color: #1c1917;
+  }
+  .desktop\:cl-stone-950 {
+    color: #0c0a09;
+  }
+  .desktop\:cl-red-50 {
+    color: #fef2f2;
+  }
+  .desktop\:cl-red-100 {
+    color: #fee2e2;
+  }
+  .desktop\:cl-red-200 {
+    color: #fecaca;
+  }
+  .desktop\:cl-red-300 {
+    color: #fca5a5;
+  }
+  .desktop\:cl-red-400 {
+    color: #f87171;
+  }
+  .desktop\:cl-red-500 {
+    color: #ef4444;
+  }
+  .desktop\:cl-red-600 {
+    color: #dc2626;
+  }
+  .desktop\:cl-red-700 {
+    color: #b91c1c;
+  }
+  .desktop\:cl-red-800 {
+    color: #991b1b;
+  }
+  .desktop\:cl-red-900 {
+    color: #7f1d1d;
+  }
+  .desktop\:cl-red-950 {
+    color: #450a0a;
+  }
+  .desktop\:cl-orange-50 {
+    color: #fff7ed;
+  }
+  .desktop\:cl-orange-100 {
+    color: #ffedd5;
+  }
+  .desktop\:cl-orange-200 {
+    color: #fed7aa;
+  }
+  .desktop\:cl-orange-300 {
+    color: #fdba74;
+  }
+  .desktop\:cl-orange-400 {
+    color: #fb923c;
+  }
+  .desktop\:cl-orange-500 {
+    color: #f97316;
+  }
+  .desktop\:cl-orange-600 {
+    color: #ea580c;
+  }
+  .desktop\:cl-orange-700 {
+    color: #c2410c;
+  }
+  .desktop\:cl-orange-800 {
+    color: #9a3412;
+  }
+  .desktop\:cl-orange-900 {
+    color: #7c2d12;
+  }
+  .desktop\:cl-orange-950 {
+    color: #431407;
+  }
+  .desktop\:cl-amber-50 {
+    color: #fffbeb;
+  }
+  .desktop\:cl-amber-100 {
+    color: #fef3c7;
+  }
+  .desktop\:cl-amber-200 {
+    color: #fde68a;
+  }
+  .desktop\:cl-amber-300 {
+    color: #fcd34d;
+  }
+  .desktop\:cl-amber-400 {
+    color: #fbbf24;
+  }
+  .desktop\:cl-amber-500 {
+    color: #f59e0b;
+  }
+  .desktop\:cl-amber-600 {
+    color: #d97706;
+  }
+  .desktop\:cl-amber-700 {
+    color: #b45309;
+  }
+  .desktop\:cl-amber-800 {
+    color: #92400e;
+  }
+  .desktop\:cl-amber-900 {
+    color: #78350f;
+  }
+  .desktop\:cl-amber-950 {
+    color: #451a03;
+  }
+  .desktop\:cl-yellow-50 {
+    color: #fefce8;
+  }
+  .desktop\:cl-yellow-100 {
+    color: #fef9c3;
+  }
+  .desktop\:cl-yellow-200 {
+    color: #fef08a;
+  }
+  .desktop\:cl-yellow-300 {
+    color: #fde047;
+  }
+  .desktop\:cl-yellow-400 {
+    color: #facc15;
+  }
+  .desktop\:cl-yellow-500 {
+    color: #eab308;
+  }
+  .desktop\:cl-yellow-600 {
+    color: #ca8a04;
+  }
+  .desktop\:cl-yellow-700 {
+    color: #a16207;
+  }
+  .desktop\:cl-yellow-800 {
+    color: #854d0e;
+  }
+  .desktop\:cl-yellow-900 {
+    color: #713f12;
+  }
+  .desktop\:cl-yellow-950 {
+    color: #422006;
+  }
+  .desktop\:cl-lime-50 {
+    color: #f7fee7;
+  }
+  .desktop\:cl-lime-100 {
+    color: #ecfccb;
+  }
+  .desktop\:cl-lime-200 {
+    color: #d9f99d;
+  }
+  .desktop\:cl-lime-300 {
+    color: #bef264;
+  }
+  .desktop\:cl-lime-400 {
+    color: #a3e635;
+  }
+  .desktop\:cl-lime-500 {
+    color: #84cc16;
+  }
+  .desktop\:cl-lime-600 {
+    color: #65a30d;
+  }
+  .desktop\:cl-lime-700 {
+    color: #4d7c0f;
+  }
+  .desktop\:cl-lime-800 {
+    color: #3f6212;
+  }
+  .desktop\:cl-lime-900 {
+    color: #365314;
+  }
+  .desktop\:cl-lime-950 {
+    color: #1a2e05;
+  }
+  .desktop\:cl-green-50 {
+    color: #f0fdf4;
+  }
+  .desktop\:cl-green-100 {
+    color: #dcfce7;
+  }
+  .desktop\:cl-green-200 {
+    color: #bbf7d0;
+  }
+  .desktop\:cl-green-300 {
+    color: #86efac;
+  }
+  .desktop\:cl-green-400 {
+    color: #4ade80;
+  }
+  .desktop\:cl-green-500 {
+    color: #22c55e;
+  }
+  .desktop\:cl-green-600 {
+    color: #16a34a;
+  }
+  .desktop\:cl-green-700 {
+    color: #15803d;
+  }
+  .desktop\:cl-green-800 {
+    color: #166534;
+  }
+  .desktop\:cl-green-900 {
+    color: #14532d;
+  }
+  .desktop\:cl-green-950 {
+    color: #052e16;
+  }
+  .desktop\:cl-emerald-50 {
+    color: #ecfdf5;
+  }
+  .desktop\:cl-emerald-100 {
+    color: #d1fae5;
+  }
+  .desktop\:cl-emerald-200 {
+    color: #a7f3d0;
+  }
+  .desktop\:cl-emerald-300 {
+    color: #6ee7b7;
+  }
+  .desktop\:cl-emerald-400 {
+    color: #34d399;
+  }
+  .desktop\:cl-emerald-500 {
+    color: #10b981;
+  }
+  .desktop\:cl-emerald-600 {
+    color: #059669;
+  }
+  .desktop\:cl-emerald-700 {
+    color: #047857;
+  }
+  .desktop\:cl-emerald-800 {
+    color: #065f46;
+  }
+  .desktop\:cl-emerald-900 {
+    color: #064e3b;
+  }
+  .desktop\:cl-emerald-950 {
+    color: #022c22;
+  }
+  .desktop\:cl-teal-50 {
+    color: #f0fdfa;
+  }
+  .desktop\:cl-teal-100 {
+    color: #ccfbf1;
+  }
+  .desktop\:cl-teal-200 {
+    color: #99f6e4;
+  }
+  .desktop\:cl-teal-300 {
+    color: #5eead4;
+  }
+  .desktop\:cl-teal-400 {
+    color: #2dd4bf;
+  }
+  .desktop\:cl-teal-500 {
+    color: #14b8a6;
+  }
+  .desktop\:cl-teal-600 {
+    color: #0d9488;
+  }
+  .desktop\:cl-teal-700 {
+    color: #0f766e;
+  }
+  .desktop\:cl-teal-800 {
+    color: #115e59;
+  }
+  .desktop\:cl-teal-900 {
+    color: #134e4a;
+  }
+  .desktop\:cl-teal-950 {
+    color: #042f2e;
+  }
+  .desktop\:cl-cyan-50 {
+    color: #ecfeff;
+  }
+  .desktop\:cl-cyan-100 {
+    color: #cffafe;
+  }
+  .desktop\:cl-cyan-200 {
+    color: #a5f3fc;
+  }
+  .desktop\:cl-cyan-300 {
+    color: #67e8f9;
+  }
+  .desktop\:cl-cyan-400 {
+    color: #22d3ee;
+  }
+  .desktop\:cl-cyan-500 {
+    color: #06b6d4;
+  }
+  .desktop\:cl-cyan-600 {
+    color: #0891b2;
+  }
+  .desktop\:cl-cyan-700 {
+    color: #0e7490;
+  }
+  .desktop\:cl-cyan-800 {
+    color: #155e75;
+  }
+  .desktop\:cl-cyan-900 {
+    color: #164e63;
+  }
+  .desktop\:cl-cyan-950 {
+    color: #083344;
+  }
+  .desktop\:cl-sky-50 {
+    color: #f0f9ff;
+  }
+  .desktop\:cl-sky-100 {
+    color: #e0f2fe;
+  }
+  .desktop\:cl-sky-200 {
+    color: #bae6fd;
+  }
+  .desktop\:cl-sky-300 {
+    color: #7dd3fc;
+  }
+  .desktop\:cl-sky-400 {
+    color: #38bdf8;
+  }
+  .desktop\:cl-sky-500 {
+    color: #0ea5e9;
+  }
+  .desktop\:cl-sky-600 {
+    color: #0284c7;
+  }
+  .desktop\:cl-sky-700 {
+    color: #0369a1;
+  }
+  .desktop\:cl-sky-800 {
+    color: #075985;
+  }
+  .desktop\:cl-sky-900 {
+    color: #0c4a6e;
+  }
+  .desktop\:cl-sky-950 {
+    color: #082f49;
+  }
+  .desktop\:cl-blue-50 {
+    color: #eff6ff;
+  }
+  .desktop\:cl-blue-100 {
+    color: #dbeafe;
+  }
+  .desktop\:cl-blue-200 {
+    color: #bfdbfe;
+  }
+  .desktop\:cl-blue-300 {
+    color: #93c5fd;
+  }
+  .desktop\:cl-blue-400 {
+    color: #60a5fa;
+  }
+  .desktop\:cl-blue-500 {
+    color: #3b82f6;
+  }
+  .desktop\:cl-blue-600 {
+    color: #2563eb;
+  }
+  .desktop\:cl-blue-700 {
+    color: #1d4ed8;
+  }
+  .desktop\:cl-blue-800 {
+    color: #1e40af;
+  }
+  .desktop\:cl-blue-900 {
+    color: #1e3a8a;
+  }
+  .desktop\:cl-blue-950 {
+    color: #172554;
+  }
+  .desktop\:cl-indigo-50 {
+    color: #eef2ff;
+  }
+  .desktop\:cl-indigo-100 {
+    color: #e0e7ff;
+  }
+  .desktop\:cl-indigo-200 {
+    color: #c7d2fe;
+  }
+  .desktop\:cl-indigo-300 {
+    color: #a5b4fc;
+  }
+  .desktop\:cl-indigo-400 {
+    color: #818cf8;
+  }
+  .desktop\:cl-indigo-500 {
+    color: #6366f1;
+  }
+  .desktop\:cl-indigo-600 {
+    color: #4f46e5;
+  }
+  .desktop\:cl-indigo-700 {
+    color: #4338ca;
+  }
+  .desktop\:cl-indigo-800 {
+    color: #3730a3;
+  }
+  .desktop\:cl-indigo-900 {
+    color: #312e81;
+  }
+  .desktop\:cl-indigo-950 {
+    color: #1e1b4b;
+  }
+  .desktop\:cl-violet-50 {
+    color: #f5f3ff;
+  }
+  .desktop\:cl-violet-100 {
+    color: #ede9fe;
+  }
+  .desktop\:cl-violet-200 {
+    color: #ddd6fe;
+  }
+  .desktop\:cl-violet-300 {
+    color: #c4b5fd;
+  }
+  .desktop\:cl-violet-400 {
+    color: #a78bfa;
+  }
+  .desktop\:cl-violet-500 {
+    color: #8b5cf6;
+  }
+  .desktop\:cl-violet-600 {
+    color: #7c3aed;
+  }
+  .desktop\:cl-violet-700 {
+    color: #6d28d9;
+  }
+  .desktop\:cl-violet-800 {
+    color: #5b21b6;
+  }
+  .desktop\:cl-violet-900 {
+    color: #4c1d95;
+  }
+  .desktop\:cl-violet-950 {
+    color: #2e1065;
+  }
+  .desktop\:cl-purple-50 {
+    color: #faf5ff;
+  }
+  .desktop\:cl-purple-100 {
+    color: #f3e8ff;
+  }
+  .desktop\:cl-purple-200 {
+    color: #e9d5ff;
+  }
+  .desktop\:cl-purple-300 {
+    color: #d8b4fe;
+  }
+  .desktop\:cl-purple-400 {
+    color: #c084fc;
+  }
+  .desktop\:cl-purple-500 {
+    color: #a855f7;
+  }
+  .desktop\:cl-purple-600 {
+    color: #9333ea;
+  }
+  .desktop\:cl-purple-700 {
+    color: #7e22ce;
+  }
+  .desktop\:cl-purple-800 {
+    color: #6b21a8;
+  }
+  .desktop\:cl-purple-900 {
+    color: #581c87;
+  }
+  .desktop\:cl-purple-950 {
+    color: #3b0764;
+  }
+  .desktop\:cl-fuchsia-50 {
+    color: #fdf4ff;
+  }
+  .desktop\:cl-fuchsia-100 {
+    color: #fae8ff;
+  }
+  .desktop\:cl-fuchsia-200 {
+    color: #f5d0fe;
+  }
+  .desktop\:cl-fuchsia-300 {
+    color: #f0abfc;
+  }
+  .desktop\:cl-fuchsia-400 {
+    color: #e879f9;
+  }
+  .desktop\:cl-fuchsia-500 {
+    color: #d946ef;
+  }
+  .desktop\:cl-fuchsia-600 {
+    color: #c026d3;
+  }
+  .desktop\:cl-fuchsia-700 {
+    color: #a21caf;
+  }
+  .desktop\:cl-fuchsia-800 {
+    color: #86198f;
+  }
+  .desktop\:cl-fuchsia-900 {
+    color: #701a75;
+  }
+  .desktop\:cl-fuchsia-950 {
+    color: #4a044e;
+  }
+  .desktop\:cl-pink-50 {
+    color: #fdf2f8;
+  }
+  .desktop\:cl-pink-100 {
+    color: #fce7f3;
+  }
+  .desktop\:cl-pink-200 {
+    color: #fbcfe8;
+  }
+  .desktop\:cl-pink-300 {
+    color: #f9a8d4;
+  }
+  .desktop\:cl-pink-400 {
+    color: #f472b6;
+  }
+  .desktop\:cl-pink-500 {
+    color: #ec4899;
+  }
+  .desktop\:cl-pink-600 {
+    color: #db2777;
+  }
+  .desktop\:cl-pink-700 {
+    color: #be185d;
+  }
+  .desktop\:cl-pink-800 {
+    color: #9d174d;
+  }
+  .desktop\:cl-pink-900 {
+    color: #831843;
+  }
+  .desktop\:cl-pink-950 {
+    color: #500724;
+  }
+  .desktop\:cl-rose-50 {
+    color: #fff1f2;
+  }
+  .desktop\:cl-rose-100 {
+    color: #ffe4e6;
+  }
+  .desktop\:cl-rose-200 {
+    color: #fecdd3;
+  }
+  .desktop\:cl-rose-300 {
+    color: #fda4af;
+  }
+  .desktop\:cl-rose-400 {
+    color: #fb7185;
+  }
+  .desktop\:cl-rose-500 {
+    color: #f43f5e;
+  }
+  .desktop\:cl-rose-600 {
+    color: #e11d48;
+  }
+  .desktop\:cl-rose-700 {
+    color: #be123c;
+  }
+  .desktop\:cl-rose-800 {
+    color: #9f1239;
+  }
+  .desktop\:cl-rose-900 {
+    color: #881337;
+  }
+  .desktop\:cl-rose-950 {
+    color: #4c0519;
   }
 }
 @media (min-width: 1536px) {
   .screen\:cl-white {
-    color: #ffffff;
+    color: white;
   }
   .screen\:cl-black {
-    color: #000000;
+    color: black;
   }
-  .screen\:cl-dark {
-    color: #222222;
-  }
-  .screen\:cl-mute {
-    color: #555;
+  .screen\:cl-lighteen {
+    color: #fafafa;
   }
   .screen\:cl-light {
-    color: #f2f2f2;
+    color: #f5f5f5;
   }
-  .screen\:cl-light-sm {
-    color: #f8f8f8;
+  .screen\:cl-mute {
+    color: #404040;
   }
-  .screen\:cl-light-lg {
-    color: #eeeeee;
+  .screen\:cl-dark {
+    color: #171717;
+  }
+  .screen\:cl-darker {
+    color: #0a0a0a;
+  }
+  .screen\:cl-success {
+    color: #22c55e;
+  }
+  .screen\:cl-danger {
+    color: #ef4444;
+  }
+  .screen\:cl-warning {
+    color: #f97316;
+  }
+  .screen\:cl-info {
+    color: #3b82f6;
+  }
+  .screen\:cl-late-50 {
+    color: #f8fafc;
+  }
+  .screen\:cl-late-100 {
+    color: #f1f5f9;
+  }
+  .screen\:cl-late-200 {
+    color: #e2e8f0;
+  }
+  .screen\:cl-late-300 {
+    color: #cbd5e1;
+  }
+  .screen\:cl-late-400 {
+    color: #94a3b8;
+  }
+  .screen\:cl-late-500 {
+    color: #64748b;
+  }
+  .screen\:cl-late-600 {
+    color: #475569;
+  }
+  .screen\:cl-late-700 {
+    color: #334155;
+  }
+  .screen\:cl-late-800 {
+    color: #1e293b;
+  }
+  .screen\:cl-late-900 {
+    color: #0f172a;
+  }
+  .screen\:cl-late-950 {
+    color: #020617;
+  }
+  .screen\:cl-gray-50 {
+    color: #f9fafb;
+  }
+  .screen\:cl-gray-100 {
+    color: #f3f4f6;
+  }
+  .screen\:cl-gray-200 {
+    color: #e5e7eb;
+  }
+  .screen\:cl-gray-300 {
+    color: #d1d5db;
+  }
+  .screen\:cl-gray-400 {
+    color: #9ca3af;
+  }
+  .screen\:cl-gray-500 {
+    color: #6b7280;
+  }
+  .screen\:cl-gray-600 {
+    color: #4b5563;
+  }
+  .screen\:cl-gray-700 {
+    color: #374151;
+  }
+  .screen\:cl-gray-800 {
+    color: #1f2937;
+  }
+  .screen\:cl-gray-900 {
+    color: #111827;
+  }
+  .screen\:cl-gray-950 {
+    color: #030712;
+  }
+  .screen\:cl-zinc-50 {
+    color: #fafafa;
+  }
+  .screen\:cl-zinc-100 {
+    color: #f4f4f5;
+  }
+  .screen\:cl-zinc-200 {
+    color: #e4e4e7;
+  }
+  .screen\:cl-zinc-300 {
+    color: #d4d4d8;
+  }
+  .screen\:cl-zinc-400 {
+    color: #a1a1aa;
+  }
+  .screen\:cl-zinc-500 {
+    color: #71717a;
+  }
+  .screen\:cl-zinc-600 {
+    color: #52525b;
+  }
+  .screen\:cl-zinc-700 {
+    color: #3f3f46;
+  }
+  .screen\:cl-zinc-800 {
+    color: #27272a;
+  }
+  .screen\:cl-zinc-900 {
+    color: #18181b;
+  }
+  .screen\:cl-zinc-950 {
+    color: #09090b;
+  }
+  .screen\:cl-neutral-50 {
+    color: #fafafa;
+  }
+  .screen\:cl-neutral-100 {
+    color: #f5f5f5;
+  }
+  .screen\:cl-neutral-200 {
+    color: #e5e5e5;
+  }
+  .screen\:cl-neutral-300 {
+    color: #d4d4d4;
+  }
+  .screen\:cl-neutral-400 {
+    color: #a3a3a3;
+  }
+  .screen\:cl-neutral-500 {
+    color: #737373;
+  }
+  .screen\:cl-neutral-600 {
+    color: #525252;
+  }
+  .screen\:cl-neutral-700 {
+    color: #404040;
+  }
+  .screen\:cl-neutral-800 {
+    color: #262626;
+  }
+  .screen\:cl-neutral-900 {
+    color: #171717;
+  }
+  .screen\:cl-neutral-950 {
+    color: #0a0a0a;
+  }
+  .screen\:cl-stone-50 {
+    color: #fafaf9;
+  }
+  .screen\:cl-stone-100 {
+    color: #f5f5f4;
+  }
+  .screen\:cl-stone-200 {
+    color: #e7e5e4;
+  }
+  .screen\:cl-stone-300 {
+    color: #d6d3d1;
+  }
+  .screen\:cl-stone-400 {
+    color: #a8a29e;
+  }
+  .screen\:cl-stone-500 {
+    color: #78716c;
+  }
+  .screen\:cl-stone-600 {
+    color: #57534e;
+  }
+  .screen\:cl-stone-700 {
+    color: #44403c;
+  }
+  .screen\:cl-stone-800 {
+    color: #292524;
+  }
+  .screen\:cl-stone-900 {
+    color: #1c1917;
+  }
+  .screen\:cl-stone-950 {
+    color: #0c0a09;
+  }
+  .screen\:cl-red-50 {
+    color: #fef2f2;
+  }
+  .screen\:cl-red-100 {
+    color: #fee2e2;
+  }
+  .screen\:cl-red-200 {
+    color: #fecaca;
+  }
+  .screen\:cl-red-300 {
+    color: #fca5a5;
+  }
+  .screen\:cl-red-400 {
+    color: #f87171;
+  }
+  .screen\:cl-red-500 {
+    color: #ef4444;
+  }
+  .screen\:cl-red-600 {
+    color: #dc2626;
+  }
+  .screen\:cl-red-700 {
+    color: #b91c1c;
+  }
+  .screen\:cl-red-800 {
+    color: #991b1b;
+  }
+  .screen\:cl-red-900 {
+    color: #7f1d1d;
+  }
+  .screen\:cl-red-950 {
+    color: #450a0a;
+  }
+  .screen\:cl-orange-50 {
+    color: #fff7ed;
+  }
+  .screen\:cl-orange-100 {
+    color: #ffedd5;
+  }
+  .screen\:cl-orange-200 {
+    color: #fed7aa;
+  }
+  .screen\:cl-orange-300 {
+    color: #fdba74;
+  }
+  .screen\:cl-orange-400 {
+    color: #fb923c;
+  }
+  .screen\:cl-orange-500 {
+    color: #f97316;
+  }
+  .screen\:cl-orange-600 {
+    color: #ea580c;
+  }
+  .screen\:cl-orange-700 {
+    color: #c2410c;
+  }
+  .screen\:cl-orange-800 {
+    color: #9a3412;
+  }
+  .screen\:cl-orange-900 {
+    color: #7c2d12;
+  }
+  .screen\:cl-orange-950 {
+    color: #431407;
+  }
+  .screen\:cl-amber-50 {
+    color: #fffbeb;
+  }
+  .screen\:cl-amber-100 {
+    color: #fef3c7;
+  }
+  .screen\:cl-amber-200 {
+    color: #fde68a;
+  }
+  .screen\:cl-amber-300 {
+    color: #fcd34d;
+  }
+  .screen\:cl-amber-400 {
+    color: #fbbf24;
+  }
+  .screen\:cl-amber-500 {
+    color: #f59e0b;
+  }
+  .screen\:cl-amber-600 {
+    color: #d97706;
+  }
+  .screen\:cl-amber-700 {
+    color: #b45309;
+  }
+  .screen\:cl-amber-800 {
+    color: #92400e;
+  }
+  .screen\:cl-amber-900 {
+    color: #78350f;
+  }
+  .screen\:cl-amber-950 {
+    color: #451a03;
+  }
+  .screen\:cl-yellow-50 {
+    color: #fefce8;
+  }
+  .screen\:cl-yellow-100 {
+    color: #fef9c3;
+  }
+  .screen\:cl-yellow-200 {
+    color: #fef08a;
+  }
+  .screen\:cl-yellow-300 {
+    color: #fde047;
+  }
+  .screen\:cl-yellow-400 {
+    color: #facc15;
+  }
+  .screen\:cl-yellow-500 {
+    color: #eab308;
+  }
+  .screen\:cl-yellow-600 {
+    color: #ca8a04;
+  }
+  .screen\:cl-yellow-700 {
+    color: #a16207;
+  }
+  .screen\:cl-yellow-800 {
+    color: #854d0e;
+  }
+  .screen\:cl-yellow-900 {
+    color: #713f12;
+  }
+  .screen\:cl-yellow-950 {
+    color: #422006;
+  }
+  .screen\:cl-lime-50 {
+    color: #f7fee7;
+  }
+  .screen\:cl-lime-100 {
+    color: #ecfccb;
+  }
+  .screen\:cl-lime-200 {
+    color: #d9f99d;
+  }
+  .screen\:cl-lime-300 {
+    color: #bef264;
+  }
+  .screen\:cl-lime-400 {
+    color: #a3e635;
+  }
+  .screen\:cl-lime-500 {
+    color: #84cc16;
+  }
+  .screen\:cl-lime-600 {
+    color: #65a30d;
+  }
+  .screen\:cl-lime-700 {
+    color: #4d7c0f;
+  }
+  .screen\:cl-lime-800 {
+    color: #3f6212;
+  }
+  .screen\:cl-lime-900 {
+    color: #365314;
+  }
+  .screen\:cl-lime-950 {
+    color: #1a2e05;
+  }
+  .screen\:cl-green-50 {
+    color: #f0fdf4;
+  }
+  .screen\:cl-green-100 {
+    color: #dcfce7;
+  }
+  .screen\:cl-green-200 {
+    color: #bbf7d0;
+  }
+  .screen\:cl-green-300 {
+    color: #86efac;
+  }
+  .screen\:cl-green-400 {
+    color: #4ade80;
+  }
+  .screen\:cl-green-500 {
+    color: #22c55e;
+  }
+  .screen\:cl-green-600 {
+    color: #16a34a;
+  }
+  .screen\:cl-green-700 {
+    color: #15803d;
+  }
+  .screen\:cl-green-800 {
+    color: #166534;
+  }
+  .screen\:cl-green-900 {
+    color: #14532d;
+  }
+  .screen\:cl-green-950 {
+    color: #052e16;
+  }
+  .screen\:cl-emerald-50 {
+    color: #ecfdf5;
+  }
+  .screen\:cl-emerald-100 {
+    color: #d1fae5;
+  }
+  .screen\:cl-emerald-200 {
+    color: #a7f3d0;
+  }
+  .screen\:cl-emerald-300 {
+    color: #6ee7b7;
+  }
+  .screen\:cl-emerald-400 {
+    color: #34d399;
+  }
+  .screen\:cl-emerald-500 {
+    color: #10b981;
+  }
+  .screen\:cl-emerald-600 {
+    color: #059669;
+  }
+  .screen\:cl-emerald-700 {
+    color: #047857;
+  }
+  .screen\:cl-emerald-800 {
+    color: #065f46;
+  }
+  .screen\:cl-emerald-900 {
+    color: #064e3b;
+  }
+  .screen\:cl-emerald-950 {
+    color: #022c22;
+  }
+  .screen\:cl-teal-50 {
+    color: #f0fdfa;
+  }
+  .screen\:cl-teal-100 {
+    color: #ccfbf1;
+  }
+  .screen\:cl-teal-200 {
+    color: #99f6e4;
+  }
+  .screen\:cl-teal-300 {
+    color: #5eead4;
+  }
+  .screen\:cl-teal-400 {
+    color: #2dd4bf;
+  }
+  .screen\:cl-teal-500 {
+    color: #14b8a6;
+  }
+  .screen\:cl-teal-600 {
+    color: #0d9488;
+  }
+  .screen\:cl-teal-700 {
+    color: #0f766e;
+  }
+  .screen\:cl-teal-800 {
+    color: #115e59;
+  }
+  .screen\:cl-teal-900 {
+    color: #134e4a;
+  }
+  .screen\:cl-teal-950 {
+    color: #042f2e;
+  }
+  .screen\:cl-cyan-50 {
+    color: #ecfeff;
+  }
+  .screen\:cl-cyan-100 {
+    color: #cffafe;
+  }
+  .screen\:cl-cyan-200 {
+    color: #a5f3fc;
+  }
+  .screen\:cl-cyan-300 {
+    color: #67e8f9;
+  }
+  .screen\:cl-cyan-400 {
+    color: #22d3ee;
+  }
+  .screen\:cl-cyan-500 {
+    color: #06b6d4;
+  }
+  .screen\:cl-cyan-600 {
+    color: #0891b2;
+  }
+  .screen\:cl-cyan-700 {
+    color: #0e7490;
+  }
+  .screen\:cl-cyan-800 {
+    color: #155e75;
+  }
+  .screen\:cl-cyan-900 {
+    color: #164e63;
+  }
+  .screen\:cl-cyan-950 {
+    color: #083344;
+  }
+  .screen\:cl-sky-50 {
+    color: #f0f9ff;
+  }
+  .screen\:cl-sky-100 {
+    color: #e0f2fe;
+  }
+  .screen\:cl-sky-200 {
+    color: #bae6fd;
+  }
+  .screen\:cl-sky-300 {
+    color: #7dd3fc;
+  }
+  .screen\:cl-sky-400 {
+    color: #38bdf8;
+  }
+  .screen\:cl-sky-500 {
+    color: #0ea5e9;
+  }
+  .screen\:cl-sky-600 {
+    color: #0284c7;
+  }
+  .screen\:cl-sky-700 {
+    color: #0369a1;
+  }
+  .screen\:cl-sky-800 {
+    color: #075985;
+  }
+  .screen\:cl-sky-900 {
+    color: #0c4a6e;
+  }
+  .screen\:cl-sky-950 {
+    color: #082f49;
+  }
+  .screen\:cl-blue-50 {
+    color: #eff6ff;
+  }
+  .screen\:cl-blue-100 {
+    color: #dbeafe;
+  }
+  .screen\:cl-blue-200 {
+    color: #bfdbfe;
+  }
+  .screen\:cl-blue-300 {
+    color: #93c5fd;
+  }
+  .screen\:cl-blue-400 {
+    color: #60a5fa;
+  }
+  .screen\:cl-blue-500 {
+    color: #3b82f6;
+  }
+  .screen\:cl-blue-600 {
+    color: #2563eb;
+  }
+  .screen\:cl-blue-700 {
+    color: #1d4ed8;
+  }
+  .screen\:cl-blue-800 {
+    color: #1e40af;
+  }
+  .screen\:cl-blue-900 {
+    color: #1e3a8a;
+  }
+  .screen\:cl-blue-950 {
+    color: #172554;
+  }
+  .screen\:cl-indigo-50 {
+    color: #eef2ff;
+  }
+  .screen\:cl-indigo-100 {
+    color: #e0e7ff;
+  }
+  .screen\:cl-indigo-200 {
+    color: #c7d2fe;
+  }
+  .screen\:cl-indigo-300 {
+    color: #a5b4fc;
+  }
+  .screen\:cl-indigo-400 {
+    color: #818cf8;
+  }
+  .screen\:cl-indigo-500 {
+    color: #6366f1;
+  }
+  .screen\:cl-indigo-600 {
+    color: #4f46e5;
+  }
+  .screen\:cl-indigo-700 {
+    color: #4338ca;
+  }
+  .screen\:cl-indigo-800 {
+    color: #3730a3;
+  }
+  .screen\:cl-indigo-900 {
+    color: #312e81;
+  }
+  .screen\:cl-indigo-950 {
+    color: #1e1b4b;
+  }
+  .screen\:cl-violet-50 {
+    color: #f5f3ff;
+  }
+  .screen\:cl-violet-100 {
+    color: #ede9fe;
+  }
+  .screen\:cl-violet-200 {
+    color: #ddd6fe;
+  }
+  .screen\:cl-violet-300 {
+    color: #c4b5fd;
+  }
+  .screen\:cl-violet-400 {
+    color: #a78bfa;
+  }
+  .screen\:cl-violet-500 {
+    color: #8b5cf6;
+  }
+  .screen\:cl-violet-600 {
+    color: #7c3aed;
+  }
+  .screen\:cl-violet-700 {
+    color: #6d28d9;
+  }
+  .screen\:cl-violet-800 {
+    color: #5b21b6;
+  }
+  .screen\:cl-violet-900 {
+    color: #4c1d95;
+  }
+  .screen\:cl-violet-950 {
+    color: #2e1065;
+  }
+  .screen\:cl-purple-50 {
+    color: #faf5ff;
+  }
+  .screen\:cl-purple-100 {
+    color: #f3e8ff;
+  }
+  .screen\:cl-purple-200 {
+    color: #e9d5ff;
+  }
+  .screen\:cl-purple-300 {
+    color: #d8b4fe;
+  }
+  .screen\:cl-purple-400 {
+    color: #c084fc;
+  }
+  .screen\:cl-purple-500 {
+    color: #a855f7;
+  }
+  .screen\:cl-purple-600 {
+    color: #9333ea;
+  }
+  .screen\:cl-purple-700 {
+    color: #7e22ce;
+  }
+  .screen\:cl-purple-800 {
+    color: #6b21a8;
+  }
+  .screen\:cl-purple-900 {
+    color: #581c87;
+  }
+  .screen\:cl-purple-950 {
+    color: #3b0764;
+  }
+  .screen\:cl-fuchsia-50 {
+    color: #fdf4ff;
+  }
+  .screen\:cl-fuchsia-100 {
+    color: #fae8ff;
+  }
+  .screen\:cl-fuchsia-200 {
+    color: #f5d0fe;
+  }
+  .screen\:cl-fuchsia-300 {
+    color: #f0abfc;
+  }
+  .screen\:cl-fuchsia-400 {
+    color: #e879f9;
+  }
+  .screen\:cl-fuchsia-500 {
+    color: #d946ef;
+  }
+  .screen\:cl-fuchsia-600 {
+    color: #c026d3;
+  }
+  .screen\:cl-fuchsia-700 {
+    color: #a21caf;
+  }
+  .screen\:cl-fuchsia-800 {
+    color: #86198f;
+  }
+  .screen\:cl-fuchsia-900 {
+    color: #701a75;
+  }
+  .screen\:cl-fuchsia-950 {
+    color: #4a044e;
+  }
+  .screen\:cl-pink-50 {
+    color: #fdf2f8;
+  }
+  .screen\:cl-pink-100 {
+    color: #fce7f3;
+  }
+  .screen\:cl-pink-200 {
+    color: #fbcfe8;
+  }
+  .screen\:cl-pink-300 {
+    color: #f9a8d4;
+  }
+  .screen\:cl-pink-400 {
+    color: #f472b6;
+  }
+  .screen\:cl-pink-500 {
+    color: #ec4899;
+  }
+  .screen\:cl-pink-600 {
+    color: #db2777;
+  }
+  .screen\:cl-pink-700 {
+    color: #be185d;
+  }
+  .screen\:cl-pink-800 {
+    color: #9d174d;
+  }
+  .screen\:cl-pink-900 {
+    color: #831843;
+  }
+  .screen\:cl-pink-950 {
+    color: #500724;
+  }
+  .screen\:cl-rose-50 {
+    color: #fff1f2;
+  }
+  .screen\:cl-rose-100 {
+    color: #ffe4e6;
+  }
+  .screen\:cl-rose-200 {
+    color: #fecdd3;
+  }
+  .screen\:cl-rose-300 {
+    color: #fda4af;
+  }
+  .screen\:cl-rose-400 {
+    color: #fb7185;
+  }
+  .screen\:cl-rose-500 {
+    color: #f43f5e;
+  }
+  .screen\:cl-rose-600 {
+    color: #e11d48;
+  }
+  .screen\:cl-rose-700 {
+    color: #be123c;
+  }
+  .screen\:cl-rose-800 {
+    color: #9f1239;
+  }
+  .screen\:cl-rose-900 {
+    color: #881337;
+  }
+  .screen\:cl-rose-950 {
+    color: #4c0519;
   }
 }
 .bg-white {
-  background: #ffffff;
+  background: white;
 }
 
 .bg-black {
-  background: #000000;
+  background: black;
 }
 
-.bg-dark {
-  background: #222222;
-}
-
-.bg-mute {
-  background: #555;
+.bg-lighteen {
+  background: #fafafa;
 }
 
 .bg-light {
-  background: #f2f2f2;
+  background: #f5f5f5;
 }
 
-.bg-light-sm {
-  background: #f8f8f8;
+.bg-mute {
+  background: #404040;
 }
 
-.bg-light-lg {
-  background: #eeeeee;
+.bg-dark {
+  background: #171717;
+}
+
+.bg-darker {
+  background: #0a0a0a;
+}
+
+.bg-success {
+  background: #22c55e;
+}
+
+.bg-danger {
+  background: #ef4444;
+}
+
+.bg-warning {
+  background: #f97316;
+}
+
+.bg-info {
+  background: #3b82f6;
+}
+
+.bg-late-50 {
+  background: #f8fafc;
+}
+
+.bg-late-100 {
+  background: #f1f5f9;
+}
+
+.bg-late-200 {
+  background: #e2e8f0;
+}
+
+.bg-late-300 {
+  background: #cbd5e1;
+}
+
+.bg-late-400 {
+  background: #94a3b8;
+}
+
+.bg-late-500 {
+  background: #64748b;
+}
+
+.bg-late-600 {
+  background: #475569;
+}
+
+.bg-late-700 {
+  background: #334155;
+}
+
+.bg-late-800 {
+  background: #1e293b;
+}
+
+.bg-late-900 {
+  background: #0f172a;
+}
+
+.bg-late-950 {
+  background: #020617;
+}
+
+.bg-gray-50 {
+  background: #f9fafb;
+}
+
+.bg-gray-100 {
+  background: #f3f4f6;
+}
+
+.bg-gray-200 {
+  background: #e5e7eb;
+}
+
+.bg-gray-300 {
+  background: #d1d5db;
+}
+
+.bg-gray-400 {
+  background: #9ca3af;
+}
+
+.bg-gray-500 {
+  background: #6b7280;
+}
+
+.bg-gray-600 {
+  background: #4b5563;
+}
+
+.bg-gray-700 {
+  background: #374151;
+}
+
+.bg-gray-800 {
+  background: #1f2937;
+}
+
+.bg-gray-900 {
+  background: #111827;
+}
+
+.bg-gray-950 {
+  background: #030712;
+}
+
+.bg-zinc-50 {
+  background: #fafafa;
+}
+
+.bg-zinc-100 {
+  background: #f4f4f5;
+}
+
+.bg-zinc-200 {
+  background: #e4e4e7;
+}
+
+.bg-zinc-300 {
+  background: #d4d4d8;
+}
+
+.bg-zinc-400 {
+  background: #a1a1aa;
+}
+
+.bg-zinc-500 {
+  background: #71717a;
+}
+
+.bg-zinc-600 {
+  background: #52525b;
+}
+
+.bg-zinc-700 {
+  background: #3f3f46;
+}
+
+.bg-zinc-800 {
+  background: #27272a;
+}
+
+.bg-zinc-900 {
+  background: #18181b;
+}
+
+.bg-zinc-950 {
+  background: #09090b;
+}
+
+.bg-neutral-50 {
+  background: #fafafa;
+}
+
+.bg-neutral-100 {
+  background: #f5f5f5;
+}
+
+.bg-neutral-200 {
+  background: #e5e5e5;
+}
+
+.bg-neutral-300 {
+  background: #d4d4d4;
+}
+
+.bg-neutral-400 {
+  background: #a3a3a3;
+}
+
+.bg-neutral-500 {
+  background: #737373;
+}
+
+.bg-neutral-600 {
+  background: #525252;
+}
+
+.bg-neutral-700 {
+  background: #404040;
+}
+
+.bg-neutral-800 {
+  background: #262626;
+}
+
+.bg-neutral-900 {
+  background: #171717;
+}
+
+.bg-neutral-950 {
+  background: #0a0a0a;
+}
+
+.bg-stone-50 {
+  background: #fafaf9;
+}
+
+.bg-stone-100 {
+  background: #f5f5f4;
+}
+
+.bg-stone-200 {
+  background: #e7e5e4;
+}
+
+.bg-stone-300 {
+  background: #d6d3d1;
+}
+
+.bg-stone-400 {
+  background: #a8a29e;
+}
+
+.bg-stone-500 {
+  background: #78716c;
+}
+
+.bg-stone-600 {
+  background: #57534e;
+}
+
+.bg-stone-700 {
+  background: #44403c;
+}
+
+.bg-stone-800 {
+  background: #292524;
+}
+
+.bg-stone-900 {
+  background: #1c1917;
+}
+
+.bg-stone-950 {
+  background: #0c0a09;
+}
+
+.bg-red-50 {
+  background: #fef2f2;
+}
+
+.bg-red-100 {
+  background: #fee2e2;
+}
+
+.bg-red-200 {
+  background: #fecaca;
+}
+
+.bg-red-300 {
+  background: #fca5a5;
+}
+
+.bg-red-400 {
+  background: #f87171;
+}
+
+.bg-red-500 {
+  background: #ef4444;
+}
+
+.bg-red-600 {
+  background: #dc2626;
+}
+
+.bg-red-700 {
+  background: #b91c1c;
+}
+
+.bg-red-800 {
+  background: #991b1b;
+}
+
+.bg-red-900 {
+  background: #7f1d1d;
+}
+
+.bg-red-950 {
+  background: #450a0a;
+}
+
+.bg-orange-50 {
+  background: #fff7ed;
+}
+
+.bg-orange-100 {
+  background: #ffedd5;
+}
+
+.bg-orange-200 {
+  background: #fed7aa;
+}
+
+.bg-orange-300 {
+  background: #fdba74;
+}
+
+.bg-orange-400 {
+  background: #fb923c;
+}
+
+.bg-orange-500 {
+  background: #f97316;
+}
+
+.bg-orange-600 {
+  background: #ea580c;
+}
+
+.bg-orange-700 {
+  background: #c2410c;
+}
+
+.bg-orange-800 {
+  background: #9a3412;
+}
+
+.bg-orange-900 {
+  background: #7c2d12;
+}
+
+.bg-orange-950 {
+  background: #431407;
+}
+
+.bg-amber-50 {
+  background: #fffbeb;
+}
+
+.bg-amber-100 {
+  background: #fef3c7;
+}
+
+.bg-amber-200 {
+  background: #fde68a;
+}
+
+.bg-amber-300 {
+  background: #fcd34d;
+}
+
+.bg-amber-400 {
+  background: #fbbf24;
+}
+
+.bg-amber-500 {
+  background: #f59e0b;
+}
+
+.bg-amber-600 {
+  background: #d97706;
+}
+
+.bg-amber-700 {
+  background: #b45309;
+}
+
+.bg-amber-800 {
+  background: #92400e;
+}
+
+.bg-amber-900 {
+  background: #78350f;
+}
+
+.bg-amber-950 {
+  background: #451a03;
+}
+
+.bg-yellow-50 {
+  background: #fefce8;
+}
+
+.bg-yellow-100 {
+  background: #fef9c3;
+}
+
+.bg-yellow-200 {
+  background: #fef08a;
+}
+
+.bg-yellow-300 {
+  background: #fde047;
+}
+
+.bg-yellow-400 {
+  background: #facc15;
+}
+
+.bg-yellow-500 {
+  background: #eab308;
+}
+
+.bg-yellow-600 {
+  background: #ca8a04;
+}
+
+.bg-yellow-700 {
+  background: #a16207;
+}
+
+.bg-yellow-800 {
+  background: #854d0e;
+}
+
+.bg-yellow-900 {
+  background: #713f12;
+}
+
+.bg-yellow-950 {
+  background: #422006;
+}
+
+.bg-lime-50 {
+  background: #f7fee7;
+}
+
+.bg-lime-100 {
+  background: #ecfccb;
+}
+
+.bg-lime-200 {
+  background: #d9f99d;
+}
+
+.bg-lime-300 {
+  background: #bef264;
+}
+
+.bg-lime-400 {
+  background: #a3e635;
+}
+
+.bg-lime-500 {
+  background: #84cc16;
+}
+
+.bg-lime-600 {
+  background: #65a30d;
+}
+
+.bg-lime-700 {
+  background: #4d7c0f;
+}
+
+.bg-lime-800 {
+  background: #3f6212;
+}
+
+.bg-lime-900 {
+  background: #365314;
+}
+
+.bg-lime-950 {
+  background: #1a2e05;
+}
+
+.bg-green-50 {
+  background: #f0fdf4;
+}
+
+.bg-green-100 {
+  background: #dcfce7;
+}
+
+.bg-green-200 {
+  background: #bbf7d0;
+}
+
+.bg-green-300 {
+  background: #86efac;
+}
+
+.bg-green-400 {
+  background: #4ade80;
+}
+
+.bg-green-500 {
+  background: #22c55e;
+}
+
+.bg-green-600 {
+  background: #16a34a;
+}
+
+.bg-green-700 {
+  background: #15803d;
+}
+
+.bg-green-800 {
+  background: #166534;
+}
+
+.bg-green-900 {
+  background: #14532d;
+}
+
+.bg-green-950 {
+  background: #052e16;
+}
+
+.bg-emerald-50 {
+  background: #ecfdf5;
+}
+
+.bg-emerald-100 {
+  background: #d1fae5;
+}
+
+.bg-emerald-200 {
+  background: #a7f3d0;
+}
+
+.bg-emerald-300 {
+  background: #6ee7b7;
+}
+
+.bg-emerald-400 {
+  background: #34d399;
+}
+
+.bg-emerald-500 {
+  background: #10b981;
+}
+
+.bg-emerald-600 {
+  background: #059669;
+}
+
+.bg-emerald-700 {
+  background: #047857;
+}
+
+.bg-emerald-800 {
+  background: #065f46;
+}
+
+.bg-emerald-900 {
+  background: #064e3b;
+}
+
+.bg-emerald-950 {
+  background: #022c22;
+}
+
+.bg-teal-50 {
+  background: #f0fdfa;
+}
+
+.bg-teal-100 {
+  background: #ccfbf1;
+}
+
+.bg-teal-200 {
+  background: #99f6e4;
+}
+
+.bg-teal-300 {
+  background: #5eead4;
+}
+
+.bg-teal-400 {
+  background: #2dd4bf;
+}
+
+.bg-teal-500 {
+  background: #14b8a6;
+}
+
+.bg-teal-600 {
+  background: #0d9488;
+}
+
+.bg-teal-700 {
+  background: #0f766e;
+}
+
+.bg-teal-800 {
+  background: #115e59;
+}
+
+.bg-teal-900 {
+  background: #134e4a;
+}
+
+.bg-teal-950 {
+  background: #042f2e;
+}
+
+.bg-cyan-50 {
+  background: #ecfeff;
+}
+
+.bg-cyan-100 {
+  background: #cffafe;
+}
+
+.bg-cyan-200 {
+  background: #a5f3fc;
+}
+
+.bg-cyan-300 {
+  background: #67e8f9;
+}
+
+.bg-cyan-400 {
+  background: #22d3ee;
+}
+
+.bg-cyan-500 {
+  background: #06b6d4;
+}
+
+.bg-cyan-600 {
+  background: #0891b2;
+}
+
+.bg-cyan-700 {
+  background: #0e7490;
+}
+
+.bg-cyan-800 {
+  background: #155e75;
+}
+
+.bg-cyan-900 {
+  background: #164e63;
+}
+
+.bg-cyan-950 {
+  background: #083344;
+}
+
+.bg-sky-50 {
+  background: #f0f9ff;
+}
+
+.bg-sky-100 {
+  background: #e0f2fe;
+}
+
+.bg-sky-200 {
+  background: #bae6fd;
+}
+
+.bg-sky-300 {
+  background: #7dd3fc;
+}
+
+.bg-sky-400 {
+  background: #38bdf8;
+}
+
+.bg-sky-500 {
+  background: #0ea5e9;
+}
+
+.bg-sky-600 {
+  background: #0284c7;
+}
+
+.bg-sky-700 {
+  background: #0369a1;
+}
+
+.bg-sky-800 {
+  background: #075985;
+}
+
+.bg-sky-900 {
+  background: #0c4a6e;
+}
+
+.bg-sky-950 {
+  background: #082f49;
+}
+
+.bg-blue-50 {
+  background: #eff6ff;
+}
+
+.bg-blue-100 {
+  background: #dbeafe;
+}
+
+.bg-blue-200 {
+  background: #bfdbfe;
+}
+
+.bg-blue-300 {
+  background: #93c5fd;
+}
+
+.bg-blue-400 {
+  background: #60a5fa;
+}
+
+.bg-blue-500 {
+  background: #3b82f6;
+}
+
+.bg-blue-600 {
+  background: #2563eb;
+}
+
+.bg-blue-700 {
+  background: #1d4ed8;
+}
+
+.bg-blue-800 {
+  background: #1e40af;
+}
+
+.bg-blue-900 {
+  background: #1e3a8a;
+}
+
+.bg-blue-950 {
+  background: #172554;
+}
+
+.bg-indigo-50 {
+  background: #eef2ff;
+}
+
+.bg-indigo-100 {
+  background: #e0e7ff;
+}
+
+.bg-indigo-200 {
+  background: #c7d2fe;
+}
+
+.bg-indigo-300 {
+  background: #a5b4fc;
+}
+
+.bg-indigo-400 {
+  background: #818cf8;
+}
+
+.bg-indigo-500 {
+  background: #6366f1;
+}
+
+.bg-indigo-600 {
+  background: #4f46e5;
+}
+
+.bg-indigo-700 {
+  background: #4338ca;
+}
+
+.bg-indigo-800 {
+  background: #3730a3;
+}
+
+.bg-indigo-900 {
+  background: #312e81;
+}
+
+.bg-indigo-950 {
+  background: #1e1b4b;
+}
+
+.bg-violet-50 {
+  background: #f5f3ff;
+}
+
+.bg-violet-100 {
+  background: #ede9fe;
+}
+
+.bg-violet-200 {
+  background: #ddd6fe;
+}
+
+.bg-violet-300 {
+  background: #c4b5fd;
+}
+
+.bg-violet-400 {
+  background: #a78bfa;
+}
+
+.bg-violet-500 {
+  background: #8b5cf6;
+}
+
+.bg-violet-600 {
+  background: #7c3aed;
+}
+
+.bg-violet-700 {
+  background: #6d28d9;
+}
+
+.bg-violet-800 {
+  background: #5b21b6;
+}
+
+.bg-violet-900 {
+  background: #4c1d95;
+}
+
+.bg-violet-950 {
+  background: #2e1065;
+}
+
+.bg-purple-50 {
+  background: #faf5ff;
+}
+
+.bg-purple-100 {
+  background: #f3e8ff;
+}
+
+.bg-purple-200 {
+  background: #e9d5ff;
+}
+
+.bg-purple-300 {
+  background: #d8b4fe;
+}
+
+.bg-purple-400 {
+  background: #c084fc;
+}
+
+.bg-purple-500 {
+  background: #a855f7;
+}
+
+.bg-purple-600 {
+  background: #9333ea;
+}
+
+.bg-purple-700 {
+  background: #7e22ce;
+}
+
+.bg-purple-800 {
+  background: #6b21a8;
+}
+
+.bg-purple-900 {
+  background: #581c87;
+}
+
+.bg-purple-950 {
+  background: #3b0764;
+}
+
+.bg-fuchsia-50 {
+  background: #fdf4ff;
+}
+
+.bg-fuchsia-100 {
+  background: #fae8ff;
+}
+
+.bg-fuchsia-200 {
+  background: #f5d0fe;
+}
+
+.bg-fuchsia-300 {
+  background: #f0abfc;
+}
+
+.bg-fuchsia-400 {
+  background: #e879f9;
+}
+
+.bg-fuchsia-500 {
+  background: #d946ef;
+}
+
+.bg-fuchsia-600 {
+  background: #c026d3;
+}
+
+.bg-fuchsia-700 {
+  background: #a21caf;
+}
+
+.bg-fuchsia-800 {
+  background: #86198f;
+}
+
+.bg-fuchsia-900 {
+  background: #701a75;
+}
+
+.bg-fuchsia-950 {
+  background: #4a044e;
+}
+
+.bg-pink-50 {
+  background: #fdf2f8;
+}
+
+.bg-pink-100 {
+  background: #fce7f3;
+}
+
+.bg-pink-200 {
+  background: #fbcfe8;
+}
+
+.bg-pink-300 {
+  background: #f9a8d4;
+}
+
+.bg-pink-400 {
+  background: #f472b6;
+}
+
+.bg-pink-500 {
+  background: #ec4899;
+}
+
+.bg-pink-600 {
+  background: #db2777;
+}
+
+.bg-pink-700 {
+  background: #be185d;
+}
+
+.bg-pink-800 {
+  background: #9d174d;
+}
+
+.bg-pink-900 {
+  background: #831843;
+}
+
+.bg-pink-950 {
+  background: #500724;
+}
+
+.bg-rose-50 {
+  background: #fff1f2;
+}
+
+.bg-rose-100 {
+  background: #ffe4e6;
+}
+
+.bg-rose-200 {
+  background: #fecdd3;
+}
+
+.bg-rose-300 {
+  background: #fda4af;
+}
+
+.bg-rose-400 {
+  background: #fb7185;
+}
+
+.bg-rose-500 {
+  background: #f43f5e;
+}
+
+.bg-rose-600 {
+  background: #e11d48;
+}
+
+.bg-rose-700 {
+  background: #be123c;
+}
+
+.bg-rose-800 {
+  background: #9f1239;
+}
+
+.bg-rose-900 {
+  background: #881337;
+}
+
+.bg-rose-950 {
+  background: #4c0519;
 }
 
 @media (min-width: 480px) {
   .mobile\:bg-white {
-    background: #ffffff;
+    background: white;
   }
   .mobile\:bg-black {
-    background: #000000;
+    background: black;
   }
-  .mobile\:bg-dark {
-    background: #222222;
-  }
-  .mobile\:bg-mute {
-    background: #555;
+  .mobile\:bg-lighteen {
+    background: #fafafa;
   }
   .mobile\:bg-light {
-    background: #f2f2f2;
+    background: #f5f5f5;
   }
-  .mobile\:bg-light-sm {
-    background: #f8f8f8;
+  .mobile\:bg-mute {
+    background: #404040;
   }
-  .mobile\:bg-light-lg {
-    background: #eeeeee;
+  .mobile\:bg-dark {
+    background: #171717;
+  }
+  .mobile\:bg-darker {
+    background: #0a0a0a;
+  }
+  .mobile\:bg-success {
+    background: #22c55e;
+  }
+  .mobile\:bg-danger {
+    background: #ef4444;
+  }
+  .mobile\:bg-warning {
+    background: #f97316;
+  }
+  .mobile\:bg-info {
+    background: #3b82f6;
+  }
+  .mobile\:bg-late-50 {
+    background: #f8fafc;
+  }
+  .mobile\:bg-late-100 {
+    background: #f1f5f9;
+  }
+  .mobile\:bg-late-200 {
+    background: #e2e8f0;
+  }
+  .mobile\:bg-late-300 {
+    background: #cbd5e1;
+  }
+  .mobile\:bg-late-400 {
+    background: #94a3b8;
+  }
+  .mobile\:bg-late-500 {
+    background: #64748b;
+  }
+  .mobile\:bg-late-600 {
+    background: #475569;
+  }
+  .mobile\:bg-late-700 {
+    background: #334155;
+  }
+  .mobile\:bg-late-800 {
+    background: #1e293b;
+  }
+  .mobile\:bg-late-900 {
+    background: #0f172a;
+  }
+  .mobile\:bg-late-950 {
+    background: #020617;
+  }
+  .mobile\:bg-gray-50 {
+    background: #f9fafb;
+  }
+  .mobile\:bg-gray-100 {
+    background: #f3f4f6;
+  }
+  .mobile\:bg-gray-200 {
+    background: #e5e7eb;
+  }
+  .mobile\:bg-gray-300 {
+    background: #d1d5db;
+  }
+  .mobile\:bg-gray-400 {
+    background: #9ca3af;
+  }
+  .mobile\:bg-gray-500 {
+    background: #6b7280;
+  }
+  .mobile\:bg-gray-600 {
+    background: #4b5563;
+  }
+  .mobile\:bg-gray-700 {
+    background: #374151;
+  }
+  .mobile\:bg-gray-800 {
+    background: #1f2937;
+  }
+  .mobile\:bg-gray-900 {
+    background: #111827;
+  }
+  .mobile\:bg-gray-950 {
+    background: #030712;
+  }
+  .mobile\:bg-zinc-50 {
+    background: #fafafa;
+  }
+  .mobile\:bg-zinc-100 {
+    background: #f4f4f5;
+  }
+  .mobile\:bg-zinc-200 {
+    background: #e4e4e7;
+  }
+  .mobile\:bg-zinc-300 {
+    background: #d4d4d8;
+  }
+  .mobile\:bg-zinc-400 {
+    background: #a1a1aa;
+  }
+  .mobile\:bg-zinc-500 {
+    background: #71717a;
+  }
+  .mobile\:bg-zinc-600 {
+    background: #52525b;
+  }
+  .mobile\:bg-zinc-700 {
+    background: #3f3f46;
+  }
+  .mobile\:bg-zinc-800 {
+    background: #27272a;
+  }
+  .mobile\:bg-zinc-900 {
+    background: #18181b;
+  }
+  .mobile\:bg-zinc-950 {
+    background: #09090b;
+  }
+  .mobile\:bg-neutral-50 {
+    background: #fafafa;
+  }
+  .mobile\:bg-neutral-100 {
+    background: #f5f5f5;
+  }
+  .mobile\:bg-neutral-200 {
+    background: #e5e5e5;
+  }
+  .mobile\:bg-neutral-300 {
+    background: #d4d4d4;
+  }
+  .mobile\:bg-neutral-400 {
+    background: #a3a3a3;
+  }
+  .mobile\:bg-neutral-500 {
+    background: #737373;
+  }
+  .mobile\:bg-neutral-600 {
+    background: #525252;
+  }
+  .mobile\:bg-neutral-700 {
+    background: #404040;
+  }
+  .mobile\:bg-neutral-800 {
+    background: #262626;
+  }
+  .mobile\:bg-neutral-900 {
+    background: #171717;
+  }
+  .mobile\:bg-neutral-950 {
+    background: #0a0a0a;
+  }
+  .mobile\:bg-stone-50 {
+    background: #fafaf9;
+  }
+  .mobile\:bg-stone-100 {
+    background: #f5f5f4;
+  }
+  .mobile\:bg-stone-200 {
+    background: #e7e5e4;
+  }
+  .mobile\:bg-stone-300 {
+    background: #d6d3d1;
+  }
+  .mobile\:bg-stone-400 {
+    background: #a8a29e;
+  }
+  .mobile\:bg-stone-500 {
+    background: #78716c;
+  }
+  .mobile\:bg-stone-600 {
+    background: #57534e;
+  }
+  .mobile\:bg-stone-700 {
+    background: #44403c;
+  }
+  .mobile\:bg-stone-800 {
+    background: #292524;
+  }
+  .mobile\:bg-stone-900 {
+    background: #1c1917;
+  }
+  .mobile\:bg-stone-950 {
+    background: #0c0a09;
+  }
+  .mobile\:bg-red-50 {
+    background: #fef2f2;
+  }
+  .mobile\:bg-red-100 {
+    background: #fee2e2;
+  }
+  .mobile\:bg-red-200 {
+    background: #fecaca;
+  }
+  .mobile\:bg-red-300 {
+    background: #fca5a5;
+  }
+  .mobile\:bg-red-400 {
+    background: #f87171;
+  }
+  .mobile\:bg-red-500 {
+    background: #ef4444;
+  }
+  .mobile\:bg-red-600 {
+    background: #dc2626;
+  }
+  .mobile\:bg-red-700 {
+    background: #b91c1c;
+  }
+  .mobile\:bg-red-800 {
+    background: #991b1b;
+  }
+  .mobile\:bg-red-900 {
+    background: #7f1d1d;
+  }
+  .mobile\:bg-red-950 {
+    background: #450a0a;
+  }
+  .mobile\:bg-orange-50 {
+    background: #fff7ed;
+  }
+  .mobile\:bg-orange-100 {
+    background: #ffedd5;
+  }
+  .mobile\:bg-orange-200 {
+    background: #fed7aa;
+  }
+  .mobile\:bg-orange-300 {
+    background: #fdba74;
+  }
+  .mobile\:bg-orange-400 {
+    background: #fb923c;
+  }
+  .mobile\:bg-orange-500 {
+    background: #f97316;
+  }
+  .mobile\:bg-orange-600 {
+    background: #ea580c;
+  }
+  .mobile\:bg-orange-700 {
+    background: #c2410c;
+  }
+  .mobile\:bg-orange-800 {
+    background: #9a3412;
+  }
+  .mobile\:bg-orange-900 {
+    background: #7c2d12;
+  }
+  .mobile\:bg-orange-950 {
+    background: #431407;
+  }
+  .mobile\:bg-amber-50 {
+    background: #fffbeb;
+  }
+  .mobile\:bg-amber-100 {
+    background: #fef3c7;
+  }
+  .mobile\:bg-amber-200 {
+    background: #fde68a;
+  }
+  .mobile\:bg-amber-300 {
+    background: #fcd34d;
+  }
+  .mobile\:bg-amber-400 {
+    background: #fbbf24;
+  }
+  .mobile\:bg-amber-500 {
+    background: #f59e0b;
+  }
+  .mobile\:bg-amber-600 {
+    background: #d97706;
+  }
+  .mobile\:bg-amber-700 {
+    background: #b45309;
+  }
+  .mobile\:bg-amber-800 {
+    background: #92400e;
+  }
+  .mobile\:bg-amber-900 {
+    background: #78350f;
+  }
+  .mobile\:bg-amber-950 {
+    background: #451a03;
+  }
+  .mobile\:bg-yellow-50 {
+    background: #fefce8;
+  }
+  .mobile\:bg-yellow-100 {
+    background: #fef9c3;
+  }
+  .mobile\:bg-yellow-200 {
+    background: #fef08a;
+  }
+  .mobile\:bg-yellow-300 {
+    background: #fde047;
+  }
+  .mobile\:bg-yellow-400 {
+    background: #facc15;
+  }
+  .mobile\:bg-yellow-500 {
+    background: #eab308;
+  }
+  .mobile\:bg-yellow-600 {
+    background: #ca8a04;
+  }
+  .mobile\:bg-yellow-700 {
+    background: #a16207;
+  }
+  .mobile\:bg-yellow-800 {
+    background: #854d0e;
+  }
+  .mobile\:bg-yellow-900 {
+    background: #713f12;
+  }
+  .mobile\:bg-yellow-950 {
+    background: #422006;
+  }
+  .mobile\:bg-lime-50 {
+    background: #f7fee7;
+  }
+  .mobile\:bg-lime-100 {
+    background: #ecfccb;
+  }
+  .mobile\:bg-lime-200 {
+    background: #d9f99d;
+  }
+  .mobile\:bg-lime-300 {
+    background: #bef264;
+  }
+  .mobile\:bg-lime-400 {
+    background: #a3e635;
+  }
+  .mobile\:bg-lime-500 {
+    background: #84cc16;
+  }
+  .mobile\:bg-lime-600 {
+    background: #65a30d;
+  }
+  .mobile\:bg-lime-700 {
+    background: #4d7c0f;
+  }
+  .mobile\:bg-lime-800 {
+    background: #3f6212;
+  }
+  .mobile\:bg-lime-900 {
+    background: #365314;
+  }
+  .mobile\:bg-lime-950 {
+    background: #1a2e05;
+  }
+  .mobile\:bg-green-50 {
+    background: #f0fdf4;
+  }
+  .mobile\:bg-green-100 {
+    background: #dcfce7;
+  }
+  .mobile\:bg-green-200 {
+    background: #bbf7d0;
+  }
+  .mobile\:bg-green-300 {
+    background: #86efac;
+  }
+  .mobile\:bg-green-400 {
+    background: #4ade80;
+  }
+  .mobile\:bg-green-500 {
+    background: #22c55e;
+  }
+  .mobile\:bg-green-600 {
+    background: #16a34a;
+  }
+  .mobile\:bg-green-700 {
+    background: #15803d;
+  }
+  .mobile\:bg-green-800 {
+    background: #166534;
+  }
+  .mobile\:bg-green-900 {
+    background: #14532d;
+  }
+  .mobile\:bg-green-950 {
+    background: #052e16;
+  }
+  .mobile\:bg-emerald-50 {
+    background: #ecfdf5;
+  }
+  .mobile\:bg-emerald-100 {
+    background: #d1fae5;
+  }
+  .mobile\:bg-emerald-200 {
+    background: #a7f3d0;
+  }
+  .mobile\:bg-emerald-300 {
+    background: #6ee7b7;
+  }
+  .mobile\:bg-emerald-400 {
+    background: #34d399;
+  }
+  .mobile\:bg-emerald-500 {
+    background: #10b981;
+  }
+  .mobile\:bg-emerald-600 {
+    background: #059669;
+  }
+  .mobile\:bg-emerald-700 {
+    background: #047857;
+  }
+  .mobile\:bg-emerald-800 {
+    background: #065f46;
+  }
+  .mobile\:bg-emerald-900 {
+    background: #064e3b;
+  }
+  .mobile\:bg-emerald-950 {
+    background: #022c22;
+  }
+  .mobile\:bg-teal-50 {
+    background: #f0fdfa;
+  }
+  .mobile\:bg-teal-100 {
+    background: #ccfbf1;
+  }
+  .mobile\:bg-teal-200 {
+    background: #99f6e4;
+  }
+  .mobile\:bg-teal-300 {
+    background: #5eead4;
+  }
+  .mobile\:bg-teal-400 {
+    background: #2dd4bf;
+  }
+  .mobile\:bg-teal-500 {
+    background: #14b8a6;
+  }
+  .mobile\:bg-teal-600 {
+    background: #0d9488;
+  }
+  .mobile\:bg-teal-700 {
+    background: #0f766e;
+  }
+  .mobile\:bg-teal-800 {
+    background: #115e59;
+  }
+  .mobile\:bg-teal-900 {
+    background: #134e4a;
+  }
+  .mobile\:bg-teal-950 {
+    background: #042f2e;
+  }
+  .mobile\:bg-cyan-50 {
+    background: #ecfeff;
+  }
+  .mobile\:bg-cyan-100 {
+    background: #cffafe;
+  }
+  .mobile\:bg-cyan-200 {
+    background: #a5f3fc;
+  }
+  .mobile\:bg-cyan-300 {
+    background: #67e8f9;
+  }
+  .mobile\:bg-cyan-400 {
+    background: #22d3ee;
+  }
+  .mobile\:bg-cyan-500 {
+    background: #06b6d4;
+  }
+  .mobile\:bg-cyan-600 {
+    background: #0891b2;
+  }
+  .mobile\:bg-cyan-700 {
+    background: #0e7490;
+  }
+  .mobile\:bg-cyan-800 {
+    background: #155e75;
+  }
+  .mobile\:bg-cyan-900 {
+    background: #164e63;
+  }
+  .mobile\:bg-cyan-950 {
+    background: #083344;
+  }
+  .mobile\:bg-sky-50 {
+    background: #f0f9ff;
+  }
+  .mobile\:bg-sky-100 {
+    background: #e0f2fe;
+  }
+  .mobile\:bg-sky-200 {
+    background: #bae6fd;
+  }
+  .mobile\:bg-sky-300 {
+    background: #7dd3fc;
+  }
+  .mobile\:bg-sky-400 {
+    background: #38bdf8;
+  }
+  .mobile\:bg-sky-500 {
+    background: #0ea5e9;
+  }
+  .mobile\:bg-sky-600 {
+    background: #0284c7;
+  }
+  .mobile\:bg-sky-700 {
+    background: #0369a1;
+  }
+  .mobile\:bg-sky-800 {
+    background: #075985;
+  }
+  .mobile\:bg-sky-900 {
+    background: #0c4a6e;
+  }
+  .mobile\:bg-sky-950 {
+    background: #082f49;
+  }
+  .mobile\:bg-blue-50 {
+    background: #eff6ff;
+  }
+  .mobile\:bg-blue-100 {
+    background: #dbeafe;
+  }
+  .mobile\:bg-blue-200 {
+    background: #bfdbfe;
+  }
+  .mobile\:bg-blue-300 {
+    background: #93c5fd;
+  }
+  .mobile\:bg-blue-400 {
+    background: #60a5fa;
+  }
+  .mobile\:bg-blue-500 {
+    background: #3b82f6;
+  }
+  .mobile\:bg-blue-600 {
+    background: #2563eb;
+  }
+  .mobile\:bg-blue-700 {
+    background: #1d4ed8;
+  }
+  .mobile\:bg-blue-800 {
+    background: #1e40af;
+  }
+  .mobile\:bg-blue-900 {
+    background: #1e3a8a;
+  }
+  .mobile\:bg-blue-950 {
+    background: #172554;
+  }
+  .mobile\:bg-indigo-50 {
+    background: #eef2ff;
+  }
+  .mobile\:bg-indigo-100 {
+    background: #e0e7ff;
+  }
+  .mobile\:bg-indigo-200 {
+    background: #c7d2fe;
+  }
+  .mobile\:bg-indigo-300 {
+    background: #a5b4fc;
+  }
+  .mobile\:bg-indigo-400 {
+    background: #818cf8;
+  }
+  .mobile\:bg-indigo-500 {
+    background: #6366f1;
+  }
+  .mobile\:bg-indigo-600 {
+    background: #4f46e5;
+  }
+  .mobile\:bg-indigo-700 {
+    background: #4338ca;
+  }
+  .mobile\:bg-indigo-800 {
+    background: #3730a3;
+  }
+  .mobile\:bg-indigo-900 {
+    background: #312e81;
+  }
+  .mobile\:bg-indigo-950 {
+    background: #1e1b4b;
+  }
+  .mobile\:bg-violet-50 {
+    background: #f5f3ff;
+  }
+  .mobile\:bg-violet-100 {
+    background: #ede9fe;
+  }
+  .mobile\:bg-violet-200 {
+    background: #ddd6fe;
+  }
+  .mobile\:bg-violet-300 {
+    background: #c4b5fd;
+  }
+  .mobile\:bg-violet-400 {
+    background: #a78bfa;
+  }
+  .mobile\:bg-violet-500 {
+    background: #8b5cf6;
+  }
+  .mobile\:bg-violet-600 {
+    background: #7c3aed;
+  }
+  .mobile\:bg-violet-700 {
+    background: #6d28d9;
+  }
+  .mobile\:bg-violet-800 {
+    background: #5b21b6;
+  }
+  .mobile\:bg-violet-900 {
+    background: #4c1d95;
+  }
+  .mobile\:bg-violet-950 {
+    background: #2e1065;
+  }
+  .mobile\:bg-purple-50 {
+    background: #faf5ff;
+  }
+  .mobile\:bg-purple-100 {
+    background: #f3e8ff;
+  }
+  .mobile\:bg-purple-200 {
+    background: #e9d5ff;
+  }
+  .mobile\:bg-purple-300 {
+    background: #d8b4fe;
+  }
+  .mobile\:bg-purple-400 {
+    background: #c084fc;
+  }
+  .mobile\:bg-purple-500 {
+    background: #a855f7;
+  }
+  .mobile\:bg-purple-600 {
+    background: #9333ea;
+  }
+  .mobile\:bg-purple-700 {
+    background: #7e22ce;
+  }
+  .mobile\:bg-purple-800 {
+    background: #6b21a8;
+  }
+  .mobile\:bg-purple-900 {
+    background: #581c87;
+  }
+  .mobile\:bg-purple-950 {
+    background: #3b0764;
+  }
+  .mobile\:bg-fuchsia-50 {
+    background: #fdf4ff;
+  }
+  .mobile\:bg-fuchsia-100 {
+    background: #fae8ff;
+  }
+  .mobile\:bg-fuchsia-200 {
+    background: #f5d0fe;
+  }
+  .mobile\:bg-fuchsia-300 {
+    background: #f0abfc;
+  }
+  .mobile\:bg-fuchsia-400 {
+    background: #e879f9;
+  }
+  .mobile\:bg-fuchsia-500 {
+    background: #d946ef;
+  }
+  .mobile\:bg-fuchsia-600 {
+    background: #c026d3;
+  }
+  .mobile\:bg-fuchsia-700 {
+    background: #a21caf;
+  }
+  .mobile\:bg-fuchsia-800 {
+    background: #86198f;
+  }
+  .mobile\:bg-fuchsia-900 {
+    background: #701a75;
+  }
+  .mobile\:bg-fuchsia-950 {
+    background: #4a044e;
+  }
+  .mobile\:bg-pink-50 {
+    background: #fdf2f8;
+  }
+  .mobile\:bg-pink-100 {
+    background: #fce7f3;
+  }
+  .mobile\:bg-pink-200 {
+    background: #fbcfe8;
+  }
+  .mobile\:bg-pink-300 {
+    background: #f9a8d4;
+  }
+  .mobile\:bg-pink-400 {
+    background: #f472b6;
+  }
+  .mobile\:bg-pink-500 {
+    background: #ec4899;
+  }
+  .mobile\:bg-pink-600 {
+    background: #db2777;
+  }
+  .mobile\:bg-pink-700 {
+    background: #be185d;
+  }
+  .mobile\:bg-pink-800 {
+    background: #9d174d;
+  }
+  .mobile\:bg-pink-900 {
+    background: #831843;
+  }
+  .mobile\:bg-pink-950 {
+    background: #500724;
+  }
+  .mobile\:bg-rose-50 {
+    background: #fff1f2;
+  }
+  .mobile\:bg-rose-100 {
+    background: #ffe4e6;
+  }
+  .mobile\:bg-rose-200 {
+    background: #fecdd3;
+  }
+  .mobile\:bg-rose-300 {
+    background: #fda4af;
+  }
+  .mobile\:bg-rose-400 {
+    background: #fb7185;
+  }
+  .mobile\:bg-rose-500 {
+    background: #f43f5e;
+  }
+  .mobile\:bg-rose-600 {
+    background: #e11d48;
+  }
+  .mobile\:bg-rose-700 {
+    background: #be123c;
+  }
+  .mobile\:bg-rose-800 {
+    background: #9f1239;
+  }
+  .mobile\:bg-rose-900 {
+    background: #881337;
+  }
+  .mobile\:bg-rose-950 {
+    background: #4c0519;
   }
 }
 @media (min-width: 768px) {
   .tablet\:bg-white {
-    background: #ffffff;
+    background: white;
   }
   .tablet\:bg-black {
-    background: #000000;
+    background: black;
   }
-  .tablet\:bg-dark {
-    background: #222222;
-  }
-  .tablet\:bg-mute {
-    background: #555;
+  .tablet\:bg-lighteen {
+    background: #fafafa;
   }
   .tablet\:bg-light {
-    background: #f2f2f2;
+    background: #f5f5f5;
   }
-  .tablet\:bg-light-sm {
-    background: #f8f8f8;
+  .tablet\:bg-mute {
+    background: #404040;
   }
-  .tablet\:bg-light-lg {
-    background: #eeeeee;
+  .tablet\:bg-dark {
+    background: #171717;
+  }
+  .tablet\:bg-darker {
+    background: #0a0a0a;
+  }
+  .tablet\:bg-success {
+    background: #22c55e;
+  }
+  .tablet\:bg-danger {
+    background: #ef4444;
+  }
+  .tablet\:bg-warning {
+    background: #f97316;
+  }
+  .tablet\:bg-info {
+    background: #3b82f6;
+  }
+  .tablet\:bg-late-50 {
+    background: #f8fafc;
+  }
+  .tablet\:bg-late-100 {
+    background: #f1f5f9;
+  }
+  .tablet\:bg-late-200 {
+    background: #e2e8f0;
+  }
+  .tablet\:bg-late-300 {
+    background: #cbd5e1;
+  }
+  .tablet\:bg-late-400 {
+    background: #94a3b8;
+  }
+  .tablet\:bg-late-500 {
+    background: #64748b;
+  }
+  .tablet\:bg-late-600 {
+    background: #475569;
+  }
+  .tablet\:bg-late-700 {
+    background: #334155;
+  }
+  .tablet\:bg-late-800 {
+    background: #1e293b;
+  }
+  .tablet\:bg-late-900 {
+    background: #0f172a;
+  }
+  .tablet\:bg-late-950 {
+    background: #020617;
+  }
+  .tablet\:bg-gray-50 {
+    background: #f9fafb;
+  }
+  .tablet\:bg-gray-100 {
+    background: #f3f4f6;
+  }
+  .tablet\:bg-gray-200 {
+    background: #e5e7eb;
+  }
+  .tablet\:bg-gray-300 {
+    background: #d1d5db;
+  }
+  .tablet\:bg-gray-400 {
+    background: #9ca3af;
+  }
+  .tablet\:bg-gray-500 {
+    background: #6b7280;
+  }
+  .tablet\:bg-gray-600 {
+    background: #4b5563;
+  }
+  .tablet\:bg-gray-700 {
+    background: #374151;
+  }
+  .tablet\:bg-gray-800 {
+    background: #1f2937;
+  }
+  .tablet\:bg-gray-900 {
+    background: #111827;
+  }
+  .tablet\:bg-gray-950 {
+    background: #030712;
+  }
+  .tablet\:bg-zinc-50 {
+    background: #fafafa;
+  }
+  .tablet\:bg-zinc-100 {
+    background: #f4f4f5;
+  }
+  .tablet\:bg-zinc-200 {
+    background: #e4e4e7;
+  }
+  .tablet\:bg-zinc-300 {
+    background: #d4d4d8;
+  }
+  .tablet\:bg-zinc-400 {
+    background: #a1a1aa;
+  }
+  .tablet\:bg-zinc-500 {
+    background: #71717a;
+  }
+  .tablet\:bg-zinc-600 {
+    background: #52525b;
+  }
+  .tablet\:bg-zinc-700 {
+    background: #3f3f46;
+  }
+  .tablet\:bg-zinc-800 {
+    background: #27272a;
+  }
+  .tablet\:bg-zinc-900 {
+    background: #18181b;
+  }
+  .tablet\:bg-zinc-950 {
+    background: #09090b;
+  }
+  .tablet\:bg-neutral-50 {
+    background: #fafafa;
+  }
+  .tablet\:bg-neutral-100 {
+    background: #f5f5f5;
+  }
+  .tablet\:bg-neutral-200 {
+    background: #e5e5e5;
+  }
+  .tablet\:bg-neutral-300 {
+    background: #d4d4d4;
+  }
+  .tablet\:bg-neutral-400 {
+    background: #a3a3a3;
+  }
+  .tablet\:bg-neutral-500 {
+    background: #737373;
+  }
+  .tablet\:bg-neutral-600 {
+    background: #525252;
+  }
+  .tablet\:bg-neutral-700 {
+    background: #404040;
+  }
+  .tablet\:bg-neutral-800 {
+    background: #262626;
+  }
+  .tablet\:bg-neutral-900 {
+    background: #171717;
+  }
+  .tablet\:bg-neutral-950 {
+    background: #0a0a0a;
+  }
+  .tablet\:bg-stone-50 {
+    background: #fafaf9;
+  }
+  .tablet\:bg-stone-100 {
+    background: #f5f5f4;
+  }
+  .tablet\:bg-stone-200 {
+    background: #e7e5e4;
+  }
+  .tablet\:bg-stone-300 {
+    background: #d6d3d1;
+  }
+  .tablet\:bg-stone-400 {
+    background: #a8a29e;
+  }
+  .tablet\:bg-stone-500 {
+    background: #78716c;
+  }
+  .tablet\:bg-stone-600 {
+    background: #57534e;
+  }
+  .tablet\:bg-stone-700 {
+    background: #44403c;
+  }
+  .tablet\:bg-stone-800 {
+    background: #292524;
+  }
+  .tablet\:bg-stone-900 {
+    background: #1c1917;
+  }
+  .tablet\:bg-stone-950 {
+    background: #0c0a09;
+  }
+  .tablet\:bg-red-50 {
+    background: #fef2f2;
+  }
+  .tablet\:bg-red-100 {
+    background: #fee2e2;
+  }
+  .tablet\:bg-red-200 {
+    background: #fecaca;
+  }
+  .tablet\:bg-red-300 {
+    background: #fca5a5;
+  }
+  .tablet\:bg-red-400 {
+    background: #f87171;
+  }
+  .tablet\:bg-red-500 {
+    background: #ef4444;
+  }
+  .tablet\:bg-red-600 {
+    background: #dc2626;
+  }
+  .tablet\:bg-red-700 {
+    background: #b91c1c;
+  }
+  .tablet\:bg-red-800 {
+    background: #991b1b;
+  }
+  .tablet\:bg-red-900 {
+    background: #7f1d1d;
+  }
+  .tablet\:bg-red-950 {
+    background: #450a0a;
+  }
+  .tablet\:bg-orange-50 {
+    background: #fff7ed;
+  }
+  .tablet\:bg-orange-100 {
+    background: #ffedd5;
+  }
+  .tablet\:bg-orange-200 {
+    background: #fed7aa;
+  }
+  .tablet\:bg-orange-300 {
+    background: #fdba74;
+  }
+  .tablet\:bg-orange-400 {
+    background: #fb923c;
+  }
+  .tablet\:bg-orange-500 {
+    background: #f97316;
+  }
+  .tablet\:bg-orange-600 {
+    background: #ea580c;
+  }
+  .tablet\:bg-orange-700 {
+    background: #c2410c;
+  }
+  .tablet\:bg-orange-800 {
+    background: #9a3412;
+  }
+  .tablet\:bg-orange-900 {
+    background: #7c2d12;
+  }
+  .tablet\:bg-orange-950 {
+    background: #431407;
+  }
+  .tablet\:bg-amber-50 {
+    background: #fffbeb;
+  }
+  .tablet\:bg-amber-100 {
+    background: #fef3c7;
+  }
+  .tablet\:bg-amber-200 {
+    background: #fde68a;
+  }
+  .tablet\:bg-amber-300 {
+    background: #fcd34d;
+  }
+  .tablet\:bg-amber-400 {
+    background: #fbbf24;
+  }
+  .tablet\:bg-amber-500 {
+    background: #f59e0b;
+  }
+  .tablet\:bg-amber-600 {
+    background: #d97706;
+  }
+  .tablet\:bg-amber-700 {
+    background: #b45309;
+  }
+  .tablet\:bg-amber-800 {
+    background: #92400e;
+  }
+  .tablet\:bg-amber-900 {
+    background: #78350f;
+  }
+  .tablet\:bg-amber-950 {
+    background: #451a03;
+  }
+  .tablet\:bg-yellow-50 {
+    background: #fefce8;
+  }
+  .tablet\:bg-yellow-100 {
+    background: #fef9c3;
+  }
+  .tablet\:bg-yellow-200 {
+    background: #fef08a;
+  }
+  .tablet\:bg-yellow-300 {
+    background: #fde047;
+  }
+  .tablet\:bg-yellow-400 {
+    background: #facc15;
+  }
+  .tablet\:bg-yellow-500 {
+    background: #eab308;
+  }
+  .tablet\:bg-yellow-600 {
+    background: #ca8a04;
+  }
+  .tablet\:bg-yellow-700 {
+    background: #a16207;
+  }
+  .tablet\:bg-yellow-800 {
+    background: #854d0e;
+  }
+  .tablet\:bg-yellow-900 {
+    background: #713f12;
+  }
+  .tablet\:bg-yellow-950 {
+    background: #422006;
+  }
+  .tablet\:bg-lime-50 {
+    background: #f7fee7;
+  }
+  .tablet\:bg-lime-100 {
+    background: #ecfccb;
+  }
+  .tablet\:bg-lime-200 {
+    background: #d9f99d;
+  }
+  .tablet\:bg-lime-300 {
+    background: #bef264;
+  }
+  .tablet\:bg-lime-400 {
+    background: #a3e635;
+  }
+  .tablet\:bg-lime-500 {
+    background: #84cc16;
+  }
+  .tablet\:bg-lime-600 {
+    background: #65a30d;
+  }
+  .tablet\:bg-lime-700 {
+    background: #4d7c0f;
+  }
+  .tablet\:bg-lime-800 {
+    background: #3f6212;
+  }
+  .tablet\:bg-lime-900 {
+    background: #365314;
+  }
+  .tablet\:bg-lime-950 {
+    background: #1a2e05;
+  }
+  .tablet\:bg-green-50 {
+    background: #f0fdf4;
+  }
+  .tablet\:bg-green-100 {
+    background: #dcfce7;
+  }
+  .tablet\:bg-green-200 {
+    background: #bbf7d0;
+  }
+  .tablet\:bg-green-300 {
+    background: #86efac;
+  }
+  .tablet\:bg-green-400 {
+    background: #4ade80;
+  }
+  .tablet\:bg-green-500 {
+    background: #22c55e;
+  }
+  .tablet\:bg-green-600 {
+    background: #16a34a;
+  }
+  .tablet\:bg-green-700 {
+    background: #15803d;
+  }
+  .tablet\:bg-green-800 {
+    background: #166534;
+  }
+  .tablet\:bg-green-900 {
+    background: #14532d;
+  }
+  .tablet\:bg-green-950 {
+    background: #052e16;
+  }
+  .tablet\:bg-emerald-50 {
+    background: #ecfdf5;
+  }
+  .tablet\:bg-emerald-100 {
+    background: #d1fae5;
+  }
+  .tablet\:bg-emerald-200 {
+    background: #a7f3d0;
+  }
+  .tablet\:bg-emerald-300 {
+    background: #6ee7b7;
+  }
+  .tablet\:bg-emerald-400 {
+    background: #34d399;
+  }
+  .tablet\:bg-emerald-500 {
+    background: #10b981;
+  }
+  .tablet\:bg-emerald-600 {
+    background: #059669;
+  }
+  .tablet\:bg-emerald-700 {
+    background: #047857;
+  }
+  .tablet\:bg-emerald-800 {
+    background: #065f46;
+  }
+  .tablet\:bg-emerald-900 {
+    background: #064e3b;
+  }
+  .tablet\:bg-emerald-950 {
+    background: #022c22;
+  }
+  .tablet\:bg-teal-50 {
+    background: #f0fdfa;
+  }
+  .tablet\:bg-teal-100 {
+    background: #ccfbf1;
+  }
+  .tablet\:bg-teal-200 {
+    background: #99f6e4;
+  }
+  .tablet\:bg-teal-300 {
+    background: #5eead4;
+  }
+  .tablet\:bg-teal-400 {
+    background: #2dd4bf;
+  }
+  .tablet\:bg-teal-500 {
+    background: #14b8a6;
+  }
+  .tablet\:bg-teal-600 {
+    background: #0d9488;
+  }
+  .tablet\:bg-teal-700 {
+    background: #0f766e;
+  }
+  .tablet\:bg-teal-800 {
+    background: #115e59;
+  }
+  .tablet\:bg-teal-900 {
+    background: #134e4a;
+  }
+  .tablet\:bg-teal-950 {
+    background: #042f2e;
+  }
+  .tablet\:bg-cyan-50 {
+    background: #ecfeff;
+  }
+  .tablet\:bg-cyan-100 {
+    background: #cffafe;
+  }
+  .tablet\:bg-cyan-200 {
+    background: #a5f3fc;
+  }
+  .tablet\:bg-cyan-300 {
+    background: #67e8f9;
+  }
+  .tablet\:bg-cyan-400 {
+    background: #22d3ee;
+  }
+  .tablet\:bg-cyan-500 {
+    background: #06b6d4;
+  }
+  .tablet\:bg-cyan-600 {
+    background: #0891b2;
+  }
+  .tablet\:bg-cyan-700 {
+    background: #0e7490;
+  }
+  .tablet\:bg-cyan-800 {
+    background: #155e75;
+  }
+  .tablet\:bg-cyan-900 {
+    background: #164e63;
+  }
+  .tablet\:bg-cyan-950 {
+    background: #083344;
+  }
+  .tablet\:bg-sky-50 {
+    background: #f0f9ff;
+  }
+  .tablet\:bg-sky-100 {
+    background: #e0f2fe;
+  }
+  .tablet\:bg-sky-200 {
+    background: #bae6fd;
+  }
+  .tablet\:bg-sky-300 {
+    background: #7dd3fc;
+  }
+  .tablet\:bg-sky-400 {
+    background: #38bdf8;
+  }
+  .tablet\:bg-sky-500 {
+    background: #0ea5e9;
+  }
+  .tablet\:bg-sky-600 {
+    background: #0284c7;
+  }
+  .tablet\:bg-sky-700 {
+    background: #0369a1;
+  }
+  .tablet\:bg-sky-800 {
+    background: #075985;
+  }
+  .tablet\:bg-sky-900 {
+    background: #0c4a6e;
+  }
+  .tablet\:bg-sky-950 {
+    background: #082f49;
+  }
+  .tablet\:bg-blue-50 {
+    background: #eff6ff;
+  }
+  .tablet\:bg-blue-100 {
+    background: #dbeafe;
+  }
+  .tablet\:bg-blue-200 {
+    background: #bfdbfe;
+  }
+  .tablet\:bg-blue-300 {
+    background: #93c5fd;
+  }
+  .tablet\:bg-blue-400 {
+    background: #60a5fa;
+  }
+  .tablet\:bg-blue-500 {
+    background: #3b82f6;
+  }
+  .tablet\:bg-blue-600 {
+    background: #2563eb;
+  }
+  .tablet\:bg-blue-700 {
+    background: #1d4ed8;
+  }
+  .tablet\:bg-blue-800 {
+    background: #1e40af;
+  }
+  .tablet\:bg-blue-900 {
+    background: #1e3a8a;
+  }
+  .tablet\:bg-blue-950 {
+    background: #172554;
+  }
+  .tablet\:bg-indigo-50 {
+    background: #eef2ff;
+  }
+  .tablet\:bg-indigo-100 {
+    background: #e0e7ff;
+  }
+  .tablet\:bg-indigo-200 {
+    background: #c7d2fe;
+  }
+  .tablet\:bg-indigo-300 {
+    background: #a5b4fc;
+  }
+  .tablet\:bg-indigo-400 {
+    background: #818cf8;
+  }
+  .tablet\:bg-indigo-500 {
+    background: #6366f1;
+  }
+  .tablet\:bg-indigo-600 {
+    background: #4f46e5;
+  }
+  .tablet\:bg-indigo-700 {
+    background: #4338ca;
+  }
+  .tablet\:bg-indigo-800 {
+    background: #3730a3;
+  }
+  .tablet\:bg-indigo-900 {
+    background: #312e81;
+  }
+  .tablet\:bg-indigo-950 {
+    background: #1e1b4b;
+  }
+  .tablet\:bg-violet-50 {
+    background: #f5f3ff;
+  }
+  .tablet\:bg-violet-100 {
+    background: #ede9fe;
+  }
+  .tablet\:bg-violet-200 {
+    background: #ddd6fe;
+  }
+  .tablet\:bg-violet-300 {
+    background: #c4b5fd;
+  }
+  .tablet\:bg-violet-400 {
+    background: #a78bfa;
+  }
+  .tablet\:bg-violet-500 {
+    background: #8b5cf6;
+  }
+  .tablet\:bg-violet-600 {
+    background: #7c3aed;
+  }
+  .tablet\:bg-violet-700 {
+    background: #6d28d9;
+  }
+  .tablet\:bg-violet-800 {
+    background: #5b21b6;
+  }
+  .tablet\:bg-violet-900 {
+    background: #4c1d95;
+  }
+  .tablet\:bg-violet-950 {
+    background: #2e1065;
+  }
+  .tablet\:bg-purple-50 {
+    background: #faf5ff;
+  }
+  .tablet\:bg-purple-100 {
+    background: #f3e8ff;
+  }
+  .tablet\:bg-purple-200 {
+    background: #e9d5ff;
+  }
+  .tablet\:bg-purple-300 {
+    background: #d8b4fe;
+  }
+  .tablet\:bg-purple-400 {
+    background: #c084fc;
+  }
+  .tablet\:bg-purple-500 {
+    background: #a855f7;
+  }
+  .tablet\:bg-purple-600 {
+    background: #9333ea;
+  }
+  .tablet\:bg-purple-700 {
+    background: #7e22ce;
+  }
+  .tablet\:bg-purple-800 {
+    background: #6b21a8;
+  }
+  .tablet\:bg-purple-900 {
+    background: #581c87;
+  }
+  .tablet\:bg-purple-950 {
+    background: #3b0764;
+  }
+  .tablet\:bg-fuchsia-50 {
+    background: #fdf4ff;
+  }
+  .tablet\:bg-fuchsia-100 {
+    background: #fae8ff;
+  }
+  .tablet\:bg-fuchsia-200 {
+    background: #f5d0fe;
+  }
+  .tablet\:bg-fuchsia-300 {
+    background: #f0abfc;
+  }
+  .tablet\:bg-fuchsia-400 {
+    background: #e879f9;
+  }
+  .tablet\:bg-fuchsia-500 {
+    background: #d946ef;
+  }
+  .tablet\:bg-fuchsia-600 {
+    background: #c026d3;
+  }
+  .tablet\:bg-fuchsia-700 {
+    background: #a21caf;
+  }
+  .tablet\:bg-fuchsia-800 {
+    background: #86198f;
+  }
+  .tablet\:bg-fuchsia-900 {
+    background: #701a75;
+  }
+  .tablet\:bg-fuchsia-950 {
+    background: #4a044e;
+  }
+  .tablet\:bg-pink-50 {
+    background: #fdf2f8;
+  }
+  .tablet\:bg-pink-100 {
+    background: #fce7f3;
+  }
+  .tablet\:bg-pink-200 {
+    background: #fbcfe8;
+  }
+  .tablet\:bg-pink-300 {
+    background: #f9a8d4;
+  }
+  .tablet\:bg-pink-400 {
+    background: #f472b6;
+  }
+  .tablet\:bg-pink-500 {
+    background: #ec4899;
+  }
+  .tablet\:bg-pink-600 {
+    background: #db2777;
+  }
+  .tablet\:bg-pink-700 {
+    background: #be185d;
+  }
+  .tablet\:bg-pink-800 {
+    background: #9d174d;
+  }
+  .tablet\:bg-pink-900 {
+    background: #831843;
+  }
+  .tablet\:bg-pink-950 {
+    background: #500724;
+  }
+  .tablet\:bg-rose-50 {
+    background: #fff1f2;
+  }
+  .tablet\:bg-rose-100 {
+    background: #ffe4e6;
+  }
+  .tablet\:bg-rose-200 {
+    background: #fecdd3;
+  }
+  .tablet\:bg-rose-300 {
+    background: #fda4af;
+  }
+  .tablet\:bg-rose-400 {
+    background: #fb7185;
+  }
+  .tablet\:bg-rose-500 {
+    background: #f43f5e;
+  }
+  .tablet\:bg-rose-600 {
+    background: #e11d48;
+  }
+  .tablet\:bg-rose-700 {
+    background: #be123c;
+  }
+  .tablet\:bg-rose-800 {
+    background: #9f1239;
+  }
+  .tablet\:bg-rose-900 {
+    background: #881337;
+  }
+  .tablet\:bg-rose-950 {
+    background: #4c0519;
   }
 }
 @media (min-width: 1024px) {
   .laptop\:bg-white {
-    background: #ffffff;
+    background: white;
   }
   .laptop\:bg-black {
-    background: #000000;
+    background: black;
   }
-  .laptop\:bg-dark {
-    background: #222222;
-  }
-  .laptop\:bg-mute {
-    background: #555;
+  .laptop\:bg-lighteen {
+    background: #fafafa;
   }
   .laptop\:bg-light {
-    background: #f2f2f2;
+    background: #f5f5f5;
   }
-  .laptop\:bg-light-sm {
-    background: #f8f8f8;
+  .laptop\:bg-mute {
+    background: #404040;
   }
-  .laptop\:bg-light-lg {
-    background: #eeeeee;
+  .laptop\:bg-dark {
+    background: #171717;
+  }
+  .laptop\:bg-darker {
+    background: #0a0a0a;
+  }
+  .laptop\:bg-success {
+    background: #22c55e;
+  }
+  .laptop\:bg-danger {
+    background: #ef4444;
+  }
+  .laptop\:bg-warning {
+    background: #f97316;
+  }
+  .laptop\:bg-info {
+    background: #3b82f6;
+  }
+  .laptop\:bg-late-50 {
+    background: #f8fafc;
+  }
+  .laptop\:bg-late-100 {
+    background: #f1f5f9;
+  }
+  .laptop\:bg-late-200 {
+    background: #e2e8f0;
+  }
+  .laptop\:bg-late-300 {
+    background: #cbd5e1;
+  }
+  .laptop\:bg-late-400 {
+    background: #94a3b8;
+  }
+  .laptop\:bg-late-500 {
+    background: #64748b;
+  }
+  .laptop\:bg-late-600 {
+    background: #475569;
+  }
+  .laptop\:bg-late-700 {
+    background: #334155;
+  }
+  .laptop\:bg-late-800 {
+    background: #1e293b;
+  }
+  .laptop\:bg-late-900 {
+    background: #0f172a;
+  }
+  .laptop\:bg-late-950 {
+    background: #020617;
+  }
+  .laptop\:bg-gray-50 {
+    background: #f9fafb;
+  }
+  .laptop\:bg-gray-100 {
+    background: #f3f4f6;
+  }
+  .laptop\:bg-gray-200 {
+    background: #e5e7eb;
+  }
+  .laptop\:bg-gray-300 {
+    background: #d1d5db;
+  }
+  .laptop\:bg-gray-400 {
+    background: #9ca3af;
+  }
+  .laptop\:bg-gray-500 {
+    background: #6b7280;
+  }
+  .laptop\:bg-gray-600 {
+    background: #4b5563;
+  }
+  .laptop\:bg-gray-700 {
+    background: #374151;
+  }
+  .laptop\:bg-gray-800 {
+    background: #1f2937;
+  }
+  .laptop\:bg-gray-900 {
+    background: #111827;
+  }
+  .laptop\:bg-gray-950 {
+    background: #030712;
+  }
+  .laptop\:bg-zinc-50 {
+    background: #fafafa;
+  }
+  .laptop\:bg-zinc-100 {
+    background: #f4f4f5;
+  }
+  .laptop\:bg-zinc-200 {
+    background: #e4e4e7;
+  }
+  .laptop\:bg-zinc-300 {
+    background: #d4d4d8;
+  }
+  .laptop\:bg-zinc-400 {
+    background: #a1a1aa;
+  }
+  .laptop\:bg-zinc-500 {
+    background: #71717a;
+  }
+  .laptop\:bg-zinc-600 {
+    background: #52525b;
+  }
+  .laptop\:bg-zinc-700 {
+    background: #3f3f46;
+  }
+  .laptop\:bg-zinc-800 {
+    background: #27272a;
+  }
+  .laptop\:bg-zinc-900 {
+    background: #18181b;
+  }
+  .laptop\:bg-zinc-950 {
+    background: #09090b;
+  }
+  .laptop\:bg-neutral-50 {
+    background: #fafafa;
+  }
+  .laptop\:bg-neutral-100 {
+    background: #f5f5f5;
+  }
+  .laptop\:bg-neutral-200 {
+    background: #e5e5e5;
+  }
+  .laptop\:bg-neutral-300 {
+    background: #d4d4d4;
+  }
+  .laptop\:bg-neutral-400 {
+    background: #a3a3a3;
+  }
+  .laptop\:bg-neutral-500 {
+    background: #737373;
+  }
+  .laptop\:bg-neutral-600 {
+    background: #525252;
+  }
+  .laptop\:bg-neutral-700 {
+    background: #404040;
+  }
+  .laptop\:bg-neutral-800 {
+    background: #262626;
+  }
+  .laptop\:bg-neutral-900 {
+    background: #171717;
+  }
+  .laptop\:bg-neutral-950 {
+    background: #0a0a0a;
+  }
+  .laptop\:bg-stone-50 {
+    background: #fafaf9;
+  }
+  .laptop\:bg-stone-100 {
+    background: #f5f5f4;
+  }
+  .laptop\:bg-stone-200 {
+    background: #e7e5e4;
+  }
+  .laptop\:bg-stone-300 {
+    background: #d6d3d1;
+  }
+  .laptop\:bg-stone-400 {
+    background: #a8a29e;
+  }
+  .laptop\:bg-stone-500 {
+    background: #78716c;
+  }
+  .laptop\:bg-stone-600 {
+    background: #57534e;
+  }
+  .laptop\:bg-stone-700 {
+    background: #44403c;
+  }
+  .laptop\:bg-stone-800 {
+    background: #292524;
+  }
+  .laptop\:bg-stone-900 {
+    background: #1c1917;
+  }
+  .laptop\:bg-stone-950 {
+    background: #0c0a09;
+  }
+  .laptop\:bg-red-50 {
+    background: #fef2f2;
+  }
+  .laptop\:bg-red-100 {
+    background: #fee2e2;
+  }
+  .laptop\:bg-red-200 {
+    background: #fecaca;
+  }
+  .laptop\:bg-red-300 {
+    background: #fca5a5;
+  }
+  .laptop\:bg-red-400 {
+    background: #f87171;
+  }
+  .laptop\:bg-red-500 {
+    background: #ef4444;
+  }
+  .laptop\:bg-red-600 {
+    background: #dc2626;
+  }
+  .laptop\:bg-red-700 {
+    background: #b91c1c;
+  }
+  .laptop\:bg-red-800 {
+    background: #991b1b;
+  }
+  .laptop\:bg-red-900 {
+    background: #7f1d1d;
+  }
+  .laptop\:bg-red-950 {
+    background: #450a0a;
+  }
+  .laptop\:bg-orange-50 {
+    background: #fff7ed;
+  }
+  .laptop\:bg-orange-100 {
+    background: #ffedd5;
+  }
+  .laptop\:bg-orange-200 {
+    background: #fed7aa;
+  }
+  .laptop\:bg-orange-300 {
+    background: #fdba74;
+  }
+  .laptop\:bg-orange-400 {
+    background: #fb923c;
+  }
+  .laptop\:bg-orange-500 {
+    background: #f97316;
+  }
+  .laptop\:bg-orange-600 {
+    background: #ea580c;
+  }
+  .laptop\:bg-orange-700 {
+    background: #c2410c;
+  }
+  .laptop\:bg-orange-800 {
+    background: #9a3412;
+  }
+  .laptop\:bg-orange-900 {
+    background: #7c2d12;
+  }
+  .laptop\:bg-orange-950 {
+    background: #431407;
+  }
+  .laptop\:bg-amber-50 {
+    background: #fffbeb;
+  }
+  .laptop\:bg-amber-100 {
+    background: #fef3c7;
+  }
+  .laptop\:bg-amber-200 {
+    background: #fde68a;
+  }
+  .laptop\:bg-amber-300 {
+    background: #fcd34d;
+  }
+  .laptop\:bg-amber-400 {
+    background: #fbbf24;
+  }
+  .laptop\:bg-amber-500 {
+    background: #f59e0b;
+  }
+  .laptop\:bg-amber-600 {
+    background: #d97706;
+  }
+  .laptop\:bg-amber-700 {
+    background: #b45309;
+  }
+  .laptop\:bg-amber-800 {
+    background: #92400e;
+  }
+  .laptop\:bg-amber-900 {
+    background: #78350f;
+  }
+  .laptop\:bg-amber-950 {
+    background: #451a03;
+  }
+  .laptop\:bg-yellow-50 {
+    background: #fefce8;
+  }
+  .laptop\:bg-yellow-100 {
+    background: #fef9c3;
+  }
+  .laptop\:bg-yellow-200 {
+    background: #fef08a;
+  }
+  .laptop\:bg-yellow-300 {
+    background: #fde047;
+  }
+  .laptop\:bg-yellow-400 {
+    background: #facc15;
+  }
+  .laptop\:bg-yellow-500 {
+    background: #eab308;
+  }
+  .laptop\:bg-yellow-600 {
+    background: #ca8a04;
+  }
+  .laptop\:bg-yellow-700 {
+    background: #a16207;
+  }
+  .laptop\:bg-yellow-800 {
+    background: #854d0e;
+  }
+  .laptop\:bg-yellow-900 {
+    background: #713f12;
+  }
+  .laptop\:bg-yellow-950 {
+    background: #422006;
+  }
+  .laptop\:bg-lime-50 {
+    background: #f7fee7;
+  }
+  .laptop\:bg-lime-100 {
+    background: #ecfccb;
+  }
+  .laptop\:bg-lime-200 {
+    background: #d9f99d;
+  }
+  .laptop\:bg-lime-300 {
+    background: #bef264;
+  }
+  .laptop\:bg-lime-400 {
+    background: #a3e635;
+  }
+  .laptop\:bg-lime-500 {
+    background: #84cc16;
+  }
+  .laptop\:bg-lime-600 {
+    background: #65a30d;
+  }
+  .laptop\:bg-lime-700 {
+    background: #4d7c0f;
+  }
+  .laptop\:bg-lime-800 {
+    background: #3f6212;
+  }
+  .laptop\:bg-lime-900 {
+    background: #365314;
+  }
+  .laptop\:bg-lime-950 {
+    background: #1a2e05;
+  }
+  .laptop\:bg-green-50 {
+    background: #f0fdf4;
+  }
+  .laptop\:bg-green-100 {
+    background: #dcfce7;
+  }
+  .laptop\:bg-green-200 {
+    background: #bbf7d0;
+  }
+  .laptop\:bg-green-300 {
+    background: #86efac;
+  }
+  .laptop\:bg-green-400 {
+    background: #4ade80;
+  }
+  .laptop\:bg-green-500 {
+    background: #22c55e;
+  }
+  .laptop\:bg-green-600 {
+    background: #16a34a;
+  }
+  .laptop\:bg-green-700 {
+    background: #15803d;
+  }
+  .laptop\:bg-green-800 {
+    background: #166534;
+  }
+  .laptop\:bg-green-900 {
+    background: #14532d;
+  }
+  .laptop\:bg-green-950 {
+    background: #052e16;
+  }
+  .laptop\:bg-emerald-50 {
+    background: #ecfdf5;
+  }
+  .laptop\:bg-emerald-100 {
+    background: #d1fae5;
+  }
+  .laptop\:bg-emerald-200 {
+    background: #a7f3d0;
+  }
+  .laptop\:bg-emerald-300 {
+    background: #6ee7b7;
+  }
+  .laptop\:bg-emerald-400 {
+    background: #34d399;
+  }
+  .laptop\:bg-emerald-500 {
+    background: #10b981;
+  }
+  .laptop\:bg-emerald-600 {
+    background: #059669;
+  }
+  .laptop\:bg-emerald-700 {
+    background: #047857;
+  }
+  .laptop\:bg-emerald-800 {
+    background: #065f46;
+  }
+  .laptop\:bg-emerald-900 {
+    background: #064e3b;
+  }
+  .laptop\:bg-emerald-950 {
+    background: #022c22;
+  }
+  .laptop\:bg-teal-50 {
+    background: #f0fdfa;
+  }
+  .laptop\:bg-teal-100 {
+    background: #ccfbf1;
+  }
+  .laptop\:bg-teal-200 {
+    background: #99f6e4;
+  }
+  .laptop\:bg-teal-300 {
+    background: #5eead4;
+  }
+  .laptop\:bg-teal-400 {
+    background: #2dd4bf;
+  }
+  .laptop\:bg-teal-500 {
+    background: #14b8a6;
+  }
+  .laptop\:bg-teal-600 {
+    background: #0d9488;
+  }
+  .laptop\:bg-teal-700 {
+    background: #0f766e;
+  }
+  .laptop\:bg-teal-800 {
+    background: #115e59;
+  }
+  .laptop\:bg-teal-900 {
+    background: #134e4a;
+  }
+  .laptop\:bg-teal-950 {
+    background: #042f2e;
+  }
+  .laptop\:bg-cyan-50 {
+    background: #ecfeff;
+  }
+  .laptop\:bg-cyan-100 {
+    background: #cffafe;
+  }
+  .laptop\:bg-cyan-200 {
+    background: #a5f3fc;
+  }
+  .laptop\:bg-cyan-300 {
+    background: #67e8f9;
+  }
+  .laptop\:bg-cyan-400 {
+    background: #22d3ee;
+  }
+  .laptop\:bg-cyan-500 {
+    background: #06b6d4;
+  }
+  .laptop\:bg-cyan-600 {
+    background: #0891b2;
+  }
+  .laptop\:bg-cyan-700 {
+    background: #0e7490;
+  }
+  .laptop\:bg-cyan-800 {
+    background: #155e75;
+  }
+  .laptop\:bg-cyan-900 {
+    background: #164e63;
+  }
+  .laptop\:bg-cyan-950 {
+    background: #083344;
+  }
+  .laptop\:bg-sky-50 {
+    background: #f0f9ff;
+  }
+  .laptop\:bg-sky-100 {
+    background: #e0f2fe;
+  }
+  .laptop\:bg-sky-200 {
+    background: #bae6fd;
+  }
+  .laptop\:bg-sky-300 {
+    background: #7dd3fc;
+  }
+  .laptop\:bg-sky-400 {
+    background: #38bdf8;
+  }
+  .laptop\:bg-sky-500 {
+    background: #0ea5e9;
+  }
+  .laptop\:bg-sky-600 {
+    background: #0284c7;
+  }
+  .laptop\:bg-sky-700 {
+    background: #0369a1;
+  }
+  .laptop\:bg-sky-800 {
+    background: #075985;
+  }
+  .laptop\:bg-sky-900 {
+    background: #0c4a6e;
+  }
+  .laptop\:bg-sky-950 {
+    background: #082f49;
+  }
+  .laptop\:bg-blue-50 {
+    background: #eff6ff;
+  }
+  .laptop\:bg-blue-100 {
+    background: #dbeafe;
+  }
+  .laptop\:bg-blue-200 {
+    background: #bfdbfe;
+  }
+  .laptop\:bg-blue-300 {
+    background: #93c5fd;
+  }
+  .laptop\:bg-blue-400 {
+    background: #60a5fa;
+  }
+  .laptop\:bg-blue-500 {
+    background: #3b82f6;
+  }
+  .laptop\:bg-blue-600 {
+    background: #2563eb;
+  }
+  .laptop\:bg-blue-700 {
+    background: #1d4ed8;
+  }
+  .laptop\:bg-blue-800 {
+    background: #1e40af;
+  }
+  .laptop\:bg-blue-900 {
+    background: #1e3a8a;
+  }
+  .laptop\:bg-blue-950 {
+    background: #172554;
+  }
+  .laptop\:bg-indigo-50 {
+    background: #eef2ff;
+  }
+  .laptop\:bg-indigo-100 {
+    background: #e0e7ff;
+  }
+  .laptop\:bg-indigo-200 {
+    background: #c7d2fe;
+  }
+  .laptop\:bg-indigo-300 {
+    background: #a5b4fc;
+  }
+  .laptop\:bg-indigo-400 {
+    background: #818cf8;
+  }
+  .laptop\:bg-indigo-500 {
+    background: #6366f1;
+  }
+  .laptop\:bg-indigo-600 {
+    background: #4f46e5;
+  }
+  .laptop\:bg-indigo-700 {
+    background: #4338ca;
+  }
+  .laptop\:bg-indigo-800 {
+    background: #3730a3;
+  }
+  .laptop\:bg-indigo-900 {
+    background: #312e81;
+  }
+  .laptop\:bg-indigo-950 {
+    background: #1e1b4b;
+  }
+  .laptop\:bg-violet-50 {
+    background: #f5f3ff;
+  }
+  .laptop\:bg-violet-100 {
+    background: #ede9fe;
+  }
+  .laptop\:bg-violet-200 {
+    background: #ddd6fe;
+  }
+  .laptop\:bg-violet-300 {
+    background: #c4b5fd;
+  }
+  .laptop\:bg-violet-400 {
+    background: #a78bfa;
+  }
+  .laptop\:bg-violet-500 {
+    background: #8b5cf6;
+  }
+  .laptop\:bg-violet-600 {
+    background: #7c3aed;
+  }
+  .laptop\:bg-violet-700 {
+    background: #6d28d9;
+  }
+  .laptop\:bg-violet-800 {
+    background: #5b21b6;
+  }
+  .laptop\:bg-violet-900 {
+    background: #4c1d95;
+  }
+  .laptop\:bg-violet-950 {
+    background: #2e1065;
+  }
+  .laptop\:bg-purple-50 {
+    background: #faf5ff;
+  }
+  .laptop\:bg-purple-100 {
+    background: #f3e8ff;
+  }
+  .laptop\:bg-purple-200 {
+    background: #e9d5ff;
+  }
+  .laptop\:bg-purple-300 {
+    background: #d8b4fe;
+  }
+  .laptop\:bg-purple-400 {
+    background: #c084fc;
+  }
+  .laptop\:bg-purple-500 {
+    background: #a855f7;
+  }
+  .laptop\:bg-purple-600 {
+    background: #9333ea;
+  }
+  .laptop\:bg-purple-700 {
+    background: #7e22ce;
+  }
+  .laptop\:bg-purple-800 {
+    background: #6b21a8;
+  }
+  .laptop\:bg-purple-900 {
+    background: #581c87;
+  }
+  .laptop\:bg-purple-950 {
+    background: #3b0764;
+  }
+  .laptop\:bg-fuchsia-50 {
+    background: #fdf4ff;
+  }
+  .laptop\:bg-fuchsia-100 {
+    background: #fae8ff;
+  }
+  .laptop\:bg-fuchsia-200 {
+    background: #f5d0fe;
+  }
+  .laptop\:bg-fuchsia-300 {
+    background: #f0abfc;
+  }
+  .laptop\:bg-fuchsia-400 {
+    background: #e879f9;
+  }
+  .laptop\:bg-fuchsia-500 {
+    background: #d946ef;
+  }
+  .laptop\:bg-fuchsia-600 {
+    background: #c026d3;
+  }
+  .laptop\:bg-fuchsia-700 {
+    background: #a21caf;
+  }
+  .laptop\:bg-fuchsia-800 {
+    background: #86198f;
+  }
+  .laptop\:bg-fuchsia-900 {
+    background: #701a75;
+  }
+  .laptop\:bg-fuchsia-950 {
+    background: #4a044e;
+  }
+  .laptop\:bg-pink-50 {
+    background: #fdf2f8;
+  }
+  .laptop\:bg-pink-100 {
+    background: #fce7f3;
+  }
+  .laptop\:bg-pink-200 {
+    background: #fbcfe8;
+  }
+  .laptop\:bg-pink-300 {
+    background: #f9a8d4;
+  }
+  .laptop\:bg-pink-400 {
+    background: #f472b6;
+  }
+  .laptop\:bg-pink-500 {
+    background: #ec4899;
+  }
+  .laptop\:bg-pink-600 {
+    background: #db2777;
+  }
+  .laptop\:bg-pink-700 {
+    background: #be185d;
+  }
+  .laptop\:bg-pink-800 {
+    background: #9d174d;
+  }
+  .laptop\:bg-pink-900 {
+    background: #831843;
+  }
+  .laptop\:bg-pink-950 {
+    background: #500724;
+  }
+  .laptop\:bg-rose-50 {
+    background: #fff1f2;
+  }
+  .laptop\:bg-rose-100 {
+    background: #ffe4e6;
+  }
+  .laptop\:bg-rose-200 {
+    background: #fecdd3;
+  }
+  .laptop\:bg-rose-300 {
+    background: #fda4af;
+  }
+  .laptop\:bg-rose-400 {
+    background: #fb7185;
+  }
+  .laptop\:bg-rose-500 {
+    background: #f43f5e;
+  }
+  .laptop\:bg-rose-600 {
+    background: #e11d48;
+  }
+  .laptop\:bg-rose-700 {
+    background: #be123c;
+  }
+  .laptop\:bg-rose-800 {
+    background: #9f1239;
+  }
+  .laptop\:bg-rose-900 {
+    background: #881337;
+  }
+  .laptop\:bg-rose-950 {
+    background: #4c0519;
   }
 }
 @media (min-width: 1280px) {
   .desktop\:bg-white {
-    background: #ffffff;
+    background: white;
   }
   .desktop\:bg-black {
-    background: #000000;
+    background: black;
   }
-  .desktop\:bg-dark {
-    background: #222222;
-  }
-  .desktop\:bg-mute {
-    background: #555;
+  .desktop\:bg-lighteen {
+    background: #fafafa;
   }
   .desktop\:bg-light {
-    background: #f2f2f2;
+    background: #f5f5f5;
   }
-  .desktop\:bg-light-sm {
-    background: #f8f8f8;
+  .desktop\:bg-mute {
+    background: #404040;
   }
-  .desktop\:bg-light-lg {
-    background: #eeeeee;
+  .desktop\:bg-dark {
+    background: #171717;
+  }
+  .desktop\:bg-darker {
+    background: #0a0a0a;
+  }
+  .desktop\:bg-success {
+    background: #22c55e;
+  }
+  .desktop\:bg-danger {
+    background: #ef4444;
+  }
+  .desktop\:bg-warning {
+    background: #f97316;
+  }
+  .desktop\:bg-info {
+    background: #3b82f6;
+  }
+  .desktop\:bg-late-50 {
+    background: #f8fafc;
+  }
+  .desktop\:bg-late-100 {
+    background: #f1f5f9;
+  }
+  .desktop\:bg-late-200 {
+    background: #e2e8f0;
+  }
+  .desktop\:bg-late-300 {
+    background: #cbd5e1;
+  }
+  .desktop\:bg-late-400 {
+    background: #94a3b8;
+  }
+  .desktop\:bg-late-500 {
+    background: #64748b;
+  }
+  .desktop\:bg-late-600 {
+    background: #475569;
+  }
+  .desktop\:bg-late-700 {
+    background: #334155;
+  }
+  .desktop\:bg-late-800 {
+    background: #1e293b;
+  }
+  .desktop\:bg-late-900 {
+    background: #0f172a;
+  }
+  .desktop\:bg-late-950 {
+    background: #020617;
+  }
+  .desktop\:bg-gray-50 {
+    background: #f9fafb;
+  }
+  .desktop\:bg-gray-100 {
+    background: #f3f4f6;
+  }
+  .desktop\:bg-gray-200 {
+    background: #e5e7eb;
+  }
+  .desktop\:bg-gray-300 {
+    background: #d1d5db;
+  }
+  .desktop\:bg-gray-400 {
+    background: #9ca3af;
+  }
+  .desktop\:bg-gray-500 {
+    background: #6b7280;
+  }
+  .desktop\:bg-gray-600 {
+    background: #4b5563;
+  }
+  .desktop\:bg-gray-700 {
+    background: #374151;
+  }
+  .desktop\:bg-gray-800 {
+    background: #1f2937;
+  }
+  .desktop\:bg-gray-900 {
+    background: #111827;
+  }
+  .desktop\:bg-gray-950 {
+    background: #030712;
+  }
+  .desktop\:bg-zinc-50 {
+    background: #fafafa;
+  }
+  .desktop\:bg-zinc-100 {
+    background: #f4f4f5;
+  }
+  .desktop\:bg-zinc-200 {
+    background: #e4e4e7;
+  }
+  .desktop\:bg-zinc-300 {
+    background: #d4d4d8;
+  }
+  .desktop\:bg-zinc-400 {
+    background: #a1a1aa;
+  }
+  .desktop\:bg-zinc-500 {
+    background: #71717a;
+  }
+  .desktop\:bg-zinc-600 {
+    background: #52525b;
+  }
+  .desktop\:bg-zinc-700 {
+    background: #3f3f46;
+  }
+  .desktop\:bg-zinc-800 {
+    background: #27272a;
+  }
+  .desktop\:bg-zinc-900 {
+    background: #18181b;
+  }
+  .desktop\:bg-zinc-950 {
+    background: #09090b;
+  }
+  .desktop\:bg-neutral-50 {
+    background: #fafafa;
+  }
+  .desktop\:bg-neutral-100 {
+    background: #f5f5f5;
+  }
+  .desktop\:bg-neutral-200 {
+    background: #e5e5e5;
+  }
+  .desktop\:bg-neutral-300 {
+    background: #d4d4d4;
+  }
+  .desktop\:bg-neutral-400 {
+    background: #a3a3a3;
+  }
+  .desktop\:bg-neutral-500 {
+    background: #737373;
+  }
+  .desktop\:bg-neutral-600 {
+    background: #525252;
+  }
+  .desktop\:bg-neutral-700 {
+    background: #404040;
+  }
+  .desktop\:bg-neutral-800 {
+    background: #262626;
+  }
+  .desktop\:bg-neutral-900 {
+    background: #171717;
+  }
+  .desktop\:bg-neutral-950 {
+    background: #0a0a0a;
+  }
+  .desktop\:bg-stone-50 {
+    background: #fafaf9;
+  }
+  .desktop\:bg-stone-100 {
+    background: #f5f5f4;
+  }
+  .desktop\:bg-stone-200 {
+    background: #e7e5e4;
+  }
+  .desktop\:bg-stone-300 {
+    background: #d6d3d1;
+  }
+  .desktop\:bg-stone-400 {
+    background: #a8a29e;
+  }
+  .desktop\:bg-stone-500 {
+    background: #78716c;
+  }
+  .desktop\:bg-stone-600 {
+    background: #57534e;
+  }
+  .desktop\:bg-stone-700 {
+    background: #44403c;
+  }
+  .desktop\:bg-stone-800 {
+    background: #292524;
+  }
+  .desktop\:bg-stone-900 {
+    background: #1c1917;
+  }
+  .desktop\:bg-stone-950 {
+    background: #0c0a09;
+  }
+  .desktop\:bg-red-50 {
+    background: #fef2f2;
+  }
+  .desktop\:bg-red-100 {
+    background: #fee2e2;
+  }
+  .desktop\:bg-red-200 {
+    background: #fecaca;
+  }
+  .desktop\:bg-red-300 {
+    background: #fca5a5;
+  }
+  .desktop\:bg-red-400 {
+    background: #f87171;
+  }
+  .desktop\:bg-red-500 {
+    background: #ef4444;
+  }
+  .desktop\:bg-red-600 {
+    background: #dc2626;
+  }
+  .desktop\:bg-red-700 {
+    background: #b91c1c;
+  }
+  .desktop\:bg-red-800 {
+    background: #991b1b;
+  }
+  .desktop\:bg-red-900 {
+    background: #7f1d1d;
+  }
+  .desktop\:bg-red-950 {
+    background: #450a0a;
+  }
+  .desktop\:bg-orange-50 {
+    background: #fff7ed;
+  }
+  .desktop\:bg-orange-100 {
+    background: #ffedd5;
+  }
+  .desktop\:bg-orange-200 {
+    background: #fed7aa;
+  }
+  .desktop\:bg-orange-300 {
+    background: #fdba74;
+  }
+  .desktop\:bg-orange-400 {
+    background: #fb923c;
+  }
+  .desktop\:bg-orange-500 {
+    background: #f97316;
+  }
+  .desktop\:bg-orange-600 {
+    background: #ea580c;
+  }
+  .desktop\:bg-orange-700 {
+    background: #c2410c;
+  }
+  .desktop\:bg-orange-800 {
+    background: #9a3412;
+  }
+  .desktop\:bg-orange-900 {
+    background: #7c2d12;
+  }
+  .desktop\:bg-orange-950 {
+    background: #431407;
+  }
+  .desktop\:bg-amber-50 {
+    background: #fffbeb;
+  }
+  .desktop\:bg-amber-100 {
+    background: #fef3c7;
+  }
+  .desktop\:bg-amber-200 {
+    background: #fde68a;
+  }
+  .desktop\:bg-amber-300 {
+    background: #fcd34d;
+  }
+  .desktop\:bg-amber-400 {
+    background: #fbbf24;
+  }
+  .desktop\:bg-amber-500 {
+    background: #f59e0b;
+  }
+  .desktop\:bg-amber-600 {
+    background: #d97706;
+  }
+  .desktop\:bg-amber-700 {
+    background: #b45309;
+  }
+  .desktop\:bg-amber-800 {
+    background: #92400e;
+  }
+  .desktop\:bg-amber-900 {
+    background: #78350f;
+  }
+  .desktop\:bg-amber-950 {
+    background: #451a03;
+  }
+  .desktop\:bg-yellow-50 {
+    background: #fefce8;
+  }
+  .desktop\:bg-yellow-100 {
+    background: #fef9c3;
+  }
+  .desktop\:bg-yellow-200 {
+    background: #fef08a;
+  }
+  .desktop\:bg-yellow-300 {
+    background: #fde047;
+  }
+  .desktop\:bg-yellow-400 {
+    background: #facc15;
+  }
+  .desktop\:bg-yellow-500 {
+    background: #eab308;
+  }
+  .desktop\:bg-yellow-600 {
+    background: #ca8a04;
+  }
+  .desktop\:bg-yellow-700 {
+    background: #a16207;
+  }
+  .desktop\:bg-yellow-800 {
+    background: #854d0e;
+  }
+  .desktop\:bg-yellow-900 {
+    background: #713f12;
+  }
+  .desktop\:bg-yellow-950 {
+    background: #422006;
+  }
+  .desktop\:bg-lime-50 {
+    background: #f7fee7;
+  }
+  .desktop\:bg-lime-100 {
+    background: #ecfccb;
+  }
+  .desktop\:bg-lime-200 {
+    background: #d9f99d;
+  }
+  .desktop\:bg-lime-300 {
+    background: #bef264;
+  }
+  .desktop\:bg-lime-400 {
+    background: #a3e635;
+  }
+  .desktop\:bg-lime-500 {
+    background: #84cc16;
+  }
+  .desktop\:bg-lime-600 {
+    background: #65a30d;
+  }
+  .desktop\:bg-lime-700 {
+    background: #4d7c0f;
+  }
+  .desktop\:bg-lime-800 {
+    background: #3f6212;
+  }
+  .desktop\:bg-lime-900 {
+    background: #365314;
+  }
+  .desktop\:bg-lime-950 {
+    background: #1a2e05;
+  }
+  .desktop\:bg-green-50 {
+    background: #f0fdf4;
+  }
+  .desktop\:bg-green-100 {
+    background: #dcfce7;
+  }
+  .desktop\:bg-green-200 {
+    background: #bbf7d0;
+  }
+  .desktop\:bg-green-300 {
+    background: #86efac;
+  }
+  .desktop\:bg-green-400 {
+    background: #4ade80;
+  }
+  .desktop\:bg-green-500 {
+    background: #22c55e;
+  }
+  .desktop\:bg-green-600 {
+    background: #16a34a;
+  }
+  .desktop\:bg-green-700 {
+    background: #15803d;
+  }
+  .desktop\:bg-green-800 {
+    background: #166534;
+  }
+  .desktop\:bg-green-900 {
+    background: #14532d;
+  }
+  .desktop\:bg-green-950 {
+    background: #052e16;
+  }
+  .desktop\:bg-emerald-50 {
+    background: #ecfdf5;
+  }
+  .desktop\:bg-emerald-100 {
+    background: #d1fae5;
+  }
+  .desktop\:bg-emerald-200 {
+    background: #a7f3d0;
+  }
+  .desktop\:bg-emerald-300 {
+    background: #6ee7b7;
+  }
+  .desktop\:bg-emerald-400 {
+    background: #34d399;
+  }
+  .desktop\:bg-emerald-500 {
+    background: #10b981;
+  }
+  .desktop\:bg-emerald-600 {
+    background: #059669;
+  }
+  .desktop\:bg-emerald-700 {
+    background: #047857;
+  }
+  .desktop\:bg-emerald-800 {
+    background: #065f46;
+  }
+  .desktop\:bg-emerald-900 {
+    background: #064e3b;
+  }
+  .desktop\:bg-emerald-950 {
+    background: #022c22;
+  }
+  .desktop\:bg-teal-50 {
+    background: #f0fdfa;
+  }
+  .desktop\:bg-teal-100 {
+    background: #ccfbf1;
+  }
+  .desktop\:bg-teal-200 {
+    background: #99f6e4;
+  }
+  .desktop\:bg-teal-300 {
+    background: #5eead4;
+  }
+  .desktop\:bg-teal-400 {
+    background: #2dd4bf;
+  }
+  .desktop\:bg-teal-500 {
+    background: #14b8a6;
+  }
+  .desktop\:bg-teal-600 {
+    background: #0d9488;
+  }
+  .desktop\:bg-teal-700 {
+    background: #0f766e;
+  }
+  .desktop\:bg-teal-800 {
+    background: #115e59;
+  }
+  .desktop\:bg-teal-900 {
+    background: #134e4a;
+  }
+  .desktop\:bg-teal-950 {
+    background: #042f2e;
+  }
+  .desktop\:bg-cyan-50 {
+    background: #ecfeff;
+  }
+  .desktop\:bg-cyan-100 {
+    background: #cffafe;
+  }
+  .desktop\:bg-cyan-200 {
+    background: #a5f3fc;
+  }
+  .desktop\:bg-cyan-300 {
+    background: #67e8f9;
+  }
+  .desktop\:bg-cyan-400 {
+    background: #22d3ee;
+  }
+  .desktop\:bg-cyan-500 {
+    background: #06b6d4;
+  }
+  .desktop\:bg-cyan-600 {
+    background: #0891b2;
+  }
+  .desktop\:bg-cyan-700 {
+    background: #0e7490;
+  }
+  .desktop\:bg-cyan-800 {
+    background: #155e75;
+  }
+  .desktop\:bg-cyan-900 {
+    background: #164e63;
+  }
+  .desktop\:bg-cyan-950 {
+    background: #083344;
+  }
+  .desktop\:bg-sky-50 {
+    background: #f0f9ff;
+  }
+  .desktop\:bg-sky-100 {
+    background: #e0f2fe;
+  }
+  .desktop\:bg-sky-200 {
+    background: #bae6fd;
+  }
+  .desktop\:bg-sky-300 {
+    background: #7dd3fc;
+  }
+  .desktop\:bg-sky-400 {
+    background: #38bdf8;
+  }
+  .desktop\:bg-sky-500 {
+    background: #0ea5e9;
+  }
+  .desktop\:bg-sky-600 {
+    background: #0284c7;
+  }
+  .desktop\:bg-sky-700 {
+    background: #0369a1;
+  }
+  .desktop\:bg-sky-800 {
+    background: #075985;
+  }
+  .desktop\:bg-sky-900 {
+    background: #0c4a6e;
+  }
+  .desktop\:bg-sky-950 {
+    background: #082f49;
+  }
+  .desktop\:bg-blue-50 {
+    background: #eff6ff;
+  }
+  .desktop\:bg-blue-100 {
+    background: #dbeafe;
+  }
+  .desktop\:bg-blue-200 {
+    background: #bfdbfe;
+  }
+  .desktop\:bg-blue-300 {
+    background: #93c5fd;
+  }
+  .desktop\:bg-blue-400 {
+    background: #60a5fa;
+  }
+  .desktop\:bg-blue-500 {
+    background: #3b82f6;
+  }
+  .desktop\:bg-blue-600 {
+    background: #2563eb;
+  }
+  .desktop\:bg-blue-700 {
+    background: #1d4ed8;
+  }
+  .desktop\:bg-blue-800 {
+    background: #1e40af;
+  }
+  .desktop\:bg-blue-900 {
+    background: #1e3a8a;
+  }
+  .desktop\:bg-blue-950 {
+    background: #172554;
+  }
+  .desktop\:bg-indigo-50 {
+    background: #eef2ff;
+  }
+  .desktop\:bg-indigo-100 {
+    background: #e0e7ff;
+  }
+  .desktop\:bg-indigo-200 {
+    background: #c7d2fe;
+  }
+  .desktop\:bg-indigo-300 {
+    background: #a5b4fc;
+  }
+  .desktop\:bg-indigo-400 {
+    background: #818cf8;
+  }
+  .desktop\:bg-indigo-500 {
+    background: #6366f1;
+  }
+  .desktop\:bg-indigo-600 {
+    background: #4f46e5;
+  }
+  .desktop\:bg-indigo-700 {
+    background: #4338ca;
+  }
+  .desktop\:bg-indigo-800 {
+    background: #3730a3;
+  }
+  .desktop\:bg-indigo-900 {
+    background: #312e81;
+  }
+  .desktop\:bg-indigo-950 {
+    background: #1e1b4b;
+  }
+  .desktop\:bg-violet-50 {
+    background: #f5f3ff;
+  }
+  .desktop\:bg-violet-100 {
+    background: #ede9fe;
+  }
+  .desktop\:bg-violet-200 {
+    background: #ddd6fe;
+  }
+  .desktop\:bg-violet-300 {
+    background: #c4b5fd;
+  }
+  .desktop\:bg-violet-400 {
+    background: #a78bfa;
+  }
+  .desktop\:bg-violet-500 {
+    background: #8b5cf6;
+  }
+  .desktop\:bg-violet-600 {
+    background: #7c3aed;
+  }
+  .desktop\:bg-violet-700 {
+    background: #6d28d9;
+  }
+  .desktop\:bg-violet-800 {
+    background: #5b21b6;
+  }
+  .desktop\:bg-violet-900 {
+    background: #4c1d95;
+  }
+  .desktop\:bg-violet-950 {
+    background: #2e1065;
+  }
+  .desktop\:bg-purple-50 {
+    background: #faf5ff;
+  }
+  .desktop\:bg-purple-100 {
+    background: #f3e8ff;
+  }
+  .desktop\:bg-purple-200 {
+    background: #e9d5ff;
+  }
+  .desktop\:bg-purple-300 {
+    background: #d8b4fe;
+  }
+  .desktop\:bg-purple-400 {
+    background: #c084fc;
+  }
+  .desktop\:bg-purple-500 {
+    background: #a855f7;
+  }
+  .desktop\:bg-purple-600 {
+    background: #9333ea;
+  }
+  .desktop\:bg-purple-700 {
+    background: #7e22ce;
+  }
+  .desktop\:bg-purple-800 {
+    background: #6b21a8;
+  }
+  .desktop\:bg-purple-900 {
+    background: #581c87;
+  }
+  .desktop\:bg-purple-950 {
+    background: #3b0764;
+  }
+  .desktop\:bg-fuchsia-50 {
+    background: #fdf4ff;
+  }
+  .desktop\:bg-fuchsia-100 {
+    background: #fae8ff;
+  }
+  .desktop\:bg-fuchsia-200 {
+    background: #f5d0fe;
+  }
+  .desktop\:bg-fuchsia-300 {
+    background: #f0abfc;
+  }
+  .desktop\:bg-fuchsia-400 {
+    background: #e879f9;
+  }
+  .desktop\:bg-fuchsia-500 {
+    background: #d946ef;
+  }
+  .desktop\:bg-fuchsia-600 {
+    background: #c026d3;
+  }
+  .desktop\:bg-fuchsia-700 {
+    background: #a21caf;
+  }
+  .desktop\:bg-fuchsia-800 {
+    background: #86198f;
+  }
+  .desktop\:bg-fuchsia-900 {
+    background: #701a75;
+  }
+  .desktop\:bg-fuchsia-950 {
+    background: #4a044e;
+  }
+  .desktop\:bg-pink-50 {
+    background: #fdf2f8;
+  }
+  .desktop\:bg-pink-100 {
+    background: #fce7f3;
+  }
+  .desktop\:bg-pink-200 {
+    background: #fbcfe8;
+  }
+  .desktop\:bg-pink-300 {
+    background: #f9a8d4;
+  }
+  .desktop\:bg-pink-400 {
+    background: #f472b6;
+  }
+  .desktop\:bg-pink-500 {
+    background: #ec4899;
+  }
+  .desktop\:bg-pink-600 {
+    background: #db2777;
+  }
+  .desktop\:bg-pink-700 {
+    background: #be185d;
+  }
+  .desktop\:bg-pink-800 {
+    background: #9d174d;
+  }
+  .desktop\:bg-pink-900 {
+    background: #831843;
+  }
+  .desktop\:bg-pink-950 {
+    background: #500724;
+  }
+  .desktop\:bg-rose-50 {
+    background: #fff1f2;
+  }
+  .desktop\:bg-rose-100 {
+    background: #ffe4e6;
+  }
+  .desktop\:bg-rose-200 {
+    background: #fecdd3;
+  }
+  .desktop\:bg-rose-300 {
+    background: #fda4af;
+  }
+  .desktop\:bg-rose-400 {
+    background: #fb7185;
+  }
+  .desktop\:bg-rose-500 {
+    background: #f43f5e;
+  }
+  .desktop\:bg-rose-600 {
+    background: #e11d48;
+  }
+  .desktop\:bg-rose-700 {
+    background: #be123c;
+  }
+  .desktop\:bg-rose-800 {
+    background: #9f1239;
+  }
+  .desktop\:bg-rose-900 {
+    background: #881337;
+  }
+  .desktop\:bg-rose-950 {
+    background: #4c0519;
   }
 }
 @media (min-width: 1536px) {
   .screen\:bg-white {
-    background: #ffffff;
+    background: white;
   }
   .screen\:bg-black {
-    background: #000000;
+    background: black;
   }
-  .screen\:bg-dark {
-    background: #222222;
-  }
-  .screen\:bg-mute {
-    background: #555;
+  .screen\:bg-lighteen {
+    background: #fafafa;
   }
   .screen\:bg-light {
-    background: #f2f2f2;
+    background: #f5f5f5;
   }
-  .screen\:bg-light-sm {
-    background: #f8f8f8;
+  .screen\:bg-mute {
+    background: #404040;
   }
-  .screen\:bg-light-lg {
-    background: #eeeeee;
+  .screen\:bg-dark {
+    background: #171717;
+  }
+  .screen\:bg-darker {
+    background: #0a0a0a;
+  }
+  .screen\:bg-success {
+    background: #22c55e;
+  }
+  .screen\:bg-danger {
+    background: #ef4444;
+  }
+  .screen\:bg-warning {
+    background: #f97316;
+  }
+  .screen\:bg-info {
+    background: #3b82f6;
+  }
+  .screen\:bg-late-50 {
+    background: #f8fafc;
+  }
+  .screen\:bg-late-100 {
+    background: #f1f5f9;
+  }
+  .screen\:bg-late-200 {
+    background: #e2e8f0;
+  }
+  .screen\:bg-late-300 {
+    background: #cbd5e1;
+  }
+  .screen\:bg-late-400 {
+    background: #94a3b8;
+  }
+  .screen\:bg-late-500 {
+    background: #64748b;
+  }
+  .screen\:bg-late-600 {
+    background: #475569;
+  }
+  .screen\:bg-late-700 {
+    background: #334155;
+  }
+  .screen\:bg-late-800 {
+    background: #1e293b;
+  }
+  .screen\:bg-late-900 {
+    background: #0f172a;
+  }
+  .screen\:bg-late-950 {
+    background: #020617;
+  }
+  .screen\:bg-gray-50 {
+    background: #f9fafb;
+  }
+  .screen\:bg-gray-100 {
+    background: #f3f4f6;
+  }
+  .screen\:bg-gray-200 {
+    background: #e5e7eb;
+  }
+  .screen\:bg-gray-300 {
+    background: #d1d5db;
+  }
+  .screen\:bg-gray-400 {
+    background: #9ca3af;
+  }
+  .screen\:bg-gray-500 {
+    background: #6b7280;
+  }
+  .screen\:bg-gray-600 {
+    background: #4b5563;
+  }
+  .screen\:bg-gray-700 {
+    background: #374151;
+  }
+  .screen\:bg-gray-800 {
+    background: #1f2937;
+  }
+  .screen\:bg-gray-900 {
+    background: #111827;
+  }
+  .screen\:bg-gray-950 {
+    background: #030712;
+  }
+  .screen\:bg-zinc-50 {
+    background: #fafafa;
+  }
+  .screen\:bg-zinc-100 {
+    background: #f4f4f5;
+  }
+  .screen\:bg-zinc-200 {
+    background: #e4e4e7;
+  }
+  .screen\:bg-zinc-300 {
+    background: #d4d4d8;
+  }
+  .screen\:bg-zinc-400 {
+    background: #a1a1aa;
+  }
+  .screen\:bg-zinc-500 {
+    background: #71717a;
+  }
+  .screen\:bg-zinc-600 {
+    background: #52525b;
+  }
+  .screen\:bg-zinc-700 {
+    background: #3f3f46;
+  }
+  .screen\:bg-zinc-800 {
+    background: #27272a;
+  }
+  .screen\:bg-zinc-900 {
+    background: #18181b;
+  }
+  .screen\:bg-zinc-950 {
+    background: #09090b;
+  }
+  .screen\:bg-neutral-50 {
+    background: #fafafa;
+  }
+  .screen\:bg-neutral-100 {
+    background: #f5f5f5;
+  }
+  .screen\:bg-neutral-200 {
+    background: #e5e5e5;
+  }
+  .screen\:bg-neutral-300 {
+    background: #d4d4d4;
+  }
+  .screen\:bg-neutral-400 {
+    background: #a3a3a3;
+  }
+  .screen\:bg-neutral-500 {
+    background: #737373;
+  }
+  .screen\:bg-neutral-600 {
+    background: #525252;
+  }
+  .screen\:bg-neutral-700 {
+    background: #404040;
+  }
+  .screen\:bg-neutral-800 {
+    background: #262626;
+  }
+  .screen\:bg-neutral-900 {
+    background: #171717;
+  }
+  .screen\:bg-neutral-950 {
+    background: #0a0a0a;
+  }
+  .screen\:bg-stone-50 {
+    background: #fafaf9;
+  }
+  .screen\:bg-stone-100 {
+    background: #f5f5f4;
+  }
+  .screen\:bg-stone-200 {
+    background: #e7e5e4;
+  }
+  .screen\:bg-stone-300 {
+    background: #d6d3d1;
+  }
+  .screen\:bg-stone-400 {
+    background: #a8a29e;
+  }
+  .screen\:bg-stone-500 {
+    background: #78716c;
+  }
+  .screen\:bg-stone-600 {
+    background: #57534e;
+  }
+  .screen\:bg-stone-700 {
+    background: #44403c;
+  }
+  .screen\:bg-stone-800 {
+    background: #292524;
+  }
+  .screen\:bg-stone-900 {
+    background: #1c1917;
+  }
+  .screen\:bg-stone-950 {
+    background: #0c0a09;
+  }
+  .screen\:bg-red-50 {
+    background: #fef2f2;
+  }
+  .screen\:bg-red-100 {
+    background: #fee2e2;
+  }
+  .screen\:bg-red-200 {
+    background: #fecaca;
+  }
+  .screen\:bg-red-300 {
+    background: #fca5a5;
+  }
+  .screen\:bg-red-400 {
+    background: #f87171;
+  }
+  .screen\:bg-red-500 {
+    background: #ef4444;
+  }
+  .screen\:bg-red-600 {
+    background: #dc2626;
+  }
+  .screen\:bg-red-700 {
+    background: #b91c1c;
+  }
+  .screen\:bg-red-800 {
+    background: #991b1b;
+  }
+  .screen\:bg-red-900 {
+    background: #7f1d1d;
+  }
+  .screen\:bg-red-950 {
+    background: #450a0a;
+  }
+  .screen\:bg-orange-50 {
+    background: #fff7ed;
+  }
+  .screen\:bg-orange-100 {
+    background: #ffedd5;
+  }
+  .screen\:bg-orange-200 {
+    background: #fed7aa;
+  }
+  .screen\:bg-orange-300 {
+    background: #fdba74;
+  }
+  .screen\:bg-orange-400 {
+    background: #fb923c;
+  }
+  .screen\:bg-orange-500 {
+    background: #f97316;
+  }
+  .screen\:bg-orange-600 {
+    background: #ea580c;
+  }
+  .screen\:bg-orange-700 {
+    background: #c2410c;
+  }
+  .screen\:bg-orange-800 {
+    background: #9a3412;
+  }
+  .screen\:bg-orange-900 {
+    background: #7c2d12;
+  }
+  .screen\:bg-orange-950 {
+    background: #431407;
+  }
+  .screen\:bg-amber-50 {
+    background: #fffbeb;
+  }
+  .screen\:bg-amber-100 {
+    background: #fef3c7;
+  }
+  .screen\:bg-amber-200 {
+    background: #fde68a;
+  }
+  .screen\:bg-amber-300 {
+    background: #fcd34d;
+  }
+  .screen\:bg-amber-400 {
+    background: #fbbf24;
+  }
+  .screen\:bg-amber-500 {
+    background: #f59e0b;
+  }
+  .screen\:bg-amber-600 {
+    background: #d97706;
+  }
+  .screen\:bg-amber-700 {
+    background: #b45309;
+  }
+  .screen\:bg-amber-800 {
+    background: #92400e;
+  }
+  .screen\:bg-amber-900 {
+    background: #78350f;
+  }
+  .screen\:bg-amber-950 {
+    background: #451a03;
+  }
+  .screen\:bg-yellow-50 {
+    background: #fefce8;
+  }
+  .screen\:bg-yellow-100 {
+    background: #fef9c3;
+  }
+  .screen\:bg-yellow-200 {
+    background: #fef08a;
+  }
+  .screen\:bg-yellow-300 {
+    background: #fde047;
+  }
+  .screen\:bg-yellow-400 {
+    background: #facc15;
+  }
+  .screen\:bg-yellow-500 {
+    background: #eab308;
+  }
+  .screen\:bg-yellow-600 {
+    background: #ca8a04;
+  }
+  .screen\:bg-yellow-700 {
+    background: #a16207;
+  }
+  .screen\:bg-yellow-800 {
+    background: #854d0e;
+  }
+  .screen\:bg-yellow-900 {
+    background: #713f12;
+  }
+  .screen\:bg-yellow-950 {
+    background: #422006;
+  }
+  .screen\:bg-lime-50 {
+    background: #f7fee7;
+  }
+  .screen\:bg-lime-100 {
+    background: #ecfccb;
+  }
+  .screen\:bg-lime-200 {
+    background: #d9f99d;
+  }
+  .screen\:bg-lime-300 {
+    background: #bef264;
+  }
+  .screen\:bg-lime-400 {
+    background: #a3e635;
+  }
+  .screen\:bg-lime-500 {
+    background: #84cc16;
+  }
+  .screen\:bg-lime-600 {
+    background: #65a30d;
+  }
+  .screen\:bg-lime-700 {
+    background: #4d7c0f;
+  }
+  .screen\:bg-lime-800 {
+    background: #3f6212;
+  }
+  .screen\:bg-lime-900 {
+    background: #365314;
+  }
+  .screen\:bg-lime-950 {
+    background: #1a2e05;
+  }
+  .screen\:bg-green-50 {
+    background: #f0fdf4;
+  }
+  .screen\:bg-green-100 {
+    background: #dcfce7;
+  }
+  .screen\:bg-green-200 {
+    background: #bbf7d0;
+  }
+  .screen\:bg-green-300 {
+    background: #86efac;
+  }
+  .screen\:bg-green-400 {
+    background: #4ade80;
+  }
+  .screen\:bg-green-500 {
+    background: #22c55e;
+  }
+  .screen\:bg-green-600 {
+    background: #16a34a;
+  }
+  .screen\:bg-green-700 {
+    background: #15803d;
+  }
+  .screen\:bg-green-800 {
+    background: #166534;
+  }
+  .screen\:bg-green-900 {
+    background: #14532d;
+  }
+  .screen\:bg-green-950 {
+    background: #052e16;
+  }
+  .screen\:bg-emerald-50 {
+    background: #ecfdf5;
+  }
+  .screen\:bg-emerald-100 {
+    background: #d1fae5;
+  }
+  .screen\:bg-emerald-200 {
+    background: #a7f3d0;
+  }
+  .screen\:bg-emerald-300 {
+    background: #6ee7b7;
+  }
+  .screen\:bg-emerald-400 {
+    background: #34d399;
+  }
+  .screen\:bg-emerald-500 {
+    background: #10b981;
+  }
+  .screen\:bg-emerald-600 {
+    background: #059669;
+  }
+  .screen\:bg-emerald-700 {
+    background: #047857;
+  }
+  .screen\:bg-emerald-800 {
+    background: #065f46;
+  }
+  .screen\:bg-emerald-900 {
+    background: #064e3b;
+  }
+  .screen\:bg-emerald-950 {
+    background: #022c22;
+  }
+  .screen\:bg-teal-50 {
+    background: #f0fdfa;
+  }
+  .screen\:bg-teal-100 {
+    background: #ccfbf1;
+  }
+  .screen\:bg-teal-200 {
+    background: #99f6e4;
+  }
+  .screen\:bg-teal-300 {
+    background: #5eead4;
+  }
+  .screen\:bg-teal-400 {
+    background: #2dd4bf;
+  }
+  .screen\:bg-teal-500 {
+    background: #14b8a6;
+  }
+  .screen\:bg-teal-600 {
+    background: #0d9488;
+  }
+  .screen\:bg-teal-700 {
+    background: #0f766e;
+  }
+  .screen\:bg-teal-800 {
+    background: #115e59;
+  }
+  .screen\:bg-teal-900 {
+    background: #134e4a;
+  }
+  .screen\:bg-teal-950 {
+    background: #042f2e;
+  }
+  .screen\:bg-cyan-50 {
+    background: #ecfeff;
+  }
+  .screen\:bg-cyan-100 {
+    background: #cffafe;
+  }
+  .screen\:bg-cyan-200 {
+    background: #a5f3fc;
+  }
+  .screen\:bg-cyan-300 {
+    background: #67e8f9;
+  }
+  .screen\:bg-cyan-400 {
+    background: #22d3ee;
+  }
+  .screen\:bg-cyan-500 {
+    background: #06b6d4;
+  }
+  .screen\:bg-cyan-600 {
+    background: #0891b2;
+  }
+  .screen\:bg-cyan-700 {
+    background: #0e7490;
+  }
+  .screen\:bg-cyan-800 {
+    background: #155e75;
+  }
+  .screen\:bg-cyan-900 {
+    background: #164e63;
+  }
+  .screen\:bg-cyan-950 {
+    background: #083344;
+  }
+  .screen\:bg-sky-50 {
+    background: #f0f9ff;
+  }
+  .screen\:bg-sky-100 {
+    background: #e0f2fe;
+  }
+  .screen\:bg-sky-200 {
+    background: #bae6fd;
+  }
+  .screen\:bg-sky-300 {
+    background: #7dd3fc;
+  }
+  .screen\:bg-sky-400 {
+    background: #38bdf8;
+  }
+  .screen\:bg-sky-500 {
+    background: #0ea5e9;
+  }
+  .screen\:bg-sky-600 {
+    background: #0284c7;
+  }
+  .screen\:bg-sky-700 {
+    background: #0369a1;
+  }
+  .screen\:bg-sky-800 {
+    background: #075985;
+  }
+  .screen\:bg-sky-900 {
+    background: #0c4a6e;
+  }
+  .screen\:bg-sky-950 {
+    background: #082f49;
+  }
+  .screen\:bg-blue-50 {
+    background: #eff6ff;
+  }
+  .screen\:bg-blue-100 {
+    background: #dbeafe;
+  }
+  .screen\:bg-blue-200 {
+    background: #bfdbfe;
+  }
+  .screen\:bg-blue-300 {
+    background: #93c5fd;
+  }
+  .screen\:bg-blue-400 {
+    background: #60a5fa;
+  }
+  .screen\:bg-blue-500 {
+    background: #3b82f6;
+  }
+  .screen\:bg-blue-600 {
+    background: #2563eb;
+  }
+  .screen\:bg-blue-700 {
+    background: #1d4ed8;
+  }
+  .screen\:bg-blue-800 {
+    background: #1e40af;
+  }
+  .screen\:bg-blue-900 {
+    background: #1e3a8a;
+  }
+  .screen\:bg-blue-950 {
+    background: #172554;
+  }
+  .screen\:bg-indigo-50 {
+    background: #eef2ff;
+  }
+  .screen\:bg-indigo-100 {
+    background: #e0e7ff;
+  }
+  .screen\:bg-indigo-200 {
+    background: #c7d2fe;
+  }
+  .screen\:bg-indigo-300 {
+    background: #a5b4fc;
+  }
+  .screen\:bg-indigo-400 {
+    background: #818cf8;
+  }
+  .screen\:bg-indigo-500 {
+    background: #6366f1;
+  }
+  .screen\:bg-indigo-600 {
+    background: #4f46e5;
+  }
+  .screen\:bg-indigo-700 {
+    background: #4338ca;
+  }
+  .screen\:bg-indigo-800 {
+    background: #3730a3;
+  }
+  .screen\:bg-indigo-900 {
+    background: #312e81;
+  }
+  .screen\:bg-indigo-950 {
+    background: #1e1b4b;
+  }
+  .screen\:bg-violet-50 {
+    background: #f5f3ff;
+  }
+  .screen\:bg-violet-100 {
+    background: #ede9fe;
+  }
+  .screen\:bg-violet-200 {
+    background: #ddd6fe;
+  }
+  .screen\:bg-violet-300 {
+    background: #c4b5fd;
+  }
+  .screen\:bg-violet-400 {
+    background: #a78bfa;
+  }
+  .screen\:bg-violet-500 {
+    background: #8b5cf6;
+  }
+  .screen\:bg-violet-600 {
+    background: #7c3aed;
+  }
+  .screen\:bg-violet-700 {
+    background: #6d28d9;
+  }
+  .screen\:bg-violet-800 {
+    background: #5b21b6;
+  }
+  .screen\:bg-violet-900 {
+    background: #4c1d95;
+  }
+  .screen\:bg-violet-950 {
+    background: #2e1065;
+  }
+  .screen\:bg-purple-50 {
+    background: #faf5ff;
+  }
+  .screen\:bg-purple-100 {
+    background: #f3e8ff;
+  }
+  .screen\:bg-purple-200 {
+    background: #e9d5ff;
+  }
+  .screen\:bg-purple-300 {
+    background: #d8b4fe;
+  }
+  .screen\:bg-purple-400 {
+    background: #c084fc;
+  }
+  .screen\:bg-purple-500 {
+    background: #a855f7;
+  }
+  .screen\:bg-purple-600 {
+    background: #9333ea;
+  }
+  .screen\:bg-purple-700 {
+    background: #7e22ce;
+  }
+  .screen\:bg-purple-800 {
+    background: #6b21a8;
+  }
+  .screen\:bg-purple-900 {
+    background: #581c87;
+  }
+  .screen\:bg-purple-950 {
+    background: #3b0764;
+  }
+  .screen\:bg-fuchsia-50 {
+    background: #fdf4ff;
+  }
+  .screen\:bg-fuchsia-100 {
+    background: #fae8ff;
+  }
+  .screen\:bg-fuchsia-200 {
+    background: #f5d0fe;
+  }
+  .screen\:bg-fuchsia-300 {
+    background: #f0abfc;
+  }
+  .screen\:bg-fuchsia-400 {
+    background: #e879f9;
+  }
+  .screen\:bg-fuchsia-500 {
+    background: #d946ef;
+  }
+  .screen\:bg-fuchsia-600 {
+    background: #c026d3;
+  }
+  .screen\:bg-fuchsia-700 {
+    background: #a21caf;
+  }
+  .screen\:bg-fuchsia-800 {
+    background: #86198f;
+  }
+  .screen\:bg-fuchsia-900 {
+    background: #701a75;
+  }
+  .screen\:bg-fuchsia-950 {
+    background: #4a044e;
+  }
+  .screen\:bg-pink-50 {
+    background: #fdf2f8;
+  }
+  .screen\:bg-pink-100 {
+    background: #fce7f3;
+  }
+  .screen\:bg-pink-200 {
+    background: #fbcfe8;
+  }
+  .screen\:bg-pink-300 {
+    background: #f9a8d4;
+  }
+  .screen\:bg-pink-400 {
+    background: #f472b6;
+  }
+  .screen\:bg-pink-500 {
+    background: #ec4899;
+  }
+  .screen\:bg-pink-600 {
+    background: #db2777;
+  }
+  .screen\:bg-pink-700 {
+    background: #be185d;
+  }
+  .screen\:bg-pink-800 {
+    background: #9d174d;
+  }
+  .screen\:bg-pink-900 {
+    background: #831843;
+  }
+  .screen\:bg-pink-950 {
+    background: #500724;
+  }
+  .screen\:bg-rose-50 {
+    background: #fff1f2;
+  }
+  .screen\:bg-rose-100 {
+    background: #ffe4e6;
+  }
+  .screen\:bg-rose-200 {
+    background: #fecdd3;
+  }
+  .screen\:bg-rose-300 {
+    background: #fda4af;
+  }
+  .screen\:bg-rose-400 {
+    background: #fb7185;
+  }
+  .screen\:bg-rose-500 {
+    background: #f43f5e;
+  }
+  .screen\:bg-rose-600 {
+    background: #e11d48;
+  }
+  .screen\:bg-rose-700 {
+    background: #be123c;
+  }
+  .screen\:bg-rose-800 {
+    background: #9f1239;
+  }
+  .screen\:bg-rose-900 {
+    background: #881337;
+  }
+  .screen\:bg-rose-950 {
+    background: #4c0519;
   }
 }
 .border {
-  border: 1px solid #dddddd;
+  border: 1px solid #e5e5e5;
 }
 
 .border-0 {
@@ -45370,7 +54719,7 @@ template {
 
 @media (min-width: 480px) {
   .mobile\:border {
-    border: 1px solid #dddddd;
+    border: 1px solid #e5e5e5;
   }
   .mobile\:border-0 {
     border: 0;
@@ -45378,7 +54727,7 @@ template {
 }
 @media (min-width: 768px) {
   .tablet\:border {
-    border: 1px solid #dddddd;
+    border: 1px solid #e5e5e5;
   }
   .tablet\:border-0 {
     border: 0;
@@ -45386,7 +54735,7 @@ template {
 }
 @media (min-width: 1024px) {
   .laptop\:border {
-    border: 1px solid #dddddd;
+    border: 1px solid #e5e5e5;
   }
   .laptop\:border-0 {
     border: 0;
@@ -45394,7 +54743,7 @@ template {
 }
 @media (min-width: 1280px) {
   .desktop\:border {
-    border: 1px solid #dddddd;
+    border: 1px solid #e5e5e5;
   }
   .desktop\:border-0 {
     border: 0;
@@ -45402,14 +54751,14 @@ template {
 }
 @media (min-width: 1536px) {
   .screen\:border {
-    border: 1px solid #dddddd;
+    border: 1px solid #e5e5e5;
   }
   .screen\:border-0 {
     border: 0;
   }
 }
 .border-top {
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid #e5e5e5;
 }
 
 .border-top-0 {
@@ -45418,7 +54767,7 @@ template {
 
 @media (min-width: 480px) {
   .mobile\:border-top {
-    border-top: 1px solid #dddddd;
+    border-top: 1px solid #e5e5e5;
   }
   .mobile\:border-top-0 {
     border-top: 0;
@@ -45426,7 +54775,7 @@ template {
 }
 @media (min-width: 768px) {
   .tablet\:border-top {
-    border-top: 1px solid #dddddd;
+    border-top: 1px solid #e5e5e5;
   }
   .tablet\:border-top-0 {
     border-top: 0;
@@ -45434,7 +54783,7 @@ template {
 }
 @media (min-width: 1024px) {
   .laptop\:border-top {
-    border-top: 1px solid #dddddd;
+    border-top: 1px solid #e5e5e5;
   }
   .laptop\:border-top-0 {
     border-top: 0;
@@ -45442,7 +54791,7 @@ template {
 }
 @media (min-width: 1280px) {
   .desktop\:border-top {
-    border-top: 1px solid #dddddd;
+    border-top: 1px solid #e5e5e5;
   }
   .desktop\:border-top-0 {
     border-top: 0;
@@ -45450,14 +54799,14 @@ template {
 }
 @media (min-width: 1536px) {
   .screen\:border-top {
-    border-top: 1px solid #dddddd;
+    border-top: 1px solid #e5e5e5;
   }
   .screen\:border-top-0 {
     border-top: 0;
   }
 }
 .border-bottom {
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .border-bottom-0 {
@@ -45466,7 +54815,7 @@ template {
 
 @media (min-width: 480px) {
   .mobile\:border-bottom {
-    border-bottom: 1px solid #dddddd;
+    border-bottom: 1px solid #e5e5e5;
   }
   .mobile\:border-bottom-0 {
     border-bottom: 0;
@@ -45474,7 +54823,7 @@ template {
 }
 @media (min-width: 768px) {
   .tablet\:border-bottom {
-    border-bottom: 1px solid #dddddd;
+    border-bottom: 1px solid #e5e5e5;
   }
   .tablet\:border-bottom-0 {
     border-bottom: 0;
@@ -45482,7 +54831,7 @@ template {
 }
 @media (min-width: 1024px) {
   .laptop\:border-bottom {
-    border-bottom: 1px solid #dddddd;
+    border-bottom: 1px solid #e5e5e5;
   }
   .laptop\:border-bottom-0 {
     border-bottom: 0;
@@ -45490,7 +54839,7 @@ template {
 }
 @media (min-width: 1280px) {
   .desktop\:border-bottom {
-    border-bottom: 1px solid #dddddd;
+    border-bottom: 1px solid #e5e5e5;
   }
   .desktop\:border-bottom-0 {
     border-bottom: 0;
@@ -45498,14 +54847,14 @@ template {
 }
 @media (min-width: 1536px) {
   .screen\:border-bottom {
-    border-bottom: 1px solid #dddddd;
+    border-bottom: 1px solid #e5e5e5;
   }
   .screen\:border-bottom-0 {
     border-bottom: 0;
   }
 }
 .border-right {
-  border-right: 1px solid #dddddd;
+  border-right: 1px solid #e5e5e5;
 }
 
 .border-right-0 {
@@ -45514,7 +54863,7 @@ template {
 
 @media (min-width: 480px) {
   .mobile\:border-right {
-    border-right: 1px solid #dddddd;
+    border-right: 1px solid #e5e5e5;
   }
   .mobile\:border-right-0 {
     border-right: 0;
@@ -45522,7 +54871,7 @@ template {
 }
 @media (min-width: 768px) {
   .tablet\:border-right {
-    border-right: 1px solid #dddddd;
+    border-right: 1px solid #e5e5e5;
   }
   .tablet\:border-right-0 {
     border-right: 0;
@@ -45530,7 +54879,7 @@ template {
 }
 @media (min-width: 1024px) {
   .laptop\:border-right {
-    border-right: 1px solid #dddddd;
+    border-right: 1px solid #e5e5e5;
   }
   .laptop\:border-right-0 {
     border-right: 0;
@@ -45538,7 +54887,7 @@ template {
 }
 @media (min-width: 1280px) {
   .desktop\:border-right {
-    border-right: 1px solid #dddddd;
+    border-right: 1px solid #e5e5e5;
   }
   .desktop\:border-right-0 {
     border-right: 0;
@@ -45546,14 +54895,14 @@ template {
 }
 @media (min-width: 1536px) {
   .screen\:border-right {
-    border-right: 1px solid #dddddd;
+    border-right: 1px solid #e5e5e5;
   }
   .screen\:border-right-0 {
     border-right: 0;
   }
 }
 .border-left {
-  border-left: 1px solid #dddddd;
+  border-left: 1px solid #e5e5e5;
 }
 
 .border-left-0 {
@@ -45562,7 +54911,7 @@ template {
 
 @media (min-width: 480px) {
   .mobile\:border-left {
-    border-left: 1px solid #dddddd;
+    border-left: 1px solid #e5e5e5;
   }
   .mobile\:border-left-0 {
     border-left: 0;
@@ -45570,7 +54919,7 @@ template {
 }
 @media (min-width: 768px) {
   .tablet\:border-left {
-    border-left: 1px solid #dddddd;
+    border-left: 1px solid #e5e5e5;
   }
   .tablet\:border-left-0 {
     border-left: 0;
@@ -45578,7 +54927,7 @@ template {
 }
 @media (min-width: 1024px) {
   .laptop\:border-left {
-    border-left: 1px solid #dddddd;
+    border-left: 1px solid #e5e5e5;
   }
   .laptop\:border-left-0 {
     border-left: 0;
@@ -45586,7 +54935,7 @@ template {
 }
 @media (min-width: 1280px) {
   .desktop\:border-left {
-    border-left: 1px solid #dddddd;
+    border-left: 1px solid #e5e5e5;
   }
   .desktop\:border-left-0 {
     border-left: 0;
@@ -45594,15 +54943,15 @@ template {
 }
 @media (min-width: 1536px) {
   .screen\:border-left {
-    border-left: 1px solid #dddddd;
+    border-left: 1px solid #e5e5e5;
   }
   .screen\:border-left-0 {
     border-left: 0;
   }
 }
 .border-start {
-  -webkit-border-start: 1px solid #dddddd;
-  border-inline-start: 1px solid #dddddd;
+  -webkit-border-start: 1px solid #e5e5e5;
+  border-inline-start: 1px solid #e5e5e5;
 }
 
 .border-start-0 {
@@ -45612,8 +54961,8 @@ template {
 
 @media (min-width: 480px) {
   .mobile\:border-start {
-    -webkit-border-start: 1px solid #dddddd;
-    border-inline-start: 1px solid #dddddd;
+    -webkit-border-start: 1px solid #e5e5e5;
+    border-inline-start: 1px solid #e5e5e5;
   }
   .mobile\:border-start-0 {
     -webkit-border-start: 0;
@@ -45622,8 +54971,8 @@ template {
 }
 @media (min-width: 768px) {
   .tablet\:border-start {
-    -webkit-border-start: 1px solid #dddddd;
-    border-inline-start: 1px solid #dddddd;
+    -webkit-border-start: 1px solid #e5e5e5;
+    border-inline-start: 1px solid #e5e5e5;
   }
   .tablet\:border-start-0 {
     -webkit-border-start: 0;
@@ -45632,8 +54981,8 @@ template {
 }
 @media (min-width: 1024px) {
   .laptop\:border-start {
-    -webkit-border-start: 1px solid #dddddd;
-    border-inline-start: 1px solid #dddddd;
+    -webkit-border-start: 1px solid #e5e5e5;
+    border-inline-start: 1px solid #e5e5e5;
   }
   .laptop\:border-start-0 {
     -webkit-border-start: 0;
@@ -45642,8 +54991,8 @@ template {
 }
 @media (min-width: 1280px) {
   .desktop\:border-start {
-    -webkit-border-start: 1px solid #dddddd;
-    border-inline-start: 1px solid #dddddd;
+    -webkit-border-start: 1px solid #e5e5e5;
+    border-inline-start: 1px solid #e5e5e5;
   }
   .desktop\:border-start-0 {
     -webkit-border-start: 0;
@@ -45652,8 +55001,8 @@ template {
 }
 @media (min-width: 1536px) {
   .screen\:border-start {
-    -webkit-border-start: 1px solid #dddddd;
-    border-inline-start: 1px solid #dddddd;
+    -webkit-border-start: 1px solid #e5e5e5;
+    border-inline-start: 1px solid #e5e5e5;
   }
   .screen\:border-start-0 {
     -webkit-border-start: 0;
@@ -45661,8 +55010,8 @@ template {
   }
 }
 .border-end {
-  -webkit-border-end: 1px solid #dddddd;
-  border-inline-end: 1px solid #dddddd;
+  -webkit-border-end: 1px solid #e5e5e5;
+  border-inline-end: 1px solid #e5e5e5;
 }
 
 .border-end-0 {
@@ -45672,8 +55021,8 @@ template {
 
 @media (min-width: 480px) {
   .mobile\:border-end {
-    -webkit-border-end: 1px solid #dddddd;
-    border-inline-end: 1px solid #dddddd;
+    -webkit-border-end: 1px solid #e5e5e5;
+    border-inline-end: 1px solid #e5e5e5;
   }
   .mobile\:border-end-0 {
     -webkit-border-end: 0;
@@ -45682,8 +55031,8 @@ template {
 }
 @media (min-width: 768px) {
   .tablet\:border-end {
-    -webkit-border-end: 1px solid #dddddd;
-    border-inline-end: 1px solid #dddddd;
+    -webkit-border-end: 1px solid #e5e5e5;
+    border-inline-end: 1px solid #e5e5e5;
   }
   .tablet\:border-end-0 {
     -webkit-border-end: 0;
@@ -45692,8 +55041,8 @@ template {
 }
 @media (min-width: 1024px) {
   .laptop\:border-end {
-    -webkit-border-end: 1px solid #dddddd;
-    border-inline-end: 1px solid #dddddd;
+    -webkit-border-end: 1px solid #e5e5e5;
+    border-inline-end: 1px solid #e5e5e5;
   }
   .laptop\:border-end-0 {
     -webkit-border-end: 0;
@@ -45702,8 +55051,8 @@ template {
 }
 @media (min-width: 1280px) {
   .desktop\:border-end {
-    -webkit-border-end: 1px solid #dddddd;
-    border-inline-end: 1px solid #dddddd;
+    -webkit-border-end: 1px solid #e5e5e5;
+    border-inline-end: 1px solid #e5e5e5;
   }
   .desktop\:border-end-0 {
     -webkit-border-end: 0;
@@ -45712,8 +55061,8 @@ template {
 }
 @media (min-width: 1536px) {
   .screen\:border-end {
-    -webkit-border-end: 1px solid #dddddd;
-    border-inline-end: 1px solid #dddddd;
+    -webkit-border-end: 1px solid #e5e5e5;
+    border-inline-end: 1px solid #e5e5e5;
   }
   .screen\:border-end-0 {
     -webkit-border-end: 0;
@@ -46867,8 +56216,8 @@ template {
 }
 html,
 body {
-  color: #555;
-  background-color: #f2f2f2;
+  color: #404040;
+  background-color: #f5f5f5;
 }
 
 * {
@@ -46880,10 +56229,6 @@ body {
   direction: rtl;
 }
 
-p {
-  margin-bottom: 1rem;
-}
-
 h1, h2, h3, h4, h5 {
   margin: 3rem 0 1.38rem;
   font-family: "Poppins", sans-serif;
@@ -46893,31 +56238,14 @@ h1, h2, h3, h4, h5 {
 
 h1 {
   margin-top: 0;
-  font-size: 1.602rem;
 }
 
 h2 {
-  font-size: 1.424rem;
-}
-
-h3 {
   font-size: 1.266rem;
 }
 
-h4 {
-  font-size: 1.125rem;
-}
-
-h5 {
-  font-size: 1rem;
-}
-
-h6 {
-  font-size: 0.889rem;
-}
-
 small, .text_small {
-  font-size: 0.702rem;
+  font-size: 0.79rem;
 }
 
 .cursor-pointer {
@@ -46925,8 +56253,8 @@ small, .text_small {
 }
 
 .divider-x > * {
-  -webkit-border-end: 1px solid #dddddd;
-  border-inline-end: 1px solid #dddddd;
+  -webkit-border-end: 1px solid #e5e5e5;
+  border-inline-end: 1px solid #e5e5e5;
 }
 
 .divider-x > *:last-child {
@@ -46935,7 +56263,7 @@ small, .text_small {
 }
 
 .divider-y > * {
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .divider-y > *:last-child {
@@ -46943,12 +56271,12 @@ small, .text_small {
 }
 
 .border-x > * {
-  -webkit-border-end: 1px solid #dddddd;
-  border-inline-end: 1px solid #dddddd;
+  -webkit-border-end: 1px solid #e5e5e5;
+  border-inline-end: 1px solid #e5e5e5;
 }
 
 .border-y > * {
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .space-x > * {
@@ -46967,11 +56295,4 @@ small, .text_small {
 
 .space-y > *:last-child {
   margin-bottom: 0;
-}
-
-.ent-input {
-  width: 100%;
-  background-color: #f8f8f8;
-  border: 1px solid #dddddd;
-  padding: 0.35rem 1rem;
 }

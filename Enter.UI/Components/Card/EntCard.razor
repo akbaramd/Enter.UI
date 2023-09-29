@@ -1,19 +1,20 @@
 ﻿@namespace Enter.UI.Components
 @inherits EntBaseComponent
+
 <div @attributes="@Attributes" class="@RootClass" style="@Style">
-    @if (Header != null)
+    @if (CardHeader != null)
     {
         <div class="ent-card-header">
-            @Header
+            @CardHeader
         </div>
     }
     <div class="ent-card-content">
-        @Content
+        @CardContent
     </div>
-    @if (Footer != null)
+    @if (CardFooter != null)
     {
         <div class="ent-card-footer">
-            @Footer
+            @CardFooter
         </div>
     }
 
@@ -26,22 +27,12 @@
         .Build();
 
     [Parameter]
-    public RenderFragment? Content { get; set; }
+    public RenderFragment? CardContent { get; set; }
 
     [Parameter]
-    public RenderFragment? Header { get; set; }
+    public RenderFragment? CardHeader { get; set; }
 
     [Parameter]
-    public RenderFragment? Footer { get; set; }
-
-
-    protected override void OnAfterRender(bool firstRender)
-    {
-        if (firstRender)
-        {
-            var attr = Attributes;
-        }
-        base.OnAfterRender(firstRender);
-    }
+    public RenderFragment? CardFooter { get; set; }
 
 }

@@ -5,30 +5,31 @@
 <div class="d-flex flex-column">
     <EntMdiTab ItemDirection="EntTabItemDirection.Horizontal"
                KeepPanelAlive="true"
+               PanelClass="bg-light"
                ActiveClass="bg-light"
                Closeable="true"
                Direction="EntTabDirection.Vertical" class="border-0 flex-grow-1">
         <div class="p-4">
             <EntCard class="mb-4">
-                <Content>
+                <CardContent>
                     <div class="d-flex flex-column">
                         <b>این صفحه پیشفرض EntMdiTab میباشد</b>
                     </div>
-                </Content>
+                </CardContent>
             </EntCard>
             <EntCard class="mt-4">
-                <Header>کامپوننت - دکمه</Header>
-                <Content>
+                <CardHeader>کامپوننت - دکمه</CardHeader>
+                <CardContent>
                     <div class="d-flex space-x items-center">
                         <EntButton type="button" Size="ButtonSize.Large">دکمه بزرگ</EntButton>
                         <EntButton type="button" Size="ButtonSize.Default">دکمه معمولی</EntButton>
                         <EntButton type="button" Size="ButtonSize.Small">دکمه کوچک</EntButton>
                     </div>
-                </Content>
+                </CardContent>
             </EntCard>
             <EntCard class="mt-4">
-                <Header>کامپوننت - مدال</Header>
-                <Content>
+                <CardHeader>کامپوننت - مدال</CardHeader>
+                <CardContent>
                     <div class="d-flex space-x">
                         <EntButton type="button" Click="() => OpenModal(EntModalSize.ExtraLarge)">باز کردن مدال ExtraLarge</EntButton>
                         <EntButton type="button" Click="() => OpenModal(EntModalSize.Large)">باز کردن مدال Large</EntButton>
@@ -36,7 +37,7 @@
                         <EntButton type="button" Click="() => OpenModal(EntModalSize.Small)">باز کردن مدال Small</EntButton>
                         <EntButton type="button" Click="() => OpenModal(EntModalSize.Fullscreen)">باز کردن مدال FullScreen</EntButton>
                     </div>
-                </Content>
+                </CardContent>
             </EntCard>
         </div>
     </EntMdiTab>

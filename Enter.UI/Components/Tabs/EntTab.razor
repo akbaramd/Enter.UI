@@ -22,6 +22,14 @@
                         }
                     </li>
                 }
+                @if (Closeable)
+                {
+                    <li class="@ItemCss">
+                        <div @onclick="OnTabAllClose" class="ent-tab-action ">
+                            <EntIcon Data="fa-light fa-trash" Type="EntIconType.IconTag"/>
+                        </div>
+                    </li>
+                }
             </ul>
         }
         else

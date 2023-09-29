@@ -79,6 +79,16 @@ namespace Enter.UI.Components
             MdiService.RemoveTab(id);
             OnTabClosed.InvokeAsync(id).GetAwaiter().GetResult();
         }
+        
+        private void OnAllTabClosedCallback()
+        {
+            foreach (var item in Items)
+            {
+                Tab.RemoveTab(item.Id);
+                MdiService.RemoveTab(item.Id);
+                OnTabClosed.InvokeAsync(item.Id).GetAwaiter().GetResult();
+            }
+        }
 
     }
 

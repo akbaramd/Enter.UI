@@ -108,6 +108,9 @@ namespace Enter.UI.Components
 
         private void OnTabClose(string id) =>
             OnTabClosed.InvokeAsync(id).GetAwaiter().GetResult();
+
+        private async Task OnTabAllClose() =>
+            OnAllTabClosed.InvokeAsync().GetAwaiter().GetResult();
     }
 
     public enum EntTabDirection
@@ -136,5 +139,6 @@ namespace Enter.UI.Components
         [Parameter] public EventCallback<string?> OnTabActived { get; set; }
         [Parameter] public EventCallback<EntTabPanel> OnTabAdded { get; set; }
         [Parameter] public EventCallback<string> OnTabClosed { get; set; }
+        [Parameter] public EventCallback OnAllTabClosed { get; set; }
     }
 }

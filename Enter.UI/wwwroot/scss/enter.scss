@@ -7,7 +7,7 @@
 html,
 body {
   color: map-get($map: $colors, $key: mute);
-  background-color: #f2f2f2;
+  background-color: map-get($map: $colors, $key: light);
 }
 
 * {
@@ -105,13 +105,3 @@ small, .text_small {
 .space-y > *:last-child {
   margin-bottom: 0;
 }
-
-.ent-input {
-
-    width: 100%;
-    background-color: #f8f8f8;
-    border: $border;
-    padding: 0.35rem 1rem;  
-
-}
-
