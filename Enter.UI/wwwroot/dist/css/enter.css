@@ -843,6 +843,9 @@ template {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  overflow: hidden;
+  margin: 0 auto;
+  min-width: 100%;
 }
 .ent-layout .ent-layout-container {
   -webkit-box-flex: 1;
@@ -856,12 +859,20 @@ template {
   -ms-flex-direction: row;
   flex-direction: row;
   height: 100%;
+  position: relative;
 }
-.ent-layout .ent-layout-sidebar {
+.ent-layout .ent-layout-container .ent-layout-sidebar {
   -webkit-border-end: 1px solid #e5e5e5;
   border-inline-end: 1px solid #e5e5e5;
+  overflow: hidden;
 }
-.ent-layout .ent-layout-content {
+.ent-layout .ent-layout-container .ent-layout-sidebar.ent-layout-sidebar-overlap {
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0;
+  height: 100%;
+}
+.ent-layout .ent-layout-container .ent-layout-content {
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;

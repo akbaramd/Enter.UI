@@ -2,23 +2,38 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  margin: 0 auto;
+  min-width: 100%;
+
   .ent-layout-container {
     flex-grow: 1;
-      display: flex;
-      flex-direction: row;
-      height: 100%;      
-  }
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    position: relative;
 
-  .ent-layout-sidebar {
-    border-inline-end: $border;
-  }
 
-  .ent-layout-content {
-    flex-grow: 1;
-  }
+    .ent-layout-sidebar {
+      border-inline-end: $border;
+      overflow: hidden;
 
+      &.ent-layout-sidebar-overlap {
+        position: absolute;
+        inset-inline-start: 0;
+        top: 0;
+        height: 100%;
+
+      }
+    }
+
+    .ent-layout-content {
+      flex-grow: 1;
+    }
+
+    
+  }
   .ent-layout-appbar {
     border-bottom: $border;
   }
-  
 }

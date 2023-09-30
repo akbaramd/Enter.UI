@@ -16,11 +16,11 @@ public class EntJsService : IEntJsService
 
     public async Task<EntJsElement> GetElementByIdAsync(string id)
     {
-        return await _jsRuntime.InvokeAsync<EntJsElement>("GetElementById",id); 
+        return await _jsRuntime.InvokeAsync<EntJsElement>("EnterUi.Shared.GetElementById",id); 
     }
 
     public async Task<EntJsElement> GetElementByQuerySelectorAsync(string selector)
     {
-        return await _jsRuntime.InvokeAsync<EntJsElement>("GetElementByQuerySelector",selector); 
+        return await _jsRuntime.InvokeAsync<EntJsElement>("EnterUi.Shared.GetElementByQuerySelector",selector); 
     }
 }

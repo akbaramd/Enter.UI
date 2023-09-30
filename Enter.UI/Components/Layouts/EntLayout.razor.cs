@@ -13,23 +13,25 @@ namespace Enter.UI.Components
 {
     public partial class EntLayout : EntBaseComponent
     {
-        [Inject]
-        public IEntJsService JsService { get; set; }
+        [Inject] public IEntJsService JsService { get; set; }
+        [Inject] public IJSRuntime JsRuntime { get; set; }
+
+        private bool _sidebarIsOpen = true;
+        private DotNetObjectReference<EntLayout>? _ref  = null;  
+        [Parameter] public int MobileBreakSize { get; set; } = 1028;
+
         protected string RootCss => CssClassBuilder.AddClass("ent-layout")
             .Build();
 
-        private int _screenWidth = 0;
-        
+
         protected string SidebarCss => CssClassBuilder
             .Clear()
             .AddClass(SidebarClass)
             .AddClass("ent-layout-sidebar")
-            .AddClass("ent-layout-sidebar-mobile",_screenWidth < 1028)
             .Build();
 
         protected string AppBarCss => CssClassBuilder
             .Clear()
-            .AddClass(AppbarClass)
             .AddClass("ent-layout-appbar")
             .Build();
 
@@ -46,11 +48,8 @@ namespace Enter.UI.Components
         [Parameter] public string SidebarClass { get; set; }
         [Parameter] public string ContentClass { get; set; }
 
-        [Parameter] public bool SidebarIsShow { get; set; } = true;
-
-        [Parameter] public string AppbarClass { get; set; }
         [Parameter] public EventCallback<bool> OnSidebarIsShowChanged { get; set; }
-
+        
 
         protected override void OnInitialized()
         {
@@ -58,25 +57,45 @@ namespace Enter.UI.Components
             {
                 throw new InvalidOperationException("you must be define <Content></Content> in EntLayout");
             }
-
+            _ref = DotNetObjectReference.Create(this);
             base.OnInitialized();
         }
+
+        
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
             {
-                var element = await JsService.GetElementByQuerySelectorAsync("body");
-                _screenWidth = element.Width;
-                if (element.Width < 1028)
-                {
-                    SidebarIsShow = false;
-                    StateHasChanged();
-
-                    await OnSidebarIsShowChanged.InvokeAsync(SidebarIsShow);
-                }
+                await JsRuntime.InvokeVoidAsync("EnterUi.Components.Layout.Initilize",_ref,_sidebarIsOpen,MobileBreakSize);
             }
+
+            await base.OnAfterRenderAsync(firstRender);
         }
-       
+        
+        [JSInvokable]
+        public async Task CloseSidebarAsync()
+        {
+            _sidebarIsOpen = false;
+            await JsRuntime.InvokeVoidAsync("EnterUi.Components.Layout.Toggle",_ref,_sidebarIsOpen);
+            await OnSidebarIsShowChanged.InvokeAsync(_sidebarIsOpen);
+        }
+        
+        [JSInvokable]
+        public async Task OpenSidebarAsync()
+        {
+            _sidebarIsOpen = true;
+            await JsRuntime.InvokeVoidAsync("EnterUi.Components.Layout.Toggle",_ref,_sidebarIsOpen);
+            await OnSidebarIsShowChanged.InvokeAsync(_sidebarIsOpen);
+        }
+        
+        [JSInvokable]
+        public async Task ToggleSidebarAsync()
+        {
+            _sidebarIsOpen = !_sidebarIsOpen;
+            await JsRuntime.InvokeVoidAsync("EnterUi.Components.Layout.Toggle",_ref,_sidebarIsOpen);
+            await OnSidebarIsShowChanged.InvokeAsync(_sidebarIsOpen);
+        }
+        
     }
 }

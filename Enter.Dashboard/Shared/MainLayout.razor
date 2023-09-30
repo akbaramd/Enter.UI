@@ -4,7 +4,7 @@
 @using Enter.Dashboard.Components
 @inherits LayoutComponentBase
 <div dir="@Direction" class="border-y d-flex flex-column h-full">
-    <EntLayout
+    <EntLayout @ref="Layout"
         SidebarIsShow="_sidebarIsShow"
         SidebarClass="bg-white" 
         ContentClass="bg-light"
@@ -61,10 +61,9 @@
 
 @code {
 
-    
-   
-    
-    private bool _sidebarIsShow = true;
+
+
+    public EntLayout Layout { get; set; }    
     
     [Inject]
     public IMdiService MdiService { get; set; }
@@ -97,15 +96,14 @@
         Direction = "ltr";
     }
 
-    private void ToggleSidebar()
+    private async Task ToggleSidebar()
     {
-        _sidebarIsShow = !_sidebarIsShow;
+        await Layout.ToggleSidebarAsync();
     }
 
 
     private void OnSidebarIsShowChanged(bool sidebarIsShow)
     {
-        _sidebarIsShow = sidebarIsShow;
         StateHasChanged();
     }
 
