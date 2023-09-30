@@ -12,13 +12,19 @@ namespace Enter.UI.Components
 {
     public partial class EntNavMenuTextItem : EntBaseComponent
     {
-        protected string RootCss => CssClassBuilder.AddClass("ent-nav-menu-item ent-nav-menu-item-text")
+        protected string RootCss => CssClassBuilder
+            .Clear()
+            .AddClass("ent-nav-menu-item ent-nav-menu-item-text")
             .Build();
         
-        protected string IconCss => CssClassBuilder.AddClass("ent-nav-menu-item-icon")
+        protected string IconCss => CssClassBuilder
+            .Clear()
+            .AddClass("ent-nav-menu-item-icon")
             .Build();
         
-        protected string ContentCss => CssClassBuilder.AddClass("ent-nav-menu-item-content")
+        protected string ContentCss => CssClassBuilder
+            .Clear()
+            .AddClass("ent-nav-menu-item-content")
             .Build();
 
         [Required]

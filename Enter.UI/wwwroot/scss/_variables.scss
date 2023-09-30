@@ -274,7 +274,7 @@ $color-rose-950: #4c0519;
 
 $colors: (
         "white": white,
-        "black": black, 
+        "black": black,
         "lighteen":$color-neutral-50,
         "light":$color-neutral-100,
         "mute":$color-neutral-700,
@@ -748,6 +748,112 @@ $utilities: (
                 cssName: px,
                 breakpoint: true,
                 values: $sizes,
+        ),
+        space-x:
+        (
+                property: margin-inline-end,
+                propertyRtl: margin-inline-end,
+                cssName: "space-x",
+                cssNamePostFix: " > *",
+                breakpoint: true,
+                values: $sizes, 
+        ),
+        space-x-last:
+        (
+                property: margin-inline-end,
+                propertyRtl: margin-inline-end,
+                cssName: "space-x",
+                cssNamePostFix: " > *:last-child",
+                breakpoint: false,
+                values: (
+                        null: 0,
+                ),
+        ),
+        space-y:
+        (
+                property: margin-bottom,
+                propertyRtl: margin-bottom,
+                cssName: "space-y",
+                cssNamePostFix: " > *",
+                breakpoint: true,
+                values: $sizes,
+        ),
+        space-y-last:
+        (
+                property: margin-bottom,
+                propertyRtl: margin-bottom,
+                cssName: "space-y",
+                cssNamePostFix: " > *:last-child",
+                breakpoint: false,
+                values: (
+                        null: 0,
+                ),
+        ),
+        border-x:
+        (
+                property: border-inline-end,
+                propertyRtl: border-inline-end,
+                cssName: "border-x",
+                cssNamePostFix: " > *",
+                breakpoint: true,
+                values: (
+                        null: $border,
+                ),
+        ),
+        border-y:
+        (
+                property: border-bottom,
+                propertyRtl: border-bottom,
+                cssName: "border-y",
+                cssNamePostFix: " > *",
+                breakpoint: true,
+                values: (
+                        null: $border,
+                ),
+        ),
+        divider-x:
+        (
+                property: border-inline-end,
+                propertyRtl: border-inline-end,
+                cssName: "divider-x",
+                cssNamePostFix: " > *",
+                breakpoint: true,
+                values: (
+                        null: $border,
+                ),
+        ),
+        divider-x-last:
+        (
+                property: border-inline-end,
+                propertyRtl: border-inline-end,
+                cssName: "divider-x",
+                cssNamePostFix: " > *:last-child",
+                breakpoint: false,
+                values: (
+                        null: 0,
+                ),
+        ),
+        divider-y:
+        (
+                property: border-bottom,
+                propertyRtl: border-bottom,
+                cssName: "divider-y",
+                cssNamePostFix: " > *",
+                breakpoint: true,
+                values: (
+                        null: $border,
+                ),
+        ),
+        divider-y-last:
+        (
+                property: border-bottom,
+                propertyRtl: border-bottom,
+                cssName: "divider-y",
+                cssNamePostFix: " > *:last-child",
+                breakpoint: false,
+                values: (
+                        null: 0,
+                ),
         ),
   // margin
         margin:

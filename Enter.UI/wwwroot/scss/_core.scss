@@ -2,15 +2,23 @@
   $properties: map-get($config, property);
   $propertiesRtl: map-get($config, propertyRtl);
   $cssName: map-get($config, cssName);
+  $cssNamePostFix: map-get($config, cssNamePostFix);
   $values: map-get($config, values);
-
+  
+  @if $cssNamePostFix == null {
+    $cssNamePostFix: "";
+  }
+  
   @each $size, $value in $values {
+
+
+   
     @if $size != null {
       $size: -#{$size};
     } @else {
       $size: "";
     }
-    .#{$cssName}#{$size} {
+    .#{$cssName}#{$size}#{$cssNamePostFix} {
       @each $property in $properties {
         #{$property}: $value;
       }
@@ -38,7 +46,7 @@
             $size: "";
           }
 
-          .#{$bp}\:#{$cssName}#{$size} {
+          .#{$bp}\:#{$cssName}#{$size}#{$cssNamePostFix} {
             @each $property in $properties {
               #{$property}: $value;
             }

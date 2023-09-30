@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Enter.UI.Components;
+using Enter.UI.Models;
+using Microsoft.JSInterop;
 
 namespace Enter.UI
 {
@@ -16,6 +18,7 @@ namespace Enter.UI
         {
             services.AddSingleton<IMdiService, MdiService>();
             services.AddSingleton<IModalService, ModalService>();
+            services.AddSingleton<IEntJsService, EntJsService>();
         }
     }
 }

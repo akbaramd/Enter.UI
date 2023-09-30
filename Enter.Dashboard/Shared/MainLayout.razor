@@ -4,53 +4,74 @@
 @using Enter.Dashboard.Components
 @inherits LayoutComponentBase
 <div dir="@Direction" class="border-y d-flex flex-column h-full">
-    <EntAppBar Title="پلتفرم مدیریتی پیشرفته">
-        <div class="d-flex w-full">
-            <div class="flex-grow-1">
-            </div>
-            <div class="d-flex gap-2">
-                <EntButton Click="ToRtl" Icon="fa-light fa-align-right" Size="ButtonSize.Small">راست چین</EntButton>
-                <EntButton Click="ToLtr" Icon="fa-light fa-align-left" Size="ButtonSize.Small">چپ چین</EntButton>
-            </div>
-        </div>
-    </EntAppBar>
-    <div class="border-x flex-grow-1 d-flex">
+    <EntLayout
+        SidebarIsShow="_sidebarIsShow"
+        SidebarClass="bg-white" 
+        ContentClass="bg-light"
+        OnSidebarIsShowChanged="OnSidebarIsShowChanged"
+        >
+        <AppBar>
+                <div class="d-flex items-center  px-8 py-4">
+                    <div class="flex-grow-1 d-flex  item-center gap-4">
+                        <EntIcon Click="ToggleSidebar" class="cursor-pointer" Type="EntIconType.IconTag" Data="fa-light fa-bars"/>
+                        <b>پلتفرم مدیریتی انترپرایس</b>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <EntButton Click="ToRtl" Icon="fa-light fa-align-right" Size="ButtonSize.Small">راست چین</EntButton>
+                        <EntButton Click="ToLtr" Icon="fa-light fa-align-left" Size="ButtonSize.Small">چپ چین</EntButton>
+                    </div>
+                </div>
+        </AppBar>
+        <Sidebar>
+            
             <EntTab ItemDirection="EntTabItemDirection.Vertical"
                     Direction="EntTabDirection.Horizontal"
                     Expandable="true"
                     KeepPanelAlive="true"
                     ActiveClass="bg-light-sm"
                     PanelClass="bg-white"
-                    class="border-0">
+                    class="border-0 h-full">
+
                 <EntTabPanel Title="صفحه اصلی" Icon="fa-light fa-home" class="w-60">
                     <EntNavMenu Title="صفحات فرم" class="border-0">
                         <EntNavMenuGroup Title="تعاریف" Icon="fa-light fa-home">
-                            <EntNavMenuTextItem class="bg-light"  IconData="fa-light fa-clock" Text="شمارنده" Click="() => AddNewTab<Counter>()"/>
-                            <EntNavMenuTextItem class="bg-light"  IconData="fa-light fa-arrow-down" Text="دریافت اطلاعات" Click="() => AddNewTab<FetchData>()"/>
+                            <EntNavMenuTextItem class="bg-light" IconData="fa-light fa-clock" Text="شمارنده" Click="() => AddNewTab<Counter>()"/>
+                            <EntNavMenuTextItem class="bg-light" IconData="fa-light fa-arrow-down" Text="دریافت اطلاعات" Click="() => AddNewTab<FetchData>()"/>
                         </EntNavMenuGroup>
                         <EntNavMenuGroup Title="صفحات فرم" Icon="fa-light fa-note" IconType="EntIconType.IconTag">
-                            <EntNavMenuTextItem class="bg-light"  Text="فرم معمولی" Click="() => AddNewTab<FormLayout>()"/>
+                            <EntNavMenuTextItem class="bg-light" Text="فرم معمولی" Click="() => AddNewTab<FormLayout>()"/>
                         </EntNavMenuGroup>
                     </EntNavMenu>
                 </EntTabPanel>
+
                 <EntTabPanel Title="حساب کاربری" Icon="fa-light fa-user" class="w-60">
                     <div class="bg-white p-4 m-4 border ">اطلاعات مربوط به حساب کاربری اینجا قرار میگیرد</div>
                 </EntTabPanel>
+
             </EntTab>
-        <div class="flex-grow-1">
+        </Sidebar>
+        <Content>
             @Body
-        </div>
-    </div>
+        </Content>
+    </EntLayout>
 </div>
 
 <EntModalProvider/>
+
+
+
 @code {
 
+    
+   
+    
+    private bool _sidebarIsShow = true;
+    
     [Inject]
     public IMdiService MdiService { get; set; }
 
     public string Direction { get; set; } = "rtl";
-    
+
     public void AddNewTab<T>()
     {
         if (typeof(T) == typeof(Counter))
@@ -71,10 +92,22 @@
     {
         Direction = "rtl";
     }
-    
+
     private void ToLtr()
     {
         Direction = "ltr";
+    }
+
+    private void ToggleSidebar()
+    {
+        _sidebarIsShow = !_sidebarIsShow;
+    }
+
+
+    private void OnSidebarIsShowChanged(bool sidebarIsShow)
+    {
+        _sidebarIsShow = sidebarIsShow;
+        StateHasChanged();
     }
 
 }

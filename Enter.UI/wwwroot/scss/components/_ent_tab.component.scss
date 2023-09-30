@@ -122,7 +122,6 @@
   > .ent-tab-item-container-message {
     padding: 1rem 0.5rem;
     writing-mode: sideways-rl;
-
     > * {
       transform: rotate(90deg);
     }
@@ -140,7 +139,6 @@
   > .ent-tab-item-container {
     flex-direction: row;
     border-bottom: $border;
-
     > * {
       border-inline-end: $border;
     }
@@ -148,7 +146,6 @@
 
   > .ent-tab-item-container-message {
     border-bottom: $border;
-
     padding: 0.5rem 1rem;
   }
 }

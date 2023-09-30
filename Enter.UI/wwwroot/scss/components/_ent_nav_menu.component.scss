@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   border: $border;
-  background-color: white;
 
   > * {
     border-bottom: $border;
@@ -36,7 +35,9 @@
     }
 
     &.active {
+      background-color: map-get($colors,"lighteen");
      > .ent-nav-menu-group-item {
+       background-color: map-get($colors,"light");
        > .ent-nav-menu-group-item-arrow-icon {
          margin-inline-start: 1rem;
          transform: rotate(180deg);

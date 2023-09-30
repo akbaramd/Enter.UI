@@ -1,0 +1,22 @@
+﻿@namespace Enter.UI.Components
+@inherits EntBaseComponent
+<div @attributes="Attributes" class="@RootCss" style="@Style">
+    @if (AppBar != null)
+    {
+        <div class="@AppBarCss">
+            @AppBar
+        </div>
+    }
+    <div class="ent-layout-container">
+        @if ( Sidebar != null)
+        {
+            <div class="@SidebarCss">
+                @Sidebar
+            </div>
+        }
+
+        <div class="@ContentCss">
+            @Content
+        </div>
+    </div>
+</div>
