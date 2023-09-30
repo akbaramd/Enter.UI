@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkoptimum_ui=self.webpackChunkoptimum_ui||[]).push([[569],{569:(s,u,o)=>{o.r(u),o.d(u,{log:()=>c});const c=function(){console.log("sss")}}}]);
+//# sourceMappingURL=569.js.map
