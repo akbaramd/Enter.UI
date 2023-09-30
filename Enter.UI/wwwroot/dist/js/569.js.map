@@ -1,0 +1,1 @@
+{"version":3,"file":"569.js","mappings":"gIAAQ,MAAMA,EAAK,WACfC,QAAQD,IAAI,MAChB,C","sources":["webpack://optimum.ui/./wwwroot/js/components/layout.component.js"],"sourcesContent":["﻿export const log =function () {\r\n    console.log('sss');\r\n} "],"names":["log","console"],"sourceRoot":""}
