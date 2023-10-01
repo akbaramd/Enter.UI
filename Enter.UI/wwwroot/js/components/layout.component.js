@@ -1,41 +1,47 @@
-﻿
+﻿export class LayoutComponent {
+    _dotNetRef;
+    _sidebar;
+    _layoutBreakWidth;
 
-export const  Initilize = (ref,sidebarIsShow,mobileBreakSize) => {
+    initialize(dotNetRef, sidebarIsShow, layoutBreakWidth) {
 
-    const sidebar = document.querySelector(".ent-layout-sidebar");
+        this._dotNetRef = dotNetRef;
+        this._layoutBreakWidth = layoutBreakWidth;
+        this._sidebar = document.querySelector(".ent-layout-sidebar");
 
-    function handleResize() {
-        if (window.innerWidth < mobileBreakSize) {
-            sidebar.classList.add("ent-layout-sidebar-overlap");
-            ref.invokeMethodAsync('CloseSidebarAsync');
+
+        this.handleResize();
+        this.toggleSidebar(sidebarIsShow);
+
+        window.addEventListener('resize', this.handleResize);
+    }
+
+    toggleSidebar(sidebarIsShow) {
+        this._sidebar.style.transition = "all 0.25s ease-in";
+
+        if (sidebarIsShow) {
+            this._sidebar.classList.add("show");
+            this._sidebar.style.marginInlineStart = 0; // Reset any previous transformations
         } else {
-            sidebar.classList.remove("ent-layout-sidebar-overlap");
-            ref.invokeMethodAsync('OpenSidebarAsync');
+            this._sidebar.classList.remove("show");
+            this._sidebar.style.marginInlineStart = `-${this._sidebar.offsetWidth}px`; // Slide sidebar out of view
         }
     }
-    handleResize();
-    Toggle(ref,sidebarIsShow);
-    window.addEventListener('resize', handleResize);
-}
 
-export const  Toggle = (ref,sidebarIsShow) => {
-
-    const sidebar = document.querySelector(".ent-layout-sidebar");
-
-    sidebar.style.transition = "all 0.25s ease-in"; // Reset any previous transformations
-    
-    if (sidebarIsShow) {
-        sidebar.classList.add("show");
-        sidebar.style.marginInlineStart = 0; // Reset any previous transformations
-
-    } else {
-        sidebar.classList.remove("show");
-        sidebar.style.marginInlineStart = `-${sidebar.offsetWidth}px`; // Slide sidebar out of view
+    handleResize() {
+        if (window.innerWidth < this._layoutBreakWidth) {
+            this._sidebar.classList.add("ent-layout-sidebar-overlap");
+            this._dotNetRef.invokeMethodAsync('CloseSidebarAsync');
+        } else {
+            this._sidebar.classList.remove("ent-layout-sidebar-overlap");
+            this._dotNetRef.invokeMethodAsync('OpenSidebarAsync');
+        }
     }
+
 }
-export default  {
-    Initilize,
-    Toggle
-};
+
+export function getLayoutComponent(){
+    return new LayoutComponent();
+}
 
 
