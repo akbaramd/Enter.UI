@@ -1,4 +1,4 @@
-﻿export class Shared {
+export class Shared {
 
     GetElementById (id) {
         const element = document.getElementById(id);

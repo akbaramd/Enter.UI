@@ -18,11 +18,12 @@ function compileSass() {
         .pipe(gulp.dest('./wwwroot/dist/css'));
 }
 function scripts() {
-    return gulp.src('./wwwroot/js/enter.js') // Adjust the source directory as needed
+    return gulp.src('./wwwroot/js/**/*.js') // Adjust the source directory as needed
         .pipe(named())
-        .pipe(webpack({
-            devtool: 'source-map'
-        }))
+        // .pipe(webpack({
+        //     devtool: 'source-map',
+        //     mode: 'development',
+        // }))
         .pipe(gulp.dest('./wwwroot/dist/js')); // Adjust the output directory as needed
 }
 function minifyCSS() {

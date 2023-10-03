@@ -23,6 +23,12 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Components\Layout\ProMenuBar.razor" />
+    <_ContentIncludedByDefault Remove="wwwroot\dist\js\557.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\dist\js\557.js.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\dist\js\569.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\dist\js\569.js.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\dist\js\enter.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\dist\js\enter.js.map" />
   </ItemGroup>
 
   <ItemGroup>

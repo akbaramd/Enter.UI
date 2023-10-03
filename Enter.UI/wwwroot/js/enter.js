@@ -1,6 +1,5 @@
-﻿module.exports = require('./shared')
-module.exports =  require('./components/layout.component')
+﻿import  "./shared.js";
+import "./components/layout.component.js";
+import {getShared} from "./shared";
 
-
-
-get
+getShared()

@@ -1,4 +1,4 @@
-﻿ export class LayoutComponent {
+ export class LayoutComponent {
     _dotNetRef;
     _sidebar;
     _layoutBreakWidth;

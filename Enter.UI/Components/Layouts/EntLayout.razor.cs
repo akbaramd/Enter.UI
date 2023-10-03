@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Enter.UI.Components.Contracts;
 using Enter.UI.Core.Bases;
 using Enter.UI.Services.Contracts;
 using Microsoft.JSInterop;
@@ -13,8 +14,7 @@ namespace Enter.UI.Components
 {
     public partial class EntLayout : EntBaseComponent
     {
-        [Inject] public IEntJsService JsService { get; set; }
-        [Inject] public IJSRuntime JsRuntime { get; set; }
+        [Inject] public IEntLayoutJsService LayoutJsService { get; set; }
 
         private bool _sidebarIsOpen = true;
         private DotNetObjectReference<EntLayout>? _ref  = null;  
@@ -67,7 +67,7 @@ namespace Enter.UI.Components
         {
             if (firstRender)
             {
-                await JsRuntime.InvokeVoidAsync("EnterUi.Components.Layout.Initilize",_ref,_sidebarIsOpen,MobileBreakSize);
+                await LayoutJsService.InitializeAsync(this,_sidebarIsOpen,MobileBreakSize);
             }
 
             await base.OnAfterRenderAsync(firstRender);
@@ -77,7 +77,7 @@ namespace Enter.UI.Components
         public async Task CloseSidebarAsync()
         {
             _sidebarIsOpen = false;
-            await JsRuntime.InvokeVoidAsync("EnterUi.Components.Layout.Toggle",_ref,_sidebarIsOpen);
+            await LayoutJsService.ToggleAsync(_sidebarIsOpen);
             await OnSidebarIsShowChanged.InvokeAsync(_sidebarIsOpen);
         }
         
@@ -85,7 +85,7 @@ namespace Enter.UI.Components
         public async Task OpenSidebarAsync()
         {
             _sidebarIsOpen = true;
-            await JsRuntime.InvokeVoidAsync("EnterUi.Components.Layout.Toggle",_ref,_sidebarIsOpen);
+            await LayoutJsService.ToggleAsync(_sidebarIsOpen);
             await OnSidebarIsShowChanged.InvokeAsync(_sidebarIsOpen);
         }
         
@@ -93,7 +93,7 @@ namespace Enter.UI.Components
         public async Task ToggleSidebarAsync()
         {
             _sidebarIsOpen = !_sidebarIsOpen;
-            await JsRuntime.InvokeVoidAsync("EnterUi.Components.Layout.Toggle",_ref,_sidebarIsOpen);
+            await LayoutJsService.ToggleAsync(_sidebarIsOpen);
             await OnSidebarIsShowChanged.InvokeAsync(_sidebarIsOpen);
         }
         

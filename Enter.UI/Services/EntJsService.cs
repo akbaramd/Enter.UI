@@ -4,9 +4,8 @@ using Microsoft.JSInterop;
 
 namespace Enter.UI.Services;
 
-public class EntJsService : IEntJsService
+public class EntJsService : IEntJsService, IAsyncDisposable
 {
-
     private readonly IJSRuntime _jsRuntime;
 
     public EntJsService(IJSRuntime jsRuntime)
@@ -14,13 +13,14 @@ public class EntJsService : IEntJsService
         _jsRuntime = jsRuntime;
     }
 
-    public async Task<EntJsElement> GetElementByIdAsync(string id)
+    public async Task<IJSObjectReference> ImportJsFileAsync ( string path)
     {
-        return await _jsRuntime.InvokeAsync<EntJsElement>("EnterUi.Shared.GetElementById",id); 
+        return await _jsRuntime
+            .InvokeAsync<IJSObjectReference>("import",
+                $"./_content/Enter.UI/dist/js/{path}");
     }
 
-    public async Task<EntJsElement> GetElementByQuerySelectorAsync(string selector)
+    public async ValueTask DisposeAsync()
     {
-        return await _jsRuntime.InvokeAsync<EntJsElement>("EnterUi.Shared.GetElementByQuerySelector",selector); 
     }
 }
