@@ -1,0 +1,70 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using Enter.Dashboard.Model
+<EntCard class="m-4">
+    <CardHeader>صفحه فرم</CardHeader>
+    <CardBody>
+        <EntTable DataSources="DataSource" Total="UsersList.Count" Take="_take" OnPaginationChange="OnPaginationChange">
+            <HeaderTemplate>
+                <th>شناسه</th>
+                <th>نام</th>
+                <th>نام خانوادگی</th>
+                <th>سن</th>
+            </HeaderTemplate>
+            <RowTemplate>
+                <tr>
+                    <td>@context.Id</td>
+                    <td>@context.FirstName</td>
+                    <td>@context.LastName</td>
+                    <td>@context.Age</td>
+                </tr>
+            </RowTemplate>
+        </EntTable>
+    </CardBody>
+</EntCard>
+
+@code {
+
+    public List<Users> UsersList { get; set; } = new List<Users>();
+    public List<Users> DataSource { get; set; } = new List<Users>();
+    private readonly int _take = 2;
+
+
+    protected override void OnInitialized()
+    {
+        UsersList.Add(new Users()
+        {
+            Id = Guid.NewGuid(),
+            FirstName = "Akbar",
+            LastName = "Ahmadi",
+            Age = 28
+        });
+        UsersList.Add(new Users()
+        {
+            Id = Guid.NewGuid(),
+            FirstName = "Vahid",
+            LastName = "Rasouli",
+            Age = 35
+        });
+        UsersList.Add(new Users()
+        {
+            Id = Guid.NewGuid(),
+            FirstName = "Hadi",
+            LastName = "Ahmadi",
+            Age = 23
+        });
+
+        DataSource = UsersList.Skip(0).Take(_take).ToList();
+
+        base.OnInitialized();
+    }
+
+    private void OnPaginationChange(int page)
+    {
+        var skip = (page - 1) * _take;
+
+        DataSource = UsersList.Skip(skip).Take(_take).ToList();
+        
+        StateHasChanged();
+    }
+
+}

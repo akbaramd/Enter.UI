@@ -9,7 +9,7 @@
         </div>
     }
     <div class="ent-card-content">
-        @CardContent
+        @CardBody
     </div>
     @if (CardFooter != null)
     {
@@ -27,7 +27,7 @@
         .Build();
 
     [Parameter]
-    public RenderFragment? CardContent { get; set; }
+    public RenderFragment? CardBody { get; set; }
 
     [Parameter]
     public RenderFragment? CardHeader { get; set; }

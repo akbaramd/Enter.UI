@@ -29,6 +29,7 @@
     <_ContentIncludedByDefault Remove="wwwroot\dist\js\569.js.map" />
     <_ContentIncludedByDefault Remove="wwwroot\dist\js\enter.js" />
     <_ContentIncludedByDefault Remove="wwwroot\dist\js\enter.js.map" />
+    <_ContentIncludedByDefault Remove="Components\Table\EntTable.razor" />
   </ItemGroup>
 
   <ItemGroup>

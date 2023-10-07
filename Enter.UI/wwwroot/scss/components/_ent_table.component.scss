@@ -1,0 +1,60 @@
+.ent-table {
+
+  width: 100%;
+  border: $border;
+  border-collapse: collapse;
+  text-align: center;
+  vertical-align: middle;
+
+  thead {
+    background-color: map-get($colors, "light");
+  }
+
+  th, td {
+    padding: 0.75rem 1rem;
+    border: $border;
+    border-collapse: collapse;
+
+  }
+}
+
+.ent-table-pagination {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+
+  .ent-table-pagination-info {
+    flex-grow: 1;
+    justify-content: end;
+    display: flex;
+  }
+
+  .ent-table-pagination-container {
+    border: $border;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    > .ent-table-pagination-item {
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+      &:hover {
+        background-color: map-get($colors, "light");
+      }
+    }
+
+    > * {
+      border-inline-end: $border;
+    }
+
+    > *:last-child {
+      border-inline-end: 0;
+    }
+  }
+}

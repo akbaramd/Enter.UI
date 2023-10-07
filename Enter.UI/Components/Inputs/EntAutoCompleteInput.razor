@@ -1,0 +1,52 @@
+﻿@namespace Enter.UI.Components
+@using System.Diagnostics.CodeAnalysis
+@inherits Microsoft.AspNetCore.Components.Forms.InputBase<string?>
+
+<div class="@RootClass">
+    <InputText  class="@(RootClass+"-input")" @attributes="@AdditionalAttributes" 
+                @onfocusout="OnInputFocusOutCallback" 
+                @onfocusin="OnInputFocusInCallback" 
+                bind-Value="@Value" Value="@Value"  DisplayName="@DisplayName" ValueChanged="@ValueChanged" ValueExpression="@ValueExpression"/>
+    @if (_showMenu)
+    {
+        <EntNavMenu class="@(RootClass+"-menu")">
+            <EntNavMenuTextItem>
+                sssasasda
+            </EntNavMenuTextItem>
+        </EntNavMenu>
+    }
+</div>
+
+@code {
+
+    private string RootClass => new CssClassBuilder()
+        .AddClass("ent-input-autocomplete")
+        .Build();
+
+
+    private bool _showMenu = false;
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+
+    protected override bool TryParseValueFromString(string? value, out string? result, [NotNullWhen(false)] out string? validationErrorMessage)
+    {
+        result = value;
+        validationErrorMessage = null;
+        return true;
+    }
+
+    private void OnInputFocusInCallback()
+    {
+        _showMenu = true;
+        StateHasChanged();
+    }
+
+    private void OnInputFocusOutCallback()
+    {
+        _showMenu = false;
+        StateHasChanged();
+    }
+
+}

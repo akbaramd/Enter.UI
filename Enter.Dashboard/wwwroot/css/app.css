@@ -5,7 +5,9 @@ body,html {
     font-family:Vazirmatn,serif;
     font-size: 14px;
 }
-
+body {
+    text-align: right;
+}
 #app {
     height: 100%;
 }

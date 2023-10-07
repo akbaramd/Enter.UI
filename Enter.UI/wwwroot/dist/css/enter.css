@@ -881,6 +881,82 @@ template {
   border-bottom: 1px solid #e5e5e5;
 }
 
+.ent-table {
+  width: 100%;
+  border: 1px solid #e5e5e5;
+  border-collapse: collapse;
+  text-align: center;
+  vertical-align: middle;
+}
+.ent-table thead {
+  background-color: #f5f5f5;
+}
+.ent-table th, .ent-table td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e5e5e5;
+  border-collapse: collapse;
+}
+
+.ent-table-pagination {
+  margin-top: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.ent-table-pagination .ent-table-pagination-info {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: end;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.ent-table-pagination .ent-table-pagination-container {
+  border: 1px solid #e5e5e5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.ent-table-pagination .ent-table-pagination-container > .ent-table-pagination-item {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+.ent-table-pagination .ent-table-pagination-container > .ent-table-pagination-item:hover {
+  background-color: #f5f5f5;
+}
+.ent-table-pagination .ent-table-pagination-container > * {
+  -webkit-border-end: 1px solid #e5e5e5;
+  border-inline-end: 1px solid #e5e5e5;
+}
+.ent-table-pagination .ent-table-pagination-container > *:last-child {
+  -webkit-border-end: 0;
+  border-inline-end: 0;
+}
+
 .h-0 {
   height: 0;
 }
@@ -60180,6 +60256,7 @@ body {
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  border-collapse: collapse;
 }
 
 [dir=rtl] body {

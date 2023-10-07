@@ -1,0 +1,50 @@
+﻿@namespace Enter.UI.Components
+@inherits EntBaseComponent
+@typeparam T
+<CascadingValue Value="this">
+    <table @attributes="Attributes" class="@RootCss">
+        @if (HeaderTemplate != null)
+        {
+            <thead>
+            @HeaderTemplate
+            </thead>
+        }
+        @if (DataSources != null)
+        {
+            <tbody>
+            @foreach (var item in DataSources.Where(item => RowTemplate != null))
+            {
+                @RowTemplate?.Invoke(item)
+            }
+            </tbody>
+        }
+
+
+    </table>
+    <div class="ent-table-pagination">
+        <ul class="ent-table-pagination-container">
+            @if (showNextPaginate)
+            {
+                <li @onclick="NextPage" class="ent-table-pagination-item">
+                    <EntIcon Data="fa-light fa-chevron-right"/>
+                </li>
+            }
+            
+            @if (showNextPaginate || showLastPaginate)
+            {
+                <li  class="ent-table-pagination-item">
+                   صفحه @_currentPage از @_totalPage
+                </li>
+            }
+            @if (showLastPaginate)
+           {
+               <li @onclick="LastPage" class="ent-table-pagination-item">
+                  <EntIcon Data="fa-light fa-chevron-left"/>
+               </li>
+           }
+        </ul>
+        <div class="ent-table-pagination-info">
+            صفحه @_currentPage از @_totalPage
+        </div>
+    </div>
+</CascadingValue>

@@ -40,6 +40,9 @@
                         <EntNavMenuGroup Title="صفحات فرم" Icon="fa-light fa-note" IconType="EntIconType.IconTag">
                             <EntNavMenuTextItem class="bg-light" Text="فرم معمولی" Click="() => AddNewTab<FormLayout>()"/>
                         </EntNavMenuGroup>
+                         <EntNavMenuGroup Title="جداول" Icon="fa-light fa-note" IconType="EntIconType.IconTag">
+                                                    <EntNavMenuTextItem class="bg-light" Text="جدول داده" Click="() => AddNewTab<Table>()"/>
+                                                </EntNavMenuGroup>
                     </EntNavMenu>
                 </EntTabPanel>
 
@@ -83,6 +86,9 @@
         else if (typeof(T) == typeof(FormLayout))
         {
             MdiService.AddNewTab<FormLayout>("FormLayout", "فرم معمولی", "fa-light fa-note");
+        }else if (typeof(T) == typeof(Table))
+        {
+            MdiService.AddNewTab<Table>("Table", "جدول داده", "fa-light fa-table");
         }
     }
 
