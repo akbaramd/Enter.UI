@@ -4,9 +4,9 @@
 @inherits EntBaseComponent
 
 <div class="@RootClass">
-    @foreach (var item in _popoverService.PopoverInstances)
+    @foreach (var item in _entPopoverService.PopoverInstances)
     {
-        <div class="@($"ent-popover-content-{item.Key}")">
+        <div class="@item.Value.PopoverClass" id="@($"ent-popover-content-{item.Key}")">
             @if (item.Value.ShowContent)
             {
                 @item.Value.ContentFragment
@@ -14,27 +14,28 @@
         </div>
     }
 </div>
+
 @code {
 
     private string RootClass => CssClassBuilder
         .AddClass("ent-popover-provider")
         .Build();
-    
+
     [Inject]
-    public IPopoverService PopoverService { get; set; }
-    
-    private PopoverService _popoverService = default!;
+    public IEntPopoverService EntPopoverService { get; set; }
+
+    private EntPopoverService _entPopoverService = default!;
 
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
 
-        _popoverService = (PopoverService) PopoverService;
-        
-        _popoverService.FragmentsChanged += PopoverServiceOnFragmentsChanged;
+        _entPopoverService = (EntPopoverService)EntPopoverService;
+
+        _entPopoverService.FragmentsChanged += EntPopoverServiceOnFragmentsChanged;
     }
 
-    private void PopoverServiceOnFragmentsChanged(object? sender, EventArgs e)
+    private void EntPopoverServiceOnFragmentsChanged(object? sender, EventArgs e)
     {
         StateHasChanged();
     }

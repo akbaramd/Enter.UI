@@ -1,9 +1,11 @@
 ﻿@namespace Enter.UI.Components
 @using Enter.UI.Services.Contracts
 @using Enter.UI.Services
+@using Enter.UI.Core.Enums
+@using Enter.UI.Core.Extensions
 @inherits EntBaseComponent
 
-<div class="@RootClass">
+<div class="@RootClass" id="@($"ent-popover-{_id}")">
 
 </div>
 
@@ -11,34 +13,61 @@
 
     private string RootClass => CssClassBuilder
         .AddClass("ent-popover")
+        .Build();
+    
+    private string _popoverClass => CssClassBuilder
+        .Clear()
+        .AddClass("ent-popover-content")
+        .AddClass($"ent-popover-anchor-{Anchor.GetCssClass()}")
+        .AddClass($"ent-popover-{Transform.GetCssClass()}")
         .AddClass("ent-popover-open", Open)
+        .AddClass("ent-popover-relative-width", RelativeWidth)
         .Build();
 
     [Inject]
-    public IPopoverService PopoverService { get; set; }
+    public IEntPopoverService EntPopoverService { get; set; }
 
     [Parameter]
     public RenderFragment ChildContent { get; set; }
 
     [Parameter]
+    public string PopoverClass { get; set; }
+    
+    [Parameter]
     public bool Open { get; set; }
+    [Parameter]
+    public bool RelativeWidth { get; set; }
+    [Parameter]
+    public Origin Anchor { get; set; } = Origin.BottomCenter;
 
-    private PopoverService _popoverService = default!;
+    [Parameter]
+    public Origin Transform { get; set; } = Origin.TopCenter;
+
+    private EntPopoverService _entPopoverService = default!;
     private Guid _id;
 
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
 
-        _popoverService = (PopoverService)PopoverService;
+        _entPopoverService = (EntPopoverService)EntPopoverService;
 
-        _id = await PopoverService.RegisterAsync(ChildContent, showContent: Open);
+        _id = await EntPopoverService.RegisterAsync(ChildContent,_popoverClass, showContent: Open );
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await EntPopoverService.ConnectAsync(_id);
+        }
+        await base.OnAfterRenderAsync(firstRender);
     }
 
     protected override async Task OnParametersSetAsync()
     {
         await base.OnParametersSetAsync();
-        await PopoverService.OpenAsync(_id, Open);
+        await EntPopoverService.UpdateParameterAsync(_id,_popoverClass, Open);
     }
 
 }

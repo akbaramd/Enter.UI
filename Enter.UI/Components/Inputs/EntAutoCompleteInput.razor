@@ -1,20 +1,27 @@
 ﻿@namespace Enter.UI.Components
 @using System.Diagnostics.CodeAnalysis
+@using Enter.UI.Core.Enums
 @inherits Microsoft.AspNetCore.Components.Forms.InputBase<string?>
 
 <div class="@RootClass">
-    <InputText  class="@(RootClass+"-input")" @attributes="@AdditionalAttributes" 
-                @onfocusout="OnInputFocusOutCallback" 
-                @onfocusin="OnInputFocusInCallback" 
-                bind-Value="@Value" Value="@Value"  DisplayName="@DisplayName" ValueChanged="@ValueChanged" ValueExpression="@ValueExpression"/>
-    @if (_showMenu)
-    {
-        <EntNavMenu class="@(RootClass+"-menu")">
-            <EntNavMenuTextItem>
-                sssasasda
-            </EntNavMenuTextItem>
-        </EntNavMenu>
-    }
+    <InputText class="@(RootClass + "-input")" @attributes="@AdditionalAttributes"
+               @onfocusin="OnInputFocusInCallback"
+               @onfocusout="OnInputFocusOutCallback"
+               disabled
+               bind-Value="@Value" Value="@Value" DisplayName="@DisplayName" ValueChanged="@ValueChanged" ValueExpression="@ValueExpression"/>
+    <EntPopover Open="_showMenu" RelativeWidth="true" Anchor="Origin.BottomCenter" Transform="Origin.TopCenter" PopoverClass="@(RootClass + "-popover")">
+        <EntCard>
+            <CardBody >
+                <div class="d-flex flex-column gap-4">
+                    <input placeholder="جستجو ..."/>
+                    <EntNavMenu class="@(RootClass + "-menu")">
+                        <EntNavMenuTextItem Text="S" Click="() => { }"/>
+                    </EntNavMenu>
+                </div>
+
+            </CardBody>
+        </EntCard>
+    </EntPopover>
 </div>
 
 @code {
@@ -23,7 +30,8 @@
         .AddClass("ent-input-autocomplete")
         .Build();
 
-
+    public string SearchValue { get; set; }
+    
     private bool _showMenu = false;
 
     [Parameter]

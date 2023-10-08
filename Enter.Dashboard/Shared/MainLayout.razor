@@ -32,7 +32,7 @@
                     class="border-0 h-full">
 
                 <EntTabPanel Title="صفحه اصلی" Icon="fa-light fa-home" class="w-60">
-                    <EntNavMenu Title="صفحات فرم" class="border-0">
+                    <EntNavMenu  class="border-0">
                         <EntNavMenuGroup Title="تعاریف" Icon="fa-light fa-home">
                             <EntNavMenuTextItem class="bg-light" IconData="fa-light fa-clock" Text="شمارنده" Click="() => AddNewTab<Counter>()"/>
                             <EntNavMenuTextItem class="bg-light" IconData="fa-light fa-arrow-down" Text="دریافت اطلاعات" Click="() => AddNewTab<FetchData>()"/>
@@ -69,7 +69,7 @@
     public EntLayout Layout { get; set; }    
     
     [Inject]
-    public IMdiService MdiService { get; set; }
+    public IEntMdiService EntMdiService { get; set; }
 
     public string Direction { get; set; } = "rtl";
 
@@ -77,18 +77,18 @@
     {
         if (typeof(T) == typeof(Counter))
         {
-            MdiService.AddNewTab<Counter>("counter", "شمارنده", "fa-light fa-clock");
+            EntMdiService.AddNewTab<Counter>("counter", "شمارنده", "fa-light fa-clock");
         }
         else if (typeof(T) == typeof(FetchData))
         {
-            MdiService.AddNewTab<FetchData>(Guid.NewGuid().ToString(), "دریافت اطلاعات", "fa-light fa-arrow-down");
+            EntMdiService.AddNewTab<FetchData>(Guid.NewGuid().ToString(), "دریافت اطلاعات", "fa-light fa-arrow-down");
         }
         else if (typeof(T) == typeof(FormLayout))
         {
-            MdiService.AddNewTab<FormLayout>("FormLayout", "فرم معمولی", "fa-light fa-note");
+            EntMdiService.AddNewTab<FormLayout>("FormLayout", "فرم معمولی", "fa-light fa-note");
         }else if (typeof(T) == typeof(Table))
         {
-            MdiService.AddNewTab<Table>("Table", "جدول داده", "fa-light fa-table");
+            EntMdiService.AddNewTab<Table>("Table", "جدول داده", "fa-light fa-table");
         }
     }
 

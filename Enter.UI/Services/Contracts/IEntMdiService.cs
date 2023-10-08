@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Enter.UI.Services.Contracts
 {
-    public interface IMdiService
+    public interface IEntMdiService
     {
         //public List<EntMdiTabItem> TabPanels { get; set; } 
         public EntMdiTabItem? ActiveTabPanel { get; set; }

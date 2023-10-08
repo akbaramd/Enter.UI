@@ -15,11 +15,7 @@ public class EntLayoutJsService : IEntLayoutJsService , IAsyncDisposable
     public EntLayoutJsService( IEntJsService entJsService)
     {
         _entJsService = entJsService;
-        _moduleTask = new Lazy<Task<IJSObjectReference>>(async () =>
-        {
-            var jsReference = await entJsService.ImportJsFileAsync("components/layout.component.js");
-            return await jsReference.InvokeAsync<IJSObjectReference>("getLayoutComponent");
-        });
+        _moduleTask = new Lazy<Task<IJSObjectReference>>( () => entJsService.LoadReferenceAsync("getLayoutComponent"));
     }
 
     public async Task InitializeAsync(EntLayout layout, bool isSidebarShow, int breakWidth)

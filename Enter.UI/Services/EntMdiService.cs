@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Enter.UI.Services
 {
-    internal class MdiService : IMdiService
+    internal class EntMdiService : IEntMdiService
     {
         public List<EntMdiTabItem> TabPanels { get; set; } = new List<EntMdiTabItem>();
         public EntMdiTabItem? ActiveTabPanel { get; set; }

@@ -21,20 +21,20 @@ namespace Enter.UI.Components
         [Parameter]
         public RenderFragment? ChildContent { get; set; }
         
-        private MdiService _mdiService = default!;
+        private EntMdiService _entMdiService = default!;
         public List<EntMdiTabItem> Items { get; set; } = new List<EntMdiTabItem>();
-        [Inject] public IMdiService MdiService { get; set; } = default!;
+        [Inject] public IEntMdiService EntMdiService { get; set; } = default!;
         public EntTab Tab { get; set; }
         protected override async Task OnInitializedAsync()
         {
-            if (MdiService == null)
+            if (EntMdiService == null)
                 throw new InvalidOperationException("AddEnterUI is not added to your program.cs");
 
-            _mdiService = (MdiService)MdiService;
+            _entMdiService = (EntMdiService)EntMdiService;
 
-            _mdiService.OnTabAdded += OnServiceNewTabAdded;
-            _mdiService.OnTabActivated += OnServiceTabActivated;
-            _mdiService.OnTabRemoved += OnServiceTabRemoved;
+            _entMdiService.OnTabAdded += OnServiceNewTabAdded;
+            _entMdiService.OnTabActivated += OnServiceTabActivated;
+            _entMdiService.OnTabRemoved += OnServiceTabRemoved;
 
             await base.OnInitializedAsync();
 
@@ -42,14 +42,14 @@ namespace Enter.UI.Components
 
         private void OnServiceNewTabAdded(EntMdiTabItem panel)
         {
-            Items = _mdiService.TabPanels.ToList();
+            Items = _entMdiService.TabPanels.ToList();
             StateHasChanged();
         }
         private void OnServiceTabActivated(EntMdiTabItem? panel)
         {
             if (panel != null)
             {
-                Items = _mdiService.TabPanels.ToList();
+                Items = _entMdiService.TabPanels.ToList();
                 Tab.ActiveTab(panel.Id);
             }
             StateHasChanged();
@@ -57,13 +57,13 @@ namespace Enter.UI.Components
 
         private void OnServiceTabRemoved()
         {
-            Items = _mdiService.TabPanels.ToList();
+            Items = _entMdiService.TabPanels.ToList();
             StateHasChanged();
         }
 
         private void OnTabActivatedCallback(string? id)
         {
-            MdiService.SetActiveTab(id,false);
+            EntMdiService.SetActiveTab(id,false);
             OnTabActived.InvokeAsync(id).GetAwaiter().GetResult();
         }
 
@@ -76,7 +76,7 @@ namespace Enter.UI.Components
         private void OnTabClosedCallback(string id)
         {
             Tab.RemoveTab(id);
-            MdiService.RemoveTab(id);
+            EntMdiService.RemoveTab(id);
             OnTabClosed.InvokeAsync(id).GetAwaiter().GetResult();
         }
         
@@ -85,7 +85,7 @@ namespace Enter.UI.Components
             foreach (var item in Items)
             {
                 Tab.RemoveTab(item.Id);
-                MdiService.RemoveTab(item.Id);
+                EntMdiService.RemoveTab(item.Id);
                 OnTabClosed.InvokeAsync(item.Id).GetAwaiter().GetResult();
             }
         }

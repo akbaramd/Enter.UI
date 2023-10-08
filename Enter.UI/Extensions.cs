@@ -17,11 +17,15 @@ namespace Enter.UI
     {
         public static void AddEnterUI(this IServiceCollection services)
         {
-            services.AddSingleton<IMdiService, MdiService>();
+            services.AddSingleton<IEntMdiService, EntMdiService>();
             services.AddSingleton<IModalService, ModalService>();
-            services.AddSingleton<IPopoverService, PopoverService>();
+            services.AddSingleton<IEntPopoverService, EntPopoverService>();
             services.AddSingleton<IEntJsService, EntJsService>();
             services.AddSingleton<IEntLayoutJsService, EntLayoutJsService>();
         }
+        
+        
+        
+        
     }
 }

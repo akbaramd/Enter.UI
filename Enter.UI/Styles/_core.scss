@@ -11,9 +11,9 @@
   
   @each $size, $value in $values {
 
-
+ 
    
-    @if $size != null {
+    @if $size != null { 
       $size: -#{$size};
     } @else {
       $size: "";
