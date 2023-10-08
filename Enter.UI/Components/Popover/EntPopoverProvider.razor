@@ -1,0 +1,42 @@
+﻿@namespace Enter.UI.Components
+@using Enter.UI.Services.Contracts
+@using Enter.UI.Services
+@inherits EntBaseComponent
+
+<div class="@RootClass">
+    @foreach (var item in _popoverService.PopoverInstances)
+    {
+        <div class="@($"ent-popover-content-{item.Key}")">
+            @if (item.Value.ShowContent)
+            {
+                @item.Value.ContentFragment
+            }
+        </div>
+    }
+</div>
+@code {
+
+    private string RootClass => CssClassBuilder
+        .AddClass("ent-popover-provider")
+        .Build();
+    
+    [Inject]
+    public IPopoverService PopoverService { get; set; }
+    
+    private PopoverService _popoverService = default!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        _popoverService = (PopoverService) PopoverService;
+        
+        _popoverService.FragmentsChanged += PopoverServiceOnFragmentsChanged;
+    }
+
+    private void PopoverServiceOnFragmentsChanged(object? sender, EventArgs e)
+    {
+        StateHasChanged();
+    }
+
+}

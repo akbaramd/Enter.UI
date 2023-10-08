@@ -1,0 +1,44 @@
+﻿@namespace Enter.UI.Components
+@using Enter.UI.Services.Contracts
+@using Enter.UI.Services
+@inherits EntBaseComponent
+
+<div class="@RootClass">
+
+</div>
+
+@code {
+
+    private string RootClass => CssClassBuilder
+        .AddClass("ent-popover")
+        .AddClass("ent-popover-open", Open)
+        .Build();
+
+    [Inject]
+    public IPopoverService PopoverService { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public bool Open { get; set; }
+
+    private PopoverService _popoverService = default!;
+    private Guid _id;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        _popoverService = (PopoverService)PopoverService;
+
+        _id = await PopoverService.RegisterAsync(ChildContent, showContent: Open);
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await base.OnParametersSetAsync();
+        await PopoverService.OpenAsync(_id, Open);
+    }
+
+}

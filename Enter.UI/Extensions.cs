@@ -19,6 +19,7 @@ namespace Enter.UI
         {
             services.AddSingleton<IMdiService, MdiService>();
             services.AddSingleton<IModalService, ModalService>();
+            services.AddSingleton<IPopoverService, PopoverService>();
             services.AddSingleton<IEntJsService, EntJsService>();
             services.AddSingleton<IEntLayoutJsService, EntLayoutJsService>();
         }

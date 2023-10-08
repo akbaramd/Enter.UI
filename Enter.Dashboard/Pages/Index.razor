@@ -16,6 +16,7 @@
                 <CardBody>
                     <div class="d-flex flex-column">
                         <b>این صفحه پیشفرض EntMdiTab میباشد</b>
+
                     </div>
                 </CardBody>
             </EntCard>
@@ -41,12 +42,22 @@
                     </div>
                 </CardBody>
             </EntCard>
+            <EntCard>
+                <CardBody>
+                    <EntButton Click="OpenPopover">باز کردن</EntButton>
+                    <EntPopover Open="IsPopoverOpen">
+                        <p>ssss</p>
+                    </EntPopover>
+                </CardBody>
+            </EntCard>
         </div>
     </EntMdiTab>
 </div>
 
 @code {
 
+    public bool IsPopoverOpen { get; set; }
+    
     [Inject]
     public IModalService ModalService { get; set; }
 
@@ -56,6 +67,11 @@
         {
             Size = size
         });
+    }
+
+    private async Task OpenPopover()
+    {
+        IsPopoverOpen = !IsPopoverOpen;
     }
 
 }
