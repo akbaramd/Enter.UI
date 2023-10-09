@@ -11,7 +11,7 @@
   
         this._sidebar = document.querySelector(".ent-layout-sidebar");
 
-        this.handleResize(this._sidebar,this._layoutBreakWidth);
+        this.handleResize(this._sidebar,this._layoutBreakWidth); 
         this.toggleSidebar(sidebarIsShow);
 
         window.addEventListener('resize', ()=>this.handleResize(this._sidebar,this._layoutBreakWidth));

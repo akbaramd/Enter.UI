@@ -3,10 +3,10 @@
 @using Enter.UI.Services
 @inherits EntBaseComponent
 
-<div class="@RootClass">
+<div class="@RootClass" @onclick:stopPropagation="true" @onclick="OnPopoverContainerClick">
     @foreach (var item in _entPopoverService.PopoverInstances)
     {
-        <div class="@item.Value.PopoverClass" id="@($"ent-popover-content-{item.Key}")">
+        <div @onclick="() => { }" class="@item.Value.PopoverClass" id="@($"ent-popover-content-{item.Key}")">
             @if (item.Value.ShowContent)
             {
                 @item.Value.ContentFragment
@@ -23,8 +23,10 @@
 
     [Inject]
     public IEntPopoverService EntPopoverService { get; set; }
+    
 
     private EntPopoverService _entPopoverService = default!;
+    
 
     protected override async Task OnInitializedAsync()
     {
@@ -38,6 +40,11 @@
     private void EntPopoverServiceOnFragmentsChanged(object? sender, EventArgs e)
     {
         StateHasChanged();
+    }
+
+    private async Task OnPopoverContainerClick(MouseEventArgs arg)
+    {
+        await EntPopoverService.CloseAllAsync();
     }
 
 }

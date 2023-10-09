@@ -10,4 +10,5 @@ public interface IEntPopoverService
     Task<Guid> RegisterAsync(RenderFragment renderFragment,string popoverClass,bool showContent = false);
     Task UpdateParameterAsync(Guid id,string popoverCss,bool showContent);
     event EventHandler? FragmentsChanged;
+    Task CloseAllAsync();
 }

@@ -50,9 +50,9 @@
 
   <Target Name="WebCompiler" DependsOnTargets="ToolRestore;CombineJS">
     <!--compile and minify scss-->
-    <Exec Command="webcompiler ./Styles/EnterUi.scss -c excubowebcompiler.json" StandardOutputImportance="high" StandardErrorImportance="high" />
+    <Exec Command="dotnet webcompiler ./Styles/EnterUi.scss -c excubowebcompiler.json" StandardOutputImportance="high" StandardErrorImportance="high" />
     <!--minify js-->
-    <Exec Command="webcompiler ./Scripts/combined/EnterUi.js -c excubowebcompiler.json" StandardOutputImportance="high" StandardErrorImportance="high" />
+    <Exec Command="dotnet webcompiler ./Scripts/combined/EnterUi.js -c excubowebcompiler.json" StandardOutputImportance="high" StandardErrorImportance="high" />
   </Target>
   
   <Target Name="IncludeGeneratedStaticFiles" DependsOnTargets="WebCompiler" BeforeTargets="BeforeBuild">
@@ -78,7 +78,7 @@
   <ItemGroup>
     <!--For automatic compile on save of the scss use
     cd ./src/MudBlazor
-    dotnet watch webcompiler ./Styles/MudBlazor.scss -c excubowebcompiler.json
+    dotnet watch webcompiler ./Styles/EnterUi.scss -c excubowebcompiler.json
     -->
     <Watch Include="**/*.scss" />
   </ItemGroup>

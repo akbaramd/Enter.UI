@@ -20,6 +20,14 @@ public class EntPopoverService : IEntPopoverService
     }
     
     public event EventHandler? FragmentsChanged;
+    public async Task CloseAllAsync()
+    {
+        foreach (var popoverInstance in PopoverInstances)
+        {
+            popoverInstance.Value.ShowContent = false;
+        }
+        FragmentsChanged?.Invoke(this, EventArgs.Empty); 
+    }
 
 
     public async Task ConnectAsync(Guid id)
