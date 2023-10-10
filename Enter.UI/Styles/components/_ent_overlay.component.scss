@@ -33,13 +33,13 @@
     -o-animation: ent-animation-fadein ease 0.15s; 
 
     &.ent-overlay-dark {
-      border-color: map-get($colors , "dark");
-      background-color: map-get($colors , "dark"); 
+      border-color: #333333aa;
+      background-color: #333333aa; 
     }
 
     &.ent-overlay-light {
-      border-color: map-get($colors , "light");
-      background-color: map-get($colors , "light");
+      border-color: #aaaaaa33;
+      background-color: #aaaaaa33;
     }
     &:hover {
       cursor: default;

@@ -1122,6 +1122,18 @@ $utilities: (
                 breakpoint: true,
                 values:$font-sizes,
         ),
+        text-align: (
+                property: text-align,
+                propertyRtl: text-align,
+                cssName: text,
+                breakpoint: true,
+                values: (
+                        center: center,
+                        left: left,
+                        right: right,
+                        unset: unset,
+                ),
+        ),
         color: (
                 property: color,
                 propertyRtl: color,

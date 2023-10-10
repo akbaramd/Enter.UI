@@ -3,10 +3,10 @@
 @using Enter.UI.Services
 @inherits EntBaseComponent
 
-<div class="@RootClass" @onclick:stopPropagation="true" @onclick="OnPopoverContainerClick">
+<div class="@RootClass">
     @foreach (var item in _entPopoverService.PopoverInstances)
     {
-        <div @onclick="() => { }" class="@item.Value.PopoverClass" id="@($"ent-popover-content-{item.Key}")">
+        <div @key="@item.Key" @onclick="() => { }" class="@item.Value.PopoverClass" id="@($"ent-popover-content-{item.Key}")">
             @if (item.Value.ShowContent)
             {
                 @item.Value.ContentFragment

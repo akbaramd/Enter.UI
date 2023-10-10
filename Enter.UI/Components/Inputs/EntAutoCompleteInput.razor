@@ -8,18 +8,19 @@
                @onclick="OnInputFocusInCallback"
                @bind-Value="@Value" />
     <EntPopover Open="_showMenu" RelativeWidth="true" Anchor="Origin.BottomCenter" Transform="Origin.TopCenter" PopoverClass="@(RootClass + "-popover")">
+       
         <EntCard>
             <CardBody >
                 <div class="d-flex flex-column gap-4">
                     <input class="ent-input" value="@SearchValue" @onchange="OnSearchChange" placeholder="جستجو ..."/>
-                    <EntNavMenu  class="@(RootClass + "-menu")">
+                    <EntNavMenu class="@(RootClass + "-menu")">
                         <EntNavMenuTextItem Text="S" Click="() => { }"/>
                     </EntNavMenu>
-                </div> 
+                </div>
             </CardBody>
         </EntCard>
     </EntPopover>
-    <EntOverlay Visible="_showMenu"  OnClick="@OnInputFocusOutCallback"  @ontouchstart="@OnInputFocusOutCallback"  LockScroll="false"/>
+     <EntOverlay  Visible="_showMenu"  OnClick="@OnInputFocusOutCallback"  @ontouchstart="@OnInputFocusOutCallback"   LockScroll="false"/>
 </div>
 
 

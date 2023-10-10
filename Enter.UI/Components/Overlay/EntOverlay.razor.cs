@@ -25,8 +25,6 @@ namespace Enter.UI.Components
                 .AddClass("ent-overlay-light", LightBackground)
                 .Build();
 
-     
-
         [Parameter]
         public RenderFragment? ChildContent { get; set; }
 
@@ -126,5 +124,9 @@ namespace Enter.UI.Components
         //
         //     return ValueTask.CompletedTask;
         // }
+        public async ValueTask DisposeAsync()
+        {
+            
+        }
     }
 }
