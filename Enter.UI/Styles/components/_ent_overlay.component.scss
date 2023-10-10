@@ -1,0 +1,64 @@
+﻿.ent-overlay {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: inherit;
+  display: flex;
+  position: fixed;
+  transition: .3s cubic-bezier(.25,.8,.5,1),z-index 1ms;
+  z-index: 5;
+
+  &.ent-overlay-absolute {
+    position: absolute;
+  }
+
+  & .ent-overlay-scrim {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-color: transparent;
+    background-color: transparent;
+    animation: ent-animation-fadein ease 0.15s;
+    -webkit-animation: ent-animation-fadein ease 0.15s;
+    -moz-animation: ent-animation-fadein ease 0.15s;
+    -o-animation: ent-animation-fadein ease 0.15s; 
+
+    &.ent-overlay-dark {
+      border-color: map-get($colors , "dark");
+      background-color: map-get($colors , "dark"); 
+    }
+
+    &.ent-overlay-light {
+      border-color: map-get($colors , "light");
+      background-color: map-get($colors , "light");
+    }
+    &:hover {
+      cursor: default;
+    }
+  }
+
+  & .ent-overlay-content {
+    position: relative;
+  }
+
+  &.ent-overlay-popover {
+    z-index: 10;
+  }
+
+  &.ent-overlay-dialog {
+    z-index: 11;
+  }
+
+  &.ent-overlay-drawer {
+    z-index: 12;
+  }
+}

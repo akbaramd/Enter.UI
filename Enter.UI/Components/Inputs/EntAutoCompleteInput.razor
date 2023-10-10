@@ -3,7 +3,7 @@
 @using Enter.UI.Core.Enums
 @inherits Microsoft.AspNetCore.Components.Forms.InputBase<string?>
 
-<div class="@RootClass"> 
+<div class="@RootClass" @onclick="@Click" @ref="_elementReference"> 
     <InputText class="@(RootClass + "-input")" @attributes="@AdditionalAttributes"
                @onclick="OnInputFocusInCallback"
                @bind-Value="@Value" />
@@ -12,14 +12,16 @@
             <CardBody >
                 <div class="d-flex flex-column gap-4">
                     <input class="ent-input" value="@SearchValue" @onchange="OnSearchChange" placeholder="جستجو ..."/>
-                    <EntNavMenu class="@(RootClass + "-menu")">
+                    <EntNavMenu  class="@(RootClass + "-menu")">
                         <EntNavMenuTextItem Text="S" Click="() => { }"/>
                     </EntNavMenu>
                 </div> 
             </CardBody>
         </EntCard>
     </EntPopover>
+    <EntOverlay Visible="_showMenu"  OnClick="@OnInputFocusOutCallback"  @ontouchstart="@OnInputFocusOutCallback"  LockScroll="false"/>
 </div>
+
 
 @code {
 
@@ -34,7 +36,8 @@
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
-
+    private ElementReference _elementReference;
+    
     protected override bool TryParseValueFromString(string? value, out string? result, [NotNullWhen(false)] out string? validationErrorMessage)
     {
         result = value;
@@ -57,6 +60,14 @@
     private async Task OnSearchChange(ChangeEventArgs arg)
     {
         Console.WriteLine(arg.Value);
+    }
+
+    private async Task Click(MouseEventArgs arg)
+    {
+        if (_showMenu)
+        {
+            await _elementReference.FocusAsync();
+        }
     }
 
 }

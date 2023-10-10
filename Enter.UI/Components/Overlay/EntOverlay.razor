@@ -1,0 +1,25 @@
+﻿@namespace Enter.UI.Components
+@inherits EntBaseComponent
+
+@code {
+    public ValueTask DisposeAsync()
+    {
+        throw new NotImplementedException();
+    }
+}
+
+@if (Visible)
+{
+    <div @attributes="@Attributes" class="@Classname" @onclick="OnClickHandlerAsync" @onclick:stopPropagation="true">
+        @if(LightBackground || DarkBackground)
+        {
+            <div class="@ScrimClassname"></div>
+        }
+        @if(ChildContent is not null)
+        {
+            <div class="mud-overlay-content">
+                @ChildContent
+            </div>
+        }
+    </div>
+}
