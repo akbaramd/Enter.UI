@@ -11,13 +11,13 @@
 
                     <li class="@ItemCss @activeClass" @onclick="() => ActiveTab(tabPanels.Id)" @key="@tabPanels.Id">
                         <div class="ent-tab-content">
-                            <EntIcon Data="@tabPanels.Icon" Type="@tabPanels.IconType"/>
+                            <EntIcon Icon="@tabPanels.Icon"/>
                             <span>@tabPanels.Title</span>
                         </div>
                         @if (Closeable)
                         {
                             <div @onclick="() => OnTabClose(tabPanels.Id)" class="ent-tab-close">
-                                <EntIcon Data="fa-light fa-close" Type="EntIconType.IconTag"/>
+                                <EntIcon Icon="fa-light fa-close" Type="EntIconType.IconTag"/>
                             </div>
                         }
                     </li>
@@ -26,7 +26,7 @@
                 {
                     <li class="@ItemCss">
                         <div @onclick="OnTabAllClose" class="ent-tab-action ">
-                            <EntIcon Data="fa-light fa-trash" Type="EntIconType.IconTag"/>
+                            <EntIcon Icon="fa-light fa-trash" Type="EntIconType.IconTag"/>
                         </div>
                     </li>
                 }

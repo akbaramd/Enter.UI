@@ -1,9 +1,7 @@
 ﻿@namespace Enter.UI.Components
+@using Enter.UI.Core.Constants
 @inherits Enter.UI.Core.Bases.EntBaseComponent
-<div @attributes="Attributes" class="@RootCss"  @onclick="()=>Click.InvokeAsync()">
-    @if (IconData != null)
-    {
-        <EntIcon class="@IconCss" Type="@IconType" Data="@IconData" />
-    }
+<div @attributes="Attributes" class="@RootCss" @onclick="() => Click.InvokeAsync()">
+    <EntIcon  class="@IconCss" Icon="@Icon" />
     <span class="@ContentCss">@Text</span>
 </div>

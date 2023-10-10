@@ -1,20 +1,19 @@
 ﻿@inherits EntBaseComponent
 @namespace Enter.UI.Components
 
-<div onclick="@Click"  @attributes="Attributes" class="@RootCss">
-    @if (Type == EntIconType.IconTag)
+@if (Icon is not null)
+{
+    @if (Icon.StartsWith("<"))
     {
-        <i class="@Data"></i>
-    }
-    else if (Type == EntIconType.ImageTag)
-    {
-        <img  src="@Data" />
-    }
-    else if (Type == EntIconType.SvgContent)
-    {
-        <svg>
-            @Data
+        <svg  @onclick="@Click" viewBox="@ViewBox" class="@RootCss">
+            @((MarkupString)Icon)
         </svg>
     }
+    else
+    {
+        <i  @onclick="@Click" class="@RootCss @Icon"></i>
+        
+    }
+}
+    
 
-</div>

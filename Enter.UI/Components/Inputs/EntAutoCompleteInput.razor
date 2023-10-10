@@ -4,7 +4,7 @@
 @inherits Microsoft.AspNetCore.Components.Forms.InputBase<string?>
 
 <div class="@RootClass" @onclick="@Click" @ref="_elementReference"> 
-    <InputText class="@(RootClass + "-input")" @attributes="@AdditionalAttributes"
+    <EntTextInput class="@(RootClass + "-input")" @attributes="@AdditionalAttributes"
                @onclick="OnInputFocusInCallback"
                @bind-Value="@Value" />
     <EntPopover Open="_showMenu" RelativeWidth="true" Anchor="Origin.BottomCenter" Transform="Origin.TopCenter" PopoverClass="@(RootClass + "-popover")">

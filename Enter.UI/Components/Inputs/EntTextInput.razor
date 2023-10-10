@@ -1,0 +1,33 @@
+﻿@namespace Enter.UI.Components
+@using System.Diagnostics.CodeAnalysis
+@using Enter.UI.Core.Constants
+@using Enter.UI.Core.Enums
+@inherits Microsoft.AspNetCore.Components.Forms.InputBase<string?>
+
+<div class="@RootClass"  @attributes="@AdditionalAttributes">
+    <InputText class="@($"{RootClass}-field")"   Value="@Value" ValueChanged="@ValueChanged" ValueExpression="@ValueExpression" DisplayName="@DisplayName" />
+    <div class="@($"{RootClass}-icon")">
+        <EntIcon Size="4" Icon="@Icon"/>
+    </div>
+</div>
+
+@code {
+
+    private string RootClass => new CssClassBuilder()
+        .AddClass("ent-input")
+        .Build();
+
+    [Parameter]
+    public string Icon { get; set; }
+    
+
+    protected override bool TryParseValueFromString(string? value, out string? result, [NotNullWhen(false)] out string? validationErrorMessage)
+    {
+        result = value;
+        validationErrorMessage = null;
+        return true;
+    }
+
+   
+
+}

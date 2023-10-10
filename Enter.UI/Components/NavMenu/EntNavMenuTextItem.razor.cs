@@ -27,13 +27,12 @@ namespace Enter.UI.Components
             .AddClass("ent-nav-menu-item-content")
             .Build();
 
+
+        public string Icon { get; set; }
+        
         [Required]
         [Parameter]
         public string  Text { get; set; }
-
-
-        [Parameter] public EntIconType IconType { get; set; } = EntIconType.IconTag;
-        [Parameter] public string? IconData { get; set; }
 
         [Parameter]
         public EventCallback Click { get; set; }

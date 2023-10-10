@@ -13,32 +13,27 @@ namespace Enter.UI.Components
 {
     public partial class EntIcon : EntBaseComponent
     {
-        public EntIcon()
-        {
-        }
-        
 
-        [Required] [Parameter] public string Data { get; set; }
+        [Required] [Parameter] public string? Icon { get; set; }
         
         [Parameter]
         public EventCallback Click { get; set; }
 
-        [Parameter] public EntIconType Type { get; set; } = EntIconType.IconTag;
 
-        protected string RootCss => CssClassBuilder
+        [Parameter] public string ViewBox { get; set; } = "0 0 512 512";
+
+
+        private string RootCss => CssClassBuilder
             .AddClass("ent-icon")
-            .AddClass($"ent-icon-tag", Type == EntIconType.IconTag)
-            .AddClass($"ent-icon-image-tag", Type == EntIconType.ImageTag)
-            .AddClass($"ent-icon-svg-content", Type == EntIconType.SvgContent)
+            .AddClass($"h-{Size} w-{Size}",Size != null)
             .Build();
+
         
+        [Parameter]
+        public int? Size { get; set; } = 4;
+       
     }
 
 
-    public enum EntIconType
-    {
-        ImageTag,
-        IconTag,
-        SvgContent
-    }
+
 }

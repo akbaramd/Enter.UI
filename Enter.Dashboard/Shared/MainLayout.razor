@@ -12,7 +12,7 @@
         <AppBar>
             <div class="d-flex items-center  px-8 py-4">
                 <div class="flex-grow-1 d-flex  item-center gap-4">
-                    <EntIcon Click="ToggleSidebar" class="cursor-pointer" Type="EntIconType.IconTag" Data="fa-light fa-bars"/>
+                    <EntIcon Click="ToggleSidebar" class="cursor-pointer" Type="EntIconType.IconTag" Icon="fa-light fa-bars"/>
                     <b>پلتفرم مدیریتی انترپرایس</b>
                 </div>
                 <div class="d-flex gap-2">
@@ -29,17 +29,16 @@
                     ActiveClass="bg-light-sm"
                     PanelClass="bg-white"
                     class="border-0 h-full">
-
                 <EntTabPanel Title="صفحه اصلی" Icon="fa-light fa-home" class="w-60">
                     <EntNavMenu class="border-0">
                         <EntNavMenuGroup Title="تعاریف" Icon="fa-light fa-home">
                             <EntNavMenuTextItem class="bg-light" IconData="fa-light fa-clock" Text="شمارنده" Click="() => AddNewTab<Counter>()"/>
                             <EntNavMenuTextItem class="bg-light" IconData="fa-light fa-arrow-down" Text="دریافت اطلاعات" Click="() => AddNewTab<FetchData>()"/>
                         </EntNavMenuGroup>
-                        <EntNavMenuGroup Title="صفحات فرم" Icon="fa-light fa-note" IconType="EntIconType.IconTag">
+                        <EntNavMenuGroup Title="صفحات فرم" Icon="fa-light fa-note">
                             <EntNavMenuTextItem class="bg-light" Text="فرم معمولی" Click="() => AddNewTab<FormLayout>()"/>
                         </EntNavMenuGroup>
-                        <EntNavMenuGroup Title="جداول" Icon="fa-light fa-note" IconType="EntIconType.IconTag">
+                        <EntNavMenuGroup Title="جداول" Icon="fa-light fa-note" >
                             <EntNavMenuTextItem class="bg-light" Text="جدول داده" Click="() => AddNewTab<Table>()"/>
                         </EntNavMenuGroup>
                     </EntNavMenu>

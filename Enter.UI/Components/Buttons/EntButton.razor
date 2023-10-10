@@ -3,7 +3,7 @@
 <button @attributes="@Attributes" class="@RootClass"  @onclick="@Click">
     @if (Icon != null)
     {
-        <EntIcon Data="@Icon" Type="@IconType"/>
+        <EntIcon Icon="@Icon" />
     }
     @ChildContent
 </button>
@@ -21,9 +21,6 @@
 
     [Parameter]
     public ButtonSize Size { get; set; } = ButtonSize.Default;
-    
-    [Parameter]
-    public EntIconType IconType { get; set; } = EntIconType.IconTag;
     
     [Parameter]
     public string? Icon { get; set; }

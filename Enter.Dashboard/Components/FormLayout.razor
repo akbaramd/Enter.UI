@@ -1,4 +1,5 @@
 ﻿@using System.ComponentModel.DataAnnotations
+@using Enter.UI.Core.Constants
 <EntCard class="m-4">
     <CardHeader>صفحه فرم</CardHeader>
     <CardBody>
@@ -7,7 +8,7 @@
             <div class="row">
                 <div class="tablet:col-1/3 mb-4 ent-form-group">
                     <label>نام</label>
-                    <InputText class="ent-input" @bind-Value="Input.FirstName"/>
+                    <EntTextInput class="ent-input" @bind-Value="Input.FirstName" Icon="@Icons.ChevronLeft"/>
                     <ValidationMessage For="() => Input!.FirstName"/>
                 </div>
                 <div class="tablet:col-1/3 mb-4 ent-form-group">
@@ -26,7 +27,7 @@
                 </div>
                 <div class="tablet:col-1/3 mb-4 ent-form-group">
                     <label >سن</label>
-                    <InputNumber TValue="Int32" class="ent-input" @bind-Value="Input.Age"/>
+                    <EntTextInput  class="ent-input" @bind-Value="Input.Age"/>
                     <ValidationMessage For="() => Input!.Age"/>
                 </div>
             </div>
@@ -53,7 +54,7 @@
         public string City { get; set; }
 
         [Required(ErrorMessage = "سن اجباری میباشد")]
-        public int Age { get; set; }
+        public string Age { get; set; }
     }
 
     public InputModel Input { get; set; } = new InputModel();

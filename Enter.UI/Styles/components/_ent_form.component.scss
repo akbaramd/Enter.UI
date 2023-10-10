@@ -1,7 +1,7 @@
 ﻿.ent-form-group {
   display: flex;
   flex-direction: column;
-  
+
   > * {
     margin-bottom: 0.5rem;
   }
@@ -9,16 +9,17 @@
   > *:last-child {
     margin-bottom: 0;
   }
-  
+
   > label {
-    font-size: map-get($font-sizes,"medium-sm");
+    font-size: map-get($font-sizes, "medium-sm");
   }
 
   > label {
-    font-size: map-get($font-sizes,"medium-sm");
+    font-size: map-get($font-sizes, "medium-sm");
   }
+
   > .validation-message {
-    font-size: map-get($font-sizes,"subtitle-lg");
+    font-size: map-get($font-sizes, "subtitle-lg");
     color: red;
   }
 
@@ -29,18 +30,34 @@
 .ent-input {
 
   width: 100%;
-  background-color: #f8f8f8;
+  background-color: map-get($colors, "light");
   border: $border;
-  padding: 0.35rem 1rem;
-
-  &.modified.valid {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+  &:has(.modified.valid){
     border-color: green;
   }
 
-  &.invalid {
+  &:has(.invalid){
     border-color: red;
   }
+  > .ent-input-field {
+    flex-grow: 1;
+    padding: 0.5rem 1rem;
+    border: 0;
+    outline: 0;
 
+  
+  }
+
+  > .ent-input-icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.5rem 1rem;
+  }
 }
 
  

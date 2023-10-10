@@ -1,6 +1,7 @@
 ﻿@page "/"
 @using Enter.UI.Services.Contracts;
 @using Enter.UI.Components
+@using Enter.UI.Core.Constants
 
 <PageTitle>Index</PageTitle>
 
@@ -43,6 +44,7 @@
                 </CardBody>
             </EntCard>
             <EntCard class="mt-4">
+                 <CardHeader>پاپ آور</CardHeader>
                 <CardBody>
                     <EntButton Click="OpenPopover">باز کردن</EntButton>
                     <EntPopover Open="IsPopoverOpen" RelativeWidth="true">
@@ -54,6 +56,13 @@
                     </EntPopover>
                 </CardBody>
             </EntCard>
+
+            <EntCard class="mt-4">
+                 <CardHeader>فرم</CardHeader>
+                <CardBody>
+                    <EntTextInput @bind-Value="@InputValue" Icon="@Icons.Bars"/>
+                </CardBody>
+            </EntCard>
         </div>
     </EntMdiTab>
 </div>
@@ -61,7 +70,8 @@
 @code {
 
     public bool IsPopoverOpen { get; set; }
-    
+    public string InputValue { get; set; }
+
     [Inject]
     public IModalService ModalService { get; set; }
 

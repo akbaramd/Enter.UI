@@ -37,7 +37,6 @@ namespace Enter.UI.Components
         [Parameter]
         public string? Icon { get; set; }
 
-        [Parameter] public EntIconType IconType { get; set; } = EntIconType.IconTag;
 
         public void ToggleItem()
         {
