@@ -46,7 +46,8 @@ namespace Enter.UI.Core
 
         public string Build()
         {
-            return string.Join(" ", _cssClasses);
+            var res= string.Join(" ", _cssClasses);
+            return res;
         }
     }
 }
