@@ -38,7 +38,7 @@
                         <EntNavMenuGroup Title="صفحات فرم" Icon="fa-light fa-note">
                             <EntNavMenuTextItem class="bg-light" Text="فرم معمولی" Click="() => AddNewTab<FormLayout>()"/>
                         </EntNavMenuGroup>
-                        <EntNavMenuGroup Title="جداول" Icon="fa-light fa-note" >
+                        <EntNavMenuGroup Title="جداول" Icon="fa-light fa-note">
                             <EntNavMenuTextItem class="bg-light" Text="جدول داده" Click="() => AddNewTab<Table>()"/>
                         </EntNavMenuGroup>
                     </EntNavMenu>
@@ -54,10 +54,11 @@
             @Body
         </Content>
     </EntLayout>
+    <EntModalProvider/>
+    <EntPopoverProvider/>
 </div>
 
-<EntModalProvider/>
-<EntPopoverProvider/>
+
 
 
 @code {

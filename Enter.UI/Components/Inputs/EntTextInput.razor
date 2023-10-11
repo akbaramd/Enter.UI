@@ -5,8 +5,8 @@
 @inherits Microsoft.AspNetCore.Components.Forms.InputBase<string?>
 
 <div class="@RootClass"  @attributes="@AdditionalAttributes">
-    <InputText class="@($"{RootClass}-field")"   Value="@Value" ValueChanged="@ValueChanged" ValueExpression="@ValueExpression" DisplayName="@DisplayName" />
-    <div class="@($"{RootClass}-icon")">
+    <InputText class="@($"ent-input-field")" Value="@Value" ValueChanged="@ValueChanged" ValueExpression="@ValueExpression" DisplayName="@DisplayName" />
+    <div class="@($"ent-input-icon")">
         <EntIcon Size="4" Icon="@Icon"/>
     </div>
 </div>
@@ -15,11 +15,42 @@
 
     private string RootClass => new CssClassBuilder()
         .AddClass("ent-input")
+        .AddClass("modified",EditContext != null && EditContext.IsModified())
+        .AddClass("invalid",!IsValid)
+        .AddClass("valid", IsValid)
         .Build();
 
     [Parameter]
     public string Icon { get; set; }
-    
+
+    [CascadingParameter]
+    public EditContext?  EditContext { get; set; }
+
+    public bool IsValid { get; set; } = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (EditContext != null)
+        {
+            EditContext.OnValidationRequested += EditContextOnOnValidationRequested;
+        }
+        await base.OnInitializedAsync();
+    }
+
+    private void EditContextOnOnValidationRequested(object? sender, ValidationRequestedEventArgs e)
+    {
+        var name = FieldIdentifier.Create(ValueExpression);
+        var messages  = EditContext.GetValidationMessages(name);
+        IsValid = !messages.Any();
+
+        StateHasChanged();
+    }
+
+    protected override Task OnAfterRenderAsync(bool firstRender)
+    {
+      
+        return base.OnAfterRenderAsync(firstRender);
+    }
 
     protected override bool TryParseValueFromString(string? value, out string? result, [NotNullWhen(false)] out string? validationErrorMessage)
     {
