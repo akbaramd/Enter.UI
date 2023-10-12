@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Components.Rendering;
 using Enter.UI.Core;
 using System.ComponentModel.DataAnnotations;
 using Enter.UI.Core.Bases;
+using System.Reflection.Metadata;
 
 namespace Enter.UI.Components
 {
@@ -20,7 +21,17 @@ namespace Enter.UI.Components
         public EventCallback Click { get; set; }
 
 
-        [Parameter] public string ViewBox { get; set; } = "0 0 512 512";
+        [Parameter]
+        public string Fill { get; set; } = "none";
+
+        [Parameter]
+        public string Stroke { get; set; } = "currentColor";
+
+        [Parameter]
+        public int StrokeWidth { get; set; } = 2;
+
+
+        [Parameter] public string ViewBox { get; set; } = "0 0 24 24";
 
 
         private string RootCss => CssClassBuilder

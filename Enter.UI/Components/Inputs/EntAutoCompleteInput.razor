@@ -1,44 +1,64 @@
 ﻿@namespace Enter.UI.Components
 @using System.Diagnostics.CodeAnalysis
+@using Enter.UI.Core.Constants;
 @using Enter.UI.Core.Enums
-@inherits Microsoft.AspNetCore.Components.Forms.InputBase<string?>
+@inherits EntTextInput
+@typeparam T
+<div @attributes="@AdditionalAttributes" class="@RootClass" @onclick="@Click" @ref="_elementReference" id="@Id">
+    <EntTextInput 
+            class="@(RootClass + "-input")"
+            @onclick="OnInputClickCallback"
+                  @bind="@CurrentValueAsString" @bind:event="oninput" Icon="@Icon" />
 
-<div class="@RootClass" @onclick="@Click" @ref="_elementReference"> 
-    <EntTextInput class="@(RootClass + "-input")" @attributes="@AdditionalAttributes"
-               @onclick="OnInputFocusInCallback"
-               @bind-Value="@Value" />
     <EntPopover Open="_showMenu" RelativeWidth="true" Anchor="Origin.BottomCenter" Transform="Origin.TopCenter" PopoverClass="@(RootClass + "-popover")">
-       
-        <EntCard>
-            <CardBody >
-                <div class="d-flex flex-column gap-4">
-                    <input class="ent-input" value="@SearchValue" @onchange="OnSearchChange" placeholder="جستجو ..."/>
-                    <EntNavMenu class="@(RootClass + "-menu")">
-                        <EntNavMenuTextItem Text="S" Click="() => { }"/>
-                    </EntNavMenu>
-                </div>
-            </CardBody>
-        </EntCard>
+
+        <div class="ent-input-autocomplete-container">
+            <ul class="ent-input-autocomplete-menu">
+                @foreach (var item in DataSources)
+                {
+                    <li class="ent-input-autocomplete-menu-item" @onclick="()=>OnItemClickCallback(item)">
+                        @if (ItemTemplate == null)
+                        {
+                            @SelectedText.Invoke(item)
+                        }
+                        else
+                        {
+                            @ItemTemplate(item)
+                        }
+                    </li>
+                }
+            </ul>
+        </div>
+
     </EntPopover>
-     <EntOverlay  Visible="_showMenu"  OnClick="@OnInputFocusOutCallback"  @ontouchstart="@OnInputFocusOutCallback"   LockScroll="false"/>
+    <EntOverlay Visible="_showMenu" OnClick="@ClosePopover" @ontouchstart="@ClosePopover" LockScroll="false" />
 </div>
 
 
 @code {
 
-    private string RootClass => new CssClassBuilder()
+    private string RootClass => CssClassBuilder
         .AddClass("ent-input-autocomplete")
         .Build();
 
-    public string SearchValue { get; set; }
-    
+
     private bool _showMenu = false;
 
     [Parameter]
-    public RenderFragment? ChildContent { get; set; }
+    public List<T> DataSources { get; set; }
+
+
+    [Parameter]
+    public Func<T, object> SelectedValue { get; set; }
+    [Parameter]
+    public Func<T, object> SelectedText { get; set; }
+
+    [Parameter] public RenderFragment<T>? ItemTemplate { get; set; }
+
+    [Parameter] public EventCallback<string> OnSearchChange { get; set; }
 
     private ElementReference _elementReference;
-    
+
     protected override bool TryParseValueFromString(string? value, out string? result, [NotNullWhen(false)] out string? validationErrorMessage)
     {
         result = value;
@@ -46,21 +66,36 @@
         return true;
     }
 
-    private void OnInputFocusInCallback()
+    private void OnInputClickCallback()
     {
         _showMenu = true;
         StateHasChanged();
     }
 
-    private void OnInputFocusOutCallback()
+    private void OnInputKeyDownCallback()
+    {
+        _showMenu = true;
+        OnSearchChange.InvokeAsync(Value);
+        StateHasChanged();
+    }
+
+    private void ClosePopover()
     {
         _showMenu = false;
         StateHasChanged();
     }
 
-    private async Task OnSearchChange(ChangeEventArgs arg)
+    private async Task OnItemClickCallback(T t)
     {
-        Console.WriteLine(arg.Value);
+        Value = SelectedValue.Invoke(t).ToString();
+        _showMenu = false;
+
+    }
+
+    private async Task OnSearchValueChange(string? value)
+    {
+        await ValueChanged.InvokeAsync(value);
+        await OnSearchChange.InvokeAsync(value);
     }
 
     private async Task Click(MouseEventArgs arg)

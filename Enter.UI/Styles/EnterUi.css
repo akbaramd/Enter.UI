@@ -489,17 +489,16 @@ template {
 
 .ent-input {
   width: 100%;
-  background-color: #f5f5f5;
   border: 1px solid #e5e5e5;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.ent-input:has(.modified.valid) {
-  border-color: green;
+.ent-input.validation-requested.valid {
+  border-color: #d4d4d4;
 }
-.ent-input:has(.invalid) {
-  border-color: red;
+.ent-input.validation-requested.invalid {
+  border-color: #fca5a5;
 }
 .ent-input > .ent-input-field {
   flex-grow: 1;
@@ -512,6 +511,31 @@ template {
   flex-direction: row;
   align-items: center;
   padding: 0.5rem 1rem;
+  color: #737373;
+}
+
+.ent-input-autocomplete-container {
+  border: 1px solid #e5e5e5;
+  padding: 1rem;
+  background-color: #fafafa;
+}
+.ent-input-autocomplete-container > .ent-input-autocomplete-search-input {
+  background-color: white;
+}
+.ent-input-autocomplete-container > .ent-input-autocomplete-menu {
+  background-color: white;
+  list-style: none;
+  border: 1px solid #e5e5e5;
+  padding: 0;
+  margin: 0;
+  margin-top: 1rem;
+}
+.ent-input-autocomplete-container > .ent-input-autocomplete-menu > .ent-input-autocomplete-menu-item {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+.ent-input-autocomplete-container > .ent-input-autocomplete-menu > .ent-input-autocomplete-menu-item:last-child {
+  border-bottom: 0;
 }
 
 .ent-modal-container {
@@ -47210,7 +47234,7 @@ template {
 }
 
 .cl-mute {
-  color: #404040;
+  color: #737373;
 }
 
 .cl-dark {
@@ -48219,7 +48243,7 @@ template {
     color: #f5f5f5;
   }
   .mobile\:cl-mute {
-    color: #404040;
+    color: #737373;
   }
   .mobile\:cl-dark {
     color: #171717;
@@ -48980,7 +49004,7 @@ template {
     color: #f5f5f5;
   }
   .tablet\:cl-mute {
-    color: #404040;
+    color: #737373;
   }
   .tablet\:cl-dark {
     color: #171717;
@@ -49741,7 +49765,7 @@ template {
     color: #f5f5f5;
   }
   .laptop\:cl-mute {
-    color: #404040;
+    color: #737373;
   }
   .laptop\:cl-dark {
     color: #171717;
@@ -50502,7 +50526,7 @@ template {
     color: #f5f5f5;
   }
   .desktop\:cl-mute {
-    color: #404040;
+    color: #737373;
   }
   .desktop\:cl-dark {
     color: #171717;
@@ -51263,7 +51287,7 @@ template {
     color: #f5f5f5;
   }
   .screen\:cl-mute {
-    color: #404040;
+    color: #737373;
   }
   .screen\:cl-dark {
     color: #171717;
@@ -52027,7 +52051,7 @@ template {
 }
 
 .bg-mute {
-  background: #404040;
+  background: #737373;
 }
 
 .bg-dark {
@@ -53036,7 +53060,7 @@ template {
     background: #f5f5f5;
   }
   .mobile\:bg-mute {
-    background: #404040;
+    background: #737373;
   }
   .mobile\:bg-dark {
     background: #171717;
@@ -53797,7 +53821,7 @@ template {
     background: #f5f5f5;
   }
   .tablet\:bg-mute {
-    background: #404040;
+    background: #737373;
   }
   .tablet\:bg-dark {
     background: #171717;
@@ -54558,7 +54582,7 @@ template {
     background: #f5f5f5;
   }
   .laptop\:bg-mute {
-    background: #404040;
+    background: #737373;
   }
   .laptop\:bg-dark {
     background: #171717;
@@ -55319,7 +55343,7 @@ template {
     background: #f5f5f5;
   }
   .desktop\:bg-mute {
-    background: #404040;
+    background: #737373;
   }
   .desktop\:bg-dark {
     background: #171717;
@@ -56080,7 +56104,7 @@ template {
     background: #f5f5f5;
   }
   .screen\:bg-mute {
-    background: #404040;
+    background: #737373;
   }
   .screen\:bg-dark {
     background: #171717;
@@ -58079,7 +58103,7 @@ template {
 }
 html,
 body {
-  color: #404040;
+  color: #737373;
 }
 
 * {
