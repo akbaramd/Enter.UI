@@ -4,4 +4,5 @@
 **/node_modules/
 
 .vs
-
+**/*/EnterUi.min.js
+**/*/EnterUi.min.css
