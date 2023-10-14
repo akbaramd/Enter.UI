@@ -647,10 +647,15 @@ $sizes: (
         78: $size * 19.5,
         79: $size * 19.75,
         80: $size * 20,
+        100: $size * 25,
+        120: $size * 30,
+        140: $size * 35,
+        160: $size * 40,
         fit-content: fit-content,
         unset: unset,
         full: 100%,
-        half: 50%,
+        full-vh: 100vh,
+        half-vh: 50vh,
 );
 
 $utilities: (

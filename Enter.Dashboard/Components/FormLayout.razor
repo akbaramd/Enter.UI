@@ -57,8 +57,6 @@
         [Required(ErrorMessage = "کاربر اجباری میباشد")]
         public string User { get; set; }
 
-        [Required(ErrorMessage = "شهر اجباری میباشد")]
-        public string City { get; set; }
 
         [Required(ErrorMessage = "سن اجباری میباشد")]
         public string Age { get; set; }
@@ -67,10 +65,15 @@
         public string Role { get; set; }
     }
 
-    public InputModel Input { get; set; } = new InputModel();
+    public InputModel Input { get; set; } = new InputModel()
+    {
+        User = "اکبر",
+        Role = "Admin"
+    };
 
     private async Task OnSubmit()
     {
+        Input.Role = "Developer";
         Console.WriteLine(Input.User);
     }
 
