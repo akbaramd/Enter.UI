@@ -5,7 +5,7 @@
 
 @if (Visible)
 {
-    <div @attributes="@Attributes" class="@Classname" @onclick="OnClickHandlerAsync" @onclick:stopPropagation="true">
+    <div @attributes="@AdditionalAttributes" class="@Classname" @onclick="OnClickHandlerAsync" @onclick:stopPropagation="true">
         @if(LightBackground || DarkBackground)
         {
             <div class="@ScrimClassname"></div>

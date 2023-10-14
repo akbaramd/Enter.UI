@@ -1,6 +1,6 @@
 ﻿@namespace Enter.UI.Components
 @inherits EntBaseComponent
-<button @attributes="@Attributes" class="@RootClass"  @onclick="@Click">
+<button @attributes="@AdditionalAttributes" class="@RootClass"  @onclick="@Click">
     @if (Icon != null)
     {
         <EntIcon Icon="@Icon" />
@@ -32,7 +32,7 @@
     {
         if (firstRender)
         {
-            var attr = Attributes;
+            var attr = AdditionalAttributes;
         }
         base.OnAfterRender(firstRender);
     }

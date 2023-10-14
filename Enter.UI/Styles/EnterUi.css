@@ -494,12 +494,6 @@ template {
   flex-direction: row;
   align-items: center;
 }
-.ent-input.validation-requested.valid {
-  border-color: #d4d4d4;
-}
-.ent-input.validation-requested.invalid {
-  border-color: #fca5a5;
-}
 .ent-input > .ent-input-field {
   flex-grow: 1;
   padding: 0.5rem 1rem;
@@ -513,10 +507,15 @@ template {
   padding: 0.5rem 1rem;
   color: #737373;
 }
+.ent-input.modified.valid {
+  border-color: #d4d4d4;
+}
+.ent-input.modified.invalid {
+  border-color: #fca5a5;
+}
 
 .ent-input-autocomplete-container {
   border: 1px solid #e5e5e5;
-  padding: 1rem;
   background-color: #fafafa;
 }
 .ent-input-autocomplete-container > .ent-input-autocomplete-search-input {
@@ -525,17 +524,63 @@ template {
 .ent-input-autocomplete-container > .ent-input-autocomplete-menu {
   background-color: white;
   list-style: none;
-  border: 1px solid #e5e5e5;
   padding: 0;
   margin: 0;
-  margin-top: 1rem;
 }
 .ent-input-autocomplete-container > .ent-input-autocomplete-menu > .ent-input-autocomplete-menu-item {
   padding: 0.5rem 1rem;
   border-bottom: 1px solid #e5e5e5;
+  cursor: pointer;
 }
 .ent-input-autocomplete-container > .ent-input-autocomplete-menu > .ent-input-autocomplete-menu-item:last-child {
   border-bottom: 0;
+}
+.ent-input-autocomplete-container > .ent-input-autocomplete-message {
+  padding: 0;
+  margin: 0;
+}
+
+.ent-select-container {
+  border: 1px solid #e5e5e5;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+}
+.ent-select-container > .ent-select-item {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #e5e5e5;
+  cursor: pointer;
+  width: 100%;
+}
+.ent-select-container > .ent-select-item:last-child {
+  border-bottom: 0;
+}
+
+.ent-select {
+  width: 100%;
+  border: 1px solid #e5e5e5;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.ent-select > .ent-select-field {
+  flex-grow: 1;
+  padding: 0.5rem 1rem;
+  border: 0;
+  outline: 0;
+}
+.ent-select > .ent-select-icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  color: #737373;
+}
+.ent-select.modified.valid {
+  border-color: #d4d4d4;
+}
+.ent-select.modified.invalid {
+  border-color: #fca5a5;
 }
 
 .ent-modal-container {

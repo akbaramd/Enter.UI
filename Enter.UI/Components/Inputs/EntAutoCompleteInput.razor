@@ -7,27 +7,33 @@
 <div @attributes="@AdditionalAttributes" class="@RootClass" @onclick="@Click" @ref="_elementReference" id="@Id">
     <EntTextInput 
             class="@(RootClass + "-input")"
-            @onclick="OnInputClickCallback"
-                  @bind="@CurrentValueAsString" @bind:event="oninput" Icon="@Icon" />
+            
+                  Value="@Value" ValueChanged="@ValueChanged" ValueExpression="@ValueExpression" @oninput="@OnInputKeyDownCallback" Icon="@Icon" />
 
     <EntPopover Open="_showMenu" RelativeWidth="true" Anchor="Origin.BottomCenter" Transform="Origin.TopCenter" PopoverClass="@(RootClass + "-popover")">
 
         <div class="ent-input-autocomplete-container">
-            <ul class="ent-input-autocomplete-menu">
-                @foreach (var item in DataSources)
-                {
-                    <li class="ent-input-autocomplete-menu-item" @onclick="()=>OnItemClickCallback(item)">
-                        @if (ItemTemplate == null)
-                        {
-                            @SelectedText.Invoke(item)
-                        }
-                        else
-                        {
-                            @ItemTemplate(item)
-                        }
-                    </li>
-                }
-            </ul>
+            @if (DataSources.Any())
+            {
+                <ul class="ent-input-autocomplete-menu">
+                    @foreach (var item in DataSources)
+                    {
+                        <li class="ent-input-autocomplete-menu-item" @onclick="()=>OnItemClickCallback(item)">
+                            @if (Template == null)
+                            {
+                                @SelectedText.Invoke(item)
+                            }
+                            else
+                            {
+                                @Template?.Invoke(item)
+                            }
+                        </li>
+                    }
+                </ul>
+            }else
+            {
+                <p class="ent-input-autocomplete-message">داده ای یافت نشد</p>
+            }
         </div>
 
     </EntPopover>
@@ -36,7 +42,7 @@
 
 
 @code {
-
+    private Task AfterAsync() { return Task.CompletedTask; }
     private string RootClass => CssClassBuilder
         .AddClass("ent-input-autocomplete")
         .Build();
@@ -53,7 +59,7 @@
     [Parameter]
     public Func<T, object> SelectedText { get; set; }
 
-    [Parameter] public RenderFragment<T>? ItemTemplate { get; set; }
+    [Parameter] public RenderFragment<T>? Template { get; set; }
 
     [Parameter] public EventCallback<string> OnSearchChange { get; set; }
 
@@ -88,15 +94,12 @@
     private async Task OnItemClickCallback(T t)
     {
         Value = SelectedValue.Invoke(t).ToString();
+        await ValueChanged.InvokeAsync(Value);
         _showMenu = false;
 
     }
 
-    private async Task OnSearchValueChange(string? value)
-    {
-        await ValueChanged.InvokeAsync(value);
-        await OnSearchChange.InvokeAsync(value);
-    }
+  
 
     private async Task Click(MouseEventArgs arg)
     {

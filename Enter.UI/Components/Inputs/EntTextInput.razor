@@ -6,8 +6,11 @@
 @inherits EntBaseInput<string?>
 
 <div @attributes="@AdditionalAttributes" class="@RootClass" id="@Id">
-    @* <InputText @onkeydown="@(()=>OnKeyDown.InvokeAsync())" class="@($"ent-input-field")" Value="@Value" ValueChanged="@ValueChanged" ValueExpression="@ValueExpression" /> *@
-    <InputText class="@($"ent-input-field")" @bind="@CurrentValueAsString" @bind:event="oninput" />
+    <input type="@Type" class="@($"ent-input-field")" 
+
+    @bind="@CurrentValueAsString" 
+    @bind:event="oninput" />
+   
 
     @*
 
@@ -25,7 +28,7 @@
 
 
     *@
-    <InputText class="@($"ent-input-field")" @bind-Value="@SearchText" />
+  
     @if (Icon != null)
     {
         <div class="@($"ent-input-icon")">
@@ -35,19 +38,15 @@
 </div>
 
 @code {
-    private string SearchText
-    {
-        get => CurrentValueAsString ?? string.Empty;
-        set {
-            CurrentValueAsString = value;
-        }
-    }
+    
     private string RootClass => CssClassBuilder
         .AddClass("ent-input")
         .AddClass("modified", IsModified)
         .AddClass("validation-requested", ValidationRequested)
         .AddClass("invalid", !IsValid)
         .AddClass("valid", IsValid)
+        .AddClass("readonly", Readonly)
+        .AddClass("disabled", Disabled)
         .Build();
 
     [Parameter]
@@ -61,6 +60,12 @@
     public bool IsModified { get; set; } = false;
 
 
+    [Parameter]
+    public bool Readonly { get; set; } = false;
+    [Parameter]
+    public bool Disabled { get; set; } = false;
+    [Parameter]
+    public string Type { get; set; } = "text";
     protected override async Task OnInitializedAsync()
     {
         if (EditContext != null)
