@@ -15,21 +15,21 @@
         <div class="ent-input-autocomplete-container">
             @if (DataSources.Any())
             {
-                <ul class="ent-input-autocomplete-menu">
+                <EntList class="ent-input-autocomplete-list">
                     @foreach (var item in DataSources)
                     {
-                        <li class="ent-input-autocomplete-menu-item" @onclick="()=>OnItemClickCallback(item)">
-                            @if (Template == null)
+                        <EntListItem class="ent-input-autocomplete-list-item" @onclick="()=>OnItemClickCallback(item)">
+                            @if (ItemTemplate == null)
                             {
                                 @SelectedText.Invoke(item)
                             }
                             else
                             {
-                                @Template?.Invoke(item)
+                                @ItemTemplate?.Invoke(item)
                             }
-                        </li>
+                        </EntListItem>
                     }
-                </ul>
+                </EntList>
             }else
             {
                 <p class="ent-input-autocomplete-message">داده ای یافت نشد</p>
@@ -43,7 +43,7 @@
 
 @code {
     private Task AfterAsync() { return Task.CompletedTask; }
-    private string RootClass => CssClassBuilder
+    private string RootClass => CssBuilder
         .AddClass("ent-input-autocomplete")
         .Build();
 
@@ -59,7 +59,7 @@
     [Parameter]
     public Func<T, object> SelectedText { get; set; }
 
-    [Parameter] public RenderFragment<T>? Template { get; set; }
+    [Parameter] public RenderFragment<T>? ItemTemplate { get; set; }
 
     [Parameter] public EventCallback<string> OnSearchChange { get; set; }
 
@@ -93,13 +93,10 @@
 
     private async Task OnItemClickCallback(T t)
     {
-        Value = SelectedValue.Invoke(t).ToString();
-        await ValueChanged.InvokeAsync(Value);
+        CurrentValueAsString = SelectedValue.Invoke(t).ToString();
         _showMenu = false;
 
     }
-
-  
 
     private async Task Click(MouseEventArgs arg)
     {

@@ -1,0 +1,148 @@
+﻿@namespace Enter.UI.Components
+@using System.Diagnostics.CodeAnalysis
+@using Enter.UI.Core.Constants;
+@using Enter.UI.Core.Enums
+@inherits EntTextInput
+@typeparam T
+
+<div @attributes="@AdditionalAttributes" @onclick="@OnRootClickCallback" @ref="_elementReference" class="@RootCss" id="@Id">
+
+    <EntTextInput PlaceHolder="@PlaceHolder" class="ent-select-input" UseValidation="false" Readonly="true" @bind-Value="@Text" Icon="@Icons.ChevronDown" />
+
+    <input type="hidden" @bind="@Value" />
+
+    <EntPopover Open="_showMenu" RelativeWidth="true" Anchor="Origin.BottomCenter" Transform="Origin.TopCenter" PopoverClass="ent-select-popover">
+
+        <div class="ent-select-container">
+            @if (DataSources.Any())
+            {
+                <EntList class="ent-select-list">
+                    @foreach (var item in DataSources)
+                    {
+                        <EntListItem class="ent-select-list-item" @onclick="()=>OnItemClickCallback(item)">
+                            @if (ItemTemplate == null)
+                            {
+                                @TextFunc.Invoke(item)
+                            }
+                            else
+                            {
+                                @ItemTemplate?.Invoke(item)
+                            }
+                        </EntListItem>
+                    }
+                </EntList>
+            }
+            else
+            {
+                <p class="ent-select-message">داده ای یافت نشد</p>
+            }
+        </div>
+
+    </EntPopover>
+    <EntOverlay Visible="_showMenu" OnClick="@OnOverlayClickCallback" @ontouchstart="@OnOverlayClickCallback" LockScroll="false" />
+</div>
+
+
+@code {
+
+    private string RootCss => CssBuilder
+        .AddClass("ent-select")
+        .AddClass(BaseCss)
+        .AddClass(ValidationCss)
+        .Build();
+
+
+    private bool _showMenu = false;
+    private T? _selectedItem = default;
+
+    private T? SelectedItem
+    {
+        get
+        {
+            return _selectedItem;
+        }
+        set
+        {
+            _selectedItem = value;
+
+            if (value != null)
+            {
+                if (ValueFunc == null)
+                    throw new ArgumentNullException("please add ValueFunc parameter to EntSelect");
+                CurrentValueAsString = ValueFunc.Invoke(value);
+            }
+
+        }
+    }
+
+    private string? Text
+    {
+        get
+        {
+            if (SelectedItem != null)
+            {
+                if (TextFunc == null)
+                    throw new ArgumentNullException("please add TextFunc parameter to EntSelect");
+
+                return TextFunc.Invoke(SelectedItem);
+            }
+            return null;
+
+        }
+        set
+        {
+            Text = value;
+        }
+    }
+
+    [Parameter]
+    public List<T> DataSources { get; set; } = new List<T>();
+
+    [Parameter]
+    public Func<T, string> ValueFunc { get; set; }
+    [Parameter]
+    public Func<T, string> TextFunc { get; set; }
+    [Parameter]
+    public RenderFragment<T>? ItemTemplate { get; set; }
+
+
+    private ElementReference _elementReference;
+
+
+
+    protected override bool TryParseValueFromString(string? value, out string? result, [NotNullWhen(false)] out string? validationErrorMessage)
+    {
+        result = value;
+        validationErrorMessage = null;
+        return true;
+    }
+
+
+   
+    private async Task OnRootClickCallback()
+    {
+        _showMenu = true;
+        await _elementReference.FocusAsync();
+
+        StateHasChanged();
+    }
+
+    private void OnOverlayClickCallback()
+    {
+        _showMenu = false;
+        StateHasChanged();
+    }
+
+    private async Task OnItemClickCallback(T t)
+    {
+        _showMenu = false;
+        SelectedItem = t;
+    }
+
+
+    private async Task Click(MouseEventArgs arg)
+    {
+
+    }
+
+}

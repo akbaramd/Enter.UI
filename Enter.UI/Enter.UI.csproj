@@ -97,5 +97,9 @@
     <None Remove="Styles\EnterUi.min.css" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Watch Remove="Styles\components\_ent_list.component.scss" />
+  </ItemGroup>
+
 
 </Project>

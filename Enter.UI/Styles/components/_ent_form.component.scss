@@ -24,6 +24,7 @@
     }
 }
 
+// input
 
 .ent-input {
     width: 100%;
@@ -46,47 +47,25 @@
         padding: 0.5rem 1rem;
         color: map-get($colors, "mute");
     }
-
-
-    &.modified.valid {
-        border-color: $color-neutral-300;
-    }
-
-    &.modified.invalid {
-        border-color: $color-red-300;
-    }
 }
 
 
+
+
+
+// input-autocomplete
 
 .ent-input-autocomplete {
+
 }
 
-
 .ent-input-autocomplete-container {
-    border: $border;
-    background-color: map-get($colors,"lighteen");
+    margin-top: 0.25rem;
+    background-color: map-get($colors,"lighte");
 
-    > .ent-input-autocomplete-search-input {
+    > .ent-input-autocomplete-list {
         background-color: map-get($colors,"white");
-    }
-
-    > .ent-input-autocomplete-menu {
-        background-color: map-get($colors,"white");
-        list-style: none;
-        padding: 0;
-        margin: 0;
-
-
-        > .ent-input-autocomplete-menu-item {
-            padding: 0.5rem 1rem;
-            border-bottom: $border;
-            cursor: pointer;
-        }
-
-        > .ent-input-autocomplete-menu-item:last-child {
-            border-bottom: 0;
-        }
+     
     }
 
     > .ent-input-autocomplete-message {
@@ -95,50 +74,39 @@
     }
 }
 
-.ent-select-container {
+// select
+
+.ent-select {
     border: $border;
-    background-color: map-get($colors,"lighteen");
-    display: flex;
-    flex-direction: column;
 
+    > .ent-select-input {
+        border: 0;
 
-    > .ent-select-item {
-        padding: 0.5rem 1rem;
-        border-bottom: $border;
-        cursor: pointer;
-        width: 100%;
+        .ent-select-input-placeholder {
+            font-size: map-get($font-sizes,"description");
+            color: map-get($colors, "mute");
+        }
+    }
+}
+.ent-select-container {
+
+    margin-top:0.25rem;
+    background-color: map-get($colors,"lighte");
+
+    > .ent-select-list {
+        background-color: map-get($colors,"white");
+       
     }
 
-    > .ent-select-item:last-child {
-        border-bottom: 0;
+    > .ent-select-message {
+        padding: 0;
+        margin: 0;
     }
 }
 
+// validation
 
-
-
-.ent-select {
-    width: 100%;
-    border: $border;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    > .ent-select-field {
-        flex-grow: 1;
-        padding: 0.5rem 1rem;
-        border: 0;
-        outline: 0;
-    }
-
-    > .ent-select-icon {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding: 0.5rem 1rem;
-        color: map-get($colors, "mute");
-    }
-
+.ent-input-validation {
 
     &.modified.valid {
         border-color: $color-neutral-300;

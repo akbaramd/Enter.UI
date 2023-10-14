@@ -3,7 +3,7 @@
 <EntCard class="m-4">
     <CardHeader>صفحه فرم</CardHeader>
     <CardBody>
-        <EntTable DataSources="DataSource" Total="UsersList.Count" Take="_take" OnPaginationChange="OnPaginationChange">
+        <EntTable DataSources="DataSource" Total="Constants.Users.Count" Take="_take" OnPaginationChange="OnPaginationChange">
             <HeaderTemplate>
                 <th>شناسه</th>
                 <th>نام</th>
@@ -24,36 +24,16 @@
 
 @code {
 
-    public List<Users> UsersList { get; set; } = new List<Users>();
+    
     public List<Users> DataSource { get; set; } = new List<Users>();
     private readonly int _take = 2;
 
 
     protected override void OnInitialized()
     {
-        UsersList.Add(new Users()
-        {
-            Id = Guid.NewGuid(),
-            FirstName = "Akbar",
-            LastName = "Ahmadi",
-            Age = 28
-        });
-        UsersList.Add(new Users()
-        {
-            Id = Guid.NewGuid(),
-            FirstName = "Vahid",
-            LastName = "Rasouli",
-            Age = 35
-        });
-        UsersList.Add(new Users()
-        {
-            Id = Guid.NewGuid(),
-            FirstName = "Hadi",
-            LastName = "Ahmadi",
-            Age = 23
-        });
+        
 
-        DataSource = UsersList.Skip(0).Take(_take).ToList();
+        DataSource = Constants.Users.Skip(0).Take(_take).ToList();
 
         base.OnInitialized();
     }
@@ -62,7 +42,7 @@
     {
         var skip = (page - 1) * _take;
 
-        DataSource = UsersList.Skip(skip).Take(_take).ToList();
+        DataSource = Constants.Users.Skip(skip).Take(_take).ToList();
         
         StateHasChanged();
     }

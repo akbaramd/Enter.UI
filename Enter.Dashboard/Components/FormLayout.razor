@@ -1,38 +1,37 @@
 ﻿@using System.ComponentModel.DataAnnotations
+@using Enter.Dashboard.Model;
 @using Enter.UI.Core.Constants
 <EntCard class="m-4">
     <CardHeader>صفحه فرم</CardHeader>
     <CardBody>
-        <EditForm class="ent-edit-form" Model="Input" OnValidSubmit="@OnSubmit">
+        <EditForm class="ent-edit-form" Model="Input" OnSubmit="@OnSubmit">
             <DataAnnotationsValidator />
             <div class="row">
                 <div class="tablet:col-1/3 mb-4 ent-form-group">
-                    <label>نام</label>
-                    <EntTextInput @bind-Value="Input.FirstName" Icon="@Icons.ChevronLeft" />
-                    <ValidationMessage For="() => Input!.FirstName" />
+                    <label>شناسه</label>
+                    <EntTextInput Disabled="true" @bind-Value="Input.Id" Icon="@Icons.ChevronLeft" />
+                    <ValidationMessage For="() => Input!.Id" />
                 </div>
                 <div class="tablet:col-1/3 mb-4 ent-form-group">
-                    <label>نام خانوادگی</label>
-                    <EntAutoCompleteInput SelectedValue="x=>x.LastName"
-                                          SelectedText="x=>x.LastName"
+                    <label>کاربر</label>
+                    <EntAutoCompleteInput @bind-Value="Input.User"
+                                          SelectedValue="x=>x.Name"
+                                          SelectedText="x=>x.Name"
                                           DataSources="DataSource"
                                           Icon="@Icons.Search"
-                    @bind-Value="Input.LastName"
-                                          OnSearchChange="OnLastNameSearchChange">
-                        <Template Context="item">
-                            @item.FirstName @item.LastName
-                        </Template>
-                    </EntAutoCompleteInput>
-                    <ValidationMessage For="() => Input!.LastName" />
+                                          OnSearchChange="OnLastNameSearchChange"/>
+                    <ValidationMessage For="() => Input!.User" />
                 </div>
                 <div class="tablet:col-1/3 mb-4 ent-form-group">
-                    <label>شهر</label>
+                    <label>نقش</label>
 
-                    <EntSelect @bind-Value="Input.City">
-                        <EntSelectItem Value="urmia" Text="ارومیه"/>
-                        <EntSelectItem Value="tabriz" Text="تبریز" />
-                    </EntSelect>
-                    <ValidationMessage For="() => Input!.City" />
+                    <EntSelect @bind-Value="Input.Role"
+                               PlaceHolder="نقش مورد نظر را انتخاب نمایید"
+                               DataSources="Constants.Roles"
+                               ValueFunc="x=>x.Value"
+                               TextFunc="x=>x.Title" />
+
+                    <ValidationMessage For="() => Input!.Role" />
                 </div>
                 <div class="tablet:col-1/3 mb-4 ent-form-group">
                     <label>سن</label>
@@ -53,57 +52,38 @@
 
     public class InputModel
     {
-        [Required(ErrorMessage = "نام اجباری میباشد")]
-        public string FirstName { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString();
 
-        [Required(ErrorMessage = "نام خانوادگی اجباری میباشد")]
-        public string LastName { get; set; }
+        [Required(ErrorMessage = "کاربر اجباری میباشد")]
+        public string User { get; set; }
 
         [Required(ErrorMessage = "شهر اجباری میباشد")]
         public string City { get; set; }
 
         [Required(ErrorMessage = "سن اجباری میباشد")]
         public string Age { get; set; }
+
+        [Required(ErrorMessage = "نقش اجباری میباشد")]
+        public string Role { get; set; }
     }
 
     public InputModel Input { get; set; } = new InputModel();
 
     private async Task OnSubmit()
     {
-        Console.WriteLine(Input.FirstName);
+        Console.WriteLine(Input.User);
     }
 
 
 
-    public List<InputModel> UsersList { get; set; } = new List<InputModel>();
-    public List<InputModel> DataSource { get; set; } = new List<InputModel>();
+    public List<Users> DataSource = new List<Users>();
 
 
     protected override void OnInitialized()
     {
-        UsersList.Add(new InputModel()
-            {
 
-                FirstName = "Akbar",
-                LastName = "Ahmadi",
-                Age = "28"
-            });
-        UsersList.Add(new InputModel()
-            {
 
-                FirstName = "Vahid",
-                LastName = "Rasouli",
-                Age = "35"
-            });
-        UsersList.Add(new InputModel()
-            {
-
-                FirstName = "Hadi",
-                LastName = "Ahmadi",
-                Age = "23"
-            });
-
-        DataSource = UsersList;
+        DataSource = Constants.Users;
 
         base.OnInitialized();
     }
@@ -112,7 +92,7 @@
     {
         if (search is null)
             return;
-        DataSource = UsersList.Where(x => x.LastName.ToLower().Contains(search.ToLower())).ToList();
+        DataSource = Constants.Users.Where(x => x.LastName.ToLower().Contains(search.ToLower())).ToList();
 
         StateHasChanged();
     }

@@ -4,109 +4,37 @@
 @using Enter.UI.Core.Enums
 
 @inherits EntBaseInput<string?>
+@implements IAsyncDisposable
 
-<div @attributes="@AdditionalAttributes" class="@RootClass" id="@Id">
-    <input type="@Type" class="@($"ent-input-field")" 
+<div @attributes="@AdditionalAttributes" class="@RootCss" id="@Id">
+    <input class="ent-input-field" placeholder="@PlaceHolder"
+    @bind="@CurrentValueAsString"
+    @bind:event="oninput" disabled="@Disabled" readonly="@Readonly"/>
 
-    @bind="@CurrentValueAsString" 
-    @bind:event="oninput" />
-   
-
-    @*
-
-
-
-    -
-
-
-        Check this: https://github.com/dotnet/aspnetcore/issues/12657
-
-
-
-
-
-
-
-    *@
-  
     @if (Icon != null)
     {
-        <div class="@($"ent-input-icon")">
+        <div class="ent-input-icon">
             <EntIcon Size="4" Icon="@Icon" />
         </div>
     }
 </div>
 
 @code {
-    
-    private string RootClass => CssClassBuilder
+
+    private string RootCss => CssBuilder
         .AddClass("ent-input")
-        .AddClass("modified", IsModified)
-        .AddClass("validation-requested", ValidationRequested)
-        .AddClass("invalid", !IsValid)
-        .AddClass("valid", IsValid)
-        .AddClass("readonly", Readonly)
-        .AddClass("disabled", Disabled)
+        .AddClass(BaseCss)
+        .AddClass(ValidationCss)
         .Build();
 
     [Parameter]
     public string Icon { get; set; }
 
+
+
     [CascadingParameter]
     public EditContext? EditContext { get; set; }
 
-    public bool IsValid { get; set; } = false;
-    public bool ValidationRequested { get; set; } = false;
-    public bool IsModified { get; set; } = false;
-
-
-    [Parameter]
-    public bool Readonly { get; set; } = false;
-    [Parameter]
-    public bool Disabled { get; set; } = false;
-    [Parameter]
-    public string Type { get; set; } = "text";
-    protected override async Task OnInitializedAsync()
-    {
-        if (EditContext != null)
-        {
-            EditContext.OnValidationRequested += EditContextOnOnValidationRequested;
-            EditContext.OnFieldChanged += EditContextOnOnFieldChanged;
-
-        }
-        await base.OnInitializedAsync();
-    }
-    private void EditContextOnOnFieldChanged(object? sender, FieldChangedEventArgs e)
-    {
-
-        if (ValueExpression == null)
-            return;
-        var name = FieldIdentifier.Create(ValueExpression);
-        var messages = EditContext?.GetValidationMessages(name);
-        IsValid = !messages?.Any() ?? false;
-        IsModified = EditContext?.IsModified(name) ?? false;
-        StateHasChanged();
-    }
-    private void EditContextOnOnValidationRequested(object? sender, ValidationRequestedEventArgs e)
-    {
-
-        if (ValueExpression == null)
-            return;
-
-        var name = FieldIdentifier.Create(ValueExpression);
-    
-        var messages = EditContext?.GetValidationMessages(name);
-        IsValid = !messages?.Any() ?? false;
-        IsModified = EditContext?.IsModified(name) ?? false;
-        ValidationRequested = true;
-        StateHasChanged();
-    }
-
-    protected override Task OnAfterRenderAsync(bool firstRender)
-    {
-
-        return base.OnAfterRenderAsync(firstRender);
-    }
 
     protected override bool TryParseValueFromString(string? value, out string? result, [NotNullWhen(false)] out string? validationErrorMessage)
     {
@@ -114,7 +42,5 @@
         validationErrorMessage = null;
         return true;
     }
-
-
 
 }

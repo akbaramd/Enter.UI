@@ -1,0 +1,17 @@
+﻿@namespace Enter.UI.Components
+@inherits EntBaseComponent
+<li @attributes="@AdditionalAttributes" class="@RootCss">
+
+    @ChildContent
+</li>
+
+@code {
+
+    private string RootCss => CssClassBuilder
+        .AddClass("ent-list-item")
+        .Build();
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+}
