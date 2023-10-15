@@ -3,24 +3,44 @@
 @using Enter.UI.Services.Contracts;
 @inherits EntBaseComponent
 
-<div @attributes="@AdditionalAttributes" class="@RootCss" id="@Id">
+<div @ref="ElementReference" @attributes="@AdditionalAttributes" @onanimationend="EventUtil.AsNonRenderingEventHandler(OnAnimationEnd)" class="@RootCss" style="@RootStyle" id="@Id">
     @ChildContent
 </div>
 
 @code {
 
+    enum EntExpandableAnimationState
+    {
+        Close,
+        Open,
+        Opening,
+        Closing
+    }
+
     private string RootCss => CssClassBuilder
         .AddClass("ent-expandable")
-        .AddClass("show",Show.HasValue && Show.Value)
+        .AddClass("ent-expandable-close", animationState == EntExpandableAnimationState.Close)
+        .AddClass("ent-expandable-open", animationState == EntExpandableAnimationState.Open)
+        .AddClass("ent-expandable-closing", animationState == EntExpandableAnimationState.Closing)
+        .AddClass("ent-expandable-opening", animationState == EntExpandableAnimationState.Opening)
+        .Build();
+    
+    private string RootStyle => StyleBuilder
+    
+        .AddStyle($"height : auto",animationState == EntExpandableAnimationState.Open)
+        .AddStyle($"height : {_height}px",animationState is EntExpandableAnimationState.Closing or EntExpandableAnimationState.Opening)
         .Build();
 
     [Inject]
     public IEntJsService JsService { get; set; }
 
     private ExpandableInterop _expandableIntrop = default;
+    private EntExpandableAnimationState animationState = EntExpandableAnimationState.Close;
     public bool? _tempShow = null;
+    public double? _height = 0;
 
-
+    public ElementReference ElementReference { get; set; }
+    
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
@@ -30,18 +50,37 @@
     [Parameter]
     public EventCallback<bool> ShowChanged { get; set; }
 
-
     protected override async Task OnInitializedAsync()
     {
         _expandableIntrop = new ExpandableInterop(JsService);
-        await  base.OnInitializedAsync();
+        await base.OnInitializedAsync();
+    }
+
+
+    public async Task OnAnimationEnd()
+    {
+        if (animationState == EntExpandableAnimationState.Closing)
+        {
+            animationState = EntExpandableAnimationState.Close;
+        }
+        if (animationState == EntExpandableAnimationState.Opening)
+        {
+            animationState = EntExpandableAnimationState.Open;
+        }
+        StateHasChanged();
     }
 
     protected override async Task OnParametersSetAsync()
     {
-        if(_tempShow != Show)
+        if (_tempShow != Show)
         {
-            await _expandableIntrop.ToogleAsync(Id, Show.Value);
+           
+            
+            animationState = Show switch {
+                true => EntExpandableAnimationState.Opening,
+                false => EntExpandableAnimationState.Closing,
+                };
+            // await _expandableIntrop.ToogleAsync(Id, Show.Value);
             _tempShow = Show;
         }
         await base.OnParametersSetAsync();
@@ -51,8 +90,9 @@
     {
         if (firstRender)
         {
-
-            Console.WriteLine(Id);
+            var boundingClientRect = await JsService.GetBoundingClientRect(ElementReference);
+            _height = boundingClientRect.ScrollHeight;
+            StateHasChanged();
             await _expandableIntrop.InitializeAsync(Id, Show.Value);
         }
 

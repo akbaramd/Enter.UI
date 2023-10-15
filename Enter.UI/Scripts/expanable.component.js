@@ -9,17 +9,19 @@
 
     toggle(id, show) {
         
-        
+        return;
         
         const expandableNode = document.getElementById(id);
         console.log(id,show);
         if (expandableNode) {
             if (show) {
-                expandableNode.style['height'] = "auto";
+                expandableNode.style['height'] = expandableNode.scrollHeight+"px";
             } else {
                 expandableNode.style['height'] = '0';
             }
         }
+
+       
     }
 }
 

@@ -1,5 +1,7 @@
-﻿using Enter.UI.Models;
+﻿using Enter.UI.Core;
+using Enter.UI.Models;
 using Enter.UI.Services.Contracts;
+using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
 namespace Enter.UI.Services;
@@ -27,6 +29,14 @@ public class EntJsService : IEntJsService, IAsyncDisposable
     {
        var module =  await _moduleTask.Value;
         return await module.InvokeAsync<IJSObjectReference>(path);
+    }
+
+    public async Task<BoundingClientRect> GetBoundingClientRect(ElementReference reference)
+    {
+        var module =  await _moduleTask.Value;
+        var sharedModule = await module.InvokeAsync<IJSObjectReference>("getShared");
+        
+        return await sharedModule.InvokeAsync<BoundingClientRect>("getBoundingClientRect", reference);
     }
 
     public async ValueTask DisposeAsync()
