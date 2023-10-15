@@ -104,7 +104,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Watch Remove="Styles\components\_ent_expandable.component.scss" />
     <Watch Remove="Styles\components\_ent_list.component.scss" />
+    <Watch Remove="Styles\components\_ent_treeview.component.scss" />
   </ItemGroup>
 
 

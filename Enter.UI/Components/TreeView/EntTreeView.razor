@@ -1,0 +1,77 @@
+﻿@namespace Enter.UI.Components
+@inherits EntBaseComponent
+@typeparam TType
+<ul @attributes="@AdditionalAttributes" class="@RootCss">
+    @if (DataSource != null)
+    {
+        @foreach (var item in DataSource)
+        {
+            if (item is IEntTreeView<TType> treeViewItem)
+            {
+                <li class="ent-treeview-item" @onclick="()=>OnItemClickCallback(treeViewItem)">
+                    <InputCheckbox class="ent-treeview-item-checkbox" @bind-Value="@treeViewItem.Checked" />
+
+                    @if (treeViewItem.Icon != null)
+                    {
+                        <div class="ent-treeview-item-icon">
+                            <EntIcon Size="4" Icon="@treeViewItem.Icon" />
+                        </div>
+                    }
+                    <span class="ent-treeview-item-text">
+                        @TextFunc.Invoke(item)
+                    </span>
+
+                </li>
+
+                if (treeViewItem.Childrens != null && treeViewItem.Childrens.Any())
+                {
+                    <EntExpandable @bind-Show="treeViewItem.Checked" class="ent-treeview-childrens-expanable">
+                        <EntTreeView class="ent-treeview-childrens" DataSource="treeViewItem.Childrens" TextFunc="@TextFunc" ValueFunc="@ValueFunc" />
+                    </EntExpandable>
+                }
+            }
+
+        }
+    }
+</ul>
+
+@code {
+
+    private string RootCss => CssClassBuilder
+        .AddClass("ent-treeview")
+        .Build();
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+    [Parameter]
+    public List<TType>? DataSource { get; set; } = new List<TType>();
+    [Parameter]
+    public Func<TType, string> ValueFunc { get; set; }
+    [Parameter]
+    public Func<TType, string> TextFunc { get; set; }
+
+
+    public void  OnItemClickCallback(in IEntTreeView<TType> item , bool? value = null)
+    {
+
+        if (value == null)
+        {
+            item.Checked = item.Checked == null ? true : !item.Checked;
+        }
+        else
+        {
+            item.Checked = value.Value;
+        }
+
+        if (item.Childrens == null) return;
+
+        foreach(var it in item.Childrens)
+        {
+            if (it is IEntTreeView<TType> treeViewItem)
+            {
+                 OnItemClickCallback(treeViewItem,item.Checked);
+            }
+        }
+    }
+
+}

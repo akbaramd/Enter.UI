@@ -2,15 +2,13 @@
 @using System.Diagnostics.CodeAnalysis
 @using Enter.UI.Core.Constants;
 @using Enter.UI.Core.Enums
-@inherits EntTextInput
+@inherits EntBaseInput<string>
 @typeparam T
 <div @attributes="@AdditionalAttributes" class="@RootClass" @onclick="@Click" @ref="_elementReference" id="@Id">
-    <EntTextInput 
-            class="@(RootClass + "-input")"
-            
-                  Value="@Value" ValueChanged="@ValueChanged" ValueExpression="@ValueExpression" @oninput="@OnInputKeyDownCallback" Icon="@Icon" />
+    <EntInputText class="@( "ent-input-autocomplete-input")"
+                  Value="@Value" ValueChanged="@ValueChanged" Disabled="@Disabled" Readonly="@Readonly" ValueExpression="@ValueExpression" @oninput="@OnInputCallback" Icon="@EntIcons.Search" />
 
-    <EntPopover Open="_showMenu" RelativeWidth="true" Anchor="Origin.BottomCenter" Transform="Origin.TopCenter" PopoverClass="@(RootClass + "-popover")">
+    <EntPopover Open="_showMenu" RelativeWidth="true" Anchor="Origin.BottomCenter" Transform="Origin.TopCenter" PopoverClass="@("ent-input-autocomplete-popover")">
 
         <div class="ent-input-autocomplete-container">
             @if (DataSources.Any())
@@ -21,7 +19,7 @@
                         <EntListItem class="ent-input-autocomplete-list-item" @onclick="()=>OnItemClickCallback(item)">
                             @if (ItemTemplate == null)
                             {
-                                @SelectedText.Invoke(item)
+                                @ValueFunc.Invoke(item)
                             }
                             else
                             {
@@ -30,14 +28,15 @@
                         </EntListItem>
                     }
                 </EntList>
-            }else
+            }
+            else
             {
                 <p class="ent-input-autocomplete-message">داده ای یافت نشد</p>
             }
         </div>
 
     </EntPopover>
-    <EntOverlay Visible="_showMenu" OnClick="@ClosePopover" @ontouchstart="@ClosePopover" LockScroll="false" />
+    <EntOverlay Visible="_showMenu" OnClick="@CloseOverlay" @ontouchstart="@CloseOverlay" LockScroll="false" />
 </div>
 
 
@@ -55,9 +54,7 @@
 
 
     [Parameter]
-    public Func<T, object> SelectedValue { get; set; }
-    [Parameter]
-    public Func<T, object> SelectedText { get; set; }
+    public Func<T, object> ValueFunc { get; set; }
 
     [Parameter] public RenderFragment<T>? ItemTemplate { get; set; }
 
@@ -72,38 +69,29 @@
         return true;
     }
 
-    private void OnInputClickCallback()
+
+    private void OnInputCallback()
     {
         _showMenu = true;
-        StateHasChanged();
+        OnSearchChange.InvokeAsync(CurrentValueAsString);
     }
 
-    private void OnInputKeyDownCallback()
-    {
-        _showMenu = true;
-        OnSearchChange.InvokeAsync(Value);
-        StateHasChanged();
-    }
-
-    private void ClosePopover()
+    private void CloseOverlay()
     {
         _showMenu = false;
-        StateHasChanged();
     }
 
     private async Task OnItemClickCallback(T t)
     {
-        CurrentValueAsString = SelectedValue.Invoke(t).ToString();
+        CurrentValueAsString = ValueFunc.Invoke(t).ToString();
         _showMenu = false;
 
     }
 
     private async Task Click(MouseEventArgs arg)
     {
-        if (_showMenu)
-        {
-            await _elementReference.FocusAsync();
-        }
+        _showMenu = true;
+        await _elementReference.FocusAsync();
     }
 
 }

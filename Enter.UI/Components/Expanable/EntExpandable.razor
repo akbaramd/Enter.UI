@@ -1,0 +1,63 @@
+﻿@namespace Enter.UI.Components
+@using Enter.UI.Interops;
+@using Enter.UI.Services.Contracts;
+@inherits EntBaseComponent
+
+<div @attributes="@AdditionalAttributes" class="@RootCss" id="@Id">
+    @ChildContent
+</div>
+
+@code {
+
+    private string RootCss => CssClassBuilder
+        .AddClass("ent-expandable")
+        .AddClass("show",Show)
+        .Build();
+
+    [Inject]
+    public IEntJsService JsService { get; set; }
+
+    private ExpandableInterop _expandableIntrop = default;
+    public bool? _tempShow = null;
+
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public bool Show { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> ShowChanged { get; set; }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        _expandableIntrop = new ExpandableInterop(JsService);
+        await  base.OnInitializedAsync();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if(_tempShow != Show)
+        {
+            await _expandableIntrop.ToogleAsync(Id, Show);
+            _tempShow = Show;
+        }
+        await base.OnParametersSetAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+
+            Console.WriteLine(Id);
+            await _expandableIntrop.InitializeAsync(Id, Show);
+        }
+
+        await base.OnInitializedAsync();
+    }
+
+
+}

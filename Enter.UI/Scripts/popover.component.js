@@ -202,7 +202,6 @@
 
             const postion = this.calculatePopoverPosition(classListArray, boundingRect, selfRect);
 
-            console.log(classListArray)
             let left = postion.left;
             let top = postion.top;
             let offsetX = postion.offsetX;
@@ -222,8 +221,6 @@
                 const deltaTop = top - selfRect.height - appBarOffset;
                 const spaceToTop = top - appBarOffset;
                 const deltaBottom = window.innerHeight - top - selfRect.height;
-                //console.log('self-width: ' + selfRect.width + ' | self-height: ' + selfRect.height);
-                //console.log('left: ' + deltaToLeft + ' | rigth:' + deltaToRight + ' | top: ' + deltaTop + ' | bottom: ' + deltaBottom + ' | spaceToTop: ' + spaceToTop);
 
                 let selector = popoverContentNode.mudPopoverFliped;
 
@@ -384,15 +381,11 @@
     }
 
     connect(id) {
-        console.log("connect PopOverComponent");
+        //console.log("connect PopOverComponent");
         //this.initialize(this.mainContainerClass);
 
         const popoverNode = document.getElementById('ent-popover-' + id);
         const popoverContentNode = document.getElementById('ent-popover-content-' + id);
-
-        console.log(popoverNode)
-        console.log(popoverContentNode)
-        console.log(popoverNode.parentNode)
 
         if (popoverNode && popoverNode.parentNode && popoverContentNode) {
 

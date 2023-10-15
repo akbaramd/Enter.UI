@@ -467,6 +467,8 @@ template {
 }
 .ent-card > .ent-card-content {
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 .ent-card > .ent-card-footer {
   padding: 1rem;
@@ -513,6 +515,8 @@ template {
 }
 .ent-input-autocomplete-container > .ent-input-autocomplete-list {
   background-color: white;
+  max-height: 10rem;
+  overflow-y: scroll;
 }
 .ent-input-autocomplete-container > .ent-input-autocomplete-message {
   padding: 0;
@@ -521,6 +525,7 @@ template {
 
 .ent-select {
   border: 1px solid #e5e5e5;
+  cursor: pointer;
 }
 .ent-select > .ent-select-input {
   border: 0;
@@ -534,6 +539,8 @@ template {
   margin-top: 0.25rem;
 }
 .ent-select-container > .ent-select-list {
+  max-height: 10rem;
+  overflow-y: scroll;
   background-color: white;
 }
 .ent-select-container > .ent-select-message {
@@ -546,6 +553,12 @@ template {
 }
 .ent-input-validation.modified.invalid {
   border-color: #fca5a5;
+}
+
+.ent-expandable {
+  height: 0;
+  transition: height 0.25s ease;
+  overflow: hidden;
 }
 
 .ent-modal-container {
@@ -742,7 +755,6 @@ template {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   margin: 0 auto;
   min-width: 100%;
 }
@@ -901,6 +913,32 @@ template {
 }
 .ent-list > .ent-list-item:last-child {
   border-bottom: 0;
+}
+
+.ent-treeview {
+  border: 1px solid #e5e5e5;
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+.ent-treeview .ent-treeview-childrens-expanable {
+  border: 0;
+}
+.ent-treeview .ent-treeview-item {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.ent-treeview .ent-treeview-item .ent-treeview-item-checkbox {
+  margin-inline-end: 0.5rem;
+}
+.ent-treeview .ent-treeview-item .ent-treeview-item-icon {
+  margin-inline-end: 0.5rem;
+}
+.ent-treeview .ent-treeview-childrens {
+  border: 0;
+  margin-inline-start: 1.5rem;
 }
 
 .h-0 {

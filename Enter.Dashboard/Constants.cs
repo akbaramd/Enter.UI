@@ -8,14 +8,36 @@ namespace Enter.Dashboard
         {
             Id = Guid.NewGuid(),
             Title = "برنامه نویس",
-            Value = "Developer"
+            Value = "Developer",
+            Icon = "fa-light fa-users",
+            Childrens = new List<Roles> {
+                new Roles()
+                {
+                    Id = Guid.NewGuid(),
+                    Title = "برنامه نویس تازه کار",
+                    Value = "Junior Developer",
+                },
+                 new Roles()
+                {
+                    Id = Guid.NewGuid(),
+                    Title = "برنامه نویس نرمال",
+                    Value = "Normal Developer",
+                },
+                new Roles()
+                {
+                    Id = Guid.NewGuid(),
+                    Title = "برنامه نویس حرفه ای",
+                    Value = "Expert Developer",
+                }
+            }
         };
 
         public static Roles AdminRole = new Roles()
         {
             Id = Guid.NewGuid(),
             Title = "ادمین",
-            Value = "Admin"
+            Value = "Admin",
+            Icon = "fa-light fa-user"
         };
 
         public static List<Roles> Roles = new List<Roles>()

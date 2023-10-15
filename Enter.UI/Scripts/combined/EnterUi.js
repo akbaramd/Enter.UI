@@ -1,3 +1,24 @@
+export class ExpandableComponent {
+_dotNetRef;
+initialize(dotNetRef, id , show) {
+this._dotNetRef = dotNetRef;
+this.toggle(id, show);
+}
+toggle(id, show) {
+const expandableNode = document.getElementById(id);
+console.log(id,show);
+if (expandableNode) {
+if (show) {
+expandableNode.style['height'] = (expandableNode.offsetHeight) + 'px';
+} else {
+expandableNode.style['height'] = '0px';
+}
+}
+}
+}
+export function getExpandableComponent() {
+return new ExpandableComponent();
+}
 export class LayoutComponent {
 _dotNetRef;
 _sidebar;
@@ -209,7 +230,6 @@ const selfRect = popoverContentNode.getBoundingClientRect();
 const classList = popoverContentNode.classList;
 const classListArray = Array.from(popoverContentNode.classList);
 const postion = this.calculatePopoverPosition(classListArray, boundingRect, selfRect);
-console.log(classListArray)
 let left = postion.left;
 let top = postion.top;
 let offsetX = postion.offsetX;
@@ -226,8 +246,6 @@ const deltaToRight = window.innerWidth - left - selfRect.width;
 const deltaTop = top - selfRect.height - appBarOffset;
 const spaceToTop = top - appBarOffset;
 const deltaBottom = window.innerHeight - top - selfRect.height;
-//console.log('self-width: ' + selfRect.width + ' | self-height: ' + selfRect.height);
-//console.log('left: ' + deltaToLeft + ' | rigth:' + deltaToRight + ' | top: ' + deltaTop + ' | bottom: ' + deltaBottom + ' | spaceToTop: ' + spaceToTop);
 let selector = popoverContentNode.mudPopoverFliped;
 if (!selector) {
 if (classList.contains('ent-popover-top-left')) {
@@ -367,13 +385,10 @@ childNode.style['z-index'] = 'calc(var(--ent-zindex-popover) + ' + (sortedTickVa
 }
 }
 connect(id) {
-console.log("connect PopOverComponent");
+//console.log("connect PopOverComponent");
 //this.initialize(this.mainContainerClass);
 const popoverNode = document.getElementById('ent-popover-' + id);
 const popoverContentNode = document.getElementById('ent-popover-content-' + id);
-console.log(popoverNode)
-console.log(popoverContentNode)
-console.log(popoverNode.parentNode)
 if (popoverNode && popoverNode.parentNode && popoverContentNode) {
 this.placePopover(popoverNode);
 const config = {attributeFilter: ['class', 'data-ticks']};

@@ -65,7 +65,8 @@
 
     > .ent-input-autocomplete-list {
         background-color: map-get($colors,"white");
-     
+        max-height: 10rem;
+        overflow-y: scroll;
     }
 
     > .ent-input-autocomplete-message {
@@ -78,7 +79,8 @@
 
 .ent-select {
     border: $border;
-
+    cursor: pointer;
+   
     > .ent-select-input {
         border: 0;
 
@@ -89,13 +91,13 @@
     }
 }
 .ent-select-container {
-
-    margin-top:0.25rem;
+    margin-top: 0.25rem;
     background-color: map-get($colors,"lighte");
 
     > .ent-select-list {
+        max-height: 10rem;
+        overflow-y: scroll;
         background-color: map-get($colors,"white");
-       
     }
 
     > .ent-select-message {

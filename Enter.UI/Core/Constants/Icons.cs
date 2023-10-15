@@ -1,6 +1,6 @@
 ﻿namespace Enter.UI.Core.Constants;
 
-public class Icons
+public class EntIcons
 {
         public const string Menu = """<line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>""";
         public const string ChevronLeft = """<polyline points="15 18 9 12 15 6"></polyline>""";

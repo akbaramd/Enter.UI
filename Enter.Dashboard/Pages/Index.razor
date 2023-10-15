@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using Enter.Dashboard.Model;
 @using Enter.UI.Services.Contracts;
 @using Enter.UI.Components
 @using Enter.UI.Core.Constants
@@ -60,7 +61,32 @@
             <EntCard class="mt-4">
                  <CardHeader>فرم</CardHeader>
                 <CardBody>
-                    <EntTextInput @bind-Value="@InputValue" Icon="@Icons.Menu"/>
+                    
+                    <b class="mb-2">ورودی پرشونده خودکار</b>
+                    <EntInputAutoComplete class="mb-4"
+                        @bind-Value="AutoCompleteValue"
+                               DataSources="AutoCompleteDataSource"
+                               ValueFunc="x=>x.Name"
+                               OnSearchChange="OnSearchChangeCallBack"
+                               />
+                    <b class="mb-2">ورودی انتخابی</b>
+                    <EntInputSelect 
+                        @bind-Value="SelectValue"
+                               PlaceHolder="نقش مورد نظر را انتخاب نمایید"
+                               DataSources="Constants.Roles"
+                               ValueFunc="x=>x.Value"
+                               TextFunc="x=>x.Title" />
+                </CardBody>
+            </EntCard>
+
+            <EntCard class="mt-4">
+                <CardHeader>درخت</CardHeader>
+                <CardBody>
+                    <EntTreeView class="mb-4"
+                    @bind-Value="AutoCompleteValue"
+                                 DataSource="Constants.Roles"
+                                 TextFunc="x=>x.Title"
+                                 ValueFunc="x=>x.Value" />
                 </CardBody>
             </EntCard>
         </div>
@@ -70,7 +96,10 @@
 @code {
 
     public bool IsPopoverOpen { get; set; }
-    public string InputValue { get; set; }
+    public string AutoCompleteValue { get; set; }
+    public string SelectValue { get; set; }
+
+    public List<Users> AutoCompleteDataSource { get; set; } = Constants.Users;
 
     [Inject]
     public IModalService ModalService { get; set; }
@@ -88,4 +117,8 @@
         IsPopoverOpen = !IsPopoverOpen;
     }
 
+    private async Task OnSearchChangeCallBack(string search)
+    {
+        AutoCompleteDataSource = Constants.Users.Where(x => x.Name.Contains(search)).ToList();
+    }
 }
