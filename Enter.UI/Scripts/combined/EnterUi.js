@@ -9,9 +9,9 @@ const expandableNode = document.getElementById(id);
 console.log(id,show);
 if (expandableNode) {
 if (show) {
-expandableNode.style['height'] = (expandableNode.offsetHeight) + 'px';
+expandableNode.style['height'] = "auto";
 } else {
-expandableNode.style['height'] = '0px';
+expandableNode.style['height'] = '0';
 }
 }
 }

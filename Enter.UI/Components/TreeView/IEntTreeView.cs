@@ -10,6 +10,7 @@ namespace Enter.UI.Components
     {
         public string? Icon { get; set; }
         public bool Checked { get; set; }
+        public bool Expanded { get; set; }
         public List<TType> Childrens { get; set; }
     }
 }

@@ -45,7 +45,7 @@
                 </CardBody>
             </EntCard>
             <EntCard class="mt-4">
-                 <CardHeader>پاپ آور</CardHeader>
+                <CardHeader>پاپ آور</CardHeader>
                 <CardBody>
                     <EntButton Click="OpenPopover">باز کردن</EntButton>
                     <EntPopover Open="IsPopoverOpen" RelativeWidth="true">
@@ -59,42 +59,47 @@
             </EntCard>
 
             <EntCard class="mt-4">
-                 <CardHeader>فرم</CardHeader>
-                <CardBody>
-                    
-                    <b class="mb-2">ورودی پرشونده خودکار</b>
-                    <EntInputAutoComplete class="mb-4"
-                        @bind-Value="AutoCompleteValue"
-                               DataSources="AutoCompleteDataSource"
-                               ValueFunc="x=>x.Name"
-                               OnSearchChange="OnSearchChangeCallBack"
-                               />
-                    <b class="mb-2">ورودی انتخابی</b>
-                    <EntInputSelect 
-                        @bind-Value="SelectValue"
-                               PlaceHolder="نقش مورد نظر را انتخاب نمایید"
-                               DataSources="Constants.Roles"
-                               ValueFunc="x=>x.Value"
-                               TextFunc="x=>x.Title" />
-                </CardBody>
-            </EntCard>
-
-            <EntCard class="mt-4">
                 <CardHeader>درخت</CardHeader>
                 <CardBody>
                     <EntTreeView class="mb-4"
-                    @bind-Value="AutoCompleteValue"
                                  DataSource="Constants.Roles"
-                                 TextFunc="x=>x.Title"
-                                 ValueFunc="x=>x.Value" />
+                                 TextFunc="x => x.Title"
+                                 ValueFunc="x => x.Value"
+                                 @bind-SelectedValues="TreeSelectedValue"/>
+                    @foreach (var item in TreeSelectedValue)
+                    {
+                        <span class="me-2">
+                            @item
+                        </span>
+                    }
                 </CardBody>
             </EntCard>
+            <EntCard class="mt-4">
+                <CardHeader>فرم</CardHeader>
+                <CardBody>
+
+                    <b class="mb-2">ورودی پرشونده خودکار</b>
+                    <EntInputAutoComplete class="mb-4"
+                                          @bind-Value="AutoCompleteValue"
+                                          DataSources="AutoCompleteDataSource"
+                                          ValueFunc="x => x.Name"
+                                          OnSearchChange="OnSearchChangeCallBack"/>
+                    <b class="mb-2">ورودی انتخابی</b>
+                    <EntInputSelect
+                        @bind-Value="SelectValue"
+                        PlaceHolder="نقش مورد نظر را انتخاب نمایید"
+                        DataSources="Constants.Roles"
+                        ValueFunc="x => x.Value"
+                        TextFunc="x => x.Title"/>
+                </CardBody>
+            </EntCard>
+
         </div>
     </EntMdiTab>
 </div>
 
 @code {
-
+    public List<string> TreeSelectedValue { get; set; } = new List<string>();
     public bool IsPopoverOpen { get; set; }
     public string AutoCompleteValue { get; set; }
     public string SelectValue { get; set; }
@@ -121,4 +126,5 @@
     {
         AutoCompleteDataSource = Constants.Users.Where(x => x.Name.Contains(search)).ToList();
     }
+
 }

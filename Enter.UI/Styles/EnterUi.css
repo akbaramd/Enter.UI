@@ -930,11 +930,20 @@ template {
   display: flex;
   align-items: center;
 }
+.ent-treeview .ent-treeview-item.expanded .ent-treeview-item-list-icon {
+  transform: rotate(-90deg);
+  transition: all 0.25s ease-in-out;
+}
 .ent-treeview .ent-treeview-item .ent-treeview-item-checkbox {
   margin-inline-end: 0.5rem;
 }
 .ent-treeview .ent-treeview-item .ent-treeview-item-icon {
   margin-inline-end: 0.5rem;
+}
+.ent-treeview .ent-treeview-item .ent-treeview-item-list-icon {
+  width: 1rem;
+  margin-inline-end: 0.5rem;
+  transition: all 0.25s ease-in-out;
 }
 .ent-treeview .ent-treeview-childrens {
   border: 0;

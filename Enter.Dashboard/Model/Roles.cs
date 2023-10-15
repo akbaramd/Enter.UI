@@ -8,6 +8,7 @@ public class Roles : IEntTreeView<Roles>
     public string Title { get; set; }
     public string Value { get; set; }
     public string? Icon { get; set; }
+    public bool Expanded { get; set; }
     public List<Roles> Childrens { get; set; }
     public bool Checked { get;set; }
 }

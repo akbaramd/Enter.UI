@@ -11,7 +11,7 @@
 
     private string RootCss => CssClassBuilder
         .AddClass("ent-expandable")
-        .AddClass("show",Show)
+        .AddClass("show",Show.HasValue && Show.Value)
         .Build();
 
     [Inject]
@@ -25,7 +25,7 @@
     public RenderFragment? ChildContent { get; set; }
 
     [Parameter]
-    public bool Show { get; set; }
+    public bool? Show { get; set; }
 
     [Parameter]
     public EventCallback<bool> ShowChanged { get; set; }
@@ -41,7 +41,7 @@
     {
         if(_tempShow != Show)
         {
-            await _expandableIntrop.ToogleAsync(Id, Show);
+            await _expandableIntrop.ToogleAsync(Id, Show.Value);
             _tempShow = Show;
         }
         await base.OnParametersSetAsync();
@@ -53,7 +53,7 @@
         {
 
             Console.WriteLine(Id);
-            await _expandableIntrop.InitializeAsync(Id, Show);
+            await _expandableIntrop.InitializeAsync(Id, Show.Value);
         }
 
         await base.OnInitializedAsync();

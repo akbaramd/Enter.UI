@@ -16,18 +16,37 @@ namespace Enter.Dashboard
                     Id = Guid.NewGuid(),
                     Title = "برنامه نویس تازه کار",
                     Value = "Junior Developer",
+                    Icon = "fa-light fa-users",
                 },
                  new Roles()
                 {
                     Id = Guid.NewGuid(),
                     Title = "برنامه نویس نرمال",
                     Value = "Normal Developer",
+                    Icon = "fa-light fa-users",
+                    Childrens = new List<Roles> {
+                        new Roles()
+                        {
+                            Id = Guid.NewGuid(),
+                            Title = "برنامه نویس نرمال فرانت",
+                            Value = "Normal Front Developer",
+                            Icon = "fa-light fa-home",
+                        },
+                        new Roles()
+                        {
+                            Id = Guid.NewGuid(),
+                            Title = "برنامه نویس نرمال بکاند",
+                            Value = "Normal Backend Developer",
+                            Icon = "fa-light fa-note",
+                        },
+                    }
                 },
                 new Roles()
                 {
                     Id = Guid.NewGuid(),
                     Title = "برنامه نویس حرفه ای",
                     Value = "Expert Developer",
+                    Icon = "fa-light fa-close",
                 }
             }
         };
