@@ -3,7 +3,12 @@
 
 **/node_modules/
 
+.github
+.idea
 .vs
 
-**/wwwroot/
+**/*/EnterUi.min.css
+**/*/EnterUi.min.js
+
+**/combined
 
