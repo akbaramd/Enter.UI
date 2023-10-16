@@ -1,5 +1,5 @@
 ﻿@namespace Enter.UI.Components
-<div class="@RootCss">@ChildContent</div>
+<div  @attributes="AdditionalAttributes" class="@RootCss" >@ChildContent</div>
 @inherits EntBaseComponent
 @code {
     private readonly string _flexRow = "flex-row";

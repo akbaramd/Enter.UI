@@ -6,25 +6,26 @@
 
 <PageTitle>Index</PageTitle>
 
-<div class="d-flex flex-column">
+<EntFlex Direction="FlexDirection.Column">
     <EntMdiTab ItemDirection="EntTabItemDirection.Horizontal"
                KeepPanelAlive="true"
                PanelClass="bg-light"
                ActiveClass="bg-light"
                Closeable="true"
-               Direction="EntTabDirection.Vertical" class="border-0 flex-grow-1">
-        <div class="p-4">
-            <EntCard Margin="4">
+               Border="0"
+               FlexFill="true"
+               Direction="EntTabDirection.Vertical" >
+        <EntDivision Padding="4">
+            <EntCard >
                 <CardBody>
                     <EntFlex Direction="FlexDirection.Column">
                         <b>این صفحه پیشفرض EntMdiTab میباشد</b>
                     </EntFlex>
                 </CardBody>
             </EntCard>
-            <EntCard class="mt-4">
+            <EntCard MarginTop="4">
                 <CardHeader>کامپوننت - دکمه</CardHeader>
                 <CardBody>
-
                     <EntFlex Direction="FlexDirection.Column"
                              LaptopDirection="FlexDirection.Row"
                              LaptopAlign="FlexAlign.StartCenter"
@@ -35,7 +36,7 @@
                     </EntFlex>
                 </CardBody>
             </EntCard>
-            <EntCard class="mt-4">
+            <EntCard MarginTop="4">
                 <CardHeader>کامپوننت - مدال</CardHeader>
                 <CardBody>
                     <EntFlex Direction="FlexDirection.Column"
@@ -50,7 +51,7 @@
                     </EntFlex>
                 </CardBody>
             </EntCard>
-            <EntCard class="mt-4">
+            <EntCard MarginTop="4">
                 <CardHeader>پاپ آور</CardHeader>
                 <CardBody>
                     <EntButton Click="OpenPopover">باز کردن</EntButton>
@@ -64,10 +65,10 @@
                 </CardBody>
             </EntCard>
 
-            <EntCard class="mt-4">
+            <EntCard MarginTop="4">
                 <CardHeader>درخت</CardHeader>
                 <CardBody>
-                    <EntTreeView class="mb-4"
+                    <EntTreeView MarginBottom="4"
                                  DataSource="Constants.Roles"
                                  TextFunc="x => x.Title"
                                  ValueFunc="x => x.Value"
@@ -80,7 +81,7 @@
                     }
                 </CardBody>
             </EntCard>
-            <EntCard class="mt-4">
+            <EntCard MarginTop="4">
                 <CardHeader>فرم</CardHeader>
                 <CardBody>
 
@@ -99,9 +100,9 @@
                 </CardBody>
             </EntCard>
 
-        </div>
+        </EntDivision>
     </EntMdiTab>
-</div>
+</EntFlex>
 
 @code {
     public List<string> TreeSelectedValue { get; set; } = new List<string>();
