@@ -14,34 +14,40 @@
                Closeable="true"
                Direction="EntTabDirection.Vertical" class="border-0 flex-grow-1">
         <div class="p-4">
-            <EntCard class="mb-4">
+            <EntCard Margin="4">
                 <CardBody>
-                    <div class="d-flex flex-column">
+                    <EntFlex Direction="FlexDirection.Column">
                         <b>این صفحه پیشفرض EntMdiTab میباشد</b>
-
-                    </div>
+                    </EntFlex>
                 </CardBody>
             </EntCard>
             <EntCard class="mt-4">
                 <CardHeader>کامپوننت - دکمه</CardHeader>
                 <CardBody>
-                    <div class="d-flex flex-column space-y-4 laptop:items-center  laptop:flex-row laptop:space-x-4 laptop:space-y-0">
+
+                    <EntFlex Direction="FlexDirection.Column"
+                             LaptopDirection="FlexDirection.Row"
+                             LaptopAlign="FlexAlign.StartCenter"
+                             Gap="4">
                         <EntButton type="button" Size="ButtonSize.Large">دکمه بزرگ</EntButton>
                         <EntButton type="button" Size="ButtonSize.Default">دکمه معمولی</EntButton>
                         <EntButton type="button" Size="ButtonSize.Small">دکمه کوچک</EntButton>
-                    </div>
+                    </EntFlex>
                 </CardBody>
             </EntCard>
             <EntCard class="mt-4">
                 <CardHeader>کامپوننت - مدال</CardHeader>
                 <CardBody>
-                    <div class="d-flex flex-column space-y-4 laptop:items-center  laptop:flex-row laptop:space-x-4 laptop:space-y-0">
+                    <EntFlex Direction="FlexDirection.Column"
+                             LaptopDirection="FlexDirection.Row"
+                             LaptopAlign="FlexAlign.StartCenter"
+                             Gap="4">
                         <EntButton type="button" Click="() => OpenModal(EntModalSize.ExtraLarge)">باز کردن مدال ExtraLarge</EntButton>
                         <EntButton type="button" Click="() => OpenModal(EntModalSize.Large)">باز کردن مدال Large</EntButton>
                         <EntButton type="button" Click="() => OpenModal(EntModalSize.Medium)">باز کردن مدال Medium</EntButton>
                         <EntButton type="button" Click="() => OpenModal(EntModalSize.Small)">باز کردن مدال Small</EntButton>
                         <EntButton type="button" Click="() => OpenModal(EntModalSize.Fullscreen)">باز کردن مدال FullScreen</EntButton>
-                    </div>
+                    </EntFlex>
                 </CardBody>
             </EntCard>
             <EntCard class="mt-4">
@@ -65,7 +71,7 @@
                                  DataSource="Constants.Roles"
                                  TextFunc="x => x.Title"
                                  ValueFunc="x => x.Value"
-                                 @bind-SelectedValues="TreeSelectedValue"/>
+                    @bind-SelectedValues="TreeSelectedValue" />
                     @foreach (var item in TreeSelectedValue)
                     {
                         <span class="me-2">
@@ -80,17 +86,16 @@
 
                     <b class="mb-2">ورودی پرشونده خودکار</b>
                     <EntInputAutoComplete class="mb-4"
-                                          @bind-Value="AutoCompleteValue"
+                    @bind-Value="AutoCompleteValue"
                                           DataSources="AutoCompleteDataSource"
                                           ValueFunc="x => x.Name"
-                                          OnSearchChange="OnSearchChangeCallBack"/>
+                                          OnSearchChange="OnSearchChangeCallBack" />
                     <b class="mb-2">ورودی انتخابی</b>
-                    <EntInputSelect
-                        @bind-Value="SelectValue"
-                        PlaceHolder="نقش مورد نظر را انتخاب نمایید"
-                        DataSources="Constants.Roles"
-                        ValueFunc="x => x.Value"
-                        TextFunc="x => x.Title"/>
+                    <EntInputSelect @bind-Value="SelectValue"
+                                    PlaceHolder="نقش مورد نظر را انتخاب نمایید"
+                                    DataSources="Constants.Roles"
+                                    ValueFunc="x => x.Value"
+                                    TextFunc="x => x.Title" />
                 </CardBody>
             </EntCard>
 
@@ -112,9 +117,9 @@
     public async Task OpenModal(EntModalSize size)
     {
         var result = await ModalService.ShowAsync<Counter>("sada", new EntModalOptions()
-        {
-            Size = size
-        });
+            {
+                Size = size
+            });
     }
 
     private async Task OpenPopover()

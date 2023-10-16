@@ -1,6 +1,7 @@
-﻿using Microsoft.JSInterop;
+﻿using Enter.UI.Components;
+using Microsoft.JSInterop;
 
-namespace Enter.UI.Components.Contracts;
+namespace Enter.UI.JsService.Contracts;
 
 public interface IEntLayoutJsService
 {

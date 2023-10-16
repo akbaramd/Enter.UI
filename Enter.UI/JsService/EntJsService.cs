@@ -1,10 +1,10 @@
 ﻿using Enter.UI.Core;
+using Enter.UI.JsService.Contracts;
 using Enter.UI.Models;
-using Enter.UI.Services.Contracts;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
-namespace Enter.UI.Services;
+namespace Enter.UI.JsService;
 
 public class EntJsService : IEntJsService, IAsyncDisposable
 {
@@ -15,10 +15,10 @@ public class EntJsService : IEntJsService, IAsyncDisposable
     public EntJsService(IJSRuntime jsRuntime)
     {
         _jsRuntime = jsRuntime;
-        _moduleTask = new Lazy<Task<IJSObjectReference>>( () => ImportJsFileAsync("EnterUi.min.js"));
+        _moduleTask = new Lazy<Task<IJSObjectReference>>(() => ImportJsFileAsync("EnterUi.min.js"));
     }
 
-    public async Task<IJSObjectReference> ImportJsFileAsync ( string path)
+    public async Task<IJSObjectReference> ImportJsFileAsync(string path)
     {
         return await _jsRuntime
             .InvokeAsync<IJSObjectReference>("import",
@@ -27,20 +27,14 @@ public class EntJsService : IEntJsService, IAsyncDisposable
 
     public async Task<IJSObjectReference> LoadReferenceAsync(string path)
     {
-       var module =  await _moduleTask.Value;
+        var module = await _moduleTask.Value;
         return await module.InvokeAsync<IJSObjectReference>(path);
     }
 
-    public async Task<BoundingClientRect> GetBoundingClientRect(ElementReference reference)
-    {
-        var module =  await _moduleTask.Value;
-        var sharedModule = await module.InvokeAsync<IJSObjectReference>("getShared");
-        
-        return await sharedModule.InvokeAsync<BoundingClientRect>("getBoundingClientRect", reference);
-    }
+
 
     public async ValueTask DisposeAsync()
     {
-        
+
     }
 }

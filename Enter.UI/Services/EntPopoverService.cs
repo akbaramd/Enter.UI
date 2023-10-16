@@ -1,4 +1,5 @@
 ﻿using Enter.UI.Interops;
+using Enter.UI.JsService.Contracts;
 using Enter.UI.Models;
 using Enter.UI.Services.Contracts;
 using Microsoft.AspNetCore.Components;

@@ -1,5 +1,6 @@
 ﻿@namespace Enter.UI.Components
 @using Enter.UI.Interops;
+@using Enter.UI.JsService.Contracts;
 @using Enter.UI.Services.Contracts;
 @inherits EntBaseComponent
 
@@ -9,14 +10,11 @@
 
 @code {
 
-    enum EntExpandableAnimationState
-    {
-        Close,
-        Open,
-        Opening,
-        Closing
-    }
+    // Inject Services
+    [Inject]
+    internal IEntSharedJsService SharedJsService { get; set; }
 
+    // Style and Css
     private string RootCss => CssClassBuilder
         .AddClass("ent-expandable")
         .AddClass("ent-expandable-close", animationState == EntExpandableAnimationState.Close)
@@ -24,23 +22,23 @@
         .AddClass("ent-expandable-closing", animationState == EntExpandableAnimationState.Closing)
         .AddClass("ent-expandable-opening", animationState == EntExpandableAnimationState.Opening)
         .Build();
-    
+
     private string RootStyle => StyleBuilder
-    
+
         .AddStyle($"height : auto",animationState == EntExpandableAnimationState.Open)
         .AddStyle($"height : {_height}px",animationState is EntExpandableAnimationState.Closing or EntExpandableAnimationState.Opening)
         .Build();
 
-    [Inject]
-    public IEntJsService JsService { get; set; }
-
-    private ExpandableInterop _expandableIntrop = default;
+    // Private Properties
     private EntExpandableAnimationState animationState = EntExpandableAnimationState.Close;
     public bool? _tempShow = null;
     public double? _height = 0;
 
+
+    // Elements
     public ElementReference ElementReference { get; set; }
     
+    // Parameters
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
@@ -52,7 +50,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-        _expandableIntrop = new ExpandableInterop(JsService);
         await base.OnInitializedAsync();
     }
 
@@ -90,13 +87,22 @@
     {
         if (firstRender)
         {
-            var boundingClientRect = await JsService.GetBoundingClientRect(ElementReference);
+            var boundingClientRect = await SharedJsService.GetBoundingClientRect(ElementReference);
             _height = boundingClientRect.ScrollHeight;
             StateHasChanged();
-            await _expandableIntrop.InitializeAsync(Id, Show.Value);
         }
 
         await base.OnInitializedAsync();
+    }
+
+
+
+    enum EntExpandableAnimationState
+    {
+        Close,
+        Open,
+        Opening,
+        Closing
     }
 
 

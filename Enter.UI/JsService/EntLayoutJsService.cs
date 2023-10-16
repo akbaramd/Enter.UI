@@ -1,21 +1,21 @@
-﻿using Enter.UI.Components.Contracts;
-using Enter.UI.Services.Contracts;
+﻿using Enter.UI.Components;
+using Enter.UI.JsService.Contracts;
 using Microsoft.JSInterop;
 
-namespace Enter.UI.Components;
+namespace Enter.UI.JsService;
 
-public class EntLayoutJsService : IEntLayoutJsService , IAsyncDisposable
+public class EntLayoutJsService : IEntLayoutJsService, IAsyncDisposable
 {
     private readonly IEntJsService _entJsService;
-    
+
     private DotNetObjectReference<EntLayout>? _objectReference;
 
     private readonly Lazy<Task<IJSObjectReference>> _moduleTask;
 
-    public EntLayoutJsService( IEntJsService entJsService)
+    public EntLayoutJsService(IEntJsService entJsService)
     {
         _entJsService = entJsService;
-        _moduleTask = new Lazy<Task<IJSObjectReference>>( () => entJsService.LoadReferenceAsync("getLayoutComponent"));
+        _moduleTask = new Lazy<Task<IJSObjectReference>>(() => entJsService.LoadReferenceAsync("getLayoutComponent"));
     }
 
     public async Task InitializeAsync(EntLayout layout, bool isSidebarShow, int breakWidth)
@@ -24,8 +24,8 @@ public class EntLayoutJsService : IEntLayoutJsService , IAsyncDisposable
         _objectReference = DotNetObjectReference.Create(layout);
         await module.InvokeVoidAsync("initialize", _objectReference, isSidebarShow, breakWidth);
     }
-    
-    public async Task ToggleAsync( bool isSidebarShow)
+
+    public async Task ToggleAsync(bool isSidebarShow)
     {
         var module = await _moduleTask.Value;
         await module.InvokeVoidAsync("toggleSidebar", isSidebarShow);

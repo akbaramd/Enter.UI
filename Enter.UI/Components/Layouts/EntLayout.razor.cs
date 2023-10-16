@@ -5,10 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Enter.UI.Components.Contracts;
 using Enter.UI.Core.Bases;
 using Enter.UI.Services.Contracts;
 using Microsoft.JSInterop;
+using Enter.UI.JsService.Contracts;
 
 namespace Enter.UI.Components
 {

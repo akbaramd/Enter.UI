@@ -8,11 +8,13 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Enter.UI.Components;
-using Enter.UI.Components.Contracts;
 using Enter.UI.Core;
 using Enter.UI.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
+
+using Enter.UI.JsService;
+using Enter.UI.JsService.Contracts;
 
 namespace Enter.UI
 {
@@ -24,6 +26,7 @@ namespace Enter.UI
             services.AddSingleton<IModalService, ModalService>();
             services.AddSingleton<IEntPopoverService, EntPopoverService>();
             services.AddSingleton<IEntJsService, EntJsService>();
+            services.AddSingleton<IEntSharedJsService , EntSharedJsService>();
             services.AddSingleton<IEntLayoutJsService, EntLayoutJsService>();
         }
         

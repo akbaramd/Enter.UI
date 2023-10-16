@@ -1,0 +1,129 @@
+﻿@namespace Enter.UI.Components
+<div class="@RootCss">@ChildContent</div>
+@inherits EntBaseComponent
+@code {
+    private readonly string _flexRow = "flex-row";
+    public string _flexColumn = "flex-column";
+
+    public string RootCss => CssClassBuilder
+        .AddClass($"d-flex")
+
+        // flex direction css
+        .AddClass($"{_flexRow}", Direction == FlexDirection.Row)
+        .AddClass($"{_flexColumn}", Direction == FlexDirection.Column)
+
+        .AddClass($"mobile:{_flexRow}", MobileDirection != null && MobileDirection == FlexDirection.Row)
+        .AddClass($"mobile:{_flexColumn}", MobileDirection != null && MobileDirection == FlexDirection.Column)
+
+        .AddClass($"tablet:{_flexRow}", TabletDirection != null && TabletDirection == FlexDirection.Row)
+        .AddClass($"tablet:{_flexColumn}", TabletDirection != null && TabletDirection == FlexDirection.Column)
+
+        .AddClass($"laptop:{_flexRow}", LaptopDirection != null && LaptopDirection == FlexDirection.Row)
+        .AddClass($"laptop:{_flexColumn}", LaptopDirection != null && LaptopDirection == FlexDirection.Column)
+
+        .AddClass($"desktop:{_flexRow}", DesktopDirection != null && DesktopDirection == FlexDirection.Row)
+        .AddClass($"desktop:{_flexColumn}", DesktopDirection != null && DesktopDirection == FlexDirection.Column)
+
+        .AddClass($"screen:{_flexRow}", ScreenDirection != null && ScreenDirection == FlexDirection.Row)
+        .AddClass($"screen:{_flexColumn}", ScreenDirection != null && ScreenDirection == FlexDirection.Column)
+
+        // flex align css
+        .AddClass($"items-center justify-centert", Align == FlexAlign.Center)
+        .AddClass($"items-center justify-start", Align == FlexAlign.StartCenter)
+        .AddClass($"items-center justify-end", Align == FlexAlign.EndCenter)
+
+        .AddClass($"mobile:items-center mobile:justify-centert", MobileAlign != null && MobileAlign == FlexAlign.Center)
+        .AddClass($"mobile:items-center mobile:justify-start", MobileAlign != null && MobileAlign == FlexAlign.StartCenter)
+        .AddClass($"mobile:items-center mobile:justify-end", MobileAlign != null && MobileAlign == FlexAlign.EndCenter)
+
+        .AddClass($"tablet:items-center tablet:justify-centert", TabletAlign != null && TabletAlign == FlexAlign.Center)
+        .AddClass($"tablet:items-center tablet:justify-start", TabletAlign != null && TabletAlign == FlexAlign.StartCenter)
+        .AddClass($"tablet:items-center tablet:justify-end", TabletAlign != null && TabletAlign == FlexAlign.EndCenter)
+
+        .AddClass($"laptop:items-center laptop:justify-centert", LaptopAlign != null && LaptopAlign == FlexAlign.Center)
+        .AddClass($"laptop:items-center laptop:justify-start", LaptopAlign != null && LaptopAlign == FlexAlign.StartCenter)
+        .AddClass($"laptop:items-center laptop:justify-end", LaptopAlign != null && LaptopAlign == FlexAlign.EndCenter)
+
+        .AddClass($"desktop:items-center desktop:justify-centert", DesktopAlign != null && DesktopAlign == FlexAlign.Center)
+        .AddClass($"desktop:items-center desktop:justify-start", DesktopAlign != null && DesktopAlign == FlexAlign.StartCenter)
+        .AddClass($"desktop:items-center desktop:justify-end", DesktopAlign != null && DesktopAlign == FlexAlign.EndCenter)
+
+        .AddClass($"screen:items-center screen:justify-centert", ScreenAlign != null && ScreenAlign == FlexAlign.Center)
+        .AddClass($"screen:items-center screen:justify-start", ScreenAlign != null && ScreenAlign == FlexAlign.StartCenter)
+        .AddClass($"screen:items-center screen:justify-end", ScreenAlign != null && ScreenAlign == FlexAlign.EndCenter)
+
+
+        .AddClass($"gap-{Gap}")
+        .AddClass($"mobile:gap-{MobileGap}", MobileGap.HasValue)
+        .AddClass($"tablet:gap-{TabletGap}", TabletGap.HasValue)
+        .AddClass($"laptop:gap-{LaptopGap}", LaptopGap.HasValue)
+        .AddClass($"desktop:gap-{DesktopGap}", DesktopGap.HasValue)
+        .AddClass($"screen:gap-{ScreenGap}", ScreenGap.HasValue)
+        .Build();
+
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    // Flex Direction
+    [Parameter]
+    public FlexDirection Direction { get; set; } = FlexDirection.Row;
+
+    [Parameter]
+    public FlexDirection? MobileDirection { get; set; }
+
+    [Parameter]
+    public FlexDirection? TabletDirection { get; set; }
+
+    [Parameter]
+    public FlexDirection? LaptopDirection { get; set; }
+
+    [Parameter]
+    public FlexDirection? DesktopDirection { get; set; }
+
+    [Parameter]
+    public FlexDirection? ScreenDirection { get; set; }
+
+
+    // Flex Direction
+    [Parameter]
+    public FlexAlign Align { get; set; } = FlexAlign.None;
+
+    [Parameter]
+    public FlexAlign? MobileAlign { get; set; }
+
+    [Parameter]
+    public FlexAlign? TabletAlign { get; set; }
+
+    [Parameter]
+    public FlexAlign? LaptopAlign { get; set; }
+
+    [Parameter]
+    public FlexAlign? DesktopAlign { get; set; }
+
+    [Parameter]
+    public FlexAlign? ScreenAlign { get; set; }
+
+
+    // Flex Direction
+    [Parameter]
+    public decimal Gap { get; set; } = 0;
+
+    [Parameter]
+    public decimal? MobileGap { get; set; }
+
+    [Parameter]
+    public decimal? TabletGap { get; set; }
+
+    [Parameter]
+    public decimal? LaptopGap { get; set; }
+
+    [Parameter]
+    public decimal? DesktopGap { get; set; }
+
+    [Parameter]
+    public decimal? ScreenGap { get; set; }
+
+
+
+}

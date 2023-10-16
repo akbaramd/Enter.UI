@@ -1,4 +1,4 @@
-﻿using Enter.UI.Services.Contracts;
+﻿using Enter.UI.JsService.Contracts;
 using Microsoft.JSInterop;
 
 namespace Enter.UI.Interops;
