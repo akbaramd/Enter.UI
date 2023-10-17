@@ -1,22 +1,46 @@
 ﻿.ent-card {
     display: flex;
     flex-direction: column;
-    border: $border;
+    border-left: $border;
+    border-right: $border;
+    border-top: $border;
     background-color: #fff;
 
-    > .ent-card-header {
+    .ent-card-header {
         padding: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        border-bottom: $border;
+
+        .ent-card-header-title {
+            font-weight: bold;
+            flex-grow: 1;
+        }
+
+        .ent-card-header-toggle-icon {
+            transform: rotate(0deg);
+            transition: all 0.25s ease-in;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+
+        .ent-card-header-toggle-icon.show {
+            transform: rotate(180deg);
+            transition: all 0.25s ease-in;
+        }
+    }
+
+    .ent-card-content {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
         border-bottom: $border;
     }
 
-    > .ent-card-content {
+    .ent-card-footer {
         padding: 1rem;
-        display: flex;
-        flex-direction:column;
-    }
-
-    > .ent-card-footer {
-        padding: 1rem;
-        border-top: $border;
+        border-bottom: $border;
     }
 }

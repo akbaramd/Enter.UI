@@ -1,124 +1,133 @@
 @each $utility, $config in $utilities {
-  $properties: map-get($config, property);
-  $propertiesRtl: map-get($config, propertyRtl);
-  $cssName: map-get($config, cssName);
-  $cssNamePostFix: map-get($config, cssNamePostFix);
-  $values: map-get($config, values);
-  
-  @if $cssNamePostFix == null {
-    $cssNamePostFix: "";
-  }
-  
-  @each $size, $value in $values {
+    $properties: map-get($config, property);
+    $propertiesRtl: map-get($config, propertyRtl);
+    $cssName: map-get($config, cssName);
+    $cssNamePostFix: map-get($config, cssNamePostFix);
+    $values: map-get($config, values);
 
- 
-   
-    @if $size != null { 
-      $size: -#{$size};
-    } @else {
-      $size: "";
-    }
-    .#{$cssName}#{$size}#{$cssNamePostFix} {
-      @each $property in $properties {
-        #{$property}: $value;
-      }
+    @if $cssNamePostFix == null {
+        $cssNamePostFix: "";
     }
 
-    //[dir="rtl"] .#{$cssName}#{$size} {
-    //  @each $property in $propertiesRtl {
-    //    #{$property}: $value;
-    //  }
-    //}
-    //.rtl\:#{$cssName}#{$size} {
-    //  @each $property in $propertiesRtl {
-    //    #{$property}: $value;
-    //  }
-    //}
-  }
+    @each $size, $value in $values {
 
-  @if map-get($config, breakpoint) {
-    @each $bp, $width in $breakpoints {
-      @media (min-width: $width) {
-        @each $size, $value in $values {
-          @if $size != null {
+
+
+        @if $size != null {
             $size: -#{$size};
-          } @else {
-            $size: "";
-          }
-
-          .#{$bp}\:#{$cssName}#{$size}#{$cssNamePostFix} {
-            @each $property in $properties {
-              #{$property}: $value;
-            }
-          }
-
-          //[dir="rtl"] .#{$bp}\:#{$cssName}#{$size} {
-          //  @each $property in $propertiesRtl {
-          //    #{$property}: $value;
-          //  }
-          //}
-          //
-          //.rtl\:#{$bp}\:#{$cssName}#{$size} {
-          //  @each $property in $propertiesRtl {
-          //    #{$property}: $value;
-          //  }
-          //}
         }
-      }
+        @else {
+            $size: "";
+        }
+
+        .#{$cssName}#{$size}#{$cssNamePostFix} {
+            @each $property in $properties {
+                #{$property}: $value;
+            }
+        }
+
+        .hover\:#{$cssName}#{$size}#{$cssNamePostFix}:hover {
+            @each $property in $properties {
+                #{$property}: $value;
+            }
+        }
+        //[dir="rtl"] .#{$cssName}#{$size} {
+        //  @each $property in $propertiesRtl {
+        //    #{$property}: $value;
+        //  }
+        //}
+        //.rtl\:#{$cssName}#{$size} {
+        //  @each $property in $propertiesRtl {
+        //    #{$property}: $value;
+        //  }
+        //}
     }
-  }
+
+    @if map-get($config, breakpoint) {
+        @each $bp, $width in $breakpoints {
+            @media (min-width: $width) {
+                @each $size, $value in $values {
+                    @if $size != null {
+                        $size: -#{$size};
+                    }
+                    @else {
+                        $size: "";
+                    }
+
+                    .#{$bp}\:#{$cssName}#{$size}#{$cssNamePostFix} {
+                        @each $property in $properties {
+                            #{$property}: $value;
+                        }
+                    }
+
+                    .hover\:#{$bp}\:#{$cssName}#{$size}#{$cssNamePostFix}:hover {
+                        @each $property in $properties {
+                            #{$property}: $value;
+                        }
+                    }
+
+                    //[dir="rtl"] .#{$bp}\:#{$cssName}#{$size} {
+                    //  @each $property in $propertiesRtl {
+                    //    #{$property}: $value;
+                    //  }
+                    //}
+                    //
+                    //.rtl\:#{$bp}\:#{$cssName}#{$size} {
+                    //  @each $property in $propertiesRtl {
+                    //    #{$property}: $value;
+                    //  }
+                    //}
+                }
+            }
+        }
+    }
 }
+
 .row {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 -0.5rem;
-  > * {
-    width: 100%;
-    padding: 0 0.5rem;
-  }
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -0.5rem;
+
+    > * {
+        width: 100%;
+        padding: 0 0.5rem;
+    }
 }
+
 @for $i from 1 through 12 {
-  .col-#{$i} {
-    flex: 0 0 auto;
-    width: calc(#{$i} / 12 * 100%);
-  }
-  @each $bp, $width in $breakpoints {
-    @media (min-width: $width) {
-     
-      .#{$bp}\:col-#{$i} {
-        width: calc(#{$i} / 12 * 100%);
+    .col-#{$i} {
         flex: 0 0 auto;
-      }
-    } 
-  }
+        width: calc(#{$i} / 12 * 100%);
+    }
+
+    @each $bp, $width in $breakpoints {
+        @media (min-width: $width) {
+
+            .#{$bp}\:col-#{$i} {
+                width: calc(#{$i} / 12 * 100%);
+                flex: 0 0 auto;
+            }
+        }
+    }
 }
 
 
-$extra-column: (
-        1\/2: calc(1 / 2 * 100%),
-        1\/4: calc(1 / 4 * 100%),
-        1\/3: calc(1 / 3 * 100%),
-        1\/6: calc(1 / 6 * 100%),
-        2\/3: calc(2 / 3 * 100%),
-        3\/4: calc(3 / 4 * 100%),
-        5\/6: calc(5 / 6 * 100%)
-);
+$extra-column: ( 1\/2: calc(1 / 2 * 100%), 1\/4: calc(1 / 4 * 100%), 1\/3: calc(1 / 3 * 100%), 1\/6: calc(1 / 6 * 100%), 2\/3: calc(2 / 3 * 100%), 3\/4: calc(3 / 4 * 100%), 5\/6: calc(5 / 6 * 100%) );
 
 
 @each $key, $w in $extra-column {
-  .col-#{$key} {
-    flex: 0 0 auto;
-    width: $w;
-  }
-
-  @each $bp, $width in $breakpoints {
-    @media (min-width: $width) {
-
-      .#{$bp}\:col-#{$key}{
+    .col-#{$key} {
         flex: 0 0 auto;
         width: $w;
-      }
     }
-  }
-}
 
+    @each $bp, $width in $breakpoints {
+        @media (min-width: $width) {
+
+            .#{$bp}\:col-#{$key} {
+                flex: 0 0 auto;
+                width: $w;
+            }
+        }
+    }
+}

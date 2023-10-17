@@ -1,6 +1,6 @@
 ﻿@namespace Enter.UI.Components
 @inherits EntBaseComponent
-@using Enter.UI.Core.Constants
+@using Enter.UI.Core
 @typeparam TType
 <ul @attributes="@AdditionalAttributes" class="@RootCss">
     @if (DataSource != null)
@@ -15,7 +15,7 @@
                     <div class="ent-treeview-item-list-icon" @onclick="()=>OnItemExpandClickCallback(treeViewItem)">
                         @if (treeViewItem.Childrens != null && treeViewItem.Childrens.Any())
                         {
-                            <EntIcon Size="4" Icon="@EntIcons.ChevronLeft"/>
+                            <EntIcon Size="4" Icon="@EntIcons.ChevronDown"/>
                         }
                     </div>
 
@@ -36,7 +36,7 @@
 
                 if (treeViewItem.Childrens != null && treeViewItem.Childrens.Any())
                 {
-                    <EntExpandable @bind-Show="treeViewItem.Expanded" class="ent-treeview-childrens-expanable">
+                    <EntExpandable Show="treeViewItem.Expanded" class="ent-treeview-childrens-expanable">
                         <EntTreeView class="ent-treeview-childrens" DataSource="treeViewItem.Childrens" TextFunc="@TextFunc" ValueFunc="@ValueFunc" SelectedValues="@SelectedValues" SelectedValuesChanged="@SelectedValuesChanged"/>
                     </EntExpandable>
                 }

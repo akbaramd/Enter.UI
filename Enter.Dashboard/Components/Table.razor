@@ -1,7 +1,6 @@
 ﻿@using System.ComponentModel.DataAnnotations
 @using Enter.Dashboard.Model
-<EntCard class="m-4">
-    <CardHeader>صفحه فرم</CardHeader>
+<EntCard class="m-4" Title="صفحه فرم">
     <CardBody>
         <EntTable DataSources="DataSource" Total="Constants.Users.Count" Take="_take" OnPaginationChange="OnPaginationChange">
             <HeaderTemplate>

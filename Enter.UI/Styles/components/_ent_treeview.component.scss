@@ -1,47 +1,50 @@
 .ent-treeview {
-  padding: 0;
-  list-style: none;
-  margin: 0;
+    padding: 0;
+    list-style: none;
+    margin: 0;
 
-  .ent-treeview-childrens-expanable {
-    border: 0;
-  }
-
-
-  .ent-treeview-item {
-    padding: 0.75rem 1rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-
-    &.expanded {
-      .ent-treeview-item-list-icon {
-        transform: rotate(-90deg);
-        transition: all 0.25s ease-in-out;
-      }
+    .ent-treeview-childrens-expanable {
+        border: 0;
     }
 
-    .ent-treeview-item-checkbox {
-      margin-inline-end: 0.5rem;
+
+    .ent-treeview-item {
+        padding: 0.75rem 1rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+
+        &.expanded {
+            .ent-treeview-item-list-icon {
+                transform: rotate(-180deg);
+                transition: all 0.25s ease-in-out;
+            }
+        }
+
+        .ent-treeview-item-checkbox {
+            margin-inline-end: 0.5rem;
+        }
+
+        .ent-treeview-item-text {
+        }
+
+        .ent-treeview-item-icon {
+            margin-inline-end: 0.5rem;
+        }
+
+        .ent-treeview-item-list-icon {
+            width: 1rem;
+            margin-inline-end: 0.5rem;
+            transform: rotate(0deg);
+            transition: all 0.25s ease-in-out;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
     }
 
-    .ent-treeview-item-text {
+    .ent-treeview-childrens {
+        border: 0;
+        margin-inline-start: 1.5rem;
     }
-
-    .ent-treeview-item-icon {
-      margin-inline-end: 0.5rem;
- 
-    }
-
-    .ent-treeview-item-list-icon {
-      width: 1rem;
-      margin-inline-end: 0.5rem;
-      transition: all 0.25s ease-in-out;
-    }
-  }
-
-  .ent-treeview-childrens {
-    border: 0;
-    margin-inline-start: 1.5rem;
-  }
 }

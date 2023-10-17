@@ -2,25 +2,18 @@
     display: flex;
     flex-direction: column;
 
-    > * {
+
+    > label {
+        font-size: map-get($font-sizes, "medium");
         margin-bottom: 0.5rem;
+        font-weight: 500;
     }
 
-    > *:last-child {
-        margin-bottom: 0;
-    }
-
-    > label {
-        font-size: map-get($font-sizes, "medium-sm");
-    }
-
-    > label {
-        font-size: map-get($font-sizes, "medium-sm");
-    }
 
     > .validation-message {
-        font-size: map-get($font-sizes, "subtitle-lg");
-        color: red;
+        font-size: map-get($font-sizes, "subtitle");
+        color: $color-red-500;
+        margin-top: 0.5rem;
     }
 }
 

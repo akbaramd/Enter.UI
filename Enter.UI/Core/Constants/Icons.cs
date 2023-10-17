@@ -1,4 +1,4 @@
-﻿namespace Enter.UI.Core.Constants;
+﻿namespace Enter.UI.Core;
 
 public class EntIcons
 {

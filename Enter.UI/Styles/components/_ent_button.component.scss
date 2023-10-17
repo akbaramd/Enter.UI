@@ -1,19 +1,20 @@
-﻿.btn {
-  padding: 0.5rem 1rem;
-  border: $border;
-  font-size: map-get($font-sizes, "medium");
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
+﻿.ent-btn {
+    padding: 0.5rem 1rem;
+    border: 0;
+    background-color:transparent;
+    font-size: map-get($font-sizes, "medium");
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
 
-  &.btn-sm {
-    padding: 0.35rem 0.85rem;
-    font-size: map-get($font-sizes, "medium-sm");
-  }
+    &.ent-btn-sm {
+        padding: 0.35rem 0.85rem;
+        font-size: map-get($font-sizes, "medium-sm");
+    }
 
-  &.btn-lg {
-    padding: 0.65rem 1.15rem;
-    font-size: map-get($font-sizes, "medium-lg");
-  } 
+    &.ent-btn-lg {
+        padding: 0.65rem 1.15rem;
+        font-size: map-get($font-sizes, "medium-lg");
+    }
 }

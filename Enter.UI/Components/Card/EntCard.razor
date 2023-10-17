@@ -2,15 +2,47 @@
 @inherits EntBaseComponent
 
 <div @attributes="@AdditionalAttributes" class="@RootClass" >
-    @if (CardHeader != null)
+    @if (Title != null)
     {
-        <div class="ent-card-header">
-            @CardHeader
+        <div @onclick="()=>{
+            _isCardExpand = !_isCardExpand;
+        }" class="ent-card-header">
+            @if(Icon != null)
+            {
+                <span class="ent-card-header-icon">
+                    <EntIcon Icon="@Icon"/>
+                </span>
+            }
+
+            <span class="ent-card-header-title">
+                @Title
+            </span>
+            @if (Expandable)
+            {
+
+
+                <span class="ent-card-header-toggle-icon @(_isCardExpand ? "show" : "")">
+                    <EntIcon Icon="@EntIcons.ChevronDown" />
+                </span>
+            }
+            
         </div>
     }
-    <div class="ent-card-content">
-        @CardBody
-    </div>
+    @if (Expandable)
+    {
+        <EntExpandable Tag="@Tag" Show="_isCardExpand">
+            <div class="ent-card-content">
+                @CardBody
+            </div>
+        </EntExpandable>
+    }
+    else
+    {
+        <div class="ent-card-content">
+            @CardBody
+        </div>
+    }
+    
     @if (CardFooter != null)
     {
         <div class="ent-card-footer">
@@ -26,11 +58,19 @@
         .AddClass("ent-card")
         .Build();
 
+    private bool _isCardExpand{ get; set; } = true;
+
+    [Parameter]
+    public string Icon { get; set; }
+
+    [Parameter]
+    public bool Expandable { get; set; } = false;
+
     [Parameter]
     public RenderFragment? CardBody { get; set; }
 
     [Parameter]
-    public RenderFragment? CardHeader { get; set; }
+    public string Title { get; set; }
 
     [Parameter]
     public RenderFragment? CardFooter { get; set; }

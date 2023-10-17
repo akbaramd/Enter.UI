@@ -1,0 +1,35 @@
+﻿@namespace Enter.UI.Components
+@using System.Diagnostics.CodeAnalysis
+@using Enter.UI.Core
+@using Enter.UI.Core.Enums
+@using System.Linq.Expressions
+@typeparam TValue;
+@inherits EntBaseComponent
+
+<div @attributes="@AdditionalAttributes" class="@RootCss" id="@Id">
+    @if(Label != null)
+    {
+        <label class="ent-input-group-label">@Label</label>
+
+    }
+    <div class="ent-input-group-content">
+        @ChildContent
+    </div>
+    <ValidationMessage class="ent-input-group-validation" For="@For" />
+</div>
+
+@code {
+
+    private string RootCss => CssClassBuilder
+        .AddClass("ent-input-group")
+        .Build();
+
+    
+    [Parameter] public Expression<Func<TValue>>? For { get; set; }
+    [Parameter]
+    public string? Label { get; set; }
+
+    [CascadingParameter]
+    public RenderFragment? ChildContent { get; set; }
+
+}

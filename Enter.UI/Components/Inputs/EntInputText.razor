@@ -1,13 +1,13 @@
 ﻿@namespace Enter.UI.Components
 @using System.Diagnostics.CodeAnalysis
-@using Enter.UI.Core.Constants
+@using Enter.UI.Core
 @using Enter.UI.Core.Enums
 
 @inherits EntBaseInput<string?>
 @implements IAsyncDisposable
 
 <div @attributes="@AdditionalAttributes" class="@RootCss" id="@Id">
-    <input class="ent-input-field" placeholder="@PlaceHolder"
+    <input type="@(IsPassword?"password":"text")" class="ent-input-field" placeholder="@PlaceHolder"
     @bind="@CurrentValueAsString"
     @bind:event="oninput" disabled="@Disabled" readonly="@Readonly"/>
 
@@ -30,7 +30,8 @@
     [Parameter]
     public string Icon { get; set; }
 
-
+    [Parameter]
+    public bool IsPassword { get; set; } = false;
 
     [CascadingParameter]
     public EditContext? EditContext { get; set; }

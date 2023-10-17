@@ -4,7 +4,7 @@
 @using Enter.UI.Services.Contracts;
 @inherits EntBaseComponent
 
-<div @ref="ElementReference" @attributes="@AdditionalAttributes" @onanimationend="EventUtil.AsNonRenderingEventHandler(OnAnimationEnd)" class="@RootCss" style="@RootStyle" id="@Id">
+<div @ref="ElementReference" @attributes="@AdditionalAttributes" @ontransitionend="EventUtil.AsNonRenderingEventHandler(OnAnimationEnd)" class="@RootCss" style="@RootStyle" id="@Id">
     @ChildContent
 </div>
 
@@ -24,33 +24,36 @@
         .Build();
 
     private string RootStyle => StyleBuilder
-
+        .AddStyle("transition: all 0.25s ease-in-out")
         .AddStyle($"height : auto",animationState == EntExpandableAnimationState.Open)
+        .AddStyle($"height : 0px", animationState == EntExpandableAnimationState.Close)
         .AddStyle($"height : {_height}px",animationState is EntExpandableAnimationState.Closing or EntExpandableAnimationState.Opening)
         .Build();
 
     // Private Properties
-    private EntExpandableAnimationState animationState = EntExpandableAnimationState.Close;
+    private EntExpandableAnimationState animationState = default;
     public bool? _tempShow = null;
-    public double? _height = 0;
-
-
+    private double _height = 0;
     // Elements
     public ElementReference ElementReference { get; set; }
-    
+
     // Parameters
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
     [Parameter]
-    public bool? Show { get; set; }
+    public bool Show { get; set; } = true;
 
-    [Parameter]
-    public EventCallback<bool> ShowChanged { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        await base.OnInitializedAsync();
+      
+        animationState = Show switch
+        {
+            true => EntExpandableAnimationState.Open,
+            false => EntExpandableAnimationState.Close
+        };
+
     }
 
 
@@ -69,32 +72,22 @@
 
     protected override async Task OnParametersSetAsync()
     {
-        if (_tempShow != Show)
+        if (_tempShow != Show && FirstRendered)
         {
-           
-            
             animationState = Show switch {
                 true => EntExpandableAnimationState.Opening,
                 false => EntExpandableAnimationState.Closing,
-                };
+            };
             // await _expandableIntrop.ToogleAsync(Id, Show.Value);
             _tempShow = Show;
         }
-        await base.OnParametersSetAsync();
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender)
-        {
-            var boundingClientRect = await SharedJsService.GetBoundingClientRect(ElementReference);
-            _height = boundingClientRect.ScrollHeight;
-            StateHasChanged();
-        }
-
-        await base.OnInitializedAsync();
+        _height = (await SharedJsService.GetBoundingClientRect(ElementReference)).ScrollHeight;
+        await base.OnAfterRenderAsync(firstRender);
     }
-
 
 
     enum EntExpandableAnimationState

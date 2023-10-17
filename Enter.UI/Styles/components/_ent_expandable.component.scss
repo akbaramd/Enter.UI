@@ -11,15 +11,21 @@
 }
 
 .ent-expandable {
-  overflow: hidden;
-  height: 0px;
-    
-  &.ent-expandable-opening {
-    animation: mud-expand-anim 0.25s ease-in-out 0ms 1 forwards;
-  }
+    overflow: hidden;
 
-  &.ent-expandable-closing {
-    animation: mud-collapse-anim 0.25s cubic-bezier(0, 1, 0, 1) 0ms 1 forwards;
-  }
+    &.ent-expandable-open {
+        height: auto;
+    }
 
+    &.ent-expandable-close {
+        height: 0;
+    }
+
+    &.ent-expandable-opening {
+        animation: mud-expand-anim 0.25s ease-in-out 0ms 1 forwards;
+    }
+
+    &.ent-expandable-closing {
+        animation: mud-collapse-anim 0.25s ease-in-out 0ms 1 forwards;
+    }
 }
