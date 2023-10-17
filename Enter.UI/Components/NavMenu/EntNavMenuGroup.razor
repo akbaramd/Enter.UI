@@ -11,6 +11,6 @@
         <EntIcon class="ent-nav-menu-group-item-arrow-icon"  Icon="@EntIcons.ChevronDown"/>
     </div>
 
-    <div class="@ContainerCss">@ChildContent</div>
+    <EntExpandable @bind-Show="IsShow" class="@ContainerCss">@ChildContent</EntExpandable>
 
 </div>

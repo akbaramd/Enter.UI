@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Enter.UI.JsService.Contracts
+namespace Enter.UI.JsService
 {
     internal interface IEntSharedJsService
     {

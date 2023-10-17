@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System.Linq.Expressions;
+using Microsoft.AspNetCore.Components;
 
 namespace Enter.UI.Components;
 
@@ -11,9 +12,13 @@ public class ModalService : IModalService
     public event Action<string> OnModalClosed;
     public event Action<string> OnModalCanceled;
     
-    public Task<ModalResult?> ShowAsync<TComponent>(string title, EntModalOptions? options = null, string? id = null,Dictionary<string, object>? parameters = null) where TComponent : ComponentBase
+    public Task<ModalResult?> ShowAsync<TComponent>(string title,Dictionary<string, object>? parameters = null, EntModalOptions? options = null, string? id = null) where TComponent : ComponentBase
     {
         var modalId = id ?? Guid.NewGuid().ToString();
+        
+        
+        
+        
         var taskCompletionSource = new TaskCompletionSource<ModalResult?>();
         var item = new EntModalInstance()
         {
@@ -30,6 +35,8 @@ public class ModalService : IModalService
         OnModalShowed.Invoke(item.Key);
         return taskCompletionSource.Task;
     }
+
+ 
 
     public Task CloseAsync(string id , ModalResult? result = null )
     {

@@ -3,7 +3,7 @@ using Enter.UI.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
-namespace Enter.UI.JsService.Contracts;
+namespace Enter.UI.JsService;
 
 public interface IEntJsService
 {

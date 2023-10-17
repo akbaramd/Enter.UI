@@ -12,12 +12,12 @@ namespace Enter.UI.Services
 {
     internal class EntMdiService : IEntMdiService
     {
-        public List<EntMdiTabItem> TabPanels { get; set; } = new List<EntMdiTabItem>();
-        public EntMdiTabItem? ActiveTabPanel { get; set; }
+        public List<EntMdiTabInstance> TabPanels { get; set; } = new List<EntMdiTabInstance>();
+        public EntMdiTabInstance? ActiveTabPanel { get; set; }
 
 
-        public event Action<EntMdiTabItem> OnTabAdded;
-        public event Action<EntMdiTabItem?> OnTabActivated;
+        public event Action<EntMdiTabInstance> OnTabAdded;
+        public event Action<EntMdiTabInstance?> OnTabActivated;
         public event Action OnTabRemoved;
 
         public void AddNewTab<TComponent>(string id , string title,string icon,Dictionary<string, object>? parameters = null)
@@ -35,7 +35,7 @@ namespace Enter.UI.Services
                 return;
             }
             
-            var item = new EntMdiTabItem()
+            var item = new EntMdiTabInstance()
             {
                 ComponentType = type, 
                 Icon = icon, 

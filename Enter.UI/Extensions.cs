@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
 using Enter.UI.JsService;
-using Enter.UI.JsService.Contracts;
+using Enter.UI.JsService;
 
 namespace Enter.UI
 {

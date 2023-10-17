@@ -12,7 +12,7 @@ namespace Enter.UI.Services.Contracts
     public interface IEntMdiService
     {
         //public List<EntMdiTabItem> TabPanels { get; set; } 
-        public EntMdiTabItem? ActiveTabPanel { get; set; }
+        public EntMdiTabInstance? ActiveTabPanel { get; set; }
 
         //public event Action<EntMdiTabItem> OnTabAdded;
         //public event Action<EntMdiTabItem> OnTabActivated;

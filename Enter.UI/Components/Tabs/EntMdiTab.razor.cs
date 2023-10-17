@@ -22,7 +22,7 @@ namespace Enter.UI.Components
         public RenderFragment? ChildContent { get; set; }
         
         private EntMdiService _entMdiService = default!;
-        public List<EntMdiTabItem> Items { get; set; } = new List<EntMdiTabItem>();
+        public List<EntMdiTabInstance> Items { get; set; } = new List<EntMdiTabInstance>();
         [Inject] public IEntMdiService EntMdiService { get; set; } = default!;
         public EntTab Tab { get; set; }
         protected override async Task OnInitializedAsync()
@@ -40,12 +40,12 @@ namespace Enter.UI.Components
 
         }
 
-        private void OnServiceNewTabAdded(EntMdiTabItem panel)
+        private void OnServiceNewTabAdded(EntMdiTabInstance panel)
         {
             Items = _entMdiService.TabPanels.ToList();
             StateHasChanged();
         }
-        private void OnServiceTabActivated(EntMdiTabItem? panel)
+        private void OnServiceTabActivated(EntMdiTabInstance? panel)
         {
             if (panel != null)
             {
@@ -62,7 +62,13 @@ namespace Enter.UI.Components
         }
 
         private void OnTabActivatedCallback(string? id)
-        {
+        { 
+            var activeTab = Items.FirstOrDefault(x => x.Id == id);
+
+            if (activeTab != null && activeTab.OnActivated != null)
+            {
+                activeTab.OnActivated.Invoke();
+            }
             EntMdiService.SetActiveTab(id,false);
             OnTabActived.InvokeAsync(id).GetAwaiter().GetResult();
         }

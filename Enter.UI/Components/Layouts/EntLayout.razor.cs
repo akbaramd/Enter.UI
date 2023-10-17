@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Enter.UI.Core.Bases;
 using Enter.UI.Services.Contracts;
 using Microsoft.JSInterop;
-using Enter.UI.JsService.Contracts;
+using Enter.UI.JsService;
 
 namespace Enter.UI.Components
 {

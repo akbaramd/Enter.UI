@@ -1,4 +1,5 @@
 ﻿@page "/counter"
+@using Enter.UI.Models
 
 <PageTitle>Counter</PageTitle>
 
@@ -15,6 +16,9 @@
     [CascadingParameter]
     public EntModalInstance? ModalItem { get; set; }
     
+    [CascadingParameter]
+    public EntMdiTabInstance? EntMdiTabInstance { get; set; }
+    
     private int currentCount = 0;
 
     private async  Task IncrementCount()
@@ -24,4 +28,19 @@
         if (currentCount == 3 && ModalItem != null)
            await ModalItem.CancelAsync();
     }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (EntMdiTabInstance !=null)
+        {
+            EntMdiTabInstance.OnActivated = OnActivated;
+        }
+        await base.OnInitializedAsync();
+    }
+
+    private async Task OnActivated()
+    {
+        StateHasChanged();
+    }
+
 }

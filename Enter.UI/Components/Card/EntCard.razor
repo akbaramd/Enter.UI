@@ -5,7 +5,7 @@
     @if (Title != null)
     {
         <div @onclick="()=>{
-            _isCardExpand = !_isCardExpand;
+            CardExpand = !CardExpand;
         }" class="ent-card-header">
             @if(Icon != null)
             {
@@ -21,7 +21,7 @@
             {
 
 
-                <span class="ent-card-header-toggle-icon @(_isCardExpand ? "show" : "")">
+                <span class="ent-card-header-toggle-icon @(CardExpand ? "show" : "")">
                     <EntIcon Icon="@EntIcons.ChevronDown" />
                 </span>
             }
@@ -30,7 +30,7 @@
     }
     @if (Expandable)
     {
-        <EntExpandable Tag="@Tag" Show="_isCardExpand">
+        <EntExpandable Tag="@Tag" Show="CardExpand">
             <div class="ent-card-content">
                 @CardBody
             </div>
@@ -57,8 +57,9 @@
     private string RootClass => CssClassBuilder
         .AddClass("ent-card")
         .Build();
-
-    private bool _isCardExpand{ get; set; } = true;
+    
+    [Parameter]
+    public bool CardExpand{ get; set; } = true;
 
     [Parameter]
     public string Icon { get; set; }

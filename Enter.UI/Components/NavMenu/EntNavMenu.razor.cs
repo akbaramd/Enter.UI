@@ -39,7 +39,7 @@ namespace Enter.UI.Components
                     group.IsShow = false;
                 }
             }
-            StateHasChanged();
+          
         }
 
         protected override void OnInitialized()

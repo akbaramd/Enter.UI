@@ -2,18 +2,18 @@
 @using System.Diagnostics.CodeAnalysis
 @using Enter.UI.Core
 @using Enter.UI.Core.Enums
-@inherits EntBaseInput<string?>
+@inherits EntBaseInput<Guid?>
 @implements IAsyncDisposable
 
 <div @attributes="@AdditionalAttributes" class="@RootCss" id="@Id">
-    <input type="@(IsPassword?"password":"text")" class="ent-input-field" placeholder="@PlaceHolder"
-    @bind="@CurrentValueAsString"
-    @bind:event="oninput" disabled="@Disabled" readonly="@Readonly"/>
+    <input type="@(IsPassword ? "password" : "text")" class="ent-input-field" placeholder="@PlaceHolder"
+           @bind="@CurrentValueAsString"
+           @bind:event="oninput" disabled="@Disabled" readonly="@Readonly"/>
 
     @if (Icon != null)
     {
         <div class="ent-input-icon">
-            <EntIcon Size="4" Icon="@Icon" />
+            <EntIcon Size="4" Icon="@Icon"/>
         </div>
     }
 </div>
@@ -36,9 +36,9 @@
     public EditContext? EditContext { get; set; }
 
 
-    protected override bool TryParseValueFromString(string? value, out string? result, [NotNullWhen(false)] out string? validationErrorMessage)
+    protected override bool TryParseValueFromString(string? value, out Guid? result, [NotNullWhen(false)] out string? validationErrorMessage)
     {
-        result = value;
+        result = value == null ? null : Guid.Parse(value);
         validationErrorMessage = null;
         return true;
     }

@@ -12,7 +12,7 @@
         align-items: center;
         gap: 1rem;
         border-bottom: $border;
-
+        cursor: pointer;
         .ent-card-header-title {
             font-weight: bold;
             flex-grow: 1;

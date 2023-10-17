@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Enter.UI.Models
 {
-    public class EntMdiTabItem
+    public class EntMdiTabInstance
     {
         public Guid Key { get; set; } = Guid.NewGuid();
         public string Id { get; set; }
@@ -15,5 +15,7 @@ namespace Enter.UI.Models
         public string Icon { get; set; }
         public Type ComponentType { get; set; }
         public Dictionary<string, object>? ComponentParameters { get; set; }
+
+        public Func<Task>? OnActivated { get; set; }
     }
 }
