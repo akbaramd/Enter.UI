@@ -1,7 +1,7 @@
 ﻿@using System.ComponentModel.DataAnnotations
 @using Enter.Dashboard.Model;
 @using Enter.UI.Core
-<EntCard class="m-4" Title="صفحه فرم">
+<EntCard Expandable="true" class="m-4" Title="صفحه فرم">
     <CardBody>
         <EditForm class="ent-edit-form" Model="Input" OnSubmit="@OnSubmit">
             <DataAnnotationsValidator />

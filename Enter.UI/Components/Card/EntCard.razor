@@ -4,23 +4,18 @@
 <div @attributes="@AdditionalAttributes" class="@RootClass" >
     @if (Title != null)
     {
-        <div @onclick="()=>{
-            CardExpand = !CardExpand;
-        }" class="ent-card-header">
+        <div @onclick="HeaderClick" class="ent-card-header">
             @if(Icon != null)
             {
                 <span class="ent-card-header-icon">
                     <EntIcon Icon="@Icon"/>
                 </span>
             }
-
             <span class="ent-card-header-title">
                 @Title
             </span>
             @if (Expandable)
             {
-
-
                 <span class="ent-card-header-toggle-icon @(CardExpand ? "show" : "")">
                     <EntIcon Icon="@EntIcons.ChevronDown" />
                 </span>
@@ -30,7 +25,7 @@
     }
     @if (Expandable)
     {
-        <EntExpandable Tag="@Tag" Show="CardExpand">
+        <EntExpandable Tag="@Tag" Expended="CardExpand">
             <div class="ent-card-content">
                 @CardBody
             </div>
@@ -57,9 +52,12 @@
     private string RootClass => CssClassBuilder
         .AddClass("ent-card")
         .Build();
-    
-    [Parameter]
+
+
     public bool CardExpand{ get; set; } = true;
+
+    [Parameter]
+    public EventCallback<bool> CardExpandChanged { get; set; } 
 
     [Parameter]
     public string Icon { get; set; }
@@ -75,5 +73,10 @@
 
     [Parameter]
     public RenderFragment? CardFooter { get; set; }
+
+    public void HeaderClick()
+    {
+        CardExpand = !CardExpand;
+    }
 
 }

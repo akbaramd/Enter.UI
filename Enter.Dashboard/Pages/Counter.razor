@@ -16,8 +16,7 @@
     [CascadingParameter]
     public EntModalInstance? ModalItem { get; set; }
     
-    [CascadingParameter]
-    public EntMdiTabInstance? EntMdiTabInstance { get; set; }
+
     
     private int currentCount = 0;
 
@@ -31,10 +30,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        if (EntMdiTabInstance !=null)
-        {
-            EntMdiTabInstance.OnActivated = OnActivated;
-        }
+       
         await base.OnInitializedAsync();
     }
 

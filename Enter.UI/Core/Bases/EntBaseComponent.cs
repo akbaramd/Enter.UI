@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System.Reflection.Metadata;
+﻿using System.Reflection.Metadata;
 using Enter.UI.Core.Extensions;
 using Microsoft.AspNetCore.Components;
 
@@ -28,7 +27,7 @@ namespace Enter.UI.Core.Bases
             : GetId());
 
 
-        public bool FirstRendered { get; set; } = false;
+        internal bool FirstRendered { get; set; } = false;
 
 
         private string GetId()
@@ -42,10 +41,12 @@ namespace Enter.UI.Core.Bases
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
+
             if (firstRender)
             {
                 FirstRendered = true;
             }
+            
             await base.OnAfterRenderAsync(firstRender);
         }
     }

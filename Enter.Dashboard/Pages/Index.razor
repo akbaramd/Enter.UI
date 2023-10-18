@@ -16,20 +16,21 @@
                class="border-0"
                Direction="EntTabDirection.Vertical" >
         <div class="p-4">
-            <EntCard Title="پیشفزض"  Expandable="true" CardExpand="true" class="mb-4">
+            <EntCard Title="پیشفزض"  Expandable="true"  class="mb-4">
                 <CardBody>
                     <EntFlex Direction="FlexDirection.Column">
                         <b>این صفحه پیشفرض EntMdiTab میباشد</b>
                     </EntFlex>
                 </CardBody>
             </EntCard>
+            <EntButton @onclick="OpenPopover" type="button" Size="ButtonSize.Large">دکمه بزرگ</EntButton>
             <EntCard class="mb-4" Tag="card" Expandable="true" CardExpand="false" Icon="fa-light fa-user" Title="کامپوننت - دکمه">
                 <CardBody>
                     <EntFlex Direction="FlexDirection.Column"
                              LaptopDirection="FlexDirection.Row"
                              LaptopAlign="FlexAlign.StartCenter"
                              Gap="4">
-                        <EntButton type="button" Size="ButtonSize.Large">دکمه بزرگ</EntButton>
+                        <EntButton @onclick="OpenPopover" type="button" Size="ButtonSize.Large">دکمه بزرگ</EntButton>
                         <EntButton type="button" Size="ButtonSize.Default">دکمه معمولی</EntButton>
                         <EntButton type="button" Size="ButtonSize.Small">دکمه کوچک</EntButton>
                     </EntFlex>
@@ -41,17 +42,17 @@
                              LaptopDirection="FlexDirection.Row"
                              LaptopAlign="FlexAlign.StartCenter"
                              Gap="4">
-                        <EntButton type="button" Click="() => OpenModal(EntModalSize.ExtraLarge)">باز کردن مدال ExtraLarge</EntButton>
-                        <EntButton type="button" Click="() => OpenModal(EntModalSize.Large)">باز کردن مدال Large</EntButton>
-                        <EntButton type="button" Click="() => OpenModal(EntModalSize.Medium)">باز کردن مدال Medium</EntButton>
-                        <EntButton type="button" Click="() => OpenModal(EntModalSize.Small)">باز کردن مدال Small</EntButton>
-                        <EntButton type="button" Click="() => OpenModal(EntModalSize.Fullscreen)">باز کردن مدال FullScreen</EntButton>
+                        <EntButton type="button" @onclick="() => OpenModal(EntModalSize.ExtraLarge)">باز کردن مدال ExtraLarge</EntButton>
+                        <EntButton type="button" @onclick="() => OpenModal(EntModalSize.Large)">باز کردن مدال Large</EntButton>
+                        <EntButton type="button" @onclick="() => OpenModal(EntModalSize.Medium)">باز کردن مدال Medium</EntButton>
+                        <EntButton type="button" @onclick="() => OpenModal(EntModalSize.Small)">باز کردن مدال Small</EntButton>
+                        <EntButton type="button" @onclick="() => OpenModal(EntModalSize.Fullscreen)">باز کردن مدال FullScreen</EntButton>
                     </EntFlex>
                 </CardBody>
             </EntCard>
             <EntCard Expandable="true" CardExpand="false" class="mb-4" Title="پاپ آور">
                 <CardBody>
-                    <EntButton Click="OpenPopover">باز کردن</EntButton>
+                    <EntButton @onclick="OpenPopover">باز کردن</EntButton>
                     <EntPopover Open="IsPopoverOpen" RelativeWidth="true">
                         <EntCard>
                             <CardBody>
@@ -77,7 +78,7 @@
                     }
                 </CardBody>
             </EntCard>
-            <EntCard Expandable="true" CardExpand="true" class="mb-4" Title="فرم">
+            <EntCard Expandable="true"  class="mb-4" Title="فرم">
                 <CardBody>
 
                     <b class="mb-2">ورودی پرشونده خودکار</b>
@@ -113,18 +114,17 @@
     public async Task OpenModal(EntModalSize size)
     {
         var parameter = new ParameterBuilder<Counter>()
-            .AddParameter(x => x.ModalItem, new EntModalInstance())
             .Build();
-        
+
         var result = await ModalService.ShowAsync<Counter>("sada", parameter,new EntModalOptions()
             {
                 Size = size
             });
     }
 
-    private async Task OpenPopover()
+    public  void OpenPopover()
     {
-        IsPopoverOpen = !IsPopoverOpen;
+        //IsPopoverOpen = !IsPopoverOpen;
     }
 
     private async Task OnSearchChangeCallBack(string search)

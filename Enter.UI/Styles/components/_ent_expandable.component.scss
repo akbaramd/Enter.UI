@@ -13,16 +13,16 @@
 .ent-expandable {
     overflow: hidden;
 
-    &.ent-expandable-open {
+    &.ent-expandable-opened {
         height: auto;
     }
 
-    &.ent-expandable-close {
+    &.ent-expandable-closed {
         height: 0;
     }
 
     &.ent-expandable-opening {
-        animation: mud-expand-anim 0.25s ease-in-out 0ms 1 forwards;
+        //animation: mud-expand-anim 0.25s ease-in-out 0ms 1 forwards;
     }
 
     &.ent-expandable-closing {

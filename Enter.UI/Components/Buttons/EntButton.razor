@@ -1,6 +1,6 @@
 ﻿@namespace Enter.UI.Components
 @inherits EntBaseComponent
-<button @attributes="@AdditionalAttributes" class="@RootClass" @onclick="@Click">
+<button @attributes="@AdditionalAttributes" class="@RootClass" >
     @if (Icon != null)
     {
         <EntIcon Icon="@Icon" />
@@ -46,8 +46,6 @@
     [Parameter]
     public string? Icon { get; set; }
 
-    [Parameter]
-    public EventCallback Click { get; set; }
 
     protected override void OnAfterRender(bool firstRender)
     {
