@@ -36,7 +36,7 @@
 
                 if (treeViewItem.Childrens != null && treeViewItem.Childrens.Any())
                 {
-                    <EntExpandable Expended="treeViewItem.Expanded" class="ent-treeview-childrens-expanable">
+                    <EntExpandable @bind-Expanded="treeViewItem.Expanded" class="ent-treeview-childrens-expanable">
                         <EntTreeView class="ent-treeview-childrens" DataSource="treeViewItem.Childrens" TextFunc="@TextFunc" ValueFunc="@ValueFunc" SelectedValues="@SelectedValues" SelectedValuesChanged="@SelectedValuesChanged"/>
                     </EntExpandable>
                 }

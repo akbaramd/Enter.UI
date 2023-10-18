@@ -25,7 +25,7 @@
     }
     @if (Expandable)
     {
-        <EntExpandable Tag="@Tag" Expended="CardExpand">
+        <EntExpandable Tag="@Tag" @bind-Expanded="CardExpand">
             <div class="ent-card-content">
                 @CardBody
             </div>
