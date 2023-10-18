@@ -27,7 +27,7 @@ namespace Enter.UI.Components
             .AddClass("ent-nav-menu-item-content")
             .Build();
 
-
+        [Parameter]
         public string Icon { get; set; }
         
         [Required]
