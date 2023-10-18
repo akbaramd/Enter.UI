@@ -2,7 +2,6 @@
 @using Enter.UI.Interops;
 @using Enter.UI.JsService;
 @using Enter.UI.Services.Contracts;
-@using Microsoft.JSInterop;
 @inherits EntBaseComponent
 
 <div 
@@ -18,11 +17,9 @@
 @code {
 
     // Private Properties
-    private EntExpandableAnimationState? _animationState = null;
-    private bool? _tempExpanded;
-    private bool _expanded;
+    private EntExpandableAnimationState? animationState = null;
+    private bool? _tempShow = null;
     internal double _height = 0;
-    private bool _updateHeight ;
     private ElementReference _reference { get; set; }
     // Inject Services
     [Inject]
@@ -31,17 +28,17 @@
     // Style and Css
     private string RootCss => CssClassBuilder
         .AddClass("ent-expandable")
-        .AddClass("ent-expandable-closed", _animationState == EntExpandableAnimationState.Closed)
-        .AddClass("ent-expandable-opened", _animationState == EntExpandableAnimationState.Opened)
-        .AddClass("ent-expandable-closing", _animationState == EntExpandableAnimationState.Closing)
-        .AddClass("ent-expandable-opening", _animationState == EntExpandableAnimationState.Opening)
+        .AddClass("ent-expandable-closed", animationState == EntExpandableAnimationState.Closed)
+        .AddClass("ent-expandable-opened", animationState == EntExpandableAnimationState.Opened)
+        .AddClass("ent-expandable-closing", animationState == EntExpandableAnimationState.Closing)
+        .AddClass("ent-expandable-opening", animationState == EntExpandableAnimationState.Opening)
         .Build();
 
     private string RootStyle => StyleBuilder
-        .AddStyle("transition: all 0.25s ease-in-out",_animationState is EntExpandableAnimationState.Closing or EntExpandableAnimationState.Opening)
-        .AddStyle($"height : auto",_animationState == EntExpandableAnimationState.Opened)
-        .AddStyle($"height : 0px", _animationState == EntExpandableAnimationState.Closed)
-        .AddStyle($"height : {_height}px",_animationState is EntExpandableAnimationState.Closing or EntExpandableAnimationState.Opening)
+        .AddStyle("transition: all 0.25s ease-in-out",animationState is EntExpandableAnimationState.Closing or EntExpandableAnimationState.Opening)
+        .AddStyle($"height : auto",animationState == EntExpandableAnimationState.Opened)
+        .AddStyle($"height : 0px", animationState == EntExpandableAnimationState.Closed)
+        .AddStyle($"height : {_height}px",animationState is EntExpandableAnimationState.Closing or EntExpandableAnimationState.Opening)
         .Build();
 
   
@@ -52,34 +49,12 @@
     public RenderFragment? ChildContent { get; set; }
 
     [Parameter]
-    public bool Expanded
-    {
-        get => _expanded;
-        set
-        {
-            if (_expanded == value)
-                return;
-            _expanded = value;
-
-            if (FirstRendered)
-            {
-                _animationState = _expanded ? EntExpandableAnimationState.Opening : EntExpandableAnimationState.Closing;
-                _ = UpdateHeight();
-                _updateHeight = true;
-            }
-            else if (_expanded)
-            {
-                _animationState = EntExpandableAnimationState.Opened;
-            }
-
-            //_ = ExpandedChanged.InvokeAsync(_expanded);
-        }
-    }
+    public bool Expended { get; set; } = true;
 
 
     protected override async Task OnInitializedAsync()
     {
-        _animationState = Expanded switch
+        animationState = Expended switch
         {
             true => EntExpandableAnimationState.Opened,
             false => EntExpandableAnimationState.Closed
@@ -90,35 +65,34 @@
     public async Task OnAnimationEnd()
     {
         await Task.Delay(200);
-        if (_animationState == EntExpandableAnimationState.Closing)
+        if (animationState == EntExpandableAnimationState.Closing)
         {
            
-            _animationState = EntExpandableAnimationState.Closed;
+            animationState = EntExpandableAnimationState.Closed;
         }
-        if (_animationState == EntExpandableAnimationState.Opening)
+        if (animationState == EntExpandableAnimationState.Opening)
         {
-            _animationState = EntExpandableAnimationState.Opened;
+            animationState = EntExpandableAnimationState.Opened;
         }
         StateHasChanged();
     }
 
     protected override async Task OnParametersSetAsync()
     {
-        if (_tempExpanded != Expended && FirstRendered)
+        if (_tempShow != Expended && FirstRendered)
         {
-            _animationState = Expanded switch
-            {
+            animationState = Expended switch {
                 true => EntExpandableAnimationState.Opening,
                 false => EntExpandableAnimationState.Closing,
             };
             // await _expandableIntrop.ToogleAsync(Id, Show.Value);
-            _tempExpanded = Expanded;
+            _tempShow = Expended;
         }
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        _height = (await SharedJsService.GetBoundingClientRect(_reference)).ScrollHeight;
+        _height = (await SharedJsService.GetBoundingClientRect(ElementReference)).ScrollHeight;
         await base.OnAfterRenderAsync(firstRender);
     }
 
@@ -129,19 +103,6 @@
         Opened,
         Opening,
         Closing
-    }
-
-    internal async Task UpdateHeight()
-    {
-        try
-        {
-            _height = (await SharedJsService.GetBoundingClientRect(_reference))?.ScrollHeight ?? 0;
-        }
-        catch (Exception ex) when (ex is JSDisconnectedException or TaskCanceledException)
-        {
-            _height = 0;
-        }
-        
     }
 
 
