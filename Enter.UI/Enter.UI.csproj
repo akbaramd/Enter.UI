@@ -7,12 +7,17 @@
     <RootNamespace>Enter.UI</RootNamespace>
 
     <PackageId>Enter.Ui</PackageId>
-    <Version>1.0.12</Version>
+    <Version>1.0.13</Version>
     <Authors>Akbar Ahmadi</Authors>
     <Company>AhmadiCo</Company>
+	  <PackageReadmeFile>Readme.md</PackageReadmeFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
-
+	<ItemGroup>
+		
+		<None Include="Readme.md" Pack="true" PackagePath="\"/>
+		
+	</ItemGroup>
   <ItemGroup>
     <SupportedPlatform Include="browser" />
   </ItemGroup>
