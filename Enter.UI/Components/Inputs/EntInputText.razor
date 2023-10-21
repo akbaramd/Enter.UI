@@ -6,7 +6,7 @@
 @implements IAsyncDisposable
 
 <div @attributes="@AdditionalAttributes" class="@RootCss" id="@Id">
-    <input type="@(IsPassword?"password":"text")" class="ent-input-field" placeholder="@PlaceHolder"
+    <input name="@ValueExpression?.GetPropertyName()" type="@(IsPassword?"password":"text")" class="ent-input-field" placeholder="@PlaceHolder"
     @bind="@CurrentValueAsString"
     @bind:event="oninput" disabled="@Disabled" readonly="@Readonly"/>
 

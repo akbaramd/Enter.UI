@@ -1,0 +1,65 @@
+@namespace Enter.UI.Components
+
+@inherits EntBaseComponent
+
+@switch (Type)
+{
+    case EntTextType.Text:
+        <span @attributes="@AdditionalAttributes" class="@RootClass" >@ChildContent</span>
+        break;
+    case EntTextType.Bold:
+        <b @attributes="@AdditionalAttributes" class="@RootClass" >@ChildContent</b>
+        break;
+    case EntTextType.Small:
+        <small @attributes="@AdditionalAttributes" class="@RootClass" >@ChildContent</small>
+        break;
+    case EntTextType.Paragraph:
+        <p @attributes="@AdditionalAttributes" class="@RootClass" >@ChildContent</p>
+        break;
+    case EntTextType.Heading1:
+        <h1 @attributes="@AdditionalAttributes" class="@RootClass" >@ChildContent</h1>
+        break;
+    case EntTextType.Heading2:
+        <h2 @attributes="@AdditionalAttributes" class="@RootClass" >@ChildContent</h2>
+        break;
+    case EntTextType.Heading3:
+        <h3 @attributes="@AdditionalAttributes" class="@RootClass" >@ChildContent</h3>
+        break;
+    case EntTextType.Heading4:
+        <h4 @attributes="@AdditionalAttributes" class="@RootClass" >@ChildContent</h4>
+        break;
+    case EntTextType.Heading5:
+        <h5 @attributes="@AdditionalAttributes" class="@RootClass" >@ChildContent</h5>
+        break;
+    case EntTextType.Heading6:
+        <h6 @attributes="@AdditionalAttributes" class="@RootClass" >@ChildContent</h6>
+        break;
+    default:
+        <span @attributes="@AdditionalAttributes" class="@RootClass" >@ChildContent</span>
+        break;
+}
+
+
+
+@code {
+
+    private string RootClass => CssClassBuilder
+        .AddClass("ent-text")
+        .AddClass("fs-sub-heading",Size == EntTextSize.SubHeading)
+        .AddClass("fs-heading",Size == EntTextSize.Heading)
+        .AddClass("fs-title",Size == EntTextSize.Title)
+        .AddClass("fs-subtitle",Size == EntTextSize.Subtitle)
+        .AddClass("fs-description",Size == EntTextSize.Description)
+        .AddClass("fs-caption",Size == EntTextSize.Caption)
+        .Build();
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public EntTextType Type { get; set; } = EntTextType.Text;
+
+    [Parameter]
+    public EntTextSize Size { get; set; } = EntTextSize.Medium;  
+
+}

@@ -7,7 +7,7 @@
     <RootNamespace>Enter.UI</RootNamespace>
 
     <PackageId>Enter.Ui</PackageId>
-    <Version>1.0.13</Version>
+    <Version>1.0.14</Version>
     <Authors>Akbar Ahmadi</Authors>
     <Company>AhmadiCo</Company>
 	  <PackageReadmeFile>Readme.md</PackageReadmeFile>
@@ -15,7 +15,7 @@
   </PropertyGroup>
 	<ItemGroup>
 		
-		<None Include="Readme.md" Pack="true" PackagePath="\"/>
+		<None Include="Readme.md" Pack="true" PackagePath="\" />
 		
 	</ItemGroup>
   <ItemGroup>
@@ -112,6 +112,14 @@
     <Watch Remove="Styles\components\_ent_expandable.component.scss" />
     <Watch Remove="Styles\components\_ent_list.component.scss" />
     <Watch Remove="Styles\components\_ent_treeview.component.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Components\Forms\EntFormGroup.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="Components\Text\EntButton.razor" />
   </ItemGroup>
 
 
