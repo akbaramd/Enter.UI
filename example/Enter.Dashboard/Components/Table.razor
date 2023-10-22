@@ -1,0 +1,49 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using Enter.Dashboard.Model
+<EntCard class="m-4" Title="صفحه فرم">
+    <CardBody>
+        <EntTable DataSources="DataSource" Total="Constants.Users.Count" Take="_take" OnPaginationChange="OnPaginationChange">
+            <HeaderTemplate>
+                <th>شناسه</th>
+                <th>نام</th>
+                <th>نام خانوادگی</th>
+                <th>سن</th>
+            </HeaderTemplate>
+            <RowTemplate>
+                <tr>
+                    <td>@context.Id</td>
+                    <td>@context.FirstName</td>
+                    <td>@context.LastName</td>
+                    <td>@context.Age</td>
+                </tr>
+            </RowTemplate>
+        </EntTable>
+    </CardBody>
+</EntCard>
+
+@code {
+
+    
+    public List<Users> DataSource { get; set; } = new List<Users>();
+    private readonly int _take = 2;
+
+
+    protected override void OnInitialized()
+    {
+        
+
+        DataSource = Constants.Users.Skip(0).Take(_take).ToList();
+
+        base.OnInitialized();
+    }
+
+    private void OnPaginationChange(int page)
+    {
+        var skip = (page - 1) * _take;
+
+        DataSource = Constants.Users.Skip(skip).Take(_take).ToList();
+        
+        StateHasChanged();
+    }
+
+}

@@ -6,7 +6,7 @@
 .github
 .idea
 .vs
-/example/Enter.Dashboard
+
 **/*/EnterUi.min.css
 **/*/EnterUi.min.js
 **/*/EnterUi.css

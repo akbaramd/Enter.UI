@@ -1,0 +1,115 @@
+﻿@using Enter.Dashboard.Pages;
+@using Enter.UI.Models;
+@using Enter.UI.Services.Contracts;
+@using Enter.Dashboard.Components
+@inherits LayoutComponentBase
+<div dir="@Direction" class="@($"ent-{Direction}") border-y d-flex flex-column h-full">
+    <EntLayout @ref="Layout"
+               SidebarIsShow="_sidebarIsShow"
+               SidebarClass="bg-white"
+               ContentClass="bg-light"
+               OnSidebarIsShowChanged="OnSidebarIsShowChanged">
+        <AppBar>
+            <div class="d-flex items-center  px-8 py-4">
+                <div class="flex-grow-1 d-flex  item-center gap-4">
+                    <EntIcon Click="ToggleSidebar" class="cursor-pointer" Type="EntIconType.IconTag" Icon="fa-light fa-bars"/>
+                    <b>پلتفرم مدیریتی انترپرایس</b>
+                </div>
+                <div class="d-flex gap-2">
+                    <EntButton Click="ToRtl" Icon="fa-light fa-align-right" Size="ButtonSize.Small">راست چین</EntButton>
+                    <EntButton Click="ToLtr" Icon="fa-light fa-align-left" Size="ButtonSize.Small">چپ چین</EntButton>
+                </div>
+            </div>
+        </AppBar>
+        <Sidebar>
+            <EntTab ItemDirection="EntTabItemDirection.Vertical"
+                    Direction="EntTabDirection.Horizontal"
+                    Expandable="true"
+                    KeepPanelAlive="true"
+                    ActiveClass="bg-light-sm"
+                    PanelClass="bg-white"
+                    class="border-0 h-full">
+                <EntTabPanel Title="صفحه اصلی" Icon="fa-light fa-home" class="w-60">
+                    <EntNavMenu class="border-0">
+                        <EntNavMenuGroup Title="تعاریف" Icon="fa-light fa-home">
+                            <EntNavMenuTextItem class="bg-light" Icon="fa-light fa-clock" Text="شمارنده" Click="() => AddNewTab<Counter>()"/>
+                            <EntNavMenuTextItem class="bg-light" Icon="fa-light fa-arrow-down" Text="دریافت اطلاعات" Click="() => AddNewTab<FetchData>()" />
+                        </EntNavMenuGroup>
+                        <EntNavMenuGroup Title="صفحات فرم" Icon="fa-light fa-note">
+                            <EntNavMenuTextItem class="bg-light" Text="فرم معمولی" Click="() => AddNewTab<FormLayout>()"/>
+                        </EntNavMenuGroup>
+                        <EntNavMenuGroup Title="جداول" Icon="fa-light fa-note">
+                            <EntNavMenuTextItem class="bg-light" Text="جدول داده" Click="() => AddNewTab<Table>()"/>
+                        </EntNavMenuGroup>
+                    </EntNavMenu>
+                </EntTabPanel>
+
+                <EntTabPanel Title="حساب کاربری" Icon="fa-light fa-user" class="w-60">
+                    <div class="bg-white p-4 m-4 border ">اطلاعات مربوط به حساب کاربری اینجا قرار میگیرد</div>
+                </EntTabPanel>
+
+            </EntTab>
+        </Sidebar>
+        <Content>
+            @Body
+        </Content>
+    </EntLayout>
+    <EntModalProvider/>
+    <EntPopoverProvider/>
+</div>
+
+
+
+
+@code {
+
+
+    public EntLayout Layout { get; set; }
+
+    [Inject]
+    public IEntMdiService EntMdiService { get; set; }
+
+    public string Direction { get; set; } = "rtl";
+
+    public void AddNewTab<T>()
+    {
+        if (typeof(T) == typeof(Counter))
+        {
+            EntMdiService.AddNewTab<Counter>("counter", "شمارنده", "fa-light fa-clock");
+        }
+        else if (typeof(T) == typeof(FetchData))
+        {
+            EntMdiService.AddNewTab<FetchData>(Guid.NewGuid().ToString(), "دریافت اطلاعات", "fa-light fa-arrow-down");
+        }
+        else if (typeof(T) == typeof(FormLayout))
+        {
+            EntMdiService.AddNewTab<FormLayout>("FormLayout", "فرم معمولی", "fa-light fa-note");
+        }
+        else if (typeof(T) == typeof(Table))
+        {
+            EntMdiService.AddNewTab<Table>("Table", "جدول داده", "fa-light fa-table");
+        }
+    }
+
+    private void ToRtl()
+    {
+        Direction = "rtl";
+    }
+
+    private void ToLtr()
+    {
+        Direction = "ltr";
+    }
+
+    private async Task ToggleSidebar()
+    {
+        await Layout.ToggleSidebarAsync();
+    }
+
+
+    private void OnSidebarIsShowChanged(bool sidebarIsShow)
+    {
+        StateHasChanged();
+    }
+
+}
