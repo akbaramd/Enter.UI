@@ -1,19 +1,19 @@
-﻿.ent-form-group {
+﻿.ent-input-group {
     display: flex;
     flex-direction: column;
+    gap: 0.5rem;
 
-
-    > label {
+    > .ent-input-group-label {
         font-size: map-get($font-sizes, "medium");
-        margin-bottom: 0.5rem;
+
         font-weight: 500;
     }
 
 
-    > .validation-message {
+    > .ent-input-group-validation {
         font-size: map-get($font-sizes, "subtitle");
         color: $color-red-500;
-        margin-top: 0.5rem;
+       
     }
 }
 
@@ -21,6 +21,7 @@
 
 .ent-input {
     width: 100%;
+    min-width: 350px;
     border: $border;
     display: flex;
     flex-direction: row;
@@ -73,7 +74,7 @@
 .ent-select {
     border: $border;
     cursor: pointer;
-   
+    min-width: 350px;
     > .ent-select-input {
         border: 0;
 
