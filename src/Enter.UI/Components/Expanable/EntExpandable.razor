@@ -5,9 +5,9 @@
 @using Microsoft.JSInterop;
 @inherits EntBaseComponent
 
-<div @ref="_reference"
-@attributes="@AdditionalAttributes"
-@onanimationend="EventUtil.AsNonRenderingEventHandler(OnAnimationEnd)"
+<div @ref="Reference"
+     @attributes="@AdditionalAttributes"
+     @onanimationend="EventUtil.AsNonRenderingEventHandler(OnAnimationEnd)"
      class="@RootCss"
      style="@RootStyle"
      id="@Id">
@@ -15,17 +15,22 @@
 </div>
 
 @code {
-
+    
     enum EntExpandableAnimationState
     {
-        Opened, Opening, Closed, Closing
+        Opened,
+        Opening,
+        Closed,
+        Closing
     }
-
 
     private EntExpandableAnimationState? _animationState = EntExpandableAnimationState.Closed;
     private bool _expanded, _updateHeight;
-    internal double _height = 0;
-    private ElementReference _reference { get; set; }
+    private double _size = 0;
+    private EntExpandableDirection _direction = EntExpandableDirection.Vertical;
+    private string _cssProperty = "height";
+    
+    internal ElementReference Reference { get; set; }
 
     [Inject]
     internal IEntSharedJsService? SharedJsService { get; set; }
@@ -33,6 +38,8 @@
     // Style and Css
     private string RootCss => CssClassBuilder
         .AddClass("ent-expandable")
+        .AddClass("ent-expandable-horizontal", Direction == EntExpandableDirection.Horizontal)
+        .AddClass("ent-expandable-vertical", Direction == EntExpandableDirection.Vertical)
         .AddClass("ent-expandable-closed", _animationState == EntExpandableAnimationState.Closed)
         .AddClass("ent-expandable-opened", _animationState == EntExpandableAnimationState.Opened)
         .AddClass("ent-expandable-closing", _animationState == EntExpandableAnimationState.Closing)
@@ -41,17 +48,25 @@
 
     private string RootStyle => StyleBuilder
         .AddStyle("transition: all 0.25s ease-in-out", _animationState is EntExpandableAnimationState.Closing or EntExpandableAnimationState.Opening)
-        .AddStyle($"height : auto", _animationState == EntExpandableAnimationState.Opened)
-        .AddStyle($"height : 0px", _animationState == EntExpandableAnimationState.Closed)
-        .AddStyle($"height : {_height}px", _animationState is EntExpandableAnimationState.Closing or EntExpandableAnimationState.Opening)
+        .AddStyle($"{_cssProperty} : auto", _animationState == EntExpandableAnimationState.Opened)
+        .AddStyle($"{_cssProperty} : 0px", _animationState == EntExpandableAnimationState.Closed)
+        .AddStyle($"{_cssProperty} : {_size}px", _animationState is EntExpandableAnimationState.Closing or EntExpandableAnimationState.Opening)
         .Build();
-
-
-
 
     // Parameters
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public EntExpandableDirection Direction
+    {
+        get => _direction;
+        set
+        {
+            _cssProperty = value == EntExpandableDirection.Horizontal ? "width" : "height";
+            _direction = value;
+        }
+    }
 
     [Parameter]
     public bool Expanded
@@ -66,7 +81,7 @@
             if (FirstRendered)
             {
                 _animationState = _expanded ? EntExpandableAnimationState.Opening : EntExpandableAnimationState.Closing;
-                _ = UpdateHeight();
+                _ = UpdateSize();
                 _updateHeight = true;
             }
             else if (_expanded)
@@ -80,6 +95,7 @@
 
     [Parameter]
     public EventCallback<bool> ExpandedChanged { get; set; }
+
     // protected override async Task OnInitializedAsync()
     // {
     //     _animationState = Expanded switch
@@ -90,35 +106,41 @@
     // }
 
 
-    public async Task OnAnimationEnd()
+    public Task OnAnimationEnd()
     {
-        await Task.Delay(200);
-        if (_animationState == EntExpandableAnimationState.Closing)
+        switch (_animationState)
         {
-
-            _animationState = EntExpandableAnimationState.Closed;
-            StateHasChanged();
+            case EntExpandableAnimationState.Closing:
+                _animationState = EntExpandableAnimationState.Closed;
+                StateHasChanged();
+                break;
+            case EntExpandableAnimationState.Opening:
+                _animationState = EntExpandableAnimationState.Opened;
+                StateHasChanged();
+                break;
+            case EntExpandableAnimationState.Opened:
+                break;
+            case EntExpandableAnimationState.Closed:
+                break;
+            case null:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
-
-        if (_animationState == EntExpandableAnimationState.Opening)
-        {
-            _animationState = EntExpandableAnimationState.Opened;
-            StateHasChanged();
-        }
-
+        return Task.CompletedTask;
     }
-
+    
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            await UpdateHeight();
+            await UpdateSize();
         }
         else if (_updateHeight && _animationState is EntExpandableAnimationState.Closing or EntExpandableAnimationState.Opening)
         {
             _updateHeight = false;
-            await UpdateHeight();
+            await UpdateSize();
             StateHasChanged();
         }
 
@@ -126,25 +148,27 @@
     }
 
 
-
-
-    internal async Task UpdateHeight()
+    internal async Task UpdateSize()
     {
         try
         {
             if (SharedJsService == null)
                 throw new JSException($"SharedJsService Not be Found . please in ject this service in {nameof(EntExpandable)}");
 
-            _height = (await SharedJsService.GetBoundingClientRect(_reference))?.ScrollHeight ?? 0;
+            if (Direction == EntExpandableDirection.Vertical)
+            {
+                _size = (await SharedJsService.GetBoundingClientRect(Reference))?.ScrollHeight ?? 0;
+            }
+            else
+            {
+                _size = (await SharedJsService.GetBoundingClientRect(Reference))?.ScrollWidth ?? 0;
+            }
         }
         catch (Exception ex) when (ex is JSDisconnectedException or TaskCanceledException)
         {
-            _height = 0;
+            _size = 0;
         }
 
-        // if (_height > MaxHeight)
-        // {
-        //     _height = MaxHeight.Value;
-        // }
     }
+
 }

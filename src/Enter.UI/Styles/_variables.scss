@@ -1254,5 +1254,59 @@ $utilities: (
                 values: (
                         none: none,
                 ),
+        ),
+        overflow: (
+                property: overflow,
+                propertyRtl: overflow,
+                cssName: overflow,
+                breakpoint: true,
+                values: (
+                        hidden: hidden,
+                        unset: unset,
+                        scroll:scroll,
+                        visible:visible,
+                        revert:revert,
+                        auto:auto,
+                ),
+        ),
+        overflow-x: (
+                property: overflow-x,
+                propertyRtl: overflow-x,
+                cssName: overflow-x,
+                breakpoint: true,
+                values: (
+                        hidden: hidden,
+                        unset: unset,
+                        scroll:scroll,
+                        visible:visible,
+                        revert:revert,
+                        auto:auto,
+                ),
+        ),
+        overflow-y: (
+                property: overflow-y,
+                propertyRtl: overflow-y,
+                cssName: overflow-y,
+                breakpoint: true,
+                values: (
+                        hidden: hidden,
+                        unset: unset,
+                        scroll:scroll,
+                        visible:visible,
+                        revert:revert,
+                        auto:auto,
+                ),
+        ),
+        scrollbar-width:(
+                property: scrollbar-width,
+                propertyRtl: scrollbar-width,
+                cssName: scrollbar-width,
+                breakpoint: true,
+                values: (
+                        none: none,
+                        unset: unset,
+                        revert:revert,
+                        auto:auto,
+                ),
         )
 );

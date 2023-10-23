@@ -1,31 +1,60 @@
-@keyframes mud-expand-anim {
+@keyframes expand-height-anim {
   from {
     height: 0;
   }
 }
 
-@keyframes mud-collapse-anim {
+@keyframes collapse-height-anim {
   to {
     height: 0;
   }
 }
 
+
+@keyframes expand-width-anim {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes collapse-width-anim {
+  to {
+    width: 0;
+  }
+}
+
 .ent-expandable {
-    overflow: hidden;
+  overflow: hidden;
 
-    &.ent-expandable-opened {
-        height: auto;
-    }
+  &.ent-expandable-vertical.ent-expandable-opened {
+    height: auto;
+  }
 
-    &.ent-expandable-closed {
-        height: 0;
-    }
+  &.ent-expandable-vertical.ent-expandable-closed {
+    height: 0;
+  }
 
-    &.ent-expandable-opening {
-        //animation: mud-expand-anim 0.25s ease-in-out 0ms 1 forwards;
-    }
+  &.ent-expandable-horizontal.ent-expandable-opened {
+    width: auto;
+  }
 
-    &.ent-expandable-closing {
-        animation: mud-collapse-anim 0.25s ease-in-out 0ms 1 forwards;
-    }
+  &.ent-expandable-horizontal.ent-expandable-closed {
+    width: 0;
+  }
+
+  &.ent-expandable-vertical.ent-expandable-opening {
+    animation: expand-height-anim 0.25s ease-in-out 0ms 1 forwards;
+  }
+
+  &.ent-expandable-vertical.ent-expandable-closing {
+    animation: collapse-height-anim 0.25s ease-in-out 0ms 1 forwards;
+  }
+
+  &.ent-expandable-horizontal.ent-expandable-opening {
+    animation: expand-width-anim 0.25s ease-in-out 0ms 1 forwards;
+  }
+
+  &.ent-expandable-horizontal.ent-expandable-closing {
+    animation: collapse-width-anim 0.25s ease-in-out 0ms 1 forwards;
+  }
 }

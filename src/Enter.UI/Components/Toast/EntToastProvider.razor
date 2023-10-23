@@ -1,0 +1,70 @@
+﻿@namespace Enter.UI.Components
+@using Enter.UI.Services.Contracts
+@using Enter.UI.Services
+@inherits EntBaseComponent
+
+<div class="@RootClass">
+    <EntSpace SpaceY="2">
+         @foreach (var item in _entToastService.ToastInstances)
+            {
+        
+                var itemCss = new CssClassBuilder("ent-toast")
+                    .AddClass("bg-green-600 cl-light", item.Type == EntToastType.Success)
+                    .AddClass("bg-red-600 cl-light", item.Type == EntToastType.Danger)
+                    .AddClass("bg-orange-600 cl-light", item.Type == EntToastType.Warning)
+                    .AddClass("bg-sky-100 cl-light", item.Type == EntToastType.Info).Build();
+                
+                <div class="@itemCss">
+                    <div class=" items-center">
+                       
+                        <div class="flex-grow-1 d-flex flex-column justify-center">
+                            <div class="d-flex flex-row gap-4 mb-4">
+                                @if (!string.IsNullOrWhiteSpace(item.Icon))
+                                {
+                                    <EntIcon Icon="@item.Icon" />
+                                }
+                                <EntText class="flex-grow-1 p-0 m-0" Type="EntTextType.Bold" Size="EntTextSize.Caption">@item.Title</EntText>
+                                <EntIcon Icon="fa-light fa-close" Click="()=>CloseItem(item)"/>
+                            </div>
+                            <EntText class="p-0 m-0" Type="EntTextType.Paragraph" Size="EntTextSize.Description">@item.Content</EntText>
+                        </div>
+                    </div>
+                </div>
+            }
+    </EntSpace>
+</div>
+
+@code {
+
+    private string RootClass => CssClassBuilder
+        .AddClass("ent-toast-provider")
+        .Build();
+
+    [Inject]
+    public IEntToastService EntToastService { get; set; }
+    
+    private EntToastService _entToastService = default!;
+    
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        _entToastService = (EntToastService) EntToastService;
+
+        _entToastService.FragmentsChanged += EntPopoverServiceOnFragmentsChanged;
+    }
+
+    private void EntPopoverServiceOnFragmentsChanged(object? sender, EventArgs e)
+    {
+        StateHasChanged();
+    }
+
+    
+    private async Task CloseItem(EntToastInstance instance)
+    {
+        await EntToastService.CloseAsync(instance.Id);
+    }
+   
+
+}

@@ -30,7 +30,7 @@
                              LaptopAlign="FlexAlign.StartCenter"
                              Align="FlexAlign.StartCenter"
                              Gap="4">
-                        <EntButton @onclick="OpenPopover" type="button" Size="ButtonSize.Large">دکمه بزرگ</EntButton>
+                        <EntButton @onclick="OpenToast" type="button" Size="ButtonSize.Large">دکمه بزرگ</EntButton>
                         <EntButton type="button" Size="ButtonSize.Default">دکمه معمولی</EntButton>
                         <EntButton type="button" Size="ButtonSize.Small">دکمه کوچک</EntButton>
                     </EntFlex>
@@ -110,6 +110,9 @@
 
     [Inject]
     public IModalService ModalService { get; set; }
+    
+    [Inject]
+    public IEntToastService ToastService { get; set; }
 
     public async Task OpenModal(EntModalSize size)
     {
@@ -126,7 +129,11 @@
     {
         //IsPopoverOpen = !IsPopoverOpen;
     }
-
+    public  async Task OpenToast()
+    {
+       await ToastService.NotifyAsync("ss", "sswdasdasd",EntToastType.Success,"fa-light fa-check");
+    }
+    
     private async Task OnSearchChangeCallBack(string search)
     {
         AutoCompleteDataSource = Constants.Users.Where(x => x.Name.Contains(search)).ToList();
