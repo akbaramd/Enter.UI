@@ -23,17 +23,9 @@
     [Parameter]
     public EntDrawerMode Mode { get; set; } = EntDrawerMode.Behavior;
 
-    private bool _open = true;
     
     [Parameter]
-    public bool Open
-    {
-        get => _open;
-        set
-        {
-            _open = value;
-            _ = OpenChanged.InvokeAsync(value);
-        } }
+    public bool Open { get; set; }
     
     [Parameter]
     public EventCallback<bool> OpenChanged { get; set; }

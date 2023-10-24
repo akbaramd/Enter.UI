@@ -22,13 +22,13 @@
 
         .#{$cssName}#{$size}#{$cssNamePostFix} {
             @each $property in $properties {
-                #{$property}: $value;
+                #{$property}: $value !important;
             }
         }
 
         .hover\:#{$cssName}#{$size}#{$cssNamePostFix}:hover {
             @each $property in $properties {
-                #{$property}: $value;
+                #{$property}: $value !important;
             }
         }
         //[dir="rtl"] .#{$cssName}#{$size} {
@@ -56,13 +56,13 @@
 
                     .#{$bp}\:#{$cssName}#{$size}#{$cssNamePostFix} {
                         @each $property in $properties {
-                            #{$property}: $value;
+                            #{$property}: $value !important;
                         }
                     }
 
                     .hover\:#{$bp}\:#{$cssName}#{$size}#{$cssNamePostFix}:hover {
                         @each $property in $properties {
-                            #{$property}: $value;
+                            #{$property}: $value !important;
                         }
                     }
 

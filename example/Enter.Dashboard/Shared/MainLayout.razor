@@ -2,60 +2,68 @@
 @using Enter.UI.Models;
 @using Enter.UI.Services.Contracts;
 @using Enter.Dashboard.Components
+@using Enter.UI.Core.Enums
 @inherits LayoutComponentBase
-<div dir="@Direction" class="@($"ent-{Direction}") border-y d-flex flex-column h-full">
-    <EntLayout @ref="Layout"
-               SidebarIsShow="_sidebarIsShow"
-               SidebarClass="bg-white"
-               ContentClass="bg-light"
-               OnSidebarIsShowChanged="OnSidebarIsShowChanged">
-        <AppBar>
-            <div class="d-flex items-center  px-8 py-4">
+<div>
+    <div dir="@Direction" class="@($"ent-{Direction}") border-y d-flex flex-column h-full">
+        <div class="d-flex flex-column">
+            <div class="d-flex items-center  px-8 py-4 border-bottom">
                 <div class="flex-grow-1 d-flex  item-center gap-4">
                     <EntIcon Click="ToggleSidebar" class="cursor-pointer" Type="EntIconType.IconTag" Icon="fa-light fa-bars"/>
                     <b>پلتفرم مدیریتی انترپرایس</b>
                 </div>
                 <div class="d-flex gap-2">
-                    <EntButton Click="ToRtl" Icon="fa-light fa-align-right" Size="ButtonSize.Small">راست چین</EntButton>
-                    <EntButton Click="ToLtr" Icon="fa-light fa-align-left" Size="ButtonSize.Small">چپ چین</EntButton>
+                    <EntButton @onclick="ToRtl" Icon="fa-light fa-align-right" Size="ButtonSize.Small">راست چین</EntButton>
+                    <EntButton @onclick="ToLtr" Icon="fa-light fa-align-left" Size="ButtonSize.Small">چپ چین</EntButton>
+                    <EntButton @onclick="() => _isSideDrawerOpen = !_isSideDrawerOpen" Icon="fa-light fa-align-left" Size="ButtonSize.Small">سایدبار</EntButton>
                 </div>
             </div>
-        </AppBar>
-        <Sidebar>
-             <EntNavMenu class="border-0">
-                                    <EntNavMenuGroup Title="تعاریف" Icon="fa-light fa-home">
-                                        <EntNavMenuTextItem class="bg-light" Icon="fa-light fa-clock" Text="شمارنده" Click="() => AddNewTab<Counter>()"/>
-                                        <EntNavMenuTextItem class="bg-light" Icon="fa-light fa-arrow-down" Text="دریافت اطلاعات" Click="() => AddNewTab<FetchData>()" />
-                                    </EntNavMenuGroup>
-                                    <EntNavMenuGroup Title="صفحات فرم" Icon="fa-light fa-note">
-                                        <EntNavMenuTextItem class="bg-light" Text="فرم معمولی" Click="() => AddNewTab<FormLayout>()"/>
-                                    </EntNavMenuGroup>
-                                    <EntNavMenuGroup Title="جداول" Icon="fa-light fa-note">
-                                        <EntNavMenuTextItem class="bg-light" Text="جدول داده" Click="() => AddNewTab<Table>()"/>
-                                    </EntNavMenuGroup>
-                                </EntNavMenu>
-        </Sidebar>
-        <Content>
-            @Body
-        </Content>
-    </EntLayout>
-    <EntModalProvider/>
-    <EntPopoverProvider/>
-    <EntToastProvider/>
+            <EntDrawerContainer>
+                <EntDrawer @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start"  Mode="_drawerMode" class="z-100">
+                    <EntNavMenu class="border-0">
+                        <EntNavMenuGroup Title="تعاریف" Icon="fa-light fa-home">
+                            <EntNavMenuTextItem class="bg-light" Icon="fa-light fa-clock" Text="شمارنده" Click="() => AddNewTab<Counter>()"/>
+                            <EntNavMenuTextItem class="bg-light" Icon="fa-light fa-arrow-down" Text="دریافت اطلاعات" Click="() => AddNewTab<FetchData>()"/>
+                        </EntNavMenuGroup>
+                        <EntNavMenuGroup Title="صفحات فرم" Icon="fa-light fa-note">
+                            <EntNavMenuTextItem class="bg-light" Text="فرم معمولی" Click="() => AddNewTab<FormLayout>()"/>
+                        </EntNavMenuGroup>
+                        <EntNavMenuGroup Title="جداول" Icon="fa-light fa-note">
+                            <EntNavMenuTextItem class="bg-light" Text="جدول داده" Click="() => AddNewTab<Table>()"/>
+                        </EntNavMenuGroup>
+                    </EntNavMenu>
+                </EntDrawer>
+                <EntDrawer @bind-Open="_isSideDrawerOpen" Direction="EntDrawerDirection.End" Mode="EntDrawerMode.Overlay" class="z-100">
+                    <p>محتوایی برای نمایش</p>
+                </EntDrawer>
+                <div>
+                    @Body
+                </div>
+            </EntDrawerContainer>
+        </div>
+        <EntModalProvider/>
+        <EntPopoverProvider/>
+        <EntToastProvider/>
+    </div>
 </div>
-
-
 
 
 @code {
 
+    private bool _isDrawerOpen = true;
+    private bool _isSideDrawerOpen = false;
+    private EntDrawerMode _drawerMode = EntDrawerMode.Behavior;
 
-    public EntLayout Layout { get; set; }
-
+    [CascadingParameter(Name = "Rtl")]
+    public bool IsRtl { get; set; }
+    
+    [CascadingParameter]
+    public EntThemeProvider? EntThemeProvider { get; set; }
+    
     [Inject]
     public IEntMdiService EntMdiService { get; set; }
 
-    public string Direction { get; set; } = "rtl";
+    public string Direction => IsRtl ? "rtl" : "ltr";
 
     public void AddNewTab<T>()
     {
@@ -77,19 +85,40 @@
         }
     }
 
+    protected override async Task OnAfterRenderAsync( bool firstRender)
+    {
+        await base.OnInitializedAsync();
+
+        if (firstRender)
+        {
+            if (EntThemeProvider != null)
+            {
+                EntThemeProvider.BreakpointChangeEvent += EntThemeProviderBreakpointChangeEvent;
+            }
+        }
+    }
+
+    private void EntThemeProviderBreakpointChangeEvent(EntBreakpoint breakpoint)
+    {
+        _drawerMode = breakpoint > EntBreakpoint.Tablet ? EntDrawerMode.Behavior : EntDrawerMode.Overlay;
+        _isDrawerOpen = breakpoint > EntBreakpoint.Tablet;
+        StateHasChanged();
+    }
+
     private void ToRtl()
     {
-        Direction = "rtl";
+        EntThemeProvider?.EnableRtl(true);
     }
 
     private void ToLtr()
     {
-        Direction = "ltr";
+        EntThemeProvider?.EnableRtl(false);
     }
 
     private async Task ToggleSidebar()
     {
-        await Layout.ToggleSidebarAsync();
+        _isDrawerOpen = !_isDrawerOpen;
+        StateHasChanged();
     }
 
 

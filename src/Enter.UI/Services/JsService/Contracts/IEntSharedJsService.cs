@@ -5,11 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.JSInterop;
 
 namespace Enter.UI.JsService
 {
-    internal interface IEntSharedJsService
+    public interface IEntSharedJsService
     {
         Task<BoundingClientRect> GetBoundingClientRect(ElementReference reference);
+        
+        Task InitializeBreakpointEvent<T>(DotNetObjectReference<T> reference) where T : class;
     }
 }

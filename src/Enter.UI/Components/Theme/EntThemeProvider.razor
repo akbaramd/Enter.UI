@@ -1,0 +1,65 @@
+﻿@using Enter.UI.JsService
+@using Microsoft.JSInterop
+@using Enter.UI.Core.Enums
+@namespace Enter.UI.Components
+<CascadingValue Value="this" IsFixed="true">
+    <CascadingValue Name="Rtl" Value="@Rtl" IsFixed="true">
+        @ChildContent
+    </CascadingValue>
+</CascadingValue>
+
+<style>
+    :root {
+      --drawer-width : @(@DrawerDefaultWidth)px;  
+    }
+</style>
+
+@code {
+
+   
+    
+    [Inject]
+    public IEntSharedJsService SharedJsService { get; set; }
+    
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } = default!;
+    
+    [Parameter]
+    public bool Rtl { get; set; } = false;
+
+    public event Action<EntBreakpoint>? BreakpointChangeEvent; 
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+
+        if (firstRender)
+        {
+            var objRef = DotNetObjectReference.Create(this);
+            await SharedJsService.InitializeBreakpointEvent(objRef);
+        }
+    }
+
+
+    public void EnableRtl(bool isRtl)
+    {
+        Rtl = isRtl;
+        
+        StateHasChanged();
+    }
+    
+    [JSInvokable("OnBreakpointEventListener")]
+    public async Task OnBreakpointEventListener(string breakpoint)
+    {
+        if (BreakpointChangeEvent != null)
+        {
+            var value = Enum.Parse<EntBreakpoint>(breakpoint);
+            BreakpointChangeEvent.Invoke(value);
+        }
+    }
+
+    [Parameter]
+    public int DrawerDefaultWidth { get; set; } = 260;
+
+
+}

@@ -29,7 +29,6 @@ namespace Enter.UI
             services.AddSingleton<IEntToastService, EntToastService>();
             services.AddSingleton<IEntJsService, EntJsService>();
             services.AddSingleton<IEntSharedJsService , EntSharedJsService>();
-            services.AddSingleton<IEntLayoutJsService, EntLayoutJsService>();
         }
         
         public static string GetPropertyName<TProp>(this Expression<Func<TProp>> expression)

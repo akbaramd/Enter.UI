@@ -1,6 +1,8 @@
 ﻿export class Shared {
 
-    GetElementById (id) {
+    _currentBreakpoint = "";
+
+    GetElementById(id) {
         const element = document.getElementById(id);
         return {
             width: element.offsetWidth,
@@ -8,12 +10,13 @@
             id: element.id,
         }
     }
-    GetElementByQuerySelector  (selector)  {
+
+    GetElementByQuerySelector(selector) {
         const element = document.querySelector(selector);
         return {
             width: element.offsetWidth,
             height: element.offsetHeight,
-            id: element.id, 
+            id: element.id,
         }
     }
 
@@ -29,6 +32,46 @@
         rect.windowHeight = window.innerHeight;
         rect.windowWidth = window.innerWidth;
         return rect;
+    }
+
+    initializeBreakpointEvent(dotNetRef) {
+
+        this._currentBreakpoint = this.calculateBreakpoint(window.innerWidth);
+
+        dotNetRef.invokeMethodAsync('OnBreakpointEventListener', this._currentBreakpoint);
+
+
+        addEventListener("resize", (event) => {
+
+            let breakpoint = this.calculateBreakpoint(window.innerWidth);
+
+            if (this._currentBreakpoint !== breakpoint) {
+                this._currentBreakpoint = breakpoint;
+                dotNetRef.invokeMethodAsync('OnBreakpointEventListener', this._currentBreakpoint);
+            }
+        });
+    }
+
+
+    calculateBreakpoint(innerWidth) {
+        if (innerWidth < 768) {
+            return "Mobile";
+        }
+        else if (768 <= innerWidth && innerWidth < 992) {
+            return "Tablet";
+        }
+        else if (992 <= innerWidth && innerWidth < 1200) {
+            return "Laptop";
+        }
+        else if (1200 <= innerWidth && innerWidth < 1400) {
+            return "Desktop";
+        }
+        else if (1400 <= innerWidth) {
+            return "Screen";
+        }
+
+        return "Screen";
+
     }
 
 }
