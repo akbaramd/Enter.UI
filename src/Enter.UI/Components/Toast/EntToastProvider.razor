@@ -2,26 +2,26 @@
 @using Enter.UI.Services.Contracts
 @using Enter.UI.Services
 @inherits EntBaseComponent
-
+@implements IAsyncDisposable
 <div class="@RootClass">
     <EntSpace SpaceY="2">
          @foreach (var item in _entToastService.ToastInstances)
             {
         
                 var itemCss = new CssClassBuilder("ent-toast")
-                    .AddClass("bg-green-600 cl-light", item.Type == EntToastType.Success)
-                    .AddClass("bg-red-600 cl-light", item.Type == EntToastType.Danger)
-                    .AddClass("bg-orange-600 cl-light", item.Type == EntToastType.Warning)
-                    .AddClass("bg-sky-100 cl-light", item.Type == EntToastType.Info).Build();
+                    .AddClass("bg-green-600 cl-light", item.Options.Type == EntToastType.Success)
+                    .AddClass("bg-red-600 cl-light", item.Options.Type == EntToastType.Danger)
+                    .AddClass("bg-orange-600 cl-light", item.Options.Type == EntToastType.Warning)
+                    .AddClass("bg-sky-100 cl-light", item.Options.Type == EntToastType.Info).Build();
                 
                 <div class="@itemCss">
                     <div class=" items-center">
                        
                         <div class="flex-grow-1 d-flex flex-column justify-center">
                             <div class="d-flex flex-row gap-4 mb-4">
-                                @if (!string.IsNullOrWhiteSpace(item.Icon))
+                                @if (!string.IsNullOrWhiteSpace(item.Options.Icon))
                                 {
-                                    <EntIcon Icon="@item.Icon" />
+                                    <EntIcon Icon="@item.Options.Icon" />
                                 }
                                 <EntText class="flex-grow-1 p-0 m-0" Type="EntTextType.Bold" Size="EntTextSize.Caption">@item.Title</EntText>
                                 <EntIcon Icon="fa-light fa-close" Click="()=>CloseItem(item)"/>
@@ -65,6 +65,10 @@
     {
         await EntToastService.CloseAsync(instance.Id);
     }
-   
+
+    public async ValueTask DisposeAsync()
+    {
+        _entToastService.FragmentsChanged -= EntPopoverServiceOnFragmentsChanged;
+    }
 
 }

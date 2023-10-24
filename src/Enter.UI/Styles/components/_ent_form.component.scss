@@ -5,10 +5,9 @@
 
     > .ent-input-group-label {
         font-size: map-get($font-sizes, "medium");
-
         font-weight: 500;
     }
-
+    
 
     > .ent-input-group-validation {
         font-size: map-get($font-sizes, "subtitle");
@@ -21,7 +20,7 @@
 
 .ent-input {
     width: 100%;
-    min-width: 350px;
+    min-width: 300px;
     border: $border;
     display: flex;
     flex-direction: row;
@@ -74,7 +73,7 @@
 .ent-select {
     border: $border;
     cursor: pointer;
-    min-width: 350px;
+    min-width: 300px;
     > .ent-select-input {
         border: 0;
 

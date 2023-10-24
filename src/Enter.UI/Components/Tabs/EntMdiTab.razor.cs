@@ -12,7 +12,7 @@ using Enter.UI.Core;
 
 namespace Enter.UI.Components
 {
-    public partial class EntMdiTab : EntTabBase
+    public partial class EntMdiTab : EntTabBase , IAsyncDisposable
     {
         protected string RootCss => CssClassBuilder
             .AddClass("ent-mdi-tab")
@@ -96,6 +96,12 @@ namespace Enter.UI.Components
             }
         }
 
+        public async ValueTask DisposeAsync()
+        {
+            _entMdiService.OnTabAdded -= OnServiceNewTabAdded;
+            _entMdiService.OnTabActivated -= OnServiceTabActivated;
+            _entMdiService.OnTabRemoved -= OnServiceTabRemoved;
+        }
     }
 
 }

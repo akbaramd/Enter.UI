@@ -137,6 +137,7 @@
         {
             await UpdateSize();
         }
+        
         else if (_updateHeight && _animationState is EntExpandableAnimationState.Closing or EntExpandableAnimationState.Opening)
         {
             _updateHeight = false;
@@ -155,13 +156,15 @@
             if (SharedJsService == null)
                 throw new JSException($"SharedJsService Not be Found . please in ject this service in {nameof(EntExpandable)}");
 
+            var reactBounding = await SharedJsService.GetBoundingClientRect(Reference);
+            Console.WriteLine("sw: "+reactBounding.ScrollWidth);
             if (Direction == EntExpandableDirection.Vertical)
             {
-                _size = (await SharedJsService.GetBoundingClientRect(Reference))?.ScrollHeight ?? 0;
+                _size = reactBounding?.ScrollHeight ?? 0;
             }
             else
             {
-                _size = (await SharedJsService.GetBoundingClientRect(Reference))?.ScrollWidth ?? 0;
+                _size = reactBounding?.ScrollWidth ?? 0;
             }
         }
         catch (Exception ex) when (ex is JSDisconnectedException or TaskCanceledException)

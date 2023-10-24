@@ -1,0 +1,15 @@
+﻿@namespace Enter.UI.Components
+<div class="@RootCss">@ChildContent</div>
+@inherits EntBaseComponent
+@code {
+
+    public string RootCss => CssClassBuilder
+        .AddClass($"ent-drawer-container")
+        .Build();
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+    
+    
+
+}

@@ -7,7 +7,6 @@
 html,
 body {
   color: map-get($map: $colors, $key: mute);
-  overflow: hidden;
   box-sizing: border-box;
 }
 

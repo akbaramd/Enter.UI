@@ -22,33 +22,18 @@
             </div>
         </AppBar>
         <Sidebar>
-            <EntTab ItemDirection="EntTabItemDirection.Vertical"
-                    Direction="EntTabDirection.Horizontal"
-                    Expandable="true"
-                    KeepPanelAlive="true"
-                    ActiveClass="bg-light-sm"
-                    PanelClass="bg-white"
-                    class="border-0 h-full">
-                <EntTabPanel Title="صفحه اصلی" Icon="fa-light fa-home" class="w-60">
-                    <EntNavMenu class="border-0">
-                        <EntNavMenuGroup Title="تعاریف" Icon="fa-light fa-home">
-                            <EntNavMenuTextItem class="bg-light" Icon="fa-light fa-clock" Text="شمارنده" Click="() => AddNewTab<Counter>()"/>
-                            <EntNavMenuTextItem class="bg-light" Icon="fa-light fa-arrow-down" Text="دریافت اطلاعات" Click="() => AddNewTab<FetchData>()" />
-                        </EntNavMenuGroup>
-                        <EntNavMenuGroup Title="صفحات فرم" Icon="fa-light fa-note">
-                            <EntNavMenuTextItem class="bg-light" Text="فرم معمولی" Click="() => AddNewTab<FormLayout>()"/>
-                        </EntNavMenuGroup>
-                        <EntNavMenuGroup Title="جداول" Icon="fa-light fa-note">
-                            <EntNavMenuTextItem class="bg-light" Text="جدول داده" Click="() => AddNewTab<Table>()"/>
-                        </EntNavMenuGroup>
-                    </EntNavMenu>
-                </EntTabPanel>
-
-                <EntTabPanel Title="حساب کاربری" Icon="fa-light fa-user" class="w-60">
-                    <div class="bg-white p-4 m-4 border ">اطلاعات مربوط به حساب کاربری اینجا قرار میگیرد</div>
-                </EntTabPanel>
-
-            </EntTab>
+             <EntNavMenu class="border-0">
+                                    <EntNavMenuGroup Title="تعاریف" Icon="fa-light fa-home">
+                                        <EntNavMenuTextItem class="bg-light" Icon="fa-light fa-clock" Text="شمارنده" Click="() => AddNewTab<Counter>()"/>
+                                        <EntNavMenuTextItem class="bg-light" Icon="fa-light fa-arrow-down" Text="دریافت اطلاعات" Click="() => AddNewTab<FetchData>()" />
+                                    </EntNavMenuGroup>
+                                    <EntNavMenuGroup Title="صفحات فرم" Icon="fa-light fa-note">
+                                        <EntNavMenuTextItem class="bg-light" Text="فرم معمولی" Click="() => AddNewTab<FormLayout>()"/>
+                                    </EntNavMenuGroup>
+                                    <EntNavMenuGroup Title="جداول" Icon="fa-light fa-note">
+                                        <EntNavMenuTextItem class="bg-light" Text="جدول داده" Click="() => AddNewTab<Table>()"/>
+                                    </EntNavMenuGroup>
+                                </EntNavMenu>
         </Sidebar>
         <Content>
             @Body

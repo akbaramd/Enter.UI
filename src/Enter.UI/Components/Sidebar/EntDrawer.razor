@@ -1,0 +1,41 @@
+﻿@namespace Enter.UI.Components
+<aside class="@RootCss">@ChildContent</aside>
+@inherits EntBaseComponent
+@code {
+
+    public string RootCss => CssClassBuilder
+        .AddClass($"ent-drawer")
+        .AddClass($"ent-drawer--direction-start",Direction == EntDrawerDirection.Start)
+        .AddClass($"ent-drawer--direction-end",Direction == EntDrawerDirection.End)
+        .AddClass($"ent-drawer--mode-behavior",Mode == EntDrawerMode.Behavior)
+        .AddClass($"ent-drawer--mode-overlay",Mode == EntDrawerMode.Overlay)
+        .AddClass($"ent-drawer--open",Open)
+        .AddClass($"ent-drawer--close",!Open)
+        .Build();
+
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public EntDrawerDirection Direction { get; set; } = EntDrawerDirection.Start;
+    
+    [Parameter]
+    public EntDrawerMode Mode { get; set; } = EntDrawerMode.Behavior;
+
+    private bool _open = true;
+    
+    [Parameter]
+    public bool Open
+    {
+        get => _open;
+        set
+        {
+            _open = value;
+            _ = OpenChanged.InvokeAsync(value);
+        } }
+    
+    [Parameter]
+    public EventCallback<bool> OpenChanged { get; set; }
+
+}

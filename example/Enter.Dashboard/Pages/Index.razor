@@ -1,9 +1,6 @@
 ﻿@page "/"
-@using Enter.Dashboard.Model;
-@using Enter.UI.Services.Contracts;
-@using Enter.UI.Components
+@using Enter.Dashboard.Model
 @using Enter.UI.Core
-@using System.Linq.Expressions
 
 <PageTitle>Index</PageTitle>
 
@@ -14,13 +11,32 @@
                ActiveClass="bg-light"
                Closeable="true"
                class="border-0"
-               Direction="EntTabDirection.Vertical" >
+               Direction="EntTabDirection.Vertical">
         <div class="p-4">
-            <EntCard Title="پیشفزض"  Expandable="true"  class="mb-4">
+            <EntCard Title="پیشفزض" Expandable="true" class="mb-4">
                 <CardBody>
                     <EntFlex Direction="FlexDirection.Column">
                         <b>این صفحه پیشفرض EntMdiTab میباشد</b>
                     </EntFlex>
+                </CardBody>
+            </EntCard>
+            <EntCard Title="سایدبار" Expandable="true" class="mb-4">
+                <CardBody>
+                    <EntDrawerContainer class="h-50">
+                        <EntDrawer Open="IsSidebarOpen" class="bg-indigo-500">
+                            <EntText>sidebar</EntText>
+                        </EntDrawer>
+                        
+                        <EntDrawer Direction="EntDrawerDirection.End" Mode="EntDrawerMode.Overlay" Open="IsSidebarOpen" class="bg-indigo-500">
+                                                    <EntText>sidebar</EntText>
+                                                </EntDrawer>
+                        <div class="d-flex ">
+                            <EntButton @onclick="ToggleDrawer">Click</EntButton>
+                            <div class="flex-grow-1"></div>
+                            <EntButton @onclick="ToggleDrawer">Click</EntButton>
+                        </div>
+
+                    </EntDrawerContainer>
                 </CardBody>
             </EntCard>
             <EntCard class="mb-4" Tag="card" Expandable="true" CardExpand="false" Icon="fa-light fa-user" Title="کامپوننت - دکمه">
@@ -65,11 +81,11 @@
 
             <EntCard Expandable="true" CardExpand="false" class="mb-4" Title="درخت">
                 <CardBody>
-                    <EntTreeView 
-                                 DataSource="Constants.Roles"
-                                 TextFunc="x => x.Title"
-                                 ValueFunc="x => x.Value"
-                    @bind-SelectedValues="TreeSelectedValue" />
+                    <EntTreeView
+                        DataSource="Constants.Roles"
+                        TextFunc="x => x.Title"
+                        ValueFunc="x => x.Value"
+                        @bind-SelectedValues="TreeSelectedValue"/>
                     @foreach (var item in TreeSelectedValue)
                     {
                         <span class="me-2">
@@ -78,21 +94,21 @@
                     }
                 </CardBody>
             </EntCard>
-            <EntCard Expandable="true"  class="mb-4" Title="فرم">
+            <EntCard Expandable="true" class="mb-4" Title="فرم">
                 <CardBody>
 
                     <b class="mb-2">ورودی پرشونده خودکار</b>
                     <EntInputAutoComplete class="mb-4"
-                    @bind-Value="AutoCompleteValue"
+                                          @bind-Value="AutoCompleteValue"
                                           DataSources="AutoCompleteDataSource"
                                           ValueFunc="x => x.Name"
-                                          OnSearchChange="OnSearchChangeCallBack" />
+                                          OnSearchChange="OnSearchChangeCallBack"/>
                     <b class="mb-2">ورودی انتخابی</b>
                     <EntInputSelect @bind-Value="SelectValue"
                                     PlaceHolder="نقش مورد نظر را انتخاب نمایید"
                                     DataSources="Constants.Roles"
                                     ValueFunc="x => x.Value"
-                                    TextFunc="x => x.Title" />
+                                    TextFunc="x => x.Title"/>
                 </CardBody>
             </EntCard>
 
@@ -101,8 +117,9 @@
 </EntFlex>
 
 @code {
-    public List<string> TreeSelectedValue { get; set; } = new List<string>();
+    public List<string> TreeSelectedValue { get; set; } = new();
     public bool IsPopoverOpen { get; set; }
+    public bool IsSidebarOpen { get; set; } = true;
     public string AutoCompleteValue { get; set; }
     public string SelectValue { get; set; }
 
@@ -110,7 +127,7 @@
 
     [Inject]
     public IModalService ModalService { get; set; }
-    
+
     [Inject]
     public IEntToastService ToastService { get; set; }
 
@@ -119,24 +136,33 @@
         var parameter = new ParameterBuilder<Counter>()
             .Build();
 
-        var result = await ModalService.ShowAsync<Counter>("sada", parameter,new EntModalOptions()
-            {
-                Size = size
-            });
+        var result = await ModalService.ShowAsync<Counter>("sada", parameter, new EntModalOptions
+        {
+            Size = size
+        });
     }
 
-    public  void OpenPopover()
+    public void OpenPopover()
     {
-        //IsPopoverOpen = !IsPopoverOpen;
+    //IsPopoverOpen = !IsPopoverOpen;
     }
-    public  async Task OpenToast()
+
+    public async Task OpenToast()
     {
-       await ToastService.NotifyAsync("ss", "sswdasdasd",EntToastType.Success,"fa-light fa-check");
+        await ToastService.NotifyAsync("اخطار", "محتوایی که نمایش میدهیم", new EntToastOptions
+        {
+            DelaySpan = TimeSpan.FromSeconds(10),
+            Type = EntToastType.Danger
+        });
     }
-    
+
     private async Task OnSearchChangeCallBack(string search)
     {
         AutoCompleteDataSource = Constants.Users.Where(x => x.Name.Contains(search)).ToList();
     }
 
+    public async Task ToggleDrawer()
+    {
+        IsSidebarOpen = !IsSidebarOpen;
+    }
 }

@@ -4,6 +4,6 @@ namespace Enter.UI.Components;
 
 public interface IEntToastService
 {
-    Task NotifyAsync(string title , string content , EntToastType type = EntToastType.Info , string icon = "");
+    Task NotifyAsync(string title, string content, EntToastOptions? options = null);
     Task CloseAsync(Guid id);
 }

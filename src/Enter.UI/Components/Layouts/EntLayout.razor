@@ -7,16 +7,17 @@
             @AppBar
         </div>
     }
-    <div class="ent-layout-container">
+    <EntDrawerContainer >
         @if ( Sidebar != null)
         {
-            <div class="@SidebarCss" >
-                @Sidebar
-            </div>
+            <EntDrawer Open="_sidebarIsOpen" Direction="EntDrawerDirection.Start" >
+                                @Sidebar
+            </EntDrawer>
+            
         }
 
         <div class="@ContentCss">
             @Content
         </div>
-    </div>
+    </EntDrawerContainer>
 </div>

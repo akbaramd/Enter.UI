@@ -28,6 +28,8 @@ namespace Enter.UI.Components
             .Clear()
             .AddClass(SidebarClass)
             .AddClass("ent-layout-sidebar")
+            .AddClass("ent-layout-sidebar-open",_sidebarIsOpen)
+            .AddClass("ent-layout-sidebar-close",!_sidebarIsOpen)
             .Build();
 
         protected string AppBarCss => CssClassBuilder
@@ -67,7 +69,7 @@ namespace Enter.UI.Components
         {
             if (firstRender)
             {
-                await LayoutJsService.InitializeAsync(this,_sidebarIsOpen,MobileBreakSize);
+                // await LayoutJsService.InitializeAsync(this,_sidebarIsOpen,MobileBreakSize);
             }
 
             await base.OnAfterRenderAsync(firstRender);
@@ -77,7 +79,7 @@ namespace Enter.UI.Components
         public async Task CloseSidebarAsync()
         {
             _sidebarIsOpen = false;
-            await LayoutJsService.ToggleAsync(_sidebarIsOpen);
+            //await LayoutJsService.ToggleAsync(_sidebarIsOpen);
             await OnSidebarIsShowChanged.InvokeAsync(_sidebarIsOpen);
         }
         
@@ -85,7 +87,7 @@ namespace Enter.UI.Components
         public async Task OpenSidebarAsync()
         {
             _sidebarIsOpen = true;
-            await LayoutJsService.ToggleAsync(_sidebarIsOpen);
+            //await LayoutJsService.ToggleAsync(_sidebarIsOpen);
             await OnSidebarIsShowChanged.InvokeAsync(_sidebarIsOpen);
         }
         
@@ -93,7 +95,7 @@ namespace Enter.UI.Components
         public async Task ToggleSidebarAsync()
         {
             _sidebarIsOpen = !_sidebarIsOpen;
-            await LayoutJsService.ToggleAsync(_sidebarIsOpen);
+            // await LayoutJsService.ToggleAsync(_sidebarIsOpen);
             await OnSidebarIsShowChanged.InvokeAsync(_sidebarIsOpen);
         }
         

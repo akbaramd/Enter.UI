@@ -1,5 +1,5 @@
 ﻿@namespace Enter.UI.Components
-
+@implements IAsyncDisposable
 <div class="ent-modal-provider ">
     @foreach (var item in @_modalService.Items)
     {
@@ -56,6 +56,13 @@
     private async Task OnCancelClick(string id)
     {
         await _modalService.CancelAsync(id);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        _modalService.OnModalShowed -= ModalServiceOnOnModalShowed;
+        _modalService.OnModalClosed -= ModalServiceOnOnModalClosed;
+        _modalService.OnModalCanceled -= ModalServiceOnOnModalCanceled;
     }
 
 }

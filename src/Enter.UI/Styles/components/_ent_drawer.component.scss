@@ -1,0 +1,96 @@
+﻿:root {
+  --drawer-width : 18rem;
+}
+.ent-drawer-container {
+  overflow: hidden;
+  position: relative;
+  
+  > .ent-drawer {
+    width: var(--drawer-width);
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    transition: all 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+    
+    &.ent-drawer--direction-start{
+      &.ent-drawer--mode-behavior {
+        &.ent-drawer--open {
+          inset-inline-start: 0;
+
+          &~ div:not(.ent-drawer) {
+            margin-inline-start: var(--drawer-width);;
+            transition: all 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+          }
+        }
+
+        &.ent-drawer--close {
+          inset-inline-start: calc(-1*var(--drawer-width));
+
+          &~ div:not(.ent-drawer) {
+            margin-inline-start: 0;
+            transition: all 225ms cubic-bezier(0,0,.2,1) 0ms;
+          }
+        }  
+      }
+      &.ent-drawer--mode-overlay {
+        &.ent-drawer--open {
+          inset-inline-start: 0;
+
+          &~ div:not(.ent-drawer) {
+            transition: all 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+          }
+        }
+
+        &.ent-drawer--close {
+          inset-inline-start: calc(-1*var(--drawer-width));
+
+          &~ div:not(.ent-drawer) {
+            transition: all 225ms cubic-bezier(0,0,.2,1) 0ms;
+          }
+        }
+      }
+    }
+
+    &.ent-drawer--direction-end{
+      &.ent-drawer--mode-behavior {
+        &.ent-drawer--open {
+          inset-inline-end: 0;
+
+          &~ div:not(.ent-drawer) {
+            margin-inline-end: var(--drawer-width);;
+            transition: all 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+          }
+        }
+
+        &.ent-drawer--close {
+          inset-inline-end: calc(-1*var(--drawer-width));
+
+          &~ div:not(.ent-drawer) {
+            margin-inline-end: 0;
+            transition: all 225ms cubic-bezier(0,0,.2,1) 0ms;
+          }
+        }
+      }
+      &.ent-drawer--mode-overlay {
+        &.ent-drawer--open {
+          inset-inline-end: 0;
+
+          &~ div:not(.ent-drawer) {
+            transition: all 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+          }
+        }
+
+        &.ent-drawer--close {
+          inset-inline-end: calc(-1*var(--drawer-width));
+
+          &~ div:not(.ent-drawer) {
+            transition: all 225ms cubic-bezier(0,0,.2,1) 0ms;
+          }
+        }
+      }
+    }
+    
+  }
+  
+  
+}

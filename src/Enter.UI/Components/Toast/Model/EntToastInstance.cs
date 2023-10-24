@@ -2,20 +2,17 @@ namespace Enter.UI.Components;
 
 public class EntToastInstance
 {
-    public EntToastInstance(EntToastType type, string title, string content, string icon)
+    public EntToastInstance(string title, string content, EntToastOptions? options = null)
     {
         Id = Guid.NewGuid();
-        Type = type;
         Title = title;
         Content = content;
-        Icon = icon;
+        Options = options ?? new EntToastOptions();
     }
 
     public Guid Id { get; set; }
-    
-    public EntToastType Type { get; set; } = EntToastType.Info;
     public string Title { get; set; } 
     public string Content { get; set; } 
-    public string Icon { get; set; } 
+    public EntToastOptions Options { get; set; } 
 
 }
