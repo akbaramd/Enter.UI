@@ -5,32 +5,33 @@
 @implements IAsyncDisposable
 <div class="@RootClass">
     <EntSpace SpaceY="2">
-         @foreach (var item in _entToastService.ToastInstances)
-            {
-        
-                var itemCss = new CssClassBuilder("ent-toast")
-                    .AddClass("bg-green-600 cl-light", item.Options.Type == EntToastType.Success)
-                    .AddClass("bg-red-600 cl-light", item.Options.Type == EntToastType.Danger)
-                    .AddClass("bg-orange-600 cl-light", item.Options.Type == EntToastType.Warning)
-                    .AddClass("bg-sky-100 cl-light", item.Options.Type == EntToastType.Info).Build();
-                
-                <div class="@itemCss">
-                    <div class=" items-center">
-                       
-                        <div class="flex-grow-1 d-flex flex-column justify-center">
-                            <div class="d-flex flex-row gap-4 mb-4">
-                                @if (!string.IsNullOrWhiteSpace(item.Options.Icon))
-                                {
-                                    <EntIcon Icon="@item.Options.Icon" />
-                                }
-                                <EntText class="flex-grow-1 p-0 m-0" Type="EntTextType.Bold" Size="EntTextSize.Caption">@item.Title</EntText>
-                                <EntIcon Icon="fa-light fa-close" Click="()=>CloseItem(item)"/>
-                            </div>
-                            <EntText class="p-0 m-0" Type="EntTextType.Paragraph" Size="EntTextSize.Description">@item.Content</EntText>
+        @foreach (var item in ToastInstances)
+        {
+            var itemCss = new CssClassBuilder("ent-toast")
+                .AddClass("ent-toast--open", item.Show)
+                .AddClass("ent-toast--close", !item.Show)
+                .AddClass("bg-green-600 cl-light", item.Options.Type == EntToastType.Success)
+                .AddClass("bg-red-600 cl-light", item.Options.Type == EntToastType.Danger)
+                .AddClass("bg-orange-600 cl-light", item.Options.Type == EntToastType.Warning)
+                .AddClass("bg-sky-100 cl-light", item.Options.Type == EntToastType.Info).Build();
+
+            <div class="@itemCss" @onanimationend="EventUtil.AsNonRenderingEventHandler(() => OnToastAnimationEnd(item))">
+                <div class=" items-center">
+
+                    <div class="flex-grow-1 d-flex flex-column justify-center">
+                        <div class="d-flex flex-row gap-4 mb-4">
+                            @if (!string.IsNullOrWhiteSpace(item.Options.Icon))
+                            {
+                                <EntIcon Icon="@item.Options.Icon"/>
+                            }
+                            <EntText class="flex-grow-1 p-0 m-0" Type="EntTextType.Bold" Size="EntTextSize.Caption">@item.Title</EntText>
+                            <EntIcon Icon="fa-light fa-close" Click="() => CloseItem(item)"/>
                         </div>
+                        <EntText class="p-0 m-0" Type="EntTextType.Paragraph" Size="EntTextSize.Description">@item.Content</EntText>
                     </div>
                 </div>
-            }
+            </div>
+        }
     </EntSpace>
 </div>
 
@@ -40,35 +41,60 @@
         .AddClass("ent-toast-provider")
         .Build();
 
+    
+    public readonly List<EntToastInstance> ToastInstances = new List<EntToastInstance>();
+    
     [Inject]
     public IEntToastService EntToastService { get; set; }
-    
+
     private EntToastService _entToastService = default!;
-    
+
 
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
 
-        _entToastService = (EntToastService) EntToastService;
+        _entToastService = (EntToastService)EntToastService;
 
-        _entToastService.FragmentsChanged += EntPopoverServiceOnFragmentsChanged;
+        _entToastService.InstanceCreated += EntToastServiceOnInstanceCreated;
+        _entToastService.InstanceClose += EntToastServiceOnInstanceClose;;
     }
 
-    private void EntPopoverServiceOnFragmentsChanged(object? sender, EventArgs e)
+    private void EntToastServiceOnInstanceClose(object? sender, Guid e)
     {
+        var instance = ToastInstances.FirstOrDefault(x => x.Id == e);
+        if (instance == null) return;
+        
+        CloseItem(instance);
         StateHasChanged();
     }
 
-    
-    private async Task CloseItem(EntToastInstance instance)
+    private void EntToastServiceOnInstanceCreated(object? sender, EntToastInstance instance)
     {
-        await EntToastService.CloseAsync(instance.Id);
+        ToastInstances.Add(instance);
+        StateHasChanged();
+    }
+
+
+    private void CloseItem(EntToastInstance instance)
+    {
+        instance.Show = false;
+    }
+
+    private async Task OnToastAnimationEnd(EntToastInstance instance)
+    {
+        if (!instance.Show)
+        {
+            ToastInstances.Remove(instance);
+            StateHasChanged();
+            await EntToastService.CloseAsync(instance.Id);
+        }
     }
 
     public async ValueTask DisposeAsync()
     {
-        _entToastService.FragmentsChanged -= EntPopoverServiceOnFragmentsChanged;
+        _entToastService.InstanceCreated -= EntToastServiceOnInstanceCreated;
+        _entToastService.InstanceClose -= EntToastServiceOnInstanceClose;;
     }
 
 }

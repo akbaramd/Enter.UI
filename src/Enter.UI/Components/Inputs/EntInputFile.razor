@@ -1,0 +1,46 @@
+﻿@namespace Enter.UI.Components
+@using System.Diagnostics.CodeAnalysis
+@using Enter.UI.Core
+@using Enter.UI.Core.Enums
+@inherits EntBaseInput<string?>
+@implements IAsyncDisposable
+
+<div @attributes="@AdditionalAttributes" class="@RootCss" id="@Id">
+    <input name="@ValueExpression?.GetPropertyName()" type="file" class="ent-input-field" placeholder="@PlaceHolder"
+    @bind="@CurrentValueAsString"
+    @bind:event="oninput" disabled="@Disabled" readonly="@Readonly"/>
+
+    @if (Icon != null)
+    {
+        <div class="ent-input-icon">
+            <EntIcon Size="4" Icon="@Icon" />
+        </div>
+    }
+</div>
+
+@code {
+
+    private string RootCss => CssBuilder
+        .AddClass("ent-input")
+        .AddClass(BaseCss)
+        .AddClass(ValidationCss)
+        .Build();
+
+    [Parameter]
+    public string Icon { get; set; }
+
+    [Parameter]
+    public bool IsPassword { get; set; } = false;
+
+    [CascadingParameter]
+    public EditContext? EditContext { get; set; }
+
+
+    protected override bool TryParseValueFromString(string? value, out string? result, [NotNullWhen(false)] out string? validationErrorMessage)
+    {
+        result = value;
+        validationErrorMessage = null;
+        return true;
+    }
+
+}

@@ -2,14 +2,14 @@ namespace Enter.UI.Components;
 
 public class EntToastService : IEntToastService
 {
-    public readonly List<EntToastInstance> ToastInstances = new List<EntToastInstance>();
-    public event EventHandler? FragmentsChanged;
-
+   
+    public event EventHandler<EntToastInstance>? InstanceCreated;
+    public event EventHandler<Guid>?  InstanceClose;
+    
     public async Task NotifyAsync(string title, string content, EntToastOptions? options = null)
     {   
         var instance = new EntToastInstance(title, content,options);
         
-        ToastInstances.Add(instance);
         var delayMilliseconds = (long)instance.Options.DelaySpan.TotalMilliseconds;
         
         if (delayMilliseconds <= 0)
@@ -22,12 +22,11 @@ public class EntToastService : IEntToastService
              CloseAsync(instance.Id);
         }, null,delayMilliseconds, Timeout.Infinite);
 
-        FragmentsChanged?.Invoke(this, EventArgs.Empty);
+        InstanceCreated?.Invoke( EventArgs.Empty,instance);
     }
     
     public async Task CloseAsync(Guid id)
     {
-        ToastInstances.Remove(ToastInstances.First(x => x.Id == id));
-        FragmentsChanged?.Invoke(this, EventArgs.Empty);
+        InstanceClose?.Invoke( EventArgs.Empty,id);
     }
 }
