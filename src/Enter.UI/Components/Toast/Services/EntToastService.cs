@@ -17,7 +17,7 @@ public class EntToastService : IEntToastService
             delayMilliseconds = 3000; // Set a default delay of 1 second (1000 milliseconds)
         }
 
-        var timer = new Timer(  (s) =>
+         new Timer(  (s) =>
         {
              CloseAsync(instance.Id);
         }, null,delayMilliseconds, Timeout.Infinite);

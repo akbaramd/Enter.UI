@@ -1,0 +1,67 @@
+﻿@namespace Enter.UI.Components
+@using Enter.UI.JsService;
+@using Microsoft.JSInterop;
+@inherits EntBaseComponent
+
+<div 
+    @ref="Reference"
+     @onanimationend="EventUtil.AsNonRenderingEventHandler(OnAnimationEndCallback)"
+     class="@RootCss"
+     style="@RootStyle"
+     id="@Id">
+    @ChildContent.Invoke(ReactBounding)
+</div>
+
+@code {
+
+    [Inject]
+    public IEntSharedJsService SharedJsService { get; set; }
+
+    public BoundingClientRect ReactBounding { get; set; }
+    
+    
+    private bool _expanded, _updateHeight;
+    
+    internal ElementReference Reference { get; set; }
+
+    [Parameter]
+    public EntAnimatorState State { get; set; } = EntAnimatorState.Start;
+    
+    [Parameter]
+    public EventCallback<EntAnimatorState> StateChanged { get; set; }
+    
+    [Parameter]
+    public EventCallback OnAnimationEnd { get; set; } 
+    
+   
+    // Style and Css
+    private string RootCss => CssClassBuilder
+        .AddClass("ent-animator")
+        .Build();
+    
+    private string RootStyle => StyleBuilder.Build();
+
+
+
+    // Parameters
+    [Parameter]
+    public RenderFragment<BoundingClientRect> ChildContent { get; set; } = default!;
+
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            ReactBounding = await SharedJsService.GetBoundingClientRect(Reference);
+        }
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    public  async Task OnAnimationEndCallback()
+    {
+       await OnAnimationEnd.InvokeAsync();
+        
+    }
+    
+
+}

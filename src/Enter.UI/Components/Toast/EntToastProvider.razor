@@ -5,17 +5,24 @@
 @implements IAsyncDisposable
 <div class="@RootClass">
     <EntSpace SpaceY="2">
+        
+        
         @foreach (var item in ToastInstances)
         {
             var itemCss = new CssClassBuilder("ent-toast")
-                .AddClass("ent-toast--open", item.Show)
-                .AddClass("ent-toast--close", !item.Show)
+                .AddClass("ent-toast--open", item.AnimatorState == EntAnimatorState.Starting)
+                .AddClass("ent-toast--close", item.AnimatorState == EntAnimatorState.Ending)
+                .AddClass("bg-green-600 cl-light", item.Options.Type == EntToastType.Success)
                 .AddClass("bg-green-600 cl-light", item.Options.Type == EntToastType.Success)
                 .AddClass("bg-red-600 cl-light", item.Options.Type == EntToastType.Danger)
                 .AddClass("bg-orange-600 cl-light", item.Options.Type == EntToastType.Warning)
                 .AddClass("bg-sky-100 cl-light", item.Options.Type == EntToastType.Info).Build();
 
-            <div class="@itemCss" @onanimationend="EventUtil.AsNonRenderingEventHandler(() => OnToastAnimationEnd(item))">
+            <EntAnimator
+                OnAnimationEnd="() => OnToastAnimationEnd(item)"
+                class="@itemCss"
+                @bind-State="@item.AnimatorState">
+
                 <div class=" items-center">
 
                     <div class="flex-grow-1 d-flex flex-column justify-center">
@@ -30,7 +37,7 @@
                         <EntText class="p-0 m-0" Type="EntTextType.Paragraph" Size="EntTextSize.Description">@item.Content</EntText>
                     </div>
                 </div>
-            </div>
+            </EntAnimator>
         }
     </EntSpace>
 </div>
@@ -41,6 +48,7 @@
         .AddClass("ent-toast-provider")
         .Build();
 
+   
     
     public readonly List<EntToastInstance> ToastInstances = new List<EntToastInstance>();
     
@@ -78,15 +86,14 @@
 
     private void CloseItem(EntToastInstance instance)
     {
-        instance.Show = false;
+        instance.AnimatorState = EntAnimatorState.Ending;
     }
 
     private async Task OnToastAnimationEnd(EntToastInstance instance)
     {
-        if (!instance.Show)
+        if (instance.AnimatorState==EntAnimatorState.Ending)
         {
             ToastInstances.Remove(instance);
-            StateHasChanged();
             await EntToastService.CloseAsync(instance.Id);
         }
     }

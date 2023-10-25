@@ -8,14 +8,15 @@ public class EntToastInstance
         Title = title;
         Content = content;
         Options = options ?? new EntToastOptions();
-        Show = true;
+        AnimatorState = EntAnimatorState.Starting;
     }
 
     public Guid Id { get; set; }
     public string Title { get; set; } 
-    public string Content { get; set; } 
+    public string Content { get; set; }
+
+    public EntAnimatorState AnimatorState { get; set; }
     
-    public bool Show { get; set; } 
     public EntToastOptions Options { get; set; } 
 
 }
