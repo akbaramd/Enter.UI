@@ -1,0 +1,11 @@
+﻿@namespace Enter.UI.Components
+@inherits Enter.UI.Core.Bases.EntBaseComponent
+
+<EntText Type="EntTextType.Bold" Size="EntTextSize.Subtitle">
+    @Title
+</EntText>
+
+@code {
+    [Parameter]
+    public string Title { get; set; }
+}

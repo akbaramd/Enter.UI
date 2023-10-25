@@ -2,10 +2,11 @@
 @using Microsoft.JSInterop
 @using Enter.UI.Core.Enums
 @namespace Enter.UI.Components
+
 <CascadingValue Value="this" IsFixed="true">
-    <CascadingValue Name="Rtl" Value="@Rtl" IsFixed="true">
-        @ChildContent
-    </CascadingValue>
+    <div dir="@Direction" class="@RootCss">
+         @ChildContent
+    </div>
 </CascadingValue>
 
 <style>
@@ -17,6 +18,11 @@
 @code {
 
    
+    protected string RootCss => new  CssClassBuilder("ent-ui")
+        .AddClass("ent-rtl",Rtl)
+        .AddClass("ent-ltr",!Rtl)
+        .AddClass("ent-dark-mode",DarkMode)
+        .Build();
     
     [Inject]
     public IEntSharedJsService SharedJsService { get; set; }
@@ -26,9 +32,13 @@
     
     [Parameter]
     public bool Rtl { get; set; } = false;
+    
+    [Parameter]
+    public bool DarkMode { get; set; } = false;
 
     public event Action<EntBreakpoint>? BreakpointChangeEvent; 
 
+    public string Direction => Rtl ? "rtl" : "ltr";
     
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -42,12 +52,38 @@
     }
 
 
-    public void EnableRtl(bool isRtl)
+    public void EnableRtl()
     {
-        Rtl = isRtl;
-        
+        Rtl = true;
         StateHasChanged();
     }
+    public void DisableRtl()
+    {
+        Rtl = false;
+        StateHasChanged();
+    }
+    public void ToggleRtl()
+    {
+        Rtl = !Rtl;
+        StateHasChanged();
+    }
+    
+    public void EnableDarkMode()
+    {
+        DarkMode = true;
+        StateHasChanged();
+    }
+    public void DisableDarkMode()
+    {
+        DarkMode = false;
+        StateHasChanged();
+    }
+    public void ToggleDarkMode()
+    {
+        DarkMode = !DarkMode;
+        StateHasChanged();
+    }
+    
     
     [JSInvokable("OnBreakpointEventListener")]
     public async Task OnBreakpointEventListener(string breakpoint)

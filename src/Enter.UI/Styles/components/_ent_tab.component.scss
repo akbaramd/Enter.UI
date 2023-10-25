@@ -1,12 +1,18 @@
-﻿.ent-tab {
+﻿
+:root {
+
+}
+
+.ent-tab {
   display: flex;
   border: $border;
-  background-color: white;
+
 
   > .ent-tab-item-container-message {
     display: flex;
     align-items: center;
-
+    background-color: $color-light;
+    box-shadow: $box-shadow;
     > * {
       padding: 0;
       margin: 0;
@@ -18,17 +24,17 @@
     margin: 0;
     padding: 0;
     display: flex;
-
+    background-color: $color-light;
+    box-shadow: $box-shadow;
+    
     > .ent-tab-item {
 
       cursor: pointer;
       display: flex;
-
-      &:hover {
-        background-color: map-get($colors,"lighteen");
-      }
+      background-color: $color-softlight;
+      
       .ent-tab-content {
-        padding: 0.5rem 1rem;
+        padding: 0.625rem 1.5rem;
         display: flex;
         gap: 0.5rem;
         text-wrap: nowrap;
@@ -52,7 +58,7 @@
         border-color: transparent;
         overflow: hidden;
         width: 0;
-        padding: 0.5rem 0rem;
+        padding: 0.675rem 0rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -120,7 +126,7 @@
   }
 
   > .ent-tab-item-container-message {
-    padding: 1rem 0.5rem;
+    padding: 0.625rem 1.5rem;
     writing-mode: sideways-rl;
     > * {
       transform: rotate(90deg);
@@ -146,7 +152,7 @@
 
   > .ent-tab-item-container-message {
     border-bottom: $border;
-    padding: 0.5rem 1rem;
+    padding: 0.625rem 1rem;
   }
 }
 

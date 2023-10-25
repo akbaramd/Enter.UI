@@ -4,39 +4,38 @@
 @using Enter.Dashboard.Components
 @using Enter.UI.Core.Enums
 @inherits LayoutComponentBase
-<div>
-    <div dir="@Direction" class="@($"ent-{Direction}") border-y d-flex flex-column h-full">
-        <div class="d-flex flex-column">
-            <div class="d-flex items-center  px-8 py-4 border-bottom">
+ <div class="border-y d-flex flex-column">
+        <div class="d-flex flex-column h-full">
+            <div class="d-flex items-center  px-8 py-4 border-bottom bg-softlight box-shadow">
                 <div class="flex-grow-1 d-flex  item-center gap-4">
-                    <EntIcon Click="ToggleSidebar" class="cursor-pointer" Type="EntIconType.IconTag" Icon="fa-light fa-bars"/>
-                    <b>پلتفرم مدیریتی انترپرایس</b>
+                    <EntIcon Click="ToggleSidebar" class="cursor-pointer d-flex laptop:d-none" Type="EntIconType.IconTag" Icon="fa-light fa-bars"/>
+                    <b>Enterprise Dashboard</b>
                 </div>
                 <div class="d-flex gap-2">
-                    <EntButton @onclick="ToRtl" Icon="fa-light fa-align-right" Size="ButtonSize.Small">راست چین</EntButton>
-                    <EntButton @onclick="ToLtr" Icon="fa-light fa-align-left" Size="ButtonSize.Small">چپ چین</EntButton>
-                    <EntButton @onclick="() => _isSideDrawerOpen = !_isSideDrawerOpen" Icon="fa-light fa-align-left" Size="ButtonSize.Small">سایدبار</EntButton>
+                    <EntButton @onclick="ToggleRtl" Icon="fa-light fa-align-right" Size="ButtonSize.Small" Color="ButtonColor.Secondary">Rtl / Ltr</EntButton>
+                    <EntButton @onclick="ToggleDarkMode" Icon="fa-light fa-moon" Size="ButtonSize.Small" class="d-none laptop:d-flex" Color="ButtonColor.Secondary">Dark / Light</EntButton>
+                    <EntButton @onclick="() => _isSideDrawerOpen = !_isSideDrawerOpen" Icon="fa-light fa-align-left" class="d-none laptop:d-flex" Size="ButtonSize.Small" Color="ButtonColor.Secondary">Sidebar</EntButton>
                 </div>
             </div>
-            <EntDrawerContainer>
+            <EntDrawerContainer class="h-full">
                 <EntDrawer @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start"  Mode="_drawerMode" class="z-100">
                     <EntNavMenu class="border-0">
-                        <EntNavMenuGroup Title="تعاریف" Icon="fa-light fa-home">
-                            <EntNavMenuTextItem class="bg-light" Icon="fa-light fa-clock" Text="شمارنده" Click="() => AddNewTab<Counter>()"/>
-                            <EntNavMenuTextItem class="bg-light" Icon="fa-light fa-arrow-down" Text="دریافت اطلاعات" Click="() => AddNewTab<FetchData>()"/>
+                        <EntNavMenuGroup Title="Basic" Icon="fa-light fa-home">
+                            <EntNavMenuTextItem class="bg-light" Icon="fa-light fa-clock" Text="Counter" Click="() => AddNewTab<Counter>()"/>
+                            <EntNavMenuTextItem class="bg-light" Icon="fa-light fa-arrow-down" Text="FetchData" Click="() => AddNewTab<FetchData>()"/>
                         </EntNavMenuGroup>
-                        <EntNavMenuGroup Title="صفحات فرم" Icon="fa-light fa-note">
-                            <EntNavMenuTextItem class="bg-light" Text="فرم معمولی" Click="() => AddNewTab<FormLayout>()"/>
+                        <EntNavMenuGroup Title="Forms" Icon="fa-light fa-note">
+                            <EntNavMenuTextItem class="bg-light" Text="FormLayout" Click="() => AddNewTab<FormLayout>()"/>
                         </EntNavMenuGroup>
-                        <EntNavMenuGroup Title="جداول" Icon="fa-light fa-note">
-                            <EntNavMenuTextItem class="bg-light" Text="جدول داده" Click="() => AddNewTab<Table>()"/>
+                        <EntNavMenuGroup Title="Tables" Icon="fa-light fa-note">
+                            <EntNavMenuTextItem class="bg-light" Text="Table" Click="() => AddNewTab<Table>()"/>
                         </EntNavMenuGroup>
                     </EntNavMenu>
                 </EntDrawer>
                 <EntDrawer @bind-Open="_isSideDrawerOpen" Direction="EntDrawerDirection.End" Mode="EntDrawerMode.Overlay" class="z-100">
-                    <p>محتوایی برای نمایش</p>
+                    <p>Default Text To Show</p>
                 </EntDrawer>
-                <div>
+                <div class="h-full">
                     @Body
                 </div>
             </EntDrawerContainer>
@@ -45,8 +44,6 @@
         <EntPopoverProvider/>
         <EntToastProvider/>
     </div>
-</div>
-
 
 @code {
 
@@ -54,16 +51,12 @@
     private bool _isSideDrawerOpen = false;
     private EntDrawerMode _drawerMode = EntDrawerMode.Behavior;
 
-    [CascadingParameter(Name = "Rtl")]
-    public bool IsRtl { get; set; }
-    
     [CascadingParameter]
     public EntThemeProvider? EntThemeProvider { get; set; }
     
     [Inject]
     public IEntMdiService EntMdiService { get; set; }
 
-    public string Direction => IsRtl ? "rtl" : "ltr";
 
     public void AddNewTab<T>()
     {
@@ -105,16 +98,16 @@
         StateHasChanged();
     }
 
-    private void ToRtl()
+    private void ToggleRtl()
     {
-        EntThemeProvider?.EnableRtl(true);
+        EntThemeProvider?.ToggleRtl();
     }
-
-    private void ToLtr()
+    
+    private void ToggleDarkMode()
     {
-        EntThemeProvider?.EnableRtl(false);
+        EntThemeProvider?.ToggleDarkMode();
     }
-
+    
     private async Task ToggleSidebar()
     {
         _isDrawerOpen = !_isDrawerOpen;

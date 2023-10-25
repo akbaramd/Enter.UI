@@ -7,35 +7,35 @@ namespace Enter.Dashboard
         public static Roles DeveloperRole = new Roles()
         {
             Id = Guid.NewGuid(),
-            Title = "برنامه نویس",
+            Title = "Developer",
             Value = "Developer",
             Icon = "fa-light fa-users",
             Childrens = new List<Roles> {
                 new Roles()
                 {
                     Id = Guid.NewGuid(),
-                    Title = "برنامه نویس تازه کار",
+                    Title = "Junior Developer",
                     Value = "Junior Developer",
                     Icon = "fa-light fa-users",
                 },
                  new Roles()
                 {
                     Id = Guid.NewGuid(),
-                    Title = "برنامه نویس نرمال",
+                    Title = "Middle Developer",
                     Value = "Normal Developer",
                     Icon = "fa-light fa-users",
                     Childrens = new List<Roles> {
                         new Roles()
                         {
                             Id = Guid.NewGuid(),
-                            Title = "برنامه نویس نرمال فرانت",
+                            Title = "Normal Front Developer",
                             Value = "Normal Front Developer",
                             Icon = "fa-light fa-home",
                         },
                         new Roles()
                         {
                             Id = Guid.NewGuid(),
-                            Title = "برنامه نویس نرمال بکاند",
+                            Title = "Normal Backend Developer",
                             Value = "Normal Backend Developer",
                             Icon = "fa-light fa-note",
                         },
@@ -44,7 +44,7 @@ namespace Enter.Dashboard
                 new Roles()
                 {
                     Id = Guid.NewGuid(),
-                    Title = "برنامه نویس حرفه ای",
+                    Title = "Expert Developer",
                     Value = "Expert Developer",
                     Icon = "fa-light fa-close",
                 }
@@ -54,7 +54,7 @@ namespace Enter.Dashboard
         public static Roles AdminRole = new Roles()
         {
             Id = Guid.NewGuid(),
-            Title = "ادمین",
+            Title = "Admin",
             Value = "Admin",
             Icon = "fa-light fa-user"
         };

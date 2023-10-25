@@ -4,30 +4,30 @@
 
 <PageTitle>Index</PageTitle>
 
-<EntFlex Direction="FlexDirection.Column">
+<EntFlex class="h-full"  Direction="FlexDirection.Column">
     <EntMdiTab ItemDirection="EntTabItemDirection.Horizontal"
                KeepPanelAlive="true"
-               PanelClass="bg-light"
-               ActiveClass="bg-light"
+               PanelClass="h-full"
+               ActiveClass=""
                Closeable="true"
-               class="border-0"
+               class="border-0 h-full"
                Direction="EntTabDirection.Vertical">
-        <div class="p-4">
-            <EntCard Title="پیشفزض" Expandable="true" class="mb-4">
+        <div class="p-8">
+            <EntCard Title="Default" Expandable="true" class="mb-8">
                 <CardBody>
                     <EntFlex Direction="FlexDirection.Column">
-                        <b>این صفحه پیشفرض EntMdiTab میباشد</b>
+                        <b>This page is the default in EntMdiTab</b>
                     </EntFlex>
                 </CardBody>
             </EntCard>
-            <EntCard Title="سایدبار" Expandable="true" class="mb-4">
+            <EntCard Title="SideBar" Expandable="true" class="mb-8">
                 <CardBody>
                     <EntDrawerContainer class="h-50">
-                        <EntDrawer Open="IsSidebarOpen" class="bg-indigo-500">
+                        <EntDrawer Open="IsSidebarOpen" class="bg-secondary">
                             <EntText>sidebar</EntText>
                         </EntDrawer>
                         
-                        <EntDrawer Direction="EntDrawerDirection.End" Mode="EntDrawerMode.Overlay" Open="IsSidebarOpen" class="bg-indigo-500">
+                        <EntDrawer Direction="EntDrawerDirection.End" Mode="EntDrawerMode.Overlay" Open="IsSidebarOpen" class="bg-secondary">
                                                     <EntText>sidebar</EntText>
                                                 </EntDrawer>
                         <div class="d-flex ">
@@ -39,36 +39,36 @@
                     </EntDrawerContainer>
                 </CardBody>
             </EntCard>
-            <EntCard class="mb-4" Tag="card" Expandable="true" CardExpand="false" Icon="fa-light fa-user" Title="کامپوننت - دکمه">
+            <EntCard class="mb-8" Tag="card" Expandable="true" CardExpand="false" Icon="fa-light fa-user" Title="Buttons">
                 <CardBody>
                     <EntFlex Direction="FlexDirection.Column"
                              LaptopDirection="FlexDirection.Row"
                              LaptopAlign="FlexAlign.StartCenter"
                              Align="FlexAlign.StartCenter"
                              Gap="4">
-                        <EntButton @onclick="OpenToast" type="button" Size="ButtonSize.Large">دکمه بزرگ</EntButton>
-                        <EntButton type="button" Size="ButtonSize.Default">دکمه معمولی</EntButton>
-                        <EntButton type="button" Size="ButtonSize.Small">دکمه کوچک</EntButton>
+                        <EntButton @onclick="OpenToast" type="button" Size="ButtonSize.Large">Large Button</EntButton>
+                        <EntButton type="button" Size="ButtonSize.Default">Button</EntButton>
+                        <EntButton type="button" Size="ButtonSize.Small">Small Button</EntButton>
                     </EntFlex>
                 </CardBody>
             </EntCard>
-            <EntCard Expandable="true" CardExpand="false" class="mb-4" Title="کامپوننت - مدال">
+            <EntCard Expandable="true" CardExpand="false" class="mb-8" Title="Modals">
                 <CardBody>
                     <EntFlex Direction="FlexDirection.Column"
                              LaptopDirection="FlexDirection.Row"
                              LaptopAlign="FlexAlign.StartCenter"
                              Gap="4">
-                        <EntButton type="button" @onclick="() => OpenModal(EntModalSize.ExtraLarge)">باز کردن مدال ExtraLarge</EntButton>
-                        <EntButton type="button" @onclick="() => OpenModal(EntModalSize.Large)">باز کردن مدال Large</EntButton>
-                        <EntButton type="button" @onclick="() => OpenModal(EntModalSize.Medium)">باز کردن مدال Medium</EntButton>
-                        <EntButton type="button" @onclick="() => OpenModal(EntModalSize.Small)">باز کردن مدال Small</EntButton>
-                        <EntButton type="button" @onclick="() => OpenModal(EntModalSize.Fullscreen)">باز کردن مدال FullScreen</EntButton>
+                        <EntButton type="button" @onclick="() => OpenModal(EntModalSize.ExtraLarge)">Modal ExtraLarge</EntButton>
+                        <EntButton type="button" @onclick="() => OpenModal(EntModalSize.Large)">Modal Large</EntButton>
+                        <EntButton type="button" @onclick="() => OpenModal(EntModalSize.Medium)">Modal Medium</EntButton>
+                        <EntButton type="button" @onclick="() => OpenModal(EntModalSize.Small)">Modal Small</EntButton>
+                        <EntButton type="button" @onclick="() => OpenModal(EntModalSize.Fullscreen)">Modal FullScreen</EntButton>
                     </EntFlex>
                 </CardBody>
             </EntCard>
-            <EntCard Expandable="true" CardExpand="false" class="mb-4" Title="پاپ آور">
+            <EntCard Expandable="true" CardExpand="false" class="mb-8" Title="Popover">
                 <CardBody>
-                    <EntButton @onclick="OpenPopover">باز کردن</EntButton>
+                    <EntButton @onclick="OpenPopover">Show</EntButton>
                     <EntPopover Open="IsPopoverOpen" RelativeWidth="true">
                         <EntCard>
                             <CardBody>
@@ -79,7 +79,7 @@
                 </CardBody>
             </EntCard>
 
-            <EntCard Expandable="true" CardExpand="false" class="mb-4" Title="درخت">
+            <EntCard Expandable="true" CardExpand="false" class="mb-8" Title="TreeView">
                 <CardBody>
                     <EntTreeView
                         DataSource="Constants.Roles"
@@ -94,18 +94,18 @@
                     }
                 </CardBody>
             </EntCard>
-            <EntCard Expandable="true" class="mb-4" Title="فرم">
+            <EntCard Expandable="true" class="mb-8" Title="Form">
                 <CardBody>
 
-                    <b class="mb-2">ورودی پرشونده خودکار</b>
-                    <EntInputAutoComplete class="mb-4"
+                    <b class="mb-2">AutoComplete Input</b>
+                    <EntInputAutoComplete class="mb-8"
                                           @bind-Value="AutoCompleteValue"
                                           DataSources="AutoCompleteDataSource"
                                           ValueFunc="x => x.Name"
                                           OnSearchChange="OnSearchChangeCallBack"/>
-                    <b class="mb-2">ورودی انتخابی</b>
+                    <b class="mb-2">Select Input</b>
                     <EntInputSelect @bind-Value="SelectValue"
-                                    PlaceHolder="نقش مورد نظر را انتخاب نمایید"
+                                    PlaceHolder="Select the desired role"
                                     DataSources="Constants.Roles"
                                     ValueFunc="x => x.Value"
                                     TextFunc="x => x.Title"/>
@@ -149,7 +149,7 @@
 
     public async Task OpenToast()
     {
-        await ToastService.NotifyAsync("اخطار", "محتوایی که نمایش میدهیم", new EntToastOptions
+        await ToastService.NotifyAsync("Danger", "The content we display", new EntToastOptions
         {
             DelaySpan = TimeSpan.FromSeconds(10),
             Type = EntToastType.Danger

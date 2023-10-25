@@ -4,7 +4,8 @@
     border-left: $border;
     border-right: $border;
     border-top: $border;
-    background-color: #fff;
+    background-color: $color-softlight;
+    box-shadow: $box-shadow;
 
     .ent-card-header {
         padding: 1rem;
@@ -13,6 +14,9 @@
         gap: 1rem;
         border-bottom: $border;
         cursor: pointer;
+        
+        background-color: $color-light;
+        
         .ent-card-header-title {
             font-weight: bold;
             flex-grow: 1;

@@ -1,8 +1,9 @@
+
 .ent-nav-menu {
   display: flex;
   flex-direction: column;
   border: $border;
-
+  background-color: $color-softlight;
   > * {
     border-bottom: $border;
   }
@@ -16,14 +17,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 0.5rem 1rem;
+      padding: .625rem 1.5rem;
       cursor: pointer;
       
-      
-
+      > .ent-nav-menu-group-item-icon {
+          margin-inline-end: 1rem;
+      }
       > .ent-nav-menu-group-item-title {
         flex-grow: 1;
-        margin-inline-start: 1rem;
       }
 
       > .ent-nav-menu-group-item-arrow-icon {
@@ -35,9 +36,8 @@
     }
 
     &.active {
-      background-color: map-get($colors,"lighteen");
      > .ent-nav-menu-group-item {
-       background-color: map-get($colors,"light");
+       background-color: $color-deeplight;
        > .ent-nav-menu-group-item-arrow-icon {
          margin-inline-start: 1rem;
          transform: rotate(180deg);
@@ -49,7 +49,7 @@
     > .ent-nav-menu-group-container {
       height: 0;
       overflow: hidden;
-  
+      background-color: $color-light;
       
       
       > * {
@@ -68,7 +68,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.5rem 1rem;
+    padding: 0.625rem 1.5rem;
     cursor: pointer;
 
     &:hover {

@@ -1,3 +1,6 @@
+@import "themes/basic.theme";
+@import "themes/dark.theme";
+
 @import "_normalize.scss";
 @import "_variables.scss";
 @import "_mixins.scss";
@@ -6,8 +9,9 @@
 
 html,
 body {
-  color: map-get($map: $colors, $key: mute);
   box-sizing: border-box;
+  background-color: var(--ent-color-deeplight);
+  color: var(--ent-color-text);
 }
 
 * {
@@ -19,6 +23,12 @@ body {
   direction: rtl;
 }
 
+.ent-ui {
+  box-sizing: border-box;
+  background-color: var(--ent-color-deeplight);
+  color: var(--ent-color-text);
+  font-size: $font-size;
+}
 
 p {
   margin-bottom: map-get($font-sizes, "medium");
@@ -64,7 +74,17 @@ small, .text_small {
 .cursor-pointer {
   cursor: pointer;
 }
-
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+  background-color: $color-deeplight;
+}
 .ent-rtl {
 
 
