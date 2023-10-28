@@ -13,21 +13,16 @@ namespace Enter.UI.Components
     public partial class EntTab : EntTabBase
     {
         protected string RootCss => CssClassBuilder
-            .AddClass("ent-tab")
+      
             .AddClass("ent-tab-horizontal", Direction == EntTabDirection.Horizontal)
             .AddClass("ent-tab-vertical", Direction == EntTabDirection.Vertical)
             .AddClass("ent-tab-expandable", Expandable)
+            .AddClass("ent-tab")
             .Build();
 
-        protected string ItemCss => CssClassBuilder
-            .Clear()
-            .AddClass("ent-tab-item")
-            .AddClass("ent-tab-item-horizontal", ItemDirection == EntTabItemDirection.Horizontal)
-            .AddClass("ent-tab-item-vertical", ItemDirection == EntTabItemDirection.Vertical)
-            .AddClass(ItemClass)
-            .Build();
+        
 
-        protected string PanelCss => CssClassBuilder
+        protected string PanelCss => new CssClassBuilder()
             .Clear()
             .AddClass("ent-tab-panel-container")
             .AddClass(PanelClass)
@@ -40,6 +35,18 @@ namespace Enter.UI.Components
         private List<EntTabPanel> TabPanels = new List<EntTabPanel>();
         private string? ActiveTabId = null;
 
+        public string getItemClass(bool active)
+        {
+            return  CssClassBuilder
+                .Clear()
+                .AddClass("ent-tab-item")
+                .AddClass("active",active)
+                .AddClass("ent-tab-item-horizontal", ItemDirection == EntTabItemDirection.Horizontal)
+                .AddClass("ent-tab-item-vertical", ItemDirection == EntTabItemDirection.Vertical)
+                .AddClass(ItemClass)
+                .Build();
+        }
+        
         public async Task AddNewTab(EntTabPanel panel)
         {
             TabPanels.Add(panel);

@@ -2,13 +2,12 @@
 
 namespace Enter.Dashboard.Model;
 
-public class Roles : IEntTreeView<Roles>
+public class Roles  : IEntTreeViewItem<Roles,string>
 {
     public Guid Id { get; set; }
-    public string Title { get; set; }
-    public string Value { get; set; }
+    public string Text { get; set; }
     public string? Icon { get; set; }
-    public bool Expanded { get; set; }
-    public List<Roles> Childrens { get; set; }
-    public bool Checked { get;set; }
+    public string Value { get; set; }
+    public IEnumerable<Roles> Childrens { get; set; }
+    public Guid ParentId { get; set; }
 }

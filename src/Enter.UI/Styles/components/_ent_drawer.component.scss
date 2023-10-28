@@ -1,36 +1,44 @@
-﻿:root {
-  --drawer-width : 18rem;
+﻿
+
+:root {
+  --ent-drawer-width : 20rem;
+  --ent-drawer-z-index: var(--ent-z-index-secondary);
+  --ent-drawer-bg: var(--ent-bg-body);
+  --ent-drawer-box-shadow: 0px 1px 9px -3px rgba(0, 0, 0, 0.05);
+  --ent-drawer-border-color: var(--ent-border-color);
+  --ent-drawer-border-width: var(--ent-border-width);
+  --ent-drawer-border-style: var(--ent-border-style);
 }
+
 .ent-drawer-container {
   overflow: hidden;
   position: relative;
   
   > .ent-drawer {
-    width: var(--drawer-width);
+    width: var(--ent-drawer-width);
     position: absolute;
     bottom: 0;
     top: 0;
     transition: all 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
-    background-color: $color-softlight;
-    box-shadow: $box-shadow;
+    background-color: var(--ent-drawer-bg);
     z-index: 10;
-    
+    box-shadow: var(--ent-drawer-box-shadow);
     &.ent-drawer--direction-start{
 
-      border-inline-end: $border;
-      
+      border-inline-end: var(--ent-drawer-border-width) var(--ent-drawer-border-style) var(--ent-drawer-border-color);
+ 
       &.ent-drawer--mode-behavior {
         &.ent-drawer--open {
           inset-inline-start: 0;
 
           &~ div:not(.ent-drawer) {
-            margin-inline-start: var(--drawer-width);;
+            margin-inline-start: var(--ent-drawer-width);;
             transition: all 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
           }
         }
 
         &.ent-drawer--close {
-          inset-inline-start: calc(-1*var(--drawer-width));
+          inset-inline-start: calc(-1*var(--ent-drawer-width));
 
           &~ div:not(.ent-drawer) {
             margin-inline-start: 0;
@@ -48,7 +56,7 @@
         }
 
         &.ent-drawer--close {
-          inset-inline-start: calc(-1*var(--drawer-width));
+          inset-inline-start: calc(-1*var(--ent-drawer-width));
 
           &~ div:not(.ent-drawer) {
             transition: all 225ms cubic-bezier(0,0,.2,1) 0ms;
@@ -59,20 +67,20 @@
 
     &.ent-drawer--direction-end{
 
-      border-inline-start: $border;
+      border-inline-start: var(--ent-drawer-border-width) var(--ent-drawer-border-style) var(--ent-drawer-border-color);
       
       &.ent-drawer--mode-behavior {
         &.ent-drawer--open {
           inset-inline-end: 0;
 
           &~ div:not(.ent-drawer) {
-            margin-inline-end: var(--drawer-width);;
+            margin-inline-end: var(--ent-drawer-width);;
             transition: all 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
           }
         }
 
         &.ent-drawer--close {
-          inset-inline-end: calc(-1*var(--drawer-width));
+          inset-inline-end: calc(-1*var(--ent-drawer-width));
 
           &~ div:not(.ent-drawer) {
             margin-inline-end: 0;
@@ -90,7 +98,7 @@
         }
 
         &.ent-drawer--close {
-          inset-inline-end: calc(-1*var(--drawer-width));
+          inset-inline-end: calc(-1*var(--ent-drawer-width));
 
           &~ div:not(.ent-drawer) {
             transition: all 225ms cubic-bezier(0,0,.2,1) 0ms;

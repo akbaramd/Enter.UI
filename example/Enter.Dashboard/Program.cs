@@ -8,6 +8,8 @@ namespace Enter.Dashboard
     {
         public static async Task Main(string[] args)
         {
+            
+            Console.WriteLine();
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
             builder.RootComponents.Add<HeadOutlet>("head::after");
@@ -17,6 +19,8 @@ namespace Enter.Dashboard
             builder.Services.AddEnterUI();
 
             await builder.Build().RunAsync();
+
+        
         }
     }
 }

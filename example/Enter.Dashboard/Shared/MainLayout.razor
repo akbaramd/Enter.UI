@@ -5,20 +5,14 @@
 @using Enter.UI.Core.Enums
 @inherits LayoutComponentBase
  <div class="border-y d-flex flex-column">
-        <div class="d-flex flex-column h-full">
-            <div class="d-flex items-center  px-8 py-4 border-bottom bg-softlight box-shadow">
-                <div class="flex-grow-1 d-flex  item-center gap-4">
-                    <EntIcon Click="ToggleSidebar" class="cursor-pointer d-flex laptop:d-none" Type="EntIconType.IconTag" Icon="fa-light fa-bars"/>
-                    <b>Enterprise Dashboard</b>
-                </div>
-                <div class="d-flex gap-2">
-                    <EntButton @onclick="ToggleRtl" Icon="fa-light fa-align-right" Size="ButtonSize.Small" Color="ButtonColor.Secondary">Rtl / Ltr</EntButton>
-                    <EntButton @onclick="ToggleDarkMode" Icon="fa-light fa-moon" Size="ButtonSize.Small" class="d-none laptop:d-flex" Color="ButtonColor.Secondary">Dark / Light</EntButton>
-                    <EntButton @onclick="() => _isSideDrawerOpen = !_isSideDrawerOpen" Icon="fa-light fa-align-left" class="d-none laptop:d-flex" Size="ButtonSize.Small" Color="ButtonColor.Secondary">Sidebar</EntButton>
-                </div>
-            </div>
-            <EntDrawerContainer class="h-full">
-                <EntDrawer @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start"  Mode="_drawerMode" class="z-100">
+        <div class="d-flex flex-column flex-grow-1">
+            <EntAppBar ShowToggle="_showToggle" ToggleClick="ToggleSidebar" Title="Enterprise Dashboard">
+                <EntButton @onclick="ToggleRtl" Icon="fa-light fa-align-right" Size="ButtonSize.Small" Color="ButtonColor.Secondary">راستچین</EntButton>
+                                    <EntButton @onclick="ToggleDarkMode" Icon="fa-light fa-moon" Size="ButtonSize.Small" class="d-none laptop:d-flex" Color="ButtonColor.Secondary">Dark / Light</EntButton>
+                                    <EntButton @onclick="() => _isSideDrawerOpen = !_isSideDrawerOpen" Icon="fa-light fa-align-left" class="d-none laptop:d-flex" Size="ButtonSize.Small" Color="ButtonColor.Secondary">Sidebar</EntButton>
+            </EntAppBar>
+            <EntDrawerContainer class="flex-grow-1">
+                <EntDrawer @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start"  Mode="_drawerMode" class="z-50">
                     <EntNavMenu class="border-0">
                         <EntNavMenuGroup Title="Basic" Icon="fa-light fa-home">
                             <EntNavMenuTextItem class="bg-light" Icon="fa-light fa-clock" Text="Counter" Click="() => AddNewTab<Counter>()"/>
@@ -32,7 +26,11 @@
                         </EntNavMenuGroup>
                     </EntNavMenu>
                 </EntDrawer>
-                <EntDrawer @bind-Open="_isSideDrawerOpen" Direction="EntDrawerDirection.End" Mode="EntDrawerMode.Overlay" class="z-100">
+                <EntDrawer 
+                    @bind-Open="_isSideDrawerOpen" 
+                    Direction="EntDrawerDirection.End" 
+                    Mode="EntDrawerMode.Overlay"
+                    class="z-50">
                     <p>Default Text To Show</p>
                 </EntDrawer>
                 <div class="h-full">
@@ -47,6 +45,7 @@
 
 @code {
 
+    private bool _showToggle = false;
     private bool _isDrawerOpen = true;
     private bool _isSideDrawerOpen = false;
     private EntDrawerMode _drawerMode = EntDrawerMode.Behavior;
@@ -62,19 +61,19 @@
     {
         if (typeof(T) == typeof(Counter))
         {
-            EntMdiService.AddNewTab<Counter>("counter", "شمارنده", "fa-light fa-clock");
+            EntMdiService.AddNewTab<Counter>("counter", "Counter", "fa-light fa-clock");
         }
         else if (typeof(T) == typeof(FetchData))
         {
-            EntMdiService.AddNewTab<FetchData>(Guid.NewGuid().ToString(), "دریافت اطلاعات", "fa-light fa-arrow-down");
+            EntMdiService.AddNewTab<FetchData>(Guid.NewGuid().ToString(), "Fetch Data", "fa-light fa-arrow-down");
         }
         else if (typeof(T) == typeof(FormLayout))
         {
-            EntMdiService.AddNewTab<FormLayout>("FormLayout", "فرم معمولی", "fa-light fa-note");
+            EntMdiService.AddNewTab<FormLayout>("FormLayout", "Form", "fa-light fa-note");
         }
         else if (typeof(T) == typeof(Table))
         {
-            EntMdiService.AddNewTab<Table>("Table", "جدول داده", "fa-light fa-table");
+            EntMdiService.AddNewTab<Table>("Table", "Table", "fa-light fa-table");
         }
     }
 
@@ -95,6 +94,7 @@
     {
         _drawerMode = breakpoint > EntBreakpoint.Tablet ? EntDrawerMode.Behavior : EntDrawerMode.Overlay;
         _isDrawerOpen = breakpoint > EntBreakpoint.Tablet;
+        _showToggle = breakpoint <= EntBreakpoint.Tablet;
         StateHasChanged();
     }
 
@@ -103,9 +103,12 @@
         EntThemeProvider?.ToggleRtl();
     }
     
-    private void ToggleDarkMode()
+    private async Task ToggleDarkMode()
     {
-        EntThemeProvider?.ToggleDarkMode();
+        if (EntThemeProvider != null)
+        {
+            await EntThemeProvider.ToggleDarkMode();
+        }
     }
     
     private async Task ToggleSidebar()

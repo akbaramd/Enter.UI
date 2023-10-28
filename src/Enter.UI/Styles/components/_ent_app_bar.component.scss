@@ -1,16 +1,28 @@
-.ent-app-bar {
+:root {
+  --ent-appbar-space-y: 1rem;
+  --ent-appbar-space-x: 2rem;
+  --ent-appbar-z-index: var(--ent-z-index-top);
+  --ent-appbar-bg: var(--ent-bg-body);
+  --ent-appbar-border-width: var(--ent-border-width);
+  --ent-appbar-border-style: var(--ent-border-style);
+  --ent-appbar-border-color: var(--ent-border-color);
+  --ent-appbar-box-shadow: var(--ent-shadow);
+}
+
+.ent-appbar {
+  padding: var(--ent-appbar-space-y) var(--ent-appbar-space-x);
+  background-color: var(--ent-appbar-bg);
+  box-shadow: var(--ent-appbar-box-shadow);
+  border-bottom: var(--ent-appbar-border-width) var(--ent-appbar-border-style) var(--ent-appbar-border-color);
+  z-index: var(--ent-appbar-z-index);
   display: flex;
   align-items: center;
-  padding: 1rem;
-  background-color: white;
   gap: 1rem;
-  
-  >.ent-app-bar-title {
-  }
-  > .ent-app-bar-content {
+  .ent-app-bar-content {
     flex-grow: 1;
+    justify-content: end;
     display: flex;
-    align-items: center;
+    gap: 0.5rem;
   }
 }
 

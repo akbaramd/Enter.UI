@@ -12,10 +12,12 @@ namespace Enter.UI.JsService
 {
     internal class EntSharedJsService : IEntSharedJsService
     {
+        private readonly IEntJsService _entJsService;
         private readonly Lazy<Task<IJSObjectReference>> _moduleTask;
 
         public EntSharedJsService(IEntJsService entJsService)
         {
+            _entJsService = entJsService;
             _moduleTask = new Lazy<Task<IJSObjectReference>>(() => entJsService.LoadReferenceAsync("getShared"));
         }
 
@@ -29,6 +31,12 @@ namespace Enter.UI.JsService
         {
             var sharedModule = await _moduleTask.Value;
             await sharedModule.InvokeVoidAsync("initializeBreakpointEvent", reference);
+        }
+
+        public async Task SetAttributeByQuerySelectorAsync(string selector, string key, string value)
+        {
+            var sharedModule = await _moduleTask.Value;
+             await sharedModule.InvokeVoidAsync("setAttributeByQuerySelector", selector,key,value);
         }
     }
 }

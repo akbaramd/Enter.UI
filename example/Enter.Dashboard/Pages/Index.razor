@@ -1,10 +1,11 @@
 ﻿@page "/"
-@using Enter.Dashboard.Model
+@using Enter.UI
 @using Enter.UI.Core
+@using Enter.Dashboard.Model
 
 <PageTitle>Index</PageTitle>
 
-<EntFlex class="h-full"  Direction="FlexDirection.Column">
+<EntFlex class="h-full" Direction="FlexDirection.Column">
     <EntMdiTab ItemDirection="EntTabItemDirection.Horizontal"
                KeepPanelAlive="true"
                PanelClass="h-full"
@@ -26,10 +27,10 @@
                         <EntDrawer Open="IsSidebarOpen" class="bg-secondary">
                             <EntText>sidebar</EntText>
                         </EntDrawer>
-                        
+
                         <EntDrawer Direction="EntDrawerDirection.End" Mode="EntDrawerMode.Overlay" Open="IsSidebarOpen" class="bg-secondary">
-                                                    <EntText>sidebar</EntText>
-                                                </EntDrawer>
+                            <EntText>sidebar</EntText>
+                        </EntDrawer>
                         <div class="d-flex ">
                             <EntButton @onclick="ToggleDrawer">Click</EntButton>
                             <div class="flex-grow-1"></div>
@@ -79,21 +80,41 @@
                 </CardBody>
             </EntCard>
 
-            <EntCard Expandable="true" CardExpand="false" class="mb-8" Title="TreeView">
-                <CardBody>
-                    <EntTreeView
-                        DataSource="Constants.Roles"
-                        TextFunc="x => x.Title"
-                        ValueFunc="x => x.Value"
-                        @bind-SelectedValues="TreeSelectedValue"/>
-                    @foreach (var item in TreeSelectedValue)
-                    {
-                        <span class="me-2">
-                            @item
-                        </span>
-                    }
-                </CardBody>
-            </EntCard>
+
+            <div class="row">
+                <div class="col-1/2">
+                    <EntCard Expandable="true" CardExpand="false" class="mb-8" Title="TreeView (Single Select)">
+                        <CardBody>
+                            <EntTreeView
+                                MultiSelect="false"
+                                DataSource="@Constants.Roles"
+                                @bind-SelectedValue="TreeSelectedValue"/>
+
+                            <span class="me-2">
+                                @TreeSelectedValue
+                            </span>
+
+                        </CardBody>
+                    </EntCard>
+                </div>
+
+                <div class="col-1/2">
+                    <EntCard Expandable="true" CardExpand="false" class="mb-8" Title="TreeView (Multi Select)">
+                        <CardBody>
+                            <EntTreeView
+                                MultiSelect="true"
+                                DataSource="Constants.Roles"
+                                @bind-SelectedValues="TreeSelectedValues"/>
+                            @foreach (var item in TreeSelectedValues)
+                            {
+                                <span class="me-2">
+                                    @item
+                                </span>
+                            }
+                        </CardBody>
+                    </EntCard>
+                </div>
+            </div>
             <EntCard Expandable="true" class="mb-8" Title="Form">
                 <CardBody>
 
@@ -108,7 +129,7 @@
                                     PlaceHolder="Select the desired role"
                                     DataSources="Constants.Roles"
                                     ValueFunc="x => x.Value"
-                                    TextFunc="x => x.Title"/>
+                                    TextFunc="x => x.Text"/>
                 </CardBody>
             </EntCard>
 
@@ -117,7 +138,10 @@
 </EntFlex>
 
 @code {
-    public List<string> TreeSelectedValue { get; set; } = new();
+
+
+    public List<string> TreeSelectedValues { get; set; } = new List<string>(){"Admin"};
+    public string TreeSelectedValue { get; set; } = "Admin";
     public bool IsPopoverOpen { get; set; }
     public bool IsSidebarOpen { get; set; } = true;
     public string AutoCompleteValue { get; set; }
@@ -165,4 +189,5 @@
     {
         IsSidebarOpen = !IsSidebarOpen;
     }
+
 }

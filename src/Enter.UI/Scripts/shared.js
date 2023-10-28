@@ -19,7 +19,9 @@
             id: element.id,
         }
     }
-
+    setAttributeByQuerySelector(selector,key,value){
+        document.querySelector(selector).setAttribute(key,value)
+    }
     getBoundingClientRect(element) {
         if (!element) return;
 

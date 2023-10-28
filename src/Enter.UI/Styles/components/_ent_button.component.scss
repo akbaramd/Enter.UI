@@ -1,5 +1,5 @@
 ﻿.ent-btn {
-    padding: 0.625rem 1.5rem;
+    padding: 0.5rem 1rem;
     border: 0;
     background-color:transparent;
     font-size: 1rem;
@@ -7,14 +7,15 @@
     align-items: center;
     gap: 0.5rem;
     cursor: pointer;
-
+    border-radius: $border-radius;
+    
     &.ent-btn-sm {
-        padding: .4rem 0.8rem;
+        padding: .375rem 0.75rem;
         font-size: map-get($font-sizes, "description");
     }
 
     &.ent-btn-lg {
-        padding: 0.6rem 1.2rem;
+        padding: 0.625rem 1.25rem;
         font-size: map-get($font-sizes, "caption");
     }
 }

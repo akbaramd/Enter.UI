@@ -1,18 +1,26 @@
 ﻿
 :root {
-
+  --ent-tab-bg: var(--ent-bg-body);
+  --ent-tab-container-bg: var(--ent-bg-body);
+  --ent-tab-active-bg: var(--ent-bg-tertiary);
+  --ent-tab-box-shadow: var(--ent-shadow);
+  --ent-tab-border-width: var(--ent-border-width);
+  --ent-tab-border-style: var(--ent-border-style);
+  --ent-tab-border-color: var(--ent-border-color);
 }
 
 .ent-tab {
   display: flex;
-  border: $border;
+  border: var(--ent-tab-border-width) var(--ent-tab-border-style) var(--ent-tab-border);
 
 
   > .ent-tab-item-container-message {
     display: flex;
     align-items: center;
-    background-color: $color-light;
-    box-shadow: $box-shadow;
+    background-color: var(--ent-tab-container-bg);
+    border-bottom: var(--ent-tab-border-width) var(--ent-tab-border-style) var(--ent-tab-border);
+    box-shadow: var(--ent-tab-box-shadow);
+    
     > * {
       padding: 0;
       margin: 0;
@@ -24,14 +32,14 @@
     margin: 0;
     padding: 0;
     display: flex;
-    background-color: $color-light;
-    box-shadow: $box-shadow;
+    background-color: var(--ent-tab-container-bg);
+    border-bottom: var(--ent-tab-border-width) var(--ent-tab-border-style) var(--ent-tab-border);
+    box-shadow: var(--ent-tab-box-shadow);
     
     > .ent-tab-item {
 
       cursor: pointer;
       display: flex;
-      background-color: $color-softlight;
       
       .ent-tab-content {
         padding: 0.625rem 1.5rem;
@@ -41,13 +49,16 @@
         justify-content: center;
         align-items: center;
       }
-
+      &:hover {
+        background-color: var(--ent-tab-active-bg);
+      }
       &.active {
+        background-color: var(--ent-tab-active-bg);
+        
         > .ent-tab-close {
           display: flex;
           padding: 0.5rem;
           width: fit-content;
-
           border-inline-start: $border;
         }
       }

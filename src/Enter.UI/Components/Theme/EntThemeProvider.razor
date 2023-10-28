@@ -2,6 +2,7 @@
 @using Microsoft.JSInterop
 @using Enter.UI.Core.Enums
 @namespace Enter.UI.Components
+@inherits EntBaseComponent
 
 <CascadingValue Value="this" IsFixed="true">
     <div dir="@Direction" class="@RootCss">
@@ -11,14 +12,14 @@
 
 <style>
     :root {
-      --drawer-width : @(@DrawerDefaultWidth)px;  
+      --ent-drawer-width : @(@DrawerDefaultWidth)px;  
     }
 </style>
 
 @code {
-
    
-    protected string RootCss => new  CssClassBuilder("ent-ui")
+    protected string RootCss =>CssClassBuilder
+        .AddClass("ent-ui")
         .AddClass("ent-rtl",Rtl)
         .AddClass("ent-ltr",!Rtl)
         .AddClass("ent-dark-mode",DarkMode)
@@ -26,6 +27,9 @@
     
     [Inject]
     public IEntSharedJsService SharedJsService { get; set; }
+    
+    [Inject]
+    public IEntJsService EntJsService { get; set; }
     
     [Parameter]
     public RenderFragment ChildContent { get; set; } = default!;
@@ -68,23 +72,43 @@
         StateHasChanged();
     }
     
-    public void EnableDarkMode()
+    public async Task EnableDarkMode()
     {
         DarkMode = true;
+       await SharedJsService.SetAttributeByQuerySelectorAsync("html","data-theme", "dark");
         StateHasChanged();
     }
-    public void DisableDarkMode()
+    public async Task DisableDarkMode()
     {
         DarkMode = false;
+        await SharedJsService.SetAttributeByQuerySelectorAsync("html","data-theme", "light");
         StateHasChanged();
     }
-    public void ToggleDarkMode()
+    public async Task ToggleDarkMode()
     {
-        DarkMode = !DarkMode;
-        StateHasChanged();
+        if (DarkMode)
+        {
+           await DisableDarkMode();
+        }
+        else
+        {
+         await   EnableDarkMode();
+        }
     }
-    
-    
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (DarkMode)
+        {
+            await EnableDarkMode();
+        }
+        else
+        {
+            await   DisableDarkMode();
+        }
+    }
+
+
     [JSInvokable("OnBreakpointEventListener")]
     public async Task OnBreakpointEventListener(string breakpoint)
     {

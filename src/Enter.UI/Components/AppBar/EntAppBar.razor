@@ -1,7 +1,11 @@
 ﻿@inherits EntBaseComponent
 @namespace Enter.UI.Components
 @using Enter.UI.Core;
-<div @attributes="@AdditionalAttributes"  class="@cssClass">
+<div @attributes="@AdditionalAttributes" class="@cssClass">
+    @if (ShowToggle)
+    {
+        <EntIcon Click="ToggleClick" class="ent-app-bar-toggle cursor-pointer" Type="EntIconType.IconTag" Icon="fa-light fa-bars"/>
+    }
     <b class="ent-app-bar-title">@Title</b>
     <div class="ent-app-bar-content">@ChildContent</div>
 </div>
@@ -9,15 +13,18 @@
 @code {
     
     protected string cssClass => CssClassBuilder
-        .AddClass("ent-app-bar")
+        .AddClass("ent-appbar")
         .Build();
 
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
+    
+    [Parameter]
+    public EventCallback ToggleClick { get; set; }
 
     [Parameter]
-    public RenderFragment EndContent { get; set; } = default!;
-
+    public bool ShowToggle { get; set; } = false;
+    
     [Parameter]
     public string Title { get; set; }
 

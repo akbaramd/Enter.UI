@@ -14,5 +14,7 @@ namespace Enter.UI.JsService
         Task<BoundingClientRect> GetBoundingClientRect(ElementReference reference);
         
         Task InitializeBreakpointEvent<T>(DotNetObjectReference<T> reference) where T : class;
+
+        Task SetAttributeByQuerySelectorAsync(string selector, string key, string value);
     }
 }

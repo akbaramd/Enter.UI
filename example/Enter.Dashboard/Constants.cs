@@ -4,65 +4,77 @@ namespace Enter.Dashboard
 {
     public static class Constants
     {
+        static Guid id = Guid.NewGuid();
         public static Roles DeveloperRole = new Roles()
         {
-            Id = Guid.NewGuid(),
-            Title = "Developer",
+            Id = id,
+            Text = "Developer",
             Value = "Developer",
-            Icon = "fa-light fa-users",
             Childrens = new List<Roles> {
                 new Roles()
                 {
                     Id = Guid.NewGuid(),
-                    Title = "Junior Developer",
+                    Text = "Junior Developer",
                     Value = "Junior Developer",
-                    Icon = "fa-light fa-users",
+                    ParentId = id
+                   
                 },
                  new Roles()
                 {
                     Id = Guid.NewGuid(),
-                    Title = "Middle Developer",
+                    Text = "Middle Developer",
                     Value = "Normal Developer",
-                    Icon = "fa-light fa-users",
                     Childrens = new List<Roles> {
                         new Roles()
                         {
                             Id = Guid.NewGuid(),
-                            Title = "Normal Front Developer",
+                            Text = "Normal Front Developer",
                             Value = "Normal Front Developer",
-                            Icon = "fa-light fa-home",
                         },
                         new Roles()
                         {
                             Id = Guid.NewGuid(),
-                            Title = "Normal Backend Developer",
+                            Text = "Normal Backend Developer",
                             Value = "Normal Backend Developer",
-                            Icon = "fa-light fa-note",
                         },
-                    }
+                    },
+                    ParentId = id
                 },
                 new Roles()
                 {
                     Id = Guid.NewGuid(),
-                    Title = "Expert Developer",
+                    Text = "Expert Developer",
                     Value = "Expert Developer",
-                    Icon = "fa-light fa-close",
+                    ParentId = id
                 }
             }
         };
-
+        
+        
         public static Roles AdminRole = new Roles()
         {
             Id = Guid.NewGuid(),
-            Title = "Admin",
+            Text = "Admin",
             Value = "Admin",
-            Icon = "fa-light fa-user"
         };
 
         public static List<Roles> Roles = new List<Roles>()
         {
             AdminRole,
-            DeveloperRole
+            DeveloperRole,
+        };
+        public static List<Roles> RawRoles = new List<Roles>()
+        {
+            AdminRole,
+            DeveloperRole,
+            new Roles()
+            {
+                Id = Guid.NewGuid(),
+                Text = "Junior Developer",
+                Value = "Junior Developer",
+                ParentId = id
+                   
+            }
         };
 
         public static List<Users> Users = new List<Users>()

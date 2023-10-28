@@ -29,6 +29,8 @@ namespace Enter.UI
             services.AddSingleton<IEntToastService, EntToastService>();
             services.AddSingleton<IEntJsService, EntJsService>();
             services.AddSingleton<IEntSharedJsService , EntSharedJsService>();
+            
+       
         }
         
         public static string GetPropertyName<TProp>(this Expression<Func<TProp>> expression)
@@ -36,6 +38,17 @@ namespace Enter.UI
             var memberExpression = (MemberExpression)expression.Body;
             return memberExpression.Member.Name;
         }
+
+        public static void TryAdd<T>(this List<T> list, T item)
+        {
+            if (list.Any(x=>x != null && x.Equals(item)))
+            {
+                list.Add(item);
+            }
+        }
+     
+
+    
         
     }
 }

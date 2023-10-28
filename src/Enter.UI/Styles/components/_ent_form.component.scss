@@ -1,44 +1,43 @@
-﻿.ent-input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-
-    > .ent-input-group-label {
-        font-size: map-get($font-sizes, "medium");
-        font-weight: 500;
-    }
-    
-
-    > .ent-input-group-validation {
-        font-size: map-get($font-sizes, "subtitle");
-        color: $color-red-500;
-       
-    }
+﻿
+:root {
+    //input 
+    --ent-input-bg: var(--ent-bg-tertiary);
+    --ent-input-color: var(--ent-color-body);
+    --ent-input-border-color: #eee;
+    --ent-input-border-size: var(--ent-border-width);
+    --ent-input-border-style: solid;
+    --ent-input-border-radius: var(--ent-border-radius);
+    --ent-input-space-y: .5rem;
+    --ent-input-space-x: .9rem;
+    --ent-input-icon-color: var(--ent-color-secondary);
 }
 
-// input
 
+// input
 .ent-input {
     width: 100%;
-    min-width: 300px;
-    border: $border;
+    border: var(--ent-input-border-size) solid var(--ent-input-border-color);
+    border-radius: var(--ent-card-border-radius);
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: $color-light;
+    background-color: var(--ent-input-bg);
+    color: var(--ent-input-color);
     > .ent-input-field {
         flex-grow: 1;
-        padding: 0.625rem 1.5rem;
+        padding: var(--ent-input-space-y) var(--ent-input-space-x);
         border: 0;
         outline: 0;
+        background-color: transparent;
+        color: var(--ent-input-color);
     }
 
     > .ent-input-icon {
         display: flex;
         flex-direction: row;
         align-items: center;
-        padding: 0.625rem 1.5rem;
-        color: map-get($colors, "mute");
+        padding: var(--ent-input-space-y) var(--ent-input-space-x);
+        color: var(--ent-input-icon-color);
     }
 }
 
@@ -79,7 +78,7 @@
 
         .ent-select-input-placeholder {
             font-size: map-get($font-sizes,"description");
-            color: map-get($colors, "mute");
+            color: map-get($backgrounds, "mute");
         }
     }
 }
@@ -104,10 +103,28 @@
 .ent-input-validation {
 
     &.modified.valid {
-        border-color: $color-neutral-300;
+        //border-color: $color-neutral-300;
     }
 
     &.modified.invalid {
         border-color: $color-red-300;
+    }
+}
+
+.ent-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    > .ent-input-group-label {
+        font-size: map-get($font-sizes, "medium");
+        font-weight: 500;
+    }
+
+
+    > .ent-input-group-validation {
+        font-size: map-get($font-sizes, "subtitle");
+        color: $color-red-500;
+
     }
 }

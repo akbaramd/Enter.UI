@@ -7,9 +7,11 @@
             <ul class="ent-tab-item-container">
                 @foreach (var tabPanels in TabPanels)
                 {
-                    var activeClass = (IsActivePanel(tabPanels.Id) ? "active " + ActiveClass : "");
+                     
+                    
+                    
 
-                    <li class="@ItemCss @activeClass" @onclick="() => ActiveTab(tabPanels.Id)" @key="@tabPanels.Id">
+                    <li class="@getItemClass(IsActivePanel(tabPanels.Id))" @onclick="() => ActiveTab(tabPanels.Id)" @key="@tabPanels.Id">
                         <div class="ent-tab-content">
                             <EntIcon Icon="@tabPanels.Icon"/>
                             <span>@tabPanels.Title</span>
@@ -24,7 +26,7 @@
                 }
                 @if (Closeable)
                 {
-                    <li class="@ItemCss">
+                    <li class="@getItemClass(false)">
                         <div @onclick="OnTabAllClose" class="ent-tab-action ">
                             <EntIcon Icon="fa-light fa-trash" Type="EntIconType.IconTag"/>
                         </div>

@@ -4,6 +4,7 @@
     initialize(dotNetRef, id , show) {
         this._dotNetRef = dotNetRef;
         this.toggle(id, show);
+       
     }
 
 

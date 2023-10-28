@@ -273,31 +273,284 @@ $color-rose-800: #9f1239;
 $color-rose-900: #881337;
 $color-rose-950: #4c0519;
 
+$color-body: var(--ent-bg-body);
+$color-secondary: var(--ent-bg-secondary);
+$color-tertiary: var(--ent-bg-tertiary);
 
-$color-primary: var(--ent-color-primary);
-$color-secondary: var(--ent-color-secondary);
-
-$color-light: var(--ent-color-light);
-$color-softlight: var(--ent-color-softlight);
-$color-deeplight: var(--ent-color-deeplight);
-$color-dark: var(--ent-color-dark);
-$color-softdark: var(--ent-color-softdark);
-$color-deepdark: var(--ent-color-deepdark);
+$color-primary: $color-indigo-500;
+$color-light: $color-indigo-50;
+$color-dark: $color-indigo-950;
 
 $color-muted: $color-neutral-700;
+
+$backgrounds: (
+        "white": white,
+        "black": black,
+        "primary": $color-primary,
+        "body": $color-body,
+        "secondary": $color-secondary,
+        "tertiary": $color-tertiary,
+        "light":$color-light,
+        "mute":$color-muted,
+        "dark":$color-dark,
+        'success': $color-green-500,
+        'danger': $color-red-500,
+        'warning': $color-orange-500,
+        'info': $color-sky-400,
+        'late-50': $color-late-50,
+        'late-100': $color-late-100,
+        'late-200': $color-late-200,
+        'late-300': $color-late-300,
+        'late-400': $color-late-400,
+        'late-500': $color-late-500,
+        'late-600': $color-late-600,
+        'late-700': $color-late-700,
+        'late-800': $color-late-800,
+        'late-900': $color-late-900,
+        'late-950': $color-late-950,
+        'gray-50': $color-gray-50,
+        'gray-100': $color-gray-100,
+        'gray-200': $color-gray-200,
+        'gray-300': $color-gray-300,
+        'gray-400': $color-gray-400,
+        'gray-500': $color-gray-500,
+        'gray-600': $color-gray-600,
+        'gray-700': $color-gray-700,
+        'gray-800': $color-gray-800,
+        'gray-900': $color-gray-900,
+        'gray-950': $color-gray-950,
+        'zinc-50': $color-zinc-50,
+        'zinc-100': $color-zinc-100,
+        'zinc-200': $color-zinc-200,
+        'zinc-300': $color-zinc-300,
+        'zinc-400': $color-zinc-400,
+        'zinc-500': $color-zinc-500,
+        'zinc-600': $color-zinc-600,
+        'zinc-700': $color-zinc-700,
+        'zinc-800': $color-zinc-800,
+        'zinc-900': $color-zinc-900,
+        'zinc-950': $color-zinc-950,
+        'neutral-50': $color-neutral-50,
+        'neutral-100': $color-neutral-100,
+        'neutral-200': $color-neutral-200,
+        'neutral-300': $color-neutral-300,
+        'neutral-400': $color-neutral-400,
+        'neutral-500': $color-neutral-500,
+        'neutral-600': $color-neutral-600,
+        'neutral-700': $color-neutral-700,
+        'neutral-800': $color-neutral-800,
+        'neutral-900': $color-neutral-900,
+        'neutral-950': $color-neutral-950,
+        'stone-50': $color-stone-50,
+        'stone-100': $color-stone-100,
+        'stone-200': $color-stone-200,
+        'stone-300': $color-stone-300,
+        'stone-400': $color-stone-400,
+        'stone-500': $color-stone-500,
+        'stone-600': $color-stone-600,
+        'stone-700': $color-stone-700,
+        'stone-800': $color-stone-800,
+        'stone-900': $color-stone-900,
+        'stone-950': $color-stone-950,
+        'red-50': $color-red-50,
+        'red-100': $color-red-100,
+        'red-200': $color-red-200,
+        'red-300': $color-red-300,
+        'red-400': $color-red-400,
+        'red-500': $color-red-500,
+        'red-600': $color-red-600,
+        'red-700': $color-red-700,
+        'red-800': $color-red-800,
+        'red-900': $color-red-900,
+        'red-950': $color-red-950,
+        'orange-50': $color-orange-50,
+        'orange-100': $color-orange-100,
+        'orange-200': $color-orange-200,
+        'orange-300': $color-orange-300,
+        'orange-400': $color-orange-400,
+        'orange-500': $color-orange-500,
+        'orange-600': $color-orange-600,
+        'orange-700': $color-orange-700,
+        'orange-800': $color-orange-800,
+        'orange-900': $color-orange-900,
+        'orange-950': $color-orange-950,
+        'amber-50': $color-amber-50,
+        'amber-100': $color-amber-100,
+        'amber-200': $color-amber-200,
+        'amber-300': $color-amber-300,
+        'amber-400': $color-amber-400,
+        'amber-500': $color-amber-500,
+        'amber-600': $color-amber-600,
+        'amber-700': $color-amber-700,
+        'amber-800': $color-amber-800,
+        'amber-900': $color-amber-900,
+        'amber-950': $color-amber-950,
+        'yellow-50': $color-yellow-50,
+        'yellow-100': $color-yellow-100,
+        'yellow-200': $color-yellow-200,
+        'yellow-300': $color-yellow-300,
+        'yellow-400': $color-yellow-400,
+        'yellow-500': $color-yellow-500,
+        'yellow-600': $color-yellow-600,
+        'yellow-700': $color-yellow-700,
+        'yellow-800': $color-yellow-800,
+        'yellow-900': $color-yellow-900,
+        'yellow-950': $color-yellow-950,
+        'lime-50': $color-lime-50,
+        'lime-100': $color-lime-100,
+        'lime-200': $color-lime-200,
+        'lime-300': $color-lime-300,
+        'lime-400': $color-lime-400,
+        'lime-500': $color-lime-500,
+        'lime-600': $color-lime-600,
+        'lime-700': $color-lime-700,
+        'lime-800': $color-lime-800,
+        'lime-900': $color-lime-900,
+        'lime-950': $color-lime-950,
+        'green-50': $color-green-50,
+        'green-100': $color-green-100,
+        'green-200': $color-green-200,
+        'green-300': $color-green-300,
+        'green-400': $color-green-400,
+        'green-500': $color-green-500,
+        'green-600': $color-green-600,
+        'green-700': $color-green-700,
+        'green-800': $color-green-800,
+        'green-900': $color-green-900,
+        'green-950': $color-green-950,
+        'emerald-50': $color-emerald-50,
+        'emerald-100': $color-emerald-100,
+        'emerald-200': $color-emerald-200,
+        'emerald-300': $color-emerald-300,
+        'emerald-400': $color-emerald-400,
+        'emerald-500': $color-emerald-500,
+        'emerald-600': $color-emerald-600,
+        'emerald-700': $color-emerald-700,
+        'emerald-800': $color-emerald-800,
+        'emerald-900': $color-emerald-900,
+        'emerald-950': $color-emerald-950,
+        'teal-50': $color-teal-50,
+        'teal-100': $color-teal-100,
+        'teal-200': $color-teal-200,
+        'teal-300': $color-teal-300,
+        'teal-400': $color-teal-400,
+        'teal-500': $color-teal-500,
+        'teal-600': $color-teal-600,
+        'teal-700': $color-teal-700,
+        'teal-800': $color-teal-800,
+        'teal-900': $color-teal-900,
+        'teal-950': $color-teal-950,
+        'cyan-50': $color-cyan-50,
+        'cyan-100': $color-cyan-100,
+        'cyan-200': $color-cyan-200,
+        'cyan-300': $color-cyan-300,
+        'cyan-400': $color-cyan-400,
+        'cyan-500': $color-cyan-500,
+        'cyan-600': $color-cyan-600,
+        'cyan-700': $color-cyan-700,
+        'cyan-800': $color-cyan-800,
+        'cyan-900': $color-cyan-900,
+        'cyan-950': $color-cyan-950,
+        'sky-50': $color-sky-50,
+        'sky-100': $color-sky-100,
+        'sky-200': $color-sky-200,
+        'sky-300': $color-sky-300,
+        'sky-400': $color-sky-400,
+        'sky-500': $color-sky-500,
+        'sky-600': $color-sky-600,
+        'sky-700': $color-sky-700,
+        'sky-800': $color-sky-800,
+        'sky-900': $color-sky-900,
+        'sky-950': $color-sky-950,
+        'blue-50': $color-blue-50,
+        'blue-100': $color-blue-100,
+        'blue-200': $color-blue-200,
+        'blue-300': $color-blue-300,
+        'blue-400': $color-blue-400,
+        'blue-500': $color-blue-500,
+        'blue-600': $color-blue-600,
+        'blue-700': $color-blue-700,
+        'blue-800': $color-blue-800,
+        'blue-900': $color-blue-900,
+        'blue-950': $color-blue-950,
+        'indigo-50': $color-indigo-50,
+        'indigo-100': $color-indigo-100,
+        'indigo-200': $color-indigo-200,
+        'indigo-300': $color-indigo-300,
+        'indigo-400': $color-indigo-400,
+        'indigo-500': $color-indigo-500,
+        'indigo-600': $color-indigo-600,
+        'indigo-700': $color-indigo-700,
+        'indigo-800': $color-indigo-800,
+        'indigo-900': $color-indigo-900,
+        'indigo-950': $color-indigo-950,
+        'violet-50': $color-violet-50,
+        'violet-100': $color-violet-100,
+        'violet-200': $color-violet-200,
+        'violet-300': $color-violet-300,
+        'violet-400': $color-violet-400,
+        'violet-500': $color-violet-500,
+        'violet-600': $color-violet-600,
+        'violet-700': $color-violet-700,
+        'violet-800': $color-violet-800,
+        'violet-900': $color-violet-900,
+        'violet-950': $color-violet-950,
+        'purple-50': $color-purple-50,
+        'purple-100': $color-purple-100,
+        'purple-200': $color-purple-200,
+        'purple-300': $color-purple-300,
+        'purple-400': $color-purple-400,
+        'purple-500': $color-purple-500,
+        'purple-600': $color-purple-600,
+        'purple-700': $color-purple-700,
+        'purple-800': $color-purple-800,
+        'purple-900': $color-purple-900,
+        'purple-950': $color-purple-950,
+        'fuchsia-50': $color-fuchsia-50,
+        'fuchsia-100': $color-fuchsia-100,
+        'fuchsia-200': $color-fuchsia-200,
+        'fuchsia-300': $color-fuchsia-300,
+        'fuchsia-400': $color-fuchsia-400,
+        'fuchsia-500': $color-fuchsia-500,
+        'fuchsia-600': $color-fuchsia-600,
+        'fuchsia-700': $color-fuchsia-700,
+        'fuchsia-800': $color-fuchsia-800,
+        'fuchsia-900': $color-fuchsia-900,
+        'fuchsia-950': $color-fuchsia-950,
+        'pink-50': $color-pink-50,
+        'pink-100': $color-pink-100,
+        'pink-200': $color-pink-200,
+        'pink-300': $color-pink-300,
+        'pink-400': $color-pink-400,
+        'pink-500': $color-pink-500,
+        'pink-600': $color-pink-600,
+        'pink-700': $color-pink-700,
+        'pink-800': $color-pink-800,
+        'pink-900': $color-pink-900,
+        'pink-950': $color-pink-950,
+        'rose-50': $color-rose-50,
+        'rose-100': $color-rose-100,
+        'rose-200': $color-rose-200,
+        'rose-300': $color-rose-300,
+        'rose-400': $color-rose-400,
+        'rose-500': $color-rose-500,
+        'rose-600': $color-rose-600,
+        'rose-700': $color-rose-700,
+        'rose-800': $color-rose-800,
+        'rose-900': $color-rose-900,
+        'rose-950': $color-rose-950
+);
 
 $colors: (
         "white": white,
         "black": black,
-        "primary": $color-primary,
-        "secondary": $color-secondary,
+        "primary": var(--ent-color-body),
+        "secondary": var(--ent-color-secondary),
+        "tertiary": var(--ent-color-tertiary),
+        "emphasis": var(--ent-color-emphasis),
         "light":$color-light,
-        "deeplight":$color-deeplight,
-        "softlight":$color-softlight,
         "mute":$color-muted,
         "dark":$color-dark,
-        "softdark":$color-softdark,
-        "deepdark":$color-deepdark,
         'success': $color-green-500,
         'danger': $color-red-500,
         'warning': $color-orange-500,
@@ -547,11 +800,10 @@ $colors: (
 );
 $font-size-space: var(--ent-body-font-size-space);
 $font-size: var(--ent-body-font-size);
+$font-weight: var(--ent-body-font-weight);
+$font-line-height: var(--ent-body-line-height);
 
-$font-family: Vazirmatn !default;
-$font-families: (
-        Vazirmatn: $font-family,
-) !default;
+
 
 $font-sizes: (
         heading: calc($font-size + ($font-size-space * 8) ),
@@ -563,18 +815,18 @@ $font-sizes: (
         subtitle: calc($font-size - ($font-size-space * 2))
 ) !default;
 
-$border-radius: 1rem !default;
+$border-radius: 0.25rem !default;
 
 $border-radiuses: (
         0: 0,
-        1: $border-radius * 0.25,
-        2: $border-radius * 0.5,
-        3: $border-radius * 0.75,
-        4: $border-radius * 1,
+        1: $border-radius ,
+        2: $border-radius * 2,
+        3: $border-radius * 3,
+        4: $border-radius * 4,
 ) !default;
 
 
-$border-width: 1px !default;
+$border-width: var(--ent-border-width) !default;
 $border-widths: (
         1: 1px,
         2: 2px,
@@ -583,11 +835,17 @@ $border-widths: (
         5: 5px,
 ) !default;
 $border-style: solid !default;
-$border-color: var(--ent-color-border) !default;
+$border-color: var(--ent-border-color) !default;
 $border: $border-width $border-style $border-color;
-$box-shadow : 0 1px 2px rgba(56,65,74,.15);
+
+$box-shadow :        0 1px 3px var(--ent-shadow-color) , 0 1px 1px var(--ent-shadow-shade);
+$box-shadow-top:     0px -1px 3px var(--ent-shadow-color) , 0px -1px 1px var(--ent-shadow-shade);
+$box-shadow-bottom:  0px 1px 3px var(--ent-shadow-color) , 0px 1px 1px var(--ent-shadow-shade);
+$box-shadow-right:   1px 0px 3px var(--ent-shadow-color) , 1px 0px 1px var(--ent-shadow-shade);
+$box-shadow-left:   -1px 0px 3px var(--ent-shadow-color) , -1px 0px 1px var(--ent-shadow-shade);
 
 $size: 1rem;
+
 $sizes: (
         0: 0,
         1: $size * 0.25,
@@ -1174,7 +1432,7 @@ $utilities: (
                 propertyRtl: background,
                 cssName: bg,
                 breakpoint: true,
-                values: $colors,
+                values: $backgrounds,
         ),
         border: (
                 property: border,
@@ -1191,7 +1449,7 @@ $utilities: (
                 propertyRtl: border-color,
                 cssName: border,
                 breakpoint: true,
-                values: $colors,
+                values: $backgrounds,
         ),
         border-top: (
                 property: border-top,
@@ -1354,7 +1612,11 @@ $utilities: (
                 cssName: box-shadow,
                 breakpoint: true,
                 values: (
-                        bull: $box-shadow,
+                        null:   $box-shadow,
+                        top:   $box-shadow-top,
+                        bottom:   $box-shadow-bottom,
+                        right: $box-shadow-right,
+                        left:   $box-shadow-left,
                 ),
         )
 );

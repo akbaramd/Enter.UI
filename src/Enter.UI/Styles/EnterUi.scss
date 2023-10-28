@@ -1,7 +1,7 @@
 @import "themes/basic.theme";
 @import "themes/dark.theme";
 
-@import "_normalize.scss";
+@import "normalize";
 @import "_variables.scss";
 @import "_mixins.scss";
 @import "components/components";
@@ -10,8 +10,13 @@
 html,
 body {
   box-sizing: border-box;
-  background-color: var(--ent-color-deeplight);
-  color: var(--ent-color-text);
+  background-color: var(--ent-bg-page);
+  color: var(--ent-color-body);
+  font-size: var(--ent-body-font-size);
+  font-weight: var(--ent-body-font-weight);
+  line-height: var(--ent-body-line-height);
+  padding: 0;
+  margin: 0;
 }
 
 * {
@@ -23,12 +28,7 @@ body {
   direction: rtl;
 }
 
-.ent-ui {
-  box-sizing: border-box;
-  background-color: var(--ent-color-deeplight);
-  color: var(--ent-color-text);
-  font-size: $font-size;
-}
+
 
 p {
   margin-bottom: map-get($font-sizes, "medium");
@@ -74,17 +74,7 @@ small, .text_small {
 .cursor-pointer {
   cursor: pointer;
 }
-button,
-input,
-optgroup,
-select,
-textarea {
-  font-family: inherit; /* 1 */
-  font-size: 100%; /* 1 */
-  line-height: 1.15; /* 1 */
-  margin: 0; /* 2 */
-  background-color: $color-deeplight;
-}
+
 .ent-rtl {
 
 

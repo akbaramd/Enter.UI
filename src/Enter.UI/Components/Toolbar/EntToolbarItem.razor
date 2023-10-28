@@ -1,0 +1,29 @@
+﻿@namespace Enter.UI.Components
+@inherits Enter.UI.Core.Bases.EntBaseComponent
+<CascadingValue Value="@this">
+    <div @attributes="AdditionalAttributes" class="@RootClass" >
+        @if (!string.IsNullOrWhiteSpace(Icon))
+        {
+            <EntIcon Icon="@Icon" Size="6" class="ent-toolbar-item-icon"/>
+        }
+        
+        @if (!string.IsNullOrWhiteSpace(Text))
+        {
+            <EntText Type="EntTextType.Text" class="ent-toolbar-item-text">@Text</EntText>
+        }
+    </div>
+</CascadingValue>
+@code {
+
+    private string RootClass => CssClassBuilder
+        .AddClass("ent-toolbar-item")
+        .Build();
+
+
+    [Parameter]
+    public string? Text { get; set; } = string.Empty;
+    
+    [Parameter]
+    public string? Icon { get; set; } = string.Empty;
+
+}

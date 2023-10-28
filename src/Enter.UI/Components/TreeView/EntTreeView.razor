@@ -1,49 +1,24 @@
 ﻿@namespace Enter.UI.Components
-@inherits EntBaseComponent
+
 @using Enter.UI.Core
-@typeparam TType
-<ul @attributes="@AdditionalAttributes" class="@RootCss">
-    @if (DataSource != null)
-    {
-        @foreach (var item in DataSource)
+@typeparam TType where TType : IEntTreeViewItem<TType,TValue>
+@typeparam TValue
+@inherits EntBaseComponent  
+
+<CascadingValue Value="this" IsFixed="true">
+    <ul @attributes="@AdditionalAttributes" class="@RootCss">
+        @if (DataSource != null)
         {
-            if (item is IEntTreeView<TType> treeViewItem)
+            @foreach (var item in DataSource)
             {
-                var itemCss = treeViewItem.Expanded?"expanded":"";
-                <li class="ent-treeview-item @itemCss">
-
-                    <div class="ent-treeview-item-list-icon" @onclick="()=>OnItemExpandClickCallback(treeViewItem)">
-                        @if (treeViewItem.Childrens != null && treeViewItem.Childrens.Any())
-                        {
-                            <EntIcon Size="4" Icon="@EntIcons.ChevronDown"/>
-                        }
-                    </div>
-
-                    <InputCheckbox class="ent-treeview-item-checkbox" Value="@treeViewItem.Checked" ValueChanged="(x)=>OnItemClickCallback(treeViewItem,x)" 
-                                   ValueExpression="()=>treeViewItem.Checked" />
-
-                    @if (treeViewItem.Icon != null)
-                    {
-                        <div class="ent-treeview-item-icon">
-                            <EntIcon Size="4" Icon="@treeViewItem.Icon"/>
-                        </div>
-                    }
-                    <span class="ent-treeview-item-text">
-                        @TextFunc.Invoke(item)
-                    </span>
-
-                </li>
-
-                if (treeViewItem.Childrens != null && treeViewItem.Childrens.Any())
-                {
-                    <EntExpandable @bind-Expanded="treeViewItem.Expanded" class="ent-treeview-childrens-expanable">
-                        <EntTreeView class="ent-treeview-childrens" DataSource="treeViewItem.Childrens" TextFunc="@TextFunc" ValueFunc="@ValueFunc" SelectedValues="@SelectedValues" SelectedValuesChanged="@SelectedValuesChanged"/>
-                    </EntExpandable>
-                }
+               
+                <EntTreeViewItem Item="@item" />
+               
             }
         }
-    }
-</ul>
+    </ul>
+</CascadingValue>
+
 
 @code {
 
@@ -57,61 +32,69 @@
 
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public bool MultiSelect { get; set; } = false;
+
+    [Parameter]
+    public TValue SelectedValue { get; set; } = default!;
     
     [Parameter]
-    public List<string> SelectedValues { get; set; } = new List<string>();
+    public EventCallback<TValue> SelectedValueChanged { get; set; }
     
     [Parameter]
-    public EventCallback<List<string>> SelectedValuesChanged { get; set; } 
-
+    public List<TValue> SelectedValues { get; set; } = new List<TValue>();
+    
     [Parameter]
-    public List<TType>? DataSource { get; set; } = new List<TType>();
+    public EventCallback<List<TValue>> SelectedValuesChanged { get; set; }
 
+    
     [Parameter]
-    public Func<TType, string> ValueFunc { get; set; }
+    public List<TType> DataSource { get; set; }
+    
 
-    [Parameter]
-    public Func<TType, string> TextFunc { get; set; }
-
-
-    public void OnItemClickCallback(in IEntTreeView<TType> item, bool? value = null)
+    public void ItemClick(IEntTreeViewItem<TType,TValue> item,IEntTreeViewItem<TType,TValue>? parentItem = null , bool fromChild = false) 
     {
-        if (value == null)
+        if (MultiSelect)
         {
-            item.Checked = item.Checked == null ? true : !item.Checked;
-        }
-        else
-        {
-            item.Checked = value.Value;
-        }
-
-        if (item.Childrens != null)
-        {
-            foreach (var it in item.Childrens)
+            
+            var shouldAdd = false;
+            if (parentItem != null)
             {
-                if (it is IEntTreeView<TType> treeViewItem)
+                shouldAdd = SelectedValues.Contains(parentItem.Value);
+            }
+            else
+            {
+               shouldAdd = !SelectedValues.Contains(item.Value);
+            }
+
+            if (shouldAdd)
+            {
+                
+                SelectedValues.Add(item.Value);
+                SelectedValues = SelectedValues.Distinct().ToList();
+            }
+            else
+            {
+                SelectedValues.Remove(item.Value);
+            }
+
+            if (item.Childrens != null && !fromChild)
+            {
+                foreach (var it in item.Childrens)
                 {
-                    OnItemClickCallback(treeViewItem, item.Checked);
+                    ItemClick(it, item);
                 }
             }
-        }
 
-       
-
-        if (item.Checked)
-        {
-            SelectedValues.Add(ValueFunc.Invoke((TType)item));
+            SelectedValuesChanged.InvokeAsync(SelectedValues);
         }
         else
         {
-            SelectedValues.Remove(ValueFunc.Invoke((TType)item));
+            SelectedValue = item.Value;
+            SelectedValueChanged.InvokeAsync(SelectedValue);
         }
-        SelectedValuesChanged.InvokeAsync(SelectedValues);
-    }
-
-    private void OnItemExpandClickCallback(in IEntTreeView<TType> item)
-    {
-        item.Expanded = item.Expanded == null ? true : !item.Expanded;
+        StateHasChanged();
     }
 
 }

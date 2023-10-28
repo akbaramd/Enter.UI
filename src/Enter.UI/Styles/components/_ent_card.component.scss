@@ -1,21 +1,31 @@
-﻿.ent-card {
-    display: flex;
-    flex-direction: column;
-    border-left: $border;
-    border-right: $border;
-    border-top: $border;
-    background-color: $color-softlight;
-    box-shadow: $box-shadow;
+﻿:root {
+    --ent-card-space-y: 1rem;
+    --ent-card-space-x: 1rem;
+    --ent-card-bg: var(--ent-bg-body);
+    --ent-card-header-bg: var(--ent-bg-body);
+    --ent-card-header-color: var(--ent-color-body);
+    --ent-card-border-width: var(--ent-border-width);
+    --ent-card-border-style: var(--ent-border-style);
+    --ent-card-border-color: var(--ent-border-color);
+    --ent-card-border-radius: var(--ent-border-radius);
+    --ent-card-box-shadow: var(--ent-shadow);
+}
 
+.ent-card {
+    background-color: var(--ent-card-bg);
+    border: var(--ent-card-border-width) var(--ent-card-border-style) var(--ent-card-border-color);
+    border-radius: var(--ent-card-border-radius);
+    box-shadow: var(--ent-card-box-shadow);
+    overflow: hidden;
     .ent-card-header {
-        padding: 1rem;
+        padding: var(--ent-card-space-y) var(--ent-card-space-x);
+        border-bottom: var(--ent-card-border-width) var(--ent-card-border-style) var(--ent-card-border-color);;
+        background-color: var(--ent-card-header-bg);
+        color: var(--ent-card-header-color);
         display: flex;
         align-items: center;
         gap: 1rem;
-        border-bottom: $border;
         cursor: pointer;
-        
-        background-color: $color-light;
         
         .ent-card-header-title {
             font-weight: bold;
@@ -37,14 +47,11 @@
     }
 
     .ent-card-content {
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
-        border-bottom: $border;
+        padding: var(--ent-card-space-y) var(--ent-card-space-x);
     }
 
     .ent-card-footer {
-        padding: 1rem;
-        border-bottom: $border;
+        border-top: var(--ent-card-border-width) var(--ent-card-border-style) var(--ent-card-border-color);;
+        padding: var(--ent-card-space-y) var(--ent-card-space-x);
     }
 }

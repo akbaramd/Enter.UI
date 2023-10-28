@@ -1,17 +1,32 @@
-.ent-dark-mode {
-  
-        --ent-color-primary : #00ADB5;
-        --ent-color-secondary : #292e32;
+html[data-theme="dark"] {
+        // background
+        --ent-bg-body : #1a1d21;
+        --ent-bg-page : #111;
+        --ent-bg-secondary : #212529;
+        --ent-bg-tertiary:  #2a2d31;
+        
+        // color 
+        --ent-color-body: #ced4da;
+        --ent-color-emphasis : #fff;
+        --ent-color-secondary: #878a99;
+        --ent-color-tertiary: rgba(206, 212, 218, 0.75);
 
-        --ent-color-softlight : #1a1d21;
-        --ent-color-light : #212529;
-        --ent-color-deeplight : #292e32;
-        --ent-color-softdark : #f3f3f9;
-        --ent-color-dark : #F4F4F2;
-        --ent-color-deepdark : #f9fbfc;
+        // border
+        --ent-border-color: #32383e;
+        --ent-border-width: 1px;
+        --ent-border-style: solid;
+        --ent-border-radius: 0.25rem;
 
-        --ent-color-text : #F4F4F2;
+        // shadow
+        --ent-shadow: 0 1px 2px rgba(56, 65, 74, 0.15);
+        --ent-shadow-color: rgba(15,34,58, .05);
+        --ent-shadow-shade: rgba(15,34,58, .1);
 
-        --ent-color-border : #333;
+        //input 
+        --ent-input-bg: #262a2f;
+        --ent-input-color: var(--ent-color-body);
+        --ent-input-border-color: #2a2f34;
+        --ent-input-border-size: var(--ent-border-width);
+        --ent-input-border-radius: var(--ent-border-radius);
     
 }

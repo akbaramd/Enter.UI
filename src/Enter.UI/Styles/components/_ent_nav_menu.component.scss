@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   border: $border;
-  background-color: $color-softlight;
+  background-color: var(--ent-bg-body);
   > * {
     border-bottom: $border;
   }
@@ -19,6 +19,7 @@
       align-items: center;
       padding: .625rem 1.5rem;
       cursor: pointer;
+     
       
       > .ent-nav-menu-group-item-icon {
           margin-inline-end: 1rem;
@@ -37,12 +38,14 @@
 
     &.active {
      > .ent-nav-menu-group-item {
-       background-color: $color-deeplight;
+      
        > .ent-nav-menu-group-item-arrow-icon {
          margin-inline-start: 1rem;
          transform: rotate(180deg);
          transition: all 0.25s ease-in;
        }
+       
+       
      }
     }
     
@@ -51,6 +54,11 @@
       overflow: hidden;
       background-color: $color-light;
       
+      &.active {
+        > .ent-nav-menu-item {
+          background-color: var(--ent-bg-tertiary);
+        }
+      }
       
       > * {
         border-bottom: $border;
@@ -72,7 +80,7 @@
     cursor: pointer;
 
     &:hover {
-      background-color: map-get($colors,"lighteen");
+      background-color: map-get($backgrounds,"lighteen");
     }
     
     .ent-nav-menu-item-icon {
