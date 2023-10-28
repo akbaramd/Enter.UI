@@ -115,6 +115,8 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Components\Forms\EntFormGroup.razor" />
+    <_ContentIncludedByDefault Remove="Components\TreeView\EntTreeView.razor" />
+    <_ContentIncludedByDefault Remove="Components\TreeView\EntTreeViewItem.razor" />
   </ItemGroup>
 
 </Project>

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Enter.UI.Models
+namespace Enter.UI.Components
 {
     public class EntMdiTabInstance
     {
@@ -17,5 +17,14 @@ namespace Enter.UI.Models
         public Dictionary<string, object>? ComponentParameters { get; set; }
 
         public Func<Task>? OnActivated { get; set; }
+
+        internal Action<string> OnClose { get; set; }
+
+        public void Close()
+        {
+           OnClose.Invoke(Id);
+         
+        }
+
     }
 }

@@ -14,9 +14,7 @@
 
 @code {
     [CascadingParameter]
-    public EntModalInstance? ModalItem { get; set; }
-    
-
+    public EntMdiTabInstance? EntMdiTabInstance { get; set; }
     
     private int currentCount = 0;
 
@@ -24,8 +22,8 @@
     {
         currentCount++;
 
-        if (currentCount == 3 && ModalItem != null)
-           await ModalItem.CancelAsync();
+        if (currentCount == 3 && EntMdiTabInstance != null)
+            EntMdiTabInstance.Close();
     }
 
     protected override async Task OnInitializedAsync()
