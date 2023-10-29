@@ -13,7 +13,7 @@ namespace Enter.UI.Froala.Interops
 
             var module = await jsRuntime
                 .InvokeAsync<IJSObjectReference>("import",
-                    $"./_content/Enter.UI.Froala/Enter.UI.Froala.min.js");
+                    $"./_content/Enter.UI.Froala/Enter.Ui.Froala.js");
             await module.InvokeVoidAsync(
                 "FroalaFunctions.initialize");
         }
@@ -22,10 +22,9 @@ namespace Enter.UI.Froala.Interops
             IJSRuntime jsRuntime,
             ElementReference quillElement)
         {
-
             var module = await jsRuntime
                 .InvokeAsync<IJSObjectReference>("import",
-                    $"./_content/Enter.UI.Froala/Enter.UI.Froala.min.js");
+                    $"./_content/Enter.UI.Froala/Enter.Ui.Froala.min.js");
             await module.InvokeVoidAsync(
                 CommandCreateFroala,
                 quillElement);
