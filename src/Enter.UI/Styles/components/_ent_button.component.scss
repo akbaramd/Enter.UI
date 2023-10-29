@@ -1,5 +1,9 @@
-﻿.ent-btn {
-    padding: 0.5rem 1rem;
+﻿:root {
+    --ent-btn-border-size: var(--ent-border-width);
+    --ent-btn-border-style: solid;
+}
+.ent-btn {
+    padding: 0.625rem 1rem;
     border: 0;
     background-color:transparent;
     font-size: 1rem;
@@ -10,12 +14,137 @@
     border-radius: $border-radius;
     
     &.ent-btn-sm {
-        padding: .375rem 0.75rem;
+        padding: .5rem 0.75rem;
         font-size: map-get($font-sizes, "description");
     }
 
     &.ent-btn-lg {
-        padding: 0.625rem 1.25rem;
+        padding: 0.75rem 1.25rem;
         font-size: map-get($font-sizes, "caption");
+    }
+    
+    &.ent-btn-primary {
+        background-color: $bg-primary;
+        color: white;
+
+        &.ent-btn-outline {
+            background-color: transparent;
+            color: $bg-primary;
+            border: var(--ent-btn-border-size) var(--ent-btn-border-style) $bg-primary;
+            
+            &:hover {
+                background-color: $bg-primary;
+                color: white;
+            }
+        }
+        
+    }
+    &.ent-btn-light {
+        background-color: $bg-light;
+        color: $cl-dark;
+        
+        &.ent-btn-outline {
+            background-color: transparent;
+            color: $bg-light;
+            border: var(--ent-btn-border-size) var(--ent-btn-border-style) $bg-light;
+
+            &:hover {
+                background-color: $bg-light;
+                color: $cl-dark;
+            }
+        }
+        
+    }
+    &.ent-btn-dark {
+        background-color: $bg-dark;
+        color: $cl-light;
+
+        &.ent-btn-outline {
+            background-color: transparent;
+            color: $bg-dark;
+            border: var(--ent-btn-border-size) var(--ent-btn-border-style) $bg-dark;
+
+            &:hover {
+                background-color: $bg-dark;
+                color: $cl-light;
+            }
+        }
+    }
+    &.ent-btn-secondary {
+        background-color: $bg-secondary;
+        color: $cl-secondary;
+
+        &.ent-btn-outline {
+            background-color: transparent;
+            color: $bg-secondary;
+            border: var(--ent-btn-border-size) var(--ent-btn-border-style) $bg-secondary;
+
+            &:hover {
+                background-color: $bg-secondary;
+                color: $cl-secondary;
+            }
+        }
+        
+    }
+    &.ent-btn-success {
+        background-color: $color-green-500;
+        color: white;
+
+        &.ent-btn-outline {
+            background-color: transparent;
+            color: $color-green-500;
+            border: var(--ent-btn-border-size) var(--ent-btn-border-style) $color-green-500;
+
+            &:hover {
+                background-color: $color-green-500;
+                color: white;
+            }
+        }
+        
+    }
+    &.ent-btn-danger {
+        background-color: $color-red-500;
+        color: white;
+
+        &.ent-btn-outline {
+            background-color: transparent;
+            color: $color-red-500;
+            border: var(--ent-btn-border-size) var(--ent-btn-border-style) $color-red-500;
+
+            &:hover {
+                background-color: $color-red-500;
+                color: white;
+            }
+        }
+    }
+    &.ent-btn-warning {
+        background-color: $color-orange-500;
+        color: white;
+
+        &.ent-btn-outline {
+            background-color: transparent;
+            color: $color-orange-500;
+            border: var(--ent-btn-border-size) var(--ent-btn-border-style) $color-orange-500;
+
+            &:hover {
+                background-color: $color-orange-500;
+                color: white;
+            }
+        }
+    }
+    &.ent-btn-info {
+        background-color: $color-sky-500;
+        color: white;
+
+        &.ent-btn-outline {
+            background-color: transparent;
+            color: $color-sky-500;
+            border: var(--ent-btn-border-size) var(--ent-btn-border-style) $color-sky-500;
+
+            &:hover {
+                background-color: $color-sky-500;
+                color: white;
+            }
+        }
     }
 }

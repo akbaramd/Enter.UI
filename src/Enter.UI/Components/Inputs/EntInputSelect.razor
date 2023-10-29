@@ -7,7 +7,8 @@
 
 <div @attributes="@AdditionalAttributes" @ref="_elementReference" class="@RootCss" id="@Id">
 
-    <EntInputText @onclick="@OnInputClickCallback" Disabled="@Disabled" PlaceHolder="@PlaceHolder" class="ent-select-input" UseValidation="false" Readonly="true" @bind-Value="@Text" Icon="@EntIcons.ChevronDown" />
+    <EntInputText @ref="_inputReference" @onclick="@OnInputClickCallback" @onfocusin="@OnInputClickCallback"  
+                  Disabled="@Disabled" PlaceHolder="@PlaceHolder" class="ent-select-input" UseValidation="false" Readonly="true" @bind-Value="@Text" Icon="@EntIcons.ChevronDown" />
 
     <input type="hidden" @bind="@Value" />
 
@@ -52,6 +53,8 @@
     .Build();
 
 
+    
+    
     private bool _showMenu = false;
     private string? _tempValue = string.Empty;
 
@@ -70,6 +73,7 @@
     public RenderFragment<T>? ItemTemplate { get; set; }
 
     private ElementReference _elementReference;
+    private EntInputText _inputReference;
 
     protected override async Task OnInitializedAsync()
     {
@@ -100,11 +104,15 @@
         validationErrorMessage = null;
         return true;
     }
-
+    public ValueTask FocusAsync()
+    {
+        return _inputReference.FocusAsync();
+    }
+    
     private async Task OnInputClickCallback()
     {
         _showMenu = true;
-        await _elementReference.FocusAsync();
+       
     }
 
     private void OnOverlayClickCallback()

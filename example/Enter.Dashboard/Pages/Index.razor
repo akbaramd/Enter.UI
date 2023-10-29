@@ -1,5 +1,4 @@
 ﻿@page "/"
-@using Enter.UI
 @using Enter.UI.Core
 @using Enter.Dashboard.Model
 
@@ -40,16 +39,16 @@
                     </EntDrawerContainer>
                 </CardBody>
             </EntCard>
-            <EntCard class="mb-8" Tag="card" Expandable="true" CardExpand="false" Icon="fa-light fa-user" Title="Buttons">
+            <EntCard class="mb-8" Tag="card" Expandable="true" CardExpand="false" Icon="fa-light fa-user" Title="Toasts">
                 <CardBody>
                     <EntFlex Direction="FlexDirection.Column"
                              LaptopDirection="FlexDirection.Row"
                              LaptopAlign="FlexAlign.StartCenter"
                              Align="FlexAlign.StartCenter"
                              Gap="4">
-                        <EntButton @onclick="OpenToast" type="button" Size="ButtonSize.Large">Large Button</EntButton>
-                        <EntButton type="button" Size="ButtonSize.Default">Button</EntButton>
-                        <EntButton type="button" Size="ButtonSize.Small">Small Button</EntButton>
+                        <EntButton @onclick="()=>OpenToast(EntToastType.Success)" type="button" >Success Toast</EntButton>
+                        <EntButton @onclick="()=>OpenToast(EntToastType.Danger)" type="button" >Danger Toast</EntButton>
+                        <EntButton @onclick="()=>OpenToast(EntToastType.Info)" type="button" >Info Toast</EntButton>
                     </EntFlex>
                 </CardBody>
             </EntCard>
@@ -157,13 +156,17 @@
 
     public async Task OpenModal(EntModalSize size)
     {
-        var parameter = new ParameterBuilder<Counter>()
-            .Build();
-
-        var result = await ModalService.ShowAsync<Counter>("sada", parameter, new EntModalOptions
+        var confirmResult = await ModalService.MessageBoxAsync("Open Modal", "Are you sure to oprn Modal?", "Show", "Dismiss");
+        if (!confirmResult.Canceled)
         {
-            Size = size
-        });
+            var parameter = new ParameterBuilder<Counter>()
+                .Build();
+
+            var result = await ModalService.ShowAsync<Counter>("sada", parameter, new EntModalOptions
+            {
+                Size = size
+            });
+        }
     }
 
     public void OpenPopover()
@@ -171,13 +174,24 @@
     //IsPopoverOpen = !IsPopoverOpen;
     }
 
-    public async Task OpenToast()
+    public async Task OpenToast(EntToastType type)
     {
-        await ToastService.NotifyAsync("Danger", "The content we display", new EntToastOptions
+        switch (type)
         {
-            DelaySpan = TimeSpan.FromSeconds(10),
-            Type = EntToastType.Danger
-        });
+            case EntToastType.Info:
+                await ToastService.NotifyInfoAsync("Info", "The content we display");
+                break;
+            case EntToastType.Success:
+                await ToastService.NotifySuccessAsync("Success", "The content we display");
+                break;
+            case EntToastType.Danger:
+                await ToastService.NotifyDangerAsync("Danger", "The content we display");
+                break;
+            case EntToastType.Warning:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(type), type, null);
+        }
     }
 
     private async Task OnSearchChangeCallBack(string search)

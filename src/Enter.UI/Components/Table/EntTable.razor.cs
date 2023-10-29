@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Enter.UI.Core.Bases;
-using Enter.UI.Services.Contracts;
 using Microsoft.JSInterop;
 
 namespace Enter.UI.Components

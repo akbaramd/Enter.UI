@@ -53,10 +53,10 @@
 
 .ent-input-autocomplete-container {
     margin-top: 0.25rem;
-    background-color: $color-light;
+    background-color: $bg-light;
 
     > .ent-input-autocomplete-list {
-        background-color: $color-light;
+        background-color: $bg-light;
         max-height: 10rem;
         overflow-y: scroll;
     }
@@ -84,12 +84,12 @@
 }
 .ent-select-container {
     margin-top: 0.25rem;
-    background-color: $color-light;
+    background-color: $bg-light;
 
     > .ent-select-list {
         max-height: 10rem;
         overflow-y: scroll;
-        background-color: $color-light;
+        background-color: $bg-light;
     }
 
     > .ent-select-message {

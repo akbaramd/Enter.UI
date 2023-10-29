@@ -1,6 +1,6 @@
 ﻿@inherits EntTabBase
 @namespace Enter.UI.Components
-<EntTab @ref="Tab"
+<EntTab @ref="_tab"
         @attributes="@AdditionalAttributes"
         class="@RootCss"
         ItemClass="@ItemClass"
@@ -10,16 +10,17 @@
         Closeable="@Closeable"
         ActiveClass="@ActiveClass"
         PanelClass="@PanelClass"
+        TabNoContentMessage="@TabNoContentMessage"
         KeepPanelAlive="@KeepPanelAlive"
-        OnTabActived="OnTabActivatedCallback"
-        OnTabClosed="OnTabClosedCallback"
-        OnAllTabClosed="OnAllTabClosedCallback"
+        OnTabActivated="OnTabActivatedCallback"
+        OnTabRemoveClick="OnTabClosedCallback"
+        OnAllTabRemoveClick="OnAllTabClosedCallback"
         OnTabAdded="OnTabAddedCallback">
     <ChildContent>
-        @foreach (var item in Items)
+        @foreach (var item in _items)
         {
             <CascadingValue Value="@item">
-                <EntTabPanel Icon="@item.Icon" Title="@item.Title" Id="@item.Id" @key="item.Key">
+                <EntTabPanel Icon="@item.Icon" Title="@item.Title" Id="@item.Id" @key="item.Id">
                     <DynamicComponent Type="@item.ComponentType" Parameters="@item.ComponentParameters"/>
                 </EntTabPanel>
             </CascadingValue>

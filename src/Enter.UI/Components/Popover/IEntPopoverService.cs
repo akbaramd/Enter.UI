@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace Enter.UI.Services.Contracts;
+namespace Enter.UI.Components;
 
 public interface IEntPopoverService
 {

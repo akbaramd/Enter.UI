@@ -1,10 +1,4 @@
-﻿using Enter.UI.Components;
-using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Components;
 
 namespace Enter.UI.Components
 {
@@ -19,6 +13,6 @@ namespace Enter.UI.Components
         public void AddNewTab<TComponent>(string id , string title,string icon, Dictionary<string, object>? parameters = null) where TComponent : ComponentBase;
         public void AddNewTab(string id , Type type, string title, string icon, Dictionary<string, object>? parameters = null);
         public void CloseTab(string id);
-        public void SetActiveTab(string id);
+        public void ActivateTab(string id);
     }
 }

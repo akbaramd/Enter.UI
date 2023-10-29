@@ -2,16 +2,16 @@
 @namespace Enter.UI.Components
 <CascadingValue Value="@this">
     <div @attributes="@AdditionalAttributes" class="@RootCss" >
-        @if (TabPanels.Count > 0)
+        @if (_tabPanels.Count > 0)
         {
             <ul class="ent-tab-item-container">
-                @foreach (var tabPanels in TabPanels)
+                @foreach (var tabPanels in _tabPanels)
                 {
                      
                     
                     
 
-                    <li class="@getItemClass(IsActivePanel(tabPanels.Id))" @onclick="() => ActiveTab(tabPanels.Id)" @key="@tabPanels.Id">
+                    <li class="@GetItemClass(IsActive(tabPanels.Id))" @onclick="() => ActivateTab(tabPanels.Id)" @key="@tabPanels.Id">
                         <div class="ent-tab-content">
                             <EntIcon Icon="@tabPanels.Icon"/>
                             <span>@tabPanels.Title</span>
@@ -26,7 +26,7 @@
                 }
                 @if (Closeable)
                 {
-                    <li class="@getItemClass(false)">
+                    <li class="@GetItemClass(false)">
                         <div @onclick="OnTabAllClose" class="ent-tab-action ">
                             <EntIcon Icon="fa-light fa-trash" Type="EntIconType.IconTag"/>
                         </div>
@@ -37,13 +37,13 @@
         else
         {
             <div class="ent-tab-item-container-message">
-                <p>No display window has been opened</p>
+                <p>@TabNoContentMessage</p>
             </div>
         }
 
         <div class="@PanelCss">
             @ChildContent
-            @if (!TabPanels.Any())
+            @if (!_tabPanels.Any())
             {
                 @DefaultPanel
             }

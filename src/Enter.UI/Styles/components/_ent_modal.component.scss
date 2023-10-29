@@ -1,10 +1,22 @@
-﻿
-.ent-modal-provider {
+﻿:root {
+  --ent-modal-space-y: 1rem;
+  --ent-modal-space-x: 1rem;
+  --ent-modal-bg: var(--ent-bg-body);
+  --ent-modal-header-bg: var(--ent-bg-body);
+  --ent-modal-header-color: var(--ent-color-body);
+  --ent-modal-border-width: var(--ent-border-width);
+  --ent-modal-border-style: var(--ent-border-style);
+  --ent-modal-border-color: var(--ent-border-color);
+  --ent-modal-border-radius: var(--ent-border-radius);
+  --ent-modal-box-shadow: var(--ent-shadow);
+}
 
+.ent-modal-provider {
+    z-index: var(--ent-z-index-secondary);
 }
 .ent-modal-container {
   display: flex;
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
@@ -15,16 +27,17 @@
   
   .ent-modal {
 
-    
-    background-color: white;
+    border-radius: var(--ent-modal-border-radius);
+    overflow: hidden;
+    background-color: var(--ent-modal-bg);
 
     .ent-modal-header {
-      padding: 1rem;
+      padding: var(--ent-modal-space-y) var(--ent-modal-space-x);
       display: flex;
       align-items: center;
-      font-size: map-get($font-sizes,"medium-lg");
-      border-bottom: $border;
-
+      border-bottom: var(--ent-modal-border-width) var(--ent-modal-border-style) var(--ent-modal-border-color);
+      background-color: var(--ent-modal-header-bg);
+      
       .title {
         flex-grow: 1;
        
@@ -41,7 +54,7 @@
     }
     
     .ent-modal-content {
-      padding: 1rem;
+      padding: var(--ent-modal-space-y) var(--ent-modal-space-x);
     }
     
     $modal-space : 32px;

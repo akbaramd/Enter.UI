@@ -1,12 +1,6 @@
 ﻿using Enter.UI.Core;
-using Enter.UI.JsService;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Enter.UI.JsService
 {

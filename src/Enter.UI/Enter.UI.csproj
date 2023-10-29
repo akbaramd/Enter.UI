@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Enter.UI</RootNamespace>
     <PackageId>Enter.Ui</PackageId>
-    <Version>1.0.32</Version>
+    <Version>1.0.35</Version>
     <Authors>Akbar Ahmadi</Authors>
     <Company>AhmadiCo</Company>
 	  <PackageReadmeFile>Readme.md</PackageReadmeFile>
@@ -117,6 +117,10 @@
     <_ContentIncludedByDefault Remove="Components\Forms\EntFormGroup.razor" />
     <_ContentIncludedByDefault Remove="Components\TreeView\EntTreeView.razor" />
     <_ContentIncludedByDefault Remove="Components\TreeView\EntTreeViewItem.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\Contracts\" />
   </ItemGroup>
 
 </Project>

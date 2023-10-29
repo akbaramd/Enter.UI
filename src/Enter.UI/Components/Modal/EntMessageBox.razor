@@ -1,0 +1,43 @@
+﻿@namespace Enter.UI.Components
+@inherits EntBaseComponent
+ <div class="@RootCss" >
+     <EntText Type="EntTextType.Bold" class="ent-messagebox-title">@Message</EntText>
+     <div class="ent-messagebox-action">
+         <EntButton Color="ButtonColor.Primary" @onclick="OnConfirmClick">@ConfirmText</EntButton>
+         <EntButton Color="ButtonColor.Light" @onclick="OnCancelClick">@CancelText</EntButton>
+     </div>
+</div>
+
+@code {
+
+    [CascadingParameter]
+    public EntModalInstance Instance { get; set; }
+    
+    private string RootCss => CssClassBuilder
+        .AddClass("ent-messagebox").Build();
+    
+    
+    [Parameter]
+    public string Message { get; set; }
+    
+    
+    [Parameter]
+    public string ConfirmText { get; set; }
+
+    
+    
+    [Parameter]
+    public string CancelText { get; set; }
+
+   
+    public async Task OnCancelClick()
+    {
+        await Instance.CancelAsync();
+    }
+    public async Task OnConfirmClick()
+    {
+        await Instance.CloseAsync(ModalResult.Ok(true));
+    }
+    
+
+}

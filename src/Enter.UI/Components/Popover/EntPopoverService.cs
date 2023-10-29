@@ -1,11 +1,8 @@
 ﻿using Enter.UI.Interops;
 using Enter.UI.JsService;
-using Enter.UI.Models;
-using Enter.UI.Services.Contracts;
 using Microsoft.AspNetCore.Components;
-using Microsoft.JSInterop;
 
-namespace Enter.UI.Services;
+namespace Enter.UI.Components;
 
 public class EntPopoverService : IEntPopoverService
 {

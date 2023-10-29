@@ -3,9 +3,9 @@
 @using Enter.UI.Core.Enums
 @inherits EntBaseInput<string>
 @typeparam T
-<div @attributes="@AdditionalAttributes" class="@RootClass" @onclick="@Click" @ref="_elementReference" id="@Id">
-    <EntInputText class="@( "ent-input-autocomplete-input")"
-                  Value="@Value" ValueChanged="@ValueChanged" Disabled="@Disabled" Readonly="@Readonly" ValueExpression="@ValueExpression" @oninput="@OnInputCallback" Icon="@EntIcons.Search" />
+<div @attributes="@AdditionalAttributes" class="@RootClass"  @ref="_elementReference" id="@Id">
+    <EntInputText @ref="_inputReference" class="@( "ent-input-autocomplete-input")" 
+                  Value="@Value" ValueChanged="@ValueChanged" Disabled="@Disabled" Readonly="@Readonly" @onclick="@Click" @onfocusin="@Click" ValueExpression="@ValueExpression" @oninput="@OnInputCallback" Icon="@EntIcons.Search" />
 
     <EntPopover Open="_showMenu" RelativeWidth="true" Anchor="Origin.BottomCenter" Transform="Origin.TopCenter" PopoverClass="@("ent-input-autocomplete-popover")">
 
@@ -47,7 +47,8 @@
 
 
     private bool _showMenu = false;
-
+    private EntInputText _inputReference;
+    
     [Parameter]
     public List<T> DataSources { get; set; }
 
@@ -68,7 +69,11 @@
         return true;
     }
 
-
+    public ValueTask FocusAsync()
+    {
+        return _inputReference.FocusAsync();
+    }
+    
     private void OnInputCallback()
     {
         _showMenu = true;
@@ -87,7 +92,7 @@
 
     }
 
-    private async Task Click(MouseEventArgs arg)
+    private async Task Click()
     {
         _showMenu = true;
         await _elementReference.FocusAsync();

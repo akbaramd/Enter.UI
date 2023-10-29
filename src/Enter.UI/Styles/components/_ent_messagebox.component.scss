@@ -1,0 +1,22 @@
+:root {
+  --ent-messagebox-space-y: 1rem;
+  --ent-messagebox-space-x: 1rem;
+  --ent-messagebox-border-width: var(--ent-border-width);
+  --ent-messagebox-border-style: var(--ent-border-style);
+  --ent-messagebox-border-color: var(--ent-border-color);
+}
+
+.ent-messagebox {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  
+  .ent-messagebox-title {
+  }
+
+  .ent-messagebox-action {
+    display: flex;
+    gap: 0.5rem;
+  }
+}
+

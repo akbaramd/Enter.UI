@@ -1,6 +1,4 @@
 ﻿@namespace Enter.UI.Components
-@using Enter.UI.Services.Contracts
-@using Enter.UI.Services
 @inherits EntBaseComponent
 @implements IAsyncDisposable
 <div class="@RootClass">
@@ -12,13 +10,13 @@
             var itemCss = new CssClassBuilder("ent-toast")
                 .AddClass("ent-toast--open", item.AnimatorState == EntAnimatorState.Starting)
                 .AddClass("ent-toast--close", item.AnimatorState == EntAnimatorState.Ending)
-                .AddClass("bg-green-600 cl-light", item.Options.Type == EntToastType.Success)
-                .AddClass("bg-green-600 cl-light", item.Options.Type == EntToastType.Success)
-                .AddClass("bg-red-600 cl-light", item.Options.Type == EntToastType.Danger)
-                .AddClass("bg-orange-600 cl-light", item.Options.Type == EntToastType.Warning)
-                .AddClass("bg-sky-100 cl-light", item.Options.Type == EntToastType.Info).Build();
+                .AddClass("bg-success cl-light", item.Options.Type == EntToastType.Success)
+                .AddClass("bg-danger cl-light", item.Options.Type == EntToastType.Danger)
+                .AddClass("bg-owarning cl-light", item.Options.Type == EntToastType.Warning)
+                .AddClass("bg-info cl-light", item.Options.Type == EntToastType.Info).Build();
 
             <EntAnimator
+                @key="item.Id"
                 OnAnimationEnd="() => OnToastAnimationEnd(item)"
                 class="@itemCss"
                 @bind-State="@item.AnimatorState">

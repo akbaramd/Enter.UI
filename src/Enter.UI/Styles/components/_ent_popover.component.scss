@@ -1,7 +1,8 @@
 ﻿.ent-popover-content {
   position: absolute;
-  z-index: 10;
-  
+  z-index: var(--ent-z-index-top);
+
+
   &.ent-popover-relative-width{
     width: 100%;
   }

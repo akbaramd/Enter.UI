@@ -273,30 +273,40 @@ $color-rose-800: #9f1239;
 $color-rose-900: #881337;
 $color-rose-950: #4c0519;
 
-$color-body: var(--ent-bg-body);
-$color-secondary: var(--ent-bg-secondary);
-$color-tertiary: var(--ent-bg-tertiary);
+$bg-body: var(--ent-bg-body);
+$bg-secondary: var(--ent-bg-secondary);
+$bg-tertiary: var(--ent-bg-tertiary);
+$bg-primary: $color-indigo-500;
+$bg-light: var(--ent-bg-light);
+$bg-dark: var(--ent-bg-dark);
+$bg-muted: var(--ent-bg-secondary);
 
-$color-primary: $color-indigo-500;
-$color-light: $color-indigo-50;
-$color-dark: $color-indigo-950;
+$cl-body: var(--ent-color-body);
+$cl-primary: $color-indigo-500;
+$cl-secondary: var(--ent-color-secondary);
+$cl-tertiary: var(--ent-color-tertiary);
+$cl-emphasis: var(--ent-color-emphasis);
+$cl-light: var(--ent-color-light);
+$cl-dark: var(--ent-color-dark);
+$cl-muted: var(--ent-color-secondary);
+$cl-link: var(--ent-color-link);
+$cl-heading: var(--ent-color-heading);
 
-$color-muted: $color-neutral-700;
 
 $backgrounds: (
         "white": white,
         "black": black,
-        "primary": $color-primary,
-        "body": $color-body,
-        "secondary": $color-secondary,
-        "tertiary": $color-tertiary,
-        "light":$color-light,
-        "mute":$color-muted,
-        "dark":$color-dark,
+        "primary": $bg-primary,
+        "body": $bg-body,
+        "secondary": $bg-secondary,
+        "tertiary": $bg-tertiary,
+        "light":$bg-light,
+        "mute":$bg-muted,
+        "dark":$bg-dark,
         'success': $color-green-500,
         'danger': $color-red-500,
         'warning': $color-orange-500,
-        'info': $color-sky-400,
+        'info': $color-sky-500,
         'late-50': $color-late-50,
         'late-100': $color-late-100,
         'late-200': $color-late-200,
@@ -544,13 +554,15 @@ $backgrounds: (
 $colors: (
         "white": white,
         "black": black,
-        "primary": var(--ent-color-body),
-        "secondary": var(--ent-color-secondary),
-        "tertiary": var(--ent-color-tertiary),
-        "emphasis": var(--ent-color-emphasis),
-        "light":$color-light,
-        "mute":$color-muted,
-        "dark":$color-dark,
+        "primary": $cl-primary,
+        "secondary": $cl-secondary,
+        "tertiary": $cl-tertiary,
+        "emphasis": $cl-emphasis,
+        "light":$cl-light,
+        "mute":$cl-muted,
+        "dark":$cl-dark,
+        "heading":$cl-heading,
+        "link":$cl-link,
         'success': $color-green-500,
         'danger': $color-red-500,
         'warning': $color-orange-500,

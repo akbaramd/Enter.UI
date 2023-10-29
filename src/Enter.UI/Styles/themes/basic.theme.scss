@@ -1,18 +1,24 @@
-﻿:root {
+﻿
+:root {
   
   // background
   --ent-bg-body : #ffffff;
   --ent-bg-page : #f2f2f2;
   --ent-bg-secondary : #f1f1f2;
   --ent-bg-tertiary : #f9f9f9;
-
+  --ent-bg-light : #f1f1f2;
+  --ent-bg-dark : #212529;
+  
   // color
   --ent-color-body: #071437;
   --ent-color-emphasis : #000000;
   --ent-color-secondary: rgba(7, 20, 55, 0.75);
   --ent-color-tertiary: rgba(7, 20, 55, 0.5);
+  --ent-color-light: #ced4da;
+  --ent-color-dark: #071437;
   --ent-color-heading: #071437;
   --ent-color-link: #009ef7;
+ 
 
   // border
   --ent-border-color: #eee;

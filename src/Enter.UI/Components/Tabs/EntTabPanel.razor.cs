@@ -15,7 +15,7 @@ namespace Enter.UI.Components
 
         protected string RootCss => CssClassBuilder
             .AddClass("ent-tab-panel")
-           .AddClass($"active", Parent.IsActivePanel(Id))
+           .AddClass($"active", Parent.IsActive(Id))
            .Build();
         
 

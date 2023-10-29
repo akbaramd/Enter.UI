@@ -6,7 +6,7 @@
 @implements IAsyncDisposable
 
 <div @attributes="@AdditionalAttributes" class="@RootCss" id="@Id">
-    <input name="@ValueExpression?.GetPropertyName()" type="@(IsPassword?"password":"text")" class="ent-input-field" placeholder="@PlaceHolder"
+    <input @ref="_elementReference" name="@ValueExpression?.GetPropertyName()" type="@(IsPassword?"password":"text")" class="ent-input-field" placeholder="@PlaceHolder"
     @bind="@CurrentValueAsString"
     @bind:event="oninput" disabled="@Disabled" readonly="@Readonly"/>
 
@@ -20,6 +20,8 @@
 
 @code {
 
+    private ElementReference _elementReference = default!;
+    
     private string RootCss => CssBuilder
         .AddClass("ent-input")
         .AddClass(BaseCss)
@@ -35,7 +37,11 @@
     [CascadingParameter]
     public EditContext? EditContext { get; set; }
 
-
+    public ValueTask FocusAsync()
+    {
+        return _elementReference.FocusAsync();
+    }
+    
     protected override bool TryParseValueFromString(string? value, out string? result, [NotNullWhen(false)] out string? validationErrorMessage)
     {
         result = value;

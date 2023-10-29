@@ -3,13 +3,20 @@ html[data-theme="dark"] {
         --ent-bg-body : #1a1d21;
         --ent-bg-page : #111;
         --ent-bg-secondary : #212529;
+        --ent-bg-light : #212529;
+        --ent-bg-dark : #f1f1f2;
         --ent-bg-tertiary:  #2a2d31;
         
         // color 
+        --ent-color-body-negetive: #071437;
         --ent-color-body: #ced4da;
         --ent-color-emphasis : #fff;
         --ent-color-secondary: #878a99;
+        --ent-color-light: #071437;
+        --ent-color-dark: #ced4da;
         --ent-color-tertiary: rgba(206, 212, 218, 0.75);
+        --ent-color-heading: #ced4da;
+        --ent-color-link: #009ef7;
 
         // border
         --ent-border-color: #32383e;

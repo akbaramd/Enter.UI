@@ -12,6 +12,10 @@ namespace Enter.UI.Components
 {
     public partial class EntTab : EntTabBase
     {
+        
+        private List<EntTabPanel> _tabPanels = new List<EntTabPanel>();
+        private string? _activeTabId = null;
+        
         protected string RootCss => CssClassBuilder
       
             .AddClass("ent-tab-horizontal", Direction == EntTabDirection.Horizontal)
@@ -19,23 +23,20 @@ namespace Enter.UI.Components
             .AddClass("ent-tab-expandable", Expandable)
             .AddClass("ent-tab")
             .Build();
-
-        
-
         protected string PanelCss => new CssClassBuilder()
             .Clear()
             .AddClass("ent-tab-panel-container")
             .AddClass(PanelClass)
-            .AddClass($"active", Expandable && ActiveTabId != null)
+            .AddClass($"active", Expandable && _activeTabId != null)
             .Build();
 
-        [Parameter] public RenderFragment ChildContent { get; set; }
-        
-        [Parameter] public RenderFragment? DefaultPanel { get; set; }
-        private List<EntTabPanel> TabPanels = new List<EntTabPanel>();
-        private string? ActiveTabId = null;
+        [Parameter] 
+        public RenderFragment ChildContent { get; set; } = default!;
 
-        public string getItemClass(bool active)
+        [Parameter] 
+        public RenderFragment? DefaultPanel { get; set; } = null;
+        
+        public string GetItemClass(bool active)
         {
             return  CssClassBuilder
                 .Clear()
@@ -49,36 +50,36 @@ namespace Enter.UI.Components
         
         public async Task AddNewTab(EntTabPanel panel)
         {
-            TabPanels.Add(panel);
+            _tabPanels.Add(panel);
 
-            if (TabPanels.Count == 1)
-                ActiveTab(panel.Id);
+            if (_tabPanels.Count == 1)
+                ActivateTab(panel.Id);
 
-            OnTabAdded.InvokeAsync(panel).GetAwaiter().GetResult();
+            await OnTabAdded.InvokeAsync(panel);
             StateHasChanged();
         }
 
-        public void ActiveTab(string? id)
+        public void ActivateTab(string? id)
         {
             if (id == null)
             {
                 return;
             }
 
-            var panel = TabPanels.FirstOrDefault(x => x.Id.Equals(id));
+            var panel = _tabPanels.FirstOrDefault(x => x.Id.Equals(id));
 
             if (panel == null) return;
 
-            if (Expandable && ActiveTabId != null && ActiveTabId == panel.Id)
+            if (Expandable && _activeTabId != null && _activeTabId == panel.Id)
             {
-                ActiveTabId = null;
+                _activeTabId = null;
             }
             else
             {
-                ActiveTabId = panel.Id;
+                _activeTabId = panel.Id;
             }
 
-            OnTabActived.InvokeAsync(ActiveTabId).GetAwaiter().GetResult();
+            OnTabActivated.InvokeAsync(_activeTabId).GetAwaiter().GetResult();
             StateHasChanged();
         }
 
@@ -89,35 +90,40 @@ namespace Enter.UI.Components
                 return;
             }
 
-            var panel = TabPanels.FirstOrDefault(x => x.Id.Equals(id));
+            var panel = _tabPanels.FirstOrDefault(x => x.Id.Equals(id));
             if (panel == null) return;
 
-            TabPanels.Remove(panel);
+            _tabPanels.Remove(panel);
             
             // navigate to next tab when active tab remove
-            if (TabPanels.Count >= 1 && ActiveTabId == id)
+            if (_tabPanels.Count >= 1 && _activeTabId == id)
             {
-                ActiveTab(TabPanels.First().Id);
+                ActivateTab(_tabPanels.First().Id);
             }
             
             StateHasChanged();
         }
 
-        public bool IsActivePanel(string? id)
+        public bool IsActive(string? id)
         {
             if (id == null)
             {
                 return false;
             }
 
-            return ActiveTabId != null && ActiveTabId.Equals(id);
+            return _activeTabId != null && _activeTabId.Equals(id);
         }
 
-        private void OnTabClose(string id) =>
-            OnTabClosed.InvokeAsync(id).GetAwaiter().GetResult();
+        private void OnTabClose(string id)
+        {
+            OnTabRemoveClick.InvokeAsync(id).GetAwaiter().GetResult();
+        }
 
-        private async Task OnTabAllClose() =>
-            OnAllTabClosed.InvokeAsync().GetAwaiter().GetResult();
+        private Task OnTabAllClose()
+        {
+            OnAllTabRemoveClick.InvokeAsync().GetAwaiter().GetResult();
+            return Task.CompletedTask;
+        }
     }
 
     public enum EntTabDirection
@@ -136,16 +142,17 @@ namespace Enter.UI.Components
     {
         [Parameter] public bool KeepPanelAlive { get; set; } = false;
         [Parameter] public bool Closeable { get; set; } = false;
-        [Parameter] public string ItemClass { get; set; }
-        [Parameter] public string PanelClass { get; set; }
-        [Parameter] public string ActiveClass { get; set; }
+        [Parameter] public string ItemClass { get; set; } = string.Empty;
+        [Parameter] public string PanelClass { get; set; } = string.Empty;
+        [Parameter] public string ActiveClass { get; set; } = string.Empty;
         [Parameter] public bool Expandable { get; set; } = false;
+        [Parameter] public string TabNoContentMessage { get; set; } = "There is no content to display";
         [Parameter] public EntTabDirection Direction { get; set; } = EntTabDirection.Vertical;
         [Parameter] public EntTabItemDirection ItemDirection { get; set; } = EntTabItemDirection.Horizontal;
 
-        [Parameter] public EventCallback<string?> OnTabActived { get; set; }
+        [Parameter] public EventCallback<string?> OnTabActivated { get; set; }
         [Parameter] public EventCallback<EntTabPanel> OnTabAdded { get; set; }
-        [Parameter] public EventCallback<string> OnTabClosed { get; set; }
-        [Parameter] public EventCallback OnAllTabClosed { get; set; }
+        [Parameter] public EventCallback<string> OnTabRemoveClick { get; set; }
+        [Parameter] public EventCallback OnAllTabRemoveClick { get; set; }
     }
 }

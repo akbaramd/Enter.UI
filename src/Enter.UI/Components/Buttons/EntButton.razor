@@ -1,9 +1,9 @@
 ﻿@namespace Enter.UI.Components
 @inherits EntBaseComponent
-<button @attributes="@AdditionalAttributes" class="@RootClass" >
+<button @attributes="@AdditionalAttributes" class="@RootClass">
     @if (Icon != null)
     {
-        <EntIcon Icon="@Icon" />
+        <EntIcon Size="4" Icon="@Icon"/>
     }
     @ChildContent
 </button>
@@ -12,25 +12,17 @@
 
     private string RootClass => CssClassBuilder
         .AddClass("ent-btn")
-        .AddClass("ent-btn-lg", !IsOutline && Size == ButtonSize.Large)
-        .AddClass("ent-btn-sm", !IsOutline && Size == ButtonSize.Small)
-        .AddClass("bg-primary cl-light", !IsOutline && Color == ButtonColor.Primary)
-        .AddClass("bg-secondary cl-dark", !IsOutline && Color == ButtonColor.Secondary)
-        .AddClass("bg-light cl-dark", !IsOutline && Color == ButtonColor.Light)
-        .AddClass("bg-dark cl-light", !IsOutline && Color == ButtonColor.Dark)
-        .AddClass("bg-success cl-light", !IsOutline && Color == ButtonColor.Success)
-        .AddClass("bg-danger cl-light", !IsOutline && Color == ButtonColor.Danger)
-        .AddClass("bg-warning cl-light", !IsOutline && Color == ButtonColor.Warning)
-        .AddClass("bg-info cl-light", !IsOutline && Color == ButtonColor.Info)
-
-        .AddClass("border border-primary cl-primary hover:bg-primary hover:cl-light", IsOutline && Color == ButtonColor.Primary)
-        .AddClass("border border-secondary cl-secondary hover:bg-secondary hover:cl-dark", IsOutline && Color == ButtonColor.Secondary)
-        .AddClass("border border-light cl-light hover:bg-light hover:cl-dark", IsOutline && Color == ButtonColor.Light)
-        .AddClass("border border-dark cl-dark hover:bg-dark hover:cl-light", IsOutline && Color == ButtonColor.Dark)
-        .AddClass("border border-succcess cl-succcess hover:bg-succcess hover:cl-light", IsOutline && Color == ButtonColor.Success)
-        .AddClass("border border-danger cl-danger hover:bg-danger hover:cl-light", IsOutline && Color == ButtonColor.Danger)
-        .AddClass("border border-warning cl-warning hover:bg-warning hover:cl-light", IsOutline && Color == ButtonColor.Warning)
-        .AddClass("border border-info cl-info hover:bg-info hover:cl-light", IsOutline && Color == ButtonColor.Info)
+        .AddClass("ent-btn-lg", Size == ButtonSize.Large)
+        .AddClass("ent-btn-sm", Size == ButtonSize.Small)
+        .AddClass("ent-btn-primary", Color == ButtonColor.Primary)
+        .AddClass("ent-btn-secondary", Color == ButtonColor.Secondary)
+        .AddClass("ent-btn-light", Color == ButtonColor.Light)
+        .AddClass("ent-btn-dark", Color == ButtonColor.Dark)
+        .AddClass("ent-btn-success", Color == ButtonColor.Success)
+        .AddClass("ent-btn-danger", Color == ButtonColor.Danger)
+        .AddClass("ent-btn-warning", Color == ButtonColor.Warning)
+        .AddClass("ent-btn-info", Color == ButtonColor.Info)
+        .AddClass("ent-btn-outline", IsOutline)
         .Build();
 
     [Parameter]
@@ -38,8 +30,10 @@
 
     [Parameter]
     public ButtonSize Size { get; set; } = ButtonSize.Default;
+
     [Parameter]
     public bool IsOutline { get; set; } = false;
+
     [Parameter]
     public ButtonColor Color { get; set; } = ButtonColor.Primary;
 
@@ -55,4 +49,5 @@
         }
         base.OnAfterRender(firstRender);
     }
+
 }

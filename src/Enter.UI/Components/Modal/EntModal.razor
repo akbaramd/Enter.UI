@@ -4,7 +4,10 @@
                 <div class="@RootCss" @onclick:stopPropagation="true" @onclick="OnModalClick">
                     <div class="ent-modal-header">
                         <b class="title">@Title</b>
-                        <EntIcon class="icon" Click="OnCancelClick"  Icon="fa-light fa-close"/>
+                        @if (Instance?.Options?.ShowCloseButton??true)
+                        {
+                            <EntIcon class="icon" Click="OnCancelClick"  Icon="fa-light fa-close"/>
+                        }
                     </div>
                     <div class="ent-modal-content">
                         @ChildContent
@@ -51,7 +54,7 @@
 
     private async Task OnContainerClick(MouseEventArgs args)
     {
-        if (Instance !=null)
+        if (Instance !=null && (Instance?.Options?.CloseOnEscapeKey??true))
         {
             await Instance.CancelAsync();
         }
