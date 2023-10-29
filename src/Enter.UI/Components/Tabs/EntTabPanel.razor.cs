@@ -18,8 +18,10 @@ namespace Enter.UI.Components
             .AddClass("ent-tab-panel")
            .AddClass($"active", Parent.IsActive(Id))
            .Build();
-        
 
+
+        public Guid Key { get; set; } = Guid.NewGuid();
+        
         [Parameter]
         public string Id { get; set; }
 

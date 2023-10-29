@@ -11,7 +11,7 @@
                     
                     
 
-                    <li class="@GetItemClass(IsActive(tabPanels.Id))" @onclick="() => ActivateTab(tabPanels.Id)" @key="@tabPanels.Id">
+                    <li class="@GetItemClass(IsActive(tabPanels.Id))" @onclick="() => ActivateTab(tabPanels.Id)" @key="@tabPanels.Key">
                         <div class="ent-tab-content">
                             <EntIcon Icon="@tabPanels.Icon"/>
                             <span>@tabPanels.Title</span>

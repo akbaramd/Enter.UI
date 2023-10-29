@@ -2,6 +2,7 @@
 {
     public class EntMdiTabInstance
     {
+        public Guid Key { get; set; } = Guid.NewGuid();
         public string Id { get; set; }
         public string Title { get; set; }
         public string Icon { get; set; }

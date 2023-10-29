@@ -21,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Enter.UI.Froala\Enter.UI.Froala.csproj" />
     <ProjectReference Include="..\..\src\Enter.UI\Enter.UI.csproj" />
   </ItemGroup>
 

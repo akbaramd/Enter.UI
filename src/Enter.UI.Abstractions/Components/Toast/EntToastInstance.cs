@@ -12,7 +12,7 @@ public class EntToastInstance
         Options = options ?? new EntToastOptions();
         AnimatorState = EntAnimatorState.Starting;
     }
-
+    public Guid Key { get; set; } = Guid.NewGuid();
     public Guid Id { get; set; }
     public string Title { get; set; } 
     public string Content { get; set; }

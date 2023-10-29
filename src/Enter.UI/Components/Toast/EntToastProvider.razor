@@ -21,7 +21,7 @@
                 .AddClass("bg-info cl-light", item.Options.Type == EntToastType.Info).Build();
 
             <EntAnimator
-                @key="item.Id"
+                @key="item.Key"
                 OnAnimationEnd="() => OnToastAnimationEnd(item)"
                 class="@itemCss"
                 @bind-State="@item.AnimatorState">

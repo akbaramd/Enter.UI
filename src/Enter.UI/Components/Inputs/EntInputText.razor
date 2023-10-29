@@ -7,7 +7,7 @@
 <div @attributes="@AdditionalAttributes" class="@RootCss" id="@Id">
     <input @ref="_elementReference" name="@ValueExpression?.GetPropertyName()" type="@(IsPassword?"password":"text")" class="ent-input-field" placeholder="@PlaceHolder"
     @bind="@CurrentValueAsString"
-    @bind:event="oninput" disabled="@Disabled" readonly="@Readonly"/>
+    @bind:event="@EventType" disabled="@Disabled" readonly="@Readonly"/>
 
     @if (Icon != null)
     {
@@ -31,6 +31,8 @@
     [Parameter]
     public string Icon { get; set; }
 
+    [Parameter]
+    public string EventType { get; set; } = "onchange";
 
     [Parameter]
     public EntInputSize Size { get; set; } = EntInputSize.Default; 

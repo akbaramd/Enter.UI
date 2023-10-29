@@ -20,7 +20,7 @@
         @foreach (var item in _items)
         {
             <CascadingValue Value="@item">
-                <EntTabPanel Icon="@item.Icon" Title="@item.Title" Id="@item.Id" @key="item.Id">
+                <EntTabPanel Icon="@item.Icon" Title="@item.Title" Id="@item.Id" @key="item.Key">
                     <DynamicComponent Type="@item.ComponentType" Parameters="@item.ComponentParameters"/>
                 </EntTabPanel>
             </CascadingValue>
