@@ -1,0 +1,33 @@
+﻿@using Enter.UI.Froala.Interops
+@using Microsoft.JSInterop
+@namespace Enter.UI.Froala
+
+@inject IJSRuntime JSRuntime
+
+<div @ref="@QuillElement">
+    @EditorContent
+</div>
+
+@code {
+
+    [Parameter] public RenderFragment EditorContent { get; set; }
+    private ElementReference QuillElement;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        await FroalaInterop.InitializeFroala(JSRuntime);
+    }
+
+    protected override async Task
+        OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await FroalaInterop.CreateFroala(
+                JSRuntime,
+                QuillElement);
+        }
+    }
+
+}

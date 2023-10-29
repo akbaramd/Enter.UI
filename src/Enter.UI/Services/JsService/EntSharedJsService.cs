@@ -1,4 +1,6 @@
-﻿using Enter.UI.Core;
+﻿using Enter.UI.Abstractions.JsServices;
+using Enter.UI.Abstractions.Models;
+using Enter.UI.Core;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 

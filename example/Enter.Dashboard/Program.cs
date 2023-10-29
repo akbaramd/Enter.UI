@@ -1,4 +1,5 @@
 using Enter.UI;
+using Enter.UI.Froala;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
@@ -16,7 +17,8 @@ namespace Enter.Dashboard
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-            builder.Services.AddEnterUI();
+            builder.Services.AddEnterUI()
+                .AddFroalaModule();
 
             await builder.Build().RunAsync();
 

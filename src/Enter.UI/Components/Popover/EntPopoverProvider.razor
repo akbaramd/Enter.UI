@@ -1,5 +1,6 @@
 ﻿@namespace Enter.UI.Components
 @inherits EntBaseComponent
+@using Enter.UI.Abstractions.Services
 @implements IAsyncDisposable
 <div class="@RootClass">
     @foreach (var item in _entPopoverService.PopoverInstances)

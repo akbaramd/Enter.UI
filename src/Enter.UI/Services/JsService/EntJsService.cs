@@ -1,4 +1,5 @@
-﻿using Microsoft.JSInterop;
+﻿using Enter.UI.Abstractions.JsServices;
+using Microsoft.JSInterop;
 
 namespace Enter.UI.JsService;
 

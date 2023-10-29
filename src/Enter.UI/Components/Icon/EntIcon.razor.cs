@@ -7,8 +7,9 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Enter.UI.Core;
 using System.ComponentModel.DataAnnotations;
-using Enter.UI.Core.Bases;
+
 using System.Reflection.Metadata;
+using Enter.UI.Abstractions.Core.Bases;
 
 namespace Enter.UI.Components
 {

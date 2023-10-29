@@ -1,6 +1,12 @@
 ﻿@page "/"
 @using Enter.UI.Core
 @using Enter.Dashboard.Model
+@using Enter.UI.Abstractions.Components.Drawer
+@using Enter.UI.Abstractions.Components.Flex
+@using Enter.UI.Abstractions.Components.Modal
+@using Enter.UI.Abstractions.Components.Toast
+@using Enter.UI.Abstractions.Components.TreeView
+@using Enter.UI.Abstractions.Services
 
 <PageTitle>Index</PageTitle>
 
@@ -86,6 +92,7 @@
                         <CardBody>
                             <EntTreeView
                                 MultiSelect="false"
+                                SelectMode="EntTreeViewSelectMode.Toggle"
                                 DataSource="@Constants.Roles"
                                 @bind-SelectedValue="TreeSelectedValue"/>
 

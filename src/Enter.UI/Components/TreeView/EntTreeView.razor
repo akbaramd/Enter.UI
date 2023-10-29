@@ -1,8 +1,8 @@
 ﻿@namespace Enter.UI.Components
-
-@using Enter.UI.Core
-@typeparam TType where TType : IEntTreeViewItem<TType,TValue>
+@typeparam TType where TType : Enter.UI.Abstractions.Components.TreeView.IEntTreeViewItem<TType,TValue>
 @typeparam TValue
+@using Enter.UI.Abstractions.Components.TreeView
+@using Enter.UI.Abstractions.Core
 @inherits EntBaseComponent  
 
 <CascadingValue Value="this" IsFixed="true">
@@ -37,10 +37,10 @@
     public bool MultiSelect { get; set; } = false;
 
     [Parameter]
-    public TValue SelectedValue { get; set; } = default!;
+    public TValue? SelectedValue { get; set; } = default!;
     
     [Parameter]
-    public EventCallback<TValue> SelectedValueChanged { get; set; }
+    public EventCallback<TValue?> SelectedValueChanged { get; set; }
     
     [Parameter]
     public List<TValue> SelectedValues { get; set; } = new List<TValue>();
@@ -48,6 +48,9 @@
     [Parameter]
     public EventCallback<List<TValue>> SelectedValuesChanged { get; set; }
 
+    [Parameter]
+    public EntTreeViewSelectMode SelectMode { get; set; } = EntTreeViewSelectMode.Select;
+    
     
     [Parameter]
     public List<TType> DataSource { get; set; }
@@ -91,8 +94,17 @@
         }
         else
         {
-            SelectedValue = item.Value;
-            SelectedValueChanged.InvokeAsync(SelectedValue);
+            @if (SelectMode == EntTreeViewSelectMode.Toggle && SelectedValue != null && SelectedValue.Equals(item.Value))
+            {
+                SelectedValue = default;
+            }
+            else
+            {
+                SelectedValue = item.Value;
+                SelectedValueChanged.InvokeAsync(SelectedValue);
+            }
+            
+            SelectedValueChanged.InvokeAsync(SelectedValue);   
         }
         StateHasChanged();
     }

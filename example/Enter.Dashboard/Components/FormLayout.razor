@@ -1,5 +1,7 @@
 ﻿@using System.ComponentModel.DataAnnotations
 @using Enter.Dashboard.Model;
+@using Enter.UI.Abstractions.Components.Button
+@using Enter.UI.Abstractions.Components.Inputs
 @using Enter.UI.Core
 <EntToolbar>
     <EntToolbarItem Text="Add New" Icon="fa-light fa-add"/>
@@ -13,7 +15,7 @@
             <DataAnnotationsValidator />
             <div class="row">
                 <EntInputGroup For="()=>Input.Id" Label="شناسه" class="tablet:col-1/3 mb-4 ">
-                    <EntInputText  @bind-Value="Input.Id" Icon="@EntIcons.ChevronLeft" />
+                    <EntInputText Size="EntInputSize.Large"  @bind-Value="Input.Id" Icon="@EntIcons.ChevronLeft" />
                 </EntInputGroup>
                  <EntInputGroup For="()=>Input.User" Label="نام" class="tablet:col-1/3 mb-4">
                   
@@ -45,7 +47,7 @@
                     class="tablet:col-1/3 mb-4 " 
                     Label="سن" 
                     For="()=> Input.Age">
-                    <EntInputFile @bind-Value="Input.Age" />
+                    <EntInputTextarea Rows="10"  @bind-Value="Input.Age" />
                 </EntInputGroup>
             </div>
             <div class="row">

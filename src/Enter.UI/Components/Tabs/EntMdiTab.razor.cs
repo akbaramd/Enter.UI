@@ -1,3 +1,5 @@
+using Enter.UI.Abstractions.Components.Tabs;
+using Enter.UI.Abstractions.Services;
 using global::System;
 using global::System.Collections.Generic;
 using global::System.Linq;

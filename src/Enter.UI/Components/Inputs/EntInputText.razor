@@ -1,7 +1,6 @@
 ﻿@namespace Enter.UI.Components
 @using System.Diagnostics.CodeAnalysis
-@using Enter.UI.Core
-@using Enter.UI.Core.Enums
+@using Enter.UI.Abstractions.Components.Inputs
 @inherits EntBaseInput<string?>
 @implements IAsyncDisposable
 
@@ -24,6 +23,7 @@
     
     private string RootCss => CssBuilder
         .AddClass("ent-input")
+        .AddClass("ent-input-lg",Size == EntInputSize.Large)
         .AddClass(BaseCss)
         .AddClass(ValidationCss)
         .Build();
@@ -31,6 +31,10 @@
     [Parameter]
     public string Icon { get; set; }
 
+
+    [Parameter]
+    public EntInputSize Size { get; set; } = EntInputSize.Default; 
+    
     [Parameter]
     public bool IsPassword { get; set; } = false;
 

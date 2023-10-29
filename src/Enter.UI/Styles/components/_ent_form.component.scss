@@ -2,13 +2,17 @@
 :root {
     //input 
     --ent-input-bg: var(--ent-bg-tertiary);
+    --ent-input-popover-bg: var(--ent-bg-secondary);
     --ent-input-color: var(--ent-color-body);
     --ent-input-border-color: #eee;
     --ent-input-border-size: var(--ent-border-width);
     --ent-input-border-style: solid;
     --ent-input-border-radius: var(--ent-border-radius);
-    --ent-input-space-y: .5rem;
-    --ent-input-space-x: .9rem;
+    --ent-input-space-y: .625rem;
+    --ent-input-space-x: 1rem;
+
+    --ent-input-space-y-lg: 1rem;
+    --ent-input-space-x-lg: 1rem;
     --ent-input-icon-color: var(--ent-color-secondary);
 }
 
@@ -43,20 +47,26 @@
 
 
 
-
+.ent-input.ent-input-lg {
+    > .ent-input-field {
+        padding: var(--ent-input-space-y-lg) var(--ent-input-space-x-lg);
+        font-size: map-get($font-sizes, "title");
+    }
+}
 
 // input-autocomplete
 
 .ent-input-autocomplete {
-
+    border-radius: var(--ent-card-border-radius);
+    overflow: hidden;
 }
 
 .ent-input-autocomplete-container {
     margin-top: 0.25rem;
-    background-color: $bg-light;
+    background-color: var(--ent-input-popover-bg);
 
     > .ent-input-autocomplete-list {
-        background-color: $bg-light;
+        background-color: var(--ent-input-popover-bg);
         max-height: 10rem;
         overflow-y: scroll;
     }
@@ -73,6 +83,8 @@
     border: $border;
     cursor: pointer;
     min-width: 300px;
+    overflow: hidden;
+    border-radius: var(--ent-card-border-radius);
     > .ent-select-input {
         border: 0;
 
@@ -84,12 +96,12 @@
 }
 .ent-select-container {
     margin-top: 0.25rem;
-    background-color: $bg-light;
+    background-color: var(--ent-input-popover-bg);
 
     > .ent-select-list {
         max-height: 10rem;
         overflow-y: scroll;
-        background-color: $bg-light;
+        background-color: var(--ent-input-popover-bg);
     }
 
     > .ent-select-message {

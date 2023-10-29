@@ -1,6 +1,9 @@
 ﻿@using Enter.Dashboard.Pages;
 @using Enter.Dashboard.Components
-@using Enter.UI.Core.Enums
+@using Enter.UI.Abstractions.Components.Button
+@using Enter.UI.Abstractions.Components.Drawer
+@using Enter.UI.Abstractions.Core.Enums
+@using Enter.UI.Abstractions.Services
 @inherits LayoutComponentBase
  <div class="border-y d-flex flex-column">
         <div class="d-flex flex-column flex-grow-1">
@@ -13,6 +16,7 @@
                 <EntDrawer @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start"  Mode="_drawerMode" class="z-50">
                     <EntNavMenu class="border-0">
                         <EntNavMenuGroup Title="Basic" Icon="fa-light fa-home">
+                            <EntNavMenuTextItem class="bg-light" Icon="fa-light fa-clock" Text="ForalaView" Click="() => AddNewTab<ForalaView>()"/>
                             <EntNavMenuTextItem class="bg-light" Icon="fa-light fa-clock" Text="Counter" Click="() => AddNewTab<Counter>()"/>
                             <EntNavMenuTextItem class="bg-light" Icon="fa-light fa-arrow-down" Text="FetchData" Click="() => AddNewTab<FetchData>()"/>
                         </EntNavMenuGroup>
@@ -60,6 +64,10 @@
         if (typeof(T) == typeof(Counter))
         {
             EntMdiService.AddNewTab<Counter>("counter", "Counter", "fa-light fa-clock");
+        }
+        else if (typeof(T) == typeof(ForalaView))
+        {
+            EntMdiService.AddNewTab<ForalaView>(Guid.NewGuid().ToString(), "Forala View", "fa-light fa-arrow-down");
         }
         else if (typeof(T) == typeof(FetchData))
         {

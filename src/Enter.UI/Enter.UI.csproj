@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Enter.UI</RootNamespace>
     <PackageId>Enter.Ui</PackageId>
-    <Version>1.0.35</Version>
+    <Version>1.0.37</Version>
     <Authors>Akbar Ahmadi</Authors>
     <Company>AhmadiCo</Company>
 	  <PackageReadmeFile>Readme.md</PackageReadmeFile>
@@ -120,7 +120,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\Contracts\" />
+    <ProjectReference Include="..\Enter.UI.Abstractions\Enter.UI.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Components\Toast\Model" />
+    <Folder Include="Components\Toast\Services" />
   </ItemGroup>
 
 </Project>

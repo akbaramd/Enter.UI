@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Enter.UI.Abstractions.Components.Tabs;
+using Enter.UI.Abstractions.Services;
+using Microsoft.AspNetCore.Components;
 
 namespace Enter.UI.Components;
 

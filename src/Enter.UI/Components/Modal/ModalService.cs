@@ -1,4 +1,6 @@
-﻿using Enter.UI.Core;
+﻿using Enter.UI.Abstractions.Components.Modal;
+using Enter.UI.Abstractions.Services;
+using Enter.UI.Core;
 using Microsoft.AspNetCore.Components;
 
 namespace Enter.UI.Components;

@@ -1,0 +1,46 @@
+﻿@namespace Enter.UI.Components
+@using System.Diagnostics.CodeAnalysis
+@inherits EntBaseInput<string?>
+@implements IAsyncDisposable
+
+<div @attributes="@AdditionalAttributes" class="@RootCss" id="@Id">
+    <textarea @ref="_elementReference" name="@ValueExpression?.GetPropertyName()" class="ent-input-field" placeholder="@PlaceHolder"
+    @bind="@CurrentValueAsString"
+    rows="@Rows"
+    @bind:event="oninput" disabled="@Disabled" readonly="@Readonly">
+    
+    </textarea>
+   
+</div>
+
+@code {
+
+    private ElementReference _elementReference = default!;
+    
+    private string RootCss => CssBuilder
+        .AddClass("ent-input")
+        .AddClass(BaseCss)
+        .AddClass(ValidationCss)
+        .Build();
+
+
+    [Parameter]
+    public int Rows { get; set; } = 3; 
+    
+    [CascadingParameter]
+    public EditContext? EditContext { get; set; }
+    
+
+    public ValueTask FocusAsync()
+    {
+        return _elementReference.FocusAsync();
+    }
+    
+    protected override bool TryParseValueFromString(string? value, out string? result, [NotNullWhen(false)] out string? validationErrorMessage)
+    {
+        result = value;
+        validationErrorMessage = null;
+        return true;
+    }
+
+}
