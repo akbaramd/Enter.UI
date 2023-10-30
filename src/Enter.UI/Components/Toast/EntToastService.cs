@@ -5,18 +5,10 @@ namespace Enter.UI.Components;
 
 public class EntToastService : IEntToastService
 {
-    public Task NotifyAsync(string title, string content, EntToastOptions? options = null)
+    public async Task NotifyAsync(string title, string content, EntToastOptions? options = null)
     {
         var instance = new EntToastInstance(title, content, options);
-
-        var delayMilliseconds = (long)instance.Options.DelaySpan.TotalMilliseconds;
-
-        if (delayMilliseconds <= 0) delayMilliseconds = 3000; // Set a default delay of 1 second (1000 milliseconds)
-
-        var timer = new Timer(s => { _ = CloseAsync(instance.Id); }, null, delayMilliseconds, Timeout.Infinite);
-
-        InstanceCreated?.Invoke(EventArgs.Empty, instance);
-        return Task.CompletedTask;
+        await InstanceCreatedAsync?.Invoke(instance);
     }
 
     public Task NotifyInfoAsync(string title, string content, string? icon = null, TimeSpan? delaySpan = null)
@@ -49,12 +41,11 @@ public class EntToastService : IEntToastService
         });
     }
 
-    public Task CloseAsync(Guid id)
+    public async Task CloseAsync(Guid id)
     {
-        InstanceClose?.Invoke(EventArgs.Empty, id);
-        return Task.CompletedTask;
+        await InstanceCloseAsync?.Invoke(id);
     }
 
-    public event EventHandler<EntToastInstance>? InstanceCreated;
-    public event EventHandler<Guid>? InstanceClose;
+    public event Func<EntToastInstance, Task>? InstanceCreatedAsync;
+    public event Func<Guid, Task>? InstanceCloseAsync;
 }

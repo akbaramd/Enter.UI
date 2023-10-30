@@ -9,9 +9,13 @@ public class ModalService : IEntModalService
 {
     public List<EntModalInstance> Items = new();
 
-    public Task<ModalResult?> ShowAsync<TComponent>(string title, Dictionary<string, object>? parameters = null,
+    public async Task<ModalResult?> ShowAsync<TComponent>(string title, Dictionary<string, object>? parameters = null,
         EntModalOptions? options = null, string? id = null) where TComponent : ComponentBase
     {
+        var first = Items.FirstOrDefault(x => x.Id == id);
+        if (first != null)
+            throw new Exception("Modal with this Id already exists");
+        
         var modalId = id ?? Guid.NewGuid().ToString();
         var taskCompletionSource = new TaskCompletionSource<ModalResult?>();
         var item = new EntModalInstance
@@ -26,38 +30,41 @@ public class ModalService : IEntModalService
             DialogResultTCS = taskCompletionSource
         };
         Items.Add(item);
-        OnModalShowed.Invoke(item.Id);
-        return taskCompletionSource.Task;
+        await OnModalShowedAsync.Invoke(item.Id);
+        return await taskCompletionSource.Task;
     }
 
-    public Task CloseAsync(string id, ModalResult? result = null)
+    public async Task CloseAsync(string id, ModalResult? result = null)
     {
-        var item = Items.First(x => x.Id == id);
+        var item = Items.FirstOrDefault(x => x.Id == id);
+        if (item == null)
+            return;
         Items.Remove(item);
-        OnModalClosed.Invoke(id);
+        await OnModalClosedAsync.Invoke(id);
         item.DialogResultTCS?.SetResult(result);
-        return Task.CompletedTask;
     }
 
-    public Task CancelAsync(string id)
+    public async Task CancelAsync(string id)
     {
-        var item = Items.First(x => x.Id == id);
+        var item = Items.FirstOrDefault(x => x.Id == id);
+        if (item == null)
+            return;
         Items.Remove(item);
-        OnModalCanceled.Invoke(id);
+        await OnModalCanceledAsync.Invoke(id);
         item.DialogResultTCS?.SetResult(ModalResult.Cancel());
-        return Task.CompletedTask;
     }
 
-    public Task<ModalResult> MessageBoxAsync(string title, string message, string confirmText = "Confirm", string cancelText = "Cancel")
+    public Task<ModalResult> MessageBoxAsync(string title, string message, string confirmText = "Confirm",
+        string cancelText = "Cancel")
     {
         var parametersBuilder = new ParameterBuilder<EntMessageBox>()
-                .AddParameter(x => x.Message, message)
-                .AddParameter(x => x.CancelText, cancelText)
-                .AddParameter(x => x.ConfirmText, confirmText);
-        
+            .AddParameter(x => x.Message, message)
+            .AddParameter(x => x.CancelText, cancelText)
+            .AddParameter(x => x.ConfirmText, confirmText);
+
         var parameters = parametersBuilder.Build();
-        
-        return ShowAsync<EntMessageBox>(title, parameters, new EntModalOptions()
+
+        return ShowAsync<EntMessageBox>(title, parameters, new EntModalOptions
         {
             Size = EntModalSize.Small,
             ShowCloseButton = false,
@@ -65,7 +72,7 @@ public class ModalService : IEntModalService
         })!;
     }
 
-    public event Action<string> OnModalShowed;
-    public event Action<string> OnModalClosed;
-    public event Action<string> OnModalCanceled;
+    public event Func<string, Task> OnModalShowedAsync;
+    public event Func<string, Task> OnModalClosedAsync;
+    public event Func<string, Task> OnModalCanceledAsync;
 }

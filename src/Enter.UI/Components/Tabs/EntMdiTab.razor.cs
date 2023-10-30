@@ -41,23 +41,33 @@ namespace Enter.UI.Components
      
         private async Task OnServiceNewTabAddedAsync(EntMdiTabInstance panel)
         {
-            if (_items.Any(x => x.Id == panel.Id))
+            await InvokeAsync(async () =>
             {
-                await _tab.ActivateTabAsync(panel.Id);
-                return;
-            }
-            _items.Add(panel);
-            StateHasChanged();
+                if (_items.Any(x => x.Id == panel.Id))
+                {
+                    await _tab.ActivateTabAsync(panel.Id);
+                    return;
+                }
+
+                _items.Add(panel);
+                StateHasChanged();
+            });
         }
 
         private async Task OnServiceTabActivatedAsync(string id)
         {
-            await _tab.ActivateTabAsync(id);
+            await InvokeAsync(async () =>
+            {
+                await _tab.ActivateTabAsync(id);
+            });
         }
 
         private async Task OnServiceTabRemovedAsync(string id)
         {
-            await _tab.RemoveTabAsync(id);
+            await InvokeAsync(async () =>
+            {
+                await _tab.RemoveTabAsync(id);
+            });
         }
 
         private async Task OnTabActivatedCallbackAsync(string? id)

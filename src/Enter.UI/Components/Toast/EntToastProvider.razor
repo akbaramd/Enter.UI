@@ -1,15 +1,15 @@
 ﻿@namespace Enter.UI.Components
 @inherits EntComponentBase
-@using Enter.UI.Abstractions.Components.Animator
-@using Enter.UI.Abstractions.Components.Text
 @using Enter.UI.Abstractions.Components.Toast
 @using Enter.UI.Abstractions.Core
 @using Enter.UI.Abstractions.Services
+@using Enter.UI.Abstractions.Components.Animator
+@using Enter.UI.Abstractions.Components.Text
 @implements IAsyncDisposable
 <div class="@RootClass">
     <EntSpace SpaceY="2">
-        
-        
+
+
         @foreach (var item in ToastInstances)
         {
             var itemCss = new CssClassBuilder("ent-toast")
@@ -51,10 +51,9 @@
         .AddClass("ent-toast-provider")
         .Build();
 
-   
-    
-    public readonly List<EntToastInstance> ToastInstances = new List<EntToastInstance>();
-    
+
+    public readonly List<EntToastInstance> ToastInstances = new();
+
     [Inject]
     public IEntToastService EntToastService { get; set; }
 
@@ -67,23 +66,43 @@
 
         _entToastService = (EntToastService)EntToastService;
 
-        _entToastService.InstanceCreated += EntToastServiceOnInstanceCreated;
-        _entToastService.InstanceClose += EntToastServiceOnInstanceClose;;
+        _entToastService.InstanceCreatedAsync += EntToastServiceOnInstanceCreatedAsync;
+        _entToastService.InstanceCloseAsync += EntToastServiceOnInstanceCloseAsync;
+        ;
     }
 
-    private void EntToastServiceOnInstanceClose(object? sender, Guid e)
+    private async Task EntToastServiceOnInstanceCloseAsync(Guid e)
     {
-        var instance = ToastInstances.FirstOrDefault(x => x.Id == e);
-        if (instance == null) return;
-        
-        CloseItem(instance);
-        StateHasChanged();
+        await InvokeAsync((() =>
+        {
+            var instance = ToastInstances.FirstOrDefault(x => x.Id == e);
+            if (instance == null) return;
+
+            CloseItem(instance);
+            StateHasChanged();
+        }));
     }
 
-    private void EntToastServiceOnInstanceCreated(object? sender, EntToastInstance instance)
+    private async Task EntToastServiceOnInstanceCreatedAsync(EntToastInstance instance)
     {
-        ToastInstances.Add(instance);
-        StateHasChanged();
+       await InvokeAsync(() =>
+        {
+            var delayMilliseconds = (long)instance.Options.DelaySpan.TotalMilliseconds;
+
+            if (delayMilliseconds <= 0) delayMilliseconds = 3000; // Set a default delay of 1 second (1000 milliseconds)
+
+            ToastInstances.Add(instance);
+            StateHasChanged();
+
+            _ = new Timer( s =>
+            {
+                InvokeAsync(async () =>
+                {
+                    await EntToastService.CloseAsync(instance.Id);
+                    StateHasChanged();
+                });
+            }, null, delayMilliseconds, Timeout.Infinite);
+        });
     }
 
 
@@ -94,7 +113,7 @@
 
     private async Task OnToastAnimationEnd(EntToastInstance instance)
     {
-        if (instance.AnimatorState==EntAnimatorState.Ending)
+        if (instance.AnimatorState == EntAnimatorState.Ending)
         {
             ToastInstances.Remove(instance);
             await EntToastService.CloseAsync(instance.Id);
@@ -103,8 +122,9 @@
 
     public async ValueTask DisposeAsync()
     {
-        _entToastService.InstanceCreated -= EntToastServiceOnInstanceCreated;
-        _entToastService.InstanceClose -= EntToastServiceOnInstanceClose;;
+        _entToastService.InstanceCreatedAsync -= EntToastServiceOnInstanceCreatedAsync;
+        _entToastService.InstanceCloseAsync -= EntToastServiceOnInstanceCloseAsync;
+        ;
     }
 
 }

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Enter.UI.Abstractions.Core.Bases
 {
-    public abstract class EntPageBase : ComponentBase, IAsyncDisposable
+    public abstract class EntPageBase : ComponentBase, IDisposable
     {
 
         [Inject]
@@ -30,6 +30,7 @@ namespace Enter.UI.Abstractions.Core.Bases
             if (MdiTabInstance != null)
             {
                 MdiTabInstance.OnActivatedAsync += OnMdiTabActivatedAsync;
+                MdiTabInstance.OnCloseAsync += OnMdiTabCloseAsync;
             }
 
             if (ModalInstance!= null)
@@ -41,19 +42,22 @@ namespace Enter.UI.Abstractions.Core.Bases
             return Task.CompletedTask;
         }
 
-        protected virtual Task OnMdiTabActivatedAsync(string tabId)
+        protected virtual async Task OnMdiTabActivatedAsync(string tabId)
         {
-            return Task.CompletedTask;
+            await InvokeAsync(StateHasChanged);
+        }
+        protected virtual async Task OnMdiTabCloseAsync(string tabId)
+        {
+            await InvokeAsync(Dispose);
+        }
+        protected virtual async Task OnModalCanceledAsync(string modalId)
+        {
+            await InvokeAsync(Dispose);
         }
 
-        protected virtual Task OnModalCanceledAsync(string modalId)
+        protected virtual async Task OnModalClosedAsync(string modalId , ModalResult modalResult)
         {
-            return Task.CompletedTask;
-        }
-
-        protected virtual Task OnModalClosedAsync(string modalId , ModalResult modalResult)
-        {
-            return Task.CompletedTask;
+            await InvokeAsync(Dispose);
         }
 
         protected async Task MdiTabCloseAsync()
@@ -71,14 +75,20 @@ namespace Enter.UI.Abstractions.Core.Bases
                 await ModalInstance.CancelAsync(); 
             }
         }
-        protected async Task ModalCloseAsync<TResult>(TResult? result = default)
+        protected async Task ModalCloseAsync<TResult>(TResult? result)
         {
             if (ModalInstance != null)
             {
                 await ModalInstance.CloseAsync(ModalResult.Ok(result));
             }
         }
-
+        protected async Task ModalCloseAsync()
+        {
+            if (ModalInstance != null)
+            {
+                await ModalInstance.CloseAsync(ModalResult.Ok());
+            }
+        }
         protected bool IsModalInstance()
         {
             return ModalInstance != null;
@@ -88,7 +98,7 @@ namespace Enter.UI.Abstractions.Core.Bases
             return MdiTabInstance != null;
         }
         
-        public  ValueTask DisposeAsync()
+        public virtual void  Dispose()
         {
             if (MdiTabInstance != null)
             {
@@ -100,7 +110,7 @@ namespace Enter.UI.Abstractions.Core.Bases
                 ModalInstance.OnCanceledAsync -= OnModalCanceledAsync;
                 ModalInstance.OnClosedAsync -= OnModalClosedAsync;
             }
-            return ValueTask.CompletedTask;
+            ;
         }
 
        

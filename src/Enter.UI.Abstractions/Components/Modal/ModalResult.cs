@@ -16,8 +16,10 @@ public class ModalResult
     }
 
     public static ModalResult Ok<T>(T? result) => Ok(result, default);
+    public static ModalResult Ok() => Ok(default);
 
     public static ModalResult Ok<T>(T? result, Type dialogType) => new(result, dialogType, false);
+    public static ModalResult Ok( Type dialogType) => new(null, dialogType, false);
 
     public static ModalResult Cancel() => new(default, typeof(object), true);
 }

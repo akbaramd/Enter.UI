@@ -38,17 +38,19 @@
 
     private void EntPopoverServiceOnFragmentsChanged(object? sender, EventArgs e)
     {
-        StateHasChanged();
+        InvokeAsync(StateHasChanged);
     }
 
-    private async Task OnPopoverContainerClick(MouseEventArgs arg)
+    private Task OnPopoverContainerClick(MouseEventArgs arg)
     {
-        // await EntPopoverService.CloseAllAsync();
+        return Task.CompletedTask;
+    // await EntPopoverService.CloseAllAsync();
     }
 
-    public async ValueTask DisposeAsync()
+    public ValueTask DisposeAsync()
     {
         _entPopoverService.FragmentsChanged -= EntPopoverServiceOnFragmentsChanged;
+        return ValueTask.CompletedTask;
     }
 
 }

@@ -26,28 +26,26 @@
 
         await base.OnInitializedAsync();
 
-        _modalService.OnModalShowed += ModalServiceOnOnModalShowed;
-        _modalService.OnModalClosed += ModalServiceOnOnModalClosed;
-        _modalService.OnModalCanceled += ModalServiceOnOnModalCanceled;
+        _modalService.OnModalShowedAsync += ModalServiceOnOnModalShowedAsync;
+        _modalService.OnModalClosedAsync += ModalServiceOnOnModalClosedAsync;
+        _modalService.OnModalCanceledAsync += ModalServiceOnOnModalCanceledAsync;
         ;
     }
 
-    private void ModalServiceOnOnModalCanceled(string obj)
+    private async Task ModalServiceOnOnModalCanceledAsync(string obj)
     {
-        StateHasChanged();
+        await InvokeAsync(StateHasChanged);
     }
 
-
-    private void ModalServiceOnOnModalClosed(string obj)
+    private async Task ModalServiceOnOnModalClosedAsync(string obj)
     {
-        StateHasChanged();
+        await InvokeAsync(StateHasChanged);
     }
 
-    private void ModalServiceOnOnModalShowed(string obj)
+    private async Task ModalServiceOnOnModalShowedAsync(string obj)
     {
-        StateHasChanged();
+        await InvokeAsync(StateHasChanged);
     }
-
 
     private async Task OnCloseClick(string id)
     {
@@ -59,11 +57,12 @@
         await _modalService.CancelAsync(id);
     }
 
-    public async ValueTask DisposeAsync()
+    public ValueTask DisposeAsync()
     {
-        _modalService.OnModalShowed -= ModalServiceOnOnModalShowed;
-        _modalService.OnModalClosed -= ModalServiceOnOnModalClosed;
-        _modalService.OnModalCanceled -= ModalServiceOnOnModalCanceled;
+        _modalService.OnModalShowedAsync -= ModalServiceOnOnModalShowedAsync;
+        _modalService.OnModalClosedAsync -= ModalServiceOnOnModalClosedAsync;
+        _modalService.OnModalCanceledAsync -= ModalServiceOnOnModalCanceledAsync;
+        return ValueTask.CompletedTask;
     }
 
 }

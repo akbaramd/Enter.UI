@@ -23,7 +23,11 @@
         currentCount++;
 
         if (currentCount == 3)
+        {
+            await ToastService.NotifyInfoAsync("asd", "asdas");
             await MdiTabCloseAsync();
+            await ModalCloseAsync();
+        }
     }
 
     protected override async Task OnMdiTabActivatedAsync(string tabId)
