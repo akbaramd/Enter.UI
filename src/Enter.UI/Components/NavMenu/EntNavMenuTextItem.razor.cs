@@ -11,7 +11,7 @@ using Enter.UI.Abstractions.Core.Bases;
 
 namespace Enter.UI.Components
 {
-    public partial class EntNavMenuTextItem : EntBaseComponent
+    public partial class EntNavMenuTextItem : EntComponentBase
     {
         protected string RootCss => CssClassBuilder
             .Clear()

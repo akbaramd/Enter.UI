@@ -14,7 +14,7 @@ namespace Enter.UI
         public static IEntConfiguration AddEnterUI(this IServiceCollection services)
         {
             services.AddSingleton<IEntMdiService, EntMdiService>();
-            services.AddSingleton<IModalService, ModalService>();
+            services.AddSingleton<IEntModalService, ModalService>();
             services.AddSingleton<IEntPopoverService, EntPopoverService>();
             services.AddSingleton<IEntToastService, EntToastService>();
             services.AddSingleton<IEntJsService, EntJsService>();

@@ -13,7 +13,7 @@ using Enter.UI.Abstractions.Core.Bases;
 
 namespace Enter.UI.Components
 {
-    public partial class EntIcon : EntBaseComponent
+    public partial class EntIcon : EntComponentBase
     {
 
         [Required] [Parameter] public string? Icon { get; set; }

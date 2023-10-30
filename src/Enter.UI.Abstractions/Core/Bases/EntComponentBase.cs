@@ -2,7 +2,7 @@
 
 namespace Enter.UI.Abstractions.Core.Bases
 {
-    public class EntBaseComponent : ComponentBase
+    public class EntComponentBase : ComponentBase
     {
         //todo : Remove Style and Create Style Builder
 

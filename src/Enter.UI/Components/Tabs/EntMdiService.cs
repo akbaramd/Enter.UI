@@ -6,14 +6,14 @@ namespace Enter.UI.Components;
 
 internal class EntMdiService : IEntMdiService
 {
-    public void AddNewTab<TComponent>(string id, string title, string icon,
+    public async Task AddNewTabAsync<TComponent>(string id, string title, string icon,
         Dictionary<string, object>? parameters = null)
         where TComponent : ComponentBase
     {
-        AddNewTab(id, typeof(TComponent), title, icon, parameters);
+      await  AddNewTabAsync(id, typeof(TComponent), title, icon, parameters);
     }
 
-    public void AddNewTab(string id, Type type, string title, string icon,
+    public async Task AddNewTabAsync(string id, Type type, string title, string icon,
         Dictionary<string, object>? parameters = null)
     {
         id = string.IsNullOrWhiteSpace(id) ? Guid.NewGuid().ToString() : id;
@@ -25,23 +25,22 @@ internal class EntMdiService : IEntMdiService
             Icon = icon,
             ComponentType = type,
             ComponentParameters = parameters,
-            OnClose = CloseTab,
-            OnActivate = ActivateTab
+            OnCloseAsync = CloseTabAsync,
         };
-        OnTabAdded?.Invoke(item);
+        await OnTabAddedAsync.Invoke(item);
     }
 
-    public void CloseTab(string id)
+    public async Task CloseTabAsync(string id)
     {
-        OnTabClosed?.Invoke(id);
+       await OnTabClosedAsync.Invoke(id);
     }
 
-    public void ActivateTab(string id)
+    public async Task ActivateTabAsync(string id)
     {
-        OnTabActivated?.Invoke(id);
+       await OnTabActivatedAsync.Invoke(id);
     }
 
-    internal event Action<EntMdiTabInstance>? OnTabAdded;
-    internal event Action<string>? OnTabActivated;
-    internal event Action<string>? OnTabClosed;
+    internal event Func<EntMdiTabInstance, Task> OnTabAddedAsync = default!;
+    internal event Func<string,Task> OnTabActivatedAsync = default!;
+    internal event Func<string,Task> OnTabClosedAsync = default!;
 }

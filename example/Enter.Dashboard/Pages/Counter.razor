@@ -1,7 +1,8 @@
 ﻿@page "/counter"
-@using Enter.UI.Abstractions.Components.Tabs
+@using Enter.UI.Abstractions.Components.Tabs;
 @using Enter.UI.Abstractions.Components.Text
-
+@using Enter.UI.Abstractions.Core.Bases;
+@inherits EntPageBase
 <PageTitle>Counter</PageTitle>
 
 <div class="m-4 p-4 bg-white border">
@@ -14,17 +15,20 @@
 
 
 @code {
-    [CascadingParameter]
-    public EntMdiTabInstance? EntMdiTabInstance { get; set; }
-    
+
     private int currentCount = 0;
 
     private async  Task IncrementCount()
     {
         currentCount++;
 
-        if (currentCount == 3 && EntMdiTabInstance != null)
-            EntMdiTabInstance.Close();
+        if (currentCount == 3)
+            await MdiTabClose();
+    }
+
+    protected override async Task OnMdiTabActivatedAsync(string tabId)
+    {
+        Console.WriteLine("Active");
     }
 
     protected override async Task OnInitializedAsync()
@@ -33,7 +37,7 @@
         await base.OnInitializedAsync();
     }
 
-    private async Task OnActivated()
+    private async Task OnActivatedAsync()
     {
         StateHasChanged();
     }

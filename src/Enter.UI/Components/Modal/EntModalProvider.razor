@@ -5,7 +5,7 @@
     @foreach (var item in @_modalService.Items)
     {
         <CascadingValue Value="item" IsFixed="true">
-            <EntModal Title="@item.Title" OnCancelClick="() => OnCancelClick(item.Key)" Options="item.Options">
+            <EntModal Title="@item.Title" OnCancelClick="() => OnCancelClick(item.Id)" Options="item.Options">
                 <DynamicComponent Type="@item.Type" Parameters="@item.Parameters"/>
             </EntModal>
         </CascadingValue>
@@ -15,7 +15,7 @@
 @code {
 
     [Inject]
-    private IModalService ModalService { get; set; }
+    private IEntModalService ModalService { get; set; }
 
     private ModalService _modalService { get; set; }
 

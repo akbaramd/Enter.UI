@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components.Forms;
 
 namespace Enter.UI.Abstractions.Core.Bases
 {
-    public abstract class EntBaseInput<T> : InputBase<T> , IAsyncDisposable
+    public abstract class EntInputBase<T> : InputBase<T> , IAsyncDisposable
     {
 
         public string ValidationCss => new CssClassBuilder()

@@ -63,23 +63,23 @@
     {
         if (typeof(T) == typeof(Counter))
         {
-            EntMdiService.AddNewTab<Counter>("counter", "Counter", "fa-light fa-clock");
+            EntMdiService.AddNewTabAsync<Counter>("counter", "Counter", "fa-light fa-clock");
         }
         else if (typeof(T) == typeof(ForalaView))
         {
-            EntMdiService.AddNewTab<ForalaView>(Guid.NewGuid().ToString(), "Forala View", "fa-light fa-arrow-down");
+            EntMdiService.AddNewTabAsync<ForalaView>(Guid.NewGuid().ToString(), "Forala View", "fa-light fa-arrow-down");
         }
         else if (typeof(T) == typeof(FetchData))
         {
-            EntMdiService.AddNewTab<FetchData>(Guid.NewGuid().ToString(), "Fetch Data", "fa-light fa-arrow-down");
+            EntMdiService.AddNewTabAsync<FetchData>(Guid.NewGuid().ToString(), "Fetch Data", "fa-light fa-arrow-down");
         }
         else if (typeof(T) == typeof(FormLayout))
         {
-            EntMdiService.AddNewTab<FormLayout>("FormLayout", "Form", "fa-light fa-note");
+            EntMdiService.AddNewTabAsync<FormLayout>("FormLayout", "Form", "fa-light fa-note");
         }
         else if (typeof(T) == typeof(Table))
         {
-            EntMdiService.AddNewTab<Table>("Table", "Table", "fa-light fa-table");
+            EntMdiService.AddNewTabAsync<Table>("Table", "Table", "fa-light fa-table");
         }
     }
 

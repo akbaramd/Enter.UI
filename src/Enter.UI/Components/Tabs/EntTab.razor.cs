@@ -1,9 +1,5 @@
 using Enter.UI.Abstractions.Core;
 using Enter.UI.Abstractions.Core.Bases;
-using global::System;
-using global::System.Collections.Generic;
-using global::System.Linq;
-using global::System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
@@ -15,7 +11,7 @@ namespace Enter.UI.Components
     public partial class EntTab : EntTabBase
     {
         
-        private List<EntTabPanel> _tabPanels = new List<EntTabPanel>();
+        
         private string? _activeTabId = null;
         
         protected string RootCss => CssClassBuilder
@@ -34,7 +30,11 @@ namespace Enter.UI.Components
 
         [Parameter] 
         public RenderFragment ChildContent { get; set; } = default!;
+        
+        [Parameter] public List<EntTabPanel> Panels { get; set; } = new List<EntTabPanel>();
 
+        [Parameter] public EventCallback<List<EntTabPanel>> PanelsChanged { get; set; } = default!;
+        
         [Parameter] 
         public RenderFragment? DefaultPanel { get; set; } = null;
         
@@ -50,25 +50,25 @@ namespace Enter.UI.Components
                 .Build();
         }
         
-        public async Task AddNewTab(EntTabPanel panel)
+        public async Task AddTabAsync(EntTabPanel panel)
         {
-            _tabPanels.Add(panel);
 
-            if (_tabPanels.Count == 1)
-                ActivateTab(panel.Id);
+            if (Panels.Any(x => x.Id.Equals(panel.Id)))
+                throw new Exception($"you can not add tab with duplicate id . tab with this id: '{panel.Id}' already exists");
+            
+            Panels.Add(panel);
 
-            await OnTabAdded.InvokeAsync(panel);
+            if (Panels.Count == 1)
+              await  ActivateTabAsync(panel.Id);
+
             StateHasChanged();
+            await OnTabAdded.InvokeAsync(panel);
         }
 
-        public void ActivateTab(string? id)
+        public async Task ActivateTabAsync(string id)
         {
-            if (id == null)
-            {
-                return;
-            }
-
-            var panel = _tabPanels.FirstOrDefault(x => x.Id.Equals(id));
+            
+            var panel = Panels.FirstOrDefault(x => x.Id.Equals(id));
 
             if (panel == null) return;
 
@@ -80,51 +80,48 @@ namespace Enter.UI.Components
             {
                 _activeTabId = panel.Id;
             }
-
-            OnTabActivated.InvokeAsync(_activeTabId).GetAwaiter().GetResult();
             StateHasChanged();
+            await OnTabActivated.InvokeAsync(_activeTabId);
         }
 
-        public void RemoveTab(string? id)
+        public async Task RemoveTabAsync(string? id)
         {
             if (id == null)
             {
                 return;
             }
 
-            var panel = _tabPanels.FirstOrDefault(x => x.Id.Equals(id));
+            var panel = Panels.FirstOrDefault(x => x.Id.Equals(id));
             if (panel == null) return;
 
-            _tabPanels.Remove(panel);
+            Panels.Remove(panel);
             
             // navigate to next tab when active tab remove
-            if (_tabPanels.Count >= 1 && _activeTabId == id)
+            if (Panels.Count >= 1 && _activeTabId == id)
             {
-                ActivateTab(_tabPanels.First().Id);
+                await ActivateTabAsync(Panels.First().Id);
             }
-            
             StateHasChanged();
+            await OnTabRemoved.InvokeAsync(id);
         }
 
-        public bool IsActive(string? id)
+        public bool IsActiveTab(string? id)
         {
             if (id == null)
             {
                 return false;
             }
-
             return _activeTabId != null && _activeTabId.Equals(id);
         }
 
-        private void OnTabClose(string id)
+        private async Task OnTabClose(string id)
         {
-            OnTabRemoveClick.InvokeAsync(id).GetAwaiter().GetResult();
+            await OnTabClosedClick.InvokeAsync(id);
         }
 
-        private Task OnTabAllClose()
+        private async Task OnTabAllClose()
         {
-            OnAllTabRemoveClick.InvokeAsync().GetAwaiter().GetResult();
-            return Task.CompletedTask;
+            await OnAllTabClosedClick.InvokeAsync();
         }
     }
 
@@ -140,7 +137,7 @@ namespace Enter.UI.Components
         Horizontal
     }
 
-    public class EntTabBase : EntBaseComponent
+    public class EntTabBase : EntComponentBase
     {
         [Parameter] public bool KeepPanelAlive { get; set; } = false;
         [Parameter] public bool Closeable { get; set; } = false;
@@ -154,7 +151,8 @@ namespace Enter.UI.Components
 
         [Parameter] public EventCallback<string?> OnTabActivated { get; set; }
         [Parameter] public EventCallback<EntTabPanel> OnTabAdded { get; set; }
-        [Parameter] public EventCallback<string> OnTabRemoveClick { get; set; }
-        [Parameter] public EventCallback OnAllTabRemoveClick { get; set; }
+        [Parameter] public EventCallback<string> OnTabRemoved { get; set; }
+        [Parameter] public EventCallback<string> OnTabClosedClick { get; set; }
+        [Parameter] public EventCallback OnAllTabClosedClick { get; set; }
     }
 }

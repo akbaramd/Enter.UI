@@ -3,7 +3,7 @@
 @typeparam TValue
 @using Enter.UI.Components
 @using Enter.UI.Abstractions.Components.TreeView
-@inherits EntBaseComponent 
+@inherits EntComponentBase 
 
 <CascadingValue Value="this" IsFixed="true">
     <li @attributes="@AdditionalAttributes" class="@RootCss" @onclick="()=>OnItemClickCallback()" @onclick:stopPropagation>

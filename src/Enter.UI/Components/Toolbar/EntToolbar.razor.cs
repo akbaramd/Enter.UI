@@ -10,7 +10,7 @@ using Enter.UI.Abstractions.Core.Bases;
 
 namespace Enter.UI.Components
 {
-    public partial class EntToolbar : EntBaseComponent
+    public partial class EntToolbar : EntComponentBase
     {
         protected string RootCss => CssClassBuilder.AddClass("ent-toolbar")
             .Build();

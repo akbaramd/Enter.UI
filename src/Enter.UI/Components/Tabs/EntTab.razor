@@ -2,16 +2,15 @@
 @namespace Enter.UI.Components
 <CascadingValue Value="@this">
     <div @attributes="@AdditionalAttributes" class="@RootCss" >
-        @if (_tabPanels.Count > 0)
+        @if (Panels.Count > 0)
         {
             <ul class="ent-tab-item-container">
-                @foreach (var tabPanels in _tabPanels)
+                
+                @foreach (var tabPanels in Panels)
                 {
-                     
+                   
                     
-                    
-
-                    <li class="@GetItemClass(IsActive(tabPanels.Id))" @onclick="() => ActivateTab(tabPanels.Id)" @key="@tabPanels.Key">
+                    <li class="@GetItemClass(IsActiveTab(tabPanels.Id))" @onclick="() => ActivateTabAsync(tabPanels.Id)" @key="@tabPanels.Id">
                         <div class="ent-tab-content">
                             <EntIcon Icon="@tabPanels.Icon"/>
                             <span>@tabPanels.Title</span>
@@ -43,7 +42,7 @@
 
         <div class="@PanelCss">
             @ChildContent
-            @if (!_tabPanels.Any())
+            @if (!Panels.Any())
             {
                 @DefaultPanel
             }

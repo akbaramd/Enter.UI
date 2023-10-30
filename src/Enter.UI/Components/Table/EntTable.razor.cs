@@ -10,7 +10,7 @@ using Microsoft.JSInterop;
 
 namespace Enter.UI.Components
 {
-    public partial class EntTable<T> : EntBaseComponent
+    public partial class EntTable<T> : EntComponentBase
     {
         protected string RootCss => CssClassBuilder.AddClass("ent-table")
             .Build();

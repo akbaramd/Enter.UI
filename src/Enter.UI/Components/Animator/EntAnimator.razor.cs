@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Enter.UI.Components;
 
-public partial class EntAnimator : EntBaseComponent
+public partial class EntAnimator : EntComponentBase
 {
     
     private bool _expanded, _updateHeight;

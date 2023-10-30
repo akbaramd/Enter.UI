@@ -9,19 +9,14 @@
         public Type ComponentType { get; set; }
         public Dictionary<string, object>? ComponentParameters { get; set; }
 
-        public Func<Task>? OnActivated { get; set; }
+        public Func<string,Task> OnActivatedAsync { get; set; } = default!;
 
-        public Action<string> OnClose { get; set; }
-        public Action<string> OnActivate { get; set; }
+        public Func<string,Task> OnCloseAsync { get; set; } = default!;
 
-        public void Close()
+        public async Task CloseAsync()
         {
-           OnClose.Invoke(Id);
+          await OnCloseAsync.Invoke(Id);
         }
         
-        public void Activate()
-        {
-            OnActivate.Invoke(Id);
-        }
     }
 }

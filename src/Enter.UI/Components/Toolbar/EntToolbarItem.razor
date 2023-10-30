@@ -1,7 +1,7 @@
 ﻿@namespace Enter.UI.Components
 @using Enter.UI.Abstractions.Components.Text
 @using Enter.UI.Abstractions.Core
-@inherits EntBaseComponent
+@inherits EntComponentBase
 <CascadingValue Value="@this">
     <div @attributes="AdditionalAttributes" class="@RootClass" >
         @if (!string.IsNullOrWhiteSpace(Icon))

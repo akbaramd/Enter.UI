@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Enter.UI.Components;
 
-public class ModalService : IModalService
+public class ModalService : IEntModalService
 {
     public List<EntModalInstance> Items = new();
 
@@ -16,23 +16,23 @@ public class ModalService : IModalService
         var taskCompletionSource = new TaskCompletionSource<ModalResult?>();
         var item = new EntModalInstance
         {
-            Key = modalId,
+            Id = modalId,
             Title = title,
             Type = typeof(TComponent),
             Options = options,
             Parameters = parameters,
-            OnClose = CloseAsync,
-            OnCancel = CancelAsync,
+            OnClosedAsync = CloseAsync,
+            OnCanceledAsync = CancelAsync,
             DialogResultTCS = taskCompletionSource
         };
         Items.Add(item);
-        OnModalShowed.Invoke(item.Key);
+        OnModalShowed.Invoke(item.Id);
         return taskCompletionSource.Task;
     }
 
     public Task CloseAsync(string id, ModalResult? result = null)
     {
-        var item = Items.First(x => x.Key == id);
+        var item = Items.First(x => x.Id == id);
         Items.Remove(item);
         OnModalClosed.Invoke(id);
         item.DialogResultTCS?.SetResult(result);
@@ -41,7 +41,7 @@ public class ModalService : IModalService
 
     public Task CancelAsync(string id)
     {
-        var item = Items.First(x => x.Key == id);
+        var item = Items.First(x => x.Id == id);
         Items.Remove(item);
         OnModalCanceled.Invoke(id);
         item.DialogResultTCS?.SetResult(ModalResult.Cancel());

@@ -12,15 +12,16 @@
         PanelClass="@PanelClass"
         TabNoContentMessage="@TabNoContentMessage"
         KeepPanelAlive="@KeepPanelAlive"
-        OnTabActivated="OnTabActivatedCallback"
-        OnTabRemoveClick="OnTabClosedCallback"
-        OnAllTabRemoveClick="OnAllTabClosedCallback"
+        OnTabActivated="OnTabActivatedCallbackAsync"
+        OnTabRemoved="OnTabRemovedCallback"
+        OnTabClosedClick="OnTabClosedCallback"
+        OnAllTabClosedClick="OnAllTabClosedCallback"
         OnTabAdded="OnTabAddedCallback">
     <ChildContent>
         @foreach (var item in _items)
         {
-            <CascadingValue Value="@item">
-                <EntTabPanel Icon="@item.Icon" Title="@item.Title" Id="@item.Id" @key="item.Key">
+            <CascadingValue Value="@item" @key="item.Id">
+                <EntTabPanel Icon="@item.Icon" Title="@item.Title" Id="@item.Id">
                     <DynamicComponent Type="@item.ComponentType" Parameters="@item.ComponentParameters"/>
                 </EntTabPanel>
             </CascadingValue>

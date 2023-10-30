@@ -10,7 +10,7 @@ using Enter.UI.Abstractions.Core.Bases;
 
 namespace Enter.UI.Components
 {
-    public partial class EntNavMenuGroup : EntBaseComponent
+    public partial class EntNavMenuGroup : EntComponentBase
     {
         protected string RootCss => CssClassBuilder.AddClass("ent-nav-menu-group")
             .AddClass("active",IsShow)

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components.Forms;
 
 namespace Enter.UI.Abstractions.Core.Bases;
 
-public class EntFormComponent : EditForm
+public class EntFormComponentBase : EditForm
 {
       
     [Parameter(CaptureUnmatchedValues =true)]

@@ -11,16 +11,15 @@ using Enter.UI.Core;
 
 namespace Enter.UI.Components
 {
-    public partial class EntTabPanel : EntBaseComponent
+    public partial class EntTabPanel : EntComponentBase
     {
 
         protected string RootCss => CssClassBuilder
             .AddClass("ent-tab-panel")
-           .AddClass($"active", Parent.IsActive(Id))
+           .AddClass($"active", Parent.IsActiveTab(Id))
            .Build();
 
 
-        public Guid Key { get; set; } = Guid.NewGuid();
         
         [Parameter]
         public string Id { get; set; }
@@ -39,7 +38,6 @@ namespace Enter.UI.Components
 
         protected override async Task OnInitializedAsync()
         {
-
             await base.OnInitializedAsync();
             if (Parent != null)
             {
@@ -47,8 +45,7 @@ namespace Enter.UI.Components
                 {
                     Id = Guid.NewGuid().ToString();
                 }
-
-                await Parent.AddNewTab(this);
+                await Parent.AddTabAsync(this);
             }
         }
     }

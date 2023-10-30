@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Enter.UI.Abstractions.Services;
 
-public interface IModalService
+public interface IEntModalService
 {
     Task<ModalResult> MessageBoxAsync(string title, string message, string confirmText = "Confirm",
           string cancelText = "Cancel");
