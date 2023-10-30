@@ -56,7 +56,7 @@ namespace Enter.UI.Abstractions.Core.Bases
             return Task.CompletedTask;
         }
 
-        protected async Task MdiTabClose()
+        protected async Task MdiTabCloseAsync()
         {
             if (MdiTabInstance != null)
             {
@@ -64,20 +64,30 @@ namespace Enter.UI.Abstractions.Core.Bases
             }
         }
 
-        protected async Task ModalCancel()
+        protected async Task ModalCancelAsync()
         {
             if (ModalInstance != null)
             {
                 await ModalInstance.CancelAsync(); 
             }
         }
-        protected async Task ModalClose<TResult>(TResult? result)
+        protected async Task ModalCloseAsync<TResult>(TResult? result = default)
         {
             if (ModalInstance != null)
             {
                 await ModalInstance.CloseAsync(ModalResult.Ok(result));
             }
         }
+
+        protected bool IsModalInstance()
+        {
+            return ModalInstance != null;
+        }
+        protected bool IsMdiTabInstance()
+        {
+            return MdiTabInstance != null;
+        }
+        
         public  ValueTask DisposeAsync()
         {
             if (MdiTabInstance != null)

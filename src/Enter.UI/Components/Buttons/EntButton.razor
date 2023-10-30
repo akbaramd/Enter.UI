@@ -2,11 +2,16 @@
 @using Enter.UI.Abstractions.Components.Button
 @inherits EntComponentBase
 <button @attributes="@AdditionalAttributes" class="@RootClass">
-    @if (Icon != null)
+    @if (Icon != null && !Loading)
     {
         <EntIcon Size="4" Icon="@Icon"/>
     }
+    @if (Loading)
+    {
+        <span class="ent-btn-loading"></span>
+    }
     @ChildContent
+
 </button>
 
 @code {
@@ -41,6 +46,8 @@
     [Parameter]
     public string? Icon { get; set; }
 
+    [Parameter]
+    public bool Loading { get; set; } = false;
 
     protected override void OnAfterRender(bool firstRender)
     {

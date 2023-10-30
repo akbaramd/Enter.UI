@@ -1,150 +1,235 @@
 ﻿:root {
-    --ent-btn-border-size: var(--ent-border-width);
-    --ent-btn-border-style: solid;
+  --ent-btn-border-size: var(--ent-border-width);
+  --ent-btn-border-style: solid;
 }
-.ent-btn {
-    padding: 0.625rem 1rem;
-    border: 0;
-    background-color:transparent;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
-    border-radius: $border-radius;
-    
-    &.ent-btn-sm {
-        padding: .5rem 0.75rem;
-        font-size: map-get($font-sizes, "description");
-    }
 
-    &.ent-btn-lg {
-        padding: 0.75rem 1.25rem;
-        font-size: map-get($font-sizes, "caption");
+.ent-btn {
+
+  &:hover {
+    .ent-btn-loading {
+      animation: anim-ent-btn-spin-fast 1s infinite linear;
     }
+  }
+  
+  .ent-btn-loading {
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    border: 0.25rem solid white;
+    border-left-color: transparent !important;
+    animation: anim-ent-btn-spin 1s infinite linear;
     
-    &.ent-btn-primary {
+  }
+
+  padding: 0.625rem 1rem;
+  border: 0;
+  background-color: transparent;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  border-radius: $border-radius;
+
+  &.ent-btn-sm {
+    padding: .5rem 0.75rem;
+    font-size: map-get($font-sizes, "description");
+  }
+
+  &.ent-btn-lg {
+    padding: 0.75rem 1.25rem;
+    font-size: map-get($font-sizes, "caption");
+  }
+
+  &.ent-btn-primary {
+    background-color: $bg-primary;
+    color: white;
+    .ent-btn-loading {
+      border-color: white;
+    }
+    &.ent-btn-outline {
+      background-color: transparent;
+      color: $bg-primary;
+      border: var(--ent-btn-border-size) var(--ent-btn-border-style) $bg-primary;
+      .ent-btn-loading {
+        border-color: $bg-primary;
+      }
+      &:hover {
         background-color: $bg-primary;
         color: white;
-
-        &.ent-btn-outline {
-            background-color: transparent;
-            color: $bg-primary;
-            border: var(--ent-btn-border-size) var(--ent-btn-border-style) $bg-primary;
-            
-            &:hover {
-                background-color: $bg-primary;
-                color: white;
-            }
-        }
-        
+      }
     }
-    &.ent-btn-light {
+
+  }
+
+  &.ent-btn-light {
+    background-color: $bg-light;
+    color: $cl-dark;
+
+    .ent-btn-loading {
+      border-color: $cl-dark;
+    }
+    &.ent-btn-outline {
+      background-color: transparent;
+      color: $bg-light;
+      border: var(--ent-btn-border-size) var(--ent-btn-border-style) $bg-light;
+      .ent-btn-loading {
+        border-color: $bg-light;
+      }
+      &:hover {
         background-color: $bg-light;
         color: $cl-dark;
-        
-        &.ent-btn-outline {
-            background-color: transparent;
-            color: $bg-light;
-            border: var(--ent-btn-border-size) var(--ent-btn-border-style) $bg-light;
-
-            &:hover {
-                background-color: $bg-light;
-                color: $cl-dark;
-            }
-        }
-        
+      }
     }
-    &.ent-btn-dark {
+
+  }
+
+  &.ent-btn-dark {
+    background-color: $bg-dark;
+    color: $cl-light;
+
+    .ent-btn-loading {
+      border-color: $cl-light;
+    }
+    &.ent-btn-outline {
+      background-color: transparent;
+      color: $bg-dark;
+      border: var(--ent-btn-border-size) var(--ent-btn-border-style) $bg-dark;
+      .ent-btn-loading {
+        border-color: $bg-dark;
+      }
+      &:hover {
         background-color: $bg-dark;
         color: $cl-light;
-
-        &.ent-btn-outline {
-            background-color: transparent;
-            color: $bg-dark;
-            border: var(--ent-btn-border-size) var(--ent-btn-border-style) $bg-dark;
-
-            &:hover {
-                background-color: $bg-dark;
-                color: $cl-light;
-            }
-        }
+      }
     }
-    &.ent-btn-secondary {
+  }
+
+  &.ent-btn-secondary {
+    background-color: $bg-secondary;
+    color: $cl-secondary;
+
+    .ent-btn-loading {
+      border-color: $cl-secondary;
+    }
+    
+    &.ent-btn-outline {
+      background-color: transparent;
+      color: $bg-secondary;
+      border: var(--ent-btn-border-size) var(--ent-btn-border-style) $bg-secondary;
+      .ent-btn-loading {
+        border-color: $bg-secondary;
+      }
+      &:hover {
         background-color: $bg-secondary;
         color: $cl-secondary;
-
-        &.ent-btn-outline {
-            background-color: transparent;
-            color: $bg-secondary;
-            border: var(--ent-btn-border-size) var(--ent-btn-border-style) $bg-secondary;
-
-            &:hover {
-                background-color: $bg-secondary;
-                color: $cl-secondary;
-            }
-        }
-        
+      }
     }
-    &.ent-btn-success {
+
+  }
+
+  &.ent-btn-success {
+    background-color: $color-green-500;
+    color: white;
+
+    .ent-btn-loading {
+      border-color: white;
+    }
+    &.ent-btn-outline {
+      background-color: transparent;
+      color: $color-green-500;
+      border: var(--ent-btn-border-size) var(--ent-btn-border-style) $color-green-500;
+      .ent-btn-loading {
+        border-color: $color-green-500;
+      }
+      &:hover {
         background-color: $color-green-500;
         color: white;
-
-        &.ent-btn-outline {
-            background-color: transparent;
-            color: $color-green-500;
-            border: var(--ent-btn-border-size) var(--ent-btn-border-style) $color-green-500;
-
-            &:hover {
-                background-color: $color-green-500;
-                color: white;
-            }
-        }
-        
+      }
     }
-    &.ent-btn-danger {
+
+  }
+
+  &.ent-btn-danger {
+    background-color: $color-red-500;
+    color: white;
+    .ent-btn-loading {
+      border-color: white;
+    }
+    &.ent-btn-outline {
+      background-color: transparent;
+      color: $color-red-500;
+      border: var(--ent-btn-border-size) var(--ent-btn-border-style) $color-red-500;
+      .ent-btn-loading {
+        border-color: $color-red-500;
+      }
+      &:hover {
         background-color: $color-red-500;
         color: white;
-
-        &.ent-btn-outline {
-            background-color: transparent;
-            color: $color-red-500;
-            border: var(--ent-btn-border-size) var(--ent-btn-border-style) $color-red-500;
-
-            &:hover {
-                background-color: $color-red-500;
-                color: white;
-            }
-        }
+      }
     }
-    &.ent-btn-warning {
+  }
+
+  &.ent-btn-warning {
+    background-color: $color-orange-500;
+    color: white;
+    .ent-btn-loading {
+      border-color: white;
+    }
+    &.ent-btn-outline {
+      background-color: transparent;
+      color: $color-orange-500;
+      border: var(--ent-btn-border-size) var(--ent-btn-border-style) $color-orange-500;
+      .ent-btn-loading {
+        border-color: $color-orange-500;
+      }
+      &:hover {
         background-color: $color-orange-500;
         color: white;
-
-        &.ent-btn-outline {
-            background-color: transparent;
-            color: $color-orange-500;
-            border: var(--ent-btn-border-size) var(--ent-btn-border-style) $color-orange-500;
-
-            &:hover {
-                background-color: $color-orange-500;
-                color: white;
-            }
-        }
+      }
     }
-    &.ent-btn-info {
+  }
+
+  &.ent-btn-info {
+    background-color: $color-sky-500;
+    color: white;
+    .ent-btn-loading {
+      border-color: white;
+    }
+    &.ent-btn-outline {
+      background-color: transparent;
+      color: $color-sky-500;
+      border: var(--ent-btn-border-size) var(--ent-btn-border-style) $color-sky-500;
+
+      .ent-btn-loading {
+        border-color: $color-sky-500;
+      }
+      &:hover {
         background-color: $color-sky-500;
         color: white;
-
-        &.ent-btn-outline {
-            background-color: transparent;
-            color: $color-sky-500;
-            border: var(--ent-btn-border-size) var(--ent-btn-border-style) $color-sky-500;
-
-            &:hover {
-                background-color: $color-sky-500;
-                color: white;
-            }
-        }
+      }
     }
+  }
+}
+
+@keyframes anim-ent-btn-spin
+{
+  0%{
+    animation-timing-function:cubic-bezier(0.5856,0.0703,0.4143,0.9297);
+    transform:rotate(0);
+  }
+  100%{
+    transform:rotate(900deg)
+  }
+}
+
+@keyframes anim-ent-btn-spin-fast
+{
+  0%{
+    animation-timing-function:cubic-bezier(0.5856,0.0703,0.4143,0.9297);
+    transform:rotate(0);
+  }
+  100%{
+    transform:rotate(1800deg)
+  }
 }
