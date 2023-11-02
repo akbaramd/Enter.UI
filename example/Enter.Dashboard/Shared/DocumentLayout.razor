@@ -1,0 +1,108 @@
+﻿@using Enter.Dashboard.Pages;
+@using Enter.Dashboard.Components
+@using Enter.UI.Abstractions.Components.Button
+@using Enter.UI.Abstractions.Components.Drawer
+@using Enter.UI.Abstractions.Core.Enums
+@using Enter.UI.Abstractions.Services
+@inherits LayoutComponentBase
+ <div class="border-y d-flex flex-column">
+        <div class="d-flex flex-column flex-grow-1">
+            <EntAppBar ShowToggle="_showToggle" ToggleClick="ToggleSidebar" Title="Enterprise Dashboard">
+                <EntButton @onclick="ToggleRtl" Icon="fa-light fa-align-right" Size="ButtonSize.Small" Color="ButtonColor.Secondary">راستچین</EntButton>
+                                    <EntButton @onclick="ToggleDarkMode" Icon="fa-light fa-moon" Size="ButtonSize.Small" class="d-none laptop:d-flex" Color="ButtonColor.Secondary">Dark / Light</EntButton>
+                                    <EntButton @onclick="() => _isSideDrawerOpen = !_isSideDrawerOpen" Icon="fa-light fa-align-left" class="d-none laptop:d-flex" Size="ButtonSize.Small" Color="ButtonColor.Secondary">Sidebar</EntButton>
+            </EntAppBar>
+            <EntDrawerContainer class="flex-grow-1">
+                <EntDrawer @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start"  Mode="_drawerMode" class="z-50">
+                    <EntNavMenu class="border-0">
+                        <EntNavMenuGroup Title="Components" Icon="fa-light fa-home">
+                            <EntNavMenuTextItem class="bg-light" Icon="fa-light fa-clock" Text="TreeView" Click="@(() => Navigate("/documents/treeview"))"/>
+                            <EntNavMenuTextItem class="bg-light" Icon="fa-light fa-clock" Text="NavMenu" Click="@(() => Navigate("/documents/navmenu"))"/>
+                        </EntNavMenuGroup>
+                    </EntNavMenu>
+                </EntDrawer>
+                <EntDrawer 
+                    Open="true" 
+                    Direction="EntDrawerDirection.End" 
+                    Mode="EntDrawerMode.Behavior"
+                    class="z-50">
+                    <p class="p-4">Default Text To Show</p>
+                </EntDrawer>
+                <div class="h-full">
+                    @Body
+                </div>
+            </EntDrawerContainer>
+        </div>
+        <EntModalProvider/>
+        <EntPopoverProvider/>
+        <EntToastProvider/>
+    </div>
+
+@code {
+
+    private bool _showToggle = false;
+    private bool _isDrawerOpen = true;
+    private bool _isSideDrawerOpen = false;
+    private EntDrawerMode _drawerMode = EntDrawerMode.Behavior;
+
+    [CascadingParameter]
+    public EntThemeProvider? EntThemeProvider { get; set; }
+
+    [Inject]
+    public IEntMdiService? EntMdiService { get; set; } = default!;
+    
+    [Inject]
+    public NavigationManager? Navigation { get; set; } = default!;
+    
+    public void Navigate(string uri)
+    {
+        Navigation?.NavigateTo(uri);
+    }
+
+    protected override async Task OnAfterRenderAsync( bool firstRender)
+    {
+        await base.OnInitializedAsync();
+
+        if (firstRender)
+        {
+            if (EntThemeProvider != null)
+            {
+                EntThemeProvider.BreakpointChangeEvent += EntThemeProviderBreakpointChangeEvent;
+            }
+        }
+    }
+
+    private void EntThemeProviderBreakpointChangeEvent(EntBreakpoint breakpoint)
+    {
+        _drawerMode = breakpoint > EntBreakpoint.Tablet ? EntDrawerMode.Behavior : EntDrawerMode.Overlay;
+        _isDrawerOpen = breakpoint > EntBreakpoint.Tablet;
+        _showToggle = breakpoint <= EntBreakpoint.Tablet;
+        StateHasChanged();
+    }
+
+    private void ToggleRtl()
+    {
+        EntThemeProvider?.ToggleRtl();
+    }
+    
+    private async Task ToggleDarkMode()
+    {
+        if (EntThemeProvider != null)
+        {
+            await EntThemeProvider.ToggleDarkMode();
+        }
+    }
+    
+    private async Task ToggleSidebar()
+    {
+        _isDrawerOpen = !_isDrawerOpen;
+        StateHasChanged();
+    }
+
+
+    private void OnSidebarIsShowChanged(bool sidebarIsShow)
+    {
+        StateHasChanged();
+    }
+
+}

@@ -11,9 +11,7 @@
         {
             @foreach (var item in DataSource)
             {
-               
-                <EntTreeViewItem Item="@item" />
-               
+                    <EntTreeViewItem Item="@item"  />
             }
         }
     </ul>
@@ -53,10 +51,12 @@
     
     
     [Parameter]
-    public List<TType> DataSource { get; set; }
+    public List<TType>? DataSource { get; set; }
     
 
-    public void ItemClick(IEntTreeViewItem<TType,TValue> item,IEntTreeViewItem<TType,TValue>? parentItem = null , bool fromChild = false) 
+    public void ItemClick(IEntTreeViewItem<TType,TValue> item,
+        IEntTreeViewItem<TType,TValue>? parentItem = null ,
+         bool fromChild = false) 
     {
         if (MultiSelect)
         {
@@ -106,6 +106,14 @@
             
             SelectedValueChanged.InvokeAsync(SelectedValue);   
         }
+        StateHasChanged();
+    }
+
+    
+}
+@code {
+    public void ForceStateHasChanged()
+    {
         StateHasChanged();
     }
 

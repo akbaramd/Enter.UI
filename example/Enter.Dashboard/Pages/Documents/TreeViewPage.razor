@@ -1,0 +1,50 @@
+﻿@page "/documents/treeview"
+@using Enter.UI.Abstractions.Components.TreeView
+@using Enter.UI.Abstractions.Components.Button
+@layout DocumentLayout
+<div class="p-4">
+
+    <EntCard Expandable="true" CardExpand="false" class="mb-4" Title="TreeView (Single Select)">
+        <CardBody>
+            <EntTreeView
+                Tag="SingleTreeView"
+                class="mb-4"
+                MultiSelect="false"
+                SelectMode="EntTreeViewSelectMode.Toggle"
+                DataSource="@Constants.Roles"
+                @bind-SelectedValue="TreeSelectedValue"/>
+
+           @if (TreeSelectedValue != null)
+           {
+               <EntButton Size="ButtonSize.Small" class="">
+                   @TreeSelectedValue
+               </EntButton>
+           }
+
+        </CardBody>
+    </EntCard>
+
+    <EntCard Expandable="true" CardExpand="false" class="mb-4" Title="TreeView (Multi Select)">
+        <CardBody>
+            <EntTreeView
+                class="mb-4"
+                MultiSelect="true"
+                DataSource="Constants.Roles"
+                @bind-SelectedValues="TreeSelectedValues"/>
+            <EntFlex Gap="1">
+                @foreach (var item in TreeSelectedValues)
+                {
+                    <EntButton Size="ButtonSize.Small">
+                        @item
+                    </EntButton>
+                }
+            </EntFlex>
+        </CardBody>
+    </EntCard>
+
+</div>
+
+@code {
+    public List<string> TreeSelectedValues { get; set; } = new() { "Admin" };
+    public string TreeSelectedValue { get; set; } = "Junior Developer";
+}
