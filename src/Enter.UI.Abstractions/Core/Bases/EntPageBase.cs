@@ -1,7 +1,6 @@
 ﻿using Enter.UI.Abstractions.Components.Modal;
 using Enter.UI.Abstractions.Components.Tabs;
 using Enter.UI.Abstractions.Services;
-using Enter.UI.Components;
 using Microsoft.AspNetCore.Components;
 
 namespace Enter.UI.Abstractions.Core.Bases

@@ -1,11 +1,11 @@
 ﻿@namespace Enter.UI.Components
-@typeparam TType where TType : IEntTreeViewItem<TType, TValue>
 @typeparam TValue
 @using Enter.UI.Abstractions.Components.TreeView
+@using Enter.UI.Abstractions.Core
 @inherits EntComponentBase
 
 <CascadingValue Value="this" IsFixed="true">
-    <li @attributes="@AdditionalAttributes" class="@RootCss" @onclick="()=>Click()" @onclick:stopPropagation>
+    <li @attributes="@AdditionalAttributes" class="@RootCss" @onclick="()=>Select()" @onclick:stopPropagation>
 
         <div class="ent-treeview-item-list-icon" @onclick="OnItemExpandClickCallback" @onclick:stopPropagation>
             @if (Item.Childrens != null && Item.Childrens.Any())
@@ -16,8 +16,8 @@
 
         @if (TreeView.MultiSelect)
         {
-            <InputCheckbox class="ent-treeview-item-checkbox" Value="@Item.Selected"
-                           ValueExpression="() => Item.Selected"/>
+            <InputCheckbox class="ent-treeview-item-checkbox" Value="@Checked"
+                           ValueExpression="() => Checked"/>
         }
 
         @if (Item.Icon != null)
@@ -39,7 +39,7 @@
 
             @foreach (var item in Item.Childrens)
             {
-                <EntTreeViewItem Item="@item"/>
+                <EntTreeViewItem Item="@item"  />
             }
 
         </EntExpandable>
@@ -50,67 +50,81 @@
 
     private string RootCss => CssClassBuilder
         .AddClass("ent-treeview-item")
-        .AddClass("active", !TreeView.MultiSelect && Item.Selected)
+        .AddClass("active", !TreeView.MultiSelect && Checked)
         .AddClass("expanded", Expanded)
         .Build();
 
     [CascadingParameter]
-    public EntTreeView<TType, TValue> TreeView { get; set; } = default!;
+    public EntTreeView<TValue> TreeView { get; set; } = default!;
 
     [CascadingParameter]
-    public EntTreeViewItem<TType, TValue>? ParentItem { get; set; } = null;
+    public EntTreeViewItem<TValue>? ParentItem { get; set; } = null;
 
     public bool Expanded { get; set; }
 
-  
+    private bool HaveParentItem => ParentItem != null;
+
+    private bool Checked  => TreeView.MultiSelect
+        ? TreeView.SelectedValues.Contains(Item.Value)
+        : TreeView.SelectedValue?.Equals(Item.Value) ?? false;
+
+
+
 
     [Parameter]
-    public IEntTreeViewItem<TType, TValue> Item { get; set; } = default;
+    public EntSelectItem<TValue> Item { get; set; } = default;
 
-    public void Click(bool checkForSelected = true)
+
+    protected override async Task OnInitializedAsync()
     {
-        if (!IsMultiSelect())
+        await base.OnInitializedAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+
+
+        if (firstRender && Checked)
         {
-            if (TreeView.SelectedValue != null && TreeView.SelectedValue.Equals(Item.Value) && checkForSelected)
-            {
-                TreeView.SelectedValue = default;
-            }
-            else
-            {
-                TreeView.SelectedValue = Item.Value;
-            }
+            Expand();
+            TreeView.StateHasChanged();
+        }
+
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    public async Task Select()
+    {
+        if (Checked)
+        {
+            await TreeView.DeSelect(Item.Value);
         }
         else
         {
-    // state to Chec
+            await TreeView.Select(Item.Value);
+
+            // if (IsMultiSelect && (Item.Childrens?.Any() ?? false))
+            // {
+            //     foreach (var item in Item.Childrens)
+            //     {
+                    
+            //     }
+                
+            // }
+
+            Expand();
         }
-        
-       TreeView.ForceStateHasChanged();;
+
+       TreeView.StateHasChanged();
       
     }
 
-    private bool IsMultiSelect()
-    {
-        return TreeView.MultiSelect;
-    }
+   
 
-    protected override Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            Item.Selected = TreeView.MultiSelect
-                ? TreeView.SelectedValues.Contains(Item.Value)
-                : TreeView.SelectedValue?.Equals(Item.Value) ?? false;
-           
-        }
-        
-        if (firstRender && Item.Selected && ParentItem != null)
-        {
-            Click(checkForSelected:false);
-        }
+    private bool IsMultiSelect => TreeView.MultiSelect;
+    
 
-        return base.OnAfterRenderAsync(firstRender);
-    }
+  
 
 
     
@@ -118,27 +132,18 @@
     public void Expand()
     {
         Expanded = true;
-
-        if (
-            (ParentItem != null && Expanded))
-        {
-            ParentItem.Expand();
-        }
-        
-        StateHasChanged();
+        ParentItem?.Expand();
     }
 
     public void Collapse()
     {
         Expanded = false;
-        
-        if (ParentItem?.Item?.Childrens?.All(x=>!x.Selected)??false)
-        {
-            ParentItem.Collapse();
-        }
-        
-        
-        StateHasChanged();
+        // ParentItem?.Collapse();
+        // if (ParentItem?.Item?.Childrens?.All(x=>!x.Selected)??false)
+        // {
+        //     ParentItem.Collapse();
+        // }
+      
     }
 
     
@@ -149,6 +154,8 @@
             Collapse();
         else
             Expand();
+        
+        TreeView.StateHasChanged();
     }
 
 }

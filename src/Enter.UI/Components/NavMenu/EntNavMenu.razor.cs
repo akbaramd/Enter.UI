@@ -40,6 +40,7 @@ namespace Enter.UI.Components
                     group.IsShow = false;
                 }
             }
+            StateHasChanged();
           
         }
 

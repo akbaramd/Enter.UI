@@ -86,41 +86,7 @@
             </EntCard>
 
 
-            <div class="row">
-                <div class="col-1/2">
-                    <EntCard Expandable="true" CardExpand="false" class="mb-8" Title="TreeView (Single Select)">
-                        <CardBody>
-                            <EntTreeView
-                                MultiSelect="false"
-                                SelectMode="EntTreeViewSelectMode.Toggle"
-                                DataSource="@Constants.Roles"
-                                @bind-SelectedValue="TreeSelectedValue"/>
-
-                            <span class="me-2">
-                                @TreeSelectedValue
-                            </span>
-
-                        </CardBody>
-                    </EntCard>
-                </div>
-
-                <div class="col-1/2">
-                    <EntCard Expandable="true" CardExpand="false" class="mb-8" Title="TreeView (Multi Select)">
-                        <CardBody>
-                            <EntTreeView
-                                MultiSelect="true"
-                                DataSource="Constants.Roles"
-                                @bind-SelectedValues="TreeSelectedValues"/>
-                            @foreach (var item in TreeSelectedValues)
-                            {
-                                <span class="me-2">
-                                    @item
-                                </span>
-                            }
-                        </CardBody>
-                    </EntCard>
-                </div>
-            </div>
+          
             <EntCard Expandable="true" class="mb-8" Title="Form">
                 <CardBody>
 

@@ -1,5 +1,5 @@
 ﻿@namespace Enter.UI.Components
-@typeparam TType where TType : Enter.UI.Abstractions.Components.TreeView.IEntTreeViewItem<TType,TValue>
+
 @typeparam TValue
 @using Enter.UI.Abstractions.Components.TreeView
 @using Enter.UI.Abstractions.Core
@@ -21,9 +21,9 @@
 @code {
 
     private string RootCss => CssClassBuilder
-        .AddClass("ent-treeview")
-        .Build();
-    
+    .AddClass("ent-treeview")
+    .Build();
+
     private string Item =>new  CssClassBuilder()
         .AddClass("ent-treeview")
         .Build();
@@ -34,87 +34,63 @@
     [Parameter]
     public bool MultiSelect { get; set; } = false;
 
+
+
     [Parameter]
-    public TValue? SelectedValue { get; set; } = default!;
-    
+    public TValue? SelectedValue { get; set; }
+
     [Parameter]
     public EventCallback<TValue?> SelectedValueChanged { get; set; }
-    
+
     [Parameter]
     public List<TValue> SelectedValues { get; set; } = new List<TValue>();
-    
+
     [Parameter]
     public EventCallback<List<TValue>> SelectedValuesChanged { get; set; }
 
     [Parameter]
     public EntTreeViewSelectMode SelectMode { get; set; } = EntTreeViewSelectMode.Select;
-    
-    
-    [Parameter]
-    public List<TType>? DataSource { get; set; }
-    
 
-    public void ItemClick(IEntTreeViewItem<TType,TValue> item,
-        IEntTreeViewItem<TType,TValue>? parentItem = null ,
-         bool fromChild = false) 
+
+
+    [Parameter]
+    public IEnumerable<EntSelectItem<TValue>>? DataSource { get; set; }
+
+
+    public async Task Select(TValue value)
     {
         if (MultiSelect)
         {
-            
-            var shouldAdd = false;
-            if (parentItem != null)
-            {
-                shouldAdd = SelectedValues.Contains(parentItem.Value);
-            }
-            else
-            {
-               shouldAdd = !SelectedValues.Contains(item.Value);
-            }
-
-            if (shouldAdd)
-            {
-                
-                SelectedValues.Add(item.Value);
-                SelectedValues = SelectedValues.Distinct().ToList();
-            }
-            else
-            {
-                SelectedValues.Remove(item.Value);
-            }
-
-            if (item.Childrens != null && !fromChild)
-            {
-                foreach (var it in item.Childrens)
-                {
-                    ItemClick(it, item);
-                }
-            }
-
-            SelectedValuesChanged.InvokeAsync(SelectedValues);
+            SelectedValues.Add(value);
+            await SelectedValuesChanged.InvokeAsync(SelectedValues);
         }
         else
         {
-            @if (SelectMode == EntTreeViewSelectMode.Toggle && SelectedValue != null && SelectedValue.Equals(item.Value))
-            {
-                SelectedValue = default;
-            }
-            else
-            {
-                SelectedValue = item.Value;
-                SelectedValueChanged.InvokeAsync(SelectedValue);
-            }
-            
-            SelectedValueChanged.InvokeAsync(SelectedValue);   
+            SelectedValue = value;
+            await SelectedValueChanged.InvokeAsync(SelectedValue);
         }
-        StateHasChanged();
     }
+
+    public async Task DeSelect(TValue value)
+    {
+        if (MultiSelect)
+        {
+            SelectedValues.Remove(value);
+            await SelectedValuesChanged.InvokeAsync(SelectedValues);
+        }
+        else
+        {
+            SelectedValue = default;
+            await SelectedValueChanged.InvokeAsync(SelectedValue);
+        }
+    }
+
+    public new void StateHasChanged()
+    {
+       base.StateHasChanged();
+    }
+
 
     
 }
-@code {
-    public void ForceStateHasChanged()
-    {
-        StateHasChanged();
-    }
 
-}

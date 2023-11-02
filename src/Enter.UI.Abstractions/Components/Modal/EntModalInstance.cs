@@ -1,6 +1,4 @@
-﻿using Enter.UI.Abstractions.Components.Modal;
-
-namespace Enter.UI.Components;
+﻿namespace Enter.UI.Abstractions.Components.Modal;
 
 public class EntModalInstance
 {
