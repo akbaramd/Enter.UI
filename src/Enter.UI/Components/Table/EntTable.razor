@@ -21,30 +21,4 @@
 
 
     </table>
-    <div class="ent-table-pagination">
-        <ul class="ent-table-pagination-container">
-            @if (showNextPaginate)
-            {
-                <li @onclick="NextPage" class="ent-table-pagination-item">
-                    <EntIcon Icon="fa-light fa-chevron-right"/>
-                </li>
-            }
-            
-            @if (showNextPaginate || showLastPaginate)
-            {
-                <li  class="ent-table-pagination-item">
-                   صفحه @_currentPage از @_totalPage
-                </li>
-            }
-            @if (showLastPaginate)
-           {
-               <li @onclick="LastPage" class="ent-table-pagination-item">
-                  <EntIcon Icon="fa-light fa-chevron-left"/>
-               </li>
-           }
-        </ul>
-        <div class="ent-table-pagination-info">
-            صفحه @_currentPage از @_totalPage
-        </div>
-    </div>
 </CascadingValue>

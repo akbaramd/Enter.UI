@@ -3,11 +3,12 @@
 @using Enter.Dashboard.Model
 @using Enter.UI.Abstractions.Components.Drawer
 @using Enter.UI.Abstractions.Components.Flex
+@using Enter.UI.Abstractions.Components.Icon
 @using Enter.UI.Abstractions.Components.Modal
 @using Enter.UI.Abstractions.Components.Toast
 @using Enter.UI.Abstractions.Components.TreeView
 @using Enter.UI.Abstractions.Services
-
+@layout MainLayout
 <PageTitle>Index</PageTitle>
 
 <EntFlex class="h-full" Direction="FlexDirection.Column">
@@ -45,7 +46,7 @@
                     </EntDrawerContainer>
                 </CardBody>
             </EntCard>
-            <EntCard class="mb-8" Tag="card" Expandable="true" CardExpand="false" Icon="fa-light fa-user" Title="Toasts">
+            <EntCard class="mb-8" Tag="card" Expandable="true" CardExpand="false" Icon="EntIconName.User" Title="Toasts">
                 <CardBody>
                     <EntFlex Direction="FlexDirection.Column"
                              LaptopDirection="FlexDirection.Row"

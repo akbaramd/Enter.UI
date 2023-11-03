@@ -1,10 +1,11 @@
 ﻿@namespace Enter.UI.Components
 @using System.Diagnostics.CodeAnalysis
+@using Enter.UI.Abstractions.Components.Icon
 @inherits EntInputBase<string>
 @typeparam T
 <div @attributes="@AdditionalAttributes" class="@RootClass"  @ref="_elementReference" id="@Id">
     <EntInputText @ref="_inputReference" EventType="oninput" class="@( "ent-input-autocomplete-input")" 
-                  Value="@Value" ValueChanged="@ValueChanged" Disabled="@Disabled" Readonly="@Readonly" @onclick="@Click" @onfocusin="@Click" ValueExpression="@ValueExpression" @oninput="@OnInputCallback" Icon="@EntIcons.Search" />
+                  Value="@Value" ValueChanged="@ValueChanged" Disabled="@Disabled" Readonly="@Readonly" @onclick="@Click" @onfocusin="@Click" ValueExpression="@ValueExpression" @oninput="@OnInputCallback" Icon="@EntIconName.Search" />
 
     <EntPopover Open="_showMenu" RelativeWidth="true" Anchor="Origin.BottomCenter" Transform="Origin.TopCenter" PopoverClass="@("ent-input-autocomplete-popover")">
 

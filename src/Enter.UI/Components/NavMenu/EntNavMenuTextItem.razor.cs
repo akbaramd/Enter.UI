@@ -29,7 +29,7 @@ namespace Enter.UI.Components
             .Build();
 
         [Parameter]
-        public string Icon { get; set; }
+        public object Icon { get; set; }
         
         [Required]
         [Parameter]

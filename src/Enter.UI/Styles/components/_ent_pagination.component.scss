@@ -1,0 +1,28 @@
+﻿.ent-pagination {
+    border: $border;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: fit-content;
+    .ent-pagination-item {
+        padding: 0.625rem 1rem;
+        border-inline-end: $border;
+        cursor: pointer;
+        
+        &.active {
+            background-color: $bg-primary;
+            color: $cl-light;
+            &:hover {
+                background-color: $bg-primary;
+            }
+        }
+         &:hover {
+            background-color: $bg-tertiary;
+        }
+    }
+    .ent-pagination-item:last-child {
+        border-inline-end: 0;
+    }
+}

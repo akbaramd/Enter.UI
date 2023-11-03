@@ -2,6 +2,7 @@
 @typeparam TValue
 @using Enter.UI.Abstractions.Components.TreeView
 @using Enter.UI.Abstractions.Core
+@using Enter.UI.Abstractions.Components.Icon
 @inherits EntComponentBase
 
 <CascadingValue Value="this" IsFixed="true">
@@ -10,7 +11,7 @@
         <div class="ent-treeview-item-list-icon" @onclick="OnItemExpandClickCallback" @onclick:stopPropagation>
             @if (Item.Childrens != null && Item.Childrens.Any())
             {
-                <EntIcon Size="4" Icon="@EntIcons.ChevronDown"/>
+                <EntIcon IconSize="EntIconNameize.Default" Icon="@EntIconName.ChevronDown"/>
             }
         </div>
 
@@ -23,7 +24,7 @@
         @if (Item.Icon != null)
         {
             <div class="ent-treeview-item-icon">
-                <EntIcon Size="4" Icon="@Item.Icon"/>
+                <EntIcon IconSize="EntIconNameize.Default" Icon="@Item.Icon"/>
             </div>
         }
         <span class="ent-treeview-item-text">
@@ -64,26 +65,22 @@
 
     private bool HaveParentItem => ParentItem != null;
 
+    public event Action<TValue?> OnValueChange = default!;
+    
     private bool Checked  => TreeView.MultiSelect
         ? TreeView.SelectedValues.Contains(Item.Value)
         : TreeView.SelectedValue?.Equals(Item.Value) ?? false;
 
-
-
-
     [Parameter]
-    public EntSelectItem<TValue> Item { get; set; } = default;
-
+    public EntSelectItem<TValue> Item { get; set; } = default!;
 
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
     }
-
+      
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-
-
         if (firstRender && Checked)
         {
             Expand();
@@ -98,11 +95,12 @@
         if (Checked)
         {
             await TreeView.DeSelect(Item.Value);
+            OnValueChange.Invoke(default);
         }
         else
         {
             await TreeView.Select(Item.Value);
-
+            OnValueChange.Invoke(Item.Value);
             // if (IsMultiSelect && (Item.Childrens?.Any() ?? false))
             // {
             //     foreach (var item in Item.Childrens)

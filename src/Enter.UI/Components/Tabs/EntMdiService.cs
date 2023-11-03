@@ -6,14 +6,14 @@ namespace Enter.UI.Components;
 
 internal class EntMdiService : IEntMdiService
 {
-    public async Task AddNewTabAsync<TComponent>(string id, string title, string icon,
+    public async Task AddNewTabAsync<TComponent>(string id, string title, object icon,
         Dictionary<string, object>? parameters = null)
         where TComponent : ComponentBase
     {
       await  AddNewTabAsync(id, typeof(TComponent), title, icon, parameters);
     }
 
-    public async Task AddNewTabAsync(string id, Type type, string title, string icon,
+    public async Task AddNewTabAsync(string id, Type type, string title, object icon,
         Dictionary<string, object>? parameters = null)
     {
         id = string.IsNullOrWhiteSpace(id) ? Guid.NewGuid().ToString() : id;

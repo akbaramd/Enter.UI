@@ -1,0 +1,60 @@
+﻿@page "/documents/datatable"
+@using Enter.UI.Abstractions.Components.TreeView
+@using Enter.UI.Abstractions.Components.Button
+@using Enter.UI.Abstractions.Core.Extensions
+@using System.Net.Mime
+@using Enter.Dashboard.Model
+@using Enter.UI.Abstractions.Core
+@layout DocumentLayout
+<EntCard class="m-4" Title="جدول داده">
+    <CardBody>
+        <EntTable DataSources="DataSource" Total="Constants.Users.Count" Take="_take" >
+            <HeaderTemplate>
+                <th>شناسه</th>
+                <th>نام</th>
+                <th>نام خانوادگی</th>
+                <th>سن</th>
+            </HeaderTemplate>
+            <RowTemplate>
+                <tr>
+                    <td>@context.Id</td>
+                    <td>@context.FirstName</td>
+                    <td>@context.LastName</td>
+                    <td>@context.Age</td>
+                </tr>
+            </RowTemplate>
+        </EntTable>
+            <EntPagination class="mt-4" 
+                           Selected="_page" 
+                           SelectedChanged="OnPaginationChange" 
+                           Count="_totalPage"/>
+    </CardBody>
+</EntCard>
+
+@code {
+
+    
+    public List<Users> DataSource { get; set; } = new List<Users>();
+    
+    private  int _take = 2;
+    private  int _page = 1;
+    private  int _totalPage => (int) Math.Ceiling(decimal.Parse(Constants.Users.Count.ToString()) / _take);
+
+    protected override void OnInitialized()
+    {
+        DataSource = Constants.Users.Skip(0).Take(_take).ToList();
+
+        base.OnInitialized();
+    }
+
+    private void OnPaginationChange(int page)
+    {
+        _page = page;
+        var skip = (page - 1) * _take;
+
+        DataSource = Constants.Users.Skip(skip).Take(_take).ToList();
+        
+        StateHasChanged();
+    }
+
+}

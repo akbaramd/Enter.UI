@@ -1,5 +1,6 @@
 ﻿@namespace Enter.UI.Components
 @using Enter.UI.Abstractions.Components.Modal
+@using Enter.UI.Abstractions.Components.Icon
 @inherits EntComponentBase
 <div class="ent-modal-container" @onclick="OnContainerClick">
                 <div class="@RootCss" @onclick:stopPropagation="true" @onclick="OnModalClick">
@@ -7,7 +8,7 @@
                         <b class="title">@Title</b>
                         @if (Instance?.Options?.ShowCloseButton??true)
                         {
-                            <EntIcon class="icon" Click="OnCancelClick"  Icon="fa-light fa-close"/>
+                            <EntIcon class="icon" Click="OnCancelClick"  Icon="EntIconName.Remove"/>
                         }
                     </div>
                     <div class="ent-modal-content">

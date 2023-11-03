@@ -4,6 +4,7 @@
 @using Enter.UI.Abstractions.Core.Extensions
 @using System.Net.Mime
 @using Enter.Dashboard.Model
+@using Enter.UI.Abstractions.Components.Icon
 @using Enter.UI.Abstractions.Core
 @layout DocumentLayout
 <div class="p-4">
@@ -52,7 +53,7 @@
 
 @code {
 
-    public IEnumerable<EntSelectItem<string>> Datasource =  Constants.Roles.ProjectToSelectItem(x => x.Text, x => x.Value, x => x.Childrens, "fa-light fa-folder");
+    public IEnumerable<EntSelectItem<string>> Datasource =  Constants.Roles.ProjectToSelectItem(x => x.Text, x => x.Value, x => x.Childrens, EntIconName.Folder);
     
     public List<string> TreeSelectedValues { get; set; } = new() { "Admin", "Normal Backend Developer" };
     public string TreeSelectedValue { get; set; } = "Normal Front Developer";

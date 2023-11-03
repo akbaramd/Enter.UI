@@ -1,5 +1,6 @@
 ﻿@namespace Enter.UI.Components
 @using System.Diagnostics.CodeAnalysis
+@using Enter.UI.Abstractions.Components.Icon
 @using Enter.UI.Abstractions.Components.Inputs
 @inherits EntInputBase<string?>
 @implements IAsyncDisposable
@@ -12,7 +13,7 @@
     @if (Icon != null)
     {
         <div class="ent-input-icon">
-            <EntIcon Size="4" Icon="@Icon" />
+            <EntIcon IconSize="EntIconNameize.Default" Icon="@Icon" />
         </div>
     }
 </div>
@@ -29,7 +30,7 @@
         .Build();
 
     [Parameter]
-    public string Icon { get; set; }
+    public object Icon { get; set; }
 
     [Parameter]
     public string EventType { get; set; } = "onchange";

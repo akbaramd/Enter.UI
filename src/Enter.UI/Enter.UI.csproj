@@ -120,10 +120,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Enter.UI.Abstractions\Enter.UI.Abstractions.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Components\Toast\Model" />
     <Folder Include="Components\Toast\Services" />
   </ItemGroup>

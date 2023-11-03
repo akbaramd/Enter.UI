@@ -1,12 +1,13 @@
 ﻿@namespace Enter.UI.Components
 @using Enter.UI.Abstractions.Components.Text
 @using Enter.UI.Abstractions.Core
+@using Enter.UI.Abstractions.Components.Icon
 @inherits EntComponentBase
 <CascadingValue Value="@this">
     <div @attributes="AdditionalAttributes" class="@RootClass" >
-        @if (!string.IsNullOrWhiteSpace(Icon))
+        @if (Icon != null)
         {
-            <EntIcon Icon="@Icon" Size="6" class="ent-toolbar-item-icon"/>
+            <EntIcon Icon="@Icon" IconSize="EntIconNameize.Default" class="ent-toolbar-item-icon"/>
         }
         
         @if (!string.IsNullOrWhiteSpace(Text))
@@ -26,6 +27,6 @@
     public string? Text { get; set; } = string.Empty;
     
     [Parameter]
-    public string? Icon { get; set; } = string.Empty;
+    public object? Icon { get; set; } = string.Empty;
 
 }

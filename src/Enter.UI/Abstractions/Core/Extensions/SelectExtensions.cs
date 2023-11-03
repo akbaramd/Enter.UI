@@ -6,7 +6,7 @@ public static class SelectExtensions
         Func<TType,string> textFunc,
         Func<TType,TValue> valueFunc,
         Func<TType,IEnumerable<TType>?> childrenFunc,
-        string? defaultIcon = null)
+        object? defaultIcon = null)
     {
         return sources.Select(x => new EntSelectItem<TValue>
         {

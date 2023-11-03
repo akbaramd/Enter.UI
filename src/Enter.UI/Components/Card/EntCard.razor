@@ -1,5 +1,6 @@
 ﻿@namespace Enter.UI.Components
 @using Enter.UI.Core
+@using Enter.UI.Abstractions.Components.Icon
 @inherits EntComponentBase
 
 <div @attributes="@AdditionalAttributes" class="@RootClass" >
@@ -18,7 +19,7 @@
             @if (Expandable)
             {
                 <span class="ent-card-header-toggle-icon @(CardExpand ? "show" : "")">
-                    <EntIcon Icon="@EntIcons.ChevronDown" />
+                    <EntIcon Icon="@EntIconName.ChevronDown" />
                 </span>
             }
             
@@ -61,7 +62,7 @@
     public EventCallback<bool> CardExpandChanged { get; set; } 
 
     [Parameter]
-    public string Icon { get; set; }
+    public object Icon { get; set; }
 
     [Parameter]
     public bool Expandable { get; set; } = false;

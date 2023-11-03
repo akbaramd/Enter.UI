@@ -4,6 +4,7 @@
 @using Enter.UI.Abstractions.Core
 @using Enter.UI.Abstractions.Services
 @using Enter.UI.Abstractions.Components.Animator
+@using Enter.UI.Abstractions.Components.Icon
 @using Enter.UI.Abstractions.Components.Text
 @implements IAsyncDisposable
 <div class="@RootClass">
@@ -30,12 +31,12 @@
 
                     <div class="flex-grow-1 d-flex flex-column justify-center">
                         <div class="d-flex flex-row gap-4 mb-4">
-                            @if (!string.IsNullOrWhiteSpace(item.Options.Icon))
+                            @if (item.Options.Icon != null)
                             {
                                 <EntIcon Icon="@item.Options.Icon"/>
                             }
                             <EntText class="flex-grow-1 p-0 m-0" Type="EntTextType.Bold" Size="EntTextSize.Caption">@item.Title</EntText>
-                            <EntIcon Icon="fa-light fa-close" Click="() => CloseItem(item)"/>
+                            <EntIcon Icon="EntIconName.Remove" Click="() => CloseItem(item)"/>
                         </div>
                         <EntText class="p-0 m-0" Type="EntTextType.Paragraph" Size="EntTextSize.Description">@item.Content</EntText>
                     </div>

@@ -1,12 +1,13 @@
 ﻿@namespace Enter.UI.Components
 @using System.Diagnostics.CodeAnalysis
+@using Enter.UI.Abstractions.Components.Icon
 @inherits EntInputBase<string>
 @typeparam T
 
 <div @attributes="@AdditionalAttributes" @ref="_elementReference" class="@RootCss" id="@Id">
 
     <EntInputText @ref="_inputReference" @onclick="@OnInputClickCallback" @onfocusin="@OnInputClickCallback"  
-                  Disabled="@Disabled" PlaceHolder="@PlaceHolder" class="ent-select-input" UseValidation="false" Readonly="true" @bind-Value="@Text" Icon="@EntIcons.ChevronDown" />
+                  Disabled="@Disabled" PlaceHolder="@PlaceHolder" class="ent-select-input" UseValidation="false" Readonly="true" @bind-Value="@Text" Icon="@EntIconName.ChevronDown" />
 
     <input type="hidden" @bind="@Value" />
 

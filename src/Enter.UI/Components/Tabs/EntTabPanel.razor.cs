@@ -34,7 +34,7 @@ namespace Enter.UI.Components
         public string Title { get; set; }
 
         [Parameter]
-        public string Icon { get; set; }
+        public object Icon { get; set; }
 
         protected override async Task OnInitializedAsync()
         {

@@ -2,26 +2,28 @@
 @using Enter.Dashboard.Components
 @using Enter.UI.Abstractions.Components.Button
 @using Enter.UI.Abstractions.Components.Drawer
+@using Enter.UI.Abstractions.Components.Icon
 @using Enter.UI.Abstractions.Core.Enums
 @using Enter.UI.Abstractions.Services
 @inherits LayoutComponentBase
  <div class="border-y d-flex flex-column">
         <div class="d-flex flex-column flex-grow-1">
             <EntAppBar ShowToggle="_showToggle" ToggleClick="ToggleSidebar" Title="Enterprise Dashboard">
-                <EntButton @onclick="ToggleRtl" Icon="fa-light fa-align-right" Size="ButtonSize.Small" Color="ButtonColor.Secondary">راستچین</EntButton>
-                                    <EntButton @onclick="ToggleDarkMode" Icon="fa-light fa-moon" Size="ButtonSize.Small" class="d-none laptop:d-flex" Color="ButtonColor.Secondary">Dark / Light</EntButton>
-                                    <EntButton @onclick="() => _isSideDrawerOpen = !_isSideDrawerOpen" Icon="fa-light fa-align-left" class="d-none laptop:d-flex" Size="ButtonSize.Small" Color="ButtonColor.Secondary">Sidebar</EntButton>
+                <EntButton @onclick="ToggleRtl" Icon="EntIconName.AlignRight" Size="ButtonSize.Small" Color="ButtonColor.Secondary">راستچین</EntButton>
+                                    <EntButton @onclick="ToggleDarkMode" Icon="EntIconName.Moon" Size="ButtonSize.Small" class="d-none laptop:d-flex" Color="ButtonColor.Secondary">Dark / Light</EntButton>
+                                    <EntButton @onclick="() => _isSideDrawerOpen = !_isSideDrawerOpen" Icon="EntIconName.Comment" class="d-none laptop:d-flex" Size="ButtonSize.Small" Color="ButtonColor.Secondary">Sidebar</EntButton>
             </EntAppBar>
             <EntDrawerContainer class="flex-grow-1">
                 <EntDrawer @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start"  Mode="_drawerMode" class="z-50">
                     <EntNavMenu class="border-0">
-                        <EntNavMenuGroup Title="Components" Icon="fa-light fa-home">
-                            <EntNavMenuTextItem class="bg-light" Icon="fa-light fa-clock" Text="TreeView" Click="@(() => Navigate("/documents/treeview"))"/>
-                            <EntNavMenuTextItem class="bg-light" Icon="fa-light fa-clock" Text="NavMenu" Click="@(() => Navigate("/documents/navmenu"))"/>
+                        <EntNavMenuGroup Title="Components" Icon="EntIconName.Home">
+                            <EntNavMenuTextItem class="bg-light" Icon="EntIconName.Clock" Text="TreeView" Click="@(() => Navigate("/documents/treeview"))"/>
+                            <EntNavMenuTextItem class="bg-light" Icon="EntIconName.List" Text="NavMenu" Click="@(() => Navigate("/documents/navmenu"))"/>
+                            <EntNavMenuTextItem class="bg-light" Icon="EntIconName.Tablet" Text="Table" Click="@(() => Navigate("/documents/datatable"))"/>
+                            <EntNavMenuTextItem class="bg-light" Icon="EntIconName.Bars" Text="Pagination" Click="@(() => Navigate("/documents/pagination"))"/>
                         </EntNavMenuGroup>
-                    <EntNavMenuGroup Title="Api" Icon="fa-light fa-home">
-                        <EntNavMenuTextItem class="bg-light" Icon="fa-light fa-clock" Text="Components" Click="@(() => Navigate("/documents/"))" />
-                    
+                    <EntNavMenuGroup Title="Api" Icon="EntIconName.Home">
+                        P
                     </EntNavMenuGroup>
                     </EntNavMenu>
                 </EntDrawer>

@@ -1,4 +1,5 @@
-﻿@inherits EntTabBase
+﻿@using Enter.UI.Abstractions.Components.Icon
+@inherits EntTabBase
 @namespace Enter.UI.Components
 <CascadingValue Value="@this">
     <div @attributes="@AdditionalAttributes" class="@RootCss" >
@@ -18,7 +19,7 @@
                         @if (Closeable)
                         {
                             <div @onclick="() => OnTabClose(tabPanels.Id)" class="ent-tab-close">
-                                <EntIcon Icon="fa-light fa-close" Type="EntIconType.IconTag"/>
+                                <EntIcon Icon="EntIconName.Remove" IconSize="EntIconNameize.Default" IconStyle="EntIconNametyle.Light"/>
                             </div>
                         }
                     </li>
@@ -27,7 +28,7 @@
                 {
                     <li class="@GetItemClass(false)">
                         <div @onclick="OnTabAllClose" class="ent-tab-action ">
-                            <EntIcon Icon="fa-light fa-trash" Type="EntIconType.IconTag"/>
+                            <EntIcon Icon="EntIconName.Delete" Type="EntIconType.IconTag"/>
                         </div>
                     </li>
                 }

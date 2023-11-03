@@ -7,11 +7,11 @@
   vertical-align: middle;
 
   thead {
-    background-color: map-get($backgrounds, "light");
+    background-color: $bg-tertiary;
   }
 
   th, td {
-    padding: 0.75rem 1rem;
+    padding: 0.625rem 1rem;
     border: $border;
     border-collapse: collapse;
 

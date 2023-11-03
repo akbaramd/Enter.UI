@@ -2,28 +2,29 @@
 @using Enter.Dashboard.Components
 @using Enter.UI.Abstractions.Components.Button
 @using Enter.UI.Abstractions.Components.Drawer
+@using Enter.UI.Abstractions.Components.Icon
 @using Enter.UI.Abstractions.Core.Enums
 @using Enter.UI.Abstractions.Services
 @inherits LayoutComponentBase
  <div class="border-y d-flex flex-column">
         <div class="d-flex flex-column flex-grow-1">
             <EntAppBar ShowToggle="_showToggle" ToggleClick="ToggleSidebar" Title="Enterprise Dashboard">
-                <EntButton @onclick="ToggleRtl" Icon="fa-light fa-align-right" Size="ButtonSize.Small" Color="ButtonColor.Secondary">راستچین</EntButton>
-                                    <EntButton @onclick="ToggleDarkMode" Icon="fa-light fa-moon" Size="ButtonSize.Small" class="d-none laptop:d-flex" Color="ButtonColor.Secondary">Dark / Light</EntButton>
-                                    <EntButton @onclick="() => _isSideDrawerOpen = !_isSideDrawerOpen" Icon="fa-light fa-align-left" class="d-none laptop:d-flex" Size="ButtonSize.Small" Color="ButtonColor.Secondary">Sidebar</EntButton>
+               <EntButton @onclick="ToggleRtl" Icon="EntIconName.AlignRight" Size="ButtonSize.Small" Color="ButtonColor.Secondary">راستچین</EntButton>
+                                                   <EntButton @onclick="ToggleDarkMode" Icon="EntIconName.Moon" Size="ButtonSize.Small" class="d-none laptop:d-flex" Color="ButtonColor.Secondary">Dark / Light</EntButton>
+                                                   <EntButton @onclick="() => _isSideDrawerOpen = !_isSideDrawerOpen" Icon="EntIconName.Comment" class="d-none laptop:d-flex" Size="ButtonSize.Small" Color="ButtonColor.Secondary">Sidebar</EntButton>
             </EntAppBar>
             <EntDrawerContainer class="flex-grow-1">
                 <EntDrawer @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start"  Mode="_drawerMode" class="z-50">
                     <EntNavMenu class="border-0">
-                        <EntNavMenuGroup Title="Basic" Icon="fa-light fa-home">
-                            <EntNavMenuTextItem class="bg-light" Icon="fa-light fa-clock" Text="ForalaView" Click="() => AddNewTab<ForalaView>()"/>
-                            <EntNavMenuTextItem class="bg-light" Icon="fa-light fa-clock" Text="Counter" Click="() => AddNewTab<Counter>()"/>
-                            <EntNavMenuTextItem class="bg-light" Icon="fa-light fa-arrow-down" Text="FetchData" Click="() => AddNewTab<FetchData>()"/>
+                        <EntNavMenuGroup Title="Basic" Icon="EntIconName.Home">
+                            <EntNavMenuTextItem class="bg-light" Icon="EntIconName.Clock" Text="ForalaView" Click="() => AddNewTab<ForalaView>()"/>
+                            <EntNavMenuTextItem class="bg-light" Icon="EntIconName.Clock" Text="Counter" Click="() => AddNewTab<Counter>()"/>
+                            <EntNavMenuTextItem class="bg-light" Icon="EntIconName.AngleDown" Text="FetchData" Click="() => AddNewTab<FetchData>()"/>
                         </EntNavMenuGroup>
-                        <EntNavMenuGroup Title="Forms" Icon="fa-light fa-note">
+                        <EntNavMenuGroup Title="Forms" Icon="EntIconName.StickyNote">
                             <EntNavMenuTextItem class="bg-light" Text="FormLayout" Click="() => AddNewTab<FormLayout>()"/>
                         </EntNavMenuGroup>
-                        <EntNavMenuGroup Title="Tables" Icon="fa-light fa-note">
+                        <EntNavMenuGroup Title="Tables" Icon="EntIconName.StickyNote">
                             <EntNavMenuTextItem class="bg-light" Text="Table" Click="() => AddNewTab<Table>()"/>
                         </EntNavMenuGroup>
                     </EntNavMenu>
@@ -63,23 +64,23 @@
     {
         if (typeof(T) == typeof(Counter))
         {
-            EntMdiService.AddNewTabAsync<Counter>("counter", "Counter", "fa-light fa-clock");
+            EntMdiService.AddNewTabAsync<Counter>("counter", "Counter", EntIconName.Clock);
         }
         else if (typeof(T) == typeof(ForalaView))
         {
-            EntMdiService.AddNewTabAsync<ForalaView>(Guid.NewGuid().ToString(), "Forala View", "fa-light fa-arrow-down");
+            EntMdiService.AddNewTabAsync<ForalaView>(Guid.NewGuid().ToString(), "Forala View", EntIconName.Download);
         }
         else if (typeof(T) == typeof(FetchData))
         {
-            EntMdiService.AddNewTabAsync<FetchData>(Guid.NewGuid().ToString(), "Fetch Data", "fa-light fa-arrow-down");
+            EntMdiService.AddNewTabAsync<FetchData>(Guid.NewGuid().ToString(), "Fetch Data", EntIconName.Download);
         }
         else if (typeof(T) == typeof(FormLayout))
         {
-            EntMdiService.AddNewTabAsync<FormLayout>("FormLayout", "Form", "fa-light fa-note");
+            EntMdiService.AddNewTabAsync<FormLayout>("FormLayout", "Form", EntIconName.StickyNote);
         }
         else if (typeof(T) == typeof(Table))
         {
-            EntMdiService.AddNewTabAsync<Table>("Table", "Table", "fa-light fa-table");
+            EntMdiService.AddNewTabAsync<Table>("Table", "Table", EntIconName.Tablet);
         }
     }
 

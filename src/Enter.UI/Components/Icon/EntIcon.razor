@@ -3,17 +3,7 @@
 
 @if (Icon is not null)
 {
-    @if (Icon.StartsWith("<"))
-    {
-        <svg @onclick="@Click" viewBox="@ViewBox" class="@RootCss" fill="@Fill" stroke="@Stroke" stroke-width="@StrokeWidth" stroke-linecap="round" stroke-linejoin="round">
-            @((MarkupString)Icon)
-        </svg>
-    }
-    else
-    {
-        <i  @onclick="@Click" class="@RootCss @Icon"></i>
-        
-    }
+    <i class="@RootCss"></i>
 }
     
 
