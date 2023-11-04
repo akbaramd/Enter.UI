@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Enter.UI\Enter.UI.csproj" />
+    <ProjectReference Include="..\..\Source\Enter.UI\Enter.UI.csproj" />
   </ItemGroup>
 
   <ItemGroup>

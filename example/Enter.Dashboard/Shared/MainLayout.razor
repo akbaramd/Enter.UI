@@ -17,14 +17,13 @@
                 <EntDrawer @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start"  Mode="_drawerMode" class="z-50">
                     <EntNavMenu class="border-0">
                         <EntNavMenuGroup Title="Basic" Icon="EntIconName.Home">
-                            <EntNavMenuTextItem class="bg-light" Icon="EntIconName.Clock" Text="ForalaView" Click="() => AddNewTab<ForalaView>()"/>
                             <EntNavMenuTextItem class="bg-light" Icon="EntIconName.Clock" Text="Counter" Click="() => AddNewTab<Counter>()"/>
-                            <EntNavMenuTextItem class="bg-light" Icon="EntIconName.AngleDown" Text="FetchData" Click="() => AddNewTab<FetchData>()"/>
+                            <EntNavMenuTextItem class="bg-light" Icon="EntIconName.ChevronDown" Text="FetchData" Click="() => AddNewTab<FetchData>()"/>
                         </EntNavMenuGroup>
-                        <EntNavMenuGroup Title="Forms" Icon="EntIconName.StickyNote">
+                        <EntNavMenuGroup Title="Forms" Icon="EntIconName.Note">
                             <EntNavMenuTextItem class="bg-light" Text="FormLayout" Click="() => AddNewTab<FormLayout>()"/>
                         </EntNavMenuGroup>
-                        <EntNavMenuGroup Title="Tables" Icon="EntIconName.StickyNote">
+                        <EntNavMenuGroup Title="Tables" Icon="EntIconName.Note">
                             <EntNavMenuTextItem class="bg-light" Text="Table" Click="() => AddNewTab<Table>()"/>
                         </EntNavMenuGroup>
                     </EntNavMenu>
@@ -76,11 +75,11 @@
         }
         else if (typeof(T) == typeof(FormLayout))
         {
-            EntMdiService.AddNewTabAsync<FormLayout>("FormLayout", "Form", EntIconName.StickyNote);
+            EntMdiService.AddNewTabAsync<FormLayout>("FormLayout", "Form", EntIconName.Note);
         }
         else if (typeof(T) == typeof(Table))
         {
-            EntMdiService.AddNewTabAsync<Table>("Table", "Table", EntIconName.Tablet);
+            EntMdiService.AddNewTabAsync<Table>("Table", "Table", EntIconName.Table);
         }
     }
 

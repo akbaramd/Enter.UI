@@ -2,7 +2,5 @@
 
 public interface IEntIconProvider
 {
-
-
-    string Icon(object name, EntIconNametyle style);
+    string Icon(object icon, EntIconStyle style);
 }

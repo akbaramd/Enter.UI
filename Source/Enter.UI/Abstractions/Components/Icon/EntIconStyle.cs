@@ -1,6 +1,6 @@
 ﻿namespace Enter.UI.Abstractions.Components.Icon;
 
-public enum EntIconNametyle
+public enum EntIconStyle
 {
     /// <summary>
     /// Icon will be filled with single-color.

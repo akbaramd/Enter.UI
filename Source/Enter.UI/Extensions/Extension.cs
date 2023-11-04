@@ -22,6 +22,7 @@ namespace Enter.UI
             services.AddSingleton<IEntToastService, EntToastService>();
             services.AddSingleton<IEntJsService, EntJsService>();
             services.AddSingleton<IEntSharedJsService , EntSharedJsService>();
+            services.AddTransient<EntIcon>();
             return new EntConfiguration()
             {
                 Services = services

@@ -24,6 +24,18 @@ public class FontAwesomeIconProvider : IEntIconProvider
         { EntIconName.Remove, "fa-minus" },
         { EntIconName.Search, "fa-search" },
         { EntIconName.Sort, "fa-sort" },
+        { EntIconName.Clock, "fa-clock" },
+        { EntIconName.Download, "fa-download" },
+        { EntIconName.Upload, "fa-upload" },
+        { EntIconName.AlignRight, "fa-align-right" },
+        { EntIconName.AlignLeft, "fa-align-left" },
+        { EntIconName.Table, "fa-tablet" },
+        { EntIconName.Note, "fa-note" },
+        { EntIconName.User, "fa-user" },
+        { EntIconName.Moon, "fa-moon" },
+        { EntIconName.List, "fa-list" },
+        
+        
     };
     
     private static Dictionary<EntIconStyle, string> styles = new()

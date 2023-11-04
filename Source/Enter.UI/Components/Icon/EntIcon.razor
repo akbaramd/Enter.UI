@@ -1,9 +1,24 @@
-﻿@inherits EntComponentBase
+﻿@using Enter.UI.Abstractions.Components.Icon
+@inherits EntComponentBase
 @namespace Enter.UI.Components
+
+
 
 @if (Icon is not null)
 {
-    <i class="@RootCss"></i>
+    var icon = IconProvider.Icon(Icon, IconStyle);
+    
+      if (icon.TrimStart().StartsWith("<"))
+        {
+            <svg class="@RootCss"  viewBox="@ViewBox" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                @((MarkupString)icon) 
+            </svg>
+        }
+        else
+        {
+            <i class="@RootCss  @icon"></i> 
+        }
+    
 }
     
 
