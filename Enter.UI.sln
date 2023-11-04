@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Enter.UI", "src\Enter.UI\Enter.UI.csproj", "{E71A24E1-9413-44E1-B34A-F9CFBABC9781}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Enter.UI", "Source\Enter.UI\Enter.UI.csproj", "{E71A24E1-9413-44E1-B34A-F9CFBABC9781}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{894A7881-D227-434F-88A6-B704428FFA59}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{894A7881-D227-434F-88A6-B704428FFA59}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "example", "example", "{58792E06-2612-4FE9-8A9F-609A12D6ABDC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Example", "Example", "{58792E06-2612-4FE9-8A9F-609A12D6ABDC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Enter.Dashboard", "example\Enter.Dashboard\Enter.Dashboard.csproj", "{7FBF12FF-0BAB-4458-B9FB-5AD5A046587E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Enter.Dashboard", "Example\Enter.Dashboard\Enter.Dashboard.csproj", "{7FBF12FF-0BAB-4458-B9FB-5AD5A046587E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

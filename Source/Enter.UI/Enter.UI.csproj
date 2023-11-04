@@ -1,0 +1,127 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Enter.UI</RootNamespace>
+    <PackageId>Enter.Ui</PackageId>
+    <Version>1.0.52</Version>
+    <Authors>Akbar Ahmadi</Authors>
+    <Company>AhmadiCo</Company>
+	  <PackageReadmeFile>Readme.md</PackageReadmeFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="..\..\Readme.md" Pack="true" PackagePath="." />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.10" />
+  </ItemGroup>
+
+  <Target Name="ToolRestore">
+    <Exec Command="dotnet tool restore" StandardOutputImportance="high" />
+  </Target>
+
+  <!--Is this a rebuild - Dont clean generated files as this breaks rebuild behaviour-->
+  <Target Name="ShouldCleanGeneratedFiles" BeforeTargets="BeforeRebuild">
+    <PropertyGroup>
+      <CleanGeneratedFiles>false</CleanGeneratedFiles>
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="CleanGeneratedFiles" BeforeTargets="Clean" Condition="'$(CleanGeneratedFiles)' != 'false'">
+    <ItemGroup>
+      <FilesToClean Include="./TScripts/combined/EnterUi.js" />
+      <FilesToClean Include="./wwwroot/EnterUi.min.js" />
+      <FilesToClean Include="./wwwroot/EnterUi.min.css" />
+    </ItemGroup>
+    <Delete Files="@(FilesToClean)" />
+  </Target>
+  
+  <!--combine js files-->
+  <Target Name="CombineJS">
+    <CreateItem Include="./Scripts/**/*.js" Exclude="./Scripts/combined/**/*.js">
+      <Output TaskParameter="Include" ItemName="jsFilesToCombine" />
+    </CreateItem>
+    <ReadLinesFromFile File="%(jsFilesToCombine.FullPath)">
+      <Output TaskParameter="Lines" ItemName="jsLines" />
+    </ReadLinesFromFile>
+    <WriteLinesToFile File="./Scripts/combined/EnterUi.js" Lines="@(jsLines)" Overwrite="true" />
+  </Target>
+
+  <Target Name="WebCompiler" DependsOnTargets="ToolRestore;CombineJS">
+    <!--compile and minify scss-->
+    <Exec Command="dotnet webcompiler ./Styles/EnterUi.scss -c excubowebcompiler.json" StandardOutputImportance="high" StandardErrorImportance="high" />
+    <!--minify js-->
+    <Exec Command="dotnet webcompiler ./Scripts/combined/EnterUi.js -c excubowebcompiler.json" StandardOutputImportance="high" StandardErrorImportance="high" />
+  </Target>
+  
+  <Target Name="IncludeGeneratedStaticFiles" DependsOnTargets="WebCompiler" BeforeTargets="BeforeBuild">
+    <Error Condition="!Exists('$(MSBuildProjectDirectory)/wwwroot/EnterUi.min.css')" Text="Missing EnterUi.min.css in wwwroot" />
+    <Error Condition="!Exists('$(MSBuildProjectDirectory)/wwwroot/EnterUi.min.js')" Text="Missing EnterUi.min.js in wwwroot" />
+    <ItemGroup>
+      <!--Include without duplication-->
+      <_NewCompiledCssFiles Include="wwwroot\EnterUi.min.css" Exclude="@(Content)" />
+      <_NewCompiledJsFiles Include="wwwroot\EnterUi.min.js" Exclude="@(Content)" />
+      <Content Include="@(_NewCompiledCssFiles)" />
+      <Content Include="@(_NewCompiledJsFiles)" />
+    </ItemGroup>
+  </Target>
+
+  <!--Dont Include in build output-->
+  <ItemGroup>
+    <Content Remove="wwwroot/DoNotRemove.txt" />
+    <!--macOS hidden file (causes problems with dotnet pack)-->
+    <Content Remove="**/*/.DS_Store" />
+    <Content Remove="Scripts\combined\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--For automatic compile on save of the scss use
+    cd ./src/MudBlazor
+    dotnet watch webcompiler ./Styles/EnterUi.scss -c excubowebcompiler.json
+    -->
+    <Watch Include="**/*.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Scripts\combined\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Scripts\combined\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Scripts\combined\**" />
+    <None Remove="Styles\EnterUi.css" />
+    <None Remove="Styles\EnterUi.min.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Watch Remove="Styles\components\_ent_expandable.component.scss" />
+    <Watch Remove="Styles\components\_ent_list.component.scss" />
+    <Watch Remove="Styles\components\_ent_treeview.component.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Components\Forms\EntFormGroup.razor" />
+    <_ContentIncludedByDefault Remove="Components\TreeView\EntTreeView.razor" />
+    <_ContentIncludedByDefault Remove="Components\TreeView\EntTreeViewItem.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Components\Toast\Model" />
+    <Folder Include="Components\Toast\Services" />
+  </ItemGroup>
+
+</Project>

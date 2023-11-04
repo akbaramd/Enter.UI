@@ -3,6 +3,7 @@
 @using Enter.UI.Abstractions.Components.Text
 @using Enter.UI.Abstractions.Core.Bases;
 @inherits EntPageBase
+
 <PageTitle>Counter</PageTitle>
 
 <div class="m-4 p-4 bg-white border">
@@ -44,6 +45,11 @@
     private async Task OnActivatedAsync()
     {
         StateHasChanged();
+    }
+
+    public override void Dispose()
+    {
+        base.Dispose();
     }
 
 }
