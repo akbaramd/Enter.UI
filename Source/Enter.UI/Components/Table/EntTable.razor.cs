@@ -35,10 +35,11 @@ namespace Enter.UI.Components
             _currentPage = page;
             await OnPaginationChange.InvokeAsync(_currentPage);
         }
-        
-   
-        
-        
-        
+
+
+        public override void Dispose()
+        {
+            throw new NotImplementedException();
+        }
     }   
 }

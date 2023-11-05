@@ -2,7 +2,6 @@
 @using Enter.UI.Abstractions.Components.Modal
 @using Enter.UI.Abstractions.Components.Icon
 @inherits EntComponentBase
-@implements IAsyncDisposable
 <div class="ent-modal-container" @onclick="OnContainerClick">
                 <div class="@RootCss" @onclick:stopPropagation="true" @onclick="OnModalClick">
                     <div class="ent-modal-header">
@@ -61,14 +60,14 @@
         await base.OnInitializedAsync();
     }
 
-    private async Task OnCanceledAsync(string arg)
+    private  Task OnCanceledAsync(string arg)
     {
-        await DisposeAsync();
+        return InvokeAsync(Dispose);
     }
 
-    private async Task OnClosedAsync(string arg1, ModalResult arg2)
+    private  Task OnClosedAsync(string arg1, ModalResult arg2)
     {
-       await DisposeAsync();
+        return InvokeAsync(Dispose);
     }
 
     private async Task OnContainerClick(MouseEventArgs args)
@@ -83,15 +82,14 @@
     {
         
     }
-    
-    public ValueTask DisposeAsync()
+
+    public override void Dispose()
     {
         if (Instance!= null)
         {
             Instance.OnClosedAsync += OnClosedAsync;
             Instance.OnCanceledAsync += OnCanceledAsync;;
         }
-        return ValueTask.CompletedTask;
     }
 
 }

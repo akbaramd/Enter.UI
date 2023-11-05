@@ -24,6 +24,11 @@ namespace Enter.UI.Components
         [Parameter]
         public string Id { get; set; }
 
+        public override void Dispose()
+        {
+            throw new NotImplementedException();
+        }
+
         [CascadingParameter]
         public EntTab? Parent { get; set; }
 

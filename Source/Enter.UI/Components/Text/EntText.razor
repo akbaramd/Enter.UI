@@ -61,6 +61,11 @@
     public EntTextType Type { get; set; } = EntTextType.Text;
 
     [Parameter]
-    public EntTextSize Size { get; set; } = EntTextSize.Medium;  
+    public EntTextSize Size { get; set; } = EntTextSize.Medium;
+
+    public override void Dispose()
+    {
+        
+    }
 
 }

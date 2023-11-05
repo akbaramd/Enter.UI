@@ -1,6 +1,14 @@
 ﻿@namespace Enter.UI.Components
-<div class="@RootCss">@ChildContent</div>
+<div class="@RootCss">
+    <CascadingValue Value="this" IsFixed="true">
+        @ChildContent
+         
+    </CascadingValue>
+    <EntOverlay Visible="HasBackdrop" DarkBackground="true" OnClick="@OnOverlayClickCallback" @ontouchstart="@OnOverlayClickCallback" LockScroll="false" />
+</div>
+@using System.ComponentModel
 @inherits EntComponentBase
+
 @code {
 
     public string RootCss => CssClassBuilder
@@ -9,7 +17,30 @@
 
     [Parameter]
     public RenderFragment ChildContent { get; set; }
+
+    private bool HasBackdrop { get; set; } = false;
+
+    public event Action OnBackdropCLickEvent = default!;
     
-    
+    public void AddBackDrop()
+    {
+        HasBackdrop = true;
+        StateHasChanged();
+    }
+
+    private  Task OnOverlayClickCallback(EventArgs arg)
+    {
+        return InvokeAsync(() =>
+        {
+            HasBackdrop = false;
+            OnBackdropCLickEvent.Invoke();
+            StateHasChanged();
+        });
+    }
+
+    public override void Dispose()
+    {
+        
+    }
 
 }

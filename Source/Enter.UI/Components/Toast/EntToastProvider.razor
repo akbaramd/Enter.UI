@@ -6,7 +6,7 @@
 @using Enter.UI.Abstractions.Components.Animator
 @using Enter.UI.Abstractions.Components.Icon
 @using Enter.UI.Abstractions.Components.Text
-@implements IAsyncDisposable
+
 <div class="@RootClass">
     <EntSpace SpaceY="2">
 
@@ -121,11 +121,12 @@
         }
     }
 
-    public async ValueTask DisposeAsync()
+
+
+    public override void Dispose()
     {
         _entToastService.InstanceCreatedAsync -= EntToastServiceOnInstanceCreatedAsync;
         _entToastService.InstanceCloseAsync -= EntToastServiceOnInstanceCloseAsync;
-        ;
     }
 
 }

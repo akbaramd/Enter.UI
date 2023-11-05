@@ -49,5 +49,10 @@ namespace Enter.UI.Components
             base.OnInitialized();
             _groups.Clear();
         }
+
+        public override void Dispose()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

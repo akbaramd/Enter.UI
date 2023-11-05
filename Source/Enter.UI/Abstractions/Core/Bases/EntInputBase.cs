@@ -17,7 +17,7 @@ namespace Enter.UI.Abstractions.Core.Bases
         public string BaseCss => new CssClassBuilder()
         .AddClass("readonly", Readonly)
         .AddClass("disabled", Disabled)
-       .Build();
+        .Build();
 
         [Parameter]
         public bool UseValidation { get; set; } = true;

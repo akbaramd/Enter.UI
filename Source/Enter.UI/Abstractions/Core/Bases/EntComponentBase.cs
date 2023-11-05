@@ -2,7 +2,7 @@
 
 namespace Enter.UI.Abstractions.Core.Bases
 {
-    public class EntComponentBase : ComponentBase
+    public abstract class EntComponentBase : ComponentBase , IDisposable
     {
         //todo : Remove Style and Create Style Builder
 
@@ -47,5 +47,7 @@ namespace Enter.UI.Abstractions.Core.Bases
             
             await base.OnAfterRenderAsync(firstRender);
         }
+
+        public abstract void Dispose();
     }
 }

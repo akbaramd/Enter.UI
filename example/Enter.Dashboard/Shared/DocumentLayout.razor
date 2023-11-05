@@ -14,7 +14,7 @@
                                     <EntButton @onclick="() => _isSideDrawerOpen = !_isSideDrawerOpen" Icon="EntIconName.Comment" class="d-none laptop:d-flex" Size="ButtonSize.Small" Color="ButtonColor.Secondary">Sidebar</EntButton>
             </EntAppBar>
             <EntDrawerContainer class="flex-grow-1">
-                <EntDrawer @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start"  Mode="_drawerMode" class="z-50">
+                <EntDrawer Backdrop="true" @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start"  Mode="_drawerMode" class="z-50">
                     <EntNavMenu class="border-0">
                         <EntNavMenuGroup Title="Components" Icon="EntIconName.Home">
                             <EntNavMenuTextItem class="bg-light" Icon="EntIconName.Clock" Text="TreeView" Click="@(() => Navigate("/documents/treeview"))"/>

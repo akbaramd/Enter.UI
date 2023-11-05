@@ -37,5 +37,10 @@ namespace Enter.UI.Components
 
         [Parameter]
         public EventCallback Click { get; set; }
+
+        public override void Dispose()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

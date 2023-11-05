@@ -1,7 +1,6 @@
 ﻿@namespace Enter.UI.Components
 @inherits EntComponentBase
 @using Enter.UI.Abstractions.Services
-@implements IAsyncDisposable
 <div class="@RootClass">
     @foreach (var item in _entPopoverService.PopoverInstances)
     {
@@ -47,10 +46,11 @@
     // await EntPopoverService.CloseAllAsync();
     }
 
-    public ValueTask DisposeAsync()
+
+
+    public override void Dispose()
     {
         _entPopoverService.FragmentsChanged -= EntPopoverServiceOnFragmentsChanged;
-        return ValueTask.CompletedTask;
     }
 
 }

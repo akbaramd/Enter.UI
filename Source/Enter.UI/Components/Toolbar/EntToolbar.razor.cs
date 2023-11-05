@@ -18,5 +18,9 @@ namespace Enter.UI.Components
         [Parameter]
         public RenderFragment ChildContent { get; set; }
 
+        public override void Dispose()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

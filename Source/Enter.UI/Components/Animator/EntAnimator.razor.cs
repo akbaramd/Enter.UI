@@ -53,4 +53,8 @@ public partial class EntAnimator : EntComponentBase
         }
     }
 
+    public override void Dispose()
+    {
+        
+    }
 }

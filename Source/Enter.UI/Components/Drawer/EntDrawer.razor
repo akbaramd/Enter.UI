@@ -1,34 +1,88 @@
 ﻿@namespace Enter.UI.Components
 <aside class="@RootCss">@ChildContent</aside>
 @using Enter.UI.Abstractions.Components.Drawer
+@using System.Data.Common
 @inherits EntComponentBase
+
 @code {
 
     public string RootCss => CssClassBuilder
         .AddClass($"ent-drawer")
-        .AddClass($"ent-drawer--direction-start",Direction == EntDrawerDirection.Start)
-        .AddClass($"ent-drawer--direction-end",Direction == EntDrawerDirection.End)
-        .AddClass($"ent-drawer--mode-behavior",Mode == EntDrawerMode.Behavior)
-        .AddClass($"ent-drawer--mode-overlay",Mode == EntDrawerMode.Overlay)
-        .AddClass($"ent-drawer--open",Open)
-        .AddClass($"ent-drawer--close",!Open)
+        .AddClass($"ent-drawer--direction-start", Direction == EntDrawerDirection.Start)
+        .AddClass($"ent-drawer--direction-end", Direction == EntDrawerDirection.End)
+        .AddClass($"ent-drawer--mode-behavior", Mode == EntDrawerMode.Behavior)
+        .AddClass($"ent-drawer--mode-overlay", Mode == EntDrawerMode.Overlay)
+        .AddClass($"ent-drawer--open", Open)
+        .AddClass($"ent-drawer--close", !Open)
         .Build();
-
 
     [Parameter]
     public RenderFragment ChildContent { get; set; }
 
     [Parameter]
     public EntDrawerDirection Direction { get; set; } = EntDrawerDirection.Start;
-    
+
     [Parameter]
     public EntDrawerMode Mode { get; set; } = EntDrawerMode.Behavior;
 
-    
+    [CascadingParameter]
+    public EntDrawerContainer? DrawerContainer { get; set; } 
+
+    private bool _open = false;
+
     [Parameter]
-    public bool Open { get; set; }
-    
+    public bool Open
+    {
+        get => _open;
+        set
+        {
+            _open = value;
+            _ = OpenChanged.InvokeAsync(value);
+        }
+    }
+
+    [Parameter]
+    public bool Backdrop { get; set; }
+
     [Parameter]
     public EventCallback<bool> OpenChanged { get; set; }
+
+
+    protected override async Task OnParametersSetAsync()
+    {
+        // if (Backdrop)
+        // {
+        //     DrawerContainer?.AddBackDrop();
+        // }
+        await base.OnParametersSetAsync();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+      
+
+        if (DrawerContainer != null) DrawerContainer.OnBackdropCLickEvent += DrawerContainerOnOnBackdropCLickEvent;
+        
+        
+        if (Backdrop)
+        {
+            DrawerContainer?.AddBackDrop();
+        }
+
+    }
+
+    private void DrawerContainerOnOnBackdropCLickEvent()
+    {
+        if (!Backdrop) return;
+        
+        Open = false;
+        _ = OpenChanged.InvokeAsync(false);
+        StateHasChanged();
+    }
+
+    public override void Dispose()
+    {
+        if (DrawerContainer != null) DrawerContainer.OnBackdropCLickEvent -= DrawerContainerOnOnBackdropCLickEvent;
+    }
 
 }
