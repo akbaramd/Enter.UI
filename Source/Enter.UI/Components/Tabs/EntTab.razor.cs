@@ -156,7 +156,7 @@ namespace Enter.UI.Components
         [Parameter] public EventCallback OnAllTabClosedClick { get; set; }
         public override void Dispose()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

@@ -29,9 +29,10 @@ namespace Enter.UI.Components
         public EntNavMenu NavMenu { get; set; }
 
         public string Id { get; set; }
+        
         public override void Dispose()
         {
-            throw new NotImplementedException();
+            
         }
 
         public bool IsShow { get; set; } = false;

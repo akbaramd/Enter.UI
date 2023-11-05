@@ -36,7 +36,8 @@ public partial class EntIcon : EntComponentBase
         .AddClass("ent-icon-size-x9",IconSize == EntIconNameize.x9)
         .AddClass("ent-icon-size-x10",IconSize == EntIconNameize.x10)
         .Build();
-
+    [Parameter]
+    public EventCallback Click { get; set; }
 
     public override void Dispose()
     {

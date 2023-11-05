@@ -1,8 +1,12 @@
 ﻿@namespace Enter.UI.Components
-<aside class="@RootCss">@ChildContent</aside>
 @using Enter.UI.Abstractions.Components.Drawer
 @using System.Data.Common
 @inherits EntComponentBase
+
+
+
+<aside class="@RootCss">@ChildContent</aside>
+<EntOverlay Visible="HasBackdrop" DarkBackground="true" OnClick="@OnOverlayClickCallback" @ontouchstart="@OnOverlayClickCallback" LockScroll="false" />
 
 @code {
 
@@ -31,58 +35,26 @@
     private bool _open = false;
 
     [Parameter]
-    public bool Open
-    {
-        get => _open;
-        set
-        {
-            _open = value;
-            _ = OpenChanged.InvokeAsync(value);
-        }
-    }
+    public bool Open { get; set; }
 
     [Parameter]
-    public bool Backdrop { get; set; }
+    public bool HasBackdrop { get; set; }
 
     [Parameter]
     public EventCallback<bool> OpenChanged { get; set; }
 
 
-    protected override async Task OnParametersSetAsync()
+    private async Task OnOverlayClickCallback()
     {
-        // if (Backdrop)
-        // {
-        //     DrawerContainer?.AddBackDrop();
-        // }
-        await base.OnParametersSetAsync();
-    }
-
-    protected override async Task OnInitializedAsync()
-    {
-      
-
-        if (DrawerContainer != null) DrawerContainer.OnBackdropCLickEvent += DrawerContainerOnOnBackdropCLickEvent;
-        
-        
-        if (Backdrop)
-        {
-            DrawerContainer?.AddBackDrop();
-        }
-
-    }
-
-    private void DrawerContainerOnOnBackdropCLickEvent()
-    {
-        if (!Backdrop) return;
-        
         Open = false;
-        _ = OpenChanged.InvokeAsync(false);
+        HasBackdrop = false;
+        await OpenChanged.InvokeAsync(Open);
         StateHasChanged();
     }
 
     public override void Dispose()
     {
-        if (DrawerContainer != null) DrawerContainer.OnBackdropCLickEvent -= DrawerContainerOnOnBackdropCLickEvent;
+        
     }
 
 }

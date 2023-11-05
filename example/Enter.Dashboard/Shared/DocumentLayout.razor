@@ -14,7 +14,7 @@
                                     <EntButton @onclick="() => _isSideDrawerOpen = !_isSideDrawerOpen" Icon="EntIconName.Comment" class="d-none laptop:d-flex" Size="ButtonSize.Small" Color="ButtonColor.Secondary">Sidebar</EntButton>
             </EntAppBar>
             <EntDrawerContainer class="flex-grow-1">
-                <EntDrawer Backdrop="true" @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start"  Mode="_drawerMode" class="z-50">
+                <EntDrawer HasBackdrop="HasBackdrop" @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start"  Mode="_drawerMode" class="z-50">
                     <EntNavMenu class="border-0">
                         <EntNavMenuGroup Title="Components" Icon="EntIconName.Home">
                             <EntNavMenuTextItem class="bg-light" Icon="EntIconName.Clock" Text="TreeView" Click="@(() => Navigate("/documents/treeview"))"/>
@@ -27,13 +27,13 @@
                     </EntNavMenuGroup>
                     </EntNavMenu>
                 </EntDrawer>
-                <EntDrawer 
-                    Open="true" 
-                    Direction="EntDrawerDirection.End" 
-                    Mode="EntDrawerMode.Behavior"
-                    class="z-50">
-                    <p class="p-4">Default Text To Show</p>
-                </EntDrawer>
+                @* <EntDrawer  *@
+                @*     Open="true"  *@
+                @*     Direction="EntDrawerDirection.End"  *@
+                @*     Mode="EntDrawerMode.Behavior" *@
+                @*     class="z-50"> *@
+                @*     <p class="p-4">Default Text To Show</p> *@
+                @* </EntDrawer> *@
                 <div class="h-full">
                     @Body
                 </div>
@@ -49,6 +49,7 @@
     private bool _showToggle = false;
     private bool _isDrawerOpen = true;
     private bool _isSideDrawerOpen = false;
+    private bool HasBackdrop => _showToggle && _isDrawerOpen;
     private EntDrawerMode _drawerMode = EntDrawerMode.Behavior;
 
     [CascadingParameter]
@@ -99,7 +100,7 @@
         }
     }
     
-    private async Task ToggleSidebar()
+    public async Task ToggleSidebar()
     {
         _isDrawerOpen = !_isDrawerOpen;
         StateHasChanged();

@@ -40,7 +40,7 @@ namespace Enter.UI.Components
 
         public override void Dispose()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
