@@ -15,32 +15,29 @@
 @code {
 
     [CascadingParameter]
-    public EntModalInstance Instance { get; set; }
+    public EntModal Modal { get; set; } = default!;
     
     private string RootCss => CssClassBuilder
         .AddClass("ent-messagebox").Build();
     
-    
     [Parameter]
     public string Message { get; set; }
-    
     
     [Parameter]
     public string ConfirmText { get; set; }
 
-    
-    
     [Parameter]
     public string CancelText { get; set; }
 
    
-    public async Task OnCancelClick()
+    public void OnCancelClick()
     {
-        await Instance.CancelAsync();
+         Modal.Cancel();
     }
-    public async Task OnConfirmClick()
+    
+    public void OnConfirmClick()
     {
-        await Instance.CloseAsync(ModalResult.Ok(true));
+        Modal.Close();
     }
 
 

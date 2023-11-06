@@ -33,7 +33,6 @@ internal class PopoverInterop
         }
         catch (Exception exception)
         {
-            Console.WriteLine(exception);
             return false;
         }
     }

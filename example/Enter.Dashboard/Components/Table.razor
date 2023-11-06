@@ -1,4 +1,5 @@
-﻿@using Enter.Dashboard.Model
+﻿@inherits Enter.UI.Abstractions.Core.Bases.EntPageBase
+@using Enter.Dashboard.Model
 <EntCard class="m-4" Title="صفحه فرم">
     <CardBody>
         <EntTable DataSources="DataSource" Total="Constants.Users.Count" Take="_take" OnPaginationChange="OnPaginationChange">
@@ -29,8 +30,6 @@
 
     protected override void OnInitialized()
     {
-        
-
         DataSource = Constants.Users.Skip(0).Take(_take).ToList();
 
         base.OnInitialized();
@@ -43,6 +42,10 @@
         DataSource = Constants.Users.Skip(skip).Take(_take).ToList();
         
         StateHasChanged();
+    }
+
+    public override void Dispose()
+    {
     }
 
 }

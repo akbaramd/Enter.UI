@@ -13,7 +13,6 @@
         return;
         
         const expandableNode = document.getElementById(id);
-        console.log(id,show);
         if (expandableNode) {
             if (show) {
                 expandableNode.style['height'] = expandableNode.scrollHeight+"px";

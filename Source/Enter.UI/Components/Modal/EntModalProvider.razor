@@ -1,15 +1,18 @@
 ﻿@namespace Enter.UI.Components
 @using Enter.UI.Abstractions.Services
+@using Enter.UI.Abstractions.Components.Modal
 @implements IDisposable
 <div class="ent-modal-provider ">
-    @foreach (var item in @_modalService.Items)
-    {
-        <CascadingValue Value="item" IsFixed="true">
-            <EntModal Title="@item.Title" OnCancelClick="() => OnCancelClick(item.Id)" Options="item.Options">
-                <DynamicComponent Type="@item.Type" Parameters="@item.Parameters"/>
-            </EntModal>
-        </CascadingValue>
-    }
+    <CascadingValue Value="this" IsFixed="true">
+        @foreach (var item in ModalInstances)
+        {
+            <CascadingValue @key="item.Id" Value="item" IsFixed="true">
+                <EntModal  Title="@item.Title" OnCancelClick="() => OnCancelClick(item.Id)" Options="item.Options">
+                    <DynamicComponent Type="@item.Type" Parameters="@item.Parameters"/>
+                </EntModal>
+            </CascadingValue>
+        }
+    </CascadingValue>
 </div>
 
 @code {
@@ -19,6 +22,7 @@
 
     private ModalService _modalService { get; set; }
 
+    public List<EntModalInstance> ModalInstances = new();
 
     protected override async Task OnInitializedAsync()
     {
@@ -26,10 +30,7 @@
 
         await base.OnInitializedAsync();
 
-        _modalService.OnModalShowedAsync += ModalServiceOnOnModalShowedAsync;
-        _modalService.OnModalClosedAsync += ModalServiceOnOnModalClosedAsync;
-        _modalService.OnModalCanceledAsync += ModalServiceOnOnModalCanceledAsync;
-        ;
+        _modalService.OnModalAddedAsync += ModalServiceOnOnModalAddedAsync;
     }
 
     private async Task ModalServiceOnOnModalCanceledAsync(string obj)
@@ -42,26 +43,38 @@
         await InvokeAsync(StateHasChanged);
     }
 
-    private async Task ModalServiceOnOnModalShowedAsync(string obj)
+    public async Task ModalServiceOnOnModalAddedAsync(EntModalInstance instance)
     {
-        await InvokeAsync(StateHasChanged);
+        await InvokeAsync(() =>
+        {
+            var first = ModalInstances.FirstOrDefault(x => x.Id == instance.Id);
+            if (first != null)
+                throw new Exception("Modal with this Id already exists");
+
+            ModalInstances.Add(instance);
+            StateHasChanged();
+        });
     }
 
-    private async Task OnCloseClick(string id)
+    public void Dismiss(EntModalInstance instance,ModalResult result)
     {
-        await _modalService.CloseAsync(id);
+        instance.DialogResultTCS?.SetResult(result);
+        ModalInstances.Remove(instance);
+        StateHasChanged();
     }
 
-    private async Task OnCancelClick(string id)
+    public void DismissAll()
     {
-        await _modalService.CancelAsync(id);
+        ModalInstances.ForEach(x =>
+        {
+            Dismiss(x,ModalResult.Cancel());
+        });
+        StateHasChanged();
     }
 
     public void Dispose()
     {
-        _modalService.OnModalShowedAsync -= ModalServiceOnOnModalShowedAsync;
-        _modalService.OnModalClosedAsync -= ModalServiceOnOnModalClosedAsync;
-        _modalService.OnModalCanceledAsync -= ModalServiceOnOnModalCanceledAsync;
+        _modalService.OnModalAddedAsync -= ModalServiceOnOnModalAddedAsync;
     }
 
 }

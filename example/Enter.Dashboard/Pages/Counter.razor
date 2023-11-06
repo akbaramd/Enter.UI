@@ -2,8 +2,9 @@
 @using Enter.UI.Abstractions.Components.Tabs;
 @using Enter.UI.Abstractions.Components.Text
 @using Enter.UI.Abstractions.Core.Bases;
+@using Enter.UI.Abstractions.Components.Modal
 @inherits EntPageBase
-
+@implements IDisposable
 <PageTitle>Counter</PageTitle>
 
 <div class="m-4 p-4 bg-white border">
@@ -26,19 +27,21 @@
         if (currentCount == 3)
         {
             await ToastService.NotifyInfoAsync("asd", "asdas");
-            await MdiTabCloseAsync();
-            await ModalCloseAsync();
+            if (MdiTabInstance != null)
+            {
+                await MdiTabInstance.CloseAsync();
+            }
+
+            if (EntModal != null)
+            {
+                EntModal.Close(ModalResult.Ok(currentCount));
+            }
         }
     }
 
-    protected override async Task OnMdiTabActivatedAsync(string tabId)
-    {
-        Console.WriteLine("Active");
-    }
 
     protected override async Task OnInitializedAsync()
     {
-       
         await base.OnInitializedAsync();
     }
 

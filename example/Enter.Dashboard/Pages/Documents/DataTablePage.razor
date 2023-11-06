@@ -1,10 +1,12 @@
 ﻿@page "/documents/datatable"
 @using Enter.UI.Abstractions.Components.TreeView
 @using Enter.UI.Abstractions.Components.Button
+@using Enter.UI.Abstractions.Core.Bases;
 @using Enter.UI.Abstractions.Core.Extensions
 @using System.Net.Mime
 @using Enter.Dashboard.Model
 @using Enter.UI.Abstractions.Core
+@inherits EntPageBase
 @layout DocumentLayout
 <EntCard class="m-4" Title="جدول داده">
     <CardBody>
@@ -55,6 +57,11 @@
         DataSource = Constants.Users.Skip(skip).Take(_take).ToList();
         
         StateHasChanged();
+    }
+
+    public override void Dispose()
+    {
+        
     }
 
 }

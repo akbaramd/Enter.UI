@@ -2,20 +2,22 @@
 @using Enter.UI.Abstractions.Components.Modal
 @using Enter.UI.Abstractions.Components.Icon
 @inherits EntComponentBase
-<div class="ent-modal-container" @onclick="OnContainerClick">
-                <div class="@RootCss" @onclick:stopPropagation="true" @onclick="OnModalClick">
-                    <div class="ent-modal-header">
-                        <b class="title">@Title</b>
-                        @if (Instance?.Options?.ShowCloseButton??true)
-                        {
-                            <EntIcon class="icon" Click="OnCancelClick"  Icon="EntIconName.Remove"/>
-                        }
-                    </div>
-                    <div class="ent-modal-content">
-                        @ChildContent
-                    </div>
-                </div>
+<CascadingValue Value="this" IsFixed="true">
+    <div class="ent-modal-container" @onclick="OnContainerClick">
+        <div class="@RootCss" @onclick:stopPropagation="true" @onclick="OnModalClick">
+            <div class="ent-modal-header">
+                <b class="title">@Title</b>
+                @if (Options?.ShowCloseButton ?? true)
+                {
+                    <EntIcon class="icon" Click="Cancel" Icon="EntIconName.Remove"/>
+                }
             </div>
+            <div class="ent-modal-content">
+                @ChildContent
+            </div>
+        </div>
+    </div>
+</CascadingValue>
 
 @code {
 
@@ -26,18 +28,18 @@
         .AddClass("ent-modal-lg", Options?.Size == EntModalSize.Large)
         .AddClass("ent-modal-xl", Options?.Size == EntModalSize.ExtraLarge)
         .AddClass("ent-modal-fs", Options?.Size == EntModalSize.Fullscreen).Build();
-    
+
     [CascadingParameter]
-    public EntModalInstance? Instance { get; set; }
-    
+    public EntModalProvider ModalProvider { get; set; } = default!;
+
+    [CascadingParameter]
+    public EntModalInstance Instance { get; set; } = default!;
+
     [Parameter]
     public string Title { get; set; }
-    
+
     [Parameter]
     public RenderFragment ChildContent { get; set; }
-    
-    [Parameter]
-    public EventCallback OnCancelClick { get; set; }
 
     [Parameter]
     public EntModalOptions? Options { get; set; }
@@ -51,45 +53,37 @@
             CloseOnEscapeKey = true
         };
 
-        if (Instance!= null)
-        {
-            Instance.OnClosedAsync += OnClosedAsync;
-            Instance.OnCanceledAsync += OnCanceledAsync;;
-        }
-        
         await base.OnInitializedAsync();
     }
 
-    private  Task OnCanceledAsync(string arg)
+    public void Close()
     {
-        return InvokeAsync(Dispose);
+        Close(ModalResult.Ok());
     }
 
-    private  Task OnClosedAsync(string arg1, ModalResult arg2)
+    public void Close(ModalResult result)
     {
-        return InvokeAsync(Dispose);
+        ModalProvider.Dismiss(Instance, result);
+    }
+
+    public void Cancel()
+    {
+        Close(ModalResult.Cancel());
     }
 
     private async Task OnContainerClick(MouseEventArgs args)
     {
-        if (Instance !=null && (Instance?.Options?.CloseOnEscapeKey??true))
-        {
-            await Instance.CancelAsync();
-        }
+        Cancel();
     }
 
     private async Task OnModalClick(MouseEventArgs arg)
     {
-        
     }
 
     public override void Dispose()
     {
-        if (Instance!= null)
-        {
-            Instance.OnClosedAsync += OnClosedAsync;
-            Instance.OnCanceledAsync += OnCanceledAsync;;
-        }
     }
+
+
 
 }

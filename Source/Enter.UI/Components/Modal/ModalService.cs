@@ -5,16 +5,15 @@ using Microsoft.AspNetCore.Components;
 
 namespace Enter.UI.Components;
 
-public class ModalService : IEntModalService , IDisposable
+public class ModalService : IEntModalService 
 {
-    public List<EntModalInstance> Items = new();
 
     public async Task<ModalResult?> ShowAsync<TComponent>(string title, Dictionary<string, object>? parameters = null,
         EntModalOptions? options = null, string? id = null) where TComponent : ComponentBase
     {
-        var first = Items.FirstOrDefault(x => x.Id == id);
-        if (first != null)
-            throw new Exception("Modal with this Id already exists");
+        // var first = Items.FirstOrDefault(x => x.Id == id);
+        // if (first != null)
+        //     throw new Exception("Modal with this Id already exists");
         
         var modalId = id ?? Guid.NewGuid().ToString();
         var taskCompletionSource = new TaskCompletionSource<ModalResult?>();
@@ -25,33 +24,11 @@ public class ModalService : IEntModalService , IDisposable
             Type = typeof(TComponent),
             Options = options,
             Parameters = parameters,
-            OnClosedAsync = CloseAsync,
-            OnCanceledAsync = CancelAsync,
             DialogResultTCS = taskCompletionSource
         };
-        Items.Add(item);
-        await OnModalShowedAsync.Invoke(item.Id);
+        
+        await OnModalAddedAsync.Invoke(item);
         return await taskCompletionSource.Task;
-    }
-
-    public async Task CloseAsync(string id, ModalResult? result = null)
-    {
-        var item = Items.FirstOrDefault(x => x.Id == id);
-        if (item == null)
-            return;
-        Items.Remove(item);
-        await OnModalClosedAsync.Invoke(id);
-        item.DialogResultTCS?.SetResult(result);
-    }
-
-    public async Task CancelAsync(string id)
-    {
-        var item = Items.FirstOrDefault(x => x.Id == id);
-        if (item == null)
-            return;
-        Items.Remove(item);
-        await OnModalCanceledAsync.Invoke(id);
-        item.DialogResultTCS?.SetResult(ModalResult.Cancel());
     }
 
     public Task<ModalResult> MessageBoxAsync(string title, string message, string confirmText = "Confirm",
@@ -72,11 +49,6 @@ public class ModalService : IEntModalService , IDisposable
         })!;
     }
 
-    public event Func<string, Task> OnModalShowedAsync;
-    public event Func<string, Task> OnModalClosedAsync;
-    public event Func<string, Task> OnModalCanceledAsync;
+    internal event Func<EntModalInstance, Task> OnModalAddedAsync = default!;
 
-    public void Dispose()
-    {
-    }
 }

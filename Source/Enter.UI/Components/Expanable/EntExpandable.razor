@@ -149,7 +149,6 @@
                 throw new JSException($"SharedJsService Not be Found . please in ject this service in {nameof(EntExpandable)}");
 
             var reactBounding = await SharedJsService.GetBoundingClientRect(Reference.Reference);
-            Console.WriteLine("sw: "+reactBounding.ScrollWidth);
             if (Direction == EntExpandableDirection.Vertical)
             {
                 _size = reactBounding?.ScrollHeight ?? 0;

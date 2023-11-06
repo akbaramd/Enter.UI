@@ -40,7 +40,7 @@
 
             @foreach (var item in Item.Childrens)
             {
-                <EntTreeViewItem Item="@item"  />
+                <EntTreeViewItem  Item="@item"  />
             }
 
         </EntExpandable>
@@ -95,20 +95,10 @@
         if (Checked)
         {
             await TreeView.DeSelect(Item.Value);
-            OnValueChange.Invoke(default);
         }
         else
         {
             await TreeView.Select(Item.Value);
-            OnValueChange.Invoke(Item.Value);
-            // if (IsMultiSelect && (Item.Childrens?.Any() ?? false))
-            // {
-            //     foreach (var item in Item.Childrens)
-            //     {
-                    
-            //     }
-                
-            // }
 
             Expand();
         }

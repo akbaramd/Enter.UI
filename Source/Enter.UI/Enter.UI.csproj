@@ -6,10 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Enter.UI</RootNamespace>
     <PackageId>Enter.Ui</PackageId>
-    <Version>1.0.57</Version>
+    <Version>1.0.59</Version>
     <Authors>Akbar Ahmadi</Authors>
     <Company>AhmadiCo</Company>
-	 <PackageReadmeFile>Readme.md</PackageReadmeFile>
+    <PackageReadmeFile>Readme.md</PackageReadmeFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   

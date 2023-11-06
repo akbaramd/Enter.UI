@@ -1,6 +1,7 @@
 ﻿using Enter.UI.Abstractions.Components.Modal;
 using Enter.UI.Abstractions.Components.Tabs;
 using Enter.UI.Abstractions.Services;
+using Enter.UI.Components;
 using Microsoft.AspNetCore.Components;
 
 namespace Enter.UI.Abstractions.Core.Bases
@@ -18,26 +19,19 @@ namespace Enter.UI.Abstractions.Core.Bases
         public IEntMdiService MdiTabService { get; set; } = default!;
 
         [CascadingParameter]
-        public EntMdiTabInstance? MdiTabInstance { get; set; } = null;
+        public EntMdiTabInstance? MdiTabInstance { get; set; } = default!;
 
         [CascadingParameter]
-        public EntModalInstance? ModalInstance { get; set; } = null;
+        public EntModal? EntModal { get; set; } = null;
 
-     
+        public bool IsMdiTabInstance => MdiTabInstance != null;
+        
         protected override  Task OnInitializedAsync()
         {
-            if (MdiTabInstance != null)
+            if (IsMdiTabInstance)
             {
                 MdiTabInstance.OnActivatedAsync += OnMdiTabActivatedAsync;
-                MdiTabInstance.OnCloseAsync += OnMdiTabCloseAsync;
             }
-
-            if (ModalInstance!= null)
-            {
-                ModalInstance.OnCanceledAsync += OnModalCanceledAsync;
-                ModalInstance.OnClosedAsync += OnModalClosedAsync;
-            }
-
             return Task.CompletedTask;
         }
 
@@ -45,73 +39,10 @@ namespace Enter.UI.Abstractions.Core.Bases
         {
             await InvokeAsync(StateHasChanged);
         }
-        protected virtual async Task OnMdiTabCloseAsync(string tabId)
-        {
-            await InvokeAsync(Dispose);
-        }
-        protected virtual async Task OnModalCanceledAsync(string modalId)
-        {
-            await InvokeAsync(Dispose);
-        }
 
-        protected virtual async Task OnModalClosedAsync(string modalId , ModalResult modalResult)
+        public virtual void Dispose()
         {
-            await InvokeAsync(Dispose);
-        }
-
-        protected async Task MdiTabCloseAsync()
-        {
-            if (MdiTabInstance != null)
-            {
-                await MdiTabInstance.CloseAsync();;
-            }
-        }
-
-        protected async Task ModalCancelAsync()
-        {
-            if (ModalInstance != null)
-            {
-                await ModalInstance.CancelAsync(); 
-            }
-        }
-        protected async Task ModalCloseAsync<TResult>(TResult? result)
-        {
-            if (ModalInstance != null)
-            {
-                await ModalInstance.CloseAsync(ModalResult.Ok(result));
-            }
-        }
-        protected async Task ModalCloseAsync()
-        {
-            if (ModalInstance != null)
-            {
-                await ModalInstance.CloseAsync(ModalResult.Ok());
-            }
-        }
-        protected bool IsModalInstance()
-        {
-            return ModalInstance != null;
-        }
-        protected bool IsMdiTabInstance()
-        {
-            return MdiTabInstance != null;
         }
         
-        public virtual void  Dispose()
-        {
-            if (MdiTabInstance != null)
-            {
-                MdiTabInstance.OnActivatedAsync -= OnMdiTabActivatedAsync;
-            }
-
-            if (ModalInstance != null)
-            {
-                ModalInstance.OnCanceledAsync -= OnModalCanceledAsync;
-                ModalInstance.OnClosedAsync -= OnModalClosedAsync;
-            }
-            ;
-        }
-
-       
     }
 }
