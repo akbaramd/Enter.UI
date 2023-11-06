@@ -15,7 +15,7 @@
     height: 1rem;
     width: 1rem;
     border-radius: 50%;
-    border: 0.25rem solid white;
+    border: 0.15rem solid white;
     border-left-color: transparent !important;
     animation: anim-ent-btn-spin 1s infinite linear;
     
@@ -212,24 +212,3 @@
   }
 }
 
-@keyframes anim-ent-btn-spin
-{
-  0%{
-    animation-timing-function:cubic-bezier(0.5856,0.0703,0.4143,0.9297);
-    transform:rotate(0);
-  }
-  100%{
-    transform:rotate(900deg)
-  }
-}
-
-@keyframes anim-ent-btn-spin-fast
-{
-  0%{
-    animation-timing-function:cubic-bezier(0.5856,0.0703,0.4143,0.9297);
-    transform:rotate(0);
-  }
-  100%{
-    transform:rotate(1800deg)
-  }
-}

@@ -1,0 +1,44 @@
+﻿@namespace Enter.UI.Components
+@using Enter.UI.Abstractions.Components.Icon
+@using Enter.UI.Abstractions.Components.Text
+@inherits EntComponentBase
+<CascadingValue Value="@(this)">
+    <div @attributes="AdditionalAttributes" class="@RootClass">
+        @if (Icon != null && !Loading)
+        {
+            <EntIcon Icon="@Icon" IconSize="EntIconSize.Default" class="ent-toolbar-button-icon" IconStyle="EntIconStyle.Light"/>
+        }
+        @if (Loading)
+        {
+            <span class="ent-toolbar-button-icon-loading"></span>
+        }
+
+        @if (!string.IsNullOrWhiteSpace(Text))
+        {
+            <EntText Type="EntTextType.Text" class="ent-toolbar-button-text">@Text</EntText>
+        }
+    </div>
+</CascadingValue>
+
+@code {
+
+    private string RootClass => CssClassBuilder
+        .AddClass("ent-toolbar-button")
+        .Build();
+
+
+    [Parameter]
+    public string? Text { get; set; } = string.Empty;
+
+    [Parameter]
+    public object? Icon { get; set; } = string.Empty;
+
+    [Parameter]
+    public bool Loading { get; set; }
+
+
+    public override void Dispose()
+    {
+    }
+
+}

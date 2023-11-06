@@ -1,6 +1,6 @@
 ﻿namespace Enter.UI.Abstractions.Components.Icon;
 
-public enum EntIconNameize
+public enum EntIconSize
 {
     /// <summary>
     /// The icon size will not be applied.

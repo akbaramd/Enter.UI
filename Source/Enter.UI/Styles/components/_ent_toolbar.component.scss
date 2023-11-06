@@ -3,7 +3,7 @@
   --ent-toolbar-space-x: 1rem;
   --ent-toolbar-z-index: var(--ent-z-index-tertiary);
   --ent-toolbar-bg: var(--ent-bg-tertiary);
-  --ent-toolbar-item-bg: var(--ent-bg-body);
+  --ent-toolbar-button-bg: var(--ent-bg-body);
   --ent-toolbar-active-bg: var(--ent-bg-secondary);
   --ent-toolbar-border-width: var(--ent-border-width);
   --ent-toolbar-border-style: var(--ent-border-style);
@@ -24,29 +24,39 @@
   justify-content: start;
   gap: 0.5rem;
   
-  .ent-toolbar-item {
+  .ent-toolbar-button {
     border: var(--ent-toolbar-border-width) var(--ent-toolbar-border-style) var(--ent-toolbar-border-color);
     padding: var(--ent-toolbar-space-y) var(--ent-toolbar-space-x);
     border-radius: var(--ent-toolbar-border-radius);
-    background: var(--ent-toolbar-item-bg);
+    background: var(--ent-toolbar-button-bg);
     gap: 0.5rem;
     display: flex;
     flex-direction: row;
     align-items: center;
     cursor: pointer;
+
+    .ent-toolbar-button-icon-loading {
+      height: 1rem;
+      width: 1rem;
+      border-radius: 50%;
+      border: 0.15rem solid var(--ent-color-body);
+      border-left-color: transparent !important;
+      animation: anim-ent-btn-spin 1s infinite linear;
+
+    }
     
     &:hover {
       background-color: var(--ent-toolbar-active-bg);
     }
     
-    .ent-toolbar-item-icon {
+    .ent-toolbar-button-icon {
       height: 1.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .ent-toolbar-item-text {
+    .ent-toolbar-button-text {
       flex-grow: 1;
       line-height: 1.5;
       display: flex;

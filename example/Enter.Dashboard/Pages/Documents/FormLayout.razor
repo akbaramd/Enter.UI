@@ -1,14 +1,15 @@
-﻿@using System.ComponentModel.DataAnnotations
+@page "/documents/form"
+@using System.ComponentModel.DataAnnotations
 @using Enter.Dashboard.Model;
 @using Enter.UI.Abstractions.Components.Button
 @using Enter.UI.Abstractions.Components.Icon
 @using Enter.UI.Abstractions.Components.Inputs
 @using Enter.UI.Core
 <EntToolbar>
-    <EntToolbarItem Text="Add New" Icon="EntIconName.Add"/>
-    <EntToolbarItem Text="Delete Selected" Icon="EntIconName.Delete"/>
-    <EntToolbarItem Icon="EntIconName.User"/>
-    <EntToolbarItem Text="Details"/>
+    <EntToolbarButton Text="Add New" Icon="EntIconName.Add" Loading="true"/>
+    <EntToolbarButton Text="Delete Selected" Icon="EntIconName.Delete"/>
+    <EntToolbarButton Icon="EntIconName.User"/>
+    <EntToolbarButton Text="Details"/>
 </EntToolbar>
 <EntCard Expandable="true" class="m-4" Title="Form Layout">
     <CardBody>
