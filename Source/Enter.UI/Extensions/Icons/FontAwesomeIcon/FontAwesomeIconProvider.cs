@@ -23,7 +23,7 @@ public class FontAwesomeIconProvider : IEntIconProvider
         { EntIconName.Home, "fa-home" },
         { EntIconName.Remove, "fa-minus" },
         { EntIconName.Search, "fa-search" },
-        { EntIconName.Sort, "fa-sort" },
+        { EntIconName.SortAsc, "fa-sort" },
         { EntIconName.Clock, "fa-clock" },
         { EntIconName.Download, "fa-download" },
         { EntIconName.Upload, "fa-upload" },

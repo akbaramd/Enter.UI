@@ -20,12 +20,16 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.10" PrivateAssets="all" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Source\Enter.UI\Enter.UI.csproj" />
-  </ItemGroup>
 
   <ItemGroup>
     <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
   </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Source\Enter.UI\Enter.UI.csproj" />
+  </ItemGroup>
+
+
 
 </Project>

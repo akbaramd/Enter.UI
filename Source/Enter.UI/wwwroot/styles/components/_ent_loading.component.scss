@@ -4,6 +4,7 @@
   border-radius: 50%;
   border: 0.25rem solid $color-primary;
   border-left-color: transparent !important;
+  display: block;
   
   &.animate {
     animation: anim-ent-btn-spin 1s infinite linear;

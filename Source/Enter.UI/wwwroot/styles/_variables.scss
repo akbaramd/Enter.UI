@@ -278,6 +278,7 @@ $color-light : var(--ent-light);
 $color-dark : var(--ent-dark);
 $color-primary : var(--ent-primary);
 $color-secondary : var(--ent-secondary);
+$color-tertiary : var(--ent-tertiary);
 $color-warning : var(--ent-warning);
 $color-info : var(--ent-info);
 $color-success : var(--ent-success);
@@ -290,6 +291,9 @@ $colors: (
         "light":$color-light,
         "dark":$color-dark,
         "link":$color-link,
+        "primary":$color-primary,
+        "secondary":$color-secondary,
+        "tertiary":$color-tertiary,
         'success': $color-success,
         'danger': $color-danger,
         'warning': $color-warning,

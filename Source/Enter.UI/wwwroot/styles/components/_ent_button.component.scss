@@ -12,6 +12,7 @@
 
   --ent-btn-icon-bg: rgba(255, 255, 255, .1);
   --ent-btn-icon-color: white;
+  --ent-btn-icon-hover-color: white;
   
 }
 
@@ -27,6 +28,7 @@
   --ent-btn-icon-color: white;
 }
 
+
 .ent-btn-light {
   --ent-btn-bg: var(--ent-light);
   --ent-btn-color: var(--ent-color-body);
@@ -34,6 +36,13 @@
   --ent-btn-hover-bg: var(--ent-light-text);
   --ent-btn-hover-color: var(--ent-color-body);
 
+  --ent-btn-icon-bg: rgba(255, 255, 255, .9);
+  --ent-btn-icon-color: var(--ent-color-body);
+
+}
+
+.ent-theme-dark .ent-btn-light {
+  --ent-btn-color: white;
 }
 
 .ent-btn-dark {
@@ -46,10 +55,18 @@
 
 .ent-btn-secondary {
   --ent-btn-bg: var(--ent-secondary);
-  --ent-btn-color: white;
+  --ent-btn-color: var(--ent-color-body);
   --ent-btn-border-color: var(--ent-secondary);
   --ent-btn-hover-bg: var(--ent-secondary-text);
-  --ent-btn-hover-color: white;
+  --ent-btn-hover-color: var(--ent-color-body);
+}
+
+.ent-btn-tertiary {
+  --ent-btn-bg: var(--ent-tertiary);
+  --ent-btn-color: var(--ent-color-body);
+  --ent-btn-border-color: var(--ent-tertiary);
+  --ent-btn-hover-bg: var(--ent-tertiary-text);
+  --ent-btn-hover-color: var(--ent-color-body);
 }
 
 .ent-btn-success {
@@ -94,6 +111,9 @@
   --ent-btn-border-color: var(--ent-primary);
   --ent-btn-hover-bg: var(--ent-primary);
   --ent-btn-hover-color: white;
+
+  --ent-btn-icon-bg: var(--ent-primary-bg-subtle);
+  --ent-btn-icon-color: var(--ent-primary);
 }
 
 .ent-btn-outline-light {
@@ -101,9 +121,14 @@
   --ent-btn-color: var(--ent-light);
   --ent-btn-border-color: var(--ent-light);
   --ent-btn-hover-bg: var(--ent-light);
-  --ent-btn-hover-color: var(--ent-dark);
+  --ent-btn-hover-color: white;
+  
+  --ent-btn-icon-bg: var(--ent-light-bg-subtle);
+  --ent-btn-icon-color: var(--ent-light);
 
 }
+
+
 
 .ent-btn-outline-dark {
   --ent-btn-bg: transparent;
@@ -111,6 +136,9 @@
   --ent-btn-border-color: var(--ent-dark);
   --ent-btn-hover-bg: var(--ent-dark);
   --ent-btn-hover-color: white;
+  
+  --ent-btn-icon-bg: var(--ent-dark-bg-subtle);
+  --ent-btn-icon-color: var(--ent-dark);
 }
 
 .ent-btn-outline-secondary {
@@ -118,7 +146,21 @@
   --ent-btn-color: var(--ent-secondary);
   --ent-btn-border-color: var(--ent-secondary);
   --ent-btn-hover-bg: var(--ent-secondary);
-  --ent-btn-hover-color: white;
+  --ent-btn-hover-color: var(--ent-dark);
+  
+  --ent-btn-icon-bg: var(--ent-secondary-bg-subtle);
+  --ent-btn-icon-color: var(--ent-secondary);
+}
+
+.ent-btn-outline-tertiary {
+  --ent-btn-bg: transparent;
+  --ent-btn-color: var(--ent-tertiary);
+  --ent-btn-border-color: var(--ent-tertiary);
+  --ent-btn-hover-bg: var(--ent-tertiary);
+  --ent-btn-hover-color: var(--ent-dark);
+
+  --ent-btn-icon-bg: var(--ent-secondary-bg-subtle);
+  --ent-btn-icon-color: var(--ent-tertiary);
 }
 
 .ent-btn-outline-success {
@@ -127,6 +169,9 @@
   --ent-btn-border-color: var(--ent-success);
   --ent-btn-hover-bg: var(--ent-success);
   --ent-btn-hover-color: white;
+
+  --ent-btn-icon-bg: var(--ent-success-bg-subtle);
+  --ent-btn-icon-color: var(--ent-success);
 }
 
 .ent-btn-outline-danger {
@@ -135,6 +180,9 @@
   --ent-btn-border-color: var(--ent-danger);
   --ent-btn-hover-bg: var(--ent-danger);
   --ent-btn-hover-color: white;
+  
+  --ent-btn-icon-bg: var(--ent-danger-border-subtle);
+  --ent-btn-icon-color: var(--ent-danger);
 }
 
 .ent-btn-outline-warning {
@@ -143,6 +191,9 @@
   --ent-btn-border-color: var(--ent-warning);
   --ent-btn-hover-bg: var(--ent-warning);
   --ent-btn-hover-color: white;
+  
+  --ent-btn-icon-bg: var(--ent-warning-bg-subtle);
+  --ent-btn-icon-color: var(--ent-warning);
 }
 
 .ent-btn-outline-info {
@@ -151,6 +202,9 @@
   --ent-btn-border-color: var(--ent-info);
   --ent-btn-hover-bg: var(--ent-info);
   --ent-btn-hover-color: white;
+  
+  --ent-btn-icon-bg: var(--ent-info-bg-subtle);
+  --ent-btn-icon-color: var(--ent-info);
 
 }
 
@@ -160,16 +214,23 @@
 .ent-btn-soft-primary {
   --ent-btn-bg: var(--ent-primary-bg-subtle);
   --ent-btn-color: var(--ent-primary);
-  --ent-btn-border-color: transparent;  
+  --ent-btn-border-color: transparent;
+
+  --ent-btn-icon-color: var(--ent-primary);
+  --ent-btn-icon-hover-color: white;
 
 }
 
 .ent-btn-soft-light {
   --ent-btn-bg: var(--ent-light-bg-subtle);
-  --ent-btn-color: var(--ent-dark);
+  --ent-btn-color: white;
   --ent-btn-border-color: transparent;
-  --ent-btn-hover-bg: var(--ent-dark);
-  --ent-btn-hover-color: var(--ent-color-body);
+  --ent-btn-hover-bg: var(--ent-light);
+  --ent-btn-hover-color: var(--ent-dark);
+  
+  --ent-btn-icon-color: white;
+  --ent-btn-icon-hover-color: var(--ent-dark);
+  
 
 }
 
@@ -179,22 +240,40 @@
   --ent-btn-border-color: transparent;
   --ent-btn-hover-bg: var(--ent-dark);
   --ent-btn-hover-color: white;
+
+  --ent-btn-icon-color: var(--ent-dark);
+  --ent-btn-icon-hover-color: white;
 }
 
 .ent-btn-soft-secondary {
   --ent-btn-bg: var(--ent-secondary-bg-subtle);
-  --ent-btn-color: var(--ent-secondary);
+  --ent-btn-color: var(--ent-color-body);
   --ent-btn-border-color: transparent;
   --ent-btn-hover-bg: var(--ent-secondary);
-  --ent-btn-hover-color: white;
+  --ent-btn-hover-color: var(--ent-color-body);
+  --ent-btn-icon-color: var(--ent-secondary);
+  --ent-btn-icon-hover-color: var(--ent-color-body);
+}
+
+.ent-btn-soft-tertiary {
+  --ent-btn-bg: var(--ent-tertiary-bg-subtle);
+  --ent-btn-color: var(--ent-color-body);
+  --ent-btn-border-color: transparent;
+  --ent-btn-hover-bg: var(--ent-tertiary);
+  --ent-btn-hover-color: var(--ent-color-body);
+  --ent-btn-icon-color: var(--ent-tertiary);
+  --ent-btn-icon-hover-color: var(--ent-color-body);
 }
 
 .ent-btn-soft-success {
   --ent-btn-bg: var(--ent-success-bg-subtle);
-  --ent-btn-color: var(--ent-success);;
+  --ent-btn-color: white;
   --ent-btn-border-color: transparent;
   --ent-btn-hover-bg: var(--ent-success);
   --ent-btn-hover-color: white;
+
+  --ent-btn-icon-color: white;
+  --ent-btn-icon-hover-color: white;
 }
 
 .ent-btn-soft-danger {
@@ -203,6 +282,9 @@
   --ent-btn-border-color: transparent;
   --ent-btn-hover-bg: var(--ent-danger);
   --ent-btn-hover-color: white;
+
+  --ent-btn-icon-color: var(--ent-danger);
+  --ent-btn-icon-hover-color: white;
 }
 
 .ent-btn-soft-warning {
@@ -211,6 +293,9 @@
   --ent-btn-border-color: transparent;
   --ent-btn-hover-bg: var(--ent-warning);
   --ent-btn-hover-color: white;
+  
+  --ent-btn-icon-color: var(--ent-warning);
+  --ent-btn-icon-hover-color: white;
 }
 
 .ent-btn-soft-info {
@@ -220,6 +305,9 @@
   --ent-btn-hover-bg: var(--ent-info);
   --ent-btn-hover-color: white;
 
+  
+  --ent-btn-icon-color: var(--ent-info);
+  --ent-btn-icon-hover-color: white;
 }
 
 
@@ -264,32 +352,12 @@
 
 
 .ent-icon-btn {
-  position: relative;
-  padding-inline-start: calc(var(--ent-btn-space-x) + 2rem);
-
-
-  &:hover {
-    .icon-wrapper {
-      background-color: rgba(255, 255, 255, .1) !important;
-    }
-  }
-
   .icon-wrapper {
-    position: absolute;
-    inset-inline-start: 0;
-    bottom: 0;
-    top: 0;
-    width: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--ent-btn-icon-bg);
-    
     .icon {
-      fill: var(--ent-btn-icon-color);
-      border-color: var(--ent-btn-icon-color);
-      color: var(--ent-btn-icon-color);
-     
+      display: block;
+      fill: var(--ent-btn-color);
+      border-color: var(--ent-btn-color);
+      color: var(--ent-btn-color);
     }
   }
 }

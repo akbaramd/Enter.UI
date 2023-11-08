@@ -12,14 +12,14 @@ public class EntJsService : IEntJsService, IAsyncDisposable
     public EntJsService(IJSRuntime jsRuntime)
     {
         _jsRuntime = jsRuntime;
-        _moduleTask = new Lazy<Task<IJSObjectReference>>(() => ImportJsFileAsync("EnterUi.min.js"));
+        _moduleTask = new Lazy<Task<IJSObjectReference>>(() => ImportJsFileAsync("Enter.Ui.min.js"));
     }
 
     public async Task<IJSObjectReference> ImportJsFileAsync(string path)
     {
         return await _jsRuntime
             .InvokeAsync<IJSObjectReference>("import",
-                $"./_content/Enter.UI/{path}").AsTask();
+                $"./_content/Enter.UI/js/{path}").AsTask();
     }
 
     public async Task<IJSObjectReference> LoadReferenceAsync(string path)

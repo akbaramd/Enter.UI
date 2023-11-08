@@ -18,7 +18,7 @@ public enum EntIconName
     Home,
     Remove,
     Search,
-    Sort,
+    SortAsc,
     User,
     AlignRight,
     Moon,
@@ -28,5 +28,7 @@ public enum EntIconName
     Note,
     AlignLeft,
     Download,
-    Upload
+    Upload,
+    SortDesc,
+    AlignCenter
 }

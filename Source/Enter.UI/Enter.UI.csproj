@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Enter.UI</RootNamespace>
     <PackageId>Enter.Ui</PackageId>
-    <Version>1.0.62</Version>
+    <Version>1.0.67</Version>
     <Authors>Akbar Ahmadi</Authors>
     <Company>AhmadiCo</Company>
     <PackageReadmeFile>Readme.md</PackageReadmeFile>
@@ -15,6 +15,40 @@
   
   <ItemGroup>
     <None Include="..\..\Readme.md" Pack="true" PackagePath="." />
+    <None Include="wwwroot\scripts\expanable.component.js" />
+    <None Include="wwwroot\scripts\layout.component.js" />
+    <None Include="wwwroot\scripts\popover.component.js" />
+    <None Include="wwwroot\scripts\shared.js" />
+    <None Include="wwwroot\styles\components\_components.scss" />
+    <None Include="wwwroot\styles\components\_ent_app_bar.component.scss" />
+    <None Include="wwwroot\styles\components\_ent_button.component.scss" />
+    <None Include="wwwroot\styles\components\_ent_card.component.scss" />
+    <None Include="wwwroot\styles\components\_ent_drawer.component.scss" />
+    <None Include="wwwroot\styles\components\_ent_expandable.component.scss" />
+    <None Include="wwwroot\styles\components\_ent_form.component.scss" />
+    <None Include="wwwroot\styles\components\_ent_icon.component.scss" />
+    <None Include="wwwroot\styles\components\_ent_list.component.scss" />
+    <None Include="wwwroot\styles\components\_ent_loading.component.scss" />
+    <None Include="wwwroot\styles\components\_ent_messagebox.component.scss" />
+    <None Include="wwwroot\styles\components\_ent_modal.component.scss" />
+    <None Include="wwwroot\styles\components\_ent_nav_menu.component.scss" />
+    <None Include="wwwroot\styles\components\_ent_overlay.component.scss" />
+    <None Include="wwwroot\styles\components\_ent_pagination.component.scss" />
+    <None Include="wwwroot\styles\components\_ent_popover.component.scss" />
+    <None Include="wwwroot\styles\components\_ent_shimmer.component.scss" />
+    <None Include="wwwroot\styles\components\_ent_tab.component.scss" />
+    <None Include="wwwroot\styles\components\_ent_table.component.scss" />
+    <None Include="wwwroot\styles\components\_ent_toast.component.scss" />
+    <None Include="wwwroot\styles\components\_ent_toolbar.component.scss" />
+    <None Include="wwwroot\styles\components\_ent_treeview.component.scss" />
+    <None Include="wwwroot\styles\Enter.Ui.scss" />
+    <None Include="wwwroot\styles\themes\basic.theme.scss" />
+    <None Include="wwwroot\styles\themes\dark.theme.scss" />
+    <None Include="wwwroot\styles\_core.scss" />
+    <None Include="wwwroot\styles\_fonts.scss" />
+    <None Include="wwwroot\styles\_mixins.scss" />
+    <None Include="wwwroot\styles\_normalize.scss" />
+    <None Include="wwwroot\styles\_variables.scss" />
   </ItemGroup>
   
   <ItemGroup>
@@ -37,41 +71,44 @@
       <CleanGeneratedFiles>false</CleanGeneratedFiles>
     </PropertyGroup>
   </Target>
-
+  
   <Target Name="CleanGeneratedFiles" BeforeTargets="Clean" Condition="'$(CleanGeneratedFiles)' != 'false'">
     <ItemGroup>
-      <FilesToClean Include="./TScripts/combined/EnterUi.js" />
-      <FilesToClean Include="./wwwroot/EnterUi.min.js" />
-      <FilesToClean Include="./wwwroot/EnterUi.min.css" />
+      <FilesToClean Include="./wwwroot/combined/*.*" />
+      <FilesToClean Include="./wwwroot/js/Enter.Ui.min.js" />
+      <FilesToClean Include="./wwwroot/js/Enter.Ui.js" />
+      <FilesToClean Include="./wwwroot/css/Enter.Ui.min.css" />
+      <FilesToClean Include="./wwwroot/styles/Enter.Ui.min.css" />
+      <FilesToClean Include="./wwwroot/styles/Enter.Ui.css" />
     </ItemGroup>
     <Delete Files="@(FilesToClean)" />
   </Target>
   
   <!--combine js files-->
-  <Target Name="CombineJS">
-    <CreateItem Include="./Scripts/**/*.js" Exclude="./Scripts/combined/**/*.js">
+  <Target Name="CombineJS" DependsOnTargets="CleanGeneratedFiles">
+    <CreateItem Include="./wwwroot/scripts/**/*.js">
       <Output TaskParameter="Include" ItemName="jsFilesToCombine" />
     </CreateItem>
     <ReadLinesFromFile File="%(jsFilesToCombine.FullPath)">
       <Output TaskParameter="Lines" ItemName="jsLines" />
     </ReadLinesFromFile>
-    <WriteLinesToFile File="./Scripts/combined/EnterUi.js" Lines="@(jsLines)" Overwrite="true" />
+    <WriteLinesToFile File="./wwwroot/js/Enter.Ui.js" Lines="@(jsLines)" Overwrite="true" />
   </Target>
 
   <Target Name="WebCompiler" DependsOnTargets="ToolRestore;CombineJS">
     <!--compile and minify scss-->
-    <Exec Command="dotnet webcompiler ./Styles/EnterUi.scss -c excubowebcompiler.json" StandardOutputImportance="high" StandardErrorImportance="high" />
+    <Exec Command="dotnet webcompiler ./wwwroot/styles/Enter.Ui.scss -c excubowebcompiler.scss.json" StandardOutputImportance="high" StandardErrorImportance="high" />
     <!--minify js-->
-    <Exec Command="dotnet webcompiler ./Scripts/combined/EnterUi.js -c excubowebcompiler.json" StandardOutputImportance="high" StandardErrorImportance="high" />
+    <Exec Command="dotnet webcompiler ./wwwroot/js/Enter.Ui.js -c excubowebcompiler.js.json" StandardOutputImportance="high" StandardErrorImportance="high" />
   </Target>
   
   <Target Name="IncludeGeneratedStaticFiles" DependsOnTargets="WebCompiler" BeforeTargets="BeforeBuild">
-    <Error Condition="!Exists('$(MSBuildProjectDirectory)/wwwroot/EnterUi.min.css')" Text="Missing EnterUi.min.css in wwwroot" />
-    <Error Condition="!Exists('$(MSBuildProjectDirectory)/wwwroot/EnterUi.min.js')" Text="Missing EnterUi.min.js in wwwroot" />
+<!--    <Error Condition="!Exists('$(MSBuildProjectDirectory)/wwwroot/css/Enter.Ui.min.css')" Text="Missing Enter.Ui.min.css in wwwroot" />-->
+<!--    <Error Condition="!Exists('$(MSBuildProjectDirectory)/wwwroot/js/Enter.Ui.min.js')" Text="Missing Enter.Ui.min.js in wwwroot" />-->
     <ItemGroup>
       <!--Include without duplication-->
-      <_NewCompiledCssFiles Include="wwwroot\EnterUi.min.css" Exclude="@(Content)" />
-      <_NewCompiledJsFiles Include="wwwroot\EnterUi.min.js" Exclude="@(Content)" />
+      <_NewCompiledCssFiles Include="wwwroot/css/Enter.Ui.min.css" Exclude="@(Content)" />
+      <_NewCompiledJsFiles Include="wwwroot/js/Enter.Ui.min.js" Exclude="@(Content)" />
       <Content Include="@(_NewCompiledCssFiles)" />
       <Content Include="@(_NewCompiledJsFiles)" />
     </ItemGroup>
@@ -82,7 +119,7 @@
     <Content Remove="wwwroot/DoNotRemove.txt" />
     <!--macOS hidden file (causes problems with dotnet pack)-->
     <Content Remove="**/*/.DS_Store" />
-    <Content Remove="Scripts\combined\**" />
+    <Content Remove="Assets\combined\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -94,18 +131,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Scripts\combined\**" />
+    <Folder Include="wwwroot\" />
+    <Folder Include="wwwroot\css\" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Remove="Scripts\combined\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Scripts\combined\**" />
-    <None Remove="Styles\EnterUi.css" />
-    <None Remove="Styles\EnterUi.min.css" />
-    <None Remove="excubowebcompiler.json" />
+    <_ContentIncludedByDefault Remove="Assets\Lib\remix\remixicon.glyph.json" />
+    <_ContentIncludedByDefault Remove="wwwroot\combined\Enter.Ui.js" />
   </ItemGroup>
 
 

@@ -6,10 +6,10 @@
 .github
 .idea
 .vs
-**/*/EnterUi.min.css
-**/*/EnterUi.min.js
-**/*/EnterUi.css
-**/*/EnterUi.js
+**/*/Enter.Ui.min.css
+**/*/Enter.Ui.min.js
+**/*/Enter.Ui.css
+**/*/Enter.Ui.js
 **/combined
 
 **/*/package-lock.json

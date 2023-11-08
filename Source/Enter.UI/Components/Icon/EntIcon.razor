@@ -8,16 +8,7 @@
 {
     var icon = IconProvider.Icon(Icon, IconStyle);
     
-      if (icon.TrimStart().StartsWith("<"))
-        {
-            <svg @onclick="Click" class="@RootCss"  viewBox="@ViewBox" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                @((MarkupString)icon) 
-            </svg>
-        }
-        else
-        {
-            <i @onclick="Click"  class="@RootCss  @icon"></i> 
-        }
+    <i @onclick="Click"  class="@RootCss  @icon"></i> 
     
 }
     

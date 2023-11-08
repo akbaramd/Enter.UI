@@ -12,6 +12,7 @@
             <EntFlex Gap="2">
                 <EntButton Color="ButtonColor.Primary">Primary</EntButton>
                 <EntButton Color="ButtonColor.Secondary">Secondary</EntButton>
+                <EntButton Color="ButtonColor.Tertiary">Tertiary</EntButton>
                 <EntButton Color="ButtonColor.Danger">Danger</EntButton>
                 <EntButton Color="ButtonColor.Success">Success</EntButton>
                 <EntButton Color="ButtonColor.Warning">Warning</EntButton>
@@ -26,17 +27,18 @@
     <EntCard Title="Outline Buttons" class="mb-4">
         <CardBody>
              <p class="mb-4">
-             Use <code>@(nameof(EntButton.Type))="@(nameof(ButtonType)).@(nameof(ButtonType.Outline))"</code> Parameter to add outline style to button.
+             Use <code>@(nameof(EntButton.Mode))="@(nameof(ButtonMode)).@(nameof(ButtonMode.Outline))"</code> Parameter to add outline Mode to button.
              </p>
             <EntFlex Gap="2">
-                <EntButton Type="ButtonType.Outline" Color="ButtonColor.Primary">Primary</EntButton>
-                <EntButton Type="ButtonType.Outline" Color="ButtonColor.Secondary">Secondary</EntButton>
-                <EntButton Type="ButtonType.Outline" Color="ButtonColor.Danger">Danger</EntButton>
-                <EntButton Type="ButtonType.Outline" Color="ButtonColor.Success">Success</EntButton>
-                <EntButton Type="ButtonType.Outline" Color="ButtonColor.Warning">Warning</EntButton>
-                <EntButton Type="ButtonType.Outline" Color="ButtonColor.Info">Info</EntButton>
-                <EntButton Type="ButtonType.Outline" Color="ButtonColor.Light">Light</EntButton>
-                <EntButton Type="ButtonType.Outline" Color="ButtonColor.Dark">Dark</EntButton>
+                <EntButton Mode="ButtonMode.Outline" Color="ButtonColor.Primary">Primary</EntButton>
+                <EntButton Mode="ButtonMode.Outline" Color="ButtonColor.Secondary">Secondary</EntButton>
+                <EntButton Mode="ButtonMode.Outline" Color="ButtonColor.Tertiary">Tertiary</EntButton>
+                <EntButton Mode="ButtonMode.Outline" Color="ButtonColor.Danger">Danger</EntButton>
+                <EntButton Mode="ButtonMode.Outline" Color="ButtonColor.Success">Success</EntButton>
+                <EntButton Mode="ButtonMode.Outline" Color="ButtonColor.Warning">Warning</EntButton>
+                <EntButton Mode="ButtonMode.Outline" Color="ButtonColor.Info">Info</EntButton>
+                <EntButton Mode="ButtonMode.Outline" Color="ButtonColor.Light">Light</EntButton>
+                <EntButton Mode="ButtonMode.Outline" Color="ButtonColor.Dark">Dark</EntButton>
             </EntFlex>
         </CardBody>
     </EntCard>
@@ -44,17 +46,18 @@
       <EntCard Title="Soft Buttons" class="mb-4">
             <CardBody>
                  <p class="mb-4">
-                 Use <code>@(nameof(EntButton.Type))="@(nameof(ButtonType)).@(nameof(ButtonType.Soft))"</code> Parameter to add outline style to button.
+                 Use <code>@(nameof(EntButton.Mode))="@(nameof(ButtonMode)).@(nameof(ButtonMode.Soft))"</code> Parameter to add outline Mode to button.
                  </p>
                 <EntFlex Gap="2">
-                    <EntButton Type="ButtonType.Soft" Color="ButtonColor.Primary">Primary</EntButton>
-                    <EntButton Type="ButtonType.Soft" Color="ButtonColor.Secondary">Secondary</EntButton>
-                    <EntButton Type="ButtonType.Soft" Color="ButtonColor.Danger">Danger</EntButton>
-                    <EntButton Type="ButtonType.Soft" Color="ButtonColor.Success">Success</EntButton>
-                    <EntButton Type="ButtonType.Soft" Color="ButtonColor.Warning">Warning</EntButton>
-                    <EntButton Type="ButtonType.Soft" Color="ButtonColor.Info">Info</EntButton>
-                    <EntButton Type="ButtonType.Soft" Color="ButtonColor.Light">Light</EntButton>
-                    <EntButton Type="ButtonType.Soft" Color="ButtonColor.Dark">Dark</EntButton>
+                    <EntButton Mode="ButtonMode.Soft" Color="ButtonColor.Primary">Primary</EntButton>
+                    <EntButton Mode="ButtonMode.Soft" Color="ButtonColor.Secondary">Secondary</EntButton>
+                    <EntButton Mode="ButtonMode.Soft" Color="ButtonColor.Tertiary">Tertiary</EntButton>
+                    <EntButton Mode="ButtonMode.Soft" Color="ButtonColor.Danger">Danger</EntButton>
+                    <EntButton Mode="ButtonMode.Soft" Color="ButtonColor.Success">Success</EntButton>
+                    <EntButton Mode="ButtonMode.Soft" Color="ButtonColor.Warning">Warning</EntButton>
+                    <EntButton Mode="ButtonMode.Soft" Color="ButtonColor.Info">Info</EntButton>
+                    <EntButton Mode="ButtonMode.Soft" Color="ButtonColor.Light">Light</EntButton>
+                    <EntButton Mode="ButtonMode.Soft" Color="ButtonColor.Dark">Dark</EntButton>
                 </EntFlex>
             </CardBody>
         </EntCard>
@@ -72,17 +75,17 @@
                 <EntButton Icon="EntIconName.Edit" Color="ButtonColor.Dark">Dark</EntButton>
             </EntFlex>
             <EntFlex Gap="2" class="mb-4">
-                <EntButton Type="ButtonType.Outline" Icon="EntIconName.Home" Color="ButtonColor.Primary">Primary</EntButton>
-                <EntButton Type="ButtonType.Outline" Icon="EntIconName.Add" Color="ButtonColor.Success">Success</EntButton>
-                <EntButton Type="ButtonType.Outline" Icon="EntIconName.Delete" Color="ButtonColor.Light">Light</EntButton>
-                <EntButton Type="ButtonType.Outline" Icon="EntIconName.Edit" Color="ButtonColor.Dark">Dark</EntButton>
+                <EntButton Mode="ButtonMode.Outline" Icon="EntIconName.Home" Color="ButtonColor.Primary">Primary</EntButton>
+                <EntButton Mode="ButtonMode.Outline" Icon="EntIconName.Add" Color="ButtonColor.Success">Success</EntButton>
+                <EntButton Mode="ButtonMode.Outline" Icon="EntIconName.Delete" Color="ButtonColor.Light">Light</EntButton>
+                <EntButton Mode="ButtonMode.Outline" Icon="EntIconName.Edit" Color="ButtonColor.Dark">Dark</EntButton>
             </EntFlex>
             
             <EntFlex Gap="2">
-                            <EntButton Type="ButtonType.Soft" Icon="EntIconName.Home" Color="ButtonColor.Primary">Primary</EntButton>
-                            <EntButton Type="ButtonType.Soft" Icon="EntIconName.Add" Color="ButtonColor.Success">Success</EntButton>
-                            <EntButton Type="ButtonType.Soft" Icon="EntIconName.Delete" Color="ButtonColor.Light">Light</EntButton>
-                            <EntButton Type="ButtonType.Soft" Icon="EntIconName.Edit" Color="ButtonColor.Dark">Dark</EntButton>
+                            <EntButton Mode="ButtonMode.Soft" Icon="EntIconName.Home" Color="ButtonColor.Primary">Primary</EntButton>
+                            <EntButton Mode="ButtonMode.Soft" Icon="EntIconName.Add" Color="ButtonColor.Success">Success</EntButton>
+                            <EntButton Mode="ButtonMode.Soft" Icon="EntIconName.Delete" Color="ButtonColor.Light">Light</EntButton>
+                            <EntButton Mode="ButtonMode.Soft" Icon="EntIconName.Edit" Color="ButtonColor.Dark">Dark</EntButton>
                         </EntFlex>
         </CardBody>
     </EntCard>
