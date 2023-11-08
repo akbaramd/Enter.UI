@@ -20,6 +20,31 @@
   }
 }
 
+
+@keyframes anim_indeterminate_first {
+  0% {
+    left: -100%;
+    width: 100%;
+  }
+  100% {
+    left: 100%;
+    width: 10%;
+  }
+}
+
+@keyframes anim_indeterminate_second {
+  0% {
+    left: -150%;
+    width: 100%;
+  }
+  100% {
+    left: 100%;
+    width: 10%;
+  }
+}
+
+@import "ent_loading.component";
+@import "ent_shimmer.component";
 @import "ent_button.component";
 @import "ent_messagebox.component";
 @import "ent_tab.component";

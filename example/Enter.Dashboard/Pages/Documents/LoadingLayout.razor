@@ -1,0 +1,62 @@
+@page "/documents/loading"
+@using Enter.UI.Abstractions.Components.Flex
+@using Enter.UI.Abstractions.Components.Loading
+
+<div class="p-8">
+    <EntCard Title="Loading" Expandable="true" class="mb-4">
+        <CardBody>
+            <p class="mb-4">"EntLoading" is an Blazor Component that provides an easy way to add a loading to any view in your Blazor app.</p>
+            <EntFlex Direction="FlexDirection.Column" Gap="4">
+                <EntLinearLoading Indeterminate="true"/>
+            </EntFlex>
+        </CardBody>
+    </EntCard>
+    <EntCard Title="Loading Type" Expandable="true" class="mb-4">
+        <CardBody>
+            <EntFlex Direction="FlexDirection.Column" Gap="4">
+                <p>EntCircularLoading</p>
+                <EntCircularLoading Size="EntLoadingSize.Default" Animate="true"/>
+                <p>EntLinearLoading</p>
+                <EntLinearLoading Indeterminate="true"/>
+            </EntFlex>
+        </CardBody>
+    </EntCard>
+
+    <EntCard Title="Linear Loading Indeterminate" Expandable="true" class="mb-4">
+        <CardBody>
+            <EntFlex Direction="FlexDirection.Column" Gap="4">
+                <p>Indeterminate="true"</p>
+                <EntLinearLoading Indeterminate="true"/>
+                <p>Indeterminate="false"</p>
+                <EntLinearLoading Indeterminate="false" Width="65"/>
+            </EntFlex>
+        </CardBody>
+    </EntCard>
+
+    <EntCard Title="Circular Loading Size" Expandable="true" class="mb-4">
+        <CardBody>
+            <EntFlex Direction="FlexDirection.Column" Gap="4">
+                <p>Size="EntLoadingSize.Large""</p>
+                <EntCircularLoading Size="EntLoadingSize.Large"/>
+                <p>Size="EntLoadingSize.Default"</p>
+                <EntCircularLoading Size="EntLoadingSize.Default"/>
+                <p>Size="EntLoadingSize.Small"</p>
+                <EntCircularLoading Size="EntLoadingSize.Small"/>
+            </EntFlex>
+        </CardBody>
+    </EntCard>
+
+    <EntCard Title="Linear Loading Size" Expandable="true" class="mb-4">
+        <CardBody>
+            <EntFlex Direction="FlexDirection.Column" Gap="4">
+                <p>Size="EntLoadingSize.Large""</p>
+                <EntLinearLoading Indeterminate="true" Size="EntLoadingSize.Large"/>
+                <p>Size="EntLoadingSize.Default"</p>
+                <EntLinearLoading Indeterminate="true" Size="EntLoadingSize.Default"/>
+                <p>Size="EntLoadingSize.Small"</p>
+                <EntLinearLoading Indeterminate="true" Size="EntLoadingSize.Small"/>
+            </EntFlex>
+        </CardBody>
+    </EntCard>
+
+</div>

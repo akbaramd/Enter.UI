@@ -5,11 +5,15 @@
 <button @attributes="@AdditionalAttributes" class="@RootClass">
     @if (Icon != null && !Loading)
     {
-        <EntIcon Icon="@Icon" IconSize="EntIconSize.Default" IconStyle="EntIconStyle.Light"/>
+        <span class="icon-wrapper">
+            <EntIcon class="icon" Icon="@Icon" IconSize="EntIconSize.Default" IconStyle="EntIconStyle.Light"/>
+        </span>
     }
     @if (Loading)
     {
-        <span class="ent-btn-loading"></span>
+        <span class="icon-wrapper">
+            <EntCircularLoading Animate="Loading" class="icon ent-btn-loading"/>
+        </span>
     }
     @ChildContent
 
@@ -19,17 +23,40 @@
 
     private string RootClass => CssClassBuilder
         .AddClass("ent-btn")
-        .AddClass("ent-btn-lg", Size == ButtonSize.Large)
+        .AddClass("ent-icon-btn", Icon != null)
+        
+        .AddClass("ent-btn-lg",Size == ButtonSize.Large)
         .AddClass("ent-btn-sm", Size == ButtonSize.Small)
-        .AddClass("ent-btn-primary", Color == ButtonColor.Primary)
-        .AddClass("ent-btn-secondary", Color == ButtonColor.Secondary)
-        .AddClass("ent-btn-light", Color == ButtonColor.Light)
-        .AddClass("ent-btn-dark", Color == ButtonColor.Dark)
-        .AddClass("ent-btn-success", Color == ButtonColor.Success)
-        .AddClass("ent-btn-danger", Color == ButtonColor.Danger)
-        .AddClass("ent-btn-warning", Color == ButtonColor.Warning)
-        .AddClass("ent-btn-info", Color == ButtonColor.Info)
-        .AddClass("ent-btn-outline", IsOutline)
+        
+        .AddClass("ent-btn-primary",Type==ButtonType.Solid && Color == ButtonColor.Primary)
+        .AddClass("ent-btn-secondary",Type==ButtonType.Solid && Color == ButtonColor.Secondary)
+        .AddClass("ent-btn-light",Type==ButtonType.Solid && Color == ButtonColor.Light)
+        .AddClass("ent-btn-dark",Type==ButtonType.Solid && Color == ButtonColor.Dark)
+        .AddClass("ent-btn-success",Type==ButtonType.Solid && Color == ButtonColor.Success)
+        .AddClass("ent-btn-danger",Type==ButtonType.Solid && Color == ButtonColor.Danger)
+        .AddClass("ent-btn-warning",Type==ButtonType.Solid && Color == ButtonColor.Warning)
+        .AddClass("ent-btn-info",Type==ButtonType.Solid && Color == ButtonColor.Info)
+        
+        .AddClass("ent-btn-outline-primary",Type==ButtonType.Outline && Color == ButtonColor.Primary)
+        .AddClass("ent-btn-outline-secondary",Type==ButtonType.Outline && Color == ButtonColor.Secondary)
+        .AddClass("ent-btn-outline-light",Type==ButtonType.Outline && Color == ButtonColor.Light)
+        .AddClass("ent-btn-outline-dark",Type==ButtonType.Outline && Color == ButtonColor.Dark)
+        .AddClass("ent-btn-outline-success",Type==ButtonType.Outline && Color == ButtonColor.Success)
+        .AddClass("ent-btn-outline-danger",Type==ButtonType.Outline && Color == ButtonColor.Danger)
+        .AddClass("ent-btn-outline-warning",Type==ButtonType.Outline && Color == ButtonColor.Warning)
+        .AddClass("ent-btn-outline-info",Type==ButtonType.Outline && Color == ButtonColor.Info)
+        
+        
+        .AddClass("ent-btn-soft-primary",Type==ButtonType.Soft && Color == ButtonColor.Primary)
+        .AddClass("ent-btn-soft-secondary",Type==ButtonType.Soft && Color == ButtonColor.Secondary)
+        .AddClass("ent-btn-soft-light",Type==ButtonType.Soft && Color == ButtonColor.Light)
+        .AddClass("ent-btn-soft-dark",Type==ButtonType.Soft && Color == ButtonColor.Dark)
+        .AddClass("ent-btn-soft-success",Type==ButtonType.Soft && Color == ButtonColor.Success)
+        .AddClass("ent-btn-soft-danger",Type==ButtonType.Soft && Color == ButtonColor.Danger)
+        .AddClass("ent-btn-soft-warning",Type==ButtonType.Soft && Color == ButtonColor.Warning)
+        .AddClass("ent-btn-soft-info",Type==ButtonType.Soft && Color == ButtonColor.Info)
+        
+        
         .Build();
 
     [Parameter]
@@ -38,12 +65,11 @@
     [Parameter]
     public ButtonSize Size { get; set; } = ButtonSize.Default;
 
-    [Parameter]
-    public bool IsOutline { get; set; } = false;
 
     [Parameter]
     public ButtonColor Color { get; set; } = ButtonColor.Primary;
-
+    [Parameter]
+    public ButtonType Type { get; set; } = ButtonType.Solid;
     [Parameter]
     public object? Icon { get; set; }
 
@@ -61,7 +87,6 @@
 
     public override void Dispose()
     {
-        
     }
 
 }

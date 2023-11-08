@@ -2,7 +2,7 @@
 
 public enum ButtonType
 {
-    Button,Submit
+    Solid,Outline,Soft
 }
 
 public enum ButtonColor

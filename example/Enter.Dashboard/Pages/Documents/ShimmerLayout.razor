@@ -1,0 +1,41 @@
+@page "/documents/shimmer"
+@using Enter.UI.Abstractions.Components.Flex
+@using Enter.UI.Abstractions.Components.Shimmer
+
+<div class="p-8">
+    <EntCard Title="Shimmer" Expandable="true" class="mb-4">
+        <CardBody>
+            <p class="mb-4">"EntShimmer" is an Blazor Component that provides an easy way to add a shimmer effect to any view in your Blazor app.</p>
+            <EntFlex Direction="FlexDirection.Column" Gap="4">
+                <EntShimmer Type="EntShimmerType.Circular" Height="100px" Width="100px"/>
+                <EntShimmer Type="EntShimmerType.Rectangle" Height="32px" Width="100%"/>
+                <EntShimmer Type="EntShimmerType.Rectangle" Height="16px" Width="100%"/>
+                <EntShimmer Type="EntShimmerType.Rectangle" Height="16px" Width="100%"/>
+            </EntFlex>
+        </CardBody>
+    </EntCard>
+    <EntCard Title="Shimmer Type" Expandable="true" class="mb-4">
+        <CardBody>
+            <EntFlex Direction="FlexDirection.Column" Gap="4">
+                <p>EntShimmerType.Circular</p>
+                <EntShimmer Type="EntShimmerType.Circular" Height="100px" Width="100px"/>
+                <p>EntShimmerType.Rectangle</p>
+                <EntShimmer Type="EntShimmerType.Rectangle" Height="100px" Width="100%"/>
+            </EntFlex>
+        </CardBody>
+    </EntCard>
+
+    <EntCard Title="Shimmer Effect" Expandable="true" class="mb-4">
+        <CardBody>
+            <EntFlex Direction="FlexDirection.Column" Gap="4">
+                <p>EntShimmerEffect.None</p>
+                <EntShimmer Effect="EntShimmerEffect.None" Type="EntShimmerType.Rectangle" Height="100px" Width="100%"/>
+                <p>EntShimmerEffect.Pulse</p>
+                <EntShimmer Effect="EntShimmerEffect.Pulse" Type="EntShimmerType.Rectangle" Height="100px" Width="100%"/>
+                <p>EntShimmerEffect.Wave</p>
+                <EntShimmer Effect="EntShimmerEffect.Wave" Type="EntShimmerType.Rectangle" Height="100px" Width="100%"/>
+            </EntFlex>
+        </CardBody>
+    </EntCard>
+
+</div>

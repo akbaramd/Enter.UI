@@ -1,16 +1,52 @@
-﻿
-:root {
+﻿:root {
+  
+  //Base
+  --ent-primary: #405189;
+  --ent-secondary: #3577f1;
+  --ent-success: #0ab39c;
+  --ent-info: #299cdb;
+  --ent-warning: #f7b84b;
+  --ent-danger: #f06548;
+  --ent-light: #f3f6f9;
+  --ent-dark: #212529;
+  --ent-link: #3577f1;
+
+  --ent-primary-text: #364574;
+  --ent-secondary-text: #2d65cd;
+  --ent-success-text: #099885;
+  --ent-info-text: #2385ba;
+  --ent-warning-text: #d29c40;
+  --ent-danger-text: #cc563d;
+  --ent-light-text: #ced4da;
+  --ent-dark-text: #343a40;
+  --ent-primary-bg-subtle: #e2e5ed;
+  --ent-secondary-bg-subtle: #e1ebfd;
+  --ent-success-bg-subtle: #daf4f0;
+  --ent-info-bg-subtle: #dff0fa;
+  --ent-warning-bg-subtle: #fef4e4;
+  --ent-danger-bg-subtle: #fde8e4;
+  --ent-light-bg-subtle: #f9fbfc;
+  --ent-dark-bg-subtle: #e9ebec;
+  --ent-primary-border-subtle: #b3b9d0;
+  --ent-secondary-border-subtle: #aec9f9;
+  --ent-success-border-subtle: #9de1d7;
+  --ent-info-border-subtle: #a9d7f1;
+  --ent-warning-border-subtle: #fce3b7;
+  --ent-danger-border-subtle: #f9c1b6;
+  --ent-light-border-subtle: #eff2f7;
+  --ent-dark-border-subtle: #adb5bd;
   
   // background
-  --ent-bg-body : #ffffff;
   --ent-bg-page : #f2f2f2;
+  
+  --ent-bg-body : #ffffff;
   --ent-bg-secondary : #f1f1f2;
   --ent-bg-tertiary : #f9f9f9;
   --ent-bg-light : #f1f1f2;
   --ent-bg-dark : #212529;
   
   // color
-  --ent-color-body: #2a2d31;
+  --ent-color-body: #333;
   --ent-color-emphasis : #000000;
   --ent-color-secondary: rgba(7, 20, 55, 0.75);
   --ent-color-tertiary: rgba(7, 20, 55, 0.5);
@@ -19,7 +55,6 @@
   --ent-color-heading: #071437;
   --ent-color-link: #009ef7;
  
-
   // border
   --ent-border-color: #eee;
   --ent-border-width: 1px;
@@ -29,8 +64,9 @@
   // shadow
   --ent-shadow: 0px 0px 20px 0px rgba(76, 87, 125, 0.05);
   
-  --ent-body-font-size: 0.9375rem;
-  --ent-body-font-size-space: 0.0625rem;
+  //body
+  --ent-body-font-size: 0.925rem;
+  --ent-body-font-size-space: 0.075rem;
   --ent-body-font-weight: 400;
   --ent-body-line-height: 1.5;
 

@@ -1,0 +1,69 @@
+.ent-circular-loading {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+  border: 0.25rem solid $color-primary;
+  border-left-color: transparent !important;
+  
+  &.animate {
+    animation: anim-ent-btn-spin 1s infinite linear;
+  }
+}
+
+.ent-circular-loading-lg {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+.ent-circular-loading-sm {
+  height: 0.75rem;
+  width: 0.75rem;
+}
+
+
+.ent-linear-loading {
+  overflow: hidden;
+  width: 100%;
+  height: 0.25rem;
+  background-color: $color-primary;
+  margin: 20px auto;
+}
+.ent-linear-loading-lg {
+  height: 0.5rem;
+}
+.ent-linear-loading-sm {
+  height: 0.125rem;
+}
+.determinate {
+  position: relative;
+  max-width: 100%;
+  height: 100%;
+  -webkit-transition: width 500ms ease-out 1s;
+  -moz-transition: width 500ms ease-out 1s;
+  -o-transition: width 500ms ease-out 1s;
+  transition: width 500ms ease-out 1s;
+  background-color: $color-primary;
+  display: block;
+}
+
+.indeterminate {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.indeterminate:before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  background-color: $color-primary;
+  animation: anim_indeterminate_first 1.5s infinite ease-out;
+}
+
+.indeterminate:after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  background-color: $color-primary;
+  animation: anim_indeterminate_second 1.5s infinite ease-in;
+}

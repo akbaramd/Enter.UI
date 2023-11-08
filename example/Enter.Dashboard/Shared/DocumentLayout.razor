@@ -1,55 +1,56 @@
-﻿@using Enter.Dashboard.Pages;
-@using Enter.Dashboard.Components
-@using Enter.UI.Abstractions.Components.Button
-@using Enter.UI.Abstractions.Components.Drawer
+﻿@using Enter.UI.Abstractions.Components.Drawer
 @using Enter.UI.Abstractions.Components.Icon
 @using Enter.UI.Abstractions.Core.Enums
 @using Enter.UI.Abstractions.Services
+@using Enter.UI.Abstractions.Components.Button
 @inherits LayoutComponentBase
- <div class="border-y d-flex flex-column">
-        <div class="d-flex flex-column flex-grow-1">
-            <EntAppBar ShowToggle="_showToggle" ToggleClick="ToggleSidebar" Title="Enterprise Dashboard">
-                <EntButton @onclick="ToggleRtl" Icon="EntIconName.AlignRight" Size="ButtonSize.Small" Color="ButtonColor.Secondary">راستچین</EntButton>
-                                    <EntButton @onclick="ToggleDarkMode" Icon="EntIconName.Moon" Size="ButtonSize.Small" class="d-none laptop:d-flex" Color="ButtonColor.Secondary">Dark / Light</EntButton>
-                                    <EntButton @onclick="() => _isSideDrawerOpen = !_isSideDrawerOpen" Icon="EntIconName.Comment" class="d-none laptop:d-flex" Size="ButtonSize.Small" Color="ButtonColor.Secondary">Sidebar</EntButton>
-            </EntAppBar>
-            <EntDrawerContainer class="flex-grow-1">
-                <EntDrawer HasBackdrop="HasBackdrop" @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start"  Mode="_drawerMode" class="z-50">
-                    <EntNavMenu class="border-0">
-                        <EntNavMenuGroup Title="Components" Icon="EntIconName.Home">
-                            <EntNavMenuTextItem class="bg-light" Icon="EntIconName.Clock" Text="TreeView" Click="@(() => Navigate("/documents/treeview"))"/>
-                            <EntNavMenuTextItem class="bg-light" Icon="EntIconName.List" Text="NavMenu" Click="@(() => Navigate("/documents/navmenu"))"/>
-                            <EntNavMenuTextItem class="bg-light" Icon="EntIconName.Table" Text="Table" Click="@(() => Navigate("/documents/datatable"))"/>
-                            <EntNavMenuTextItem class="bg-light" Icon="EntIconName.Edit" Text="Forms" Click="@(() => Navigate("/documents/form"))"/>
-                            <EntNavMenuTextItem class="bg-light" Icon="EntIconName.Bars" Text="Pagination" Click="@(() => Navigate("/documents/pagination"))"/>
-                        </EntNavMenuGroup>
+<div class="h-full border-y d-flex flex-column">
+    <div class="d-flex flex-column flex-grow-1">
+        <EntAppBar ShowToggle="_showToggle" ToggleClick="ToggleSidebar" Title="Enterprise Dashboard">
+            <EntButton @onclick="ToggleRtl" Icon="EntIconName.AlignRight" Size="ButtonSize.Small" Color="ButtonColor.Light">راستچین</EntButton>
+            <EntButton @onclick="ToggleDarkMode" Icon="EntIconName.Moon" Size="ButtonSize.Small" class="d-none laptop:d-flex" Color="ButtonColor.Light">Dark / Light</EntButton>
+            <EntButton @onclick="() => _isSideDrawerOpen = !_isSideDrawerOpen" Icon="EntIconName.Comment" class="d-none laptop:d-flex" Size="ButtonSize.Small" Color="ButtonColor.Light">Sidebar</EntButton>
+        </EntAppBar>
+        <EntDrawerContainer class="flex-grow-1">
+            <EntDrawer HasBackdrop="HasBackdrop" @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start" Mode="_drawerMode" class="z-50">
+                <EntNavMenu class="border-0">
+                    <EntNavMenuGroup Title="Components" Icon="EntIconName.Note">
+                        <EntNavMenuTextItem class="bg-light" Text="Buttons" Click="@(() => Navigate("/documents/buttons"))"/>
+                        <EntNavMenuTextItem class="bg-light"  Text="Shimmer" Click="@(() => Navigate("/documents/shimmer"))"/>
+                        <EntNavMenuTextItem class="bg-light"  Text="Loading" Click="@(() => Navigate("/documents/loading"))"/>
+                        <EntNavMenuTextItem class="bg-light"  Text="TreeView" Click="@(() => Navigate("/documents/treeview"))"/>
+                        <EntNavMenuTextItem class="bg-light"  Text="NavMenu" Click="@(() => Navigate("/documents/navmenu"))"/>
+                        <EntNavMenuTextItem class="bg-light"  Text="Table" Click="@(() => Navigate("/documents/datatable"))"/>
+                        <EntNavMenuTextItem class="bg-light"  Text="Forms" Click="@(() => Navigate("/documents/form"))"/>
+                        <EntNavMenuTextItem class="bg-light"  Text="Pagination" Click="@(() => Navigate("/documents/pagination"))"/>
+                    </EntNavMenuGroup>
                     <EntNavMenuGroup Title="Api" Icon="EntIconName.Home">
                         P
                     </EntNavMenuGroup>
-                    </EntNavMenu>
-                </EntDrawer>
-                @* <EntDrawer  *@
-                @*     Open="true"  *@
-                @*     Direction="EntDrawerDirection.End"  *@
-                @*     Mode="EntDrawerMode.Behavior" *@
-                @*     class="z-50"> *@
-                @*     <p class="p-4">Default Text To Show</p> *@
-                @* </EntDrawer> *@
-                <div class="h-full">
-                    @Body
-                </div>
-            </EntDrawerContainer>
-        </div>
-        <EntModalProvider/>
-        <EntPopoverProvider/>
-        <EntToastProvider/>
+                </EntNavMenu>
+            </EntDrawer>
+            @* <EntDrawer  *@
+            @*     Open="true"  *@
+            @*     Direction="EntDrawerDirection.End"  *@
+            @*     Mode="EntDrawerMode.Behavior" *@
+            @*     class="z-50"> *@
+            @*     <p class="p-4">Default Text To Show</p> *@
+            @* </EntDrawer> *@
+            <div class="h-full">
+                @Body
+            </div>
+        </EntDrawerContainer>
     </div>
+    <EntModalProvider/>
+    <EntPopoverProvider/>
+    <EntToastProvider/>
+</div>
 
 @code {
 
-    private bool _showToggle = false;
+    private bool _showToggle;
     private bool _isDrawerOpen = true;
-    private bool _isSideDrawerOpen = false;
+    private bool _isSideDrawerOpen;
     private bool HasBackdrop => _showToggle && _isDrawerOpen;
     private EntDrawerMode _drawerMode = EntDrawerMode.Behavior;
 
@@ -57,17 +58,17 @@
     public EntThemeProvider? EntThemeProvider { get; set; }
 
     [Inject]
-    public IEntMdiService? EntMdiService { get; set; } = default!;
-    
+    public IEntMdiService? EntMdiService { get; set; }
+
     [Inject]
-    public NavigationManager? Navigation { get; set; } = default!;
-    
+    public NavigationManager? Navigation { get; set; }
+
     public void Navigate(string uri)
     {
         Navigation?.NavigateTo(uri);
     }
 
-    protected override async Task OnAfterRenderAsync( bool firstRender)
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await base.OnInitializedAsync();
 
@@ -92,7 +93,7 @@
     {
         EntThemeProvider?.ToggleRtl();
     }
-    
+
     private async Task ToggleDarkMode()
     {
         if (EntThemeProvider != null)
@@ -100,7 +101,7 @@
             await EntThemeProvider.ToggleDarkMode();
         }
     }
-    
+
     public async Task ToggleSidebar()
     {
         _isDrawerOpen = !_isDrawerOpen;

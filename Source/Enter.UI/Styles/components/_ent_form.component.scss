@@ -4,7 +4,7 @@
     --ent-input-bg: var(--ent-bg-tertiary);
     --ent-input-popover-bg: var(--ent-bg-secondary);
     --ent-input-color: var(--ent-color-body);
-    --ent-input-border-color: #eee;
+    --ent-input-border-color: var(--ent-border-color);
     --ent-input-border-size: var(--ent-border-width);
     --ent-input-border-style: solid;
     --ent-input-border-radius: var(--ent-border-radius);
@@ -90,7 +90,7 @@
 
         .ent-select-input-placeholder {
             font-size: map-get($font-sizes,"description");
-            color: map-get($backgrounds, "mute");
+            color:$color-light;
         }
     }
 }

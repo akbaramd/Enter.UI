@@ -1,0 +1,40 @@
+﻿@namespace Enter.UI.Components
+@using Enter.UI.Abstractions.Components.Shimmer
+@inherits EntComponentBase
+<span @attributes="@AdditionalAttributes" class="@RootClass" style="@RootStyle">
+</span>
+
+@code {
+
+    private string RootClass => CssClassBuilder
+        .AddClass("ent-shimmer")
+        .AddClass("ent-shimmer-pulse",Effect == EntShimmerEffect.Pulse)
+        .AddClass("ent-shimmer-wave",Effect == EntShimmerEffect.Wave)
+        .AddClass("ent-shimmer-rectangle",Type == EntShimmerType.Rectangle)
+        .AddClass("ent-shimmer-circular",Type == EntShimmerType.Circular)
+        .Build();
+    
+    private string RootStyle => StyleBuilder
+        .AddStyle($"width: {Width}",Width != null)
+        .AddStyle($"height: {Height}",Height != null)
+        .Build();
+
+    [Parameter]
+    public string? Width { get; set; } 
+    
+    [Parameter]
+    public string? Height { get; set; }
+    
+    [Parameter]
+    public EntShimmerType Type { get; set; } = EntShimmerType.Rectangle;
+    
+    [Parameter]
+    public EntShimmerEffect Effect { get; set; } = EntShimmerEffect.Pulse;
+    
+ 
+    public override void Dispose()
+    {
+        
+    }
+
+}

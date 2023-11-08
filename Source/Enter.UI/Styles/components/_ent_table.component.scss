@@ -7,7 +7,7 @@
   vertical-align: middle;
 
   thead {
-    background-color: $bg-tertiary;
+    background-color: var(--ent-bg-tertiary);
   }
 
   th, td {
@@ -45,7 +45,7 @@
       justify-content: center;
       flex-grow: 1;
       &:hover {
-        background-color: map-get($backgrounds, "light");
+        background-color: $color-light;
       }
     }
 

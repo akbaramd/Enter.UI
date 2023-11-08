@@ -6,7 +6,7 @@
 @inherits EntComponentBase
 
 <CascadingValue Value="this" IsFixed="true">
-    <li @attributes="@AdditionalAttributes" class="@RootCss" @onclick="()=>Select()" @onclick:stopPropagation>
+    <li @attributes="@AdditionalAttributes" class="@RootCss" @onclick="Select" @onclick:stopPropagation>
 
         <div class="ent-treeview-item-list-icon" @onclick="OnItemExpandClickCallback" @onclick:stopPropagation>
             @if (Item.Childrens != null && Item.Childrens.Any())

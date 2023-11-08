@@ -12,14 +12,14 @@
         cursor: pointer;
         
         &.active {
-            background-color: $bg-primary;
-            color: $cl-light;
+            background-color: $color-primary;
+            color: $color-light;
             &:hover {
-                background-color: $bg-primary;
+                background-color: $color-primary;
             }
         }
          &:hover {
-            background-color: $bg-tertiary;
+            background-color: var(--ent-bg-tertiary);
         }
     }
     .ent-pagination-item:last-child {

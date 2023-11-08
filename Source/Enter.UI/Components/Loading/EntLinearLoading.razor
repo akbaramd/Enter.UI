@@ -1,0 +1,53 @@
+﻿@namespace Enter.UI.Components
+@using Enter.UI.Abstractions.Components.Button
+@using Enter.UI.Abstractions.Components.Icon
+@using Enter.UI.Abstractions.Components.Loading
+@inherits EntComponentBase
+<span @attributes="@AdditionalAttributes" class="@RootClass" style="@RootStyle">
+     @if (Indeterminate)
+     {
+         <span class="indeterminate"></span>
+     }
+     else
+     {
+         <span class="determinate" style="@ItemStyle"></span>
+     }
+</span>
+
+   
+
+@code {
+
+    private string RootClass => CssClassBuilder
+        .AddClass("ent-linear-loading")
+        .AddClass("ent-linear-loading-lg",Size == EntLoadingSize.Large)
+        .AddClass("ent-linear-loading-sm",Size == EntLoadingSize.Small)
+        .AddClass("ent-linear-loading")
+        .AddClass("animate",Animate)
+        .Build();
+    
+    private string RootStyle => StyleBuilder
+        .Build();
+    
+    private string ItemStyle => StyleBuilder
+        .Clear()
+        .AddStyle($"width: {Width}%")
+        .Build();
+
+    
+    
+    [Parameter]
+    public bool Animate { get; set; } = true;
+    [Parameter]
+    public bool Indeterminate { get; set; } = true;
+    [Parameter]
+    public EntLoadingSize Size { get; set; } = EntLoadingSize.Default;
+    [Parameter]
+    public  int Width { get; set; }  = 0;
+    
+    public override void Dispose()
+    {
+        
+    }
+
+}

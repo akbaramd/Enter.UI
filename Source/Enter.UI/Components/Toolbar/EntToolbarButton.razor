@@ -8,9 +8,10 @@
         {
             <EntIcon Icon="@Icon" IconSize="EntIconSize.Default" class="ent-toolbar-button-icon" IconStyle="EntIconStyle.Light"/>
         }
+        
         @if (Loading)
         {
-            <span class="ent-toolbar-button-icon-loading"></span>
+            <EntCircularLoading Animate="Loading" class="ent-toolbar-button-icon-loading" />
         }
 
         @if (!string.IsNullOrWhiteSpace(Text))

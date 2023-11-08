@@ -52,7 +52,7 @@
     > .ent-nav-menu-group-container {
       height: 0;
       overflow: hidden;
-      background-color: $bg-light;
+      background-color: $color-light;
       
       &.active {
         > .ent-nav-menu-item {
@@ -80,7 +80,7 @@
     cursor: pointer;
 
     &:hover {
-      background-color: map-get($backgrounds,"lighteen");
+      background-color: $color-light;
     }
     
     .ent-nav-menu-item-icon {

@@ -83,6 +83,12 @@ small, .text_small {
  
 }
 
-
+code {
+  color: var(--ent-primary);
+  background: var(--ent-primary-bg-subtle);
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.72rem;
+}
 
 

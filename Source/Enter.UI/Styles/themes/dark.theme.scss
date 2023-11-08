@@ -1,14 +1,44 @@
 html[data-theme="dark"] {
+
+        //Base
+        --ent-light: #282b2e;;
+        --ent-dark: #313437;
+
+        --ent-primary-text: #6674a1;
+        --ent-secondary-text: #5d92f4;
+        --ent-success-text: #3bc2b0;
+        --ent-info-text: #54b0e2;
+        --ent-warning-text: #f9c66f;
+        --ent-danger-text: #f3846d;
+        --ent-light-text: #535659;
+        --ent-dark-text: #5f6164;
+        --ent-primary-bg-subtle: rgba(64, 81, 137, 0.15);
+        --ent-secondary-bg-subtle: rgba(53, 119, 241, 0.15);
+        --ent-success-bg-subtle: rgba(10, 179, 156, 0.15);
+        --ent-info-bg-subtle: rgba(41, 156, 219, 0.15);
+        --ent-warning-bg-subtle: rgba(247, 184, 75, 0.15);
+        --ent-danger-bg-subtle: rgba(240, 101, 72, 0.15);
+        --ent-light-bg-subtle: #25282c;
+        --ent-dark-bg-subtle: #313437;
+        --ent-primary-border-subtle: #2a3559;
+        --ent-secondary-border-subtle: #1b3c79;
+        --ent-success-border-subtle: #055a4e;
+        --ent-info-border-subtle: #154e6e;
+        --ent-warning-border-subtle: #7c5c26;
+        --ent-danger-border-subtle: #783324;
+        --ent-light-border-subtle: #35383c;
+        --ent-dark-border-subtle: #3c3f42;
+        
         // background
-        --ent-bg-body : #1a1d21;
         --ent-bg-page : #111;
+        
+        --ent-bg-body : #1a1d21;
         --ent-bg-secondary : #212529;
+        --ent-bg-tertiary:  #2a2d31;
         --ent-bg-light : #212529;
         --ent-bg-dark : #f1f1f2;
-        --ent-bg-tertiary:  #2a2d31;
         
         // color 
-        --ent-color-body-negetive: #071437;
         --ent-color-body: #ced4da;
         --ent-color-emphasis : #fff;
         --ent-color-secondary: #878a99;
@@ -25,15 +55,7 @@ html[data-theme="dark"] {
         --ent-border-radius: 0.25rem;
 
         // shadow
-        --ent-shadow: 0 1px 2px rgba(56, 65, 74, 0.15);
-        --ent-shadow-color: rgba(15,34,58, .05);
-        --ent-shadow-shade: rgba(15,34,58, .1);
+        --ent-shadow: 0px 0px 20px 0px rgba(75, 75, 75, 0.05);
 
-        //input 
-        --ent-input-bg: #262a2f;
-        --ent-input-color: var(--ent-color-body);
-        --ent-input-border-color: #2a2f34;
-        --ent-input-border-size: var(--ent-border-width);
-        --ent-input-border-radius: var(--ent-border-radius);
     
 }

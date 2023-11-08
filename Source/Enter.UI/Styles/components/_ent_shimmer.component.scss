@@ -1,0 +1,45 @@
+.ent-shimmer {
+  background-color: var(--ent-bg-secondary);
+  display: block;
+
+ 
+
+  &.ent-shimmer-rectangle {
+    border-radius: 0;
+  }
+
+  &.ent-shimmer-circular {
+    border-radius: 100%;
+
+  }
+}
+.ent-shimmer-pulse {
+  animation: ent-shimmer-keyframes-pulse 1.5s ease-in-out .5s infinite;
+}
+.ent-shimmer-wave {
+   animation: ent-shimmer-keyframes-pulse 1.5s ease-in-out .5s infinite;
+ }
+
+@-webkit-keyframes ent-shimmer-keyframes-pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes ent-shimmer-keyframes-wave {
+  0% {
+    transform: translateX(-100%);
+  }
+  60% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

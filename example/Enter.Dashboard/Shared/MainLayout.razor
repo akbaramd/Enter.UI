@@ -17,8 +17,8 @@
                 <EntDrawer @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start"  Mode="_drawerMode" class="z-50">
                     <EntNavMenu class="border-0">
                         <EntNavMenuGroup Title="Basic" Icon="EntIconName.Home">
-                            <EntNavMenuTextItem class="bg-light" Icon="EntIconName.Clock" Text="Counter" Click="() => AddNewTab<Counter>()"/>
-                            <EntNavMenuTextItem class="bg-light" Icon="EntIconName.ChevronDown" Text="FetchData" Click="() => AddNewTab<FetchData>()"/>
+                            @* <EntNavMenuTextItem class="bg-light" Icon="EntIconName.Clock" Text="Counter" Click="() => AddNewTab<Counter>()"/> *@
+                            @* <EntNavMenuTextItem class="bg-light" Icon="EntIconName.ChevronDown" Text="FetchData" Click="() => AddNewTab<FetchData>()"/> *@
                         </EntNavMenuGroup>
                        
                         <EntNavMenuGroup Title="Tables" Icon="EntIconName.Note">
@@ -59,23 +59,23 @@
 
     public void AddNewTab<T>()
     {
-        if (typeof(T) == typeof(Counter))
-        {
-            EntMdiService.AddNewTabAsync<Counter>("counter", "Counter", EntIconName.Clock);
-        }
-        else if (typeof(T) == typeof(ForalaView))
-        {
-            EntMdiService.AddNewTabAsync<ForalaView>(Guid.NewGuid().ToString(), "Forala View", EntIconName.Download);
-        }
-        else if (typeof(T) == typeof(FetchData))
-        {
-            EntMdiService.AddNewTabAsync<FetchData>(Guid.NewGuid().ToString(), "Fetch Data", EntIconName.Download);
-        }
+        // if (typeof(T) == typeof(Counter))
+        // {
+            // EntMdiService.AddNewTabAsync<Counter>("counter", "Counter", EntIconName.Clock);
+        // }
+        // else if (typeof(T) == typeof(ForalaView))
+        // {
+            // EntMdiService.AddNewTabAsync<ForalaView>(Guid.NewGuid().ToString(), "Forala View", EntIconName.Download);
+        // }
+        // else if (typeof(T) == typeof(FetchData))
+        // {
+            // EntMdiService.AddNewTabAsync<FetchData>(Guid.NewGuid().ToString(), "Fetch Data", EntIconName.Download);
+        // }
         
-        else if (typeof(T) == typeof(Table))
-        {
-            EntMdiService.AddNewTabAsync<Table>("Table", "Table", EntIconName.Table);
-        }
+        // else if (typeof(T) == typeof(Table))
+        // {
+            // EntMdiService.AddNewTabAsync<Table>("Table", "Table", EntIconName.Table);
+        // }
     }
 
     protected override async Task OnAfterRenderAsync( bool firstRender)

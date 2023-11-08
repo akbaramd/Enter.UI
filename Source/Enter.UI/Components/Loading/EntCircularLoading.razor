@@ -1,0 +1,38 @@
+﻿@namespace Enter.UI.Components
+@using Enter.UI.Abstractions.Components.Button
+@using Enter.UI.Abstractions.Components.Icon
+@using Enter.UI.Abstractions.Components.Loading
+@inherits EntComponentBase
+<span @attributes="@AdditionalAttributes" class="@RootClass">
+</span>
+
+@code {
+
+    private string RootClass => CssClassBuilder
+        .AddClass("ent-circular-loading")
+        .AddClass("ent-circular-loading-lg",Size == EntLoadingSize.Large)
+        .AddClass("ent-circular-loading-sm",Size == EntLoadingSize.Small)
+        .AddClass("animate",Animate)
+        .Build();
+
+    [Parameter]
+    public bool Animate { get; set; } = true;
+    
+    [Parameter]
+    public EntLoadingSize Size { get; set; } = EntLoadingSize.Default;
+    
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var attr = AdditionalAttributes;
+        }
+        base.OnAfterRender(firstRender);
+    }
+
+    public override void Dispose()
+    {
+        
+    }
+
+}
