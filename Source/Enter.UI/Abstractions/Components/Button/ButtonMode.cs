@@ -7,5 +7,6 @@ public enum ButtonMode
 
 public enum ButtonColor
 {
-    Primary,Secondary,Tertiary,Light,Dark,Danger,Success,Warning,Info
+    Primary,Secondary,Light,Dark,Danger,Success,Warning,Info,
+    Link
 }

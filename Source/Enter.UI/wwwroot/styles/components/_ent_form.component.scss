@@ -1,21 +1,24 @@
-﻿
-:root {
+﻿:root {
     //input 
-    --ent-input-bg: var(--ent-bg-tertiary);
-    --ent-input-popover-bg: var(--ent-bg-secondary);
+    --ent-input-bg: #ffffff;
+    --ent-input-popover-bg: var(--ent-light);
     --ent-input-color: var(--ent-color-body);
-    --ent-input-border-color: var(--ent-border-color);
+    --ent-input-border-color: #ced4da;
     --ent-input-border-size: var(--ent-border-width);
     --ent-input-border-style: solid;
     --ent-input-border-radius: var(--ent-border-radius);
-    --ent-input-space-y: .625rem;
     --ent-input-space-x: 1rem;
-
-    --ent-input-space-y-lg: 1rem;
+    --ent-input-space-y: .625rem;
     --ent-input-space-x-lg: 1rem;
+    --ent-input-space-y-lg: 0.875rem;
+    --ent-input-space-x-sm: 1rem;
+    --ent-input-space-y-sm: 0.375rem;
     --ent-input-icon-color: var(--ent-color-secondary);
 }
-
+html[data-theme="dark"] {
+    --ent-input-bg: var(--ent-light);
+    --ent-input-border-color: #32383e;
+}
 
 // input
 .ent-input {
@@ -51,6 +54,13 @@
     > .ent-input-field {
         padding: var(--ent-input-space-y-lg) var(--ent-input-space-x-lg);
         font-size: map-get($font-sizes, "title");
+    }
+}
+
+
+.ent-input.ent-input-sm {
+    > .ent-input-field {
+        padding: var(--ent-input-space-y-sm) var(--ent-input-space-x-sm);
     }
 }
 

@@ -1,35 +1,44 @@
-﻿:root {
+﻿
+:root {
   
-  //Base
-  --ent-primary: #405189;
-  --ent-secondary: #f1f1f2;
-  --ent-tertiary: #f9f9f9;
-  --ent-success: #0ab39c;
-  --ent-info: #299cdb;
-  --ent-warning: #f7b84b;
-  --ent-danger: #f06548;
-  --ent-light: #eeeeee;
-  --ent-dark: #212529;
-  --ent-link: #3577f1;
-
-  --ent-primary-text: #364574;
-  --ent-secondary-text: #eee;
-  --ent-tertiary-text: #f1f1f1;
-  --ent-success-text: #099885;
-  --ent-info-text: #2385ba;
-  --ent-warning-text: #d29c40;
-  --ent-danger-text: #cc563d;
-  --ent-light-text: #ced4da;
-  --ent-dark-text: #343a40;
-  --ent-primary-bg-subtle: #e2e5ed;
-  --ent-secondary-bg-subtle: #eee;
-  --ent-tertiary-bg-subtle: #f1f1f1;
-  --ent-success-bg-subtle: #daf4f0;
-  --ent-info-bg-subtle: #dff0fa;
-  --ent-warning-bg-subtle: #fef4e4;
-  --ent-danger-bg-subtle: #fde8e4;
-  --ent-light-bg-subtle: #f9fbfc;
-  --ent-dark-bg-subtle: #e9ebec;
+  
+  --ent-primary: #673AB7;
+  --ent-primary-emphasis: #5d34a5;
+  --ent-primary-subtle: #f0ebf9;
+  
+  --ent-success: #4CAF50;
+  --ent-success-emphasis: #449e48;
+  --ent-success-subtle: #f0ebf9;
+  
+  --ent-danger: #F44336;
+  --ent-danger-emphasis: #f2291a;
+  --ent-danger-subtle: #feeceb;
+ 
+  --ent-warning: #FFC107;
+  --ent-warning-emphasis: #ecb100;
+  --ent-warning-subtle: #fff9e6;
+  
+  --ent-info: #2196F3;
+  --ent-info-emphasis: #0d89ec;
+  --ent-info-subtle: #e9f4fe;
+  
+  --ent-secondary: #9C27B0;
+  --ent-secondary-emphasis: #8c239e;
+  --ent-secondary-subtle: #f7e7fa;
+  
+  --ent-light: #f2f2f2;
+  --ent-light-emphasis: #e2e2e2;
+  --ent-light-subtle: #fbfbfb;
+  
+  --ent-dark: #313131;
+  --ent-dark-emphasis: #2c2c2c;
+  --ent-dark-subtle: #d6d6d6;
+  
+  --ent-link: #2196F3;
+  --ent-link-emphasis: #0d89ec;
+  --ent-link-subtle: #e9f4fe;
+  
+  //border
   --ent-primary-border-subtle: #b3b9d0;
   --ent-secondary-border-subtle: #aec9f9;
   --ent-success-border-subtle: #9de1d7;
@@ -40,13 +49,8 @@
   --ent-dark-border-subtle: #adb5bd;
   
   // background
-  --ent-bg-page : #f2f2f2;
-  
+  --ent-bg-page : #F3F3F9;
   --ent-bg-body : #ffffff;
-  --ent-bg-secondary : #f1f1f2;
-  --ent-bg-tertiary : #f9f9f9;
-  --ent-bg-light : #f1f1f2;
-  --ent-bg-dark : #212529;
   
   // color
   --ent-color-body: #333;
@@ -59,7 +63,7 @@
   --ent-color-link: #009ef7;
  
   // border
-  --ent-border-color: #eee;
+  --ent-border-color: #e9ebec;
   --ent-border-width: 1px;
   --ent-border-style: solid;
   --ent-border-radius: 0.25rem;

@@ -10,6 +10,9 @@
     <EntButton Size="ButtonSize.Small" Color="ButtonColor.Light" Mode="ButtonMode.Solid" Icon="EntIconName.Note" >Document</EntButton>
     <EntButton Size="ButtonSize.Small" Color="ButtonColor.Light" Mode="ButtonMode.Solid" Icon="EntIconName.Note" >Document</EntButton>
     <EntButton Size="ButtonSize.Small" Color="ButtonColor.Success" Mode="ButtonMode.Solid" Icon="EntIconName.Upload" ></EntButton>
+    <div class="flex-grow-1 w-full"></div>
+    <EntInputText PlaceHolder="Search ..." @bind-Value="Input.User" Size="EntInputSize.Small"/>
+    <EntButton Size="ButtonSize.Small" Color="ButtonColor.Primary" Mode="ButtonMode.Outline" Icon="EntIconName.Search" >Search</EntButton>
 </EntToolbar>
 <EntCard Expandable="true" class="m-4" Title="Form Layout">
     <CardBody>

@@ -72,10 +72,10 @@
             // EntMdiService.AddNewTabAsync<FetchData>(Guid.NewGuid().ToString(), "Fetch Data", EntIconName.Download);
         // }
         
-        // else if (typeof(T) == typeof(Table))
-        // {
-            // EntMdiService.AddNewTabAsync<Table>("Table", "Table", EntIconName.Table);
-        // }
+        if (typeof(T) == typeof(Table))
+        {
+            EntMdiService.AddNewTabAsync<Table>("Table", "Table", EntIconName.Table);
+        }
     }
 
     protected override async Task OnAfterRenderAsync( bool firstRender)

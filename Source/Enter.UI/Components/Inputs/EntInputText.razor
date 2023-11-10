@@ -25,6 +25,7 @@
     private string RootCss => CssBuilder
         .AddClass("ent-input")
         .AddClass("ent-input-lg",Size == EntInputSize.Large)
+        .AddClass("ent-input-sm",Size == EntInputSize.Small)
         .AddClass(BaseCss)
         .AddClass(ValidationCss)
         .Build();
