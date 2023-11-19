@@ -6,13 +6,10 @@
 @using Enter.UI.Abstractions.Components.Inputs
 @using Enter.UI.Core
 <EntToolbar>
-    <EntButton Size="ButtonSize.Small" Color="ButtonColor.Dark" Mode="ButtonMode.Solid" Icon="EntIconName.User" Loading="true" >Users</EntButton>
-    <EntButton Size="ButtonSize.Small" Color="ButtonColor.Light" Mode="ButtonMode.Solid" Icon="EntIconName.Note" >Document</EntButton>
-    <EntButton Size="ButtonSize.Small" Color="ButtonColor.Light" Mode="ButtonMode.Solid" Icon="EntIconName.Note" >Document</EntButton>
-    <EntButton Size="ButtonSize.Small" Color="ButtonColor.Success" Mode="ButtonMode.Solid" Icon="EntIconName.Upload" ></EntButton>
-    <div class="flex-grow-1 w-full"></div>
-    <EntInputText PlaceHolder="Search ..." @bind-Value="Input.User" Size="EntInputSize.Small"/>
-    <EntButton Size="ButtonSize.Small" Color="ButtonColor.Primary" Mode="ButtonMode.Outline" Icon="EntIconName.Search" >Search</EntButton>
+    <EntButton  Appearance="ButtonAppearance.Default" Color="ButtonColor.Primary" Icon="EntIconName.Add"  >Add</EntButton>
+    <EntButton  Appearance="ButtonAppearance.Default" Icon="EntIconName.Note" Loading="true" >Document</EntButton>
+    <EntButton  Appearance="ButtonAppearance.Outline" Icon="EntIconName.Note"></EntButton>
+    <EntButton  Appearance="ButtonAppearance.Subtle" Icon="EntIconName.Upload"></EntButton>
 </EntToolbar>
 <EntCard Expandable="true" class="m-4" Title="Form Layout">
     <CardBody>
@@ -57,7 +54,7 @@
             </div>
             <div class="row">
                 <div class="tablet:col-1/3">
-                    <EntButton IsOutline="true" Color="ButtonColor.Primary" Mode="ButtonMode.Solid" type="submit">ارسال</EntButton>
+                    <EntButton  type="submit">ارسال</EntButton>
                 </div>
             </div>
         </EditForm>

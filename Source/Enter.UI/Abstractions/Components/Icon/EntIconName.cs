@@ -4,6 +4,7 @@ public enum EntIconName
 {
     Add,
     Bars,
+    Save,
     ChevronLeft,
     ChevronRight,
     ChevronUp,
@@ -30,5 +31,10 @@ public enum EntIconName
     Download,
     Upload,
     SortDesc,
-    AlignCenter
+    AlignCenter,
+    Logout,
+    Login,
+    Users,
+    Shiled,
+    Lock
 }

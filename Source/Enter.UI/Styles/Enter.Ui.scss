@@ -1,9 +1,11 @@
+@import "_mixins.scss";
+
 @import "themes/basic.theme";
+@import "themes/light.theme";
 @import "themes/dark.theme";
 @import url('../libs/remix/remixicon.css');
 @import "normalize";
 @import "_variables.scss";
-@import "_mixins.scss";
 @import "components/components";
 @import "_core.scss";
 

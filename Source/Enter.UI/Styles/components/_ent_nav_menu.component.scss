@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   border: $border;
-  background-color: var(--ent-bg-body);
+  background-color: var(--ent-bg-base);
   > * {
     border-bottom: $border;
   }
@@ -52,11 +52,11 @@
     > .ent-nav-menu-group-container {
       height: 0;
       overflow: hidden;
-      background-color: $color-light;
+      background-color: var(--ent-bg-base-highlight);
       
       &.active {
         > .ent-nav-menu-item {
-          background-color: var(--ent-light-subtle);
+          background-color: var(--ent-bg-base-emphasis);
         }
       }
       

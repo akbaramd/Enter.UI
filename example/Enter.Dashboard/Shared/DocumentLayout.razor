@@ -7,9 +7,9 @@
 <div class="h-full border-y d-flex flex-column">
     <div class="d-flex flex-column flex-grow-1">
         <EntAppBar ShowToggle="_showToggle" ToggleClick="ToggleSidebar" Title="Enterprise Dashboard">
-            <EntButton @onclick="ToggleRtl" Icon="EntIconName.AlignRight" Size="ButtonSize.Small" Color="ButtonColor.Light">راستچین</EntButton>
-            <EntButton @onclick="ToggleDarkMode" Icon="EntIconName.Moon" Size="ButtonSize.Small" class="d-none laptop:d-flex" Color="ButtonColor.Light">Dark / Light</EntButton>
-            <EntButton @onclick="() => _isSideDrawerOpen = !_isSideDrawerOpen" Icon="EntIconName.Comment" class="d-none laptop:d-flex" Size="ButtonSize.Small" Color="ButtonColor.Light">Sidebar</EntButton>
+            <EntButton @onclick="ToggleRtl" Icon="EntIconName.AlignRight" Size="ButtonSize.Small" >راستچین</EntButton>
+            <EntButton @onclick="ToggleDarkMode" Icon="EntIconName.Moon" Size="ButtonSize.Small" class="d-none laptop:d-flex" >Dark / Light</EntButton>
+            <EntButton @onclick="() => _isSideDrawerOpen = !_isSideDrawerOpen" Icon="EntIconName.Comment" class="d-none laptop:d-flex" Size="ButtonSize.Small" >Sidebar</EntButton>
         </EntAppBar>
         <EntDrawerContainer class="flex-grow-1">
             <EntDrawer HasBackdrop="HasBackdrop" @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start" Mode="_drawerMode" class="z-50">

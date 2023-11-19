@@ -1,0 +1,24 @@
+:root {
+  --ent-toolbar-space-y: 8px;
+  --ent-toolbar-space-x: 16px;
+  --ent-toolbar-z-index: var(--ent-z-index-tertiary);
+  --ent-toolbar-bg: var(--ent-bg-base-highlight);
+  --ent-toolbar-border-width: var(--ent-border-width);
+  --ent-toolbar-border-style: var(--ent-border-style);
+  --ent-toolbar-border-color: var(--ent-stroke-base);
+  --ent-toolbar-border-radius: var(--ent-border-radius);
+  --ent-toolbar-box-shadow: var(--ent-shadow);
+}
+
+.ent-toolbar {
+  padding: var(--ent-toolbar-space-y) var(--ent-toolbar-space-x);
+  background-color: var(--ent-toolbar-bg);
+  box-shadow: var(--ent-toolbar-box-shadow);
+  z-index: var(--ent-toolbar-z-index);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  gap: 0.25rem;
+}
+

@@ -1,14 +1,14 @@
 ﻿:root {
     --ent-card-space-y: 1rem;
     --ent-card-space-x: 1rem;
-    --ent-card-bg: var(--ent-bg-body);
-    --ent-card-header-bg: var(--ent-bg-body);
-    --ent-card-header-color: var(--ent-color-body);
+    --ent-card-bg: var(--ent-bg-base);
+    --ent-card-header-bg: var(--ent-bg-base);
+    --ent-card-header-color: var(--ent-fg-base);
     --ent-card-border-width: var(--ent-border-width);
     --ent-card-border-style: var(--ent-border-style);
     --ent-card-border-color: var(--ent-border-color);
-    --ent-card-border-radius: var(--ent-border-radius);
-    --ent-card-box-shadow: var(--ent-shadow);
+    --ent-card-border-radius: var(--ent-radius-sm);
+    --ent-card-box-shadow: var(--ent-shadow-lg);
 }
 
 .ent-card {

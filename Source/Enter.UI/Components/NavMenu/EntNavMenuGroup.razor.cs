@@ -13,13 +13,11 @@ namespace Enter.UI.Components
     public partial class EntNavMenuGroup : EntComponentBase
     {
         protected string RootCss => CssClassBuilder.AddClass("ent-nav-menu-group")
-            .AddClass("active",IsShow)
             .Build();
         
         protected string ContainerCss => CssClassBuilder
             .Clear()
             .AddClass("ent-nav-menu-group-container")
-            .AddClass("active",IsShow)
             .Build();
 
         [Parameter]

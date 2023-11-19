@@ -578,7 +578,7 @@ $border-widths: (
         5: 5px,
 ) !default;
 $border-style: solid !default;
-$border-color: var(--ent-border-color) !default;
+$border-color: var(--ent-stroke-base) !default;
 $border: $border-width $border-style $border-color;
 
 $box-shadow :        0 1px 3px var(--ent-shadow-color) , 0 1px 1px var(--ent-shadow-shade);

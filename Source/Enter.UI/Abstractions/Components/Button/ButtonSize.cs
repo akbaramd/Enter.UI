@@ -2,5 +2,5 @@
 
 public enum ButtonSize
 {
-    Small,Default,Large
+    Small,Medium,Large
 }

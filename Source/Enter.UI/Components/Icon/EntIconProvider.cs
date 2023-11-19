@@ -29,19 +29,19 @@ public class EntIconProvider : IEntIconProvider
             case EntIconName.Comment:
                 return "ri-chat-4-line";
             case EntIconName.Dashboard:
-                return "ri-dashboard-line";
+                return "ri-stack-line";
             case EntIconName.Desktop:
                 return "ri-tv-2-line";
             case EntIconName.Edit:
-                return "ri-tv-2-line";
+                return "ri-edit-line";
             case EntIconName.Eye: 
                 return "ri-eye-line";
             case EntIconName.Folder:
-                return "ri-eye-line";
+                return "ri-folder-line";
             case EntIconName.Home:
                 return "ri-home-line";
             case EntIconName.Search:
-                return "ri-eye-line";
+                return "ri-search-line";
             case EntIconName.SortAsc:
                 return "ri-sort-asc";
             case EntIconName.SortDesc:
@@ -65,9 +65,21 @@ public class EntIconProvider : IEntIconProvider
             case EntIconName.Note:
                 return "ri-sticky-note-line";
             case EntIconName.Download:
-                return "ri-sticky-note-line";
+                return "ri-download-line";
             case EntIconName.Upload:
-                return "ri-sticky-note-line";
+                return "ri-upload-line";
+            case EntIconName.Save:
+                return "ri-save-line";
+            case EntIconName.Logout:
+                return "ri-logout-box-line";
+            case EntIconName.Login:
+                return "ri-login-box-line";
+            case EntIconName.Users:
+                return "ri-group-line";
+            case EntIconName.Shiled:
+                return "ri-shield-line";
+            case EntIconName.Lock:
+                return "ri-lock-line";
             default:
                 throw new ArgumentOutOfRangeException();
         }

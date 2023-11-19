@@ -1,8 +1,8 @@
 ﻿
 :root {
-  --ent-tab-bg: var(--ent-bg-body);
-  --ent-tab-container-bg: var(--ent-bg-body);
-  --ent-tab-active-bg: var(--ent-light-subtle);
+  --ent-tab-bg: var(--ent-bg-base);
+  --ent-tab-container-bg: var(--ent-bg-base);
+  --ent-tab-active-bg: var(--ent-bg-base-active);
   --ent-tab-box-shadow: var(--ent-shadow);
   --ent-tab-border-width: var(--ent-border-width);
   --ent-tab-border-style: var(--ent-border-style);
@@ -42,8 +42,9 @@
       display: flex;
       
       .ent-tab-content {
-        padding: 0.625rem 1.5rem;
+        padding: 8px 16px;
         display: flex;
+        line-height: 24px;
         gap: 0.5rem;
         text-wrap: nowrap;
         justify-content: center;

@@ -1,10 +1,11 @@
 ﻿@using Enter.UI.Abstractions.Components.Icon
+@using Enter.UI.Abstractions.Components.Button
 @inherits EntComponentBase
 @namespace Enter.UI.Components
 <div @attributes="@AdditionalAttributes" class="@cssClass">
     @if (ShowToggle)
     {
-        <EntIcon Click="ToggleClick" class="ent-app-bar-toggle cursor-pointer" Type="EntIconType.IconTag" Icon="EntIconName.Bars"/>
+        <EntButton @onclick="ToggleClick" Appearance="ButtonAppearance.Outline" Icon="EntIconName.Bars"/>
     }
     <b class="ent-app-bar-title">@Title</b>
     <div class="ent-app-bar-content">@ChildContent</div>

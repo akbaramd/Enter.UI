@@ -1,23 +1,21 @@
 ﻿:root {
     //input 
-    --ent-input-bg: #ffffff;
-    --ent-input-popover-bg: var(--ent-light);
-    --ent-input-color: var(--ent-color-body);
-    --ent-input-border-color: #ced4da;
+    --ent-input-bg: var(--ent-bg-base-highlight);
+    --ent-input-popover-bg: var(--ent-bg-base-active);
+    --ent-input-popover-hover-bg: var(--ent-bg-base-active);
+    --ent-input-color: var(--ent-fg-base);
+    --ent-input-border-color: var(--ent-stroke-base);
     --ent-input-border-size: var(--ent-border-width);
     --ent-input-border-style: solid;
     --ent-input-border-radius: var(--ent-border-radius);
-    --ent-input-space-x: 1rem;
-    --ent-input-space-y: .625rem;
-    --ent-input-space-x-lg: 1rem;
-    --ent-input-space-y-lg: 0.875rem;
-    --ent-input-space-x-sm: 1rem;
-    --ent-input-space-y-sm: 0.375rem;
-    --ent-input-icon-color: var(--ent-color-secondary);
-}
-html[data-theme="dark"] {
-    --ent-input-bg: var(--ent-light);
-    --ent-input-border-color: #32383e;
+    --ent-input-space-x: 16px;
+    --ent-input-space-y: 7px;
+    --ent-input-space-x-lg: 20px;
+    --ent-input-space-y-lg: 9px;
+    --ent-input-space-x-sm: 12px;
+    --ent-input-space-y-sm: 5px;
+    --ent-input-icon-color: var(--ent-fg-base);
+    
 }
 
 // input
@@ -30,6 +28,7 @@ html[data-theme="dark"] {
     align-items: center;
     background-color: var(--ent-input-bg);
     color: var(--ent-input-color);
+    
     > .ent-input-field {
         flex-grow: 1;
         padding: var(--ent-input-space-y) var(--ent-input-space-x);
@@ -37,6 +36,7 @@ html[data-theme="dark"] {
         outline: 0;
         background-color: transparent;
         color: var(--ent-input-color);
+        line-height: 24px;
     }
 
     > .ent-input-icon {
@@ -52,6 +52,7 @@ html[data-theme="dark"] {
 
 .ent-input.ent-input-lg {
     > .ent-input-field {
+        line-height: 28px;
         padding: var(--ent-input-space-y-lg) var(--ent-input-space-x-lg);
         font-size: map-get($font-sizes, "title");
     }
@@ -60,6 +61,7 @@ html[data-theme="dark"] {
 
 .ent-input.ent-input-sm {
     > .ent-input-field {
+        line-height: 20px;
         padding: var(--ent-input-space-y-sm) var(--ent-input-space-x-sm);
     }
 }
