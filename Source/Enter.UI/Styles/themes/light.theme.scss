@@ -2,18 +2,20 @@
 :root {
 
   // Background - Body
-  --ent-bg-page: #f0f0f0;
+  --ent-bg-page: #e6e6e6;
   
-  --ent-bg-base: #ffffff;
-  --ent-bg-base-highlight: #fcfcfc;
-  --ent-bg-base-active: #fcfcfc;
-  --ent-bg-base-emphasis: #f7f7f7;
+  --ent-bg-body: #ffffff;
+  
+  --ent-bg-base: #fafafa;
+  --ent-bg-base-highlight: #f5f5f5;
+  --ent-bg-base-select: #f0f0f0;
+  --ent-bg-base-emphasis: #ebebeb;
   
   // Background - Primary
-  --ent-bg-primary: #a855f7; 
-  --ent-bg-primary-highlight: #a453f1; 
-  --ent-bg-primary-select: #a051eb;
-  --ent-bg-primary-emphasis: #974dde;
+  --ent-bg-primary: #524eb7; 
+  --ent-bg-primary-highlight: #504cb3; 
+  --ent-bg-primary-select: #4f4bb0;
+  --ent-bg-primary-emphasis: #4d49ac;
   
   // Foreground 
   //Body
@@ -22,20 +24,20 @@
   // Foreground - Base - Tint 5% OF BODY
   --ent-fg-base: #252525;
   --ent-fg-base-highlight: #242424;
-  --ent-fg-base-selected: #232323;
+  --ent-fg-base-select: #232323;
   --ent-fg-base-emphasis: #212121;
 
   // Foreground - Base - Tint 95% OF BODY
   --ent-fg-light: #f4f4f4;
   --ent-fg-light-highlight: #f4f4f4;
-  --ent-fg-light-selected: #f4f4f4;
+  --ent-fg-light-select: #f4f4f4;
   --ent-fg-light-emphasis: #f4f4f4;
 
   // Foreground - Primary
-  --ent-fg-primary: #7e40b9;
-  --ent-fg-primary-highlight: #7b3eb4;
-  --ent-fg-primary-select: #783db0;
-  --ent-fg-primary-emphasis: #713aa7;
+  --ent-fg-primary: #524eb7;
+  --ent-fg-primary-highlight: #504cb3;
+  --ent-fg-primary-select: #4f4bb0;
+  --ent-fg-primary-emphasis: #4d49ac;
 
   // Stroke
   // Base - Shade 10% BG Base
@@ -45,14 +47,14 @@
   --ent-stroke-base-emphasis: #e4e4e4;
 
   // Primary - Shade 10% BG Primary
-  --ent-stroke-primary: #974dde;
-  --ent-stroke-primary-highlight: #934bd8;
-  --ent-stroke-primary-select: #8f49d3;
-  --ent-stroke-primary-emphasis: #8f49d3;
+  --ent-stroke-primary: #524eb7;
+  --ent-stroke-primary-highlight: #504cb3;
+  --ent-stroke-primary-select: #4f4bb0;
+  --ent-stroke-primary-emphasis: #4d49ac;
 
-  --ent-primary: #673AB7;
-  --ent-primary-emphasis: #5d34a5;
-  --ent-primary-subtle: #f0ebf9;
+  --ent-primary: #524eb7;
+  --ent-primary-emphasis: #4d49ac;
+  --ent-primary-subtle: #e3e3f3;
 
   --ent-success: #4CAF50;
   --ent-success-emphasis: #449e48;
@@ -116,7 +118,7 @@
   --ent-shadow: 0px 0px 20px 0px rgba(76, 87, 125, 0.05);
 
   //body
-  --ent-body-font-size: 0.925rem;
+  --ent-body-font-size: 1rem;
   --ent-body-font-size-space: 0.075rem;
   --ent-body-font-weight: 400;
   --ent-body-line-height: 1.5;

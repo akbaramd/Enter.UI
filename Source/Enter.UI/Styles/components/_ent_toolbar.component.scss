@@ -1,8 +1,9 @@
 :root {
-  --ent-toolbar-space-y: 8px;
-  --ent-toolbar-space-x: 16px;
+  --ent-toolbar-space-y: var(--ent-size-xs);
+  --ent-toolbar-space-x: var(--ent-size-md);
+  --ent-toolbar-space-b: var(--ent-size-xs);
   --ent-toolbar-z-index: var(--ent-z-index-tertiary);
-  --ent-toolbar-bg: var(--ent-bg-base-highlight);
+  --ent-toolbar-bg: var(--ent-bg-body);
   --ent-toolbar-border-width: var(--ent-border-width);
   --ent-toolbar-border-style: var(--ent-border-style);
   --ent-toolbar-border-color: var(--ent-stroke-base);
@@ -19,6 +20,6 @@
   flex-direction: row;
   align-items: center;
   justify-content: start;
-  gap: 0.25rem;
+  gap: var( --ent-toolbar-space-b);
 }
 

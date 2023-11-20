@@ -1,34 +1,36 @@
 ﻿:root {
     //input 
-    --ent-input-bg: var(--ent-bg-base-highlight);
-    --ent-input-popover-bg: var(--ent-bg-base-active);
+    --ent-input-bg: var(--ent-bg-base);
+    --ent-input-popover-bg: var(--ent-bg-base-highlight);
     --ent-input-popover-hover-bg: var(--ent-bg-base-active);
     --ent-input-color: var(--ent-fg-base);
-    --ent-input-border-color: var(--ent-stroke-base);
-    --ent-input-border-size: var(--ent-border-width);
-    --ent-input-border-style: solid;
-    --ent-input-border-radius: var(--ent-border-radius);
-    --ent-input-space-x: 16px;
-    --ent-input-space-y: 7px;
-    --ent-input-space-x-lg: 20px;
-    --ent-input-space-y-lg: 9px;
-    --ent-input-space-x-sm: 12px;
-    --ent-input-space-y-sm: 5px;
+    --ent-input-color-placeholder: var(--ent-fg-base-highlight);
+    --ent-input-font-size: var(--ent-size-md);
+    --ent-input-line-height: calc(var(--ent-size-md) * 1.5);
+    --ent-input-stroke-color: var(--ent-stroke-base);
+    --ent-input-stroke-color-focus: var(--ent-stroke-base-emphasis);
+    --ent-input-stroke-size: var(--ent-stroke-thin);
+    --ent-input-stroke-style: solid;
+    --ent-input-border-radius: var(--ent-radius-sm);
+    --ent-input-space-x: var(--ent-size-sm);
+    --ent-input-space-y: calc(var(--ent-size-xs) - var(--ent-stroke-thin));
     --ent-input-icon-color: var(--ent-fg-base);
     
 }
 
 // input
 .ent-input {
-    width: 100%;
-    border: var(--ent-input-border-size) solid var(--ent-input-border-color);
+    min-width: 300px;
+    border: var(--ent-input-stroke-size) solid var(--ent-input-stroke-color);
     border-radius: var(--ent-card-border-radius);
     display: flex;
     flex-direction: row;
     align-items: center;
     background-color: var(--ent-input-bg);
     color: var(--ent-input-color);
-    
+    &:focus {
+        border: var(--ent-input-stroke-size) solid var(--ent-input-stroke-color-focus);
+    }
     > .ent-input-field {
         flex-grow: 1;
         padding: var(--ent-input-space-y) var(--ent-input-space-x);
@@ -36,7 +38,10 @@
         outline: 0;
         background-color: transparent;
         color: var(--ent-input-color);
-        line-height: 24px;
+        line-height: var(--ent-input-line-height);
+        font-size: var(--ent-input-font-size);
+
+       
     }
 
     > .ent-input-icon {
@@ -45,6 +50,7 @@
         align-items: center;
         padding: var(--ent-input-space-y) var(--ent-input-space-x);
         color: var(--ent-input-icon-color);
+        font-size: var(--ent-input-font-size);
     }
 }
 
@@ -52,17 +58,17 @@
 
 .ent-input.ent-input-lg {
     > .ent-input-field {
-        line-height: 28px;
-        padding: var(--ent-input-space-y-lg) var(--ent-input-space-x-lg);
-        font-size: map-get($font-sizes, "title");
+        --ent-btn-font-size: var(--ent-size-md);
+        --ent-btn-line-height: calc(var(--ent-size-md) * 2);
+
     }
 }
 
 
 .ent-input.ent-input-sm {
     > .ent-input-field {
-        line-height: 20px;
-        padding: var(--ent-input-space-y-sm) var(--ent-input-space-x-sm);
+        --ent-btn-font-size: var(--ent-size-md-nudge);
+        --ent-btn-line-height: calc(var(--ent-size-md) * 1);
     }
 }
 
@@ -92,17 +98,20 @@
 // select
 
 .ent-select {
-    border: $border;
+    border: var(--ent-input-stroke-size) solid var(--ent-input-stroke-color);
     cursor: pointer;
     min-width: 300px;
     overflow: hidden;
     border-radius: var(--ent-card-border-radius);
+    &:focus {
+        border: var(--ent-input-stroke-size) solid var(--ent-input-stroke-color-focus);
+    }
+    
     > .ent-select-input {
         border: 0;
-
+        
         .ent-select-input-placeholder {
-            font-size: map-get($font-sizes,"description");
-            color:$color-light;
+            color:var(--ent-input-color-placeholder);
         }
     }
 }

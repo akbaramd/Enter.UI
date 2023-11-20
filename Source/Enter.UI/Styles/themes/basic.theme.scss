@@ -1,19 +1,23 @@
 ﻿
 :root {
   --ent-size-none: 0;
-  --ent-size-xxs: 2px;
-  --ent-size-xs: 4px;
-  --ent-size-sm-nudge: 6px;
-  --ent-size-sm: 8px;
-  --ent-size-md-nudge: 10px;
-  --ent-size-md: 12px;
-  --ent-size-lg: 16px;
-  --ent-size-xl: 20px;
-  --ent-size-xxl: 24px;
-  --ent-size-xxxl: 32px;
+  --ent-size-xxs-nudge: 0.125rem;
+  --ent-size-xxs: 0.25rem;
+  --ent-size-xs-nudge: 0.375rem;
+  --ent-size-xs: 0.5rem;
+  --ent-size-sm-nudge: 0.625rem;
+  --ent-size-sm: 0.75rem;
+  --ent-size-md-nudge: 0.875rem;
+  --ent-size-md: 1rem;
+  --ent-size-lg-nudge: 18px;
+  --ent-size-lg: 20px;
+  --ent-size-xl-nudge: 22px;
+  --ent-size-xl: 24px;
+  --ent-size-xxl: 32px;
+  --ent-size-xxxl: 48px;
   
-  --ent-stroke-thin : 1px;
-  --ent-stroke-thick : 2px;
+  --ent-stroke-thin : calc(var(--ent-size-md)/16);
+  --ent-stroke-thick : calc((var(--ent-size-md)/16)*2);
   --ent-stroke-thicker : 3px;
   --ent-stroke-thickest : 3px;
 

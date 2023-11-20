@@ -1,19 +1,20 @@
 ﻿:root {
-  --ent-btn-space-x: var(--ent-size-md);  
-  --ent-btn-space-y: var(--ent-size-sm-nudge);
+  --ent-btn-space-x: var(--ent-size-sm);
+  --ent-btn-space-y: calc(var(--ent-size-xs) - var(--ent-stroke-thin));
+  --ent-btn-space-b: var(--ent-size-md);
   --ent-btn-bg: var(--ent-bg-base);
   --ent-btn-bg-hover: var(--ent-bg-base-highlight);
   --ent-btn-bg-active: var(--ent-bg-base-emphasis);
   --ent-btn-cl: var(--ent-fg-base);
   --ent-btn-cl-hover: var(--ent-fg-base-highlight);
   --ent-btn-cl-active: var(--ent-fg-base-emphasis);
-  --ent-btn-font-size: 14px;
-  --ent-btn-line-height: 20px;
+  --ent-btn-font-size: var(--ent-size-md);
+  --ent-btn-line-height: calc(var(--ent-size-md) * 1.5);
   --ent-btn-stroke: var(--ent-stroke-base);
   --ent-btn-stroke-hover: var(--ent-stroke-base-highlight);
   --ent-btn-stroke-active: var(--ent-stroke-base-emphasis);
   --ent-btn-stroke-width: var(--ent-stroke-thin);
-  --ent-btn-border-radius: 2px;
+  --ent-btn-border-radius: var(--ent-radius-sm);
 }
 
 .ent-btn {
@@ -23,7 +24,7 @@
   justify-content: center;
   text-decoration-line: none;
   vertical-align: middle;
-  margin: 0px;
+  margin: 0;
   font-size: var(--ent-btn-font-size);
   line-height: var(--ent-btn-line-height);
   background-color: var(--ent-btn-bg);
@@ -60,9 +61,13 @@
 
   &.ent-btn-only-icon {
     min-width: unset;
+    --ent-btn-space-x: var(--ent-size-xs);
+    --ent-btn-space-y: calc(var(--ent-size-xs) - var(--ent-stroke-thin));
+    
     .icon-wrapper{
       margin: 0;  
     }
+    
     transition: var(--ent-transition-all);
   }
   
@@ -135,74 +140,53 @@
 
 
 .ent-btn-size-sm {
-  --ent-btn-space-x: 12px;
-  --ent-btn-space-y: 5px;
-  --ent-btn-font-size: 12px;
-  --ent-btn-line-height: 20px;
+ 
+  --ent-btn-font-size: var(--ent-size-md-nudge);
+  --ent-btn-line-height: calc(var(--ent-size-md) * 1);
 
 
   .icon-wrapper  {
-    width: 20px;
-    height: 20px;
+    width: calc(var(--ent-size-md) * 1);
+    height: calc(var(--ent-size-md) * 1);
     
     .icon {
-      font-size: 12px;
-      width: 12px;
-      height: 12px;
+      font-size: var(--ent-size-md-nudge);
+      width: var(--ent-size-md-nudge);
+      height: var(--ent-size-md-nudge);
     }
   }
   
-  &.ent-btn-only-icon {
-    
-    
-    
-    --ent-btn-space-x: 5px;
-    --ent-btn-space-y: 5px;
-  }
 }
 .ent-btn-size-md {
-  --ent-btn-space-x: 16px;
-  --ent-btn-space-y: 7px;
-  --ent-btn-font-size: 14px;
-  --ent-btn-line-height: 24px;
+  --ent-btn-font-size: var(--ent-size-md);
+  --ent-btn-line-height: calc(var(--ent-size-md) * 1.5);
 
   .icon-wrapper {
-    width: 24px;
-    height: 24px;
+    width: calc(var(--ent-size-md) * 1.5);
+    height: calc(var(--ent-size-md) * 1.5);
 
     .icon {
-      font-size: 16px;
-      width: 16px;
-      height: 16px;
+      font-size: var(--ent-size-md);
+      width: var(--ent-size-md);
+      height: var(--ent-size-md);
     }
   }
   
-  &.ent-btn-only-icon {
-    --ent-btn-space-x: 7px;
-    --ent-btn-space-y: 7px;
-  }
 }
 .ent-btn-size-lg {
-  --ent-btn-space-x: 20px;
-  --ent-btn-space-y: 9px;
-  --ent-btn-font-size: 16px;
-  --ent-btn-line-height: 28px;
+  --ent-btn-font-size: var(--ent-size-md);
+  --ent-btn-line-height: calc(var(--ent-size-md) * 2);
 
   .icon-wrapper {
-    width: 28px;
-    height: 28px;
+    width: calc(var(--ent-size-md) * 2);
+    height: calc(var(--ent-size-md) * 2);
     
     .icon {
-      font-size: 20px;
-      width: 20px;
-      height: 20px;
+      font-size: var(--ent-size-lg-nudge);
+      width: var(--ent-size-lg-nudge);
+      height: var(--ent-size-lg-nudge);
     }
     
   }
   
-  
-  &.ent-btn-only-icon {
-    --ent-btn-space-x: 9px;
-    --ent-btn-space-y: 9px;
-  }
 }
