@@ -12,24 +12,24 @@
                    
                     
                     <li class="@GetItemClass(IsActiveTab(tabPanels.Id))" @onclick="() => ActivateTabAsync(tabPanels.Id)" @key="@tabPanels.Id">
-                        <div class="ent-tab-content">
+                        <span class="ent-tab-content">
                             <EntIcon Icon="@tabPanels.Icon"/>
                             <span>@tabPanels.Title</span>
-                        </div>
+                        </span>
                         @if (Closeable)
                         {
-                            <div @onclick="() => OnTabClose(tabPanels.Id)" class="ent-tab-close">
+                            <span @onclick="() => OnTabClose(tabPanels.Id)" class="ent-tab-close">
                                 <EntIcon Icon="EntIconName.Remove" IconSize="EntIconSize.Default" IconStyle="EntIconStyle.Light"/>
-                            </div>
+                            </span>
                         }
                     </li>
                 }
                 @if (Closeable)
                 {
                     <li class="@GetItemClass(false)">
-                        <div @onclick="OnTabAllClose" class="ent-tab-action ">
+                        <span @onclick="OnTabAllClose" class="ent-tab-action ">
                             <EntIcon Icon="EntIconName.Delete" Type="EntIconType.IconTag"/>
-                        </div>
+                        </span>
                     </li>
                 }
             </ul>
