@@ -1,84 +1,83 @@
-﻿@using Enter.Dashboard.Pages;
-@using Enter.Dashboard.Components
-@using Enter.UI.Abstractions.Components.Button
-@using Enter.UI.Abstractions.Components.Drawer
+﻿@using Enter.UI.Abstractions.Components.Drawer
 @using Enter.UI.Abstractions.Components.Icon
 @using Enter.UI.Abstractions.Core.Enums
 @using Enter.UI.Abstractions.Services
+@using Enter.UI.Abstractions.Components.Button
+@using Enter.Dashboard.Components
 @inherits LayoutComponentBase
- <div class="border-y d-flex flex-column">
-        <div class="d-flex flex-column flex-grow-1">
-            <EntAppBar ShowToggle="_showToggle" ToggleClick="ToggleSidebar" Title="Enterprise Dashboard">
-               <EntButton @onclick="ToggleRtl" Icon="EntIconName.AlignRight" Size="ButtonSize.Small" >راستچین</EntButton>
-                                                   <EntButton @onclick="ToggleDarkMode" Icon="EntIconName.Moon" Size="ButtonSize.Small" class="d-none laptop:d-flex" >Dark / Light</EntButton>
-                                                   <EntButton @onclick="() => _isSideDrawerOpen = !_isSideDrawerOpen" Icon="EntIconName.Comment" class="d-none laptop:d-flex" Size="ButtonSize.Small">Sidebar</EntButton>
-            </EntAppBar>
-            <EntDrawerContainer class="flex-grow-1">
-                <EntDrawer @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start"  Mode="_drawerMode" class="z-50">
-                    <EntNavMenu class="border-0">
-                        <EntNavMenuGroup Title="Basic" Icon="EntIconName.Home">
-                            @* <EntNavMenuTextItem class="bg-light" Icon="EntIconName.Clock" Text="Counter" Click="() => AddNewTab<Counter>()"/> *@
-                            @* <EntNavMenuTextItem class="bg-light" Icon="EntIconName.ChevronDown" Text="FetchData" Click="() => AddNewTab<FetchData>()"/> *@
-                        </EntNavMenuGroup>
-                       
-                        <EntNavMenuGroup Title="Tables" Icon="EntIconName.Note">
-                            <EntNavMenuTextItem class="bg-light" Text="Table" Click="() => AddNewTab<Table>()"/>
-                        </EntNavMenuGroup>
-                    </EntNavMenu>
-                </EntDrawer>
-                <EntDrawer 
-                    @bind-Open="_isSideDrawerOpen" 
-                    Direction="EntDrawerDirection.End" 
-                    Mode="EntDrawerMode.Overlay"
-                    class="z-50">
-                    <p>Default Text To Show</p>
-                </EntDrawer>
-                <div class="h-full">
-                    @Body
-                </div>
-            </EntDrawerContainer>
-        </div>
-        <EntModalProvider/>
-        <EntPopoverProvider/>
-        <EntToastProvider/>
+<div class="border-y d-flex flex-column">
+    <div class="d-flex flex-column flex-grow-1">
+        <EntAppBar ShowToggle="_showToggle" ShowBack="_showToggle" ToggleClick="ToggleSidebar" Title="Enterprise Dashboard">
+            <EntButton @onclick="ToggleRtl" Icon="EntIconName.AlignRight" Size="ButtonSize.Small">راستچین</EntButton>
+            <EntButton @onclick="ToggleDarkMode" Icon="EntIconName.Moon" Size="ButtonSize.Small" class="d-none laptop:d-flex">Dark / Light</EntButton>
+            <EntButton @onclick="() => _isSideDrawerOpen = !_isSideDrawerOpen" Icon="EntIconName.Comment" class="d-none laptop:d-flex" Size="ButtonSize.Small">Sidebar</EntButton>
+        </EntAppBar>
+        <EntDrawerContainer class="flex-grow-1">
+            <EntDrawer @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start" Mode="_drawerMode" class="z-50">
+                <EntNavMenu class="border-0">
+                    <EntNavMenuGroup Title="Basic" Icon="EntIconName.Home">
+                        @* <EntNavMenuTextItem class="bg-light" Icon="EntIconName.Clock" Text="Counter" Click="() => AddNewTab<Counter>()"/> *@
+                        @* <EntNavMenuTextItem class="bg-light" Icon="EntIconName.ChevronDown" Text="FetchData" Click="() => AddNewTab<FetchData>()"/> *@
+                    </EntNavMenuGroup>
+
+                    <EntNavMenuGroup Title="Tables" Icon="EntIconName.Note">
+                        <EntNavMenuTextItem class="bg-light" Text="Table" Click="() => AddNewTab<Table>()"/>
+                    </EntNavMenuGroup>
+                </EntNavMenu>
+            </EntDrawer>
+            <EntDrawer
+                @bind-Open="_isSideDrawerOpen"
+                Direction="EntDrawerDirection.End"
+                Mode="EntDrawerMode.Overlay"
+                class="z-50">
+                <p>Default Text To Show</p>
+            </EntDrawer>
+            <div class="h-full">
+                @Body
+            </div>
+        </EntDrawerContainer>
     </div>
+    <EntModalProvider/>
+    <EntPopoverProvider/>
+    <EntToastProvider/>
+</div>
 
 @code {
 
-    private bool _showToggle = false;
+    private bool _showToggle;
     private bool _isDrawerOpen = true;
-    private bool _isSideDrawerOpen = false;
+    private bool _isSideDrawerOpen;
     private EntDrawerMode _drawerMode = EntDrawerMode.Behavior;
 
     [CascadingParameter]
     public EntThemeProvider? EntThemeProvider { get; set; }
-    
+
     [Inject]
     public IEntMdiService EntMdiService { get; set; }
 
 
     public void AddNewTab<T>()
     {
-        // if (typeof(T) == typeof(Counter))
-        // {
-            // EntMdiService.AddNewTabAsync<Counter>("counter", "Counter", EntIconName.Clock);
-        // }
-        // else if (typeof(T) == typeof(ForalaView))
-        // {
-            // EntMdiService.AddNewTabAsync<ForalaView>(Guid.NewGuid().ToString(), "Forala View", EntIconName.Download);
-        // }
-        // else if (typeof(T) == typeof(FetchData))
-        // {
-            // EntMdiService.AddNewTabAsync<FetchData>(Guid.NewGuid().ToString(), "Fetch Data", EntIconName.Download);
-        // }
-        
+    // if (typeof(T) == typeof(Counter))
+    // {
+    // EntMdiService.AddNewTabAsync<Counter>("counter", "Counter", EntIconName.Clock);
+    // }
+    // else if (typeof(T) == typeof(ForalaView))
+    // {
+    // EntMdiService.AddNewTabAsync<ForalaView>(Guid.NewGuid().ToString(), "Forala View", EntIconName.Download);
+    // }
+    // else if (typeof(T) == typeof(FetchData))
+    // {
+    // EntMdiService.AddNewTabAsync<FetchData>(Guid.NewGuid().ToString(), "Fetch Data", EntIconName.Download);
+    // }
+
         if (typeof(T) == typeof(Table))
         {
             EntMdiService.AddNewTabAsync<Table>("Table", "Table", EntIconName.Table);
         }
     }
 
-    protected override async Task OnAfterRenderAsync( bool firstRender)
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await base.OnInitializedAsync();
 
@@ -103,7 +102,7 @@
     {
         EntThemeProvider?.ToggleRtl();
     }
-    
+
     private async Task ToggleDarkMode()
     {
         if (EntThemeProvider != null)
@@ -111,7 +110,7 @@
             await EntThemeProvider.ToggleDarkMode();
         }
     }
-    
+
     private async Task ToggleSidebar()
     {
         _isDrawerOpen = !_isDrawerOpen;

@@ -9,17 +9,12 @@
 @using Enter.UI.Abstractions.Components.Drawer
 @using Enter.UI.Abstractions.Components.Loading
 @using Enter.UI.Abstractions.Components.Shimmer
-@layout MainLayout
+@layout DocumentLayout
+
 <PageTitle>Index</PageTitle>
 
 <EntFlex class="h-full" Direction="FlexDirection.Column">
-    <EntMdiTab ItemDirection="EntTabItemDirection.Horizontal"
-               KeepPanelAlive="true"
-               PanelClass="h-full"
-               ActiveClass=""
-               Closeable="true"
-               class="border-0 h-full"
-               Direction="EntTabDirection.Vertical">
+    <div>
         <div class="p-8">
             <EntCard Title="Default" Expandable="true" class="mb-8">
                 <CardBody>
@@ -121,7 +116,7 @@
             @* </EntCard> *@
 
         </div>
-    </EntMdiTab>
+    </div>
 </EntFlex>
 
 @code {

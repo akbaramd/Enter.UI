@@ -1,0 +1,40 @@
+﻿@page "/documents/mdi-tabs"
+@using Enter.UI.Abstractions.Components.Button
+@using Enter.UI.Abstractions.Components.Flex
+@using Enter.UI.Abstractions.Components.Icon
+@using Enter.Dashboard.Model
+@using Enter.UI.Abstractions.Services
+@inherits Enter.UI.Abstractions.Core.Bases.EntPageBase
+@layout DocumentLayout
+<div class="p-4">
+    <EntMdiTab ItemDirection="EntTabItemDirection.Horizontal"
+                              KeepPanelAlive="true"
+                              PanelClass="h-full"
+                              ActiveClass=""
+                              Closeable="true"
+                              class="border-0 vertical-scroll"
+                              Direction="EntTabDirection.Vertical">
+        <EntCard class="mt-4">
+            <CardBody>
+                        <EntButton @onclick="NewTab">Open New Tab</EntButton>
+                    </CardBody>
+        </EntCard>
+
+    </EntMdiTab>
+</div>
+
+
+@code {
+
+    [Inject]
+    public IEntMdiService MdiService { get; set; } = default!;
+    
+    public async Task NewTab()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            await MdiService.AddNewTabAsync<UploadBoxPage>(Guid.NewGuid().ToString(), $"Upload Box {i}", "ri-upload-line");
+        }
+    }
+
+}

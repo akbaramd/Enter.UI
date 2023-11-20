@@ -9,8 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="Pages\Counter.razor" />
-    <None Include="Pages\FetchData.razor" />
     <None Include="Pages\Index.razor" />
     <None Include="Shared\MainLayout.razor" />
   </ItemGroup>

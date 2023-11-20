@@ -94,3 +94,16 @@ code {
 }
 
 
+.vertical-scroll {
+  display: flex !important;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.horizontal-scroll {
+  display: flex !important;
+  flex-direction: row;
+  flex: 1;
+  overflow-x: auto;
+}

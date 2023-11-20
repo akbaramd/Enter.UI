@@ -1,8 +1,12 @@
-﻿@using Enter.UI.Abstractions.Components.Icon
-@using Enter.UI.Abstractions.Components.Button
+﻿@using Enter.UI.Abstractions.Components.Button
+@using Enter.UI.Abstractions.Components.Icon
 @inherits EntComponentBase
 @namespace Enter.UI.Components
 <div @attributes="@AdditionalAttributes" class="@cssClass">
+    @if (ShowBack)
+    {
+        <EntButton @onclick="ToggleClick" Appearance="ButtonAppearance.Outline" Icon="EntIconName.ChevronRight"/>
+    }
     @if (ShowToggle)
     {
         <EntButton @onclick="ToggleClick" Appearance="ButtonAppearance.Outline" Icon="EntIconName.Bars"/>
@@ -12,26 +16,28 @@
 </div>
 
 @code {
-    
+
     protected string cssClass => CssClassBuilder
         .AddClass("ent-appbar")
         .Build();
 
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
-    
+
     [Parameter]
     public EventCallback ToggleClick { get; set; }
 
     [Parameter]
     public bool ShowToggle { get; set; } = false;
-    
+
+    [Parameter]
+    public bool ShowBack { get; set; } = false;
+
     [Parameter]
     public string Title { get; set; }
 
     public override void Dispose()
     {
-        
     }
 
-} 
+}

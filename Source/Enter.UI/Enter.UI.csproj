@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <Target Name="ToolRestore">
-    <Exec Command="dotnet tool restore" StandardOutputImportance="high" />
+<!--    <Exec Command="dotnet tool restore" StandardOutputImportance="high" />-->
   </Target>
 
   <!--Is this a rebuild - Dont clean generated files as this breaks rebuild behaviour-->
