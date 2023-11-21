@@ -2,6 +2,7 @@
 @using Enter.UI.Abstractions.Components.Button
 @using Enter.UI.Abstractions.Components.Icon
 @inherits EntComponentBase
+
 <button @attributes="@AdditionalAttributes" disabled="@Disabled" class="@RootClass">
     @if (Icon != null && !Loading)
     {
@@ -9,6 +10,7 @@
             <EntIcon class="icon" Icon="@Icon" IconSize="EntIconSize.Default" IconStyle="EntIconStyle.Light"/>
         </span>
     }
+    
     @if (Loading)
     {
         <span class="icon-wrapper">

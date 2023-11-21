@@ -1,7 +1,7 @@
 .ent-upload-box {
   
   .upload-container {
-    background-color: var(--ent-bg-base-highlight);
+    background-color: var(--ent-bg-neutral-highlight);
     padding: 31px;
     border: var(--ent-stroke-thin) dashed var(--ent-stroke-base);
     border-radius: var(--ent-radius-sm);
@@ -21,7 +21,7 @@
     flex-direction: column;
     
     .file-item {
-      background-color: var(--ent-bg-base-active);
+      background-color: var(--ent-bg-neutral-active);
       display: flex;
       width: 100%;
       border: var(--ent-stroke-thin) solid var(--ent-stroke-base-emphasis);
@@ -34,7 +34,7 @@
       .file-item-icon {
         align-items: center;
         border: var(--ent-stroke-thin) solid var(--ent-stroke-base);
-        background-color: var(--ent-bg-base-emphasis);
+        background-color: var(--ent-bg-neutral-emphasis);
         height: 48px;
         width: 48px;
         display: flex;

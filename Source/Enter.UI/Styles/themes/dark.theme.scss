@@ -1,56 +1,54 @@
 html[data-theme="dark"] {
 
-  // Background - Body
-  --ent-bg-page: #222222;
-  --ent-bg-body: #2f2f2f;
+  // Background
   
-  // Background - Base - Shade 5% OF BODY
+  --ent-bg-body: #222222;
   
-  --ent-bg-base: #383838;
-  --ent-bg-base-highlight: #3c3c3c;
-  --ent-bg-base-select: #404040;
-  --ent-bg-base-emphasis: #444444;
+  --ent-bg-base: #2f2f2f;
+  
+  --ent-bg-neutral: #383838;
+  --ent-bg-neutral-highlight: #3c3c3c;
+  --ent-bg-neutral-select: #404040;
+  --ent-bg-neutral-emphasis: #444444;
 
-  // Background - Primary
   --ent-bg-primary: #524eb7;
   --ent-bg-primary-highlight: #5552b8;
   --ent-bg-primary-select: #5955ba;
   --ent-bg-primary-emphasis: #5c59bb;
 
   // Foreground 
-  //Body
+  
   --ent-fg-body: #e6e6e6;
 
-  // Foreground - Base - Tint 5% OF BODY
   --ent-fg-base: #e7e7e7;
   --ent-fg-base-highlight: #e8e8e8;
   --ent-fg-base-select: #e8e8e8;
   --ent-fg-base-emphasis: #e9e9e9;
 
-  // Foreground - Base - Tint 95% OF BODY
   --ent-fg-light: #f4f4f4;
   --ent-fg-light-highlight: #f4f4f4;
   --ent-fg-light-select: #f4f4f4;
   --ent-fg-light-emphasis: #f4f4f4;
 
-  // Foreground - Primary
   --ent-fg-primary: #524eb7;
   --ent-fg-primary-highlight: #5552b8;
   --ent-fg-primary-select: #5955ba;
   --ent-fg-primary-emphasis: #5c59bb;
 
   // Stroke
-  // Base - Shade 10% BG Base
+  
   --ent-stroke-base: #3b3b3b;
   --ent-stroke-base-highlight: #3b3b3b;
   --ent-stroke-base-select: #3b3b3b;
   --ent-stroke-base-emphasis: #4f4f4f;
 
-  // Primary - Shade 10% BG Primary
   --ent-stroke-primary: #524eb7;
   --ent-stroke-primary-highlight: #5552b8;
   --ent-stroke-primary-select: #5955ba;
   --ent-stroke-primary-emphasis: #5c59bb;
+
+  
+  // Shaders
   
   --ent-primary: #524eb7;
   --ent-primary-emphasis: #5c59bb;

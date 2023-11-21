@@ -1,41 +1,55 @@
 ﻿
 :root {
   --ent-size-none: 0;
-  --ent-size-xxs-nudge: 0.125rem;
+  --ent-size-xxs-subtle: 0.125rem;
   --ent-size-xxs: 0.25rem;
-  --ent-size-xs-nudge: 0.375rem;
+  --ent-size-xs-subtle: 0.375rem;
   --ent-size-xs: 0.5rem;
-  --ent-size-sm-nudge: 0.625rem;
+  --ent-size-sm-subtle: 0.625rem;
   --ent-size-sm: 0.75rem;
-  --ent-size-md-nudge: 0.875rem;
+  --ent-size-md-subtle: 0.875rem;
   --ent-size-md: 1rem;
-  --ent-size-lg-nudge: 18px;
+  --ent-size-lg-subtle: 18px;
   --ent-size-lg: 20px;
-  --ent-size-xl-nudge: 22px;
+  --ent-size-xl-subtle: 22px;
   --ent-size-xl: 24px;
   --ent-size-xxl: 32px;
   --ent-size-xxxl: 48px;
-  
-  --ent-stroke-thin : calc(var(--ent-size-md)/16);
-  --ent-stroke-thick : calc((var(--ent-size-md)/16)*2);
-  --ent-stroke-thicker : 3px;
-  --ent-stroke-thickest : 3px;
 
-  --ent-transition-all : all 0.2s ease;
+  --ent-font-size-xs: 0.625rem;
+  --ent-font-size-sm: 0.75rem;
+  --ent-font-size: 0.875rem;
+  --ent-font-size-lg: 1rem;
+  --ent-font-size-xl: 1.125rem;
+  --ent-font-size-xxl: 1.25rem;
 
-  --ent-radius-none : 0px;
-  --ent-radius-xs : 1px;
-  --ent-radius-sm : 2px;
-  --ent-radius-md : 4px;
-  --ent-radius-lg : 6px;
-  --ent-radius-xl : 8px;
-  
-  
-  --ent-shadow-sm: 0 0 2px rgba(0,0,0,0.12) 0 1px 2px rgba(0,0,0,0.14);
-  --ent-shadow-md: 0 0 2px rgba(0,0,0,0.12) 0 2px 4px rgba(0,0,0,0.14);
-  --ent-shadow-lg: 0 0 2px rgba(0,0,0,0.12) 0 4px 8px rgba(0,0,0,0.14);
-  
-  
+  --ent-line-height-base-xs: 0.875rem;     // 14px
+  --ent-line-height-base-sm: 1rem; // 16px
+  --ent-line-height-base: 1.125rem;     // 18px
+  --ent-line-height-base-lg: 1.25rem; // 20px
+  --ent-line-height-base-xl: 1.375rem;   // 22px
+  --ent-line-height-base-xxl: 1.5rem;// 24px
+
+  --ent-stroke-thin: calc(var(--ent-size-md) / 16);
+  --ent-stroke-thick: calc((var(--ent-size-md) / 16) * 2);
+  --ent-stroke-thicker: 3px;
+  --ent-stroke-thickest: 3px;
+
+  --ent-transition-all: all 0.2s ease;
+
+  --ent-radius-none: 0px;
+  --ent-radius-xs: 1px;
+  --ent-radius-sm: 2px;
+  --ent-radius-md: 4px;
+  --ent-radius-lg: 6px;
+  --ent-radius-xl: 8px;
+
+
+  --ent-shadow-sm: 0 0 2px rgba(0, 0, 0, 0.12) 0 1px 2px rgba(0, 0, 0, 0.14);
+  --ent-shadow-md: 0 0 2px rgba(0, 0, 0, 0.12) 0 2px 4px rgba(0, 0, 0, 0.14);
+  --ent-shadow-lg: 0 0 2px rgba(0, 0, 0, 0.12) 0 4px 8px rgba(0, 0, 0, 0.14);
+
+
 }
 
 

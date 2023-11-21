@@ -12,11 +12,9 @@
 html,
 body {
   box-sizing: border-box;
-  background-color: var(--ent-bg-page);
+  background-color: var(--ent-bg-body);
   color: var(--ent-color-body);
-  font-size: var(--ent-body-font-size);
-  font-weight: var(--ent-body-font-weight);
-  line-height: var(--ent-body-line-height);
+  font-size: 16px;
   padding: 0;
   margin: 0;
 }
@@ -29,8 +27,6 @@ body {
 [dir="rtl"] body {
   direction: rtl;
 }
-
-
 
 p {
   margin-bottom: map-get($font-sizes, "medium");

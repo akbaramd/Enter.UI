@@ -1,16 +1,18 @@
 ﻿:root {
-  --ent-btn-space-x: var(--ent-size-sm);
-  --ent-btn-space-y: calc(var(--ent-size-xs) - var(--ent-stroke-thin));
-  --ent-btn-space-b: var(--ent-size-md);
-  --ent-btn-bg: var(--ent-bg-base);
-  --ent-btn-bg-hover: var(--ent-bg-base-highlight);
-  --ent-btn-bg-active: var(--ent-bg-base-emphasis);
+  --ent-btn-font-size: var(--ent-font-size);
+  --ent-btn-line-height: var(--ent-line-height-base); // 20
+  
+  --ent-btn-space-x: var(--ent-size-md);
+  --ent-btn-space-y: calc(var(--ent-size-xs-subtle) - var(--ent-stroke-thin)); // 10
+  --ent-btn-space-b: var(--ent-size-xs);
+  
+  --ent-btn-bg: var(--ent-bg-neutral);
+  --ent-btn-bg-hover: var(--ent-bg-neutral-highlight);
+  --ent-btn-bg-active: var(--ent-bg-neutral-emphasis);
   --ent-btn-cl: var(--ent-fg-base);
   --ent-btn-cl-hover: var(--ent-fg-base-highlight);
   --ent-btn-cl-active: var(--ent-fg-base-emphasis);
-  --ent-btn-font-size: var(--ent-size-md);
-  --ent-btn-line-height: calc(var(--ent-size-md) * 1.5);
-  --ent-btn-stroke: var(--ent-stroke-base);
+  --ent-btn-stroke: var(--ent-stroke-base); // 2
   --ent-btn-stroke-hover: var(--ent-stroke-base-highlight);
   --ent-btn-stroke-active: var(--ent-stroke-base-emphasis);
   --ent-btn-stroke-width: var(--ent-stroke-thin);
@@ -61,8 +63,7 @@
 
   &.ent-btn-only-icon {
     min-width: unset;
-    --ent-btn-space-x: var(--ent-size-xs);
-    --ent-btn-space-y: calc(var(--ent-size-xs) - var(--ent-stroke-thin));
+
     
     .icon-wrapper{
       margin: 0;  
@@ -117,9 +118,9 @@
 }
 
 .ent-btn-subtle {
-  --ent-btn-bg: var(--ent-bg-base-subtle);
+  --ent-btn-bg: var(--ent-bg-neutral-subtle);
   --ent-btn-cl: var(--ent-fg-base);
-  --ent-btn-stroke: var(--ent-bg-base-subtle);
+  --ent-btn-stroke: var(--ent-bg-neutral-subtle);
 }
 .ent-btn-subtle.ent-btn-primary {
   --ent-btn-bg: var(--ent-bg-primary-subtle);
@@ -140,43 +141,58 @@
 
 
 .ent-btn-size-sm {
- 
-  --ent-btn-font-size: var(--ent-size-md-nudge);
-  --ent-btn-line-height: calc(var(--ent-size-md) * 1);
+
+  // 24
+  --ent-btn-font-size: var(--ent-font-size-sm); 
+  --ent-btn-line-height: var(--ent-line-height-base-sm); // 16
+  --ent-btn-space-x: var(--ent-size-xs);
+  --ent-btn-space-y: calc(var(--ent-size-xxs) - var(--ent-stroke-thin)); // 10
+  --ent-btn-space-b: var(--ent-size-xxs);
 
 
+  &.ent-btn-only-icon {
+    --ent-btn-space-x: var(--ent-size-xxs);
+    --ent-btn-space-y: calc(var(--ent-size-xxs) - var(--ent-stroke-thin)); // 10
+  }
+  
   .icon-wrapper  {
-    width: calc(var(--ent-size-md) * 1);
-    height: calc(var(--ent-size-md) * 1);
+    width: var( --ent-size-md);
+    height: var(--ent-size-md);
     
     .icon {
-      font-size: var(--ent-size-md-nudge);
-      width: var(--ent-size-md-nudge);
-      height: var(--ent-size-md-nudge);
+      font-size: var(--ent-font-size-sm);
+      width: var(--ent-size-sm);
+      height: var(--ent-size-sm);
     }
   }
   
 }
 .ent-btn-size-md {
-  --ent-btn-font-size: var(--ent-size-md);
-  --ent-btn-line-height: calc(var(--ent-size-md) * 1.5);
 
-  .icon-wrapper {
-    width: calc(var(--ent-size-md) * 1.5);
-    height: calc(var(--ent-size-md) * 1.5);
+
+  &.ent-btn-only-icon {
+    --ent-btn-space-x: var(--ent-size-xxs);
+    --ent-btn-space-y: calc(var(--ent-size-xxs) - var(--ent-stroke-thin)); // 10
+  }
+
+  .icon-wrapper  {
+    width: var( --ent-size-md);
+    height: var(--ent-size-md);
 
     .icon {
-      font-size: var(--ent-size-md);
-      width: var(--ent-size-md);
-      height: var(--ent-size-md);
+      font-size: var(--ent-font-size-sm);
+      width: var(--ent-size-sm);
+      height: var(--ent-size-sm);
     }
   }
   
 }
 .ent-btn-size-lg {
-  --ent-btn-font-size: var(--ent-size-md);
-  --ent-btn-line-height: calc(var(--ent-size-md) * 2);
 
+  // y = 40
+  --ent-btn-font-size: var(--ent-font-size-lg);
+  --ent-btn-line-height: var(--ent-line-height-base-lg); 
+  
   .icon-wrapper {
     width: calc(var(--ent-size-md) * 2);
     height: calc(var(--ent-size-md) * 2);
