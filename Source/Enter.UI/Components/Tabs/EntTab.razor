@@ -6,9 +6,8 @@
     <div @attributes="@AdditionalAttributes" class="@RootCss">
         @if (Panels.Count > 0)
         {
-            var css = (Direction == EntTabDirection.Vertical)?"horizontal-scroll":"";
-            <ul class="ent-tab-item-container @css">
-
+           
+            <ul class="ent-tab-item-container">
                 @foreach (var tabPanels in Panels)
                 {
                     <li class="@GetItemClass(IsActiveTab(tabPanels.Id))" @onclick="() => ActivateTabAsync(tabPanels.Id)" @key="@tabPanels.Id">
@@ -20,9 +19,7 @@
                             }
                             @if (Closeable)
                             {
-                                <EntButton @onclick="() => OnTabClose(tabPanels.Id)" Icon="EntIconName.Remove" Size="ButtonSize.Small" class="ent-tab-close">
-
-                                </EntButton>
+                                <EntButton @onclick="() => OnTabClose(tabPanels.Id)" Icon="EntIconName.Remove" Size="ButtonSize.Small" class="ent-tab-close"/>
                             }
                         </span>
                     </li>
