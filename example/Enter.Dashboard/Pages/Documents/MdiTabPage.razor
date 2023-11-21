@@ -12,7 +12,8 @@
                               PanelClass="h-full"
                               ActiveClass=""
                               Closeable="true"
-                              class="border-0 vertical-scroll"
+               
+                              class="border-0 "
                               Direction="EntTabDirection.Vertical">
         <EntCard class="mt-4">
             <CardBody>
@@ -33,7 +34,7 @@
     {
         for (int i = 0; i < 5; i++)
         {
-            await MdiService.AddNewTabAsync<UploadBoxPage>(Guid.NewGuid().ToString(), $"Upload Box {i}", "ri-upload-line");
+            await MdiService.AddNewTabAsync<FormLayout>(Guid.NewGuid().ToString(), $"Upload Box {i}", "ri-upload-line");
         }
     }
 

@@ -1,27 +1,30 @@
 ﻿@using Enter.UI.Abstractions.Components.Icon
+@using Enter.UI.Abstractions.Components.Button
 @inherits EntTabBase
 @namespace Enter.UI.Components
-<CascadingValue Value="@this">
-    <div @attributes="@AdditionalAttributes" class="@RootCss" >
+<CascadingValue Value="@(this)">
+    <div @attributes="@AdditionalAttributes" class="@RootCss">
         @if (Panels.Count > 0)
         {
-            <ul class="ent-tab-item-container horizontal-scroll">
-                
+            var css = (Direction == EntTabDirection.Vertical)?"horizontal-scroll":"";
+            <ul class="ent-tab-item-container @css">
+
                 @foreach (var tabPanels in Panels)
                 {
-                   
-                    
                     <li class="@GetItemClass(IsActiveTab(tabPanels.Id))" @onclick="() => ActivateTabAsync(tabPanels.Id)" @key="@tabPanels.Id">
                         <span class="ent-tab-content">
                             <EntIcon Icon="@tabPanels.Icon"/>
-                            <span>@tabPanels.Title</span>
+                            @if (!IconMinify)
+                            {
+                                <span>@tabPanels.Title</span>
+                            }
+                            @if (Closeable)
+                            {
+                                <EntButton @onclick="() => OnTabClose(tabPanels.Id)" Icon="EntIconName.Remove" Size="ButtonSize.Small" class="ent-tab-close">
+
+                                </EntButton>
+                            }
                         </span>
-                        @if (Closeable)
-                        {
-                            <span @onclick="() => OnTabClose(tabPanels.Id)" class="ent-tab-close">
-                                <EntIcon Icon="EntIconName.Remove" IconSize="EntIconSize.Default" IconStyle="EntIconStyle.Light"/>
-                            </span>
-                        }
                     </li>
                 }
                 @if (Closeable)

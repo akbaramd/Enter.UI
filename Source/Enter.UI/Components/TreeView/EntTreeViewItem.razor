@@ -11,7 +11,7 @@
         <div class="ent-treeview-item-list-icon" @onclick="OnItemExpandClickCallback" @onclick:stopPropagation>
             @if (Item.Childrens != null && Item.Childrens.Any())
             {
-                <EntIcon IconSize="EntIconSize.Default" Icon="@EntIconName.ChevronDown"/>
+                <EntIcon IconSize="EntIconSize.Medium" Icon="@EntIconName.ChevronDown"/>
             }
         </div>
 
@@ -24,7 +24,7 @@
         @if (Item.Icon != null)
         {
             <div class="ent-treeview-item-icon">
-                <EntIcon IconSize="EntIconSize.Default" Icon="@Item.Icon"/>
+                <EntIcon IconSize="EntIconSize.Medium" Icon="@Item.Icon"/>
             </div>
         }
         <span class="ent-treeview-item-text">

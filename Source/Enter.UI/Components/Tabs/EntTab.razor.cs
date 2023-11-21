@@ -30,6 +30,7 @@ namespace Enter.UI.Components
 
         [Parameter] 
         public RenderFragment ChildContent { get; set; } = default!;
+
         
         [Parameter] public List<EntTabPanel> Panels { get; set; } = new List<EntTabPanel>();
 
@@ -46,6 +47,7 @@ namespace Enter.UI.Components
                 .AddClass("active",active)
                 .AddClass("ent-tab-item-horizontal", ItemDirection == EntTabItemDirection.Horizontal)
                 .AddClass("ent-tab-item-vertical", ItemDirection == EntTabItemDirection.Vertical)
+                .AddClass("ent-tab-item-minify", IconMinify)
                 .AddClass(ItemClass)
                 .Build();
         }
@@ -145,6 +147,8 @@ namespace Enter.UI.Components
         [Parameter] public string PanelClass { get; set; } = string.Empty;
         [Parameter] public string ActiveClass { get; set; } = string.Empty;
         [Parameter] public bool Expandable { get; set; } = false;
+        [Parameter]
+        public bool IconMinify { get; set; }
         [Parameter] public string TabNoContentMessage { get; set; } = "There is no content to display";
         [Parameter] public EntTabDirection Direction { get; set; } = EntTabDirection.Vertical;
         [Parameter] public EntTabItemDirection ItemDirection { get; set; } = EntTabItemDirection.Horizontal;

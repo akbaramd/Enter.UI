@@ -3,8 +3,11 @@ html[data-theme="dark"] {
   // Background
   
   --ent-bg-body: #222222;
+  --ent-bg-body-backdrop: rgba(231, 231, 231, 0.5);
+  --ent-bg-body-backdrop-sm: rgba(231, 231, 231, 0.25);
   
   --ent-bg-base: #2f2f2f;
+  --ent-bg-base-2: #333333;
   
   --ent-bg-neutral: #383838;
   --ent-bg-neutral-highlight: #3c3c3c;

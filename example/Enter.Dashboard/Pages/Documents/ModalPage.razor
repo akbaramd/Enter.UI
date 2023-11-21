@@ -1,0 +1,46 @@
+﻿@page "/documents/modals"
+@using Enter.UI.Abstractions.Components.Button
+@using Enter.UI.Abstractions.Components.Flex
+@using Enter.UI.Abstractions.Components.Icon
+@using Enter.Dashboard.Model
+@using Enter.UI.Abstractions.Components.Modal
+@using Enter.UI.Core
+@using System.Diagnostics.Metrics
+@inherits Enter.UI.Abstractions.Core.Bases.EntPageBase
+@layout DocumentLayout
+<div class="p-4">
+    <EntCard Expandable="true"  Title="Modals">
+        <CardBody>
+            <EntFlex Direction="FlexDirection.Column"
+                     LaptopDirection="FlexDirection.Row"
+                     LaptopAlign="FlexAlign.StartCenter"
+                     Gap="4">
+                <EntButton type="button" @onclick="() => OpenModal(EntModalSize.ExtraLarge)">Modal ExtraLarge</EntButton>
+                <EntButton type="button" @onclick="() => OpenModal(EntModalSize.Large)">Modal Large</EntButton>
+                <EntButton type="button" @onclick="() => OpenModal(EntModalSize.Medium)">Modal Medium</EntButton>
+                <EntButton type="button" @onclick="() => OpenModal(EntModalSize.Small)">Modal Small</EntButton>
+                <EntButton type="button" @onclick="() => OpenModal(EntModalSize.Fullscreen)">Modal FullScreen</EntButton>
+            </EntFlex>
+        </CardBody>
+    </EntCard>
+
+</div>
+
+@code {
+
+    public async Task OpenModal(EntModalSize size)
+    {
+        var confirmResult = await ModalService.MessageBoxAsync("Open Modal", "Are you sure to oprn Modal?", "Show", "Dismiss");
+        if (!confirmResult.Canceled)
+        {
+    var parameter = new ParameterBuilder<UploadBoxPage>()
+        .Build();
+    
+    var result = await ModalService.ShowAsync<UploadBoxPage>("sada", parameter, new EntModalOptions
+    {
+        Size = size
+    });
+        }
+    }
+
+}

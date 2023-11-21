@@ -977,6 +977,20 @@ $utilities: (
                                 )
                 ),
         ),
+        margin-y: (
+                property: margin-top margin-bottom,
+                propertyRtl: margin-top margin-bottom,
+                cssName: my,
+                breakpoint: true,
+                values: $sizes,
+        ),
+        margin-x: (
+                property: margin-left margin-right,
+                propertyRtl: margin-left margin-right,
+                cssName: mx,
+                breakpoint: true,
+                values: $sizes,
+        ),
   // Position
         position:
         (

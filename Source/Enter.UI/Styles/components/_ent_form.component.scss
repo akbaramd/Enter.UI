@@ -5,15 +5,15 @@
     --ent-input-popover-hover-bg: var(--ent-bg-neutral-active);
     --ent-input-color: var(--ent-fg-base);
     --ent-input-color-placeholder: var(--ent-fg-base-highlight);
-    --ent-input-font-size: var(--ent-size-md);
-    --ent-input-line-height: calc(var(--ent-size-md) * 1.5);
+    --ent-input-font-size: 14px;
+    --ent-input-line-height: 20px;
     --ent-input-stroke-color: var(--ent-stroke-base);
     --ent-input-stroke-color-focus: var(--ent-stroke-base-emphasis);
     --ent-input-stroke-size: var(--ent-stroke-thin);
     --ent-input-stroke-style: solid;
     --ent-input-border-radius: var(--ent-radius-sm);
-    --ent-input-space-x: var(--ent-size-sm);
-    --ent-input-space-y: calc(var(--ent-size-xs) - var(--ent-stroke-thin));
+    --ent-input-space-x: 12px;
+    --ent-input-space-y: 5px;
     --ent-input-icon-color: var(--ent-fg-base);
     
 }
@@ -58,8 +58,10 @@
 
 .ent-input.ent-input-lg {
     > .ent-input-field {
-        --ent-btn-font-size: var(--ent-size-md);
-        --ent-btn-line-height: calc(var(--ent-size-md) * 2);
+        --ent-input-font-size: 16px;
+        --ent-input-line-height: 24px;
+        --ent-input-space-x: 16px;
+        --ent-input-space-y: 7px;
 
     }
 }
@@ -67,8 +69,10 @@
 
 .ent-input.ent-input-sm {
     > .ent-input-field {
-        --ent-btn-font-size: var(--ent-size-md-nudge);
-        --ent-btn-line-height: calc(var(--ent-size-md) * 1);
+        --ent-input-font-size: 12px;
+        --ent-input-line-height: 16px;
+        --ent-input-space-x: 8px;
+        --ent-input-space-y: 3px;
     }
 }
 

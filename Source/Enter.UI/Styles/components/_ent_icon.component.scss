@@ -1,44 +1,21 @@
 .ent-icon {
-  font-size: 1rem;
+  font-size: 14px;
+  height: 14px;
+  width: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--ent-color-body);
   fill: var(--ent-color-body);
 }
-.ent-icon-size-xs {
-  font-size: 0.75rem;
-}
+
 .ent-icon-size-sm {
-  font-size: 0.875rem;
+  font-size: 12px;
+  height: 12px;
+  width: 12px;
 }
 .ent-icon-size-lg {
-  font-size: 1.25rem;
-}
-.ent-icon-size-xl {
-  font-size: 1.5rem;
-}
-.ent-icon-size-x2 {
-  font-size: 2rem;
-}
-.ent-icon-size-x3 {
-  font-size: 3rem;
-}
-.ent-icon-size-x4 {
-  font-size: 4rem;
-}
-.ent-icon-size-x5 {
-  font-size: 5rem;
-}
-.ent-icon-size-x6 {
-  font-size: 6rem;
-}
-.ent-icon-size-x7 {
-  font-size: 7rem;
-}
-.ent-icon-size-x8 {
-  font-size: 8rem;
-}
-.ent-icon-size-x9 {
-  font-size: 9rem;
-}
-.ent-icon-size-x10 {
-  font-size: 10rem;
+  font-size: 16px;
+  height: 16px;
+  width: 16px;
 }

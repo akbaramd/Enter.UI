@@ -1,10 +1,10 @@
 ﻿:root {
-  --ent-btn-font-size: var(--ent-font-size);
-  --ent-btn-line-height: var(--ent-line-height-base); // 20
+  --ent-btn-font-size: 14px;
+  --ent-btn-line-height: 20px;
   
-  --ent-btn-space-x: var(--ent-size-md);
-  --ent-btn-space-y: calc(var(--ent-size-xs-subtle) - var(--ent-stroke-thin)); // 10
-  --ent-btn-space-b: var(--ent-size-xs);
+  --ent-btn-space-x: 12px;
+  --ent-btn-space-y: 5px; 
+  --ent-btn-space-b: 8px;
   
   --ent-btn-bg: var(--ent-bg-neutral);
   --ent-btn-bg-hover: var(--ent-bg-neutral-highlight);
@@ -37,7 +37,7 @@
   padding: var(--ent-btn-space-y) var(--ent-btn-space-x);
   border-radius: var(--ent-btn-border-radius);
   cursor: pointer;
-  min-width: 96px;
+  //min-width: 96px;
   transition: var(--ent-transition-all);
   overflow: hidden;
   &:hover {
@@ -142,27 +142,28 @@
 
 .ent-btn-size-sm {
 
-  // 24
-  --ent-btn-font-size: var(--ent-font-size-sm); 
-  --ent-btn-line-height: var(--ent-line-height-base-sm); // 16
-  --ent-btn-space-x: var(--ent-size-xs);
-  --ent-btn-space-y: calc(var(--ent-size-xxs) - var(--ent-stroke-thin)); // 10
-  --ent-btn-space-b: var(--ent-size-xxs);
+  --ent-btn-font-size: 12px;
+  --ent-btn-line-height: 16px;
+
+  --ent-btn-space-x: 8px;
+  --ent-btn-space-y: 3px;
+  --ent-btn-space-b: 6px;
+
 
 
   &.ent-btn-only-icon {
-    --ent-btn-space-x: var(--ent-size-xxs);
-    --ent-btn-space-y: calc(var(--ent-size-xxs) - var(--ent-stroke-thin)); // 10
+    --ent-btn-space-x: 3px;
+    --ent-btn-space-y: 3px;
   }
-  
+
   .icon-wrapper  {
-    width: var( --ent-size-md);
-    height: var(--ent-size-md);
-    
+    width: 16px;
+    height: 16px;
+
     .icon {
-      font-size: var(--ent-font-size-sm);
-      width: var(--ent-size-sm);
-      height: var(--ent-size-sm);
+      font-size: 12px;
+      width: 12px;
+      height: 12px;
     }
   }
   
@@ -171,38 +172,47 @@
 
 
   &.ent-btn-only-icon {
-    --ent-btn-space-x: var(--ent-size-xxs);
-    --ent-btn-space-y: calc(var(--ent-size-xxs) - var(--ent-stroke-thin)); // 10
+    --ent-btn-space-x: 5px;
+    --ent-btn-space-y: 5px;
   }
 
   .icon-wrapper  {
-    width: var( --ent-size-md);
-    height: var(--ent-size-md);
+    width: 20px;
+    height: 20px;
 
     .icon {
-      font-size: var(--ent-font-size-sm);
-      width: var(--ent-size-sm);
-      height: var(--ent-size-sm);
+      font-size: 14px;
+      width: 14px;
+      height: 14px;
     }
   }
   
 }
 .ent-btn-size-lg {
 
-  // y = 40
-  --ent-btn-font-size: var(--ent-font-size-lg);
-  --ent-btn-line-height: var(--ent-line-height-base-lg); 
-  
-  .icon-wrapper {
-    width: calc(var(--ent-size-md) * 2);
-    height: calc(var(--ent-size-md) * 2);
-    
+  --ent-btn-font-size: 16px;
+  --ent-btn-line-height: 24px;
+
+  --ent-btn-space-x: 16px;
+  --ent-btn-space-y: 7px;
+  --ent-btn-space-b: 8px;
+
+
+
+  &.ent-btn-only-icon {
+    --ent-btn-space-x: 7px;
+    --ent-btn-space-y: 7px;
+  }
+
+  .icon-wrapper  {
+    width: 24px;
+    height: 24px;
+
     .icon {
-      font-size: var(--ent-size-lg-nudge);
-      width: var(--ent-size-lg-nudge);
-      height: var(--ent-size-lg-nudge);
+      font-size: 16px;
+      width: 16px;
+      height: 16px;
     }
-    
   }
   
 }

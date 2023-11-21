@@ -4,15 +4,16 @@
   --ent-toolbar-space-b: var(--ent-size-xs);
   --ent-toolbar-z-index: var(--ent-z-index-tertiary);
   --ent-toolbar-bg: var(--ent-bg-base);
-  --ent-toolbar-border-width: var(--ent-border-width);
-  --ent-toolbar-border-style: var(--ent-border-style);
+  --ent-toolbar-border-width: 1px;
+  --ent-toolbar-border-style: solid;
   --ent-toolbar-border-color: var(--ent-stroke-base);
   --ent-toolbar-border-radius: var(--ent-border-radius);
-  --ent-toolbar-box-shadow: var(--ent-shadow);
+  --ent-toolbar-box-shadow: var(--ent-shadow-sm);
 }
 
 .ent-toolbar {
-  padding: var(--ent-toolbar-space-y) var(--ent-toolbar-space-x);
+  padding: 8px 12px 7px 12px;
+  border-bottom: var(--ent-toolbar-border-width) var(--ent-toolbar-border-style) var(--ent-toolbar-border-color);
   background-color: var(--ent-toolbar-bg);
   box-shadow: var(--ent-toolbar-box-shadow);
   z-index: var(--ent-toolbar-z-index);
@@ -20,6 +21,6 @@
   flex-direction: row;
   align-items: center;
   justify-content: start;
-  gap: var( --ent-toolbar-space-b);
+  gap: 4px;
 }
 

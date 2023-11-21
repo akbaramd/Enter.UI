@@ -32,13 +32,11 @@
     -o-animation: ent-animation-fadein ease 0.15s; 
 
     &.ent-overlay-dark {
-      border-color: #333333aa;
-      background-color: #333333aa; 
+      background-color: var(--ent-bg-body-backdrop-sm); 
     }
 
     &.ent-overlay-light {
-      border-color: #aaaaaa33;
-      background-color: #aaaaaa33;
+      background-color: var(--ent-bg-body-backdrop-sm);
     }
     &:hover {
       cursor: default;
