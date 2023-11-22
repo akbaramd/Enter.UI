@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
-using Enter.UI.Abstractions.Components.Icon;
-using Enter.UI.Abstractions.Core.Bases;
+using Enter.UI.Components.Icon;
+using Enter.UI.Core.Bases;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.DependencyInjection;
 

@@ -30,10 +30,10 @@
   --ent-line-height-base-xl: 1.375rem;   // 22px
   --ent-line-height-base-xxl: 1.5rem;// 24px
 
-  --ent-stroke-thin: calc(var(--ent-size-md) / 16);
-  --ent-stroke-thick: calc((var(--ent-size-md) / 16) * 2);
+  --ent-stroke-thin: 1px;
+  --ent-stroke-thick: 2px;
   --ent-stroke-thicker: 3px;
-  --ent-stroke-thickest: 3px;
+  --ent-stroke-thickest: 4px;
 
   --ent-transition-all: all 0.2s ease;
 

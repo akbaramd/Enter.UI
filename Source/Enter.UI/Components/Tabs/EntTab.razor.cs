@@ -1,5 +1,5 @@
-using Enter.UI.Abstractions.Core;
-using Enter.UI.Abstractions.Core.Bases;
+using Enter.UI.Core;
+using Enter.UI.Core.Bases;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
@@ -12,7 +12,9 @@ namespace Enter.UI.Components
     {
         
         
+        private bool _toogleMenu = false;
         private string? _activeTabId = null;
+        private EntTabPanel? _activeTab => Panels.FirstOrDefault(x=>x.Id.Equals(_activeTabId));
         
         protected string RootCss => CssClassBuilder
       
@@ -82,8 +84,13 @@ namespace Enter.UI.Components
             {
                 _activeTabId = panel.Id;
             }
+            if (Responsive)
+            {
+                _toogleMenu = false;
+            }
             StateHasChanged();
             await OnTabActivated.InvokeAsync(_activeTabId);
+
         }
 
         public async Task RemoveTabAsync(string? id)
@@ -103,8 +110,12 @@ namespace Enter.UI.Components
             {
                 await ActivateTabAsync(Panels.First().Id);
             }
+        
+
             StateHasChanged();
             await OnTabRemoved.InvokeAsync(id);
+
+           
         }
 
         public bool IsActiveTab(string? id)
@@ -119,11 +130,17 @@ namespace Enter.UI.Components
         private async Task OnTabClose(string id)
         {
             await OnTabClosedClick.InvokeAsync(id);
+            
         }
 
         private async Task OnTabAllClose()
         {
             await OnAllTabClosedClick.InvokeAsync();
+        }
+
+        private void OnToggleMenu()
+        {
+            _toogleMenu = !_toogleMenu;
         }
     }
 
@@ -144,6 +161,7 @@ namespace Enter.UI.Components
         [Parameter] public bool KeepPanelAlive { get; set; } = false;
         [Parameter] public bool Closeable { get; set; } = false;
         [Parameter] public string ItemClass { get; set; } = string.Empty;
+        [Parameter] public bool Responsive { get; set; }
         [Parameter] public string PanelClass { get; set; } = string.Empty;
         [Parameter] public string ActiveClass { get; set; } = string.Empty;
         [Parameter] public bool Expandable { get; set; } = false;

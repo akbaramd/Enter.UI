@@ -1,5 +1,5 @@
 using Enter.UI.Abstractions;
-using Enter.UI.Abstractions.Components.Icon;
+using Enter.UI.Components.Icon;
 using Enter.UI.Components;
 using Enter.UI.Providers;
 using Microsoft.Extensions.DependencyInjection;

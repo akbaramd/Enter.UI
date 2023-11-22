@@ -1,38 +1,82 @@
-﻿@using Enter.UI.Abstractions.Components.Icon
-@using Enter.UI.Abstractions.Components.Button
+﻿@using Enter.UI.Components.Icon
+@using Enter.UI.Components.Button
 @inherits EntTabBase
 @namespace Enter.UI.Components
 <CascadingValue Value="@(this)">
     <div @attributes="@AdditionalAttributes" class="@RootCss">
         @if (Panels.Count > 0)
         {
-           
-            <ul class="ent-tab-item-container">
-                @foreach (var tabPanels in Panels)
-                {
-                    <li class="@GetItemClass(IsActiveTab(tabPanels.Id))" @onclick="() => ActivateTabAsync(tabPanels.Id)" @key="@tabPanels.Id">
-                        <span class="ent-tab-content">
-                            <EntIcon Icon="@tabPanels.Icon"/>
-                            @if (!IconMinify)
-                            {
-                                <span>@tabPanels.Title</span>
-                            }
-                            @if (Closeable)
-                            {
-                                <EntButton @onclick="() => OnTabClose(tabPanels.Id)" Icon="EntIconName.Remove" Size="ButtonSize.Small" class="ent-tab-close"/>
-                            }
-                        </span>
-                    </li>
-                }
-                @if (Closeable)
-                {
-                    <li class="@GetItemClass(false)">
-                        <span @onclick="OnTabAllClose" class="ent-tab-action ">
-                            <EntIcon Icon="EntIconName.Delete" Type="EntIconType.IconTag"/>
-                        </span>
-                    </li>
-                }
-            </ul>
+
+            @if (Responsive)
+            {
+                <div class="ent-tab-item-container-responsive">
+                    @if (_activeTab != null)
+                    {
+                        <div class="ent-tab-item-container-responsive-header">
+                            <span class="ent-tab-content">
+                                <EntButton @onclick="OnToggleMenu" Icon="EntIconName.Dashboard" class="ent-tab-close-all" />
+                                @if (!IconMinify)
+                                {
+                                    <span>@_activeTab.Title</span>
+                                }
+                                <EntButton @onclick="() => OnTabClose(_activeTab.Id)" Icon="EntIconName.Remove" class="ent-tab-close-all" />
+                            </span>
+                        </div>
+                        <EntExpandable @bind-Expanded="@_toogleMenu" class="ent-tab-item-container-responsive-body">
+                            <ul class="ent-tab-item-container">
+                                @foreach (var tabPanels in Panels)
+                                {
+                                    <li class="@GetItemClass(IsActiveTab(tabPanels.Id))" @onclick="() => ActivateTabAsync(tabPanels.Id)" @key="@tabPanels.Id">
+                                        <span class="ent-tab-content">
+                                            <EntIcon Icon="@tabPanels.Icon" />
+                                            @if (!IconMinify)
+                                            {
+                                                <span>@tabPanels.Title</span>
+                                            }
+                                            @if (Closeable)
+                                            {
+                                                <EntButton @onclick="() => OnTabClose(tabPanels.Id)" Icon="EntIconName.Remove"  class="ent-tab-close" />
+                                            }
+                                        </span>
+                                    </li>
+                                }
+                            </ul>
+                            <div class="ent-tab-item-actions" >
+                                <EntButton @onclick="OnTabAllClose" Icon="EntIconName.Delete" />
+                            </div>
+                        </EntExpandable>
+                    }
+                </div>
+            }
+            else
+            {
+                <ul class="ent-tab-item-container">
+                    @foreach (var tabPanels in Panels)
+                    {
+                        <li class="@GetItemClass(IsActiveTab(tabPanels.Id))" @onclick="() => ActivateTabAsync(tabPanels.Id)" @key="@tabPanels.Id">
+                            <span class="ent-tab-content">
+                                <EntIcon Icon="@tabPanels.Icon" />
+                                @if (!IconMinify)
+                                {
+                                    <span>@tabPanels.Title</span>
+                                }
+                                @if (Closeable)
+                                {
+                                    <EntButton @onclick="() => OnTabClose(tabPanels.Id)" Icon="EntIconName.Remove" Size="ButtonSize.Small" class="ent-tab-close" />
+                                }
+                            </span>
+                        </li>
+                    }
+                    @if (Closeable)
+                    {
+                        <li class="@GetItemClass(false)">
+                            <span @onclick="OnTabAllClose" class="ent-tab-action ">
+                                <EntIcon Icon="EntIconName.Delete" Type="EntIconType.IconTag" />
+                            </span>
+                        </li>
+                    }
+                </ul>
+            }
         }
         else
         {

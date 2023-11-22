@@ -1,4 +1,4 @@
-﻿using Enter.UI.Abstractions.JsServices;
+﻿using Enter.UI.JsServices;
 using Enter.UI.JsService;
 using Microsoft.JSInterop;
 

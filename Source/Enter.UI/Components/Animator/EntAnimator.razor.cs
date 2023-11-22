@@ -1,5 +1,5 @@
-﻿using Enter.UI.Abstractions.Components.Animator;
-using Enter.UI.Abstractions.Core.Bases;
+﻿using Enter.UI.Components.Animator;
+using Enter.UI.Core.Bases;
 using Microsoft.AspNetCore.Components;
 
 namespace Enter.UI.Components;

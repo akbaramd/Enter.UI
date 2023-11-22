@@ -1,5 +1,5 @@
-﻿using Enter.UI.Abstractions.Components.Modal;
-using Enter.UI.Abstractions.Services;
+﻿using Enter.UI.Components.Modal;
+using Enter.UI.Services;
 using Enter.UI.Core;
 using Microsoft.AspNetCore.Components;
 

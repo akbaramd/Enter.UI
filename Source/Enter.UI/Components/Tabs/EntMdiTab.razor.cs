@@ -1,9 +1,9 @@
-using Enter.UI.Abstractions.Services;
+using Enter.UI.Services;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Enter.UI.Core;
-using Enter.UI.Abstractions.Components.Tabs;
+using Enter.UI.Components.Tabs;
 
 namespace Enter.UI.Components
 {

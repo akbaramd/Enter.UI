@@ -1,8 +1,8 @@
-﻿@using Enter.UI.Abstractions.Components.Drawer
-@using Enter.UI.Abstractions.Components.Icon
-@using Enter.UI.Abstractions.Core.Enums
-@using Enter.UI.Abstractions.Services
-@using Enter.UI.Abstractions.Components.Button
+﻿@using Enter.UI.Components.Drawer
+@using Enter.UI.Components.Icon
+@using Enter.UI.Core.Enums
+@using Enter.UI.Services
+@using Enter.UI.Components.Button
 @inherits LayoutComponentBase
 @implements IDisposable
 <div class="h-full border-y d-flex flex-column">
@@ -15,19 +15,20 @@
         <EntDrawerContainer class="flex-grow-1">
             <EntDrawer HasBackdrop="HasBackdrop" @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start" Mode="_drawerMode" class="z-50">
                 <EntNavMenu class="border-0">
-                    <EntNavMenuGroup Title="Components" Icon="EntIconName.Note">
+                    <EntNavMenuTextItem class="bg-light" Text="Buttons" Click="@(() => Navigate("/documents/buttons"))"/>
+                    <EntNavMenuGroup Title="Documents">
                         <EntNavMenuTextItem class="bg-light" Text="Buttons" Click="@(() => Navigate("/documents/buttons"))"/>
                         <EntNavMenuTextItem class="bg-light" Text="Icons" Click="@(() => Navigate("/documents/icons"))"/>
-                        <EntNavMenuTextItem class="bg-light"  Text="Shimmer" Click="@(() => Navigate("/documents/shimmer"))"/>
-                        <EntNavMenuTextItem class="bg-light"  Text="Loading" Click="@(() => Navigate("/documents/loading"))"/>
-                        <EntNavMenuTextItem class="bg-light"  Text="Modals" Click="@(() => Navigate("/documents/modals"))"/>
-                        <EntNavMenuTextItem class="bg-light"  Text="TreeView" Click="@(() => Navigate("/documents/treeview"))"/>
-                        <EntNavMenuTextItem class="bg-light"  Text="NavMenu" Click="@(() => Navigate("/documents/navmenu"))"/>
-                        <EntNavMenuTextItem class="bg-light"  Text="Table" Click="@(() => Navigate("/documents/datatable"))"/>
-                        <EntNavMenuTextItem class="bg-light"  Text="Forms" Click="@(() => Navigate("/documents/form"))"/>
-                        <EntNavMenuTextItem class="bg-light"  Text="Pagination" Click="@(() => Navigate("/documents/pagination"))"/>
-                        <EntNavMenuTextItem class="bg-light"  Text="MdiTab" Click="@(() => Navigate("/documents/mdi-tabs"))"/>
-                        <EntNavMenuTextItem class="bg-light"  Text="Upload Box" Click="@(() => Navigate("/documents/upload-box"))"/>
+                        <EntNavMenuTextItem class="bg-light" Text="Shimmer" Click="@(() => Navigate("/documents/shimmer"))"/>
+                        <EntNavMenuTextItem class="bg-light" Text="Loading" Click="@(() => Navigate("/documents/loading"))"/>
+                        <EntNavMenuTextItem class="bg-light" Text="Modals" Click="@(() => Navigate("/documents/modals"))"/>
+                        <EntNavMenuTextItem class="bg-light" Text="TreeView" Click="@(() => Navigate("/documents/treeview"))"/>
+                        <EntNavMenuTextItem class="bg-light" Text="NavMenu" Click="@(() => Navigate("/documents/navmenu"))"/>
+                        <EntNavMenuTextItem class="bg-light" Text="Table" Click="@(() => Navigate("/documents/datatable"))"/>
+                        <EntNavMenuTextItem class="bg-light" Text="Forms" Click="@(() => Navigate("/documents/form"))"/>
+                        <EntNavMenuTextItem class="bg-light" Text="Pagination" Click="@(() => Navigate("/documents/pagination"))"/>
+                        <EntNavMenuTextItem class="bg-light" Text="MdiTab" Click="@(() => Navigate("/documents/mdi-tabs"))"/>
+                        <EntNavMenuTextItem class="bg-light" Text="Upload Box" Click="@(() => Navigate("/documents/upload-box"))"/>
                     </EntNavMenuGroup>
                     <EntNavMenuGroup Title="Api" Icon="EntIconName.Home">
                         P

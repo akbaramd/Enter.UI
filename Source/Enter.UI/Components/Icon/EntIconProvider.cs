@@ -1,4 +1,4 @@
-﻿using Enter.UI.Abstractions.Components.Icon;
+﻿using Enter.UI.Components.Icon;
 
 namespace Enter.UI.Components;
 

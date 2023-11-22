@@ -1,4 +1,4 @@
-using Enter.UI.Abstractions.Core.Bases;
+using Enter.UI.Core.Bases;
 using global::System;
 using global::System.Collections.Generic;
 using global::System.Linq;

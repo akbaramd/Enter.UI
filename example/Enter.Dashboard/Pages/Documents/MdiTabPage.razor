@@ -1,13 +1,13 @@
 ﻿@page "/documents/mdi-tabs"
-@using Enter.UI.Abstractions.Components.Button
-@using Enter.UI.Abstractions.Components.Flex
-@using Enter.UI.Abstractions.Components.Icon
+@using Enter.UI.Components.Button
+@using Enter.UI.Components.Flex
+@using Enter.UI.Components.Icon
 @using Enter.Dashboard.Model
-@using Enter.UI.Abstractions.Services
-@inherits Enter.UI.Abstractions.Core.Bases.EntPageBase
+@using Enter.UI.Services
+@inherits Enter.UI.Core.Bases.EntPageBase
 @layout DocumentLayout
 <div class="p-4">
-    <EntMdiTab ItemDirection="EntTabItemDirection.Horizontal"
+    <EntMdiTab Responsive ItemDirection="EntTabItemDirection.Horizontal"
                               KeepPanelAlive="true"
                               PanelClass="h-full"
                               ActiveClass=""

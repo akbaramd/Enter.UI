@@ -1,4 +1,4 @@
-﻿using Enter.UI.Abstractions.Components.TreeView;
+﻿using Enter.UI.Components.TreeView;
 using Enter.UI.Components;
 
 namespace Enter.Dashboard.Model;

@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Enter.UI.Abstractions.Core.Bases;
+using Enter.UI.Core.Bases;
 
 
 namespace Enter.UI.Components
@@ -35,9 +35,10 @@ namespace Enter.UI.Components
         [Parameter]
         public string  Text { get; set; }
 
+
+
         [Parameter]
         public EventCallback Click { get; set; }
-
         public override void Dispose()
         {
             

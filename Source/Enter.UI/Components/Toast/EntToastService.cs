@@ -1,5 +1,5 @@
-using Enter.UI.Abstractions.Components.Toast;
-using Enter.UI.Abstractions.Services;
+using Enter.UI.Components.Toast;
+using Enter.UI.Services;
 
 namespace Enter.UI.Components;
 

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Enter.UI.Abstractions.Core.Bases;
+using Enter.UI.Core.Bases;
 using Microsoft.JSInterop;
 
 namespace Enter.UI.Components

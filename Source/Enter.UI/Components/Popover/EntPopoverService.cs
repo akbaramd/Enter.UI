@@ -1,6 +1,6 @@
-﻿using Enter.UI.Abstractions.Components.Popover;
-using Enter.UI.Abstractions.JsServices;
-using Enter.UI.Abstractions.Services;
+﻿using Enter.UI.Components.Popover;
+using Enter.UI.JsServices;
+using Enter.UI.Services;
 using Enter.UI.Interops;
 using Enter.UI.JsService;
 using Microsoft.AspNetCore.Components;
