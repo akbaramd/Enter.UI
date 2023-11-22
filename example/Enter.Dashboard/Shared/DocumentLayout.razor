@@ -4,12 +4,13 @@
 @using Enter.UI.Abstractions.Services
 @using Enter.UI.Abstractions.Components.Button
 @inherits LayoutComponentBase
+@implements IDisposable
 <div class="h-full border-y d-flex flex-column">
     <div class="d-flex flex-column flex-grow-1">
         <EntAppBar ShowToggle="_showToggle" ToggleClick="ToggleSidebar" Title="Enterprise Dashboard">
-            <EntButton @onclick="ToggleRtl" Icon="EntIconName.AlignRight" Size="ButtonSize.Small" >راستچین</EntButton>
-            <EntButton @onclick="ToggleDarkMode" Icon="EntIconName.Moon" Size="ButtonSize.Small" class="d-none laptop:d-flex" >Dark / Light</EntButton>
-            <EntButton @onclick="() => _isSideDrawerOpen = !_isSideDrawerOpen" Icon="EntIconName.Comment" class="d-none laptop:d-flex" Size="ButtonSize.Small" >Sidebar</EntButton>
+            <EntButton @onclick="ToggleRtl" Icon="EntIconName.AlignRight" />
+            <EntButton @onclick="ToggleDarkMode" Icon="EntIconName.Moon"  />
+            <EntButton @onclick="() => _isSideDrawerOpen = !_isSideDrawerOpen" Icon="EntIconName.Note" />
         </EntAppBar>
         <EntDrawerContainer class="flex-grow-1">
             <EntDrawer HasBackdrop="HasBackdrop" @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start" Mode="_drawerMode" class="z-50">
@@ -74,18 +75,24 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        await base.OnInitializedAsync();
-
         if (firstRender)
         {
             if (EntThemeProvider != null)
             {
+
+                var breakPoint =await EntThemeProvider.SharedJsService.GetBreakpointAsync();
+                HandleMobileSize(breakPoint);
                 EntThemeProvider.BreakpointChangeEvent += EntThemeProviderBreakpointChangeEvent;
             }
         }
     }
 
     private void EntThemeProviderBreakpointChangeEvent(EntBreakpoint breakpoint)
+    {
+        HandleMobileSize(breakpoint);
+    }
+
+    public void HandleMobileSize(EntBreakpoint breakpoint)
     {
         _drawerMode = breakpoint > EntBreakpoint.Tablet ? EntDrawerMode.Behavior : EntDrawerMode.Overlay;
         _isDrawerOpen = breakpoint > EntBreakpoint.Tablet;
@@ -118,4 +125,11 @@
         StateHasChanged();
     }
 
+    public void Dispose()
+    {
+        if (EntThemeProvider != null)
+        {
+            EntThemeProvider.BreakpointChangeEvent -= EntThemeProviderBreakpointChangeEvent;
+        }
+    }
 }

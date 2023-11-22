@@ -19,49 +19,10 @@ body {
   margin: 0;
 }
 
-* {
-  box-sizing: border-box;
-  border-collapse: collapse;
-}
 
 [dir="rtl"] body {
   direction: rtl;
 }
-
-p {
-  margin-bottom: map-get($font-sizes, "medium");
-}
-
-
-h1 {
-  margin-top: 0;
-  font-size: map-get($font-sizes, "title-lg");
-}
-
-h2 {
-  font-size: map-get($font-sizes, "title");
-}
-
-h3 {
-  font-size: map-get($font-sizes, "title-sm");
-}
-
-h4 {
-  font-size: map-get($font-sizes, "medium-lg");
-}
-
-h5 {
-  font-size: map-get($font-sizes, "medium")
-}
-
-h6 {
-  font-size: map-get($font-sizes, "medium-sm")
-}
-
-small, .text_small {
-  font-size: map-get($font-sizes, "subtitle")
-}
-
 
 .cursor-pointer {
   cursor: pointer;

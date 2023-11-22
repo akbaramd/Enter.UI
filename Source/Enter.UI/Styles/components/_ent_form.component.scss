@@ -6,14 +6,14 @@
     --ent-input-color: var(--ent-fg-base);
     --ent-input-color-placeholder: var(--ent-fg-base-highlight);
     --ent-input-font-size: 14px;
-    --ent-input-line-height: 20px;
+    --ent-input-line-height: 24px;
     --ent-input-stroke-color: var(--ent-stroke-base);
     --ent-input-stroke-color-focus: var(--ent-stroke-base-emphasis);
     --ent-input-stroke-size: var(--ent-stroke-thin);
     --ent-input-stroke-style: solid;
-    --ent-input-border-radius: var(--ent-radius-sm);
-    --ent-input-space-x: 12px;
-    --ent-input-space-y: 5px;
+    --ent-input-border-radius: var(--ent-radius-md);
+    --ent-input-space-x: 11px;
+    --ent-input-space-y: 7px;
     --ent-input-icon-color: var(--ent-fg-base);
     
 }
@@ -59,9 +59,9 @@
 .ent-input.ent-input-lg {
     > .ent-input-field {
         --ent-input-font-size: 16px;
-        --ent-input-line-height: 24px;
-        --ent-input-space-x: 16px;
-        --ent-input-space-y: 7px;
+        --ent-input-line-height: 28px;
+        --ent-input-space-x: 15px;
+        --ent-input-space-y: 9px;
 
     }
 }
@@ -70,9 +70,9 @@
 .ent-input.ent-input-sm {
     > .ent-input-field {
         --ent-input-font-size: 12px;
-        --ent-input-line-height: 16px;
-        --ent-input-space-x: 8px;
-        --ent-input-space-y: 3px;
+        --ent-input-line-height: 20px;
+        --ent-input-space-x: 7px;
+        --ent-input-space-y: 5px;
     }
 }
 

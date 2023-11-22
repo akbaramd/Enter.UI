@@ -1,8 +1,7 @@
 ﻿@page "/documents/buttons"
+@using Enter.UI.Abstractions.Components.Icon
 @using Enter.UI.Abstractions.Components.Button
 @using Enter.UI.Abstractions.Components.Flex
-@using Enter.UI.Abstractions.Components.Icon
-@using Enter.Dashboard.Model
 @inherits Enter.UI.Abstractions.Core.Bases.EntPageBase
 @layout DocumentLayout
 <div class="p-4">
@@ -13,6 +12,7 @@
             </p>
             <EntFlex Gap="2">
                 <EntButton>Primary</EntButton>
+                <EntButton Disabled>Primary</EntButton>
             </EntFlex>
         </CardBody>
 
@@ -26,48 +26,42 @@
             <EntFlex Gap="2" class="mb-4">
                 <EntButton Appearance="ButtonAppearance.Default" Icon="EntIconName.User">Default</EntButton>
                 <EntButton Appearance="ButtonAppearance.Outline" Icon="EntIconName.User">Outline</EntButton>
-                <EntButton Appearance="ButtonAppearance.Subtle" Icon="EntIconName.User">Subtle</EntButton>
                 <EntButton Appearance="ButtonAppearance.Ghost" Icon="EntIconName.User">Transparent</EntButton>
             </EntFlex>
-            <EntFlex Gap="2">
+            <EntFlex Gap="2" class="mb-4">
                 <EntButton Appearance="ButtonAppearance.Default" Color="ButtonColor.Primary" Icon="EntIconName.User">Default</EntButton>
                 <EntButton Appearance="ButtonAppearance.Outline" Color="ButtonColor.Primary" Icon="EntIconName.User">Outline</EntButton>
-                <EntButton Appearance="ButtonAppearance.Subtle" Color="ButtonColor.Primary" Icon="EntIconName.User">Subtle</EntButton>
-                <EntButton Appearance="ButtonAppearance.Ghost" Color="ButtonColor.Primary" Icon="EntIconName.User">Transparent</EntButton>
+                <EntButton Appearance="ButtonAppearance.Ghost" Color="ButtonColor.Primary" Icon="EntIconName.User">Ghost</EntButton>
             </EntFlex>
             <EntFlex Gap="2" class="mb-4">
-                            <EntButton Appearance="ButtonAppearance.Default" Icon="EntIconName.User"></EntButton>
-                            <EntButton Appearance="ButtonAppearance.Outline" Icon="EntIconName.User"></EntButton>
-                            <EntButton Appearance="ButtonAppearance.Subtle" Icon="EntIconName.User"></EntButton>
-                            <EntButton Appearance="ButtonAppearance.Ghost" Icon="EntIconName.User"></EntButton>
-                        </EntFlex>
-                        <EntFlex Gap="2">
-                            <EntButton Appearance="ButtonAppearance.Default" Color="ButtonColor.Primary" Icon="EntIconName.User"></EntButton>
-                            <EntButton Appearance="ButtonAppearance.Outline" Color="ButtonColor.Primary" Icon="EntIconName.User"></EntButton>
-                            <EntButton Appearance="ButtonAppearance.Subtle" Color="ButtonColor.Primary" Icon="EntIconName.User"></EntButton>
-                            <EntButton Appearance="ButtonAppearance.Ghost" Color="ButtonColor.Primary" Icon="EntIconName.User"></EntButton>
-                        </EntFlex>
+                <EntButton Appearance="ButtonAppearance.Default" Icon="EntIconName.User"></EntButton>
+                <EntButton Appearance="ButtonAppearance.Outline" Icon="EntIconName.User"></EntButton>
+                <EntButton Appearance="ButtonAppearance.Ghost" Icon="EntIconName.User"></EntButton>
+            </EntFlex>
+            <EntFlex Gap="2">
+                <EntButton Appearance="ButtonAppearance.Default" Color="ButtonColor.Primary" Icon="EntIconName.User"></EntButton>
+                <EntButton Appearance="ButtonAppearance.Outline" Color="ButtonColor.Primary" Icon="EntIconName.User"></EntButton>
+                <EntButton Appearance="ButtonAppearance.Ghost" Color="ButtonColor.Primary" Icon="EntIconName.User"></EntButton>
+            </EntFlex>
         </CardBody>
     </EntCard>
     <EntCard Title="Appearance Buttons" class="mb-4">
-            <CardBody>
-                <p class="mb-4">
-                    Use <code>@(nameof(EntButton.Appearance))="@(nameof(ButtonAppearance)).@(nameof(ButtonAppearance.Outline))"</code> Parameter to change Appearance Mode to button.
-                </p>
-                <EntFlex Gap="2" class="mb-4">
-                    <EntButton Appearance="ButtonAppearance.Default">Default</EntButton>
-                    <EntButton Appearance="ButtonAppearance.Outline">Outline</EntButton>
-                    <EntButton Appearance="ButtonAppearance.Subtle">Subtle</EntButton>
-                    <EntButton Appearance="ButtonAppearance.Ghost">Transparent</EntButton>
-                </EntFlex>
-                <EntFlex Gap="2">
-                    <EntButton Appearance="ButtonAppearance.Default" Color="ButtonColor.Primary">Default</EntButton>
-                    <EntButton Appearance="ButtonAppearance.Outline" Color="ButtonColor.Primary">Outline</EntButton>
-                    <EntButton Appearance="ButtonAppearance.Subtle" Color="ButtonColor.Primary">Subtle</EntButton>
-                    <EntButton Appearance="ButtonAppearance.Ghost" Color="ButtonColor.Primary">Transparent</EntButton>
-                </EntFlex>
-            </CardBody>
-        </EntCard>
+        <CardBody>
+            <p class="mb-4">
+                Use <code>@(nameof(EntButton.Appearance))="@(nameof(ButtonAppearance)).@(nameof(ButtonAppearance.Outline))"</code> Parameter to change Appearance Mode to button.
+            </p>
+            <EntFlex Gap="2" class="mb-4">
+                <EntButton Appearance="ButtonAppearance.Default">Default</EntButton>
+                <EntButton Appearance="ButtonAppearance.Outline">Outline</EntButton>
+                <EntButton Appearance="ButtonAppearance.Ghost">Transparent</EntButton>
+            </EntFlex>
+            <EntFlex Gap="2">
+                <EntButton Appearance="ButtonAppearance.Default" Color="ButtonColor.Primary">Default</EntButton>
+                <EntButton Appearance="ButtonAppearance.Outline" Color="ButtonColor.Primary">Outline</EntButton>
+                <EntButton Appearance="ButtonAppearance.Ghost" Color="ButtonColor.Primary">Transparent</EntButton>
+            </EntFlex>
+        </CardBody>
+    </EntCard>
     <EntCard Title="Size Buttons" class="mb-4">
         <CardBody>
             <p class="mb-4">
@@ -75,28 +69,37 @@
             </p>
             <EntFlex Gap="2" Align="FlexAlign.StartCenter" class="mb-4">
                 <EntButton Size="ButtonSize.Small">Small</EntButton>
-                <EntButton Size="ButtonSize.Small" Color="ButtonColor.Primary">Small</EntButton>
                 <EntButton Size="ButtonSize.Medium">Medium</EntButton>
-                <EntButton Size="ButtonSize.Medium" Color="ButtonColor.Primary">Medium</EntButton>
                 <EntButton Size="ButtonSize.Large">Large</EntButton>
+            </EntFlex>
+
+            <EntFlex Gap="2" Align="FlexAlign.StartCenter" class="mb-8">
+                <EntButton Size="ButtonSize.Small" Color="ButtonColor.Primary">Small</EntButton>
+                <EntButton Size="ButtonSize.Medium" Color="ButtonColor.Primary">Medium</EntButton>
                 <EntButton Size="ButtonSize.Large" Color="ButtonColor.Primary">Large</EntButton>
             </EntFlex>
 
             <EntFlex Gap="2" Align="FlexAlign.StartCenter" class="mb-4">
                 <EntButton Size="ButtonSize.Small" Icon="EntIconName.User">Small</EntButton>
-                <EntButton Size="ButtonSize.Small" Icon="EntIconName.User" Color="ButtonColor.Primary">Small</EntButton>
                 <EntButton Size="ButtonSize.Medium" Icon="EntIconName.User">Medium</EntButton>
-                <EntButton Size="ButtonSize.Medium" Icon="EntIconName.User" Color="ButtonColor.Primary">Medium</EntButton>
                 <EntButton Size="ButtonSize.Large" Icon="EntIconName.User">Large</EntButton>
+            </EntFlex>
+
+            <EntFlex Gap="2" Align="FlexAlign.StartCenter" class="mb-8">
+                <EntButton Size="ButtonSize.Small" Icon="EntIconName.User" Color="ButtonColor.Primary">Small</EntButton>
+                <EntButton Size="ButtonSize.Medium" Icon="EntIconName.User" Color="ButtonColor.Primary">Medium</EntButton>
                 <EntButton Size="ButtonSize.Large" Icon="EntIconName.User" Color="ButtonColor.Primary">Large</EntButton>
             </EntFlex>
 
             <EntFlex Gap="2" Align="FlexAlign.StartCenter" class="mb-4">
                 <EntButton Size="ButtonSize.Small" Icon="EntIconName.User"></EntButton>
-                <EntButton Size="ButtonSize.Small" Icon="EntIconName.User" Color="ButtonColor.Primary"></EntButton>
                 <EntButton Size="ButtonSize.Medium" Icon="EntIconName.User"></EntButton>
-                <EntButton Size="ButtonSize.Medium" Icon="EntIconName.User" Color="ButtonColor.Primary"></EntButton>
                 <EntButton Size="ButtonSize.Large" Icon="EntIconName.User"></EntButton>
+
+            </EntFlex>
+            <EntFlex Gap="2" Align="FlexAlign.StartCenter" class="mb-4">
+                <EntButton Size="ButtonSize.Small" Icon="EntIconName.User" Color="ButtonColor.Primary"></EntButton>
+                <EntButton Size="ButtonSize.Medium" Icon="EntIconName.User" Color="ButtonColor.Primary"></EntButton>
                 <EntButton Size="ButtonSize.Large" Icon="EntIconName.User" Color="ButtonColor.Primary"></EntButton>
             </EntFlex>
         </CardBody>

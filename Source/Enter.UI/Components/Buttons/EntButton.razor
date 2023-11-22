@@ -3,7 +3,7 @@
 @using Enter.UI.Abstractions.Components.Icon
 @inherits EntComponentBase
 
-<button @attributes="@AdditionalAttributes" disabled="@Disabled" class="@RootClass">
+<button @attributes="@AdditionalAttributes" disabled="@(Disabled ? true : false)" class="@RootClass">
     @if (Icon != null && !Loading)
     {
         <span class="icon-wrapper">
@@ -32,7 +32,6 @@
         .AddClass("ent-btn-size-sm", Size == ButtonSize.Small)
         
         .AddClass("ent-btn-outline",Appearance==ButtonAppearance.Outline)
-        .AddClass("ent-btn-subtle",Appearance==ButtonAppearance.Subtle)
         .AddClass("ent-btn-ghost",Appearance==ButtonAppearance.Ghost)
         
         .AddClass("ent-btn-primary", Color == ButtonColor.Primary )

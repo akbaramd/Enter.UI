@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Components.Web;
 namespace Enter.UI.Components
 {
 #nullable enable
-    public partial class EntOverlay : EntComponentBase, IAsyncDisposable
+    public partial class EntOverlay : EntComponentBase
     {
         private bool _visible;
 
@@ -124,9 +124,6 @@ namespace Enter.UI.Components
         //
         //     return ValueTask.CompletedTask;
         // }
-        public async ValueTask DisposeAsync()
-        {
-            
-        }
+       
     }
 }

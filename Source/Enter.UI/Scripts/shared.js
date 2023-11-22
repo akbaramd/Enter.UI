@@ -35,6 +35,9 @@
         rect.windowWidth = window.innerWidth;
         return rect;
     }
+    getBreakpoint() {
+        return  this.calculateBreakpoint(window.innerWidth);
+    }
 
     initializeBreakpointEvent(dotNetRef) {
 
@@ -44,9 +47,7 @@
 
 
         addEventListener("resize", (event) => {
-
             let breakpoint = this.calculateBreakpoint(window.innerWidth);
-
             if (this._currentBreakpoint !== breakpoint) {
                 this._currentBreakpoint = breakpoint;
                 dotNetRef.invokeMethodAsync('OnBreakpointEventListener', this._currentBreakpoint);
