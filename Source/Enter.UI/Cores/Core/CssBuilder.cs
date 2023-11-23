@@ -3,21 +3,12 @@
     public class CssBuilder
     {
         private readonly List<string> _cssClasses = new List<string> { };
-
-        private readonly bool _darkMode = false;
-        private readonly bool _responsiveMode = false;
-        public CssBuilder(bool darkMode = false , bool responsiveMode = false)
+        
+        public CssBuilder()
         {
-            _darkMode = darkMode;
-            _responsiveMode = responsiveMode;
         }
-
-        
-        
-        public CssBuilder(string @class ,bool darkMode = false , bool responsiveMode = false)
+        public CssBuilder(string @class)
         {
-            _darkMode = darkMode;
-            _responsiveMode = responsiveMode;
             AddCss(@class);
         }
 
@@ -53,7 +44,7 @@
 
         public CssBuilder AddDarkModeCss(string @class )
         {
-            if (!string.IsNullOrWhiteSpace(@class) && _darkMode  && _cssClasses.All(x=> !x.Equals(@class)))
+            if (!string.IsNullOrWhiteSpace(@class)   && _cssClasses.All(x=> !x.Equals(@class)))
             {
                 _cssClasses.Add($"dark:{@class}");    
             }
@@ -73,7 +64,7 @@
 
         public CssBuilder AddResponsiveModeCss(string @class )
         {
-            if (!string.IsNullOrWhiteSpace(@class) && _responsiveMode  && _cssClasses.All(x=> !x.Equals(@class)))
+            if (!string.IsNullOrWhiteSpace(@class) && _cssClasses.All(x=> !x.Equals(@class)))
             {
                 _cssClasses.Add($"responsive:{@class}");    
             }

@@ -5,7 +5,7 @@
 
 <CascadingValue Value="this" IsFixed="true">
     <div dir="@Direction" class="@RootCss">
-         @if (_firstRendered)
+         @if (_componentReady)
          {
              @ChildContent
          }
@@ -20,7 +20,7 @@
 
 @code {
 
-    private bool _firstRendered = false;
+    private bool _componentReady = false;
 
 
     private string Direction => RtlMode ? "rtl" : "ltr";
@@ -49,22 +49,23 @@
         {
 
             var objRef = DotNetObjectReference.Create(this);
-            await SharedJsService.InitializeBreakpointEventAsync(objRef);
+            await SharedJsService.InitializeBreakpointEventAsync(objRef).ConfigureAwait(false);
 
-            CurrentBreakPoint = await SharedJsService.GetBreakpointAsync();
+            CurrentBreakPoint = await SharedJsService.GetBreakpointAsync().ConfigureAwait(false);
 
             if (ResponsiveMode == false && CurrentBreakPoint <= EntBreakpoint.Tablet)
             {
-                await SetResponsiveModeAsync(true);
+                await SetResponsiveModeAsync(true).ConfigureAwait(false);
             }
-            await SetDarkModeAsync(DarkMode, updateRender: false);
+            
+            await SetDarkModeAsync(DarkMode, updateRender: false).ConfigureAwait(false);
             Console.WriteLine("---------------- EntThemePtovider (OnInitializedAsync) ----------------");
             Console.WriteLine("CurrentBreakPoint : " + CurrentBreakPoint);
             Console.WriteLine("ResponsiveMode : " + ResponsiveMode);
             Console.WriteLine("DarkMode : " + DarkMode);
             Console.WriteLine("RtlMode : " + RtlMode);
 
-            _firstRendered = true;
+            _componentReady = true;
             StateHasChanged();
 
         }
@@ -77,7 +78,6 @@
 
     #region RtlMode
 
-    [Parameter]
     public bool RtlMode { get; set; } = false;
     
     public void EnableRtl()
@@ -113,7 +113,6 @@
 
     #region DarkMode
     
-    [Parameter]
     public bool DarkMode { get; set; } = false;
     
     public async Task EnableDarkModeAsync(bool updateRender = true)
@@ -154,7 +153,7 @@
 
     #region ResponsiveMode
     
-    [Parameter]
+
     public bool ResponsiveMode { get; set; } 
     
     public async Task EnableResponsiveModeAsync( bool updateRender = true)

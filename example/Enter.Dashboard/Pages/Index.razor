@@ -14,8 +14,8 @@
 <PageTitle>Index</PageTitle>
 
 <EntFlex class="h-full" Direction="FlexDirection.Column">
-    <div>
-        <div class="p-8">
+    <div class="row p-8">
+        <div class="tablet:col-6">
             <EntCard Title="Default" Expandable="true" class="mb-8">
                 <CardBody>
                     <EntFlex Direction="FlexDirection.Column">
@@ -23,99 +23,18 @@
                     </EntFlex>
                 </CardBody>
             </EntCard>
-            @* <EntCard Title="Loading" Expandable="true" class="mb-8"> *@
-            @*     <CardBody> *@
-            @*         <EntFlex Direction="FlexDirection.Column" Gap="4"> *@
-            @*             <EntLinearLoading Animate="true" Size="EntLoadingSize.Small" Indeterminate="true"></EntLinearLoading> *@
-            @*             <EntLinearLoading Animate="true" Indeterminate="true"></EntLinearLoading> *@
-            @*             <EntLinearLoading Animate="true" Size="EntLoadingSize.Large" Indeterminate="true"></EntLinearLoading> *@
-            @*              *@
-            @*             <EntCircularLoading Animate="true" Size="EntLoadingSize.Large"/> *@
-            @*             <EntCircularLoading Animate="true"/> *@
-            @*             <EntCircularLoading Animate="true" Size="EntLoadingSize.Small"/> *@
-            @*         </EntFlex> *@
-            @*     </CardBody> *@
-            @* </EntCard> *@
-            @* *@
-            @* <EntCard Title="SideBar" Expandable="true" class="mb-8"> *@
-            @*     <CardBody> *@
-            @*         <EntDrawerContainer class="h-50"> *@
-            @*             <EntDrawer Open="IsSidebarOpen" class="bg-secondary"> *@
-            @*                 <EntText>sidebar</EntText> *@
-            @*             </EntDrawer> *@
-            @* *@
-            @*             <EntDrawer Direction="EntDrawerDirection.End" Mode="EntDrawerMode.Overlay" Open="IsSidebarOpen" class="bg-secondary"> *@
-            @*                 <EntText>sidebar</EntText> *@
-            @*             </EntDrawer> *@
-            @*             <div class="d-flex "> *@
-            @*                 <EntButton @onclick="ToggleDrawer">Click</EntButton> *@
-            @*                 <div class="flex-grow-1"></div> *@
-            @*                 <EntButton @onclick="ToggleDrawer">Click</EntButton> *@
-            @*             </div> *@
-            @* *@
-            @*         </EntDrawerContainer> *@
-            @*     </CardBody> *@
-            @* </EntCard> *@
-            @* <EntCard class="mb-8" Tag="card" Expandable="true" CardExpand="false" Icon="EntIconName.User" Title="Toasts"> *@
-            @*     <CardBody> *@
-            @*         <EntFlex Direction="FlexDirection.Column" *@
-            @*                  LaptopDirection="FlexDirection.Row" *@
-            @*                  LaptopAlign="FlexAlign.StartCenter" *@
-            @*                  Align="FlexAlign.StartCenter" *@
-            @*                  Gap="4"> *@
-            @*             <EntButton @onclick="() => OpenToast(EntToastType.Success)" Loading="true" type="button">Success Toast</EntButton> *@
-            @*             <EntButton @onclick="() => OpenToast(EntToastType.Danger)" type="button">Danger Toast</EntButton> *@
-            @*             <EntButton @onclick="() => OpenToast(EntToastType.Info)" type="button">Info Toast</EntButton> *@
-            @*         </EntFlex> *@
-            @*     </CardBody> *@
-            @* </EntCard> *@
-            @* <EntCard Expandable="true" CardExpand="false" class="mb-8" Title="Modals"> *@
-            @*     <CardBody> *@
-            @*         <EntFlex Direction="FlexDirection.Column" *@
-            @*                  LaptopDirection="FlexDirection.Row" *@
-            @*                  LaptopAlign="FlexAlign.StartCenter" *@
-            @*                  Gap="4"> *@
-            @*             <EntButton type="button" @onclick="() => OpenModal(EntModalSize.ExtraLarge)">Modal ExtraLarge</EntButton> *@
-            @*             <EntButton type="button" @onclick="() => OpenModal(EntModalSize.Large)">Modal Large</EntButton> *@
-            @*             <EntButton type="button" @onclick="() => OpenModal(EntModalSize.Medium)">Modal Medium</EntButton> *@
-            @*             <EntButton type="button" @onclick="() => OpenModal(EntModalSize.Small)">Modal Small</EntButton> *@
-            @*             <EntButton type="button" @onclick="() => OpenModal(EntModalSize.Fullscreen)">Modal FullScreen</EntButton> *@
-            @*         </EntFlex> *@
-            @*     </CardBody> *@
-            @* </EntCard> *@
-            @* <EntCard Expandable="true" CardExpand="false" class="mb-8" Title="Popover"> *@
-            @*     <CardBody> *@
-            @*         <EntButton @onclick="OpenPopover">Show</EntButton> *@
-            @*         <EntPopover Open="IsPopoverOpen" RelativeWidth="true"> *@
-            @*             <EntCard> *@
-            @*                 <CardBody> *@
-            @*                     <p>ssss</p> *@
-            @*                 </CardBody> *@
-            @*             </EntCard> *@
-            @*         </EntPopover> *@
-            @*     </CardBody> *@
-            @* </EntCard> *@
-            @* *@
-            @* *@
-            @* <EntCard Expandable="true" class="mb-8" Title="Form"> *@
-            @*     <CardBody> *@
-            @* *@
-            @*         <b class="mb-2">AutoComplete Input</b> *@
-            @*         <EntInputAutoComplete class="mb-8" *@
-            @*                               @bind-Value="AutoCompleteValue" *@
-            @*                               DataSources="AutoCompleteDataSource" *@
-            @*                               ValueFunc="x => x.Name" *@
-            @*                               OnSearchChange="OnSearchChangeCallBack"/> *@
-            @*         <b class="mb-2">Select Input</b> *@
-            @*         <EntInputSelect @bind-Value="SelectValue" *@
-            @*                         PlaceHolder="Select the desired role" *@
-            @*                         DataSources="Constants.Roles" *@
-            @*                         ValueFunc="x => x.Value" *@
-            @*                         TextFunc="x => x.Text"/> *@
-            @*     </CardBody> *@
-            @* </EntCard> *@
-
+          
         </div>
+         <div class="tablet:col-6">
+                    <EntCard Title="Default" Expandable="true" class="mb-8">
+                        <CardBody>
+                            <EntFlex Direction="FlexDirection.Column">
+                                <b>This page is the default in EntMdiTab</b>
+                            </EntFlex>
+                        </CardBody>
+                    </EntCard>
+                  
+                </div>
     </div>
 </EntFlex>
 

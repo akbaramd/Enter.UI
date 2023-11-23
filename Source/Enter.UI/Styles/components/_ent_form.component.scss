@@ -5,15 +5,15 @@
     --ent-input-popover-hover-bg: var(--ent-bg-neutral-active);
     --ent-input-color: var(--ent-fg-base);
     --ent-input-color-placeholder: var(--ent-fg-base-highlight);
-    --ent-input-font-size: 14px;
-    --ent-input-line-height: 24px;
+    --ent-input-font-size: var(--ent-font-size);
+    --ent-input-line-height: var(--ent-line-height);
     --ent-input-stroke-color: var(--ent-stroke-base);
     --ent-input-stroke-color-focus: var(--ent-stroke-base-emphasis);
     --ent-input-stroke-size: var(--ent-stroke-thin);
     --ent-input-stroke-style: solid;
     --ent-input-border-radius: var(--ent-radius-md);
-    --ent-input-space-x: 11px;
-    --ent-input-space-y: 7px;
+    --ent-input-space-x: var(--ent-size-md);
+    --ent-input-space-y: var(--ent-size-xs);
     --ent-input-icon-color: var(--ent-fg-base);
     
 }
@@ -33,24 +33,35 @@
     }
     > .ent-input-field {
         flex-grow: 1;
-        padding: var(--ent-input-space-y) var(--ent-input-space-x);
+        padding: calc( var(--ent-input-space-y) - var(--ent-input-stroke-size)) var(--ent-input-space-x);
         border: 0;
         outline: 0;
         background-color: transparent;
         color: var(--ent-input-color);
         line-height: var(--ent-input-line-height);
         font-size: var(--ent-input-font-size);
-
-       
     }
 
     > .ent-input-icon {
-        display: flex;
-        flex-direction: row;
+        width: var(--ent-line-height);
+        height: var(--ent-line-height);
+        display: inline-flex;
         align-items: center;
-        padding: var(--ent-input-space-y) var(--ent-input-space-x);
-        color: var(--ent-input-icon-color);
-        font-size: var(--ent-input-font-size);
+        justify-content: center;
+        margin-inline-end: 6px;
+        transition: var(--ent-transition-all);
+        
+        .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--ent-input-font-size);
+            width: var(--ent-input-font-size);
+            height: var(--ent-input-font-size);
+            color: var(--ent-input);
+        }
+
+        
     }
 }
 
@@ -58,10 +69,8 @@
 
 .ent-input.ent-input-lg {
     > .ent-input-field {
-        --ent-input-font-size: 16px;
-        --ent-input-line-height: 28px;
-        --ent-input-space-x: 15px;
-        --ent-input-space-y: 9px;
+        --ent-input-space-x: var(--ent-size-sm);
+        --ent-input-space-y: var(--ent-size-lg);
 
     }
 }
@@ -69,10 +78,8 @@
 
 .ent-input.ent-input-sm {
     > .ent-input-field {
-        --ent-input-font-size: 12px;
-        --ent-input-line-height: 20px;
-        --ent-input-space-x: 7px;
-        --ent-input-space-y: 5px;
+        --ent-input-space-x: var(--ent-size-xxs);
+        --ent-input-space-y: var(--ent-size-sm);
     }
 }
 

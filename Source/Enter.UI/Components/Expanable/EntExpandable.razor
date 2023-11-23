@@ -23,6 +23,7 @@
     private double _size = 0;
     private EntExpandableDirection _direction = EntExpandableDirection.Vertical;
     private string _cssProperty = "height";
+    private  bool _firstRendered = false;
     
     internal EntAnimator Reference { get; set; }
 
@@ -72,7 +73,7 @@
                 return;
             _expanded = value;
 
-            if (FirstRendered)
+            if (_firstRendered)
             {
                 AnimationState = _expanded ? EntAnimatorState.Starting : EntAnimatorState.Ending;
                 _ = UpdateSize();
@@ -126,16 +127,18 @@
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await base.OnAfterRenderAsync(firstRender);
+        
         if (firstRender)
         {
             await UpdateSize();
+            _firstRendered = true;
+            StateHasChanged();
         }
-        
         else if (_updateHeight && AnimationState is EntAnimatorState.Ending or EntAnimatorState.Starting)
         {
             _updateHeight = false;
             await UpdateSize();
-            StateHasChanged();
+          
         }
 
     }

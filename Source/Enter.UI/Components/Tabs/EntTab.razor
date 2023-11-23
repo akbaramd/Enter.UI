@@ -11,11 +11,11 @@
                
                     <div @onclick="OnToggleMenu" class="responsive:ent-tab-item-container-header">
                         <span class="ent-tab-content">
-                            <EntButton Icon="EntIconName.Dashboard" class="ent-tab-close-all"/>
+                            <EntButton Icon="EntIconName.Dashboard" Size="ButtonSize.Small" class="ent-tab-close-all"/>
                             @if (Panels.Any() && _activeTab != null)
                             {
                                 <span>@_activeTab.Title</span>
-                                <EntButton>@Panels.Count</EntButton>
+                                <EntButton Size="ButtonSize.Small">@Panels.Count</EntButton>
                             }
                             else
                             {
@@ -39,7 +39,7 @@
                                             }
                                             @if (Closeable)
                                             {
-                                                <EntButton @onclick="() => OnTabClose(tabPanels.Id)" Icon="EntIconName.Remove" class="ent-tab-close"/>
+                                                <EntButton @onclick="() => OnTabClose(tabPanels.Id)" Size="ButtonSize.Small"  Icon="EntIconName.Remove" class="ent-tab-close"/>
                                             }
                                         </span>
                                     </li>

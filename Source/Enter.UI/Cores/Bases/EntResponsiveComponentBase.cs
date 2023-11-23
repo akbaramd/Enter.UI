@@ -9,19 +9,9 @@ public abstract class EntResponsiveComponentBase : EntComponentBase
 {
 
 
-    protected new CssBuilder CssBuilder
-    {
-        get
-        {
-            Debug.Assert(DarkMode != null, nameof(DarkMode) + " != null");
-            return new CssBuilder(darkMode: DarkMode.Value, responsiveMode: ResponsiveMode)
-                .AddCss("ent-responsive", ResponsiveMode)
-                .AddCss("ent-dark", DarkMode.Value)
-                .AddCss(AdditionalAttributes.TryGetValue("class", out var @class) ? @class.ToString() : string.Empty);
-        }
-    }
-
-
+    protected new CssBuilder CssBuilder => new CssBuilder(base.CssBuilder.Build())
+        .AddCss("ent-responsive", ResponsiveMode);
+    
     [Parameter] public bool ResponsiveMode { get; set; }
  
     protected override async Task OnAfterRenderAsync(bool firstRender)
