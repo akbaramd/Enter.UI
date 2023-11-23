@@ -1,7 +1,7 @@
 ﻿@namespace Enter.UI.Components
 @using Enter.UI.Components.Modal
 @using Enter.UI.Components.Icon
-@inherits EntComponentBase
+@inherits Enter.UI.Cores.Bases.EntComponentBase
 <CascadingValue Value="this" IsFixed="true">
     <div class="ent-modal-container" @onclick="OnContainerClick">
         <div class="@RootCss" @onclick:stopPropagation="true" @onclick="OnModalClick">
@@ -21,13 +21,13 @@
 
 @code {
 
-    private string RootCss => CssClassBuilder
-        .AddClass("ent-modal")
-        .AddClass("ent-modal-sm", Options?.Size == EntModalSize.Small)
-        .AddClass("ent-modal-md", Options?.Size == EntModalSize.Medium)
-        .AddClass("ent-modal-lg", Options?.Size == EntModalSize.Large)
-        .AddClass("ent-modal-xl", Options?.Size == EntModalSize.ExtraLarge)
-        .AddClass("ent-modal-fs", Options?.Size == EntModalSize.Fullscreen).Build();
+    private string RootCss => CssBuilder
+        .AddCss("ent-modal")
+        .AddCss("ent-modal-sm", Options?.Size == EntModalSize.Small)
+        .AddCss("ent-modal-md", Options?.Size == EntModalSize.Medium)
+        .AddCss("ent-modal-lg", Options?.Size == EntModalSize.Large)
+        .AddCss("ent-modal-xl", Options?.Size == EntModalSize.ExtraLarge)
+        .AddCss("ent-modal-fs", Options?.Size == EntModalSize.Fullscreen).Build();
 
     [CascadingParameter]
     public EntModalProvider ModalProvider { get; set; } = default!;

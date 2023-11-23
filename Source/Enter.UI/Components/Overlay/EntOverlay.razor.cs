@@ -1,28 +1,28 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Enter.UI.Core.Bases;
+using Enter.UI.Cores.Bases;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
 
 namespace Enter.UI.Components
 {
-#nullable enable
+
     public partial class EntOverlay : EntComponentBase
     {
         private bool _visible;
 
         protected string Classname =>
-             CssClassBuilder.AddClass("ent-overlay")
-                .AddClass("ent-overlay-absolute", Absolute)
+             CssBuilder.AddCss("ent-overlay")
+                .AddCss("ent-overlay-absolute", Absolute)
                 .Build();
 
         protected string ScrimClassname =>
-             CssClassBuilder.Clear()
-                 .AddClass("ent-overlay-scrim")
-                .AddClass("ent-overlay-dark", DarkBackground)
-                .AddClass("ent-overlay-light", LightBackground)
+             CssBuilder.Clear()
+                 .AddCss("ent-overlay-scrim")
+                .AddCss("ent-overlay-dark", DarkBackground)
+                .AddCss("ent-overlay-light", LightBackground)
                 .Build();
 
         [Parameter]
@@ -82,12 +82,10 @@ namespace Enter.UI.Components
             if (AutoClose)
                 Visible = false;
             await OnClick.InvokeAsync(ev);
-#pragma warning disable CS0618
             if (Command?.CanExecute(CommandParameter) ?? false)
             {
                 Command.Execute(CommandParameter);
             }
-#pragma warning restore CS0618
         }
 
         //if not visible or CSS `position:absolute`, don't lock scroll
@@ -96,34 +94,13 @@ namespace Enter.UI.Components
             if (!LockScroll || Absolute)
                 return;
 
-            // if (Visible)
-            //     await BlockScrollAsync();
-            // else
-            //     await UnblockScrollAsync();
         }
 
-        //locks the scroll attaching a CSS class to the specified element, in this case the body
-        // private ValueTask BlockScrollAsync()
-        // {
-        //     return ScrollManager.LockScrollAsync("body", LockScrollClass);
-        // }
-        //
-        // //removes the CSS class that prevented scrolling
-        // private ValueTask UnblockScrollAsync()
-        // {
-        //     return ScrollManager.UnlockScrollAsync("body", LockScrollClass);
-        // }
-        //
-        // //When disposing the overlay, remove the class that prevented scrolling
-        // public ValueTask DisposeAsync()
-        // {
-        //     if (IsJSRuntimeAvailable)
-        //     {
-        //         return UnblockScrollAsync();
-        //     }
-        //
-        //     return ValueTask.CompletedTask;
-        // }
+        public override void Dispose()
+        {
+        
+        }
+       
        
     }
 }

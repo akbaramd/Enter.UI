@@ -1,11 +1,11 @@
 ﻿@namespace Enter.UI.Components
 <div  @attributes="AdditionalAttributes" class="@RootCss">@ChildContent</div>
-@inherits EntComponentBase
+@inherits Enter.UI.Cores.Bases.EntComponentBase
 @code {
 
 
-    public string RootCss => CssClassBuilder
-        .AddClass($"d-division")
+    public string RootCss => CssBuilder
+        .AddCss($"d-division")
         .Build();
     
     [Parameter]

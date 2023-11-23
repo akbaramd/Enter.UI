@@ -2,17 +2,17 @@
 @using Enter.UI.Components.Button
 @using Enter.UI.Components.Icon
 @using Enter.UI.Components.Loading
-@inherits EntComponentBase
+@inherits Enter.UI.Cores.Bases.EntComponentBase
 <span @attributes="@AdditionalAttributes" class="@RootClass">
 </span>
 
 @code {
 
-    private string RootClass => CssClassBuilder
-        .AddClass("ent-circular-loading")
-        .AddClass("ent-circular-loading-lg",Size == EntLoadingSize.Large)
-        .AddClass("ent-circular-loading-sm",Size == EntLoadingSize.Small)
-        .AddClass("animate",Animate)
+    private string RootClass => CssBuilder
+        .AddCss("ent-circular-loading")
+        .AddCss("ent-circular-loading-lg",Size == EntLoadingSize.Large)
+        .AddCss("ent-circular-loading-sm",Size == EntLoadingSize.Small)
+        .AddCss("animate",Animate)
         .Build();
 
     [Parameter]

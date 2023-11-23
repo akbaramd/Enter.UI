@@ -1,53 +1,84 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Enter.UI.Components;
+using Enter.UI.Core;
+using Microsoft.AspNetCore.Components;
 
-namespace Enter.UI.Core.Bases
+namespace Enter.UI.Cores.Bases;
+
+public abstract class EntComponentBase : ComponentBase, IDisposable
 {
-    public abstract class EntComponentBase : ComponentBase , IDisposable
+    //todo : Remove Style and Create Style Builder
+
+    private string? _id;
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object?> AdditionalAttributes { get; set; } = new();
+
+    protected CssBuilder CssBuilder =>
+        new CssBuilder(darkMode:DarkMode != null && DarkMode.Value , responsiveMode:false)
+            .AddCss("ent-dark",DarkMode != null && DarkMode.Value)
+            .AddCss(AdditionalAttributes.TryGetValue("class", out var @class) ? @class.ToString() : string.Empty);
+
+    protected StyleBuilder StyleBuilder =>
+        new StyleBuilder().AddStyle(AdditionalAttributes.TryGetValue("style", out var style)
+            ? style.ToString()
+            : string.Empty);
+
+    public string Id => AdditionalAttributes?.ContainsKey("id") == true
+        ? AdditionalAttributes["id"]?.ToString() ?? GetId()
+        : GetId();
+
+
+    public bool FirstRendered { get; set; }
+
+    [Parameter] public string Tag { get; set; } = default!;
+
+
+    private bool _darkMode = false;
+
+    [Parameter]
+    public bool? DarkMode
     {
-        //todo : Remove Style and Create Style Builder
-
-        private string? _id = null;
-
-        [Parameter(CaptureUnmatchedValues = true)]
-        public Dictionary<string, object?> AdditionalAttributes { get; set; } = new Dictionary<string, object?>();
-
-        protected CssClassBuilder CssClassBuilder =>
-            new CssClassBuilder()
-                .AddClass(AdditionalAttributes.TryGetValue("class", out var @class) ? @class.ToString() : string.Empty);
-
-        protected StyleBuilder StyleBuilder =>
-            new StyleBuilder().AddStyle(AdditionalAttributes.TryGetValue("style", out var @style)
-                ? @style.ToString()
-                : string.Empty);
-
-        public string Id => (AdditionalAttributes?.ContainsKey("id") == true
-            ? AdditionalAttributes["id"]?.ToString() ?? GetId()
-            : GetId());
-
-
-        public bool FirstRendered { get; set; } = false;
-
-
-        private string GetId()
+        get
         {
-            _id ??= $"ent-{Guid.NewGuid()}";
-            return _id;
+            return  _darkMode;
         }
-
-        [Parameter]
-        public string Tag { get; set; }
-
-        protected override async Task OnAfterRenderAsync(bool firstRender)
+        set
         {
-
-            if (firstRender)
+            if (value == null)
             {
-                FirstRendered = true;
+                _darkMode = EntThemeProvider?.DarkMode??false;
             }
-            
-            await base.OnAfterRenderAsync(firstRender);
+            else
+            {
+                _darkMode = value.Value;
+            }
         }
-
-        public abstract void Dispose();
     }
+
+    [CascadingParameter] public EntThemeProvider? EntThemeProvider { get; set; } = default!;
+
+
+    protected override Task OnAfterRenderAsync(bool firstRender)
+    {
+        FirstRendered = true;
+        return base.OnAfterRenderAsync(firstRender);
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        FirstRendered = true;
+        base.OnAfterRender(firstRender);
+    }
+
+    public abstract void Dispose();
+
+
+    private string GetId()
+    {
+        _id ??= $"ent-{Guid.NewGuid()}";
+        return _id;
+    }
+
+
+   
 }

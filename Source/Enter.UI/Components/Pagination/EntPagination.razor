@@ -1,7 +1,7 @@
 @namespace Enter.UI.Components
 @using System.Diagnostics.CodeAnalysis
 @using Enter.UI.Components.Icon
-@inherits EntComponentBase
+@inherits Enter.UI.Cores.Bases.EntComponentBase
 
 
 <ul @attributes="@AdditionalAttributes" class="@RootClass">
@@ -60,8 +60,8 @@
     private bool _selectedFirstSet;
     private int _selected = 1;
     
-    private string RootClass => CssClassBuilder
-        .AddClass("ent-pagination")
+    private string RootClass => CssBuilder
+        .AddCss("ent-pagination")
         .Build();
 
 

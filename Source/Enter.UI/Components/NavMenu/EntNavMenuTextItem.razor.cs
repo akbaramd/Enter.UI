@@ -6,26 +6,26 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Enter.UI.Core.Bases;
+using Enter.UI.Cores.Bases;
 
 
 namespace Enter.UI.Components
 {
     public partial class EntNavMenuTextItem : EntComponentBase
     {
-        protected string RootCss => CssClassBuilder
+        protected string RootCss => CssBuilder
             .Clear()
-            .AddClass("ent-nav-menu-item ent-nav-menu-item-text")
+            .AddCss("ent-nav-menu-item ent-nav-menu-item-text")
             .Build();
         
-        protected string IconCss => CssClassBuilder
+        protected string IconCss => CssBuilder
             .Clear()
-            .AddClass("ent-nav-menu-item-icon")
+            .AddCss("ent-nav-menu-item-icon")
             .Build();
         
-        protected string ContentCss => CssClassBuilder
+        protected string ContentCss => CssBuilder
             .Clear()
-            .AddClass("ent-nav-menu-item-content")
+            .AddCss("ent-nav-menu-item-content")
             .Build();
 
         [Parameter]

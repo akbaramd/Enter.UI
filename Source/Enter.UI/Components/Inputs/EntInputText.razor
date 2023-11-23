@@ -2,7 +2,7 @@
 @using System.Diagnostics.CodeAnalysis
 @using Enter.UI.Components.Icon
 @using Enter.UI.Components.Inputs
-@inherits EntInputBase<string?>
+@inherits Enter.UI.Cores.Bases.EntInputBase<string?>
 @implements IAsyncDisposable
 
 <div @attributes="@AdditionalAttributes" class="@RootCss" id="@Id">
@@ -23,11 +23,11 @@
     private ElementReference _elementReference = default!;
     
     private string RootCss => CssBuilder
-        .AddClass("ent-input")
-        .AddClass("ent-input-lg",Size == EntInputSize.Large)
-        .AddClass("ent-input-sm",Size == EntInputSize.Small)
-        .AddClass(BaseCss)
-        .AddClass(ValidationCss)
+        .AddCss("ent-input")
+        .AddCss("ent-input-lg",Size == EntInputSize.Large)
+        .AddCss("ent-input-sm",Size == EntInputSize.Small)
+        .AddCss(BaseCss)
+        .AddCss(ValidationCss)
         .Build();
 
     [Parameter]

@@ -4,65 +4,72 @@
 @namespace Enter.UI.Components
 <CascadingValue Value="@(this)">
     <div @attributes="@AdditionalAttributes" class="@RootCss">
-        @if (Panels.Count > 0)
-        {
 
-            @if (Responsive)
-            {
-                <div class="ent-tab-item-container-responsive">
-                    @if (_activeTab != null)
+        @if (ResponsiveMode)
+        {
+            <div class="responsive:ent-tab-item-container">
+               
+                    <div @onclick="OnToggleMenu" class="responsive:ent-tab-item-container-header">
+                        <span class="ent-tab-content">
+                            <EntButton Icon="EntIconName.Dashboard" class="ent-tab-close-all"/>
+                            @if (Panels.Any() && _activeTab != null)
+                            {
+                                <span>@_activeTab.Title</span>
+                                <EntButton>@Panels.Count</EntButton>
+                            }
+                            else
+                            {
+                                <span>@TabNoContentMessage</span>
+                            }
+                           
+                        </span>
+                    </div>
+                    @if (Panels.Any())
                     {
-                        <div class="ent-tab-item-container-responsive-header">
-                            <span class="ent-tab-content">
-                                <EntButton @onclick="OnToggleMenu" Icon="EntIconName.Dashboard" class="ent-tab-close-all" />
-                                @if (!IconMinify)
-                                {
-                                    <span>@_activeTab.Title</span>
-                                }
-                                <EntButton @onclick="() => OnTabClose(_activeTab.Id)" Icon="EntIconName.Remove" class="ent-tab-close-all" />
-                            </span>
-                        </div>
-                        <EntExpandable @bind-Expanded="@_toogleMenu" class="ent-tab-item-container-responsive-body">
+                        <EntExpandable @bind-Expanded="@_toogleMenu" class="responsive:ent-tab-item-container-content">
                             <ul class="ent-tab-item-container">
                                 @foreach (var tabPanels in Panels)
                                 {
                                     <li class="@GetItemClass(IsActiveTab(tabPanels.Id))" @onclick="() => ActivateTabAsync(tabPanels.Id)" @key="@tabPanels.Id">
                                         <span class="ent-tab-content">
-                                            <EntIcon Icon="@tabPanels.Icon" />
+                                            <EntIcon Icon="@tabPanels.Icon"/>
                                             @if (!IconMinify)
                                             {
                                                 <span>@tabPanels.Title</span>
                                             }
                                             @if (Closeable)
                                             {
-                                                <EntButton @onclick="() => OnTabClose(tabPanels.Id)" Icon="EntIconName.Remove"  class="ent-tab-close" />
+                                                <EntButton @onclick="() => OnTabClose(tabPanels.Id)" Icon="EntIconName.Remove" class="ent-tab-close"/>
                                             }
                                         </span>
                                     </li>
                                 }
                             </ul>
-                            <div class="ent-tab-item-actions" >
-                                <EntButton @onclick="OnTabAllClose" Icon="EntIconName.Delete" />
+                            <div class="ent-tab-item-actions">
+                                <EntButton @onclick="OnTabAllClose" Icon="EntIconName.Delete"/>
                             </div>
                         </EntExpandable>
                     }
-                </div>
-            }
-            else
+               
+            </div>
+        }
+        else
+        {
+            @if (Panels.Count > 0)
             {
                 <ul class="ent-tab-item-container">
                     @foreach (var tabPanels in Panels)
                     {
                         <li class="@GetItemClass(IsActiveTab(tabPanels.Id))" @onclick="() => ActivateTabAsync(tabPanels.Id)" @key="@tabPanels.Id">
                             <span class="ent-tab-content">
-                                <EntIcon Icon="@tabPanels.Icon" />
+                                <EntIcon Icon="@tabPanels.Icon"/>
                                 @if (!IconMinify)
                                 {
                                     <span>@tabPanels.Title</span>
                                 }
                                 @if (Closeable)
                                 {
-                                    <EntButton @onclick="() => OnTabClose(tabPanels.Id)" Icon="EntIconName.Remove" Size="ButtonSize.Small" class="ent-tab-close" />
+                                    <EntButton @onclick="() => OnTabClose(tabPanels.Id)" Icon="EntIconName.Remove" Size="ButtonSize.Small" class="ent-tab-close"/>
                                 }
                             </span>
                         </li>
@@ -71,19 +78,20 @@
                     {
                         <li class="@GetItemClass(false)">
                             <span @onclick="OnTabAllClose" class="ent-tab-action ">
-                                <EntIcon Icon="EntIconName.Delete" Type="EntIconType.IconTag" />
+                                <EntIcon Icon="EntIconName.Delete" Type="EntIconType.IconTag"/>
                             </span>
                         </li>
                     }
                 </ul>
             }
+            else
+            {
+                <div class="ent-tab-item-container-message">
+                    <p>@TabNoContentMessage</p>
+                </div>
+            }
         }
-        else
-        {
-            <div class="ent-tab-item-container-message">
-                <p>@TabNoContentMessage</p>
-            </div>
-        }
+
 
         <div class="@PanelCss">
             @ChildContent

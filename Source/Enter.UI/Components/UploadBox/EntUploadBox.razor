@@ -5,7 +5,7 @@
 @using Enter.UI.Components.Expandable
 @using Enter.UI.Components.Icon
 @using Enter.UI.JsServices
-@inherits EntComponentBase
+@inherits Enter.UI.Cores.Bases.EntComponentBase
 
 <div
     @attributes="@AdditionalAttributes"
@@ -53,8 +53,8 @@
     public EventCallback<List<UploadModel>> FilesChanged { get; set; }
 
     // Style and Css
-    private string RootCss => CssClassBuilder
-        .AddClass("ent-upload-box")
+    private string RootCss => CssBuilder
+        .AddCss("ent-upload-box")
         .Build();
 
     [Parameter]

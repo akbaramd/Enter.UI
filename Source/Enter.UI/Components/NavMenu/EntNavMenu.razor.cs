@@ -5,14 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Enter.UI.Core.Bases;
+using Enter.UI.Cores.Bases;
 
 
 namespace Enter.UI.Components
 {
     public partial class EntNavMenu : EntComponentBase
     {
-        protected string RootCss => CssClassBuilder.AddClass("ent-nav-menu")
+        protected string RootCss => CssBuilder.AddCss("ent-nav-menu")
             .Build();
 
         private readonly List<EntNavMenuGroup> _groups = new List<EntNavMenuGroup>();

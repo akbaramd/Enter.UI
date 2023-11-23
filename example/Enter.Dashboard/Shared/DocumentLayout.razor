@@ -74,23 +74,25 @@
         Navigation?.NavigateTo(uri);
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override async Task OnInitializedAsync()
     {
-        if (firstRender)
+        await base.OnInitializedAsync();
+        if (EntThemeProvider != null)
         {
-            if (EntThemeProvider != null)
-            {
-
-                var breakPoint =await EntThemeProvider.SharedJsService.GetBreakpointAsync();
-                HandleMobileSize(breakPoint);
-                EntThemeProvider.BreakpointChangeEvent += EntThemeProviderBreakpointChangeEvent;
-            }
+            var breakpoint = await EntThemeProvider.GetBreakpointAsync();
+            HandleMobileSize(breakpoint);
         }
     }
 
-    private void EntThemeProviderBreakpointChangeEvent(EntBreakpoint breakpoint)
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        HandleMobileSize(breakpoint);
+        await base.OnAfterRenderAsync(firstRender);
+        
+        if (firstRender)
+        {
+           
+        }
+        
     }
 
     public void HandleMobileSize(EntBreakpoint breakpoint)
@@ -110,7 +112,7 @@
     {
         if (EntThemeProvider != null)
         {
-            await EntThemeProvider.ToggleDarkMode();
+            await EntThemeProvider.ToggleDarkModeAsync();
         }
     }
 
@@ -128,9 +130,5 @@
 
     public void Dispose()
     {
-        if (EntThemeProvider != null)
-        {
-            EntThemeProvider.BreakpointChangeEvent -= EntThemeProviderBreakpointChangeEvent;
-        }
     }
 }

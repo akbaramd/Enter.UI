@@ -2,7 +2,7 @@
 @using Enter.UI.Components.Modal
 @using Enter.UI.Components.Text
 @using Enter.UI.Components.Button
-@inherits EntComponentBase
+@inherits Enter.UI.Cores.Bases.EntComponentBase
 @implements IDisposable
  <div class="@RootCss" >
      <EntText Type="EntTextType.Bold" class="ent-messagebox-title">@Message</EntText>
@@ -17,8 +17,8 @@
     [CascadingParameter]
     public EntModal Modal { get; set; } = default!;
     
-    private string RootCss => CssClassBuilder
-        .AddClass("ent-messagebox").Build();
+    private string RootCss => CssBuilder
+        .AddCss("ent-messagebox").Build();
     
     [Parameter]
     public string Message { get; set; }

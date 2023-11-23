@@ -1,17 +1,17 @@
 ﻿@namespace Enter.UI.Components
 @using Enter.UI.Components.Shimmer
-@inherits EntComponentBase
+@inherits Enter.UI.Cores.Bases.EntComponentBase
 <span @attributes="@AdditionalAttributes" class="@RootClass" style="@RootStyle">
 </span>
 
 @code {
 
-    private string RootClass => CssClassBuilder
-        .AddClass("ent-shimmer")
-        .AddClass("ent-shimmer-pulse",Effect == EntShimmerEffect.Pulse)
-        .AddClass("ent-shimmer-wave",Effect == EntShimmerEffect.Wave)
-        .AddClass("ent-shimmer-rectangle",Type == EntShimmerType.Rectangle)
-        .AddClass("ent-shimmer-circular",Type == EntShimmerType.Circular)
+    private string RootClass => CssBuilder
+        .AddCss("ent-shimmer")
+        .AddCss("ent-shimmer-pulse",Effect == EntShimmerEffect.Pulse)
+        .AddCss("ent-shimmer-wave",Effect == EntShimmerEffect.Wave)
+        .AddCss("ent-shimmer-rectangle",Type == EntShimmerType.Rectangle)
+        .AddCss("ent-shimmer-circular",Type == EntShimmerType.Circular)
         .Build();
     
     private string RootStyle => StyleBuilder

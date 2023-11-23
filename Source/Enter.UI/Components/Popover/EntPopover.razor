@@ -1,6 +1,6 @@
 ﻿@namespace Enter.UI.Components
 @using Enter.UI.Services
-@inherits EntComponentBase
+@inherits Enter.UI.Cores.Bases.EntComponentBase
 
 <div  @attributes="AdditionalAttributes" class="@RootClass" id="@($"ent-popover-{_id}")">
 
@@ -8,18 +8,18 @@
 
 @code {
 
-    private string RootClass => CssClassBuilder
-        .AddClass("ent-popover")
+    private string RootClass => CssBuilder
+        .AddCss("ent-popover")
         .Build();
     
-    private string _popoverClass => CssClassBuilder
+    private string _popoverClass => CssBuilder
         .Clear()
-        .AddClass("ent-popover-content")
-        .AddClass($"ent-popover-anchor-{Anchor.GetCssClass()}")
-        .AddClass($"ent-popover-{Transform.GetCssClass()}")
-        .AddClass("ent-popover-overflow-flip-onopen")
-        .AddClass("ent-popover-open", Open)
-        .AddClass("ent-popover-relative-width", RelativeWidth)
+        .AddCss("ent-popover-content")
+        .AddCss($"ent-popover-anchor-{Anchor.GetCssClass()}")
+        .AddCss($"ent-popover-{Transform.GetCssClass()}")
+        .AddCss("ent-popover-overflow-flip-onopen")
+        .AddCss("ent-popover-open", Open)
+        .AddCss("ent-popover-relative-width", RelativeWidth)
         .Build();
 
     [Inject]
@@ -55,11 +55,12 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
+        await base.OnAfterRenderAsync(firstRender);
         if (firstRender)
         {
             await EntPopoverService.ConnectAsync(_id);
         }
-        await base.OnAfterRenderAsync(firstRender);
+  
     }
 
     protected override async Task OnParametersSetAsync()

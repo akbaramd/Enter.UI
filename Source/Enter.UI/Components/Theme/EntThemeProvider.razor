@@ -1,11 +1,14 @@
 ﻿@using Microsoft.JSInterop
 @using Enter.UI.JsServices
+@using System.Runtime.CompilerServices
 @namespace Enter.UI.Components
-@inherits EntComponentBase
 
 <CascadingValue Value="this" IsFixed="true">
     <div dir="@Direction" class="@RootCss">
-         @ChildContent
+         @if (_firstRendered)
+         {
+             @ChildContent
+         }
     </div>
 </CascadingValue>
 
@@ -16,114 +19,214 @@
 </style>
 
 @code {
-   
-    protected string RootCss =>CssClassBuilder
-        .AddClass("ent-ui")
-        .AddClass("ent-rtl",Rtl)
-        .AddClass("ent-ltr",!Rtl)
-        .AddClass("ent-theme-dark",DarkMode)
+
+    private bool _firstRendered = false;
+
+
+    private string Direction => RtlMode ? "rtl" : "ltr";
+
+    protected string RootCss =>new CssBuilder()
+        .AddCss("ent-ui vertical-scroll")
+        .AddCss("ent-rtl",RtlMode)
+        .AddCss("ent-ltr",!RtlMode)
+        .AddCss("ent-theme-dark",DarkMode)
+        .AddCss("ent-theme-responsive",ResponsiveMode)
         .Build();
-    
+
     [Inject]
-    public IEntSharedJsService SharedJsService { get; set; }
-    
+    private IEntSharedJsService SharedJsService { get; set; } = default!;
+
     [Inject]
-    public IEntJsService EntJsService { get; set; }
-    
+    private IEntJsService EntJsService { get; set; } = default!;
+
     [Parameter]
     public RenderFragment ChildContent { get; set; } = default!;
-    
-    [Parameter]
-    public bool Rtl { get; set; } = false;
-    
-    [Parameter]
-    public bool DarkMode { get; set; } = false;
 
-    public event Action<EntBreakpoint>? BreakpointChangeEvent; 
-
-    public string Direction => Rtl ? "rtl" : "ltr";
-    
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        await base.OnAfterRenderAsync(firstRender);
 
         if (firstRender)
         {
+
             var objRef = DotNetObjectReference.Create(this);
             await SharedJsService.InitializeBreakpointEventAsync(objRef);
+
+            CurrentBreakPoint = await SharedJsService.GetBreakpointAsync();
+
+            if (ResponsiveMode == false && CurrentBreakPoint <= EntBreakpoint.Tablet)
+            {
+                await SetResponsiveModeAsync(true);
+            }
+            await SetDarkModeAsync(DarkMode, updateRender: false);
+            Console.WriteLine("---------------- EntThemePtovider (OnInitializedAsync) ----------------");
+            Console.WriteLine("CurrentBreakPoint : " + CurrentBreakPoint);
+            Console.WriteLine("ResponsiveMode : " + ResponsiveMode);
+            Console.WriteLine("DarkMode : " + DarkMode);
+            Console.WriteLine("RtlMode : " + RtlMode);
+
+            _firstRendered = true;
+            StateHasChanged();
+
         }
+        
+        await base.OnAfterRenderAsync(firstRender);
+        
     }
+    
+    
 
+    #region RtlMode
 
+    [Parameter]
+    public bool RtlMode { get; set; } = false;
+    
     public void EnableRtl()
     {
-        Rtl = true;
-        StateHasChanged();
-    }
-    public void DisableRtl()
-    {
-        Rtl = false;
-        StateHasChanged();
-    }
-    public void ToggleRtl()
-    {
-        Rtl = !Rtl;
+        RtlMode = true;
         StateHasChanged();
     }
     
-    public async Task EnableDarkMode()
+    public void DisableRtl()
     {
-        DarkMode = true;
-       await SharedJsService.SetAttributeByQuerySelectorAsync("html","data-theme", "dark");
+        RtlMode = false;
         StateHasChanged();
     }
-    public async Task DisableDarkMode()
+    
+    public void SetRtl(bool enable)
+    {
+        if (enable)
+        {
+            EnableRtl();
+        }
+        else
+        {
+            DisableRtl();
+        }
+    }
+    
+    public void ToggleRtl()
+    {
+        SetRtl(!RtlMode);
+    }
+
+    #endregion
+
+    #region DarkMode
+    
+    [Parameter]
+    public bool DarkMode { get; set; } = false;
+    
+    public async Task EnableDarkModeAsync(bool updateRender = true)
+    {
+        DarkMode = true;
+        await SharedJsService.SetAttributeByQuerySelectorAsync("html","data-theme", "dark");
+        if (updateRender)
+        {
+            StateHasChanged();
+        }
+    }
+    public async Task DisableDarkModeAsync(bool updateRender = true)
     {
         DarkMode = false;
         await SharedJsService.SetAttributeByQuerySelectorAsync("html","data-theme", "light");
-        StateHasChanged();
-    }
-    public async Task ToggleDarkMode()
-    {
-        if (DarkMode)
+        if (updateRender)
         {
-           await DisableDarkMode();
+            StateHasChanged();
+        }
+    }
+    public async Task SetDarkModeAsync(bool enable, bool updateRender = true)
+    {
+        if (enable)
+        {
+            await EnableDarkModeAsync(updateRender);
         }
         else
         {
-         await   EnableDarkMode();
+            await DisableDarkModeAsync(updateRender);
         }
     }
-
-    protected override async Task OnInitializedAsync()
+    public async Task ToggleDarkModeAsync()
     {
-        if (DarkMode)
+        await SetDarkModeAsync(!DarkMode);
+    }
+
+    #endregion
+
+    #region ResponsiveMode
+    
+    [Parameter]
+    public bool ResponsiveMode { get; set; } 
+    
+    public async Task EnableResponsiveModeAsync( bool updateRender = true)
+    {
+        ResponsiveMode = true;
+        await SharedJsService.SetAttributeByQuerySelectorAsync("html","data-theme-responsive", "true");
+        if (updateRender)
         {
-            await EnableDarkMode();
+            StateHasChanged();
+        }
+    }
+    
+    public async Task DisableResponsiveModeAsync( bool updateRender = true)
+    {
+        ResponsiveMode = false;
+        await SharedJsService.SetAttributeByQuerySelectorAsync("html","data-theme-responsive", "false");
+        if (updateRender)
+        {
+            StateHasChanged();
+        }
+    }
+    public  bool GetResponsiveModeAsync()
+    {
+        return CurrentBreakPoint <= EntBreakpoint.Tablet;
+    }
+    
+    public async Task SetResponsiveModeAsync(bool enable , bool updateRender = true)
+    {
+        if (enable)
+        {
+            await EnableResponsiveModeAsync(updateRender);
         }
         else
         {
-            await   DisableDarkMode();
+            await DisableResponsiveModeAsync(updateRender);
         }
     }
+    public async Task ToggleResponsiveModeAsync()
+    {
+        await SetResponsiveModeAsync(!ResponsiveMode);
+    }
+
+    #endregion
+
+    #region Breakpoint
+
+    public  EntBreakpoint CurrentBreakPoint { get; set; }
 
 
+    public  Task<EntBreakpoint> GetBreakpointAsync()
+    {
+        return SharedJsService.GetBreakpointAsync();
+    }
+    
     [JSInvokable("OnBreakpointEventListener")]
-    public async Task OnBreakpointEventListener(string breakpoint)
+    public void OnBreakpointEventListener(string breakpoint)
     {
-        if (BreakpointChangeEvent != null)
-        {
-            var value = Enum.Parse<EntBreakpoint>(breakpoint);
-            BreakpointChangeEvent.Invoke(value);
-        }
+        if (breakpoint  == CurrentBreakPoint.ToString()) return;
+        
+        CurrentBreakPoint = Enum.Parse<EntBreakpoint>(breakpoint);
+        
+        // StateHasChanged();
     }
+
+    #endregion
+
+    #region Drawer
 
     [Parameter]
     public int DrawerDefaultWidth { get; set; } = 260;
 
-    public override void Dispose()
-    {
-        
-    }
+    #endregion
+
 
 }

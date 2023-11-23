@@ -2,7 +2,7 @@
 @using Enter.UI.Components.Button
 @using Enter.UI.Components.Icon
 @using Enter.UI.Components.Loading
-@inherits EntComponentBase
+@inherits Enter.UI.Cores.Bases.EntComponentBase
 <span @attributes="@AdditionalAttributes" class="@RootClass" style="@RootStyle">
      @if (Indeterminate)
      {
@@ -18,12 +18,12 @@
 
 @code {
 
-    private string RootClass => CssClassBuilder
-        .AddClass("ent-linear-loading")
-        .AddClass("ent-linear-loading-lg",Size == EntLoadingSize.Large)
-        .AddClass("ent-linear-loading-sm",Size == EntLoadingSize.Small)
-        .AddClass("ent-linear-loading")
-        .AddClass("animate",Animate)
+    private string RootClass => CssBuilder
+        .AddCss("ent-linear-loading")
+        .AddCss("ent-linear-loading-lg",Size == EntLoadingSize.Large)
+        .AddCss("ent-linear-loading-sm",Size == EntLoadingSize.Small)
+        .AddCss("ent-linear-loading")
+        .AddCss("animate",Animate)
         .Build();
     
     private string RootStyle => StyleBuilder

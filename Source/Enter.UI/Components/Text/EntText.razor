@@ -1,7 +1,7 @@
 @namespace Enter.UI.Components
 
 @using Enter.UI.Components.Text
-@inherits EntComponentBase
+@inherits Enter.UI.Cores.Bases.EntComponentBase
 
 @switch (Type)
 {
@@ -44,14 +44,14 @@
 
 @code {
 
-    private string RootClass => CssClassBuilder
-        .AddClass("ent-text")
-        .AddClass("fs-sub-heading",Size == EntTextSize.SubHeading)
-        .AddClass("fs-heading",Size == EntTextSize.Heading)
-        .AddClass("fs-title",Size == EntTextSize.Title)
-        .AddClass("fs-subtitle",Size == EntTextSize.Subtitle)
-        .AddClass("fs-description",Size == EntTextSize.Description)
-        .AddClass("fs-caption",Size == EntTextSize.Caption)
+    private string RootClass => CssBuilder
+        .AddCss("ent-text")
+        .AddCss("fs-sub-heading",Size == EntTextSize.SubHeading)
+        .AddCss("fs-heading",Size == EntTextSize.Heading)
+        .AddCss("fs-title",Size == EntTextSize.Title)
+        .AddCss("fs-subtitle",Size == EntTextSize.Subtitle)
+        .AddCss("fs-description",Size == EntTextSize.Description)
+        .AddCss("fs-caption",Size == EntTextSize.Caption)
         .Build();
 
     [Parameter]

@@ -77,27 +77,6 @@
         }
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await base.OnInitializedAsync();
-
-        if (firstRender)
-        {
-            if (EntThemeProvider != null)
-            {
-                EntThemeProvider.BreakpointChangeEvent += EntThemeProviderBreakpointChangeEvent;
-            }
-        }
-    }
-
-    private void EntThemeProviderBreakpointChangeEvent(EntBreakpoint breakpoint)
-    {
-        _drawerMode = breakpoint > EntBreakpoint.Tablet ? EntDrawerMode.Behavior : EntDrawerMode.Overlay;
-        _isDrawerOpen = breakpoint > EntBreakpoint.Tablet;
-        _showToggle = breakpoint <= EntBreakpoint.Tablet;
-        StateHasChanged();
-    }
-
     private void ToggleRtl()
     {
         EntThemeProvider?.ToggleRtl();
@@ -107,7 +86,7 @@
     {
         if (EntThemeProvider != null)
         {
-            await EntThemeProvider.ToggleDarkMode();
+            await EntThemeProvider.ToggleDarkModeAsync();
         }
     }
 

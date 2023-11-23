@@ -5,14 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Enter.UI.Core.Bases;
+using Enter.UI.Cores.Bases;
 
 
 namespace Enter.UI.Components
 {
     public partial class EntToolbar : EntComponentBase
     {
-        protected string RootCss => CssClassBuilder.AddClass("ent-toolbar")
+        protected string RootCss => CssBuilder.AddCss("ent-toolbar")
             .Build();
 
         [Parameter]

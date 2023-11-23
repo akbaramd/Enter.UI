@@ -1,6 +1,6 @@
 ﻿@using Enter.UI.Components.Button
 @using Enter.UI.Components.Icon
-@inherits EntComponentBase
+@inherits Enter.UI.Cores.Bases.EntComponentBase
 @namespace Enter.UI.Components
 <div @attributes="@AdditionalAttributes" class="@cssClass">
     @if (ShowBack)
@@ -17,8 +17,8 @@
 
 @code {
 
-    protected string cssClass => CssClassBuilder
-        .AddClass("ent-appbar")
+    protected string cssClass => CssBuilder
+        .AddCss("ent-appbar")
         .Build();
 
     [Parameter]

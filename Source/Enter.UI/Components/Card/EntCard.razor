@@ -1,7 +1,7 @@
 ﻿@namespace Enter.UI.Components
 @using Enter.UI.Core
 @using Enter.UI.Components.Icon
-@inherits EntComponentBase
+@inherits Enter.UI.Cores.Bases.EntComponentBase
 
 <div @attributes="@AdditionalAttributes" class="@RootClass" >
     @if (Title != null)
@@ -51,8 +51,8 @@
 
 @code {
 
-    private string RootClass => CssClassBuilder
-        .AddClass("ent-card")
+    private string RootClass => CssBuilder
+        .AddCss("ent-card")
         .Build();
 
 

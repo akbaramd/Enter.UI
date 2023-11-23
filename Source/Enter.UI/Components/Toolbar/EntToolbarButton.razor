@@ -1,7 +1,7 @@
 ﻿@namespace Enter.UI.Components
 @using Enter.UI.Components.Icon
 @using Enter.UI.Components.Text
-@inherits EntComponentBase
+@inherits Enter.UI.Cores.Bases.EntComponentBase
 <CascadingValue Value="@(this)">
     <div @attributes="AdditionalAttributes" class="@RootClass">
         @if (Icon != null && !Loading)
@@ -23,8 +23,8 @@
 
 @code {
 
-    private string RootClass => CssClassBuilder
-        .AddClass("ent-toolbar-button")
+    private string RootClass => CssBuilder
+        .AddCss("ent-toolbar-button")
         .Build();
 
 

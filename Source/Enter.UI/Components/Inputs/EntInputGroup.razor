@@ -2,7 +2,7 @@
 @using System.Linq.Expressions
 
 @typeparam TValue;
-@inherits EntComponentBase
+@inherits Enter.UI.Cores.Bases.EntComponentBase
 
 <div @attributes="@AdditionalAttributes" class="@RootCss" id="@Id">
     @if(Label != null)
@@ -18,8 +18,8 @@
 
 @code {
 
-    private string RootCss => CssClassBuilder
-        .AddClass("ent-input-group")
+    private string RootCss => CssBuilder
+        .AddCss("ent-input-group")
         .Build();
 
     

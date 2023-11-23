@@ -1,7 +1,7 @@
 ﻿@namespace Enter.UI.Components
 @using System.Diagnostics.CodeAnalysis
 @using Enter.UI.Components.Icon
-@inherits EntInputBase<string>
+@inherits Enter.UI.Cores.Bases.EntInputBase<string>
 @typeparam T
 
 <div @attributes="@AdditionalAttributes" @ref="_elementReference" class="@RootCss" id="@Id">
@@ -46,9 +46,9 @@
 @code {
 
     private string RootCss => CssBuilder
-    .AddClass("ent-select")
-    .AddClass(BaseCss)
-    .AddClass(ValidationCss)
+    .AddCss("ent-select")
+    .AddCss(BaseCss)
+    .AddCss(ValidationCss)
     .Build();
 
 

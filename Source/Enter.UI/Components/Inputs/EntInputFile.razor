@@ -1,7 +1,7 @@
 ﻿@namespace Enter.UI.Components
 @using System.Diagnostics.CodeAnalysis
 @using Enter.UI.Components.Icon
-@inherits EntInputBase<string?>
+@inherits Enter.UI.Cores.Bases.EntInputBase<string?>
 @implements IAsyncDisposable
 
 <div @attributes="@AdditionalAttributes" class="@RootCss" id="@Id">
@@ -20,9 +20,9 @@
 @code {
 
     private string RootCss => CssBuilder
-        .AddClass("ent-input")
-        .AddClass(BaseCss)
-        .AddClass(ValidationCss)
+        .AddCss("ent-input")
+        .AddCss(BaseCss)
+        .AddCss(ValidationCss)
         .Build();
 
     [Parameter]

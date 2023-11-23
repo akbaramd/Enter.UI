@@ -14,8 +14,8 @@ namespace Enter.UI.Components
         private EntTab _tab = default!;
         private string? _activeTabId = null;
 
-        private string RootCss => CssClassBuilder
-           .AddClass("ent-mdi-tab")
+        private string RootCss => CssBuilder
+           .AddCss("ent-mdi-tab")
            .Build();
 
         [Inject]
@@ -38,7 +38,16 @@ namespace Enter.UI.Components
 
         }
 
-     
+        protected override Task OnAfterRenderAsync(bool firstRender)
+        {
+            return base.OnAfterRenderAsync(firstRender);
+        }
+
+        protected override Task OnParametersSetAsync()
+        {
+            return base.OnParametersSetAsync();
+        }
+
         private async Task OnServiceNewTabAddedAsync(EntMdiTabInstance panel)
         {
             await InvokeAsync(async () =>

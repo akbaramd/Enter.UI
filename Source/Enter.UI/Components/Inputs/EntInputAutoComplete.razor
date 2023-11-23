@@ -1,7 +1,7 @@
 ﻿@namespace Enter.UI.Components
 @using System.Diagnostics.CodeAnalysis
 @using Enter.UI.Components.Icon
-@inherits EntInputBase<string>
+@inherits Enter.UI.Cores.Bases.EntInputBase<string>
 @typeparam T
 <div @attributes="@AdditionalAttributes" class="@RootClass"  @ref="_elementReference" id="@Id">
     <EntInputText @ref="_inputReference" EventType="oninput" class="@( "ent-input-autocomplete-input")" 
@@ -43,7 +43,7 @@
 @code {
     private Task AfterAsync() { return Task.CompletedTask; }
     private string RootClass => CssBuilder
-        .AddClass("ent-input-autocomplete")
+        .AddCss("ent-input-autocomplete")
         .Build();
 
 

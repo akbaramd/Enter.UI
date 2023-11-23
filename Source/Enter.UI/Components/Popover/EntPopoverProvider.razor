@@ -1,5 +1,5 @@
 ﻿@namespace Enter.UI.Components
-@inherits EntComponentBase
+@inherits Enter.UI.Cores.Bases.EntComponentBase
 @using Enter.UI.Services
 <div class="@RootClass">
     @foreach (var item in _entPopoverService.PopoverInstances)
@@ -15,8 +15,8 @@
 
 @code {
 
-    private string RootClass => CssClassBuilder
-        .AddClass("ent-popover-provider")
+    private string RootClass => CssBuilder
+        .AddCss("ent-popover-provider")
         .Build();
 
     [Inject]

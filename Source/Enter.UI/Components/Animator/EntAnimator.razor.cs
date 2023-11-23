@@ -1,5 +1,5 @@
 ﻿using Enter.UI.Components.Animator;
-using Enter.UI.Core.Bases;
+using Enter.UI.Cores.Bases;
 using Microsoft.AspNetCore.Components;
 
 namespace Enter.UI.Components;
@@ -24,8 +24,8 @@ public partial class EntAnimator : EntComponentBase
     public EventCallback OnAnimationStart { get; set; } 
    
     // Style and Css
-    private string RootCss => CssClassBuilder
-        .AddClass("ent-animator")
+    private string RootCss => CssBuilder
+        .AddCss("ent-animator")
         .Build();
     
     private string RootStyle => StyleBuilder.Build();

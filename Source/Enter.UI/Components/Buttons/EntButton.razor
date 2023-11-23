@@ -1,7 +1,7 @@
 ﻿@namespace Enter.UI.Components
 @using Enter.UI.Components.Button
 @using Enter.UI.Components.Icon
-@inherits EntComponentBase
+@inherits Enter.UI.Cores.Bases.EntComponentBase
 
 <button @attributes="@AdditionalAttributes" disabled="@(Disabled ? true : false)" class="@RootClass">
     @if (Icon != null && !Loading)
@@ -23,21 +23,21 @@
 
 @code {
 
-    private string RootClass => CssClassBuilder
+    private string RootClass => CssBuilder
 
-        .AddClass("ent-btn")
+        .AddCss("ent-btn")
         
-        .AddClass("ent-btn-size-lg",Size == ButtonSize.Large)
-        .AddClass("ent-btn-size-md", Size == ButtonSize.Medium)
-        .AddClass("ent-btn-size-sm", Size == ButtonSize.Small)
+        .AddCss("ent-btn-size-lg",Size == ButtonSize.Large)
+        .AddCss("ent-btn-size-md", Size == ButtonSize.Medium)
+        .AddCss("ent-btn-size-sm", Size == ButtonSize.Small)
         
-        .AddClass("ent-btn-outline",Appearance==ButtonAppearance.Outline)
-        .AddClass("ent-btn-ghost",Appearance==ButtonAppearance.Ghost)
+        .AddCss("ent-btn-outline",Appearance==ButtonAppearance.Outline)
+        .AddCss("ent-btn-ghost",Appearance==ButtonAppearance.Ghost)
         
-        .AddClass("ent-btn-primary", Color == ButtonColor.Primary )
+        .AddCss("ent-btn-primary", Color == ButtonColor.Primary )
         
-        .AddClass("ent-btn-only-icon", Icon != null && ChildContent == null)
-        .AddClass("ent-btn-disabled", Disabled )
+        .AddCss("ent-btn-only-icon", Icon != null && ChildContent == null)
+        .AddCss("ent-btn-disabled", Disabled )
         
         .Build();
 

@@ -1,9 +1,9 @@
 using Enter.UI.Core;
-using Enter.UI.Core.Bases;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Enter.UI.Core;
+using Enter.UI.Cores.Bases;
 
 
 namespace Enter.UI.Components
@@ -16,18 +16,20 @@ namespace Enter.UI.Components
         private string? _activeTabId = null;
         private EntTabPanel? _activeTab => Panels.FirstOrDefault(x=>x.Id.Equals(_activeTabId));
         
-        protected string RootCss => CssClassBuilder
-      
-            .AddClass("ent-tab-horizontal", Direction == EntTabDirection.Horizontal)
-            .AddClass("ent-tab-vertical", Direction == EntTabDirection.Vertical)
-            .AddClass("ent-tab-expandable", Expandable)
-            .AddClass("ent-tab")
+        protected string RootCss => CssBuilder
+            .AddCss("ent-tab")
+            .AddResponsiveModeCss("ent-tab-resposive")
+            .AddCss("ent-tab-horizontal", Direction == EntTabDirection.Horizontal)
+            .AddCss("ent-tab-vertical", Direction == EntTabDirection.Vertical)
+            .AddCss("ent-tab-expandable", Expandable)
+            
             .Build();
-        protected string PanelCss => new CssClassBuilder()
+        protected string PanelCss => new CssBuilder()
             .Clear()
-            .AddClass("ent-tab-panel-container")
-            .AddClass(PanelClass)
-            .AddClass($"active", Expandable && _activeTabId != null)
+            .AddCss("ent-tab-panel-container")
+            .AddResponsiveModeCss("ent-tab-panel-container-resposive")
+            .AddCss(PanelClass)
+            .AddCss($"active", Expandable && _activeTabId != null)
             .Build();
 
         [Parameter] 
@@ -38,19 +40,23 @@ namespace Enter.UI.Components
 
         [Parameter] public EventCallback<List<EntTabPanel>> PanelsChanged { get; set; } = default!;
         
+        
         [Parameter] 
         public RenderFragment? DefaultPanel { get; set; } = null;
-        
+
+
+    
+
         public string GetItemClass(bool active)
         {
-            return  CssClassBuilder
+            return  CssBuilder
                 .Clear()
-                .AddClass("ent-tab-item")
-                .AddClass("active",active)
-                .AddClass("ent-tab-item-horizontal", ItemDirection == EntTabItemDirection.Horizontal)
-                .AddClass("ent-tab-item-vertical", ItemDirection == EntTabItemDirection.Vertical)
-                .AddClass("ent-tab-item-minify", IconMinify)
-                .AddClass(ItemClass)
+                .AddCss("ent-tab-item")
+                .AddCss("active",active)
+                .AddCss("ent-tab-item-horizontal", ItemDirection == EntTabItemDirection.Horizontal)
+                .AddCss("ent-tab-item-vertical", ItemDirection == EntTabItemDirection.Vertical)
+                .AddCss("ent-tab-item-minify", IconMinify)
+                .AddCss(ItemClass)
                 .Build();
         }
         
@@ -84,10 +90,11 @@ namespace Enter.UI.Components
             {
                 _activeTabId = panel.Id;
             }
-            if (Responsive)
+            if (ResponsiveMode)
             {
                 _toogleMenu = false;
             }
+            
             StateHasChanged();
             await OnTabActivated.InvokeAsync(_activeTabId);
 
@@ -156,12 +163,11 @@ namespace Enter.UI.Components
         Horizontal
     }
 
-    public class EntTabBase : EntComponentBase
+    public class EntTabBase : EntResponsiveComponentBase
     {
         [Parameter] public bool KeepPanelAlive { get; set; } = false;
         [Parameter] public bool Closeable { get; set; } = false;
         [Parameter] public string ItemClass { get; set; } = string.Empty;
-        [Parameter] public bool Responsive { get; set; }
         [Parameter] public string PanelClass { get; set; } = string.Empty;
         [Parameter] public string ActiveClass { get; set; } = string.Empty;
         [Parameter] public bool Expandable { get; set; } = false;

@@ -5,14 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Enter.UI.Core.Bases;
+using Enter.UI.Cores.Bases;
 using Microsoft.JSInterop;
 
 namespace Enter.UI.Components
 {
     public partial class EntTable<T> : EntComponentBase
     {
-        protected string RootCss => CssClassBuilder.AddClass("ent-table")
+        protected string RootCss => CssBuilder.AddCss("ent-table")
             .Build();
 
         

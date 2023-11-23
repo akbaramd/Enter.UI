@@ -7,12 +7,12 @@
     
 </div>
 @using System.ComponentModel
-@inherits EntComponentBase
+@inherits Enter.UI.Cores.Bases.EntComponentBase
 
 @code {
 
-    public string RootCss => CssClassBuilder
-        .AddClass($"ent-drawer-container")
+    public string RootCss => CssBuilder
+        .AddCss($"ent-drawer-container")
         .Build();
 
     [Parameter]

@@ -1,22 +1,23 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Enter.UI.Core;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 
-namespace Enter.UI.Core.Bases
+namespace Enter.UI.Cores.Bases
 {
     public abstract class EntInputBase<T> : InputBase<T> , IAsyncDisposable
     {
 
-        public string ValidationCss => new CssClassBuilder()
-       .AddClass("ent-input-validation", UseValidation)
-       .AddClass("modified", UseValidation && IsModified)
-       .AddClass("validation-requested", UseValidation && ValidationRequested)
-       .AddClass("invalid", UseValidation && !IsValid)
-       .AddClass("valid", UseValidation && IsValid)
+        public string ValidationCss => new CssBuilder()
+       .AddCss("ent-input-validation", UseValidation)
+       .AddCss("modified", UseValidation && IsModified)
+       .AddCss("validation-requested", UseValidation && ValidationRequested)
+       .AddCss("invalid", UseValidation && !IsValid)
+       .AddCss("valid", UseValidation && IsValid)
        .Build();
 
-        public string BaseCss => new CssClassBuilder()
-        .AddClass("readonly", Readonly)
-        .AddClass("disabled", Disabled)
+        public string BaseCss => new CssBuilder()
+        .AddCss("readonly", Readonly)
+        .AddCss("disabled", Disabled)
         .Build();
 
         [Parameter]
@@ -32,9 +33,9 @@ namespace Enter.UI.Core.Bases
         internal bool IsModified { get; set; } = false;
 
 
-        protected CssClassBuilder CssBuilder =>
-           new CssClassBuilder()
-            .AddClass(AdditionalAttributes?.TryGetValue("class", out var @class) ?? false ? @class?.ToString() ?? string.Empty : string.Empty);
+        protected CssBuilder CssBuilder =>
+           new CssBuilder()
+            .AddCss(AdditionalAttributes?.TryGetValue("class", out var @class) ?? false ? @class?.ToString() ?? string.Empty : string.Empty);
 
 
         public string Id => (AdditionalAttributes?.ContainsKey("id") == true ? AdditionalAttributes["id"]?.ToString() ?? $"ent-{Guid.NewGuid()}" : $"ent-{Guid.NewGuid()}");

@@ -1,7 +1,7 @@
 ﻿@namespace Enter.UI.Components
 @using Enter.UI.Components.Drawer
 @using System.Data.Common
-@inherits EntComponentBase
+@inherits Enter.UI.Cores.Bases.EntComponentBase
 
 
 
@@ -10,14 +10,14 @@
 
 @code {
 
-    public string RootCss => CssClassBuilder
-        .AddClass($"ent-drawer")
-        .AddClass($"ent-drawer--direction-start", Direction == EntDrawerDirection.Start)
-        .AddClass($"ent-drawer--direction-end", Direction == EntDrawerDirection.End)
-        .AddClass($"ent-drawer--mode-behavior", Mode == EntDrawerMode.Behavior)
-        .AddClass($"ent-drawer--mode-overlay", Mode == EntDrawerMode.Overlay)
-        .AddClass($"ent-drawer--open", Open)
-        .AddClass($"ent-drawer--close", !Open)
+    public string RootCss => CssBuilder
+        .AddCss($"ent-drawer")
+        .AddCss($"ent-drawer--direction-start", Direction == EntDrawerDirection.Start)
+        .AddCss($"ent-drawer--direction-end", Direction == EntDrawerDirection.End)
+        .AddCss($"ent-drawer--mode-behavior", Mode == EntDrawerMode.Behavior)
+        .AddCss($"ent-drawer--mode-overlay", Mode == EntDrawerMode.Overlay)
+        .AddCss($"ent-drawer--open", Open)
+        .AddCss($"ent-drawer--close", !Open)
         .Build();
 
     [Parameter]

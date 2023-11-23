@@ -1,5 +1,5 @@
 ﻿@namespace Enter.UI.Components
-@inherits EntComponentBase
+@inherits Enter.UI.Cores.Bases.EntComponentBase
 <li @attributes="@AdditionalAttributes" class="@RootCss">
 
     @ChildContent
@@ -7,8 +7,8 @@
 
 @code {
 
-    private string RootCss => CssClassBuilder
-        .AddClass("ent-list-item")
+    private string RootCss => CssBuilder
+        .AddCss("ent-list-item")
         .Build();
 
     [Parameter]

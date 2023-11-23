@@ -3,7 +3,7 @@
 @typeparam TValue
 @using Enter.UI.Components.TreeView
 @using Enter.UI.Core
-@inherits EntComponentBase  
+@inherits Enter.UI.Cores.Bases.EntComponentBase  
 
 <CascadingValue Value="this" IsFixed="true">
     <ul @attributes="@AdditionalAttributes" class="@RootCss">
@@ -20,12 +20,12 @@
 
 @code {
 
-    private string RootCss => CssClassBuilder
-    .AddClass("ent-treeview")
+    private string RootCss => CssBuilder
+    .AddCss("ent-treeview")
     .Build();
 
-    private string Item =>new  CssClassBuilder()
-        .AddClass("ent-treeview")
+    private string Item =>new  CssBuilder()
+        .AddCss("ent-treeview")
         .Build();
 
     [Parameter]

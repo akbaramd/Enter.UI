@@ -1,4 +1,3 @@
-using Enter.UI.Core.Bases;
 using global::System;
 using global::System.Collections.Generic;
 using global::System.Linq;
@@ -7,6 +6,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Enter.UI.Core;
+using Enter.UI.Cores.Bases;
 
 
 namespace Enter.UI.Components
@@ -14,9 +14,9 @@ namespace Enter.UI.Components
     public partial class EntTabPanel : EntComponentBase
     {
 
-        protected string RootCss => CssClassBuilder
-            .AddClass("ent-tab-panel")
-           .AddClass($"active", Parent.IsActiveTab(Id))
+        protected string RootCss => CssBuilder
+            .AddCss("ent-tab-panel")
+           .AddCss($"active", Parent.IsActiveTab(Id))
            .Build();
 
 

@@ -3,7 +3,7 @@
 @using Enter.UI.Components.Animator
 @using Enter.UI.Components.Expandable
 @using Enter.UI.JsServices
-@inherits EntComponentBase
+@inherits Enter.UI.Cores.Bases.EntComponentBase
 
 <EntAnimator
         @attributes="@AdditionalAttributes"
@@ -30,14 +30,14 @@
     internal IEntSharedJsService? SharedJsService { get; set; }
 
     // Style and Css
-    private string RootCss => CssClassBuilder
-        .AddClass("ent-expandable")
-        .AddClass("ent-expandable-horizontal", Direction == EntExpandableDirection.Horizontal)
-        .AddClass("ent-expandable-vertical", Direction == EntExpandableDirection.Vertical)
-        .AddClass("ent-expandable-closed", AnimationState == EntAnimatorState.End)
-        .AddClass("ent-expandable-opened", AnimationState == EntAnimatorState.Start)
-        .AddClass("ent-expandable-closing", AnimationState == EntAnimatorState.Ending)
-        .AddClass("ent-expandable-opening", AnimationState == EntAnimatorState.Starting)
+    private string RootCss => CssBuilder
+        .AddCss("ent-expandable")
+        .AddCss("ent-expandable-horizontal", Direction == EntExpandableDirection.Horizontal)
+        .AddCss("ent-expandable-vertical", Direction == EntExpandableDirection.Vertical)
+        .AddCss("ent-expandable-closed", AnimationState == EntAnimatorState.End)
+        .AddCss("ent-expandable-opened", AnimationState == EntAnimatorState.Start)
+        .AddCss("ent-expandable-closing", AnimationState == EntAnimatorState.Ending)
+        .AddCss("ent-expandable-opening", AnimationState == EntAnimatorState.Starting)
         .Build();
 
     private string RootStyle => StyleBuilder
@@ -125,6 +125,7 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
+        await base.OnAfterRenderAsync(firstRender);
         if (firstRender)
         {
             await UpdateSize();
@@ -137,7 +138,6 @@
             StateHasChanged();
         }
 
-        await base.OnAfterRenderAsync(firstRender);
     }
 
 
