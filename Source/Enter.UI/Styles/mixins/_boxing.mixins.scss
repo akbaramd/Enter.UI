@@ -1,0 +1,32 @@
+@mixin makeBoxing($size:"md", $border : null) {
+  @if ($size == "sm") {
+    //32px
+    @include incPaddingSpaceXY("2", "2", $border); //16 
+    @include incTypo("sm"); // 16
+  } @else if ($size == "lg") {
+    //48px
+    @include incPaddingSpaceXY("3", "4", $border); //24 
+    @include incTypo("lg"); // 24
+  } @else {
+    //40px
+    @include incPaddingSpaceXY("2_5", "3", $border); //20 
+    @include incTypo("md"); // 20
+  }
+}
+
+@mixin makeSquareBoxing($size:"md", $border : null) {
+  @if ($size == "sm") {
+    //32px
+    @include incPaddingSpace("2", $border); //16 
+    @include incTypo("sm"); // 16
+  } @else if ($size == "lg") {
+    //48px
+    @include incPaddingSpace("3", $border); //24 
+    @include incTypo("lg"); // 24
+  } @else {
+    //40px
+    @include incPaddingSpace("2_5", $border); //20 
+    @include incTypo("md"); // 20
+  }
+}
+

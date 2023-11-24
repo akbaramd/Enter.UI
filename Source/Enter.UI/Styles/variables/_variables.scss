@@ -1,0 +1,332 @@
+@import "breakpoint.variables";
+@import "border.variables";
+@import "typography.variables";
+@import "space.variables";
+
+
+// Late
+$color-late-50: #f8fafc;
+$color-late-100: #f1f5f9;
+$color-late-200: #e2e8f0;
+$color-late-300: #cbd5e1;
+$color-late-400: #94a3b8;
+$color-late-500: #64748b;
+$color-late-600: #475569;
+$color-late-700: #334155;
+$color-late-800: #1e293b;
+$color-late-900: #0f172a;
+$color-late-950: #020617;
+// Gray
+$color-gray-50: #f9fafb;
+$color-gray-100: #f3f4f6;
+$color-gray-200: #e5e7eb;
+$color-gray-300: #d1d5db;
+$color-gray-400: #9ca3af;
+$color-gray-500: #6b7280;
+$color-gray-600: #4b5563;
+$color-gray-700: #374151;
+$color-gray-800: #1f2937;
+$color-gray-900: #111827;
+$color-gray-950: #030712;
+// Zinc
+$color-zinc-50: #fafafa;
+$color-zinc-100: #f4f4f5;
+$color-zinc-200: #e4e4e7;
+$color-zinc-300: #d4d4d8;
+$color-zinc-400: #a1a1aa;
+$color-zinc-500: #71717a;
+$color-zinc-600: #52525b;
+$color-zinc-700: #3f3f46;
+$color-zinc-800: #27272a;
+$color-zinc-900: #18181b;
+$color-zinc-950: #09090b;
+// Neutral
+$color-neutral-50: #fafafa;
+$color-neutral-100: #f5f5f5;
+$color-neutral-200: #e5e5e5;
+$color-neutral-300: #d4d4d4;
+$color-neutral-400: #a3a3a3;
+$color-neutral-500: #737373;
+$color-neutral-600: #525252;
+$color-neutral-700: #404040;
+$color-neutral-800: #262626;
+$color-neutral-900: #171717;
+$color-neutral-950: #0a0a0a;
+// Stone
+$color-stone-50: #fafaf9;
+$color-stone-100: #f5f5f4;
+$color-stone-200: #e7e5e4;
+$color-stone-300: #d6d3d1;
+$color-stone-400: #a8a29e;
+$color-stone-500: #78716c;
+$color-stone-600: #57534e;
+$color-stone-700: #44403c;
+$color-stone-800: #292524;
+$color-stone-900: #1c1917;
+$color-stone-950: #0c0a09;
+// Red
+$color-red-50: #fef2f2;
+$color-red-100: #fee2e2;
+$color-red-200: #fecaca;
+$color-red-300: #fca5a5;
+$color-red-400: #f87171;
+$color-red-500: #ef4444;
+$color-red-600: #dc2626;
+$color-red-700: #b91c1c;
+$color-red-800: #991b1b;
+$color-red-900: #7f1d1d;
+$color-red-950: #450a0a;
+// Orange
+$color-orange-50: #fff7ed;
+$color-orange-100: #ffedd5;
+$color-orange-200: #fed7aa;
+$color-orange-300: #fdba74;
+$color-orange-400: #fb923c;
+$color-orange-500: #f97316;
+$color-orange-600: #ea580c;
+$color-orange-700: #c2410c;
+$color-orange-800: #9a3412;
+$color-orange-900: #7c2d12;
+$color-orange-950: #431407;
+// Amber
+$color-amber-50: #fffbeb;
+$color-amber-100: #fef3c7;
+$color-amber-200: #fde68a;
+$color-amber-300: #fcd34d;
+$color-amber-400: #fbbf24;
+$color-amber-500: #f59e0b;
+$color-amber-600: #d97706;
+$color-amber-700: #b45309;
+$color-amber-800: #92400e;
+$color-amber-900: #78350f;
+$color-amber-950: #451a03;
+// Yellow
+$color-yellow-50: #fefce8;
+$color-yellow-100: #fef9c3;
+$color-yellow-200: #fef08a;
+$color-yellow-300: #fde047;
+$color-yellow-400: #facc15;
+$color-yellow-500: #eab308;
+$color-yellow-600: #ca8a04;
+$color-yellow-700: #a16207;
+$color-yellow-800: #854d0e;
+$color-yellow-900: #713f12;
+$color-yellow-950: #422006;
+// Lime
+$color-lime-50: #f7fee7;
+$color-lime-100: #ecfccb;
+$color-lime-200: #d9f99d;
+$color-lime-300: #bef264;
+$color-lime-400: #a3e635;
+$color-lime-500: #84cc16;
+$color-lime-600: #65a30d;
+$color-lime-700: #4d7c0f;
+$color-lime-800: #3f6212;
+$color-lime-900: #365314;
+$color-lime-950: #1a2e05;
+// Green
+$color-green-50: #f0fdf4;
+$color-green-100: #dcfce7;
+$color-green-200: #bbf7d0;
+$color-green-300: #86efac;
+$color-green-400: #4ade80;
+$color-green-500: #22c55e;
+$color-green-600: #16a34a;
+$color-green-700: #15803d;
+$color-green-800: #166534;
+$color-green-900: #14532d;
+$color-green-950: #052e16;
+// Emerald
+$color-emerald-50: #ecfdf5;
+$color-emerald-100: #d1fae5;
+$color-emerald-200: #a7f3d0;
+$color-emerald-300: #6ee7b7;
+$color-emerald-400: #34d399;
+$color-emerald-500: #10b981;
+$color-emerald-600: #059669;
+$color-emerald-700: #047857;
+$color-emerald-800: #065f46;
+$color-emerald-900: #064e3b;
+$color-emerald-950: #022c22;
+//Teal
+$color-teal-50: #f0fdfa;
+$color-teal-100: #ccfbf1;
+$color-teal-200: #99f6e4;
+$color-teal-300: #5eead4;
+$color-teal-400: #2dd4bf;
+$color-teal-500: #14b8a6;
+$color-teal-600: #0d9488;
+$color-teal-700: #0f766e;
+$color-teal-800: #115e59;
+$color-teal-900: #134e4a;
+$color-teal-950: #042f2e;
+// Cyan
+$color-cyan-50: #ecfeff;
+$color-cyan-100: #cffafe;
+$color-cyan-200: #a5f3fc;
+$color-cyan-300: #67e8f9;
+$color-cyan-400: #22d3ee;
+$color-cyan-500: #06b6d4;
+$color-cyan-600: #0891b2;
+$color-cyan-700: #0e7490;
+$color-cyan-800: #155e75;
+$color-cyan-900: #164e63;
+$color-cyan-950: #083344;
+// Sky
+$color-sky-50: #f0f9ff;
+$color-sky-100: #e0f2fe;
+$color-sky-200: #bae6fd;
+$color-sky-300: #7dd3fc;
+$color-sky-400: #38bdf8;
+$color-sky-500: #0ea5e9;
+$color-sky-600: #0284c7;
+$color-sky-700: #0369a1;
+$color-sky-800: #075985;
+$color-sky-900: #0c4a6e;
+$color-sky-950: #082f49;
+// Blue
+$color-blue-50: #eff6ff;
+$color-blue-100: #dbeafe;
+$color-blue-200: #bfdbfe;
+$color-blue-300: #93c5fd;
+$color-blue-400: #60a5fa;
+$color-blue-500: #3b82f6;
+$color-blue-600: #2563eb;
+$color-blue-700: #1d4ed8;
+$color-blue-800: #1e40af;
+$color-blue-900: #1e3a8a;
+$color-blue-950: #172554;
+// Indigo
+$color-indigo-50: #eef2ff;
+$color-indigo-100: #e0e7ff;
+$color-indigo-200: #c7d2fe;
+$color-indigo-300: #a5b4fc;
+$color-indigo-400: #818cf8;
+$color-indigo-500: #6366f1;
+$color-indigo-600: #4f46e5;
+$color-indigo-700: #4338ca;
+$color-indigo-800: #3730a3;
+$color-indigo-900: #312e81;
+$color-indigo-950: #1e1b4b;
+// Violet
+$color-violet-50: #f5f3ff;
+$color-violet-100: #ede9fe;
+$color-violet-200: #ddd6fe;
+$color-violet-300: #c4b5fd;
+$color-violet-400: #a78bfa;
+$color-violet-500: #8b5cf6;
+$color-violet-600: #7c3aed;
+$color-violet-700: #6d28d9;
+$color-violet-800: #5b21b6;
+$color-violet-900: #4c1d95;
+$color-violet-950: #2e1065;
+// Purple
+$color-purple-50: #faf5ff;
+$color-purple-100: #f3e8ff;
+$color-purple-200: #e9d5ff;
+$color-purple-300: #d8b4fe;
+$color-purple-400: #c084fc;
+$color-purple-500: #a855f7;
+$color-purple-600: #9333ea;
+$color-purple-700: #7e22ce;
+$color-purple-800: #6b21a8;
+$color-purple-900: #581c87;
+$color-purple-950: #3b0764;
+//Fuchsia
+$color-fuchsia-50: #fdf4ff;
+$color-fuchsia-100: #fae8ff;
+$color-fuchsia-200: #f5d0fe;
+$color-fuchsia-300: #f0abfc;
+$color-fuchsia-400: #e879f9;
+$color-fuchsia-500: #d946ef;
+$color-fuchsia-600: #c026d3;
+$color-fuchsia-700: #a21caf;
+$color-fuchsia-800: #86198f;
+$color-fuchsia-900: #701a75;
+$color-fuchsia-950: #4a044e;
+// Pink
+$color-pink-50: #fdf2f8;
+$color-pink-100: #fce7f3;
+$color-pink-200: #fbcfe8;
+$color-pink-300: #f9a8d4;
+$color-pink-400: #f472b6;
+$color-pink-500: #ec4899;
+$color-pink-600: #db2777;
+$color-pink-700: #be185d;
+$color-pink-800: #9d174d;
+$color-pink-900: #831843;
+$color-pink-950: #500724;
+// Rose
+$color-rose-50: #fff1f2;
+$color-rose-100: #ffe4e6;
+$color-rose-200: #fecdd3;
+$color-rose-300: #fda4af;
+$color-rose-400: #fb7185;
+$color-rose-500: #f43f5e;
+$color-rose-600: #e11d48;
+$color-rose-700: #be123c;
+$color-rose-800: #9f1239;
+$color-rose-900: #881337;
+$color-rose-950: #4c0519;
+
+
+$color-light: var(--ent-light);
+$color-dark: var(--ent-dark);
+$color-primary: var(--ent-primary);
+$color-secondary: var(--ent-secondary);
+$color-tertiary: var(--ent-tertiary);
+$color-warning: var(--ent-warning);
+$color-info: var(--ent-info);
+$color-success: var(--ent-success);
+$color-danger: var(--ent-danger);
+$color-link: var(--ent-link);
+
+$colors: ("white": white, "black": black, "light":$color-light, "dark":$color-dark, "link":$color-link, "primary":$color-primary, "secondary":$color-secondary, "tertiary":$color-tertiary, 'success': $color-success, 'danger': $color-danger, 'warning': $color-warning, 'info': $color-info, 'late-50': $color-late-50, 'late-100': $color-late-100, 'late-200': $color-late-200, 'late-300': $color-late-300, 'late-400': $color-late-400, 'late-500': $color-late-500, 'late-600': $color-late-600, 'late-700': $color-late-700, 'late-800': $color-late-800, 'late-900': $color-late-900, 'late-950': $color-late-950, 'gray-50': $color-gray-50, 'gray-100': $color-gray-100, 'gray-200': $color-gray-200, 'gray-300': $color-gray-300, 'gray-400': $color-gray-400, 'gray-500': $color-gray-500, 'gray-600': $color-gray-600, 'gray-700': $color-gray-700, 'gray-800': $color-gray-800, 'gray-900': $color-gray-900, 'gray-950': $color-gray-950, 'zinc-50': $color-zinc-50, 'zinc-100': $color-zinc-100, 'zinc-200': $color-zinc-200, 'zinc-300': $color-zinc-300, 'zinc-400': $color-zinc-400, 'zinc-500': $color-zinc-500, 'zinc-600': $color-zinc-600, 'zinc-700': $color-zinc-700, 'zinc-800': $color-zinc-800, 'zinc-900': $color-zinc-900, 'zinc-950': $color-zinc-950, 'neutral-50': $color-neutral-50, 'neutral-100': $color-neutral-100, 'neutral-200': $color-neutral-200, 'neutral-300': $color-neutral-300, 'neutral-400': $color-neutral-400, 'neutral-500': $color-neutral-500, 'neutral-600': $color-neutral-600, 'neutral-700': $color-neutral-700, 'neutral-800': $color-neutral-800, 'neutral-900': $color-neutral-900, 'neutral-950': $color-neutral-950, 'stone-50': $color-stone-50, 'stone-100': $color-stone-100, 'stone-200': $color-stone-200, 'stone-300': $color-stone-300, 'stone-400': $color-stone-400, 'stone-500': $color-stone-500, 'stone-600': $color-stone-600, 'stone-700': $color-stone-700, 'stone-800': $color-stone-800, 'stone-900': $color-stone-900, 'stone-950': $color-stone-950, 'red-50': $color-red-50, 'red-100': $color-red-100, 'red-200': $color-red-200, 'red-300': $color-red-300, 'red-400': $color-red-400, 'red-500': $color-red-500, 'red-600': $color-red-600, 'red-700': $color-red-700, 'red-800': $color-red-800, 'red-900': $color-red-900, 'red-950': $color-red-950, 'orange-50': $color-orange-50, 'orange-100': $color-orange-100, 'orange-200': $color-orange-200, 'orange-300': $color-orange-300, 'orange-400': $color-orange-400, 'orange-500': $color-orange-500, 'orange-600': $color-orange-600, 'orange-700': $color-orange-700, 'orange-800': $color-orange-800, 'orange-900': $color-orange-900, 'orange-950': $color-orange-950, 'amber-50': $color-amber-50, 'amber-100': $color-amber-100, 'amber-200': $color-amber-200, 'amber-300': $color-amber-300, 'amber-400': $color-amber-400, 'amber-500': $color-amber-500, 'amber-600': $color-amber-600, 'amber-700': $color-amber-700, 'amber-800': $color-amber-800, 'amber-900': $color-amber-900, 'amber-950': $color-amber-950, 'yellow-50': $color-yellow-50, 'yellow-100': $color-yellow-100, 'yellow-200': $color-yellow-200, 'yellow-300': $color-yellow-300, 'yellow-400': $color-yellow-400, 'yellow-500': $color-yellow-500, 'yellow-600': $color-yellow-600, 'yellow-700': $color-yellow-700, 'yellow-800': $color-yellow-800, 'yellow-900': $color-yellow-900, 'yellow-950': $color-yellow-950, 'lime-50': $color-lime-50, 'lime-100': $color-lime-100, 'lime-200': $color-lime-200, 'lime-300': $color-lime-300, 'lime-400': $color-lime-400, 'lime-500': $color-lime-500, 'lime-600': $color-lime-600, 'lime-700': $color-lime-700, 'lime-800': $color-lime-800, 'lime-900': $color-lime-900, 'lime-950': $color-lime-950, 'green-50': $color-green-50, 'green-100': $color-green-100, 'green-200': $color-green-200, 'green-300': $color-green-300, 'green-400': $color-green-400, 'green-500': $color-green-500, 'green-600': $color-green-600, 'green-700': $color-green-700, 'green-800': $color-green-800, 'green-900': $color-green-900, 'green-950': $color-green-950, 'emerald-50': $color-emerald-50, 'emerald-100': $color-emerald-100, 'emerald-200': $color-emerald-200, 'emerald-300': $color-emerald-300, 'emerald-400': $color-emerald-400, 'emerald-500': $color-emerald-500, 'emerald-600': $color-emerald-600, 'emerald-700': $color-emerald-700, 'emerald-800': $color-emerald-800, 'emerald-900': $color-emerald-900, 'emerald-950': $color-emerald-950, 'teal-50': $color-teal-50, 'teal-100': $color-teal-100, 'teal-200': $color-teal-200, 'teal-300': $color-teal-300, 'teal-400': $color-teal-400, 'teal-500': $color-teal-500, 'teal-600': $color-teal-600, 'teal-700': $color-teal-700, 'teal-800': $color-teal-800, 'teal-900': $color-teal-900, 'teal-950': $color-teal-950, 'cyan-50': $color-cyan-50, 'cyan-100': $color-cyan-100, 'cyan-200': $color-cyan-200, 'cyan-300': $color-cyan-300, 'cyan-400': $color-cyan-400, 'cyan-500': $color-cyan-500, 'cyan-600': $color-cyan-600, 'cyan-700': $color-cyan-700, 'cyan-800': $color-cyan-800, 'cyan-900': $color-cyan-900, 'cyan-950': $color-cyan-950, 'sky-50': $color-sky-50, 'sky-100': $color-sky-100, 'sky-200': $color-sky-200, 'sky-300': $color-sky-300, 'sky-400': $color-sky-400, 'sky-500': $color-sky-500, 'sky-600': $color-sky-600, 'sky-700': $color-sky-700, 'sky-800': $color-sky-800, 'sky-900': $color-sky-900, 'sky-950': $color-sky-950, 'blue-50': $color-blue-50, 'blue-100': $color-blue-100, 'blue-200': $color-blue-200, 'blue-300': $color-blue-300, 'blue-400': $color-blue-400, 'blue-500': $color-blue-500, 'blue-600': $color-blue-600, 'blue-700': $color-blue-700, 'blue-800': $color-blue-800, 'blue-900': $color-blue-900, 'blue-950': $color-blue-950, 'indigo-50': $color-indigo-50, 'indigo-100': $color-indigo-100, 'indigo-200': $color-indigo-200, 'indigo-300': $color-indigo-300, 'indigo-400': $color-indigo-400, 'indigo-500': $color-indigo-500, 'indigo-600': $color-indigo-600, 'indigo-700': $color-indigo-700, 'indigo-800': $color-indigo-800, 'indigo-900': $color-indigo-900, 'indigo-950': $color-indigo-950, 'violet-50': $color-violet-50, 'violet-100': $color-violet-100, 'violet-200': $color-violet-200, 'violet-300': $color-violet-300, 'violet-400': $color-violet-400, 'violet-500': $color-violet-500, 'violet-600': $color-violet-600, 'violet-700': $color-violet-700, 'violet-800': $color-violet-800, 'violet-900': $color-violet-900, 'violet-950': $color-violet-950, 'purple-50': $color-purple-50, 'purple-100': $color-purple-100, 'purple-200': $color-purple-200, 'purple-300': $color-purple-300, 'purple-400': $color-purple-400, 'purple-500': $color-purple-500, 'purple-600': $color-purple-600, 'purple-700': $color-purple-700, 'purple-800': $color-purple-800, 'purple-900': $color-purple-900, 'purple-950': $color-purple-950, 'fuchsia-50': $color-fuchsia-50, 'fuchsia-100': $color-fuchsia-100, 'fuchsia-200': $color-fuchsia-200, 'fuchsia-300': $color-fuchsia-300, 'fuchsia-400': $color-fuchsia-400, 'fuchsia-500': $color-fuchsia-500, 'fuchsia-600': $color-fuchsia-600, 'fuchsia-700': $color-fuchsia-700, 'fuchsia-800': $color-fuchsia-800, 'fuchsia-900': $color-fuchsia-900, 'fuchsia-950': $color-fuchsia-950, 'pink-50': $color-pink-50, 'pink-100': $color-pink-100, 'pink-200': $color-pink-200, 'pink-300': $color-pink-300, 'pink-400': $color-pink-400, 'pink-500': $color-pink-500, 'pink-600': $color-pink-600, 'pink-700': $color-pink-700, 'pink-800': $color-pink-800, 'pink-900': $color-pink-900, 'pink-950': $color-pink-950, 'rose-50': $color-rose-50, 'rose-100': $color-rose-100, 'rose-200': $color-rose-200, 'rose-300': $color-rose-300, 'rose-400': $color-rose-400, 'rose-500': $color-rose-500, 'rose-600': $color-rose-600, 'rose-700': $color-rose-700, 'rose-800': $color-rose-800, 'rose-900': $color-rose-900, 'rose-950': $color-rose-950);
+$font-size-space: var(--ent-body-font-size-space);
+$font-size: var(--ent-body-font-size);
+$font-weight: var(--ent-body-font-weight);
+$font-line-height: var(--ent-body-line-height);
+
+
+$font-sizes: (heading: calc($font-size + ($font-size-space * 8)), sub-heading: calc($font-size + ($font-size-space * 4)), title: calc($font-size + ($font-size-space * 2)), caption: calc($font-size + $font-size-space), null: $font-size, description: calc($font-size - $font-size-space), subtitle: calc($font-size - ($font-size-space * 2))) !default;
+
+$border-radius: 0.25rem !default;
+
+$border-radiuses: (0: 0, 1: $border-radius, 2: $border-radius * 2, 3: $border-radius * 3, 4: $border-radius * 4,) !default;
+
+
+$border-width: var(--ent-border-width) !default;
+$border-widths: (1: 1px, 2: 2px, 3: 3px, 4: 4px, 5: 5px,) !default;
+$border-style: solid !default;
+$border-color: var(--ent-stroke-base) !default;
+$border: $border-width $border-style $border-color;
+
+$box-shadow: 0 1px 3px var(--ent-shadow-color), 0 1px 1px var(--ent-shadow-shade);
+$box-shadow-top: 0px -1px 3px var(--ent-shadow-color), 0px -1px 1px var(--ent-shadow-shade);
+$box-shadow-bottom: 0px 1px 3px var(--ent-shadow-color), 0px 1px 1px var(--ent-shadow-shade);
+$box-shadow-right: 1px 0px 3px var(--ent-shadow-color), 1px 0px 1px var(--ent-shadow-shade);
+$box-shadow-left: -1px 0px 3px var(--ent-shadow-color), -1px 0px 1px var(--ent-shadow-shade);
+
+$size: 1rem;
+
+$sizes: (0: 0, 1: $size * 0.25, 2: $size * 0.5, 3: $size * 0.75, 4: $size * 1, 5: $size * 1.25, 6: $size * 1.5, 7: $size * 1.75, 8: $size * 2, 9: $size * 2.25, 10: $size * 2.5, 11: $size * 2.75, 12: $size * 3, 13: $size * 3.25, 14: $size * 3.5, 15: $size * 3.75, 16: $size * 4, 17: $size * 4.25, 18: $size * 4.5, 19: $size * 4.75, 20: $size * 5, 21: $size * 5.25, 22: $size * 5.5, 23: $size * 5.75, 24: $size * 6, 25: $size * 6.25, 26: $size * 6.5, 27: $size * 6.75, 28: $size * 7, 29: $size * 7.25, 30: $size * 7.5, 31: $size * 7.75, 32: $size * 8, 33: $size * 8.25, 34: $size * 8.5, 35: $size * 8.75, 36: $size * 9, 37: $size * 9.25, 38: $size * 9.5, 39: $size * 9.75, 40: $size * 10, 41: $size * 10.25, 42: $size * 10.5, 43: $size * 10.75, 44: $size * 11, 45: $size * 11.25, 46: $size * 11.5, 47: $size * 11.75, 48: $size * 12, 49: $size * 12.25, 50: $size * 12.5, 51: $size * 12.75, 52: $size * 13, 53: $size * 13.25, 54: $size * 13.5, 55: $size * 13.75, 56: $size * 14, 57: $size * 14.25, 58: $size * 14.5, 59: $size * 14.75, 60: $size * 15, 61: $size * 15.25, 62: $size * 15.5, 63: $size * 15.75, 64: $size * 16, 65: $size * 16.25, 66: $size * 16.5, 67: $size * 16.75, 68: $size * 17, 69: $size * 17.25, 70: $size * 17.5, 71: $size * 17.75, 72: $size * 18, 73: $size * 18.25, 74: $size * 18.5, 75: $size * 18.75, 76: $size * 19, 77: $size * 19.25, 78: $size * 19.5, 79: $size * 19.75, 80: $size * 20, 100: $size * 25, 120: $size * 30, 140: $size * 35, 160: $size * 40, fit-content: fit-content, unset: unset, full: 100%, full-vh: 100vh, half-vh: 50vh,);
+
+$utilities: (
+  // height
+        height: (property: height, propertyRtl: height, cssName: h, breakpoint: true, values: $sizes,), width: (property: width, propertyRtl: width, cssName: w, breakpoint: true, values: $sizes,), max-width: (property: max-width, propertyRtl: max-width, cssName: max-w, breakpoint: true, values: $sizes,), min-width: (property: min-width, propertyRtl: min-width, cssName: min-w, breakpoint: true, values: $sizes,),
+  // padding
+        padding: (property: padding, propertyRtl: padding, cssName: p, breakpoint: true, values: $sizes,), padding-right: (property: padding-right, propertyRtl: padding-right, cssName: pr, breakpoint: true, values: $sizes,), padding-bottom: (property: padding-bottom, propertyRtl: padding-bottom, cssName: pb, breakpoint: true, values: $sizes,), padding-top: (property: padding-top, propertyRtl: padding-top, cssName: pt, breakpoint: true, values: $sizes,), padding-left: (property: padding-left, propertyRtl: padding-left, cssName: pl, breakpoint: true, values: $sizes,), padding-start: (property: padding-inline-start, propertyRtl: padding-inline-start, cssName: ps, breakpoint: true, values: $sizes,), padding-end: (property: padding-inline-end, propertyRtl: padding-inline-end, cssName: pe, breakpoint: true, values: $sizes,), padding-y: (property: padding-top padding-bottom, propertyRtl: padding-top padding-bottom, cssName: py, breakpoint: true, values: $sizes,), padding-x: (property: padding-left padding-right, propertyRtl: padding-left padding-right, cssName: px, breakpoint: true, values: $sizes,), space-x: (property: margin-inline-end, propertyRtl: margin-inline-end, cssName: "space-x", cssNamePostFix: " > *", breakpoint: true, values: $sizes,), space-x-last: (property: margin-inline-end, propertyRtl: margin-inline-end, cssName: "space-x", cssNamePostFix: " > *:last-child", breakpoint: false, values: (null: 0,),), space-y: (property: margin-bottom, propertyRtl: margin-bottom, cssName: "space-y", cssNamePostFix: " > *", breakpoint: true, values: $sizes,), space-y-last: (property: margin-bottom, propertyRtl: margin-bottom, cssName: "space-y", cssNamePostFix: " > *:last-child", breakpoint: false, values: (null: 0,),), border-x: (property: border-inline-end, propertyRtl: border-inline-end, cssName: "border-x", cssNamePostFix: " > *", breakpoint: true, values: (null: $border,),), border-y: (property: border-bottom, propertyRtl: border-bottom, cssName: "border-y", cssNamePostFix: " > *", breakpoint: true, values: (null: $border,),), divider-x: (property: border-inline-end, propertyRtl: border-inline-end, cssName: "divider-x", cssNamePostFix: " > *", breakpoint: true, values: (null: $border,),), divider-x-last: (property: border-inline-end, propertyRtl: border-inline-end, cssName: "divider-x", cssNamePostFix: " > *:last-child", breakpoint: false, values: (null: 0,),), divider-y: (property: border-bottom, propertyRtl: border-bottom, cssName: "divider-y", cssNamePostFix: " > *", breakpoint: true, values: (null: $border,),), divider-y-last: (property: border-bottom, propertyRtl: border-bottom, cssName: "divider-y", cssNamePostFix: " > *:last-child", breakpoint: false, values: (null: 0,),),
+  // margin
+        margin: (property: margin, propertyRtl: margin, cssName: m, breakpoint: true, values: map-merge($sizes, (auto: auto,)),), margin-right: (property: margin-right, propertyRtl: margin-right, cssName: mr, breakpoint: true, values: map-merge($sizes, (auto: auto,)),), margin-bottom: (property: margin-bottom, propertyRtl: margin-bottom, cssName: mb, breakpoint: true, values: map-merge($sizes, (auto: auto,)),), margin-top: (property: margin-top, propertyRtl: margin-top, cssName: mt, breakpoint: true, values: map-merge($sizes, (auto: auto,)),), margin-left: (property: margin-left, propertyRtl: margin-left, cssName: ml, breakpoint: true, values: map-merge($sizes, (auto: auto,)),), margin-start: (property: margin-left, propertyRtl: margin-right, cssName: ms, breakpoint: true, values: map-merge($sizes, (auto: auto,)),), margin-end: (property: margin-right, propertyRtl: margin-left, cssName: me, breakpoint: true, values: map-merge($sizes, (auto: auto,)),), margin-y: (property: margin-top margin-bottom, propertyRtl: margin-top margin-bottom, cssName: my, breakpoint: true, values: $sizes,), margin-x: (property: margin-left margin-right, propertyRtl: margin-left margin-right, cssName: mx, breakpoint: true, values: $sizes,),
+  // Position
+        position: (property: position, propertyRtl: position, cssName: position, breakpoint: true, values: (relative: relative, absolute: absolute, fixed: fixed, static: static,),), bottom: (property: bottom, propertyRtl: bottom, cssName: b, breakpoint: true, values: $sizes,), top: (property: top, propertyRtl: top, cssName: top, breakpoint: true, values: $sizes,), right: (property: right, propertyRtl: right, cssName: right, breakpoint: true, values: $sizes,), left: (property: left, propertyRtl: left, cssName: left, breakpoint: true, values: $sizes,),
+  // Display
+        display: (property: display, propertyRtl: display, cssName: d, breakpoint: true, values: (none: none, flex: flex, block: block, inline: inline, inline-block: inline-block, inline-flex: inline-flex, grid: grid, inline-grid: inline-grid,),),
+  // Flexbox
+        flex-direction: (property: flex-direction, propertyRtl: flex-direction, cssName: flex, breakpoint: true, values: (row: row, column: column, reverse-row: reverse-row, reverse-column: reverse-column,),), flex-grow: (property: flex-grow, propertyRtl: flex-grow, cssName: flex-grow, breakpoint: true, values: (0: 0, 1: 1, initial: initial, inherit: inherit,),),
+  // Align Items
+        align-items: (property: align-items, propertyRtl: align-items, cssName: items, breakpoint: true, values: (start: flex-start, end: flex-end, center: center, baseline: baseline, stretch: stretch,),),
+  // Justify Content
+        justify-content: (property: justify-content, propertyRtl: justify-content, cssName: justify, breakpoint: true, values: (start: flex-start, end: flex-end, center: center, between: space-between, around: space-around,),), flex-center: (property: justify-content align-items, propertyRtl: justify-content align-items, cssName: flex, breakpoint: true, values: (center: center,),),
+  // Flex Shrink
+        flex-shrink: (property: flex-shrink, propertyRtl: flex-shrink, cssName: flex-s, breakpoint: true, values: (0: 0, 1: 1, initial: initial, inherit: inherit,),), gap: (property: gap, propertyRtl: gap, cssName: gap, breakpoint: true, values: $sizes,), font-wighet: (property: font-wighet, propertyRtl: font-wighet, cssName: fw, breakpoint: true, values: (100: 100, 200: 200, 300: 300, 400: 400, 500: 500, 600: 600, 700: 700, 800: 800, 900: 900, unset: unset,),), font-size: (property: font-size, propertyRtl: font-size, cssName: fs, breakpoint: true, values:$font-sizes,), text-align: (property: text-align, propertyRtl: text-align, cssName: text, breakpoint: true, values: (center: center, left: left, right: right, unset: unset,),), color: (property: color, propertyRtl: color, cssName: cl, breakpoint: true, values: $colors,), background: (property: background, propertyRtl: background, cssName: bg, breakpoint: true, values: $colors,), border: (property: border, propertyRtl: border, cssName: border, breakpoint: true, values: (null: $border-width solid $border-color, 0: 0,),), border-color: (property: border-color, propertyRtl: border-color, cssName: border, breakpoint: true, values: $colors,), border-top: (property: border-top, propertyRtl: border-top, cssName: border-top, breakpoint: true, values: (null: $border-width solid $border-color, 0: 0,),), border-bottom: (property: border-bottom, propertyRtl: border-bottom, cssName: border-bottom, breakpoint: true, values: (null: $border-width solid $border-color, 0: 0,),), border-right: (property: border-right, propertyRtl: border-right, cssName: border-right, breakpoint: true, values: (null: $border-width solid $border-color, 0: 0,),), border-left: (property: border-left, propertyRtl: border-left, cssName: border-left, breakpoint: true, values: (null: $border-width solid $border-color, 0: 0,),), border-start: (property: border-inline-start, propertyRtl: border-inline-start, cssName: border-start, breakpoint: true, values: (null: $border-width solid $border-color, 0: 0,),), border-end: (property: border-inline-end, propertyRtl: border-inline-end, cssName: border-end, breakpoint: true, values: (null: $border-width solid $border-color, 0: 0,),), border-widths: (property: border-width, propertyRtl: border-width, cssName: border, breakpoint: true, values: $border-widths,), rounded: (property: border-radius, propertyRtl: border-radius, cssName: rounded, breakpoint: true, values: $border-radiuses,), list-style: (property: list-style, propertyRtl: list-style, cssName: list-style, breakpoint: true, values: (none: none,),), overflow: (property: overflow, propertyRtl: overflow, cssName: overflow, breakpoint: true, values: (hidden: hidden, unset: unset, scroll:scroll, visible:visible, revert:revert, auto:auto,),), overflow-x: (property: overflow-x, propertyRtl: overflow-x, cssName: overflow-x, breakpoint: true, values: (hidden: hidden, unset: unset, scroll:scroll, visible:visible, revert:revert, auto:auto,),), overflow-y: (property: overflow-y, propertyRtl: overflow-y, cssName: overflow-y, breakpoint: true, values: (hidden: hidden, unset: unset, scroll:scroll, visible:visible, revert:revert, auto:auto,),), scrollbar-width:(property: scrollbar-width, propertyRtl: scrollbar-width, cssName: scrollbar-width, breakpoint: true, values: (none: none, unset: unset, revert:revert, auto:auto,),), z-index:(property: z-index, propertyRtl: z-index, cssName: z, breakpoint: true, values: (10: 10, 20: 20, 30:30, 40:40, 50: 50, 60: 60, 70:70, 80:80, 90:90, 100:100,),), box-shadow:(property: box-shadow, propertyRtl: box-shadow, cssName: box-shadow, breakpoint: true, values: (null: $box-shadow, top: $box-shadow-top, bottom: $box-shadow-bottom, right: $box-shadow-right, left: $box-shadow-left,),));

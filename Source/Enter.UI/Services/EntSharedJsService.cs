@@ -6,7 +6,7 @@ using Microsoft.JSInterop;
 
 namespace Enter.UI.JsService
 {
-    internal class EntSharedJsService : IEntSharedJsService
+    internal class EntSharedJsService : IEntSharedJsService , IAsyncDisposable
     {
         private readonly IEntJsService _entJsService;
         private readonly Lazy<Task<IJSObjectReference>> _moduleTask;
@@ -41,6 +41,12 @@ namespace Enter.UI.JsService
         {
             var sharedModule = await _moduleTask.Value;
              await sharedModule.InvokeVoidAsync("setAttributeByQuerySelector", selector,key,value);
+        }
+
+        public async ValueTask DisposeAsync()
+        {
+            var module = await _moduleTask.Value;
+            await module.DisposeAsync();
         }
     }
 }

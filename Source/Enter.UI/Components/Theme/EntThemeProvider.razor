@@ -1,36 +1,34 @@
-﻿@using Microsoft.JSInterop
-@using Enter.UI.JsServices
-@using System.Runtime.CompilerServices
+﻿@using Enter.UI.JsServices
+@using Microsoft.JSInterop
 @namespace Enter.UI.Components
-
-<CascadingValue Value="this" IsFixed="true">
-    <div dir="@Direction" class="@RootCss">
-         @if (_componentReady)
-         {
-             @ChildContent
-         }
-    </div>
-</CascadingValue>
+@if (_shouldRender)
+{
+    <CascadingValue Value="this" IsFixed="true">
+        <div dir="@Direction" class="@RootCss">
+            @ChildContent
+        </div>
+    </CascadingValue>
+}
 
 <style>
     :root {
-      --ent-drawer-width : @(@DrawerDefaultWidth)px;  
+      --ent-drawer-width : @(DrawerDefaultWidth)px;  
     }
 </style>
 
 @code {
 
-    private bool _componentReady = false;
+    private bool _shouldRender = false;
 
 
     private string Direction => RtlMode ? "rtl" : "ltr";
 
-    protected string RootCss =>new CssBuilder()
+    protected string RootCss => new CssBuilder()
         .AddCss("ent-ui vertical-scroll")
-        .AddCss("ent-rtl",RtlMode)
-        .AddCss("ent-ltr",!RtlMode)
-        .AddCss("ent-theme-dark",DarkMode)
-        .AddCss("ent-theme-responsive",ResponsiveMode)
+        .AddCss("ent-rtl", RtlMode)
+        .AddCss("ent-ltr", !RtlMode)
+        .AddCss("ent-theme-dark", DarkMode)
+        .AddCss("ent-theme-responsive", ResponsiveMode)
         .Build();
 
     [Inject]
@@ -42,56 +40,53 @@
     [Parameter]
     public RenderFragment ChildContent { get; set; } = default!;
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override async Task OnInitializedAsync()
     {
-
-        if (firstRender)
-        {
-
-            var objRef = DotNetObjectReference.Create(this);
-            await SharedJsService.InitializeBreakpointEventAsync(objRef).ConfigureAwait(false);
-
-            CurrentBreakPoint = await SharedJsService.GetBreakpointAsync().ConfigureAwait(false);
-
-            if (ResponsiveMode == false && CurrentBreakPoint <= EntBreakpoint.Tablet)
-            {
-                await SetResponsiveModeAsync(true).ConfigureAwait(false);
-            }
-            
-            await SetDarkModeAsync(DarkMode, updateRender: false).ConfigureAwait(false);
-            Console.WriteLine("---------------- EntThemePtovider (OnInitializedAsync) ----------------");
-            Console.WriteLine("CurrentBreakPoint : " + CurrentBreakPoint);
-            Console.WriteLine("ResponsiveMode : " + ResponsiveMode);
-            Console.WriteLine("DarkMode : " + DarkMode);
-            Console.WriteLine("RtlMode : " + RtlMode);
-
-            _componentReady = true;
-            StateHasChanged();
-
-        }
-        
-        await base.OnAfterRenderAsync(firstRender);
-        
+        await InitializeThemeConfiguration().ConfigureAwait(false);
+        await base.OnInitializedAsync();
     }
-    
-    
+
+    private async Task InitializeThemeConfiguration()
+    {
+        _shouldRender = false;
+
+        var objRef = DotNetObjectReference.Create(this);
+        await SharedJsService.InitializeBreakpointEventAsync(objRef);
+
+        CurrentBreakPoint = await SharedJsService.GetBreakpointAsync();
+
+        if (ResponsiveMode == false && CurrentBreakPoint <= EntBreakpoint.Tablet)
+        {
+            await SetResponsiveModeAsync(true);
+        }
+
+        await SetDarkModeAsync(DarkMode);
+        Console.WriteLine("---------------- EntThemePtovider (OnInitializedAsync) ----------------");
+        Console.WriteLine("CurrentBreakPoint : " + CurrentBreakPoint);
+        Console.WriteLine("ResponsiveMode : " + ResponsiveMode);
+        Console.WriteLine("DarkMode : " + DarkMode);
+        Console.WriteLine("RtlMode : " + RtlMode);
+
+        _shouldRender = true;
+        StateHasChanged();
+    }
 
     #region RtlMode
 
     public bool RtlMode { get; set; } = false;
-    
+
     public void EnableRtl()
     {
         RtlMode = true;
         StateHasChanged();
     }
-    
+
     public void DisableRtl()
     {
         RtlMode = false;
         StateHasChanged();
     }
-    
+
     public void SetRtl(bool enable)
     {
         if (enable)
@@ -103,7 +98,7 @@
             DisableRtl();
         }
     }
-    
+
     public void ToggleRtl()
     {
         SetRtl(!RtlMode);
@@ -112,38 +107,37 @@
     #endregion
 
     #region DarkMode
-    
+
     public bool DarkMode { get; set; } = false;
-    
-    public async Task EnableDarkModeAsync(bool updateRender = true)
+
+    public async Task EnableDarkModeAsync()
     {
         DarkMode = true;
-        await SharedJsService.SetAttributeByQuerySelectorAsync("html","data-theme", "dark");
-        if (updateRender)
-        {
-            StateHasChanged();
-        }
+        await SharedJsService.SetAttributeByQuerySelectorAsync("html", "data-theme", "dark");
+
+        StateHasChanged();
     }
-    public async Task DisableDarkModeAsync(bool updateRender = true)
+
+    public async Task DisableDarkModeAsync()
     {
         DarkMode = false;
-        await SharedJsService.SetAttributeByQuerySelectorAsync("html","data-theme", "light");
-        if (updateRender)
-        {
-            StateHasChanged();
-        }
+        await SharedJsService.SetAttributeByQuerySelectorAsync("html", "data-theme", "light");
+
+        StateHasChanged();
     }
-    public async Task SetDarkModeAsync(bool enable, bool updateRender = true)
+
+    public async Task SetDarkModeAsync(bool enable)
     {
         if (enable)
         {
-            await EnableDarkModeAsync(updateRender);
+            await EnableDarkModeAsync();
         }
         else
         {
-            await DisableDarkModeAsync(updateRender);
+            await DisableDarkModeAsync();
         }
     }
+
     public async Task ToggleDarkModeAsync()
     {
         await SetDarkModeAsync(!DarkMode);
@@ -152,45 +146,42 @@
     #endregion
 
     #region ResponsiveMode
-    
 
-    public bool ResponsiveMode { get; set; } 
-    
-    public async Task EnableResponsiveModeAsync( bool updateRender = true)
+    public bool ResponsiveMode { get; set; }
+
+    public async Task EnableResponsiveModeAsync()
     {
         ResponsiveMode = true;
-        await SharedJsService.SetAttributeByQuerySelectorAsync("html","data-theme-responsive", "true");
-        if (updateRender)
-        {
-            StateHasChanged();
-        }
+        await SharedJsService.SetAttributeByQuerySelectorAsync("html", "data-theme-responsive", "true");
+
+        StateHasChanged();
     }
-    
-    public async Task DisableResponsiveModeAsync( bool updateRender = true)
+
+    public async Task DisableResponsiveModeAsync()
     {
         ResponsiveMode = false;
-        await SharedJsService.SetAttributeByQuerySelectorAsync("html","data-theme-responsive", "false");
-        if (updateRender)
-        {
-            StateHasChanged();
-        }
+        await SharedJsService.SetAttributeByQuerySelectorAsync("html", "data-theme-responsive", "false");
+
+        StateHasChanged();
     }
-    public  bool GetResponsiveModeAsync()
+
+    public bool GetResponsiveModeAsync()
     {
         return CurrentBreakPoint <= EntBreakpoint.Tablet;
     }
-    
-    public async Task SetResponsiveModeAsync(bool enable , bool updateRender = true)
+
+    public async Task SetResponsiveModeAsync(bool enable)
     {
         if (enable)
         {
-            await EnableResponsiveModeAsync(updateRender);
+            await EnableResponsiveModeAsync();
         }
         else
         {
-            await DisableResponsiveModeAsync(updateRender);
+            await DisableResponsiveModeAsync();
         }
     }
+
     public async Task ToggleResponsiveModeAsync()
     {
         await SetResponsiveModeAsync(!ResponsiveMode);
@@ -200,22 +191,22 @@
 
     #region Breakpoint
 
-    public  EntBreakpoint CurrentBreakPoint { get; set; }
+    public EntBreakpoint CurrentBreakPoint { get; set; }
 
 
-    public  Task<EntBreakpoint> GetBreakpointAsync()
+    public Task<EntBreakpoint> GetBreakpointAsync()
     {
         return SharedJsService.GetBreakpointAsync();
     }
-    
+
     [JSInvokable("OnBreakpointEventListener")]
     public void OnBreakpointEventListener(string breakpoint)
     {
-        if (breakpoint  == CurrentBreakPoint.ToString()) return;
-        
+        if (breakpoint == CurrentBreakPoint.ToString()) return;
+
         CurrentBreakPoint = Enum.Parse<EntBreakpoint>(breakpoint);
-        
-        // StateHasChanged();
+
+    // StateHasChanged();
     }
 
     #endregion
@@ -227,5 +218,9 @@
 
     #endregion
 
+    protected override bool ShouldRender()
+    {
+        return _shouldRender;
+    }
 
 }

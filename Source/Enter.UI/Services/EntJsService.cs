@@ -33,6 +33,7 @@ public class EntJsService : IEntJsService, IAsyncDisposable
 
     public async ValueTask DisposeAsync()
     {
-
+        var module = await _moduleTask.Value;
+        await module.DisposeAsync();
     }
 }

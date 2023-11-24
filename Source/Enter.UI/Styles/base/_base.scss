@@ -1,0 +1,42 @@
+@import "normalize";
+@import "utility";
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.ent-ui {
+    background-color: var(--ent-bg-body);
+    color: var(--ent-color-body);
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+[dir="rtl"] body {
+    direction: rtl;
+}
+
+
+.ent-rtl {
+    text-align: right !important;
+    direction: rtl !important;
+}
+
+.ent-ltr {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+code {
+    color: var(--ent-primary);
+    background: var(--ent-primary-subtle);
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    font-size: 0.72rem;
+}
+
+

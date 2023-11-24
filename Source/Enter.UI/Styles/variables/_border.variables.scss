@@ -1,0 +1,15 @@
+:root {
+
+  --ent-border-0: 0;
+  --ent-border-1: 1px;
+  --ent-border-2: 2px;
+  --ent-border-3: 3px;
+  --ent-border-4: 4px;
+
+  --ent-border-color: #eaeaea
+
+}
+
+html[data-theme="dark"] {
+  --ent-stroke-base: #3b3b3b;
+}

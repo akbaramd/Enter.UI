@@ -35,7 +35,11 @@ namespace Enter.UI.Components
         [Parameter] 
         public RenderFragment ChildContent { get; set; } = default!;
 
-        
+        protected override Task OnAfterRenderAsync(bool firstRender)
+        {
+            return base.OnAfterRenderAsync(firstRender);
+        }
+
         [Parameter] public List<EntTabPanel> Panels { get; set; } = new List<EntTabPanel>();
 
         [Parameter] public EventCallback<List<EntTabPanel>> PanelsChanged { get; set; } = default!;

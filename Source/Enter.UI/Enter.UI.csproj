@@ -249,6 +249,7 @@
     <Folder Include="Abstractions\Components\Icon\" />
     <Folder Include="Abstractions\Components\Loading\" />
     <Folder Include="Abstractions\Components\Popover\" />
+    <Folder Include="Styles\fonts\" />
     <Folder Include="wwwroot\" />
     <Folder Include="wwwroot\css\" />
   </ItemGroup>
@@ -262,6 +263,22 @@
     <Compile Remove="Abstractions\Services\IEntToastService.cs" />
     <Compile Remove="Abstractions\JsServices\IEntJsService.cs" />
     <Compile Remove="Abstractions\IEntConfiguration.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Styles\base\_utilities.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Watch Remove="styles\base\base.scss" />
+    <Watch Remove="Styles\base\_utilities.scss" />
+    <Watch Remove="styles\fonts\fonts.scss" />
+    <Watch Remove="styles\mixins\mixins.scss" />
+    <Watch Remove="styles\themes\theme.scss" />
+    <Watch Remove="Styles\themes\_basic.theme.scss" />
+    <Watch Remove="Styles\themes\_dark.theme.scss" />
+    <Watch Remove="Styles\themes\_light.theme.scss" />
+    <Watch Remove="styles\variables\variables.scss" />
   </ItemGroup>
 
 

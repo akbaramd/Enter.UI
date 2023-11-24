@@ -1,72 +1,8 @@
-@import "_mixins.scss";
-
-@import "themes/basic.theme";
-@import "themes/light.theme";
-@import "themes/dark.theme";
-@import url('../libs/remix/remixicon.css');
-@import "normalize";
-@import "_variables.scss";
+@import "variables/variables";
+@import "mixins/mixins";
+@import "fonts/fonts";
+@import "base/base";
+@import "themes/theme";
 @import "components/components";
-@import "_core.scss";
-
-html,
-body {
-  padding: 0;
-  margin: 0;
-}
-
-.ent-ui {
-  background-color: var(--ent-bg-body);
-  color: var(--ent-color-body);  
-}
-
-#app {
-  display: flex;
-}
-*, ::after, ::before {
-  box-sizing: border-box;
-}
-[dir="rtl"] body {
-  direction: rtl;
-}
-
-.cursor-pointer {
-  cursor: pointer;
-}
-
-.ent-rtl {
 
 
-  text-align: right !important;
-  direction: rtl !important;
-}
-
-.ent-ltr {
-
-  direction: ltr !important;
-  text-align: left !important;
- 
-}
-
-code {
-  color: var(--ent-primary);
-  background: var(--ent-primary-subtle);
-  padding: 0.25rem;
-  border-radius: 0.25rem;
-  font-size: 0.72rem;
-}
-
-
-.vertical-scroll {
-  display: flex !important;
-  flex-direction: column;
-  flex: 1;
-  overflow-y: auto;
-}
-
-.horizontal-scroll {
-  display: flex !important;
-  flex-direction: row;
-  flex: 1;
-  overflow-x: auto;
-}

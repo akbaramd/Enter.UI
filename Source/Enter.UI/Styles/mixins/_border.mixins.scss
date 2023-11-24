@@ -1,0 +1,10 @@
+﻿@function getBorderWidth($size) {
+    @return var(--ent-border-#{$size}) ;
+}
+
+
+@mixin incBorder($size) {
+  border-width: getBorderWidth($size);
+  border-style: solid;
+  border-color: var(--ent-border-color);
+}

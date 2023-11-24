@@ -1,0 +1,25 @@
+﻿@function getSpace($size, $border-size : null) {
+  @if ($border-size != null) {
+    @return calc(var(--ent-space-#{$size}) - var(--ent-border-#{$border-size}));
+  } @else {
+    @return var(--ent-space-#{$size});
+  }
+}
+
+@function getSpaceXY ($sizeY ,$sizeX , $border-size : "0") {
+  @if ($border-size != "0") {
+    @return calc(var(--ent-space-#{$sizeY}) - var(--ent-border-#{$border-size})) calc(var(--ent-space-#{$sizeX}) - var(--ent-border-#{$border-size}));
+  } @else {
+    @return var(--ent-space-#{$sizeY}) var(--ent-space-#{$sizeX});
+  }
+}
+
+
+
+@mixin incPaddingSpace($size, $border-size : "0") {
+  padding: getSpace($size, $border-size);
+}
+
+@mixin incPaddingSpaceXY($sizeY ,$sizeX , $border-size : "0") {
+  padding: getSpaceXY($sizeY, $sizeX, $border-size);
+}

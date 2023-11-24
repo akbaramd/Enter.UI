@@ -5,11 +5,8 @@ todo:
 */
 
 :root {
-  --ent-btn-font-size: var(--ent-font-size);
 
-  --ent-btn-space-x: var(--ent-size-md);
-  --ent-btn-space-b: var(--ent-size-sm);
-  --ent-btn-space-y: var(--ent-size-xs);
+
 
   --ent-btn-bg: var(--ent-bg-neutral);
   --ent-btn-bg-hover: var(--ent-bg-neutral-highlight);
@@ -17,14 +14,13 @@ todo:
   --ent-btn-fg: var(--ent-fg-base);
   --ent-btn-fg-hover: var(--ent-fg-base-highlight);
   --ent-btn-fg-active: var(--ent-fg-base-emphasis);
-  --ent-btn-stroke: var(--ent-stroke-base); // 2
-  --ent-btn-stroke-hover: var(--ent-stroke-base-highlight);
-  --ent-btn-stroke-active: var(--ent-stroke-base-emphasis);
-  --ent-btn-stroke-width: var(--ent-stroke-thin);
+  --ent-btn-stroke: var(--ent-border-color); 
+  --ent-btn-stroke-width: var(--ent-border-1);
   --ent-btn-border-radius: var(--ent-radius-md);
 }
 
 .ent-btn {
+  
   align-items: center;
   box-sizing: border-box;
   display: inline-flex;
@@ -33,12 +29,12 @@ todo:
   vertical-align: middle;
   margin: 0;
   font-size: var(--ent-btn-font-size);
+  line-height: var(--ent-btn-line-height);
   background-color: var(--ent-btn-bg);
   color: var(--ent-btn-fg);
   border: var(--ent-btn-stroke-width) solid var(--ent-btn-stroke);
-  font-family: var(--fontFamilyBase);
   outline-style: none;
-  padding: calc( var(--ent-btn-space-y) - var(--ent-btn-stroke-width)) var(--ent-btn-space-x);
+  padding: calc( var(--ent-btn-space-y) - var(--ent-btn-stroke-width)) calc(var(--ent-btn-space-x) - var(--ent-btn-stroke-width));
   border-radius: var(--ent-btn-border-radius);
   cursor: pointer;
   //min-width: 96px;
@@ -56,23 +52,23 @@ todo:
     &:hover {
       background: var(--ent-btn-bg-hover);
       color: var(--ent-btn-fg-hover);
-      border-color: var(--ent-btn-stroke-hover);
       
       .icon {
         color: var(--ent-btn-fg-hover);
       }      
     }
     
-    &:hover:active {
+    &:active {
       background: var(--ent-btn-bg-active);
       color: var(--ent-btn-fg-active);
-      border-color: var(--ent-btn-stroke-active);
-
+      
       .icon {
         color: var(--ent-btn-fg-hover);
       }
       
     }
+    
+    
   }
   
   &.ent-btn-only-icon {
@@ -86,8 +82,8 @@ todo:
   }
 
   .icon-wrapper {
-    width: var(--ent-line-height);
-    height: var(--ent-line-height);
+    width: var(--ent-btn-line-height);
+    height: var(--ent-btn-line-height);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -159,16 +155,30 @@ todo:
 
 .ent-btn-size-sm {
 
-  --ent-btn-space-x: var(--ent-size-sm);
-  --ent-btn-space-b: var(--ent-size-xs);
-  --ent-btn-space-y: var(--ent-size-xxs);
+  --ent-btn-space-x: var(--ent-space-3);
+  --ent-btn-space-b: var(--ent-space-2); 
+  --ent-btn-space-y: var(--ent-space-1_5); 
 
+  --ent-btn-font-size: var(--ent-typo-font-size-sm);
+  --ent-btn-line-height: var(--ent-typo-line-height-sm); 
+
+}
+.ent-btn-size-md {
+
+  --ent-btn-space-x: var(--ent-space-3);
+  --ent-btn-space-b: var(--ent-space-2);
+  --ent-btn-space-y: var(--ent-space-2); 
+
+  --ent-btn-font-size: var(--ent-typo-font-size-md);
+  --ent-btn-line-height: var(--ent-typo-line-height-md);
 }
 
 .ent-btn-size-lg {
 
-  --ent-btn-space-x: var(--ent-size-lg);
-  --ent-btn-space-b: var(--ent-size-md);
-  --ent-btn-space-y: var(--ent-size-sm);
+  --ent-btn-space-x: var(--ent-space-4);
+  --ent-btn-space-b: var(--ent-space-2);
+  --ent-btn-space-y: var(--ent-space-2_5); 
 
+  --ent-btn-font-size: var(--ent-typo-font-size-lg);
+  --ent-btn-line-height: var(--ent-typo-line-height-lg); 
 }

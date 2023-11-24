@@ -20,6 +20,10 @@ namespace Enter.UI.Components
         [Parameter]
         public RenderFragment ChildContent { get; set; }
 
+        protected override void OnAfterRender(bool firstRender)
+        {
+            base.OnAfterRender(firstRender);
+        }
 
         public void AddGroup(EntNavMenuGroup group)
         {

@@ -1,0 +1,4 @@
+﻿@mixin incTypo($size:"md"){
+    font-size: var(--ent-typo-font-size-#{$size});
+    line-height: var(--ent-typo-line-height-#{$size});
+}
