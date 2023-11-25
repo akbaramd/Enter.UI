@@ -73,7 +73,10 @@
 
     private async Task OnContainerClick(MouseEventArgs args)
     {
-        Cancel();
+        if (Options.ShowCloseButton)
+        {
+            Cancel();
+        }
     }
 
     private async Task OnModalClick(MouseEventArgs arg)

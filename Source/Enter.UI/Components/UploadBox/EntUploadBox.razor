@@ -21,9 +21,9 @@
         {
             <li class="file-item">
                 <span class="file-item-icon">
-                    @if (file.DataUrl != string.Empty)
+                    @if (file.DataBase64 != string.Empty)
                     {
-                        <img src="@($"data:{file.ContentType};base64,{file.DataUrl}")"/>
+                        <img src="@($"data:{file.ContentType};base64,{file.DataBase64}")"/>
                     }
                     else
                     {
@@ -94,9 +94,18 @@
                     ContentType = file.ContentType,
                     Size = file.Size,
                     IsSent = false,
-                    DataUrl = imageBase64
+                    DataBase64 = imageBase64,
+                    Url = $"data:{file.ContentType};base64,{imageBase64}"
                 };
-                Files.Add(fileModel);
+                if (Multiple)
+                {
+                    Files.Add(fileModel);
+                }
+                else
+                {
+                    Files.Clear();
+                    Files.Add(fileModel);
+                }
             }
             await FilesChanged.InvokeAsync(Files);
             _ = InvokeAsync(StateHasChanged);

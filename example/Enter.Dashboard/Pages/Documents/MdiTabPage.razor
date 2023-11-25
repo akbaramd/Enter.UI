@@ -6,15 +6,14 @@
 @using Enter.UI.Services
 @inherits Enter.UI.Cores.Bases.EntPageBase
 @layout DocumentLayout
-<div class="p-4">
-    <EntMdiTab Tag="MdiTabPage" Responsive ItemDirection="EntTabItemDirection.Horizontal"
+<EntMdiTab Tag="MdiTabPage" Responsive ItemDirection="EntTabItemDirection.Vertical"
                               KeepPanelAlive="true"
                               PanelClass="h-full"
                               ActiveClass=""
                               Closeable
                                 
                               class="border-0 "
-                              Direction="EntTabDirection.Vertical">
+                              Direction="EntTabDirection.Horizontal">
         <EntCard class="mt-4">
             <CardBody>
                         <EntButton @onclick="NewTab">Open New Tab</EntButton>
@@ -22,7 +21,6 @@
         </EntCard>
 
     </EntMdiTab>
-</div>
 
 
 @code {
