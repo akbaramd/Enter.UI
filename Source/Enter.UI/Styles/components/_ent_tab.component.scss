@@ -11,7 +11,7 @@
   --ent-tab-border-style: solid;
   --ent-tab-border-color: var(--ent-stroke-base);
 
-  --ent-tab-space-x: var(--ent-space-3);
+  --ent-tab-space-x: var(--ent-space-4);
   --ent-tab-space-b: var(--ent-space-2);
   --ent-tab-space-y: var(--ent-space-2);
 }
@@ -163,9 +163,9 @@
         display: flex;
         padding:
                 calc(var(--ent-space-2) - var(--ent-tab-border-width))
-                calc(var(--ent-space-3) - var(--ent-tab-border-width))
+                calc(var(--ent-space-4) - var(--ent-tab-border-width))
                 calc(var(--ent-space-2) - var(--ent-tab-border-width))
-        calc(var(--ent-space-3) - var(--ent-tab-border-width));
+        calc(var(--ent-space-4) - var(--ent-tab-border-width));
 
         span {
           flex: 1;
@@ -192,7 +192,7 @@
           > .ent-tab-content {
 
             width: 100%;
-            padding: calc(var(--ent-space-1) - var(--ent-tab-border-width)) calc(var(--ent-space-3) - var(--ent-tab-border-width)) calc(var(--ent-space-1) - var(--ent-tab-border-width)) var(--ent-space-3);
+            padding: calc(var(--ent-space-1) - var(--ent-tab-border-width)) calc(var(--ent-space-4) - var(--ent-tab-border-width)) calc(var(--ent-space-1) - var(--ent-tab-border-width)) var(--ent-space-4);
             display: flex;
             flex-direction: row;
             justify-content: start;
@@ -240,9 +240,9 @@
 
     padding:
             var(--ent-space-3)
+            calc(var(--ent-space-4) - var(--ent-tab-border-width))
             calc(var(--ent-space-3) - var(--ent-tab-border-width))
-            calc(var(--ent-space-3) - var(--ent-tab-border-width))
-            calc(var(--ent-space-3) - var(--ent-tab-border-width));
+            calc(var(--ent-space-4) - var(--ent-tab-border-width));
 
     writing-mode: sideways-rl;
 
@@ -274,9 +274,9 @@
     border-bottom: var(--ent-tab-border-width) var(--ent-tab-border-style) var(--ent-tab-border-color);
     padding:
             var(--ent-space-3)
+            calc(var(--ent-space-4) - var(--ent-tab-border-width))
             calc(var(--ent-space-3) - var(--ent-tab-border-width))
-            calc(var(--ent-space-3) - var(--ent-tab-border-width))
-            calc(var(--ent-space-3) - var(--ent-tab-border-width));
+            calc(var(--ent-space-4) - var(--ent-tab-border-width));
     
     
   }
