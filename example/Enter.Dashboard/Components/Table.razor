@@ -1,5 +1,5 @@
-﻿@inherits Enter.UI.Cores.Bases.EntPageBase
-@using Enter.Dashboard.Model
+﻿@using Enter.Dashboard.Model
+@inherits Enter.UI.Cores.Bases.EntPageBase
 <EntCard class="m-4" Title="صفحه فرم">
     <CardBody>
         <EntTable DataSources="DataSource" Total="Constants.Users.Count" Take="_take" OnPaginationChange="OnPaginationChange">
@@ -23,8 +23,8 @@
 
 @code {
 
-    
-    public List<Users> DataSource { get; set; } = new List<Users>();
+
+    public List<Users> DataSource { get; set; } = new();
     private readonly int _take = 2;
 
 
@@ -40,7 +40,7 @@
         var skip = (page - 1) * _take;
 
         DataSource = Constants.Users.Skip(skip).Take(_take).ToList();
-        
+
         StateHasChanged();
     }
 

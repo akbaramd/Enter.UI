@@ -1,14 +1,9 @@
 ﻿@page "/"
 @using Enter.Dashboard.Model
 @using Enter.UI.Services
-@using Enter.UI.Core
 @using Enter.UI.Components.Modal
 @using Enter.UI.Components.Toast
 @using Enter.UI.Components.Flex
-@using Enter.UI.Components.Icon
-@using Enter.UI.Components.Drawer
-@using Enter.UI.Components.Loading
-@using Enter.UI.Components.Shimmer
 @layout DocumentLayout
 
 <PageTitle>Index</PageTitle>
@@ -23,18 +18,18 @@
                     </EntFlex>
                 </CardBody>
             </EntCard>
-          
+
         </div>
-         <div class="tablet:col-6">
-                    <EntCard Title="Default" Expandable="true" class="mb-8">
-                        <CardBody>
-                            <EntFlex Direction="FlexDirection.Column">
-                                <b>This page is the default in EntMdiTab</b>
-                            </EntFlex>
-                        </CardBody>
-                    </EntCard>
-                  
-                </div>
+        <div class="tablet:col-6">
+            <EntCard Title="Default" Expandable="true" class="mb-8">
+                <CardBody>
+                    <EntFlex Direction="FlexDirection.Column">
+                        <b>This page is the default in EntMdiTab</b>
+                    </EntFlex>
+                </CardBody>
+            </EntCard>
+
+        </div>
     </div>
 </EntFlex>
 
@@ -61,13 +56,13 @@
         var confirmResult = await ModalService.MessageBoxAsync("Open Modal", "Are you sure to oprn Modal?", "Show", "Dismiss");
         if (!confirmResult.Canceled)
         {
-            // var parameter = new ParameterBuilder<Counter>()
-            //     .Build();
-            //
-            // var result = await ModalService.ShowAsync<Counter>("sada", parameter, new EntModalOptions
-            // {
-            //     Size = size
-            // });
+    // var parameter = new ParameterBuilder<Counter>()
+    //     .Build();
+    //
+    // var result = await ModalService.ShowAsync<Counter>("sada", parameter, new EntModalOptions
+    // {
+    //     Size = size
+    // });
         }
     }
 

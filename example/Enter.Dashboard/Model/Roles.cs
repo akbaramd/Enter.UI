@@ -1,9 +1,6 @@
-﻿using Enter.UI.Components.TreeView;
-using Enter.UI.Components;
+﻿namespace Enter.Dashboard.Model;
 
-namespace Enter.Dashboard.Model;
-
-public class Roles 
+public class Roles
 {
     public Guid Id { get; set; }
     public string Text { get; set; }

@@ -1,16 +1,15 @@
-﻿@using Enter.UI.Components.Drawer
+﻿@inherits LayoutComponentBase
+@using Enter.UI.Components.Drawer
 @using Enter.UI.Components.Icon
 @using Enter.UI.Core.Enums
 @using Enter.UI.Services
-@using Enter.UI.Components.Button
-@inherits LayoutComponentBase
 @implements IDisposable
 <div class="h-full border-y d-flex flex-column">
     <div class="d-flex flex-column flex-grow-1">
         <EntAppBar ShowToggle="_showToggle" ToggleClick="ToggleSidebar" Title="Enterprise Dashboard">
-            <EntButton @onclick="ToggleRtl" Icon="EntIconName.AlignRight" />
-            <EntButton @onclick="ToggleDarkMode" Icon="EntIconName.Moon"  />
-            <EntButton @onclick="() => _isSideDrawerOpen = !_isSideDrawerOpen" Icon="EntIconName.Note" />
+            <EntButton @onclick="ToggleRtl" Icon="EntIconName.AlignRight"/>
+            <EntButton @onclick="ToggleDarkMode" Icon="EntIconName.Moon"/>
+            <EntButton @onclick="() => _isSideDrawerOpen = !_isSideDrawerOpen" Icon="EntIconName.Note"/>
         </EntAppBar>
         <EntDrawerContainer class="flex-grow-1">
             <EntDrawer HasBackdrop="HasBackdrop" @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start" Mode="_drawerMode" class="z-50">
@@ -85,7 +84,6 @@
     }
 
 
-
     public void HandleMobileSize(EntBreakpoint breakpoint)
     {
         _drawerMode = breakpoint > EntBreakpoint.Tablet ? EntDrawerMode.Behavior : EntDrawerMode.Overlay;
@@ -122,4 +120,5 @@
     public void Dispose()
     {
     }
+
 }

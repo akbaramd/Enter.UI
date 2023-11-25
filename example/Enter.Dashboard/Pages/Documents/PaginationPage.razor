@@ -1,19 +1,13 @@
 ﻿@page "/documents/pagination"
-@using Enter.UI.Components.TreeView
-@using Enter.UI.Components.Button
-@using Enter.UI.Core.Extensions
-@using System.Net.Mime
-@using Enter.Dashboard.Model
-@using Enter.UI.Core
 @layout DocumentLayout
 <div class="p-4">
     <EntCard Expandable="true" CardExpand="false" class="mb-4" Title="Pagination">
         <CardBody>
-            <EntPagination 
+            <EntPagination
                 BoundaryCount="2" MiddleCount="5" Count="22"
                 ShowNextButton="true"
                 ShowPreviousButton="true"
-                @bind-Selected="@Page" />
+                @bind-Selected="@Page"/>
             <EntButton class="mt-4">@Page</EntButton>
         </CardBody>
     </EntCard>

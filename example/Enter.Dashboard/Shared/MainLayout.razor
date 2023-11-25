@@ -1,6 +1,5 @@
 ﻿@using Enter.UI.Components.Drawer
 @using Enter.UI.Components.Icon
-@using Enter.UI.Core.Enums
 @using Enter.UI.Services
 @using Enter.UI.Components.Button
 @using Enter.Dashboard.Components
@@ -47,7 +46,7 @@
     private bool _showToggle;
     private bool _isDrawerOpen = true;
     private bool _isSideDrawerOpen;
-    private EntDrawerMode _drawerMode = EntDrawerMode.Behavior;
+    private readonly EntDrawerMode _drawerMode = EntDrawerMode.Behavior;
 
     [CascadingParameter]
     public EntThemeProvider? EntThemeProvider { get; set; }

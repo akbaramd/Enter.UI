@@ -1,9 +1,9 @@
 @page "/documents/form"
 @using Enter.Dashboard.Model
-@using Enter.UI.Components.Button
 @using Enter.UI.Components.Icon
 @using Enter.UI.Components.Inputs
 @using System.ComponentModel.DataAnnotations
+@using Enter.UI.Components.Button
 <div class="p-4">
     <EntToolbar class="my-4">
         <EntButton Appearance="ButtonAppearance.Default" Color="ButtonColor.Primary" Icon="EntIconName.Add">Add</EntButton>
@@ -50,7 +50,6 @@
                         For="() => Input.Age">
                         <EntInputTextarea Rows="10" @bind-Value="Input.Age"/>
                     </EntInputGroup>
-                   
 
 
                 </div>
@@ -61,7 +60,7 @@
                 </div>
             </EditForm>
         </CardBody>
-        
+
     </EntCard>
     <EntCard Title="Input Size" class="mb-4">
         <CardBody>
@@ -88,29 +87,29 @@
         </CardBody>
     </EntCard>
     <EntCard Title="Input Icon" class="mb-4">
-            <CardBody>
-                <EditForm class="ent-edit-form" Model="Input" OnSubmit="@OnSubmit">
-                     <EntInputGroup
-                                            class="tablet:col-12 mb-4"
-                                            Label="Small Input"
-                                            For="() => Input.User">
-                                            <EntInputText Icon="EntIconName.User" size="@EntInputSize.Small" @bind-Value="Input.Age"/>
-                                        </EntInputGroup>
-                                        <EntInputGroup
-                                            class="tablet:col-12 mb-4"
-                                            Label="Input"
-                                            For="() => Input.Age">
-                                            <EntInputText Icon="EntIconName.Search" @bind-Value="Input.Age"/>
-                                        </EntInputGroup>
-                                        <EntInputGroup
-                                            class="tablet:col-12 mb-4"
-                                            Label="Large Input"
-                                            For="() => Input.Age">
-                                            <EntInputText Icon="EntIconName.Dashboard" size="@EntInputSize.Large" @bind-Value="Input.Age"/>
-                                        </EntInputGroup>
-                </EditForm>
-            </CardBody>
-        </EntCard>
+        <CardBody>
+            <EditForm class="ent-edit-form" Model="Input" OnSubmit="@OnSubmit">
+                <EntInputGroup
+                    class="tablet:col-12 mb-4"
+                    Label="Small Input"
+                    For="() => Input.User">
+                    <EntInputText Icon="EntIconName.User" size="@EntInputSize.Small" @bind-Value="Input.Age"/>
+                </EntInputGroup>
+                <EntInputGroup
+                    class="tablet:col-12 mb-4"
+                    Label="Input"
+                    For="() => Input.Age">
+                    <EntInputText Icon="EntIconName.Search" @bind-Value="Input.Age"/>
+                </EntInputGroup>
+                <EntInputGroup
+                    class="tablet:col-12 mb-4"
+                    Label="Large Input"
+                    For="() => Input.Age">
+                    <EntInputText Icon="EntIconName.Dashboard" size="@EntInputSize.Large" @bind-Value="Input.Age"/>
+                </EntInputGroup>
+            </EditForm>
+        </CardBody>
+    </EntCard>
 </div>
 
 @code {

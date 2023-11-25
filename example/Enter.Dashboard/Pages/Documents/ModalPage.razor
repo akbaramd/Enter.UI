@@ -1,15 +1,11 @@
 ﻿@page "/documents/modals"
-@using Enter.UI.Components.Button
-@using Enter.UI.Components.Flex
-@using Enter.UI.Components.Icon
-@using Enter.Dashboard.Model
 @using Enter.UI.Components.Modal
 @using Enter.UI.Core
-@using System.Diagnostics.Metrics
+@using Enter.UI.Components.Flex
 @inherits Enter.UI.Cores.Bases.EntPageBase
 @layout DocumentLayout
 <div class="p-4">
-    <EntCard Expandable="true"  Title="Modals">
+    <EntCard Expandable="true" Title="Modals">
         <CardBody>
             <EntFlex Direction="FlexDirection.Column"
                      LaptopDirection="FlexDirection.Row"
@@ -33,13 +29,13 @@
         var confirmResult = await ModalService.MessageBoxAsync("Open Modal", "Are you sure to oprn Modal?", "Show", "Dismiss");
         if (!confirmResult.Canceled)
         {
-    var parameter = new ParameterBuilder<UploadBoxPage>()
-        .Build();
-    
-    var result = await ModalService.ShowAsync<UploadBoxPage>("sada", parameter, new EntModalOptions
-    {
-        Size = size
-    });
+            var parameter = new ParameterBuilder<UploadBoxPage>()
+                .Build();
+
+            var result = await ModalService.ShowAsync<UploadBoxPage>("sada", parameter, new EntModalOptions
+            {
+                Size = size
+            });
         }
     }
 

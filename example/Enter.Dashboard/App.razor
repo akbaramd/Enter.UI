@@ -1,8 +1,8 @@
 ﻿@namespace Enter.Dashboard
 <EntThemeProvider
-    
+
     DrawerDefaultWidth="300">
-    
+
     <Router AppAssembly="@typeof(App).Assembly">
         <Found Context="routeData">
             <RouteView RouteData="@routeData" DefaultLayout="@typeof(DocumentLayout)"/>
@@ -15,5 +15,5 @@
             </LayoutView>
         </NotFound>
     </Router>
-    
+
 </EntThemeProvider>

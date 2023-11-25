@@ -1,4 +1,5 @@
 # Shabnam Font
+
 A Persian (Farsi) Font
 
 [![npm](https://img.shields.io/npm/v/shabnam-font.svg)](https://www.npmjs.com/package/shabnam-font)
@@ -9,9 +10,11 @@ A Persian (Farsi) Font
 با تشکر از برنامه [FontForge](https://fontforge.github.io)  
 بر مبنای فونت [وزیر](https://rastikerdar.github.io/vazir-font)  
 نسخه‌های بدون حروف لاتین یا تمام ارقام فارسی درون بسته فشرده موجود می‌باشد.  
-فرآیند تولید بسته نهایی شامل انواع نسخه‌ها و فرمت‌ها توسط ابزار [fontbuilder](https://github.com/rastikerdar/fontbuilder) انجام می‌شود.
+فرآیند تولید بسته نهایی شامل انواع نسخه‌ها و فرمت‌ها توسط
+ابزار [fontbuilder](https://github.com/rastikerdar/fontbuilder) انجام می‌شود.
 
 ## نمونه متن Sample:
+
 ![نمونه متن فونت شبنم](./sample.png)
 
 ## طریقه استفاده در صفحات وب:
@@ -19,7 +22,6 @@ A Persian (Farsi) Font
 <p dir="rtl">
 کد زیر را در قسمت style یا فایل css وارد نمایید:
 </p>
-
 
 ```css
 @font-face {
@@ -84,11 +86,13 @@ bower install shabnam-font --save
 ```
 
 #### npm
+
 ```
 npm install shabnam-font --save
 ```
 
 #### yarn
+
 ```
 yarn add shabnam-font --save
 ```
@@ -109,7 +113,9 @@ font-family: 'Shabnam', sans-serif;
 
 #### Arch Linux
 
-Arch user's could use [shabnam-fonts](https://aur.archlinux.org/packages/shabnam-fonts/) package from [AUR](https://aur.archlinux.org/) repository to install shabnam font. Use your favourite [AUR helper](https://wiki.archlinux.org/index.php/AUR_helpers) like pacaur or yaourt for installing package:
+Arch user's could use [shabnam-fonts](https://aur.archlinux.org/packages/shabnam-fonts/) package
+from [AUR](https://aur.archlinux.org/) repository to install shabnam font. Use your
+favourite [AUR helper](https://wiki.archlinux.org/index.php/AUR_helpers) like pacaur or yaourt for installing package:
 
 ```shell
 pacaur -S shabnam-fonts
