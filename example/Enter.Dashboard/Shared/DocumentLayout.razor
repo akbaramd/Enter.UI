@@ -1,6 +1,7 @@
 ﻿@inherits LayoutComponentBase
 @using Enter.UI.Components.Drawer
 @using Enter.UI.Components.Icon
+@using Enter.UI.Components.Tabs
 @using Enter.UI.Core.Enums
 @using Enter.UI.Services
 @implements IDisposable
@@ -73,8 +74,11 @@
         Navigation?.NavigateTo(uri);
     }
 
+
+    
     protected override async Task OnInitializedAsync()
     {
+        
         await base.OnInitializedAsync();
         if (EntThemeProvider != null)
         {
@@ -119,6 +123,7 @@
 
     public void Dispose()
     {
+
     }
 
 }

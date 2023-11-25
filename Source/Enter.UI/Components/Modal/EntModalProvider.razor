@@ -1,77 +1,15 @@
 ﻿@namespace Enter.UI.Components
 @using Enter.UI.Services
 @using Enter.UI.Components.Modal
-@implements IDisposable
+@namespace Enter.UI.Components.Modal;
+@inherits Enter.UI.Cores.Bases.EntComponentBase
+
 <div class="ent-modal-provider ">
     <CascadingValue Value="this" IsFixed="true">
         @foreach (var item in ModalInstances)
         {
-            <CascadingValue @key="item.Id" Value="item" IsFixed="true">
-                <EntModal Title="@item.Title" OnCancelClick="() => OnCancelClick(item.Id)" Options="item.Options">
-                    <DynamicComponent Type="@item.Type" Parameters="@item.Parameters"/>
-                </EntModal>
-            </CascadingValue>
+           @item.ModalInstance
         }
     </CascadingValue>
 </div>
 
-@code {
-
-    [Inject]
-    private IEntModalService ModalService { get; set; }
-
-    private ModalService _modalService { get; set; }
-
-    public List<EntModalInstance> ModalInstances = new();
-
-    protected override async Task OnInitializedAsync()
-    {
-        _modalService = (ModalService)ModalService ?? throw new InvalidOperationException("AddEnterUI is not added to your program.cs");
-
-        await base.OnInitializedAsync();
-
-        _modalService.OnModalAddedAsync += ModalServiceOnOnModalAddedAsync;
-    }
-
-    private async Task ModalServiceOnOnModalCanceledAsync(string obj)
-    {
-        await InvokeAsync(StateHasChanged);
-    }
-
-    private async Task ModalServiceOnOnModalClosedAsync(string obj)
-    {
-        await InvokeAsync(StateHasChanged);
-    }
-
-    public async Task ModalServiceOnOnModalAddedAsync(EntModalInstance instance)
-    {
-        await InvokeAsync(() =>
-        {
-            var first = ModalInstances.FirstOrDefault(x => x.Id == instance.Id);
-            if (first != null)
-                throw new Exception("Modal with this Id already exists");
-
-            ModalInstances.Add(instance);
-            StateHasChanged();
-        });
-    }
-
-    public void Dismiss(EntModalInstance instance, ModalResult result)
-    {
-        instance.DialogResultTCS?.SetResult(result);
-        ModalInstances.Remove(instance);
-        StateHasChanged();
-    }
-
-    public void DismissAll()
-    {
-        ModalInstances.ForEach(x => { Dismiss(x, ModalResult.Cancel()); });
-        StateHasChanged();
-    }
-
-    public void Dispose()
-    {
-        _modalService.OnModalAddedAsync -= ModalServiceOnOnModalAddedAsync;
-    }
-
-}

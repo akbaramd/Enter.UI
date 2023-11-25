@@ -4,6 +4,7 @@
 @using Enter.UI.Components.Modal
 @using Enter.UI.Components.Toast
 @using Enter.UI.Components.Flex
+@using Enter.UI.Components.Tabs
 @layout DocumentLayout
 
 <PageTitle>Index</PageTitle>
@@ -44,7 +45,8 @@
     public string SelectValue { get; set; }
 
     public List<Users> AutoCompleteDataSource { get; set; } = Constants.Users;
-
+    [Inject]
+    public IEntMdiService EntMdiService { get; set; }
     [Inject]
     public IEntModalService ModalService { get; set; }
 
@@ -53,8 +55,8 @@
 
     public async Task OpenModal(EntModalSize size)
     {
-        var confirmResult = await ModalService.MessageBoxAsync("Open Modal", "Are you sure to oprn Modal?", "Show", "Dismiss");
-        if (!confirmResult.Canceled)
+        var confirmResult =  ModalService.MessageBox("Open Modal", "Are you sure to oprn Modal?", "Show", "Dismiss");
+        if ((await confirmResult.Result).Confirmed)
         {
     // var parameter = new ParameterBuilder<Counter>()
     //     .Build();
@@ -70,6 +72,9 @@
     {
     //IsPopoverOpen = !IsPopoverOpen;
     }
+   
+     
+
 
     public async Task OpenToast(EntToastType type)
     {

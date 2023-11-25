@@ -42,7 +42,6 @@ internal class EntMdiService : IEntMdiService
     public async Task CloseTabAsync(string id)
     {
         var instance = Instances.First(x => x.Id == id);
-        Instances.Remove(instance);
         await OnTabClosedAsync.Invoke(instance);
       
     }
@@ -50,7 +49,6 @@ internal class EntMdiService : IEntMdiService
     public async Task ActivateTabAsync(string id)
     {
         var instance = Instances.First(x => x.Id == id);
-        instance.IsActive = true;
         await OnTabActivatedAsync.Invoke(instance);
     }
 
@@ -58,11 +56,9 @@ internal class EntMdiService : IEntMdiService
     {
         return Instances;
     }
+ 
     
-    public void ClearInstance()
-    {
-        Instances.Clear();
-    }
+
 
     public event Func<EntMdiTabInstance, Task> OnTabAddedAsync = default!;
     public event Func<EntMdiTabInstance, Task> OnTabActivatedAsync = default!;

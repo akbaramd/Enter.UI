@@ -1,5 +1,4 @@
 ﻿using Enter.UI.Components.Modal;
-using Enter.UI.Core;
 using Enter.UI.Services;
 using Microsoft.AspNetCore.Components;
 
@@ -7,46 +6,77 @@ namespace Enter.UI.Components;
 
 public class ModalService : IEntModalService
 {
-    public async Task<ModalResult?> ShowAsync<TComponent>(string title, Dictionary<string, object>? parameters = null,
+    public ModalReference Show<TComponent>(string title, EntModalParameters? parameters = null,
         EntModalOptions? options = null, string? id = null) where TComponent : ComponentBase
     {
-        // var first = Items.FirstOrDefault(x => x.Id == id);
-        // if (first != null)
-        //     throw new Exception("Modal with this Id already exists");
-
-        var modalId = id ?? Guid.NewGuid().ToString();
-        var taskCompletionSource = new TaskCompletionSource<ModalResult?>();
-        var item = new EntModalInstance
-        {
-            Id = modalId,
-            Title = title,
-            Type = typeof(TComponent),
-            Options = options,
-            Parameters = parameters,
-            DialogResultTCS = taskCompletionSource
-        };
-
-        await OnModalAddedAsync.Invoke(item);
-        return await taskCompletionSource.Task;
+        return Show(typeof(TComponent), title, parameters, options, id);
     }
 
-    public Task<ModalResult> MessageBoxAsync(string title, string message, string confirmText = "Confirm",
+    public ModalReference Show(Type componentType, string title, EntModalParameters? parameters = null,
+        EntModalOptions? options = null,
+        string? id = null)
+    {
+        if (!typeof(IComponent).IsAssignableFrom(componentType))
+            throw new ArgumentException($"{componentType.FullName} must be a Blazor Component");
+
+        if (string.IsNullOrWhiteSpace(id))
+        {
+            id = Guid.NewGuid().ToString();
+        }
+        
+        ModalReference? modalReference = null;
+        
+        var modalContent = new RenderFragment(builder =>
+        {
+            var i = 0;
+            builder.OpenComponent(i++, componentType);
+            foreach (var (name, value) in parameters.Parameters) builder.AddAttribute(i++, name, value);
+            builder.CloseComponent();
+        });
+        var modalInstance = new RenderFragment(builder =>
+        {
+            builder.OpenComponent<EntModal>(0);
+            builder.SetKey("blazoredModalInstance_" + id);
+            builder.AddAttribute(1, "Options", options);
+            builder.AddAttribute(2, "Title", title);
+            builder.AddAttribute(3, "ChildContent", modalContent);
+            builder.AddAttribute(4, "Id", id);
+            builder.AddComponentReferenceCapture(5, compRef => modalReference!.EntModalRef = (EntModal)compRef);
+            builder.CloseComponent();
+        });
+        modalReference = new ModalReference(id, modalInstance, this);
+
+        OnModalInstanceAdded?.Invoke(modalReference);
+
+        return modalReference;
+    }
+
+    public ModalReference MessageBox(string title, string message, string confirmText = "Confirm",
         string cancelText = "Cancel")
     {
-        var parametersBuilder = new ParameterBuilder<EntMessageBox>()
-            .AddParameter(x => x.Message, message)
-            .AddParameter(x => x.CancelText, cancelText)
-            .AddParameter(x => x.ConfirmText, confirmText);
+        var modalParameter = new EntModalParameters<EntMessageBox>()
+            .Add(x => x.Message, message)
+            .Add(x => x.CancelText, cancelText)
+            .Add(x => x.ConfirmText, confirmText);
 
-        var parameters = parametersBuilder.Build();
-
-        return ShowAsync<EntMessageBox>(title, parameters, new EntModalOptions
+        return Show<EntMessageBox>(title, modalParameter, new EntModalOptions
         {
             Size = EntModalSize.Small,
             ShowCloseButton = false,
-            CloseOnEscapeKey = false
+            Closeable = false
         })!;
     }
 
-    internal event Func<EntModalInstance, Task> OnModalAddedAsync = default!;
+    internal void Close(ModalReference modal)
+    {
+        Close(modal, ModalResult.Ok());
+    }
+
+    internal void Close(ModalReference modal, ModalResult result)
+    {
+        OnModalCloseRequested?.Invoke(modal, result);
+    }
+
+    internal event Func<ModalReference, Task>? OnModalInstanceAdded;
+    internal event Func<ModalReference, ModalResult, Task>? OnModalCloseRequested;
 }

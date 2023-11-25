@@ -5,9 +5,12 @@ namespace Enter.UI.Services;
 
 public interface IEntModalService
 {
-    Task<ModalResult> MessageBoxAsync(string title, string message, string confirmText = "Confirm",
+    ModalReference MessageBox(string title, string message, string confirmText = "Confirm",
         string cancelText = "Cancel");
 
-    Task<ModalResult?> ShowAsync<TComponent>(string title, Dictionary<string, object>? parameters = null,
+    ModalReference Show<TComponent>(string title, EntModalParameters? parameters = null,
         EntModalOptions? options = null, string? id = null) where TComponent : ComponentBase;
+
+    ModalReference Show(Type componentType, string title, EntModalParameters? parameters = null,
+        EntModalOptions? options = null, string? id = null);
 }

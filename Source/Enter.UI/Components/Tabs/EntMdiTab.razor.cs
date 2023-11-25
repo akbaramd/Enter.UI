@@ -72,34 +72,53 @@ public partial class EntMdiTab : EntTabBase, IDisposable
         await InvokeAsync(async () => { await _tab.RemoveTabAsync(instance.Id); });
     }
 
+    
     private async Task OnTabActivatedCallbackAsync(string? id)
     {
         var activeTab = _items.FirstOrDefault(x => x.Id == id);
 
-        if (activeTab != null && activeTab.OnActivatedAsync != null) await activeTab.OnActivatedAsync.Invoke(id);
+        if (activeTab != null && activeTab.OnActivatedAsync != null)
+
+        {
+            activeTab.IsActive = true;
+            await activeTab.OnActivatedAsync.Invoke(id);
+        }
+
+        await OnTabActivated.InvokeAsync(id);
         StateHasChanged();
     }
 
     private async Task OnTabAddedCallback(EntTabPanel panel)
     {
-        if (_items.Count > 1) await _tab.ActivateTabAsync(panel.Id);
+        if (_items.Count > 1) 
+            await _tab.ActivateTabAsync(panel.Id);
+        await OnTabAdded.InvokeAsync(panel);
     }
 
     private async Task OnTabClosedCallback(string id)
     {
         await _tab.RemoveTabAsync(id);
+        await OnTabClosed.InvokeAsync(id);
     }
 
-    private Task OnTabRemovedCallback(string id)
+    private async Task OnTabRemovedCallback(string id)
     {
         _items.RemoveAll(x => x.Id == id);
         StateHasChanged();
-        return Task.CompletedTask;
+        await OnTabRemoved.InvokeAsync(id);
     }
 
     private async Task OnAllTabClosedCallback()
     {
         var items = _items.ToList();
-        foreach (var item in items) await _tab.RemoveTabAsync(item.Id);
+        foreach (var item in items) 
+            await _tab.RemoveTabAsync(item.Id);
+        await OnAllTabClosed.InvokeAsync();
+    }
+
+
+    public List<EntMdiTabInstance> GetInstance()
+    {
+        return _items;
     }
 }

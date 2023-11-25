@@ -29,14 +29,14 @@
     public string CancelText { get; set; }
 
 
-    public void OnCancelClick()
+    public async Task OnCancelClick()
     {
-        Modal.Cancel();
+        await Modal.CancelAsync();
     }
 
-    public void OnConfirmClick()
+    public async Task OnConfirmClick()
     {
-        Modal.Close();
+        await Modal.CloseAsync();
     }
 
 

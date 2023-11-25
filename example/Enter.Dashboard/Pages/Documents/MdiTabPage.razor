@@ -2,12 +2,16 @@
 @using Enter.UI.Services
 @inherits Enter.UI.Cores.Bases.EntPageBase
 @layout DocumentLayout
+
 <EntMdiTab Tag="MdiTabPage" Responsive ItemDirection="EntTabItemDirection.Horizontal"
+           @ref="MdiTab"
            KeepPanelAlive="true"
            PanelClass="h-full"
            ActiveClass=""
            Closeable
-
+           OnTabAdded="LogInstances"
+           OnTabRemoved="LogInstances"
+           OnTabActivated="LogInstances"
            class="border-0 "
            Direction="EntTabDirection.Vertical">
     <EntCard class="mt-4">
@@ -24,12 +28,21 @@
     [Inject]
     public IEntMdiService MdiService { get; set; } = default!;
 
+
+    public EntMdiTab MdiTab { get; set; } = default!;
+
     public async Task NewTab()
     {
         for (var i = 0; i < 5; i++)
         {
             await MdiService.AddNewTabAsync<FormLayout>(Guid.NewGuid().ToString(), $"Upload Box {i}", "ri-upload-line");
         }
+    }
+
+
+    public void LogInstances()
+    {
+        Console.WriteLine(MdiTab.GetInstance().Count);
     }
 
 }

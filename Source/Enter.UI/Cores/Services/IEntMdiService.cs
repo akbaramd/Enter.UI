@@ -16,8 +16,7 @@ public interface IEntMdiService
     public Task CloseTabAsync(string id);
     public Task ActivateTabAsync(string id);
 
-    public List<EntMdiTabInstance> GetInstance();
-    public void ClearInstance();
+
 
     public event Func<EntMdiTabInstance, Task> OnTabAddedAsync;
     public event Func<EntMdiTabInstance, Task> OnTabActivatedAsync;

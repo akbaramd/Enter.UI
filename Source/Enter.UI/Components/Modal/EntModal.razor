@@ -1,15 +1,15 @@
 ﻿@namespace Enter.UI.Components
-@using Enter.UI.Components.Modal
 @using Enter.UI.Components.Icon
 @inherits Enter.UI.Cores.Bases.EntComponentBase
+
 <CascadingValue Value="this" IsFixed="true">
-    <div class="ent-modal-container" @onclick="OnContainerClick">
+    <div  @ref="_modalReference" class="ent-modal-container" @onclick="OnContainerClick">
         <div class="@RootCss" @onclick:stopPropagation="true" @onclick="OnModalClick">
             <div class="ent-modal-header">
                 <b class="title">@Title</b>
                 @if (Options?.ShowCloseButton ?? true)
                 {
-                    <EntIcon class="icon" Click="Cancel" Icon="EntIconName.Remove"/>
+                    <EntIcon class="icon" Click="()=>CancelAsync()" Icon="EntIconName.Remove"/>
                 }
             </div>
             <div class="ent-modal-content">
@@ -18,75 +18,3 @@
         </div>
     </div>
 </CascadingValue>
-
-@code {
-
-    private string RootCss => CssBuilder
-        .AddCss("ent-modal")
-        .AddCss("ent-modal-sm", Options?.Size == EntModalSize.Small)
-        .AddCss("ent-modal-md", Options?.Size == EntModalSize.Medium)
-        .AddCss("ent-modal-lg", Options?.Size == EntModalSize.Large)
-        .AddCss("ent-modal-xl", Options?.Size == EntModalSize.ExtraLarge)
-        .AddCss("ent-modal-fs", Options?.Size == EntModalSize.Fullscreen).Build();
-
-    [CascadingParameter]
-    public EntModalProvider ModalProvider { get; set; } = default!;
-
-    [CascadingParameter]
-    public EntModalInstance Instance { get; set; } = default!;
-
-    [Parameter]
-    public string Title { get; set; }
-
-    [Parameter]
-    public RenderFragment ChildContent { get; set; }
-
-    [Parameter]
-    public EntModalOptions? Options { get; set; }
-
-
-    protected override async Task OnInitializedAsync()
-    {
-        Options ??= new EntModalOptions
-        {
-            Size = EntModalSize.Medium,
-            CloseOnEscapeKey = true
-        };
-
-        await base.OnInitializedAsync();
-    }
-
-    public void Close()
-    {
-        Close(ModalResult.Ok());
-    }
-
-    public void Close(ModalResult result)
-    {
-        ModalProvider.Dismiss(Instance, result);
-    }
-
-    public void Cancel()
-    {
-        Close(ModalResult.Cancel());
-    }
-
-    private async Task OnContainerClick(MouseEventArgs args)
-    {
-        if (Options.ShowCloseButton)
-        {
-            Cancel();
-        }
-    }
-
-    private async Task OnModalClick(MouseEventArgs arg)
-    {
-    }
-
-    public override void Dispose()
-    {
-    }
-
-
-
-}
