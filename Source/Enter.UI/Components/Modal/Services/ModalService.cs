@@ -30,7 +30,10 @@ public class ModalService : IEntModalService
         {
             var i = 0;
             builder.OpenComponent(i++, componentType);
-            foreach (var (name, value) in parameters.Parameters) builder.AddAttribute(i++, name, value);
+            if (parameters is not null)
+            {
+                foreach (var (name, value) in parameters.Parameters) builder.AddAttribute(i++, name, value);
+            }
             builder.CloseComponent();
         });
         var modalInstance = new RenderFragment(builder =>

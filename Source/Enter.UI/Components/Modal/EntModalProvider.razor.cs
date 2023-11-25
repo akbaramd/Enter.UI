@@ -1,9 +1,10 @@
-﻿using Enter.UI.Cores.Bases;
+﻿using Enter.UI.Components.Modal;
+using Enter.UI.Cores.Bases;
 using Enter.UI.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Routing;
 
-namespace Enter.UI.Components.Modal;
+namespace Enter.UI.Components;
 
 public partial class EntModalProvider : EntComponentBase
 {
@@ -99,6 +100,8 @@ public partial class EntModalProvider : EntComponentBase
     public override void Dispose()
     {
         _modalService.OnModalInstanceAdded -= OnInstanceAdded;
+        _modalService.OnModalCloseRequested -= CloseInstance;
+        NavigationManager.LocationChanged -= CancelModals;
     }
 
 }

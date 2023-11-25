@@ -17,7 +17,7 @@ public abstract class EntPageBase : ComponentBase, IDisposable
 
     [CascadingParameter] public EntModal? EntModal { get; set; }
 
-    public bool IsMdiTabInstance => MdiTabInstance != null;
+  
 
     public virtual void Dispose()
     {
@@ -25,7 +25,7 @@ public abstract class EntPageBase : ComponentBase, IDisposable
 
     protected override Task OnInitializedAsync()
     {
-        if (IsMdiTabInstance) MdiTabInstance.OnActivatedAsync += OnMdiTabActivatedAsync;
+        if (MdiTabInstance is not null) MdiTabInstance.OnActivatedAsync += OnMdiTabActivatedAsync;
         return Task.CompletedTask;
     }
 
