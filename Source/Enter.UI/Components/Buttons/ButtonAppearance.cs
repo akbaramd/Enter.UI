@@ -2,5 +2,7 @@
 
 public enum ButtonAppearance
 {
-    Default,Outline,Ghost
+    Default,
+    Outline,
+    Ghost
 }

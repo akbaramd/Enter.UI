@@ -2,7 +2,7 @@
     _dotNetRef;
     _map = {};
     flipMargin = 0;
-    flipClassReplacements =  {
+    flipClassReplacements = {
         'top': {
             'ent-popover-top-left': 'ent-popover-bottom-left',
             'ent-popover-top-center': 'ent-popover-bottom-center',
@@ -41,7 +41,7 @@
         },
 
     }
-    
+
     constructor() {
         window.addEventListener('scroll', () => {
             this.placePopoverByClassSelector('ent-popover-fixed');
@@ -245,19 +245,15 @@
                         } else if (deltaToLeft < graceMargin && deltaToRight >= selfRect.width) {
                             selector = 'right';
                         }
-                    }
-
-                    else if (classList.contains('ent-popover-center-left')) {
+                    } else if (classList.contains('ent-popover-center-left')) {
                         if (deltaToRight < graceMargin && deltaToLeft >= selfRect.width) {
                             selector = 'left';
                         }
-                    }
-                    else if (classList.contains('ent-popover-center-right')) {
+                    } else if (classList.contains('ent-popover-center-right')) {
                         if (deltaToLeft < graceMargin && deltaToRight >= selfRect.width) {
                             selector = 'right';
                         }
-                    }
-                    else if (classList.contains('ent-popover-bottom-left')) {
+                    } else if (classList.contains('ent-popover-bottom-left')) {
                         if (deltaTop < graceMargin && deltaToRight < graceMargin && deltaBottom >= 0 && deltaToLeft >= selfRect.width) {
                             selector = 'bottom-and-left';
                         } else if (deltaTop < graceMargin && deltaBottom >= 0) {
@@ -279,7 +275,7 @@
                         }
                     }
                 }
-              
+
                 if (selector && selector != 'none') {
                     const newPosition = this.getPositionForFlippedPopver(classListArray, selector, boundingRect, selfRect);
                     left = newPosition.left;
@@ -288,8 +284,7 @@
                     offsetY = newPosition.offsetY;
 
                     popoverContentNode.setAttribute('data-mudpopover-flip', 'flipped');
-                }
-                else {
+                } else {
                     popoverContentNode.removeAttribute('data-mudpopover-flip');
                 }
 

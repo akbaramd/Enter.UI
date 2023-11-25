@@ -34,7 +34,7 @@ public class EntIconProvider : IEntIconProvider
                 return "ri-tv-2-line";
             case EntIconName.Edit:
                 return "ri-edit-line";
-            case EntIconName.Eye: 
+            case EntIconName.Eye:
                 return "ri-eye-line";
             case EntIconName.Folder:
                 return "ri-folder-line";

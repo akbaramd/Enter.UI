@@ -9,8 +9,9 @@
   border-radius: inherit;
   display: flex;
   position: fixed;
-  transition: .3s cubic-bezier(.25,.8,.5,1),z-index 1ms;
+  transition: .3s cubic-bezier(.25, .8, .5, 1), z-index 1ms;
   z-index: var(--ent-z-index-emphasis);
+
   &.ent-overlay-absolute {
     position: absolute;
   }
@@ -29,15 +30,16 @@
     animation: ent-animation-fadein ease 0.15s;
     -webkit-animation: ent-animation-fadein ease 0.15s;
     -moz-animation: ent-animation-fadein ease 0.15s;
-    -o-animation: ent-animation-fadein ease 0.15s; 
+    -o-animation: ent-animation-fadein ease 0.15s;
 
     &.ent-overlay-dark {
-      background-color: var(--ent-bg-body-backdrop-sm); 
+      background-color: var(--ent-bg-body-backdrop-sm);
     }
 
     &.ent-overlay-light {
       background-color: var(--ent-bg-body-backdrop-sm);
     }
+
     &:hover {
       cursor: default;
     }

@@ -1,17 +1,13 @@
 ﻿using Enter.UI.Components.Popover;
+using Enter.UI.Interops;
 using Enter.UI.JsServices;
 using Enter.UI.Services;
-using Enter.UI.Interops;
-using Enter.UI.JsService;
 using Microsoft.AspNetCore.Components;
 
 namespace Enter.UI.Components;
 
 public class EntPopoverService : IEntPopoverService
 {
-    public Dictionary<Guid, EntPopoverInstance> PopoverInstances { get; set; } =
-        new Dictionary<Guid, EntPopoverInstance>();
-
     private readonly PopoverInterop _popoverInterop;
 
 
@@ -19,15 +15,15 @@ public class EntPopoverService : IEntPopoverService
     {
         _popoverInterop = new PopoverInterop(entJsService);
     }
-    
+
+    public Dictionary<Guid, EntPopoverInstance> PopoverInstances { get; set; } = new();
+
     public event EventHandler? FragmentsChanged;
+
     public async Task CloseAllAsync()
     {
-        foreach (var popoverInstance in PopoverInstances)
-        {
-            popoverInstance.Value.ShowContent = false;
-        }
-        FragmentsChanged?.Invoke(this, EventArgs.Empty); 
+        foreach (var popoverInstance in PopoverInstances) popoverInstance.Value.ShowContent = false;
+        FragmentsChanged?.Invoke(this, EventArgs.Empty);
     }
 
 
@@ -39,9 +35,9 @@ public class EntPopoverService : IEntPopoverService
         FragmentsChanged?.Invoke(this, EventArgs.Empty);
     }
 
-    public async Task<Guid> RegisterAsync(RenderFragment renderFragment,string popoverClass, bool showContent = false)
+    public async Task<Guid> RegisterAsync(RenderFragment renderFragment, string popoverClass, bool showContent = false)
     {
-        var instance = new EntPopoverInstance()
+        var instance = new EntPopoverInstance
         {
             Key = Guid.NewGuid(),
             ContentFragment = renderFragment,
@@ -54,7 +50,7 @@ public class EntPopoverService : IEntPopoverService
     }
 
 
-    public async Task UpdateParameterAsync(Guid id,string popoverCss, bool open)
+    public async Task UpdateParameterAsync(Guid id, string popoverCss, bool open)
     {
         var item = PopoverInstances[id];
 

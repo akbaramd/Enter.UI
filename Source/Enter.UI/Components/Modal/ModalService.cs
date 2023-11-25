@@ -1,20 +1,19 @@
 ﻿using Enter.UI.Components.Modal;
-using Enter.UI.Services;
 using Enter.UI.Core;
+using Enter.UI.Services;
 using Microsoft.AspNetCore.Components;
 
 namespace Enter.UI.Components;
 
-public class ModalService : IEntModalService 
+public class ModalService : IEntModalService
 {
-
     public async Task<ModalResult?> ShowAsync<TComponent>(string title, Dictionary<string, object>? parameters = null,
         EntModalOptions? options = null, string? id = null) where TComponent : ComponentBase
     {
         // var first = Items.FirstOrDefault(x => x.Id == id);
         // if (first != null)
         //     throw new Exception("Modal with this Id already exists");
-        
+
         var modalId = id ?? Guid.NewGuid().ToString();
         var taskCompletionSource = new TaskCompletionSource<ModalResult?>();
         var item = new EntModalInstance
@@ -26,7 +25,7 @@ public class ModalService : IEntModalService
             Parameters = parameters,
             DialogResultTCS = taskCompletionSource
         };
-        
+
         await OnModalAddedAsync.Invoke(item);
         return await taskCompletionSource.Task;
     }
@@ -50,5 +49,4 @@ public class ModalService : IEntModalService
     }
 
     internal event Func<EntModalInstance, Task> OnModalAddedAsync = default!;
-
 }

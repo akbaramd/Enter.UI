@@ -26,14 +26,14 @@ public abstract class EntComponentBase : ComponentBase, IDisposable
         : GetId();
 
 
-
     [Parameter] public string Tag { get; set; } = default!;
 
 
-    [Parameter]
-    public bool DarkMode { get; set; }
+    [Parameter] public bool DarkMode { get; set; }
 
-    [CascadingParameter] public EntThemeProvider? EntThemeProvider { get; set; } = default!;
+    [CascadingParameter] public EntThemeProvider? EntThemeProvider { get; set; }
+
+    public abstract void Dispose();
 
 
     protected override Task OnAfterRenderAsync(bool firstRender)
@@ -43,11 +43,8 @@ public abstract class EntComponentBase : ComponentBase, IDisposable
 
     protected override void OnAfterRender(bool firstRender)
     {
-        
         base.OnAfterRender(firstRender);
     }
-
-    public abstract void Dispose();
 
 
     private string GetId()
@@ -55,7 +52,4 @@ public abstract class EntComponentBase : ComponentBase, IDisposable
         _id ??= $"ent-{Guid.NewGuid()}";
         return _id;
     }
-
-
-   
 }

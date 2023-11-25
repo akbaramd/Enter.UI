@@ -1,7 +1,9 @@
-﻿namespace Enter.UI.Components.Flex
+﻿namespace Enter.UI.Components.Flex;
+
+public enum FlexAlign
 {
-    public enum FlexAlign
-    {
-        None, Center, StartCenter, EndCenter
-    }
+    None,
+    Center,
+    StartCenter,
+    EndCenter
 }

@@ -12,7 +12,7 @@
   &.ent-toast--close {
     animation: ent-toast-close-anim 1s;
   }
-  
+
 }
 
 .ent-toast-provider {
@@ -23,11 +23,19 @@
 }
 
 @keyframes ent-toast-open-anim {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes ent-toast-close-anim {
-  0% { opacity: 1; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }

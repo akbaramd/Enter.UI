@@ -1,6 +1,7 @@
 ﻿@namespace Enter.UI.Components
-<div  @attributes="AdditionalAttributes" class="@RootCss" >@ChildContent</div>
+<div @attributes="AdditionalAttributes" class="@RootCss">@ChildContent</div>
 @inherits Enter.UI.Cores.Bases.EntComponentBase
+
 @code {
     private readonly string _flexRow = "flex-row";
     public string _flexColumn = "flex-column";
@@ -12,32 +13,29 @@
         .AddCss($"laptop:space-x-{LaptopSpaceX}", LaptopSpaceX.HasValue)
         .AddCss($"desktop:space-x-{DesktopSpaceX}", DesktopSpaceX.HasValue)
         .AddCss($"screen:space-x-{ScreenSpaceX}", ScreenSpaceX.HasValue)
-
         .AddCss($"space-y-{SpaceY}")
         .AddCss($"mobile:space-y-{MobileSpaceY}", MobileSpaceY.HasValue)
         .AddCss($"tablet:space-y-{TabletSpaceY}", TabletSpaceY.HasValue)
         .AddCss($"laptop:space-y-{LaptopSpaceY}", LaptopSpaceY.HasValue)
         .AddCss($"desktop:space-y-{DesktopSpaceY}", DesktopSpaceY.HasValue)
         .AddCss($"screen:space-y-{ScreenSpaceY}", ScreenSpaceY.HasValue)
-
-         .AddCss($"space-reverse-x", IsSpaceXReverse)
-        .AddCss($"mobile:space-x-reverse", IsMobileSpaceXReverse.HasValue && IsMobileSpaceXReverse.Value)
-        .AddCss($"tablet:space-x-reverse", IsTabletSpaceXReverse.HasValue && IsTabletSpaceXReverse.Value)
-        .AddCss($"laptop:space-x-reverse", IsLaptopSpaceXReverse.HasValue && IsLaptopSpaceXReverse.Value)
-        .AddCss($"desktop:space-x-reverse", IsDesktopSpaceXReverse.HasValue && IsDesktopSpaceXReverse.Value)
-        .AddCss($"screen:space-x-reverse", IsScreenSpaceXReverse.HasValue && IsScreenSpaceXReverse.Value)
-
-        .AddCss($"space-reverse-y",IsSpaceYReverse)
-        .AddCss($"mobile:space-y-reverse", IsMobileSpaceYReverse.HasValue && IsMobileSpaceYReverse.Value)
-        .AddCss($"tablet:space-y-reverse", IsTabletSpaceYReverse.HasValue && IsTabletSpaceYReverse.Value)
-        .AddCss($"laptop:space-y-reverse", IsLaptopSpaceYReverse.HasValue && IsLaptopSpaceYReverse.Value)
-        .AddCss($"desktop:space-y-reverse", IsDesktopSpaceYReverse.HasValue && IsDesktopSpaceYReverse.Value)
-        .AddCss($"screen:space-y-reverse", IsScreenSpaceYReverse.HasValue && IsScreenSpaceYReverse.Value)
-
+        .AddCss("space-reverse-x", IsSpaceXReverse)
+        .AddCss("mobile:space-x-reverse", IsMobileSpaceXReverse.HasValue && IsMobileSpaceXReverse.Value)
+        .AddCss("tablet:space-x-reverse", IsTabletSpaceXReverse.HasValue && IsTabletSpaceXReverse.Value)
+        .AddCss("laptop:space-x-reverse", IsLaptopSpaceXReverse.HasValue && IsLaptopSpaceXReverse.Value)
+        .AddCss("desktop:space-x-reverse", IsDesktopSpaceXReverse.HasValue && IsDesktopSpaceXReverse.Value)
+        .AddCss("screen:space-x-reverse", IsScreenSpaceXReverse.HasValue && IsScreenSpaceXReverse.Value)
+        .AddCss("space-reverse-y", IsSpaceYReverse)
+        .AddCss("mobile:space-y-reverse", IsMobileSpaceYReverse.HasValue && IsMobileSpaceYReverse.Value)
+        .AddCss("tablet:space-y-reverse", IsTabletSpaceYReverse.HasValue && IsTabletSpaceYReverse.Value)
+        .AddCss("laptop:space-y-reverse", IsLaptopSpaceYReverse.HasValue && IsLaptopSpaceYReverse.Value)
+        .AddCss("desktop:space-y-reverse", IsDesktopSpaceYReverse.HasValue && IsDesktopSpaceYReverse.Value)
+        .AddCss("screen:space-y-reverse", IsScreenSpaceYReverse.HasValue && IsScreenSpaceYReverse.Value)
         .Build();
 
     [Parameter]
-    public RenderFragment? ChildContent{ get; set; }
+    public RenderFragment? ChildContent { get; set; }
+
     [Parameter]
     public decimal SpaceX { get; set; } = 4;
 
@@ -115,7 +113,6 @@
 
     public override void Dispose()
     {
-        
     }
 
 }

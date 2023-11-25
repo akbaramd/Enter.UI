@@ -6,11 +6,19 @@ namespace Enter.UI.Components;
 
 internal class EntMdiService : IEntMdiService
 {
+    private readonly List<EntMdiTabInstance> Instances = new();
+
     public async Task AddNewTabAsync<TComponent>(string id, string title, object icon,
         Dictionary<string, object>? parameters = null)
         where TComponent : ComponentBase
     {
-      await  AddNewTabAsync(id, typeof(TComponent), title, icon, parameters);
+        await AddNewTabAsync(id, typeof(TComponent), title, icon, parameters);
+    }
+
+    public async Task AddNewTabAsync(EntMdiTabInstance instance)
+    {
+        Instances.Add(instance);
+        await OnTabAddedAsync.Invoke(instance);
     }
 
     public async Task AddNewTabAsync(string id, Type type, string title, object icon,
@@ -26,21 +34,31 @@ internal class EntMdiService : IEntMdiService
             ComponentType = type,
             ComponentParameters = parameters,
             OnCloseAsync = CloseTabAsync,
+            IsActive = true
         };
-        await OnTabAddedAsync.Invoke(item);
+        await AddNewTabAsync(item);
     }
 
     public async Task CloseTabAsync(string id)
     {
-       await OnTabClosedAsync.Invoke(id);
+        var instance = Instances.First(x => x.Id == id);
+        await OnTabClosedAsync.Invoke(instance);
+        Instances.Remove(instance);
     }
 
     public async Task ActivateTabAsync(string id)
     {
-       await OnTabActivatedAsync.Invoke(id);
+        var instance = Instances.First(x => x.Id == id);
+        instance.IsActive = true;
+        await OnTabActivatedAsync.Invoke(instance);
     }
 
-    internal event Func<EntMdiTabInstance, Task> OnTabAddedAsync = default!;
-    internal event Func<string,Task> OnTabActivatedAsync = default!;
-    internal event Func<string,Task> OnTabClosedAsync = default!;
+    public List<EntMdiTabInstance> GetInstance()
+    {
+        return Instances;
+    }
+
+    public event Func<EntMdiTabInstance, Task> OnTabAddedAsync = default!;
+    public event Func<EntMdiTabInstance, Task> OnTabActivatedAsync = default!;
+    public event Func<EntMdiTabInstance, Task> OnTabClosedAsync = default!;
 }

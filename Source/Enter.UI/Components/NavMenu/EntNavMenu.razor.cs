@@ -1,62 +1,45 @@
-﻿using Enter.UI.Core;
+﻿using Enter.UI.Cores.Bases;
 using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Enter.UI.Cores.Bases;
 
+namespace Enter.UI.Components;
 
-namespace Enter.UI.Components
+public partial class EntNavMenu : EntComponentBase
 {
-    public partial class EntNavMenu : EntComponentBase
+    private readonly List<EntNavMenuGroup> _groups = new();
+
+    protected string RootCss => CssBuilder.AddCss("ent-nav-menu")
+        .Build();
+
+    [Parameter] public RenderFragment ChildContent { get; set; }
+
+    protected override void OnAfterRender(bool firstRender)
     {
-        protected string RootCss => CssBuilder.AddCss("ent-nav-menu")
-            .Build();
+        base.OnAfterRender(firstRender);
+    }
 
-        private readonly List<EntNavMenuGroup> _groups = new List<EntNavMenuGroup>();
+    public void AddGroup(EntNavMenuGroup group)
+    {
+        _groups.Add(group);
+    }
 
-        [Parameter]
-        public RenderFragment ChildContent { get; set; }
 
-        protected override void OnAfterRender(bool firstRender)
-        {
-            base.OnAfterRender(firstRender);
-        }
+    public void Toggle(string id)
+    {
+        foreach (var group in _groups)
+            if (group.Id == id)
+                group.IsShow = !group.IsShow;
+            else
+                group.IsShow = false;
+        StateHasChanged();
+    }
 
-        public void AddGroup(EntNavMenuGroup group)
-        {
-            _groups.Add(group);
-        }
-        
-        
-        public void Toggle(string id)
-        {
-            foreach (var group in _groups)
-            {
-                if (group.Id == id)
-                {
-                    group.IsShow = !group.IsShow;
-                }
-                else
-                {
-                    group.IsShow = false;
-                }
-            }
-            StateHasChanged();
-          
-        }
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        _groups.Clear();
+    }
 
-        protected override void OnInitialized()
-        {
-            base.OnInitialized();
-            _groups.Clear();
-        }
-
-        public override void Dispose()
-        {
-            
-        }
+    public override void Dispose()
+    {
     }
 }

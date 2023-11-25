@@ -15,6 +15,13 @@ public class EntJsService : IEntJsService, IAsyncDisposable
         _moduleTask = new Lazy<Task<IJSObjectReference>>(() => ImportJsFileAsync("Enter.Ui.min.js"));
     }
 
+
+    public async ValueTask DisposeAsync()
+    {
+        var module = await _moduleTask.Value;
+        await module.DisposeAsync();
+    }
+
     public async Task<IJSObjectReference> ImportJsFileAsync(string path)
     {
         return await _jsRuntime
@@ -26,14 +33,5 @@ public class EntJsService : IEntJsService, IAsyncDisposable
     {
         var module = await _moduleTask.Value;
         return await module.InvokeAsync<IJSObjectReference>(path);
-    }
-
-  
-
-
-    public async ValueTask DisposeAsync()
-    {
-        var module = await _moduleTask.Value;
-        await module.DisposeAsync();
     }
 }

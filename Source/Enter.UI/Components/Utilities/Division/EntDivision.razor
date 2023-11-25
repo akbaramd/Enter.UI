@@ -1,19 +1,19 @@
 ﻿@namespace Enter.UI.Components
-<div  @attributes="AdditionalAttributes" class="@RootCss">@ChildContent</div>
+<div @attributes="AdditionalAttributes" class="@RootCss">@ChildContent</div>
 @inherits Enter.UI.Cores.Bases.EntComponentBase
+
 @code {
 
 
     public string RootCss => CssBuilder
-        .AddCss($"d-division")
+        .AddCss("d-division")
         .Build();
-    
+
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
     public override void Dispose()
     {
-        
     }
 
 }

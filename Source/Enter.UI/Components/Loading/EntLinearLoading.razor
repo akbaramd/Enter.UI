@@ -1,53 +1,51 @@
 ﻿@namespace Enter.UI.Components
-@using Enter.UI.Components.Button
-@using Enter.UI.Components.Icon
 @using Enter.UI.Components.Loading
 @inherits Enter.UI.Cores.Bases.EntComponentBase
 <span @attributes="@AdditionalAttributes" class="@RootClass" style="@RootStyle">
-     @if (Indeterminate)
-     {
-         <span class="indeterminate"></span>
-     }
-     else
-     {
-         <span class="determinate" style="@ItemStyle"></span>
-     }
+    @if (Indeterminate)
+    {
+        <span class="indeterminate"></span>
+    }
+    else
+    {
+        <span class="determinate" style="@ItemStyle"></span>
+    }
 </span>
 
-   
 
 @code {
 
     private string RootClass => CssBuilder
         .AddCss("ent-linear-loading")
-        .AddCss("ent-linear-loading-lg",Size == EntLoadingSize.Large)
-        .AddCss("ent-linear-loading-sm",Size == EntLoadingSize.Small)
+        .AddCss("ent-linear-loading-lg", Size == EntLoadingSize.Large)
+        .AddCss("ent-linear-loading-sm", Size == EntLoadingSize.Small)
         .AddCss("ent-linear-loading")
-        .AddCss("animate",Animate)
+        .AddCss("animate", Animate)
         .Build();
-    
+
     private string RootStyle => StyleBuilder
         .Build();
-    
+
     private string ItemStyle => StyleBuilder
         .Clear()
         .AddStyle($"width: {Width}%")
         .Build();
 
-    
-    
+
     [Parameter]
     public bool Animate { get; set; } = true;
+
     [Parameter]
     public bool Indeterminate { get; set; } = true;
+
     [Parameter]
     public EntLoadingSize Size { get; set; } = EntLoadingSize.Default;
+
     [Parameter]
-    public  int Width { get; set; }  = 0;
-    
+    public int Width { get; set; } = 0;
+
     public override void Dispose()
     {
-        
     }
 
 }

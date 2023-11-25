@@ -1,6 +1,6 @@
 ﻿@namespace Enter.UI.Components
-@inherits Enter.UI.Cores.Bases.EntComponentBase
 @using Enter.UI.Services
+@inherits Enter.UI.Cores.Bases.EntComponentBase
 <div class="@RootClass">
     @foreach (var item in _entPopoverService.PopoverInstances)
     {
@@ -21,10 +21,10 @@
 
     [Inject]
     public IEntPopoverService EntPopoverService { get; set; }
-    
+
 
     private EntPopoverService _entPopoverService = default!;
-    
+
 
     protected override async Task OnInitializedAsync()
     {
@@ -45,7 +45,6 @@
         return Task.CompletedTask;
     // await EntPopoverService.CloseAllAsync();
     }
-
 
 
     public override void Dispose()

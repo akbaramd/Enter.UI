@@ -1,14 +1,14 @@
 html[data-theme="dark"] {
 
   // Background
-  
+
   --ent-bg-body: #222222;
   --ent-bg-body-backdrop: rgba(231, 231, 231, 0.5);
   --ent-bg-body-backdrop-sm: rgba(231, 231, 231, 0.25);
-  
+
   --ent-bg-base: #2f2f2f;
   --ent-bg-base-2: #333333;
-  
+
   --ent-bg-neutral: #383838;
   --ent-bg-neutral-highlight: #3c3c3c;
   --ent-bg-neutral-select: #404040;
@@ -20,7 +20,7 @@ html[data-theme="dark"] {
   --ent-bg-primary-emphasis: #5c59bb;
 
   // Foreground 
-  
+
   --ent-fg-body: #e6e6e6;
 
   --ent-fg-base: #e7e7e7;
@@ -39,7 +39,7 @@ html[data-theme="dark"] {
   --ent-fg-primary-emphasis: #5c59bb;
 
   // Stroke
-  
+
   --ent-stroke-base: #3b3b3b;
   --ent-stroke-base-highlight: #3b3b3b;
   --ent-stroke-base-select: #3b3b3b;
@@ -50,9 +50,9 @@ html[data-theme="dark"] {
   --ent-stroke-primary-select: #5955ba;
   --ent-stroke-primary-emphasis: #5c59bb;
 
-  
+
   // Shaders
-  
+
   --ent-primary: #524eb7;
   --ent-primary-emphasis: #5c59bb;
   --ent-primary-subtle: rgb(103, 58, 183, .15);

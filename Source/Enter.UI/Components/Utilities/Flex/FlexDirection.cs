@@ -1,7 +1,7 @@
-﻿namespace Enter.UI.Components.Flex
+﻿namespace Enter.UI.Components.Flex;
+
+public enum FlexDirection
 {
-    public enum FlexDirection
-    {
-        Row, Column
-    }
+    Row,
+    Column
 }

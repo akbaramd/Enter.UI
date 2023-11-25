@@ -3,12 +3,12 @@ using Microsoft.AspNetCore.Components.Web;
 
 namespace Enter.UI;
 
-[EventHandler("ontransitionend", typeof(EventArgs), enableStopPropagation: true, enablePreventDefault: false)]
-[EventHandler("onanimationend", typeof(EventArgs), enableStopPropagation: true, enablePreventDefault: false)]
-[EventHandler("onanimationstart", typeof(EventArgs), enableStopPropagation: true, enablePreventDefault: false)]
-[EventHandler("onanimationiteration", typeof(EventArgs), enableStopPropagation: true, enablePreventDefault: false)]
-[EventHandler("onmouseenter", typeof(MouseEventArgs), enableStopPropagation: true, enablePreventDefault: true)]
-[EventHandler("onmouseleave", typeof(MouseEventArgs), enableStopPropagation: true, enablePreventDefault: true)]
+[EventHandler("ontransitionend", typeof(EventArgs), true, false)]
+[EventHandler("onanimationend", typeof(EventArgs), true, false)]
+[EventHandler("onanimationstart", typeof(EventArgs), true, false)]
+[EventHandler("onanimationiteration", typeof(EventArgs), true, false)]
+[EventHandler("onmouseenter", typeof(MouseEventArgs), true, true)]
+[EventHandler("onmouseleave", typeof(MouseEventArgs), true, true)]
 public static class EventHandlers
 {
 }

@@ -2,7 +2,6 @@
   background-color: var(--ent-light-emphasis);
   display: block;
 
- 
 
   &.ent-shimmer-rectangle {
     border-radius: 0;
@@ -13,12 +12,14 @@
 
   }
 }
+
 .ent-shimmer-pulse {
   animation: ent-shimmer-keyframes-pulse 1.5s ease-in-out .5s infinite;
 }
+
 .ent-shimmer-wave {
-   animation: ent-shimmer-keyframes-pulse 1.5s ease-in-out .5s infinite;
- }
+  animation: ent-shimmer-keyframes-pulse 1.5s ease-in-out .5s infinite;
+}
 
 @-webkit-keyframes ent-shimmer-keyframes-pulse {
   0% {

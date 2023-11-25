@@ -2,7 +2,7 @@
 @using Enter.UI.Services
 @inherits Enter.UI.Cores.Bases.EntComponentBase
 
-<div  @attributes="AdditionalAttributes" class="@RootClass" id="@($"ent-popover-{_id}")">
+<div @attributes="AdditionalAttributes" class="@RootClass" id="@($"ent-popover-{_id}")">
 
 </div>
 
@@ -11,7 +11,7 @@
     private string RootClass => CssBuilder
         .AddCss("ent-popover")
         .Build();
-    
+
     private string _popoverClass => CssBuilder
         .Clear()
         .AddCss("ent-popover-content")
@@ -30,11 +30,13 @@
 
     [Parameter]
     public string PopoverClass { get; set; }
-    
+
     [Parameter]
     public bool Open { get; set; }
+
     [Parameter]
     public bool RelativeWidth { get; set; }
+
     [Parameter]
     public Origin Anchor { get; set; } = Origin.BottomCenter;
 
@@ -50,7 +52,7 @@
 
         _entPopoverService = (EntPopoverService)EntPopoverService;
 
-        _id = await EntPopoverService.RegisterAsync(ChildContent,_popoverClass, showContent: Open );
+        _id = await EntPopoverService.RegisterAsync(ChildContent, _popoverClass, Open);
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -60,18 +62,16 @@
         {
             await EntPopoverService.ConnectAsync(_id);
         }
-  
     }
 
     protected override async Task OnParametersSetAsync()
     {
         await base.OnParametersSetAsync();
-        await EntPopoverService.UpdateParameterAsync(_id,_popoverClass, Open);
+        await EntPopoverService.UpdateParameterAsync(_id, _popoverClass, Open);
     }
 
     public override void Dispose()
     {
-        
     }
 
 }

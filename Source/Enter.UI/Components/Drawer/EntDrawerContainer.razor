@@ -2,17 +2,16 @@
 <div class="@RootCss">
     <CascadingValue Value="this" IsFixed="true">
         @ChildContent
-         
+
     </CascadingValue>
-    
+
 </div>
-@using System.ComponentModel
 @inherits Enter.UI.Cores.Bases.EntComponentBase
 
 @code {
 
     public string RootCss => CssBuilder
-        .AddCss($"ent-drawer-container")
+        .AddCss("ent-drawer-container")
         .Build();
 
     [Parameter]
@@ -21,10 +20,8 @@
     private bool HasBackdrop { get; set; } = false;
 
 
-
     public override void Dispose()
     {
-        
     }
 
 }

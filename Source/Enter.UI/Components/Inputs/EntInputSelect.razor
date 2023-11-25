@@ -1,15 +1,15 @@
 ﻿@namespace Enter.UI.Components
-@using System.Diagnostics.CodeAnalysis
-@using Enter.UI.Components.Icon
 @inherits Enter.UI.Cores.Bases.EntInputBase<string>
+@using Enter.UI.Components.Icon
+@using System.Diagnostics.CodeAnalysis
 @typeparam T
 
 <div @attributes="@AdditionalAttributes" @ref="_elementReference" class="@RootCss" id="@Id">
 
-    <EntInputText @ref="_inputReference" @onclick="@OnInputClickCallback" @onfocusin="@OnInputClickCallback"  
-                  Disabled="@Disabled" PlaceHolder="@PlaceHolder" class="ent-select-input" UseValidation="false" Readonly="true" @bind-Value="@Text" Icon="@EntIconName.ChevronDown" />
+    <EntInputText @ref="_inputReference" @onclick="@OnInputClickCallback" @onfocusin="@OnInputClickCallback"
+                  Disabled="@Disabled" PlaceHolder="@PlaceHolder" class="ent-select-input" UseValidation="false" Readonly="true" @bind-Value="@Text" Icon="@EntIconName.ChevronDown"/>
 
-    <input type="hidden" @bind="@Value" />
+    <input type="hidden" @bind="@Value"/>
 
     <EntPopover Open="_showMenu" RelativeWidth="true" Anchor="Origin.BottomCenter" Transform="Origin.TopCenter" PopoverClass="ent-select-popover">
 
@@ -39,28 +39,26 @@
         </div>
 
     </EntPopover>
-    <EntOverlay Visible="_showMenu" OnClick="@OnOverlayClickCallback" @ontouchstart="@OnOverlayClickCallback" LockScroll="false" />
+    <EntOverlay Visible="_showMenu" OnClick="@OnOverlayClickCallback" @ontouchstart="@OnOverlayClickCallback" LockScroll="false"/>
 </div>
 
 
 @code {
 
     private string RootCss => CssBuilder
-    .AddCss("ent-select")
-    .AddCss(BaseCss)
-    .AddCss(ValidationCss)
-    .Build();
+        .AddCss("ent-select")
+        .AddCss(BaseCss)
+        .AddCss(ValidationCss)
+        .Build();
 
 
-    
-    
     private bool _showMenu = false;
     private string? _tempValue = string.Empty;
 
     private string? Text { get; set; }
 
     [Parameter]
-    public List<T> DataSources { get; set; } = new List<T>();
+    public List<T> DataSources { get; set; } = new();
 
     [Parameter]
     public Func<T, string> ValueFunc { get; set; }
@@ -81,7 +79,6 @@
 
     protected override async Task OnParametersSetAsync()
     {
-
         if (_tempValue != CurrentValueAsString)
         {
             if (Value != null)
@@ -90,7 +87,7 @@
 
                 if (dataSource != null)
                 {
-                    SelectItem(dataSource, updateTempValue: true);
+                    SelectItem(dataSource, true);
                 }
             }
         }
@@ -103,15 +100,15 @@
         validationErrorMessage = null;
         return true;
     }
+
     public ValueTask FocusAsync()
     {
         return _inputReference.FocusAsync();
     }
-    
+
     private async Task OnInputClickCallback()
     {
         _showMenu = true;
-       
     }
 
     private void OnOverlayClickCallback()
@@ -122,7 +119,7 @@
     private async Task OnItemClickCallback(T value)
     {
         _showMenu = false;
-        SelectItem(value, updateTempValue: true);
+        SelectItem(value, true);
     }
 
     private void SelectItem(T value, bool updateTempValue = false)

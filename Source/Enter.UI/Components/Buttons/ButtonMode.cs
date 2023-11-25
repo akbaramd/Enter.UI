@@ -2,10 +2,13 @@
 
 public enum ButtonMode
 {
-    Solid,Outline,Soft
+    Solid,
+    Outline,
+    Soft
 }
 
 public enum ButtonColor
 {
-    Default,Primary
+    Default,
+    Primary
 }

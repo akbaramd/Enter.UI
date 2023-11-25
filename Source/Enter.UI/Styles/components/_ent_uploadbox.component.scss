@@ -1,5 +1,5 @@
 .ent-upload-box {
-  
+
   .upload-container {
     background-color: var(--ent-bg-neutral-highlight);
     padding: 31px;
@@ -16,10 +16,10 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    
+
     display: flex;
     flex-direction: column;
-    
+
     .file-item {
       background-color: var(--ent-bg-neutral-active);
       display: flex;
@@ -27,10 +27,10 @@
       border: var(--ent-border-1) solid var(--ent-stroke-base-emphasis);
       border-radius: var(--ent-border-radius-2);
       padding: 15px;
-      gap:16px;
+      gap: 16px;
       align-items: center;
       margin-bottom: 4px;
-      
+
       .file-item-icon {
         align-items: center;
         border: var(--ent-border-1) solid var(--ent-stroke-base);
@@ -42,21 +42,23 @@
         justify-content: center;
         overflow: hidden;
       }
-      
+
       .file-item-content {
         display: flex;
         flex-direction: column;
         flex: 1;
+
         b {
-          
-        }  
+
+        }
+
         small {
-          
+
         }
       }
-      
+
     }
-    
+
   }
-  
+
 }

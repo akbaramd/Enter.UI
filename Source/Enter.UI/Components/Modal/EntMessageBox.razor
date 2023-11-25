@@ -1,40 +1,39 @@
 ﻿@namespace Enter.UI.Components
-@using Enter.UI.Components.Modal
+@inherits Enter.UI.Cores.Bases.EntComponentBase
 @using Enter.UI.Components.Text
 @using Enter.UI.Components.Button
-@inherits Enter.UI.Cores.Bases.EntComponentBase
 @implements IDisposable
- <div class="@RootCss" >
-     <EntText Type="EntTextType.Bold" class="ent-messagebox-title">@Message</EntText>
-     <div class="ent-messagebox-action">
-         <EntButton Color="ButtonColor.Primary"  @onclick="OnConfirmClick">@ConfirmText</EntButton>
-         <EntButton  @onclick="OnCancelClick">@CancelText</EntButton>
-     </div>
+<div class="@RootCss">
+    <EntText Type="EntTextType.Bold" class="ent-messagebox-title">@Message</EntText>
+    <div class="ent-messagebox-action">
+        <EntButton Color="ButtonColor.Primary" @onclick="OnConfirmClick">@ConfirmText</EntButton>
+        <EntButton @onclick="OnCancelClick">@CancelText</EntButton>
+    </div>
 </div>
 
 @code {
 
     [CascadingParameter]
     public EntModal Modal { get; set; } = default!;
-    
+
     private string RootCss => CssBuilder
         .AddCss("ent-messagebox").Build();
-    
+
     [Parameter]
     public string Message { get; set; }
-    
+
     [Parameter]
     public string ConfirmText { get; set; }
 
     [Parameter]
     public string CancelText { get; set; }
 
-   
+
     public void OnCancelClick()
     {
-         Modal.Cancel();
+        Modal.Cancel();
     }
-    
+
     public void OnConfirmClick()
     {
         Modal.Close();
@@ -43,7 +42,6 @@
 
     public override void Dispose()
     {
-        
     }
 
 }

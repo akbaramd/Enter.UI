@@ -1,11 +1,10 @@
 ﻿@namespace Enter.UI.Components
-@inherits Enter.UI.Cores.Bases.EntComponentBase
 @using Enter.UI.Components.Toast
-@using Enter.UI.Core
 @using Enter.UI.Services
 @using Enter.UI.Components.Animator
 @using Enter.UI.Components.Icon
 @using Enter.UI.Components.Text
+@inherits Enter.UI.Cores.Bases.EntComponentBase
 
 <div class="@RootClass">
     <EntSpace SpaceY="2">
@@ -74,19 +73,19 @@
 
     private async Task EntToastServiceOnInstanceCloseAsync(Guid e)
     {
-        await InvokeAsync((() =>
+        await InvokeAsync(() =>
         {
             var instance = ToastInstances.FirstOrDefault(x => x.Id == e);
             if (instance == null) return;
 
             CloseItem(instance);
             StateHasChanged();
-        }));
+        });
     }
 
     private async Task EntToastServiceOnInstanceCreatedAsync(EntToastInstance instance)
     {
-       await InvokeAsync(() =>
+        await InvokeAsync(() =>
         {
             var delayMilliseconds = (long)instance.Options.DelaySpan.TotalMilliseconds;
 
@@ -95,7 +94,7 @@
             ToastInstances.Add(instance);
             StateHasChanged();
 
-            _ = new Timer( s =>
+            _ = new Timer(s =>
             {
                 InvokeAsync(async () =>
                 {
@@ -120,7 +119,6 @@
             await EntToastService.CloseAsync(instance.Id);
         }
     }
-
 
 
     public override void Dispose()

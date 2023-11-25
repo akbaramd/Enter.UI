@@ -1,21 +1,16 @@
 ﻿@namespace Enter.UI.Components
-@using Microsoft.JSInterop;
-@using Enter.UI.Components.Animator
-@using Enter.UI.Components.Button
-@using Enter.UI.Components.Expandable
 @using Enter.UI.Components.Icon
-@using Enter.UI.JsServices
 @inherits Enter.UI.Cores.Bases.EntComponentBase
 
 <div
     @attributes="@AdditionalAttributes"
     id="@Id"
     class="@RootCss">
-    
+
     <label class="upload-container" for="upload-box">
         <span>@PlaceHolder</span>
     </label>
-    <InputFile  id="upload-box" class="d-none" multiple="@Multiple" OnChange="OnFileChange2"></InputFile>
+    <InputFile id="upload-box" class="d-none" multiple="@Multiple" OnChange="OnFileChange2"></InputFile>
     <ul class="files-container">
         @foreach (var file in Files)
         {
@@ -35,19 +30,19 @@
                     <small>@file.ContentType</small>
                 </div>
                 <div class="file-item-action">
-                    <EntButton Icon="EntIconName.Delete" @onclick="()=>RemoveItem(file)"/>
+                    <EntButton Icon="EntIconName.Delete" @onclick="() => RemoveItem(file)"/>
                 </div>
             </li>
         }
     </ul>
-    
+
 </div>
 
 @code {
 
 
     [Parameter]
-    public List<UploadModel> Files { get; set; } = new List<UploadModel>();
+    public List<UploadModel> Files { get; set; } = new();
 
     [Parameter]
     public EventCallback<List<UploadModel>> FilesChanged { get; set; }
@@ -59,35 +54,30 @@
 
     [Parameter]
     public string PlaceHolder { get; set; } = string.Empty;
-    
+
     [Parameter]
     public bool Multiple { get; set; }
-    
+
     public override void Dispose()
     {
     }
-    
-   
+
 
     private async Task OnFileChange2(InputFileChangeEventArgs e)
     {
         try
         {
-            
             foreach (var file in e.GetMultipleFiles(e.FileCount))
             {
-                
                 var imageBase64 = string.Empty;
                 if (file.ContentType.Contains("image/"))
                 {
-                    var resizedImageFile = await file.RequestImageFileAsync(file.ContentType,100, 100);
+                    var resizedImageFile = await file.RequestImageFileAsync(file.ContentType, 100, 100);
                     var buffer = new byte[resizedImageFile.Size];
                     await resizedImageFile.OpenReadStream().ReadAsync(buffer);
                     imageBase64 = Convert.ToBase64String(buffer);
-
-
                 }
-                var fileModel = new UploadModel()
+                var fileModel = new UploadModel
                 {
                     Name = file.Name,
                     Extensions = file.Name.Split(".").Last(),
@@ -114,7 +104,6 @@
         {
             _ = InvokeAsync(StateHasChanged);
         }
-
     }
 
     private async Task RemoveItem(UploadModel model)

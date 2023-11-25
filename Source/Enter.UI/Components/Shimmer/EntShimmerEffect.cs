@@ -2,5 +2,7 @@
 
 public enum EntShimmerEffect
 {
-    None,Wave,Pulse
+    None,
+    Wave,
+    Pulse
 }

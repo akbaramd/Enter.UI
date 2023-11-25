@@ -1,20 +1,21 @@
-﻿ export class LayoutComponent {
+﻿export class LayoutComponent {
     _dotNetRef;
     _sidebar;
     _layoutBreakWidth;
+
     initialize(dotNetRef, sidebarIsShow, layoutBreakWidth) {
 
         console.log("start initialize LayoutComponent");
-        
+
         this._dotNetRef = dotNetRef;
         this._layoutBreakWidth = layoutBreakWidth;
-  
+
         this._sidebar = document.querySelector(".ent-layout-sidebar");
 
-        this.handleResize(this._sidebar,this._layoutBreakWidth); 
+        this.handleResize(this._sidebar, this._layoutBreakWidth);
         this.toggleSidebar(sidebarIsShow);
 
-        window.addEventListener('resize', ()=>this.handleResize(this._sidebar,this._layoutBreakWidth));
+        window.addEventListener('resize', () => this.handleResize(this._sidebar, this._layoutBreakWidth));
     }
 
     toggleSidebar(sidebarIsShow) {
@@ -29,8 +30,8 @@
         }
     }
 
-    handleResize(_sidebar,_layoutBreakWidth) {
-        
+    handleResize(_sidebar, _layoutBreakWidth) {
+
         if (window.innerWidth < this._layoutBreakWidth) {
             this._sidebar.classList.add("ent-layout-sidebar-overlap");
             this._dotNetRef.invokeMethodAsync('CloseSidebarAsync');

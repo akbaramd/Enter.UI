@@ -1,18 +1,18 @@
 ﻿@namespace Enter.UI.Components
-@using Microsoft.JSInterop;
 @using Enter.UI.Components.Animator
 @using Enter.UI.Components.Expandable
 @using Enter.UI.JsServices
+@using Microsoft.JSInterop
 @inherits Enter.UI.Cores.Bases.EntComponentBase
 
 <EntAnimator
-        @attributes="@AdditionalAttributes"
-        @ref="Reference"
-        id="@Id"
-        class="@RootCss"
-        style="@RootStyle"
-        @bind-State="AnimationState"
-        OnAnimationEnd="OnAnimationEnd">
+    @attributes="@AdditionalAttributes"
+    @ref="Reference"
+    id="@Id"
+    class="@RootCss"
+    style="@RootStyle"
+    @bind-State="AnimationState"
+    OnAnimationEnd="OnAnimationEnd">
     @ChildContent
 </EntAnimator>
 
@@ -23,8 +23,8 @@
     private double _size = 0;
     private EntExpandableDirection _direction = EntExpandableDirection.Vertical;
     private string _cssProperty = "height";
-    private  bool _firstRendered = false;
-    
+    private bool _firstRendered = false;
+
     internal EntAnimator Reference { get; set; }
 
     [Inject]
@@ -122,12 +122,12 @@
         }
         return Task.CompletedTask;
     }
-    
+
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await base.OnAfterRenderAsync(firstRender);
-        
+
         if (firstRender)
         {
             await UpdateSize();
@@ -138,9 +138,7 @@
         {
             _updateHeight = false;
             await UpdateSize();
-          
         }
-
     }
 
 
@@ -165,12 +163,10 @@
         {
             _size = 0;
         }
-
     }
 
     public override void Dispose()
     {
-        
     }
 
 }

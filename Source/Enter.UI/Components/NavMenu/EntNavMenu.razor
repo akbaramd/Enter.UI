@@ -1,7 +1,7 @@
 ﻿@namespace Enter.UI.Components
 @inherits Enter.UI.Cores.Bases.EntComponentBase
-<CascadingValue Value="@this">
-    <div @attributes="AdditionalAttributes" class="@RootCss" >
+<CascadingValue Value="@(this)">
+    <div @attributes="AdditionalAttributes" class="@RootCss">
         @ChildContent
     </div>
 </CascadingValue>

@@ -9,23 +9,25 @@ public class BoundingClientRect
     public double Height { get; set; }
 
     /// <summary>
-    /// height of the viewport
+    ///     height of the viewport
     /// </summary>
     public double WindowHeight { get; set; }
 
     /// <summary>
-    /// width of the viewport
+    ///     width of the viewport
     /// </summary>
     public double WindowWidth { get; set; }
 
     /// <summary>
-    /// the horizontal offset since the left of the page
+    ///     the horizontal offset since the left of the page
     /// </summary>
     public double ScrollX { get; set; }
+
     public double ScrollHeight { get; set; }
     public double ScrollWidth { get; set; }
+
     /// <summary>
-    /// the vertical offset since the top of the page
+    ///     the vertical offset since the top of the page
     /// </summary>
     public double ScrollY { get; set; }
 

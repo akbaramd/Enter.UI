@@ -1,9 +1,7 @@
 using Enter.UI.Abstractions;
 using Enter.UI.Components.Icon;
-using Enter.UI.Components;
 using Enter.UI.Providers;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Enter.UI;
 
@@ -13,6 +11,5 @@ public static class FontAwesomeIconExtensions
     {
         config.Services.AddSingleton<IEntIconProvider, FontAwesomeIconProvider>();
         return config;
-
     }
 }

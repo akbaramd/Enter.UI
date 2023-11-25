@@ -1,5 +1,3 @@
-using Enter.UI.Components.Icon;
-
 namespace Enter.UI.Components.Toast;
 
 public class EntToastOptions

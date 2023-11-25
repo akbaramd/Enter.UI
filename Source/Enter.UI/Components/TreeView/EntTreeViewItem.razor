@@ -1,7 +1,5 @@
 ﻿@namespace Enter.UI.Components
 @typeparam TValue
-@using Enter.UI.Components.TreeView
-@using Enter.UI.Core
 @using Enter.UI.Components.Icon
 @inherits Enter.UI.Cores.Bases.EntComponentBase
 
@@ -40,7 +38,7 @@
 
             @foreach (var item in Item.Childrens)
             {
-                <EntTreeViewItem  Item="@item"  />
+                <EntTreeViewItem Item="@item"/>
             }
 
         </EntExpandable>
@@ -66,8 +64,8 @@
     private bool HaveParentItem => ParentItem != null;
 
     public event Action<TValue?> OnValueChange = default!;
-    
-    private bool Checked  => TreeView.MultiSelect
+
+    private bool Checked => TreeView.MultiSelect
         ? TreeView.SelectedValues.Contains(Item.Value)
         : TreeView.SelectedValue?.Equals(Item.Value) ?? false;
 
@@ -78,18 +76,16 @@
     {
         await base.OnInitializedAsync();
     }
-      
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await base.OnAfterRenderAsync(firstRender);
-        
+
         if (firstRender && Checked)
         {
             Expand();
             TreeView.StateHasChanged();
         }
-
-       
     }
 
     public async Task Select()
@@ -105,20 +101,13 @@
             Expand();
         }
 
-       TreeView.StateHasChanged();
-      
+        TreeView.StateHasChanged();
     }
 
-   
 
     private bool IsMultiSelect => TreeView.MultiSelect;
-    
-
-  
 
 
-    
-    
     public void Expand()
     {
         Expanded = true;
@@ -128,23 +117,21 @@
     public void Collapse()
     {
         Expanded = false;
-        // ParentItem?.Collapse();
-        // if (ParentItem?.Item?.Childrens?.All(x=>!x.Selected)??false)
-        // {
-        //     ParentItem.Collapse();
-        // }
-      
+    // ParentItem?.Collapse();
+    // if (ParentItem?.Item?.Childrens?.All(x=>!x.Selected)??false)
+    // {
+    //     ParentItem.Collapse();
+    // }
     }
 
-    
-    
+
     private void OnItemExpandClickCallback()
     {
         if (Expanded)
             Collapse();
         else
             Expand();
-        
+
         TreeView.StateHasChanged();
     }
 

@@ -1,18 +1,18 @@
 ﻿@namespace Enter.UI.Components
-@using System.Diagnostics.CodeAnalysis
-@using Enter.UI.Components.Icon
 @inherits Enter.UI.Cores.Bases.EntInputBase<string?>
+@using Enter.UI.Components.Icon
+@using System.Diagnostics.CodeAnalysis
 @implements IAsyncDisposable
 
 <div @attributes="@AdditionalAttributes" class="@RootCss" id="@Id">
     <input name="@ValueExpression?.GetPropertyName()" type="file" class="ent-input-field" placeholder="@PlaceHolder"
-    @bind="@CurrentValueAsString"
-    @bind:event="oninput" disabled="@Disabled" readonly="@Readonly"/>
+           @bind="@CurrentValueAsString"
+           @bind:event="oninput" disabled="@Disabled" readonly="@Readonly"/>
 
     @if (Icon != null)
     {
         <div class="ent-input-icon">
-            <EntIcon IconSize="EntIconSize.Medium" Icon="@Icon" class="icon" />
+            <EntIcon IconSize="EntIconSize.Medium" Icon="@Icon" class="icon"/>
         </div>
     }
 </div>
@@ -29,7 +29,7 @@
     public object Icon { get; set; }
 
     [Parameter]
-    public bool IsPassword { get; set; } = false;
+    public bool IsPassword { get; set; }
 
     [CascadingParameter]
     public EditContext? EditContext { get; set; }

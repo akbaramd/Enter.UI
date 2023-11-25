@@ -1,133 +1,105 @@
-using Enter.UI.Services;
-using Microsoft.AspNetCore.Components.Web;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
-using Enter.UI.Core;
 using Enter.UI.Components.Tabs;
+using Enter.UI.Services;
+using Microsoft.AspNetCore.Components;
 
-namespace Enter.UI.Components
+namespace Enter.UI.Components;
+
+public partial class EntMdiTab : EntTabBase, IDisposable
 {
-    public partial class EntMdiTab : EntTabBase, IAsyncDisposable
+    private string? _activeTabId = null;
+   
+    private List<EntMdiTabInstance> _items = new();
+    private EntTab _tab = default!;
+
+    private string RootCss => CssBuilder
+        .AddCss("ent-mdi-tab")
+        .Build();
+
+    [Inject] public IEntMdiService EntMdiService { get; set; } = default!;
+
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    public void Dispose()
     {
-        private EntMdiService _entMdiService = default!;
-        private List<EntMdiTabInstance> _items = new();
-        private EntTab _tab = default!;
-        private string? _activeTabId = null;
-
-        private string RootCss => CssBuilder
-           .AddCss("ent-mdi-tab")
-           .Build();
-
-        [Inject]
-        public IEntMdiService EntMdiService { get; set; } = default!;
-
-        [Parameter]
-        public RenderFragment? ChildContent { get; set; }
-
-
-        protected override async Task OnInitializedAsync()
-        {
-            _entMdiService = (EntMdiService)EntMdiService ?? throw new InvalidOperationException("AddEnterUI is not added to your program.cs");
-
-            // Initilize MdiTabService Event
-            _entMdiService.OnTabAddedAsync += OnServiceNewTabAddedAsync;
-            _entMdiService.OnTabActivatedAsync += OnServiceTabActivatedAsync;
-            _entMdiService.OnTabClosedAsync += OnServiceTabRemovedAsync;
-
-            await base.OnInitializedAsync();
-
-        }
-
-        protected override Task OnAfterRenderAsync(bool firstRender)
-        {
-            return base.OnAfterRenderAsync(firstRender);
-        }
-
-        protected override Task OnParametersSetAsync()
-        {
-            return base.OnParametersSetAsync();
-        }
-
-        private async Task OnServiceNewTabAddedAsync(EntMdiTabInstance panel)
-        {
-            await InvokeAsync(async () =>
-            {
-                if (_items.Any(x => x.Id == panel.Id))
-                {
-                    await _tab.ActivateTabAsync(panel.Id);
-                    return;
-                }
-
-                _items.Add(panel);
-                StateHasChanged();
-            });
-        }
-
-        private async Task OnServiceTabActivatedAsync(string id)
-        {
-            await InvokeAsync(async () =>
-            {
-                await _tab.ActivateTabAsync(id);
-            });
-        }
-
-        private async Task OnServiceTabRemovedAsync(string id)
-        {
-            await InvokeAsync(async () =>
-            {
-                await _tab.RemoveTabAsync(id);
-            });
-        }
-
-        private async Task OnTabActivatedCallbackAsync(string? id)
-        {
-            var activeTab = _items.FirstOrDefault(x => x.Id == id);
-
-            if (activeTab != null && activeTab.OnActivatedAsync != null)
-            {
-               await activeTab.OnActivatedAsync.Invoke(id);
-            }
-            StateHasChanged();
-        }
-
-        private async Task OnTabAddedCallback(EntTabPanel panel)
-        {
-            if (_items.Count > 1)
-            {
-                await _tab.ActivateTabAsync(panel.Id);
-            }
-        }
-
-        private async Task OnTabClosedCallback(string id)
-        {
-            await _tab.RemoveTabAsync(id);
-
-        }
-
-        private Task OnTabRemovedCallback(string id)
-        {
-            _items.RemoveAll(x => x.Id == id);
-            StateHasChanged();
-            return Task.CompletedTask;
-        }
-
-        private async Task OnAllTabClosedCallback()
-        {
-            var items = _items.ToList();
-            foreach (var item in items)
-            {
-                await _tab.RemoveTabAsync(item.Id);
-            }
-
-        }
-
-        public ValueTask DisposeAsync()
-        {
-            _entMdiService.OnTabAddedAsync -= OnServiceNewTabAddedAsync;
-            _entMdiService.OnTabActivatedAsync -= OnServiceTabActivatedAsync;
-            _entMdiService.OnTabClosedAsync -= OnServiceTabRemovedAsync;
-            return ValueTask.CompletedTask;
-        }
+        EntMdiService.OnTabAddedAsync -= OnServiceNewTabAddedAsync;
+        EntMdiService.OnTabActivatedAsync -= OnServiceTabActivatedAsync;
+        EntMdiService.OnTabClosedAsync -= OnServiceTabRemovedAsync;
     }
 
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Initilize MdiTabService Event
+        EntMdiService.OnTabAddedAsync += OnServiceNewTabAddedAsync;
+        EntMdiService.OnTabActivatedAsync += OnServiceTabActivatedAsync;
+        EntMdiService.OnTabClosedAsync += OnServiceTabRemovedAsync;
+
+        await base.OnInitializedAsync();
+    }
+
+    protected override Task OnAfterRenderAsync(bool firstRender)
+    {
+        return base.OnAfterRenderAsync(firstRender);
+    }
+
+    protected override Task OnParametersSetAsync()
+    {
+        return base.OnParametersSetAsync();
+    }
+
+    private async Task OnServiceNewTabAddedAsync(EntMdiTabInstance panel)
+    {
+        await InvokeAsync(async () =>
+        {
+            if (_items.Any(x => x.Id == panel.Id))
+            {
+                await _tab.ActivateTabAsync(panel.Id);
+                return;
+            }
+
+            _items.Add(panel);
+            StateHasChanged();
+        });
+    }
+
+    private async Task OnServiceTabActivatedAsync(EntMdiTabInstance instance)
+    {
+        await InvokeAsync(async () => { await _tab.ActivateTabAsync(instance.Id); });
+    }
+
+    private async Task OnServiceTabRemovedAsync(EntMdiTabInstance instance)
+    {
+        await InvokeAsync(async () => { await _tab.RemoveTabAsync(instance.Id); });
+    }
+
+    private async Task OnTabActivatedCallbackAsync(string? id)
+    {
+        var activeTab = _items.FirstOrDefault(x => x.Id == id);
+
+        if (activeTab != null && activeTab.OnActivatedAsync != null) await activeTab.OnActivatedAsync.Invoke(id);
+        StateHasChanged();
+    }
+
+    private async Task OnTabAddedCallback(EntTabPanel panel)
+    {
+        if (_items.Count > 1) await _tab.ActivateTabAsync(panel.Id);
+    }
+
+    private async Task OnTabClosedCallback(string id)
+    {
+        await _tab.RemoveTabAsync(id);
+    }
+
+    private Task OnTabRemovedCallback(string id)
+    {
+        _items.RemoveAll(x => x.Id == id);
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+    private async Task OnAllTabClosedCallback()
+    {
+        var items = _items.ToList();
+        foreach (var item in items) await _tab.RemoveTabAsync(item.Id);
+    }
 }

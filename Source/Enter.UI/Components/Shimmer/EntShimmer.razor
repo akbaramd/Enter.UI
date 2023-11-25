@@ -8,33 +8,32 @@
 
     private string RootClass => CssBuilder
         .AddCss("ent-shimmer")
-        .AddCss("ent-shimmer-pulse",Effect == EntShimmerEffect.Pulse)
-        .AddCss("ent-shimmer-wave",Effect == EntShimmerEffect.Wave)
-        .AddCss("ent-shimmer-rectangle",Type == EntShimmerType.Rectangle)
-        .AddCss("ent-shimmer-circular",Type == EntShimmerType.Circular)
+        .AddCss("ent-shimmer-pulse", Effect == EntShimmerEffect.Pulse)
+        .AddCss("ent-shimmer-wave", Effect == EntShimmerEffect.Wave)
+        .AddCss("ent-shimmer-rectangle", Type == EntShimmerType.Rectangle)
+        .AddCss("ent-shimmer-circular", Type == EntShimmerType.Circular)
         .Build();
-    
+
     private string RootStyle => StyleBuilder
-        .AddStyle($"width: {Width}",Width != null)
-        .AddStyle($"height: {Height}",Height != null)
+        .AddStyle($"width: {Width}", Width != null)
+        .AddStyle($"height: {Height}", Height != null)
         .Build();
 
     [Parameter]
-    public string? Width { get; set; } 
-    
+    public string? Width { get; set; }
+
     [Parameter]
     public string? Height { get; set; }
-    
+
     [Parameter]
     public EntShimmerType Type { get; set; } = EntShimmerType.Rectangle;
-    
+
     [Parameter]
     public EntShimmerEffect Effect { get; set; } = EntShimmerEffect.Pulse;
-    
- 
+
+
     public override void Dispose()
     {
-        
     }
 
 }

@@ -2,8 +2,8 @@
 
 @typeparam TValue
 @using Enter.UI.Components.TreeView
-@using Enter.UI.Core
-@inherits Enter.UI.Cores.Bases.EntComponentBase  
+@inherits Enter.UI.Cores.Bases.EntComponentBase
+
 
 <CascadingValue Value="this" IsFixed="true">
     <ul @attributes="@AdditionalAttributes" class="@RootCss">
@@ -11,7 +11,7 @@
         {
             @foreach (var item in DataSource)
             {
-                    <EntTreeViewItem Item="@item"  />
+                <EntTreeViewItem Item="@item"/>
             }
         }
     </ul>
@@ -21,10 +21,10 @@
 @code {
 
     private string RootCss => CssBuilder
-    .AddCss("ent-treeview")
-    .Build();
+        .AddCss("ent-treeview")
+        .Build();
 
-    private string Item =>new  CssBuilder()
+    private string Item => new CssBuilder()
         .AddCss("ent-treeview")
         .Build();
 
@@ -35,7 +35,6 @@
     public bool MultiSelect { get; set; } = false;
 
 
-
     [Parameter]
     public TValue? SelectedValue { get; set; }
 
@@ -43,7 +42,7 @@
     public EventCallback<TValue?> SelectedValueChanged { get; set; }
 
     [Parameter]
-    public List<TValue> SelectedValues { get; set; } = new List<TValue>();
+    public List<TValue> SelectedValues { get; set; } = new();
 
     [Parameter]
     public EventCallback<List<TValue>> SelectedValuesChanged { get; set; }
@@ -85,12 +84,11 @@
 
     public new void StateHasChanged()
     {
-       base.StateHasChanged();
+        base.StateHasChanged();
     }
 
     public override void Dispose()
     {
     }
-    
-}
 
+}

@@ -2,21 +2,15 @@
 @namespace Enter.UI.Components
 
 <div @attributes="@AdditionalAttributes" class="@RootCss">
-@if (Parent.KeepPanelAlive)
-{
-        @ChildContent
-}
-else
-{
-    @if (Parent.IsActiveTab(Id))
+    @if (Parent.KeepPanelAlive)
     {
         @ChildContent
     }
-}
+    else
+    {
+        @if (Parent.IsActiveTab(Id))
+        {
+            @ChildContent
+        }
+    }
 </div>
-
-
-
-
-
-

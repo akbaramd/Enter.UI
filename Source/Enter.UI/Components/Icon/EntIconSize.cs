@@ -2,7 +2,7 @@
 
 public enum EntIconSize
 {
-   Small,
-   Medium,
-   Large
+    Small,
+    Medium,
+    Large
 }

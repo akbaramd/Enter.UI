@@ -1,14 +1,14 @@
 ﻿@namespace Enter.UI.Components
 @using Enter.UI.Components.Icon
 @inherits Enter.UI.Cores.Bases.EntComponentBase
-<div @attributes="AdditionalAttributes" class="@RootCss" >
+<div @attributes="AdditionalAttributes" class="@RootCss">
     <div class="ent-nav-menu-group-item" @onclick="@ToggleItem">
         @if (Icon != null)
         {
-            <EntIcon class="ent-nav-menu-group-item-icon"  Icon="@Icon"/>
+            <EntIcon class="ent-nav-menu-group-item-icon" Icon="@Icon"/>
         }
         <span class="ent-nav-menu-group-item-title">@Title</span>
-        <EntIcon class="ent-nav-menu-group-item-arrow-icon"  Icon="@EntIconName.ChevronDown"/>
+        <EntIcon class="ent-nav-menu-group-item-arrow-icon" Icon="@EntIconName.ChevronDown"/>
     </div>
 
     <EntExpandable @bind-Expanded="IsShow" class="@ContainerCss">@ChildContent</EntExpandable>

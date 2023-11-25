@@ -22,9 +22,9 @@
                             <EntButton Icon="EntIconName.Dashboard" class="ent-tab-close-all"/>
                             <span>@TabNoContentMessage</span>
                         }
-                   
+
                         @{
-                            var expandCss = (_toggleMenu) ? "ent-tab-expand-icon expand" : "ent-tab-expand-icon collapse";
+                            var expandCss = _toggleMenu ? "ent-tab-expand-icon expand" : "ent-tab-expand-icon collapse";
                         }
                         <EntButton Icon="EntIconName.ChevronDown" class="@expandCss"/>
 

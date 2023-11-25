@@ -1,27 +1,20 @@
-﻿using System.Diagnostics;
-using Enter.UI.Components;
-using Enter.UI.Core;
+﻿using Enter.UI.Core;
 using Microsoft.AspNetCore.Components;
 
 namespace Enter.UI.Cores.Bases;
 
 public abstract class EntResponsiveComponentBase : EntComponentBase
 {
-
-
     protected new CssBuilder CssBuilder => new CssBuilder(base.CssBuilder.Build())
         .AddCss("ent-responsive", ResponsiveMode);
-    
+
     [Parameter] public bool ResponsiveMode { get; set; }
- 
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await base.OnAfterRenderAsync(firstRender);
-        
-        if (firstRender)
-        {
-            Handle();
-        }
+
+        if (firstRender) Handle();
     }
 
     public void Handle()
@@ -44,14 +37,9 @@ public abstract class EntResponsiveComponentBase : EntComponentBase
     protected override async Task OnInitializedAsync()
     {
         if (EntThemeProvider == null)
-        {
-            throw  new Exception("please add 'EntThemeProvider' component to root of yout project component");
-            
-        }
-        
-       
-        await base.OnInitializedAsync();
-        
-    }
+            throw new Exception("please add 'EntThemeProvider' component to root of yout project component");
 
+
+        await base.OnInitializedAsync();
+    }
 }

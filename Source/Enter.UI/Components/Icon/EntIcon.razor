@@ -1,5 +1,4 @@
-﻿@using Enter.UI.Components.Icon
-@inherits Enter.UI.Cores.Bases.EntComponentBase
+﻿@inherits Enter.UI.Cores.Bases.EntComponentBase
 @namespace Enter.UI.Components
 
 
@@ -7,9 +6,6 @@
 @if (Icon is not null)
 {
     var icon = IconProvider.Icon(Icon, IconStyle);
-    
-    <i @onclick="Click"  class="@RootCss  @icon"></i> 
-    
-}
-    
 
+    <i @onclick="Click" class="@RootCss  @icon"></i>
+}

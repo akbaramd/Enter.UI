@@ -1,12 +1,12 @@
 ﻿@namespace Enter.UI.Components
-@using System.Diagnostics.CodeAnalysis
-@using Enter.UI.Components.Icon
 @inherits Enter.UI.Cores.Bases.EntInputBase<string>
+@using Enter.UI.Components.Icon
+@using System.Diagnostics.CodeAnalysis
 @typeparam T
-<div @attributes="@AdditionalAttributes" class="@RootClass"  @ref="_elementReference" id="@Id">
-    <EntInputText @ref="_inputReference" EventType="oninput" class="@( "ent-input-autocomplete-input")" 
-                  Value="@Value" ValueChanged="@ValueChanged" Disabled="@Disabled" Readonly="@Readonly" @onclick="@Click" @onfocusin="@Click" 
-                  ValueExpression="@ValueExpression" @oninput="@OnInputCallback" Icon="@EntIconName.Search" />
+<div @attributes="@AdditionalAttributes" class="@RootClass" @ref="_elementReference" id="@Id">
+    <EntInputText @ref="_inputReference" EventType="oninput" class="@("ent-input-autocomplete-input")"
+                  Value="@Value" ValueChanged="@ValueChanged" Disabled="@Disabled" Readonly="@Readonly" @onclick="@Click" @onfocusin="@Click"
+                  ValueExpression="@ValueExpression" @oninput="@OnInputCallback" Icon="@EntIconName.Search"/>
 
     <EntPopover Open="_showMenu" RelativeWidth="true" Anchor="Origin.BottomCenter" Transform="Origin.TopCenter" PopoverClass="@("ent-input-autocomplete-popover")">
 
@@ -16,7 +16,7 @@
                 <EntList class="ent-input-autocomplete-list">
                     @foreach (var item in DataSources)
                     {
-                        <EntListItem class="ent-input-autocomplete-list-item" @onclick="()=>OnItemClickCallback(item)">
+                        <EntListItem class="ent-input-autocomplete-list-item" @onclick="() => OnItemClickCallback(item)">
                             @if (ItemTemplate == null)
                             {
                                 @ValueFunc.Invoke(item)
@@ -36,12 +36,17 @@
         </div>
 
     </EntPopover>
-    <EntOverlay Visible="_showMenu" OnClick="@CloseOverlay" @ontouchstart="@CloseOverlay" LockScroll="false" />
+    <EntOverlay Visible="_showMenu" OnClick="@CloseOverlay" @ontouchstart="@CloseOverlay" LockScroll="false"/>
 </div>
 
 
 @code {
-    private Task AfterAsync() { return Task.CompletedTask; }
+
+    private Task AfterAsync()
+    {
+        return Task.CompletedTask;
+    }
+
     private string RootClass => CssBuilder
         .AddCss("ent-input-autocomplete")
         .Build();
@@ -49,7 +54,7 @@
 
     private bool _showMenu = false;
     private EntInputText _inputReference;
-    
+
     [Parameter]
     public List<T> DataSources { get; set; }
 
@@ -57,9 +62,11 @@
     [Parameter]
     public Func<T, object> ValueFunc { get; set; }
 
-    [Parameter] public RenderFragment<T>? ItemTemplate { get; set; }
+    [Parameter]
+    public RenderFragment<T>? ItemTemplate { get; set; }
 
-    [Parameter] public EventCallback<string> OnSearchChange { get; set; }
+    [Parameter]
+    public EventCallback<string> OnSearchChange { get; set; }
 
     private ElementReference _elementReference;
 
@@ -74,7 +81,7 @@
     {
         return _inputReference.FocusAsync();
     }
-    
+
     private void OnInputCallback()
     {
         _showMenu = true;
@@ -90,7 +97,6 @@
     {
         CurrentValueAsString = ValueFunc.Invoke(t).ToString();
         _showMenu = false;
-
     }
 
     private async Task Click()

@@ -5,7 +5,7 @@
   border: 0.25rem solid $color-primary;
   border-left-color: transparent !important;
   display: block;
-  
+
   &.animate {
     animation: anim-ent-btn-spin 1s infinite linear;
   }
@@ -15,6 +15,7 @@
   height: 1.5rem;
   width: 1.5rem;
 }
+
 .ent-circular-loading-sm {
   height: 0.75rem;
   width: 0.75rem;
@@ -28,12 +29,15 @@
   background-color: $color-primary;
   margin: 20px auto;
 }
+
 .ent-linear-loading-lg {
   height: 0.5rem;
 }
+
 .ent-linear-loading-sm {
   height: 0.125rem;
 }
+
 .determinate {
   position: relative;
   max-width: 100%;

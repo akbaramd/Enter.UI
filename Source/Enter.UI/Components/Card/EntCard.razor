@@ -1,13 +1,12 @@
 ﻿@namespace Enter.UI.Components
-@using Enter.UI.Core
 @using Enter.UI.Components.Icon
 @inherits Enter.UI.Cores.Bases.EntComponentBase
 
-<div @attributes="@AdditionalAttributes" class="@RootClass" >
+<div @attributes="@AdditionalAttributes" class="@RootClass">
     @if (Title != null)
     {
         <div @onclick="HeaderClick" class="ent-card-header">
-            @if(Icon != null)
+            @if (Icon != null)
             {
                 <span class="ent-card-header-icon">
                     <EntIcon Icon="@Icon"/>
@@ -19,10 +18,10 @@
             @if (Expandable)
             {
                 <span class="ent-card-header-toggle-icon @(CardExpand ? "show" : "")">
-                    <EntIcon Icon="@EntIconName.ChevronDown" />
+                    <EntIcon Icon="@EntIconName.ChevronDown"/>
                 </span>
             }
-            
+
         </div>
     }
     @if (Expandable)
@@ -39,7 +38,7 @@
             @CardBody
         </div>
     }
-    
+
     @if (CardFooter != null)
     {
         <div class="ent-card-footer">
@@ -56,10 +55,10 @@
         .Build();
 
 
-    public bool CardExpand{ get; set; } = true;
+    public bool CardExpand { get; set; } = true;
 
     [Parameter]
-    public EventCallback<bool> CardExpandChanged { get; set; } 
+    public EventCallback<bool> CardExpandChanged { get; set; }
 
     [Parameter]
     public object Icon { get; set; }
@@ -83,7 +82,6 @@
 
     public override void Dispose()
     {
-        
     }
 
 }

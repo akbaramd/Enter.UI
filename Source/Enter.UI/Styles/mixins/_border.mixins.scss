@@ -1,5 +1,5 @@
 ﻿@function getBorderWidth($size) {
-    @return var(--ent-border-#{$size}) ;
+  @return var(--ent-border-#{$size}) ;
 }
 
 

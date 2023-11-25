@@ -2,5 +2,6 @@
 
 public enum EntDrawerDirection
 {
-    Start,End
+    Start,
+    End
 }

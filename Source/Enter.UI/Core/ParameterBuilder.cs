@@ -4,14 +4,14 @@ namespace Enter.UI.Core;
 
 public class ParameterBuilder<TComponent>
 {
-    private readonly Dictionary<string, object> _parameters = new Dictionary<string, object>();
+    private readonly Dictionary<string, object> _parameters = new();
 
     public ParameterBuilder<TComponent> AddParameter<TParam>(Expression<Func<TComponent, TParam>> expression,
         TParam value)
     {
-         return AddParameter(((MemberExpression)expression.Body).Member.Name, value);
+        return AddParameter(((MemberExpression)expression.Body).Member.Name, value);
     }
-    
+
     public ParameterBuilder<TComponent> AddParameter<TParam>(string name,
         TParam value)
     {
@@ -19,7 +19,7 @@ public class ParameterBuilder<TComponent>
         return this;
     }
 
-    public Dictionary<string, Object> Build()
+    public Dictionary<string, object> Build()
     {
         return _parameters;
     }

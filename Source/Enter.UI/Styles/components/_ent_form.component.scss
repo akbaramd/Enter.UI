@@ -1,174 +1,177 @@
 ﻿:root {
-    //input 
-    --ent-input-bg: var(--ent-bg-neutral);
-    --ent-input-popover-bg: var(--ent-bg-neutral-highlight);
-    --ent-input-popover-hover-bg: var(--ent-bg-neutral-active);
-    --ent-input-color: var(--ent-fg-base);
-    --ent-input-color-placeholder: var(--ent-fg-base-highlight);
-    --ent-input-stroke-color: var(--ent-stroke-base);
-    --ent-input-stroke-color-focus: var(--ent-stroke-base-emphasis);
-    --ent-input-stroke-size: var(--ent-border-1);
-    --ent-input-stroke-style: solid;
-    --ent-input-border-radius: var(--ent-border-radius-2);
-    --ent-input-icon-color: var(--ent-fg-base);
-    --ent-input-space-x: var(--ent-space-3);
-    --ent-input-space-y: var(--ent-space-3);
-    --ent-input-space-b: var(--ent-space-2);
-    --ent-input-font-size: var(--ent-typo-font-size-md);
-    --ent-input-line-height: var(--ent-typo-line-height-md);
-    
+  //input 
+  --ent-input-bg: var(--ent-bg-neutral);
+  --ent-input-popover-bg: var(--ent-bg-neutral-highlight);
+  --ent-input-popover-hover-bg: var(--ent-bg-neutral-active);
+  --ent-input-color: var(--ent-fg-base);
+  --ent-input-color-placeholder: var(--ent-fg-base-highlight);
+  --ent-input-stroke-color: var(--ent-stroke-base);
+  --ent-input-stroke-color-focus: var(--ent-stroke-base-emphasis);
+  --ent-input-stroke-size: var(--ent-border-1);
+  --ent-input-stroke-style: solid;
+  --ent-input-border-radius: var(--ent-border-radius-2);
+  --ent-input-icon-color: var(--ent-fg-base);
+  --ent-input-space-x: var(--ent-space-3);
+  --ent-input-space-y: var(--ent-space-3);
+  --ent-input-space-b: var(--ent-space-2);
+  --ent-input-font-size: var(--ent-typo-font-size-md);
+  --ent-input-line-height: var(--ent-typo-line-height-md);
+
 }
 
 // input
 .ent-input {
-    min-width: 300px;
-    border: var(--ent-input-stroke-size) solid var(--ent-input-stroke-color);
-    border-radius: var(--ent-card-border-radius);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: var(--ent-input-bg);
+  min-width: 300px;
+  border: var(--ent-input-stroke-size) solid var(--ent-input-stroke-color);
+  border-radius: var(--ent-card-border-radius);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: var(--ent-input-bg);
+  color: var(--ent-input-color);
+
+  &:focus {
+    border: var(--ent-input-stroke-size) solid var(--ent-input-stroke-color-focus);
+  }
+
+  > .ent-input-field {
+    flex-grow: 1;
+    padding: calc(var(--ent-input-space-y) - var(--ent-input-stroke-size)) calc(var(--ent-input-space-x) - var(--ent-input-stroke-size));
+    border: 0;
+    outline: 0;
+    background-color: transparent;
     color: var(--ent-input-color);
-    &:focus {
-        border: var(--ent-input-stroke-size) solid var(--ent-input-stroke-color-focus);
-    }
-    > .ent-input-field {
-        flex-grow: 1;
-        padding: calc( var(--ent-input-space-y) - var(--ent-input-stroke-size)) calc( var(--ent-input-space-x) - var(--ent-input-stroke-size));
-        border: 0;
-        outline: 0;
-        background-color: transparent;
-        color: var(--ent-input-color);
-        line-height: var(--ent-input-line-height);
-        font-size: var(--ent-input-font-size);
+    line-height: var(--ent-input-line-height);
+    font-size: var(--ent-input-font-size);
+  }
+
+  > .ent-input-icon {
+    width: var(--ent-typo-line-height-md);
+    height: var(--ent-typo-line-height-md);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-inline-end: 6px;
+    transition: var(--ent-transition-all);
+
+    .ent-icon {
+      color: var(--ent-fg-mute);
     }
 
-    > .ent-input-icon {
-        width: var(--ent-typo-line-height-md);
-        height: var(--ent-typo-line-height-md);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        margin-inline-end: 6px;
-        transition: var(--ent-transition-all);
-     
-        .ent-icon {
-            color: var(--ent-fg-mute);
-        }
 
-        
-    }
+  }
 }
 
 
-
 .ent-input.ent-input-sm {
-    > .ent-input-field {
-        --ent-input-space-x: var(--ent-space-2);
-        --ent-input-space-y: var(--ent-space-2);
-        --ent-input-space-b: var(--ent-space-2);
-        --ent-input-font-size: var(--ent-typo-font-size-sm);
-        --ent-input-line-height: var(--ent-typo-line-height-sm);
-    }
+  > .ent-input-field {
+    --ent-input-space-x: var(--ent-space-2);
+    --ent-input-space-y: var(--ent-space-2);
+    --ent-input-space-b: var(--ent-space-2);
+    --ent-input-font-size: var(--ent-typo-font-size-sm);
+    --ent-input-line-height: var(--ent-typo-line-height-sm);
+  }
 }
 
 
 .ent-input.ent-input-lg {
-    > .ent-input-field {
-        --ent-input-space-x: var(--ent-space-4);
-        --ent-input-space-y: var(--ent-space-4);
-        --ent-input-space-b: var(--ent-space-2);
-        --ent-input-font-size: var(--ent-typo-font-size-lg);
-        --ent-input-line-height: var(--ent-typo-line-height-lg);
-    }
+  > .ent-input-field {
+    --ent-input-space-x: var(--ent-space-4);
+    --ent-input-space-y: var(--ent-space-4);
+    --ent-input-space-b: var(--ent-space-2);
+    --ent-input-font-size: var(--ent-typo-font-size-lg);
+    --ent-input-line-height: var(--ent-typo-line-height-lg);
+  }
 }
 
 // input-autocomplete
 
 .ent-input-autocomplete {
-    border-radius: var(--ent-card-border-radius);
-    overflow: hidden;
+  border-radius: var(--ent-card-border-radius);
+  overflow: hidden;
 }
 
 .ent-input-autocomplete-container {
-    margin-top: 0.25rem;
+  margin-top: 0.25rem;
+  background-color: var(--ent-input-popover-bg);
+
+  > .ent-input-autocomplete-list {
     background-color: var(--ent-input-popover-bg);
+    max-height: 10rem;
+    overflow-y: scroll;
+  }
 
-    > .ent-input-autocomplete-list {
-        background-color: var(--ent-input-popover-bg);
-        max-height: 10rem;
-        overflow-y: scroll;
-    }
-
-    > .ent-input-autocomplete-message {
-        padding: 0;
-        margin: 0;
-    }
+  > .ent-input-autocomplete-message {
+    padding: 0;
+    margin: 0;
+  }
 }
 
 // select
 
 .ent-select {
-    border: var(--ent-input-stroke-size) solid var(--ent-input-stroke-color);
-    cursor: pointer;
-    min-width: 300px;
-    overflow: hidden;
-    border-radius: var(--ent-card-border-radius);
-    &:focus {
-        border: var(--ent-input-stroke-size) solid var(--ent-input-stroke-color-focus);
+  border: var(--ent-input-stroke-size) solid var(--ent-input-stroke-color);
+  cursor: pointer;
+  min-width: 300px;
+  overflow: hidden;
+  border-radius: var(--ent-card-border-radius);
+
+  &:focus {
+    border: var(--ent-input-stroke-size) solid var(--ent-input-stroke-color-focus);
+  }
+
+  > .ent-select-input {
+    border: 0;
+
+    .ent-select-input-placeholder {
+      color: var(--ent-input-color-placeholder);
     }
-    
-    > .ent-select-input {
-        border: 0;
-        
-        .ent-select-input-placeholder {
-            color:var(--ent-input-color-placeholder);
-        }
-    }
+  }
 }
+
 .ent-select-container {
-    margin-top: 0.25rem;
+  margin-top: 0.25rem;
+  background-color: var(--ent-input-popover-bg);
+
+  > .ent-select-list {
+    max-height: 10rem;
+    overflow-y: scroll;
     background-color: var(--ent-input-popover-bg);
+  }
 
-    > .ent-select-list {
-        max-height: 10rem;
-        overflow-y: scroll;
-        background-color: var(--ent-input-popover-bg);
-    }
-
-    > .ent-select-message {
-        padding: 0;
-        margin: 0;
-    }
+  > .ent-select-message {
+    padding: 0;
+    margin: 0;
+  }
 }
 
 // validation
 
 .ent-input-validation {
 
-    &.modified.valid {
-        //border-color: $color-neutral-300;
-    }
+  &.modified.valid {
+    //border-color: $color-neutral-300;
+  }
 
-    &.modified.invalid {
-        border-color: $color-red-300;
-    }
+  &.modified.invalid {
+    border-color: $color-red-300;
+  }
 }
 
 .ent-input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 
-    > .ent-input-group-label {
-        font-size: map-get($font-sizes, "medium");
-        font-weight: 500;
-    }
+  > .ent-input-group-label {
+    font-size: map-get($font-sizes, "medium");
+    font-weight: 500;
+  }
 
 
-    > .ent-input-group-validation {
-        font-size: map-get($font-sizes, "subtitle");
-        color: $color-red-500;
+  > .ent-input-group-validation {
+    font-size: map-get($font-sizes, "subtitle");
+    color: $color-red-500;
 
-    }
+  }
 }

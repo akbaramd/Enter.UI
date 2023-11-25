@@ -4,8 +4,7 @@ namespace Enter.UI.Providers;
 
 public class FontAwesomeIconProvider : IEntIconProvider
 {
-    
-    private static Dictionary<EntIconName, string> names = new()
+    private static readonly Dictionary<EntIconName, string> names = new()
     {
         { EntIconName.Add, "fa-plus" },
         { EntIconName.Bars, "fa-bars" },
@@ -33,19 +32,28 @@ public class FontAwesomeIconProvider : IEntIconProvider
         { EntIconName.Note, "fa-note" },
         { EntIconName.User, "fa-user" },
         { EntIconName.Moon, "fa-moon" },
-        { EntIconName.List, "fa-list" },
-        
-        
+        { EntIconName.List, "fa-list" }
     };
-    
-    private static Dictionary<EntIconStyle, string> styles = new()
+
+    private static readonly Dictionary<EntIconStyle, string> styles = new()
     {
         { EntIconStyle.Solid, "fas" },
         { EntIconStyle.Regular, "far" },
         { EntIconStyle.Light, "fal" },
-        { EntIconStyle.DuoTone, "fad" },
+        { EntIconStyle.DuoTone, "fad" }
     };
-    
+
+
+    public string Icon(object icon, EntIconStyle style)
+    {
+        var iconStyle = GetIconStyle(style);
+
+        if (icon is EntIconName iconEnum)
+            return $"{iconStyle} {GetIconName(iconEnum)}".Trim();
+        if (icon is string iconName) return $"{iconStyle} {iconName}".Trim();
+        return iconStyle;
+    }
+
     public string GetIconName(EntIconName name)
     {
         return names[name];
@@ -55,21 +63,4 @@ public class FontAwesomeIconProvider : IEntIconProvider
     {
         return styles[name];
     }
-    
-    
-    public  string Icon( object icon, EntIconStyle style )
-    {
-        var iconStyle = GetIconStyle( style );
-
-        if ( icon is EntIconName iconEnum )
-        {
-            return $"{iconStyle} {GetIconName( iconEnum)}".Trim();
-        }
-        else if ( icon is string iconName )
-        {
-            return $"{iconStyle} {iconName}".Trim();
-        }
-        return iconStyle;
-    }
-
 }

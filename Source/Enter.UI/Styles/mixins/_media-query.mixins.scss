@@ -1,6 +1,5 @@
-
 @mixin for-tablet {
-  @media only screen and (max-width: $breakpoint-tablet ) {
+  @media only screen and (max-width: $breakpoint-tablet) {
     @content;
   }
 }

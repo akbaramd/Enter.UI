@@ -10,7 +10,7 @@
             <EntIcon class="icon" Icon="@Icon" IconSize="EntIconSize.Medium" IconStyle="EntIconStyle.Light"/>
         </span>
     }
-    
+
     @if (Loading)
     {
         <span class="icon-wrapper">
@@ -24,21 +24,15 @@
 @code {
 
     private string RootClass => CssBuilder
-
         .AddCss("ent-btn")
-        
-        .AddCss("ent-btn-size-lg",Size == ButtonSize.Large)
+        .AddCss("ent-btn-size-lg", Size == ButtonSize.Large)
         .AddCss("ent-btn-size-md", Size == ButtonSize.Medium)
         .AddCss("ent-btn-size-sm", Size == ButtonSize.Small)
-        
-        .AddCss("ent-btn-outline",Appearance==ButtonAppearance.Outline)
-        .AddCss("ent-btn-ghost",Appearance==ButtonAppearance.Ghost)
-        
-        .AddCss("ent-btn-primary", Color == ButtonColor.Primary )
-        
+        .AddCss("ent-btn-outline", Appearance == ButtonAppearance.Outline)
+        .AddCss("ent-btn-ghost", Appearance == ButtonAppearance.Ghost)
+        .AddCss("ent-btn-primary", Color == ButtonColor.Primary)
         .AddCss("ent-btn-only-icon", Icon != null && ChildContent == null)
-        .AddCss("ent-btn-disabled", Disabled )
-        
+        .AddCss("ent-btn-disabled", Disabled)
         .Build();
 
     [Parameter]
@@ -46,10 +40,10 @@
 
     [Parameter]
     public ButtonSize Size { get; set; } = ButtonSize.Medium;
-    
+
     [Parameter]
     public ButtonAppearance Appearance { get; set; } = ButtonAppearance.Default;
-    
+
     [Parameter]
     public ButtonColor Color { get; set; } = ButtonColor.Default;
 
@@ -58,11 +52,11 @@
 
     [Parameter]
     public bool Loading { get; set; } = false;
-    
+
     [Parameter]
     public bool Disabled { get; set; } = false;
 
-  
+
     public override void Dispose()
     {
     }

@@ -1,13 +1,10 @@
 ﻿using Enter.UI.JsServices;
-using Enter.UI.JsService;
 using Microsoft.JSInterop;
 
 namespace Enter.UI.Interops;
 
 internal class PopoverInterop
 {
-    
-
     private readonly Lazy<Task<IJSObjectReference>> _moduleTask;
 
     public PopoverInterop(IEntJsService entJsService)
@@ -15,7 +12,7 @@ internal class PopoverInterop
         _moduleTask = new Lazy<Task<IJSObjectReference>>(() => entJsService.LoadReferenceAsync("getPopoverComponent"));
     }
 
-    
+
     public async Task InitializeAsync(Guid id)
     {
         var module = await _moduleTask.Value;
@@ -23,7 +20,7 @@ internal class PopoverInterop
         await module.InvokeVoidAsync("initialize", objectReference, id);
     }
 
-    public async Task<bool> ConnectAsync(Guid id) 
+    public async Task<bool> ConnectAsync(Guid id)
     {
         try
         {

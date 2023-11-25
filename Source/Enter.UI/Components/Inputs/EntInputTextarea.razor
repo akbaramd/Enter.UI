@@ -1,6 +1,6 @@
 ﻿@namespace Enter.UI.Components
-@using System.Diagnostics.CodeAnalysis
 @inherits Enter.UI.Cores.Bases.EntInputBase<string?>
+@using System.Diagnostics.CodeAnalysis
 @implements IAsyncDisposable
 
 <div @attributes="@AdditionalAttributes" class="@RootCss" id="@Id">
@@ -10,13 +10,13 @@
     @bind:event="@EventType" disabled="@Disabled" readonly="@Readonly">
     
     </textarea>
-   
+
 </div>
 
 @code {
 
     private ElementReference _elementReference = default!;
-    
+
     private string RootCss => CssBuilder
         .AddCss("ent-input")
         .AddCss(BaseCss)
@@ -25,10 +25,11 @@
 
 
     [Parameter]
-    public int Rows { get; set; } = 3; 
-    
+    public int Rows { get; set; } = 3;
+
     [CascadingParameter]
     public EditContext? EditContext { get; set; }
+
     [Parameter]
     public string EventType { get; set; } = "onchange";
 
@@ -36,7 +37,7 @@
     {
         return _elementReference.FocusAsync();
     }
-    
+
     protected override bool TryParseValueFromString(string? value, out string? result, [NotNullWhen(false)] out string? validationErrorMessage)
     {
         result = value;

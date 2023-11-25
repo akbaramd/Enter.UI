@@ -19,9 +19,11 @@
             id: element.id,
         }
     }
-    setAttributeByQuerySelector(selector,key,value){
-        document.querySelector(selector).setAttribute(key,value)
+
+    setAttributeByQuerySelector(selector, key, value) {
+        document.querySelector(selector).setAttribute(key, value)
     }
+
     getBoundingClientRect(element) {
         if (!element) return;
 
@@ -35,8 +37,9 @@
         rect.windowWidth = window.innerWidth;
         return rect;
     }
+
     getBreakpoint() {
-        return  this.calculateBreakpoint(window.innerWidth);
+        return this.calculateBreakpoint(window.innerWidth);
     }
 
     initializeBreakpointEvent(dotNetRef) {
@@ -59,17 +62,13 @@
     calculateBreakpoint(innerWidth) {
         if (innerWidth < 768) {
             return "Mobile";
-        }
-        else if (768 <= innerWidth && innerWidth < 992) {
+        } else if (768 <= innerWidth && innerWidth < 992) {
             return "Tablet";
-        }
-        else if (992 <= innerWidth && innerWidth < 1200) {
+        } else if (992 <= innerWidth && innerWidth < 1200) {
             return "Laptop";
-        }
-        else if (1200 <= innerWidth && innerWidth < 1400) {
+        } else if (1200 <= innerWidth && innerWidth < 1400) {
             return "Desktop";
-        }
-        else if (1400 <= innerWidth) {
+        } else if (1400 <= innerWidth) {
             return "Screen";
         }
 

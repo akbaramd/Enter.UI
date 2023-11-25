@@ -1,23 +1,21 @@
 ﻿@namespace Enter.UI.Components
 @using Enter.UI.Components.Drawer
-@using System.Data.Common
 @inherits Enter.UI.Cores.Bases.EntComponentBase
 
 
-
 <aside class="@RootCss">@ChildContent</aside>
-<EntOverlay Visible="HasBackdrop" DarkBackground="true" OnClick="@OnOverlayClickCallback" @ontouchstart="@OnOverlayClickCallback" LockScroll="false" />
+<EntOverlay Visible="HasBackdrop" DarkBackground="true" OnClick="@OnOverlayClickCallback" @ontouchstart="@OnOverlayClickCallback" LockScroll="false"/>
 
 @code {
 
     public string RootCss => CssBuilder
-        .AddCss($"ent-drawer")
-        .AddCss($"ent-drawer--direction-start", Direction == EntDrawerDirection.Start)
-        .AddCss($"ent-drawer--direction-end", Direction == EntDrawerDirection.End)
-        .AddCss($"ent-drawer--mode-behavior", Mode == EntDrawerMode.Behavior)
-        .AddCss($"ent-drawer--mode-overlay", Mode == EntDrawerMode.Overlay)
-        .AddCss($"ent-drawer--open", Open)
-        .AddCss($"ent-drawer--close", !Open)
+        .AddCss("ent-drawer")
+        .AddCss("ent-drawer--direction-start", Direction == EntDrawerDirection.Start)
+        .AddCss("ent-drawer--direction-end", Direction == EntDrawerDirection.End)
+        .AddCss("ent-drawer--mode-behavior", Mode == EntDrawerMode.Behavior)
+        .AddCss("ent-drawer--mode-overlay", Mode == EntDrawerMode.Overlay)
+        .AddCss("ent-drawer--open", Open)
+        .AddCss("ent-drawer--close", !Open)
         .Build();
 
     [Parameter]
@@ -30,7 +28,7 @@
     public EntDrawerMode Mode { get; set; } = EntDrawerMode.Behavior;
 
     [CascadingParameter]
-    public EntDrawerContainer? DrawerContainer { get; set; } 
+    public EntDrawerContainer? DrawerContainer { get; set; }
 
     private bool _open = false;
 
@@ -54,7 +52,6 @@
 
     public override void Dispose()
     {
-        
     }
 
 }
