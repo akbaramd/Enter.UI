@@ -3,8 +3,8 @@
   .upload-container {
     background-color: var(--ent-bg-neutral-highlight);
     padding: 31px;
-    border: var(--ent-stroke-thin) dashed var(--ent-stroke-base);
-    border-radius: var(--ent-radius-sm);
+    border: var(--ent-border-1) dashed var(--ent-stroke-base);
+    border-radius: var(--ent-border-radius-2);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,8 +24,8 @@
       background-color: var(--ent-bg-neutral-active);
       display: flex;
       width: 100%;
-      border: var(--ent-stroke-thin) solid var(--ent-stroke-base-emphasis);
-      border-radius: var(--ent-radius-sm);
+      border: var(--ent-border-1) solid var(--ent-stroke-base-emphasis);
+      border-radius: var(--ent-border-radius-2);
       padding: 15px;
       gap:16px;
       align-items: center;
@@ -33,7 +33,7 @@
       
       .file-item-icon {
         align-items: center;
-        border: var(--ent-stroke-thin) solid var(--ent-stroke-base);
+        border: var(--ent-border-1) solid var(--ent-stroke-base);
         background-color: var(--ent-bg-neutral-emphasis);
         height: 48px;
         width: 48px;

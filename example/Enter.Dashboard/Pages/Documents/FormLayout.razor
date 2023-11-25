@@ -1,71 +1,122 @@
 @page "/documents/form"
-@using System.ComponentModel.DataAnnotations
-@using Enter.Dashboard.Model;
+@using Enter.Dashboard.Model
 @using Enter.UI.Components.Button
 @using Enter.UI.Components.Icon
 @using Enter.UI.Components.Inputs
-@using Enter.UI.Core
-<div class="">
+@using System.ComponentModel.DataAnnotations
+<div class="p-4">
     <EntToolbar class="my-4">
-        <EntButton  Appearance="ButtonAppearance.Default" Color="ButtonColor.Primary" Icon="EntIconName.Add"  >Add</EntButton>
-        <EntButton  Appearance="ButtonAppearance.Outline" Icon="EntIconName.Delete" Loading="true" >Delete</EntButton>
-        <EntButton  Appearance="ButtonAppearance.Outline" Icon="EntIconName.Note"></EntButton>
+        <EntButton Appearance="ButtonAppearance.Default" Color="ButtonColor.Primary" Icon="EntIconName.Add">Add</EntButton>
+        <EntButton Appearance="ButtonAppearance.Outline" Icon="EntIconName.Delete" Loading="true">Delete</EntButton>
+        <EntButton Appearance="ButtonAppearance.Outline" Icon="EntIconName.Note"></EntButton>
     </EntToolbar>
-    <EntCard Expandable="true"  Title="Form Layout">
+    <EntCard Expandable="true" Title="Form Layout" class="mb-4">
         <CardBody>
             <EditForm class="ent-edit-form" Model="Input" OnSubmit="@OnSubmit">
-                <DataAnnotationsValidator />
+                <DataAnnotationsValidator/>
                 <div class="row">
-                    <EntInputGroup For="()=>Input.Id" Label="شناسه" class="tablet:col-1/3 mb-4 ">
-                        <EntInputText   @bind-Value="Input.Id" Icon="@EntIconName.Dashboard" />
+                    <EntInputGroup For="() => Input.Id" Label="شناسه" class="tablet:col-1/3 mb-4 ">
+                        <EntInputText @bind-Value="Input.Id" Icon="@EntIconName.Dashboard"/>
                     </EntInputGroup>
-                     <EntInputGroup For="()=>Input.User" Label="نام" class="tablet:col-1/3 mb-4">
-                      
-                         <EntInputAutoComplete
-                              @ref="_autoCompleteReference"
-                             @bind-Value="Input.User"
-                                              ValueFunc="x=>x.Name"
-                                              TextFunc="x=>x.Name"
-                                              DataSources="DataSource"
-                                              Icon="@EntIconName.Search"
-                                              OnSearchChange="OnLastNameSearchChange"/>
-                      
-                    </EntInputGroup>
-                    <EntInputGroup 
-                        For="()=>Input.Role" 
-                        Label="نقش"  
-                        class="tablet:col-1/3 mb-4">
-                      
-    
-                        <EntInputSelect @bind-Value="Input.Role"
-                                   PlaceHolder="نقش مورد نظر را انتخاب نمایید"
-                                   DataSources="Constants.Roles"
-                                   ValueFunc="x=>x.Value"
-                                   TextFunc="x=>x.Text" />
-    
-                       
+                    <EntInputGroup For="() => Input.User" Label="نام" class="tablet:col-1/3 mb-4">
+
+                        <EntInputAutoComplete
+                            @ref="_autoCompleteReference"
+                            @bind-Value="Input.User"
+                            ValueFunc="x => x.Name"
+                            TextFunc="x=>x.Name"
+                            DataSources="DataSource"
+                            Icon="@EntIconName.Search"
+                            OnSearchChange="OnLastNameSearchChange"/>
+
                     </EntInputGroup>
                     <EntInputGroup
-                        class="tablet:col-1/3 mb-4 " 
-                        Label="سن" 
-                        For="()=> Input.Age">
-                        <EntInputTextarea Rows="10"  @bind-Value="Input.Age" />
+                        For="() => Input.Role"
+                        Label="نقش"
+                        class="tablet:col-1/3 mb-4">
+
+
+                        <EntInputSelect @bind-Value="Input.Role"
+                                        PlaceHolder="نقش مورد نظر را انتخاب نمایید"
+                                        DataSources="Constants.Roles"
+                                        ValueFunc="x => x.Value"
+                                        TextFunc="x => x.Text"/>
+
+
                     </EntInputGroup>
+                    <EntInputGroup
+                        class="tablet:col-1/3 mb-4 "
+                        Label="سن"
+                        For="() => Input.Age">
+                        <EntInputTextarea Rows="10" @bind-Value="Input.Age"/>
+                    </EntInputGroup>
+                   
+
+
                 </div>
                 <div class="row">
                     <div class="tablet:col-1/3">
-                        <EntButton  type="submit">ارسال</EntButton>
+                        <EntButton type="submit">ارسال</EntButton>
                     </div>
                 </div>
             </EditForm>
         </CardBody>
+        
     </EntCard>
+    <EntCard Title="Input Size" class="mb-4">
+        <CardBody>
+            <EditForm class="ent-edit-form" Model="Input" OnSubmit="@OnSubmit">
+                <EntInputGroup
+                    class="tablet:col-12 mb-4"
+                    Label="Small Input"
+                    For="() => Input.User">
+                    <EntInputText size="@EntInputSize.Small" @bind-Value="Input.Age"/>
+                </EntInputGroup>
+                <EntInputGroup
+                    class="tablet:col-12 mb-4"
+                    Label="Input"
+                    For="() => Input.Age">
+                    <EntInputText @bind-Value="Input.Age"/>
+                </EntInputGroup>
+                <EntInputGroup
+                    class="tablet:col-12 mb-4"
+                    Label="Large Input"
+                    For="() => Input.Age">
+                    <EntInputText size="@EntInputSize.Large" @bind-Value="Input.Age"/>
+                </EntInputGroup>
+            </EditForm>
+        </CardBody>
+    </EntCard>
+    <EntCard Title="Input Icon" class="mb-4">
+            <CardBody>
+                <EditForm class="ent-edit-form" Model="Input" OnSubmit="@OnSubmit">
+                     <EntInputGroup
+                                            class="tablet:col-12 mb-4"
+                                            Label="Small Input"
+                                            For="() => Input.User">
+                                            <EntInputText Icon="EntIconName.User" size="@EntInputSize.Small" @bind-Value="Input.Age"/>
+                                        </EntInputGroup>
+                                        <EntInputGroup
+                                            class="tablet:col-12 mb-4"
+                                            Label="Input"
+                                            For="() => Input.Age">
+                                            <EntInputText Icon="EntIconName.Search" @bind-Value="Input.Age"/>
+                                        </EntInputGroup>
+                                        <EntInputGroup
+                                            class="tablet:col-12 mb-4"
+                                            Label="Large Input"
+                                            For="() => Input.Age">
+                                            <EntInputText Icon="EntIconName.Dashboard" size="@EntInputSize.Large" @bind-Value="Input.Age"/>
+                                        </EntInputGroup>
+                </EditForm>
+            </CardBody>
+        </EntCard>
 </div>
 
 @code {
 
     public EntInputAutoComplete<Users> _autoCompleteReference { get; set; }
-    
+
     public class InputModel
     {
         public string Id { get; set; } = Guid.NewGuid().ToString();
@@ -81,7 +132,7 @@
         public string Role { get; set; }
     }
 
-    public InputModel Input { get; set; } = new InputModel()
+    public InputModel Input { get; set; } = new()
     {
         User = "اکبر",
         Role = "Admin"
@@ -95,14 +146,11 @@
     }
 
 
-
-    public List<Users> DataSource = new List<Users>();
+    public List<Users> DataSource = new();
 
 
     protected override void OnInitialized()
     {
-       
-
         DataSource = Constants.Users;
 
         base.OnInitialized();

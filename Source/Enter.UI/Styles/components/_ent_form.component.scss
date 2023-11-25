@@ -5,16 +5,17 @@
     --ent-input-popover-hover-bg: var(--ent-bg-neutral-active);
     --ent-input-color: var(--ent-fg-base);
     --ent-input-color-placeholder: var(--ent-fg-base-highlight);
-    --ent-input-font-size: var(--ent-font-size);
-    --ent-input-line-height: var(--ent-line-height);
     --ent-input-stroke-color: var(--ent-stroke-base);
     --ent-input-stroke-color-focus: var(--ent-stroke-base-emphasis);
-    --ent-input-stroke-size: var(--ent-stroke-thin);
+    --ent-input-stroke-size: var(--ent-border-1);
     --ent-input-stroke-style: solid;
-    --ent-input-border-radius: var(--ent-radius-md);
-    --ent-input-space-x: var(--ent-size-md);
-    --ent-input-space-y: var(--ent-size-xs);
+    --ent-input-border-radius: var(--ent-border-radius-2);
     --ent-input-icon-color: var(--ent-fg-base);
+    --ent-input-space-x: var(--ent-space-3);
+    --ent-input-space-y: var(--ent-space-3);
+    --ent-input-space-b: var(--ent-space-2);
+    --ent-input-font-size: var(--ent-typo-font-size-md);
+    --ent-input-line-height: var(--ent-typo-line-height-md);
     
 }
 
@@ -33,7 +34,7 @@
     }
     > .ent-input-field {
         flex-grow: 1;
-        padding: calc( var(--ent-input-space-y) - var(--ent-input-stroke-size)) var(--ent-input-space-x);
+        padding: calc( var(--ent-input-space-y) - var(--ent-input-stroke-size)) calc( var(--ent-input-space-x) - var(--ent-input-stroke-size));
         border: 0;
         outline: 0;
         background-color: transparent;
@@ -43,22 +44,16 @@
     }
 
     > .ent-input-icon {
-        width: var(--ent-line-height);
-        height: var(--ent-line-height);
+        width: var(--ent-typo-line-height-md);
+        height: var(--ent-typo-line-height-md);
         display: inline-flex;
         align-items: center;
         justify-content: center;
         margin-inline-end: 6px;
         transition: var(--ent-transition-all);
-        
-        .icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: var(--ent-input-font-size);
-            width: var(--ent-input-font-size);
-            height: var(--ent-input-font-size);
-            color: var(--ent-input);
+     
+        .ent-icon {
+            color: var(--ent-fg-mute);
         }
 
         
@@ -67,19 +62,24 @@
 
 
 
-.ent-input.ent-input-lg {
+.ent-input.ent-input-sm {
     > .ent-input-field {
-        --ent-input-space-x: var(--ent-size-sm);
-        --ent-input-space-y: var(--ent-size-lg);
-
+        --ent-input-space-x: var(--ent-space-2);
+        --ent-input-space-y: var(--ent-space-2);
+        --ent-input-space-b: var(--ent-space-2);
+        --ent-input-font-size: var(--ent-typo-font-size-sm);
+        --ent-input-line-height: var(--ent-typo-line-height-sm);
     }
 }
 
 
-.ent-input.ent-input-sm {
+.ent-input.ent-input-lg {
     > .ent-input-field {
-        --ent-input-space-x: var(--ent-size-xxs);
-        --ent-input-space-y: var(--ent-size-sm);
+        --ent-input-space-x: var(--ent-space-4);
+        --ent-input-space-y: var(--ent-space-4);
+        --ent-input-space-b: var(--ent-space-2);
+        --ent-input-font-size: var(--ent-typo-font-size-lg);
+        --ent-input-line-height: var(--ent-typo-line-height-lg);
     }
 }
 

@@ -5,15 +5,15 @@
   --ent-tab-item-bg-hover: var(--ent-bg-neutral-highlight);
   --ent-tab-item-bg-active: var(--ent-bg-neutral-select);
   --ent-tab-item-font-size: var(--ent-font-size);
-  --ent-tab-item-line-height: var(--ent-line-height);
+  --ent-tab-item-line-height: var(--ent-typo-line-height-md);
   --ent-tab-box-shadow: var(--ent-shadow);
-  --ent-tab-border-width: 1px;
+  --ent-tab-border-width: var(--ent-border-1);
   --ent-tab-border-style: solid;
   --ent-tab-border-color: var(--ent-stroke-base);
 
-  --ent-tab-space-x: var(--ent-size-md);
-  --ent-tab-space-b: var(--ent-size-sm);
-  --ent-tab-space-y: var(--ent-size-xs);
+  --ent-tab-space-x: var(--ent-space-3);
+  --ent-tab-space-b: var(--ent-space-2);
+  --ent-tab-space-y: var(--ent-space-2);
 }
 
 .ent-tab {
@@ -21,7 +21,12 @@
   border: var(--ent-tab-border-width) var(--ent-tab-border-style) var(--ent-tab-border-color);
 
   .ent-tab-content {
-    padding: var(--ent-tab-space-y) calc(var(--ent-tab-space-x) - var(--ent-tab-border-width)) calc(var(--ent-tab-space-y) - var(--ent-tab-border-width)) var(--ent-tab-space-x);
+    padding:
+            var(--ent-tab-space-y)
+            calc(var(--ent-tab-space-x) - var(--ent-tab-border-width))
+            calc(var(--ent-tab-space-y) - var(--ent-tab-border-width))
+            var(--ent-tab-space-x);
+    
     display: flex;
     gap: var(--ent-tab-space-b);
     font-size: var(--ent-typo-font-size-md);
@@ -39,7 +44,11 @@
 
   .ent-tab-action {
     display: flex;
-    padding: var(--ent-tab-space-y) var(--ent-tab-space-x);
+    padding:
+            var(--ent-tab-space-y)
+            calc(var(--ent-tab-space-x) - var(--ent-tab-border-width))
+            calc(var(--ent-tab-space-y) - var(--ent-tab-border-width))
+            var(--ent-tab-space-x);
     width: fit-content;
     border-inline-start: $border;
     border-color: transparent;
@@ -47,26 +56,9 @@
     align-items: center;
     justify-content: center;
   }
+  
+  .ent-tab-item-container {
 
-
-  > .ent-tab-item-container-message {
-    display: flex;
-    align-items: center;
-    background-color: var(--ent-tab-bg);
-    border-bottom: var(--ent-tab-border-width) var(--ent-tab-border-style) var(--ent-tab-border-color);
-    box-shadow: var(--ent-tab-box-shadow);
-
-    > * {
-      padding:
-              var(--ent-space-2)
-              calc(var(--ent-space-3) - var(--ent-tab-border-width))
-              calc(var(--ent-space-2) - var(--ent-tab-border-width))
-              calc(var(--ent-space-3) - var(--ent-tab-border-width));
-      margin: 0;
-    }
-  }
-
-  > .ent-tab-item-container {
     list-style: none;
     margin: 0;
     background-color: var(--ent-tab-bg);
@@ -75,8 +67,10 @@
     border-bottom: var(--ent-tab-border-width) var(--ent-tab-border-style) var(--ent-tab-border-color);
     box-shadow: var(--ent-tab-box-shadow);
 
-
-    > .ent-tab-item {
+    
+    
+    .ent-tab-item {
+      
       background-color: var(--ent-tab-item-bg);
       cursor: pointer;
       display: flex;
@@ -98,6 +92,8 @@
           transition: var(--ent-transition-all);
         }
       }
+      
+      
     }
 
     > .ent-tab-item-vertical {
@@ -125,12 +121,44 @@
       }
     }
   }
+  
+
+
+  > .ent-tab-item-container-message {
+    display: flex;
+    align-items: center;
+    background-color: var(--ent-tab-bg);
+    border-bottom: var(--ent-tab-border-width) var(--ent-tab-border-style) var(--ent-tab-border-color);
+    box-shadow: var(--ent-tab-box-shadow);
+
+    > * {
+      
+      
+      margin: 0;
+      font-size: var(--ent-typo-font-size-md);
+      line-height: var(--ent-typo-line-height-md);
+    }
+  }
+
+
 
   > .responsive\:ent-tab-item-container {
     background-color: var(--ent-tab-bg);
 
     > .responsive\:ent-tab-item-container-header {
 
+      .ent-tab-expand-icon {
+        
+        transition: var(--ent-transition-all);
+        &.expand .icon-wrapper {
+          transform: rotate(180deg);
+          
+        }
+        &.collapse .icon-wrapper{
+          transform: rotate(0);
+        }
+      }
+      
       > .ent-tab-content {
         display: flex;
         padding:
@@ -148,6 +176,8 @@
     > .responsive\:ent-tab-item-container-content {
 
       > .ent-tab-item-container {
+        
+        
         list-style: none;
         margin: 0;
         background-color: var(--ent-tab-bg);
@@ -158,18 +188,17 @@
         box-shadow: var(--ent-tab-box-shadow);
 
         > .ent-tab-item {
-
+            
           > .ent-tab-content {
-            padding: 
-                    calc(var(--ent-space-2) - var(--ent-tab-border-width)) 
-                    calc(var(--ent-space-3) - var(--ent-tab-border-width))
-                    calc(var(--ent-space-2) - var(--ent-tab-border-width))
-                    var(--ent-space-3);
+
+            width: 100%;
+            padding: calc(var(--ent-space-1) - var(--ent-tab-border-width)) calc(var(--ent-space-3) - var(--ent-tab-border-width)) calc(var(--ent-space-1) - var(--ent-tab-border-width)) var(--ent-space-3);
             display: flex;
             flex-direction: row;
             justify-content: start;
             align-items: center;
             border-top: var(--ent-tab-border-width) var(--ent-tab-border-style) var(--ent-tab-border-color);
+            font-size: var(--ent-typo-font-size-sm);
 
             span {
               flex: 1;
@@ -208,11 +237,12 @@
   }
 
   > .ent-tab-item-container-message {
-    padding: 
-            var(--ent-tab-space-y) 
-            calc(var(--ent-tab-space-x) - var(--ent-tab-border-width)) 
-            calc(var(--ent-tab-space-y) - var(--ent-tab-border-width)) 
-            var(--ent-tab-space-x);
+
+    padding:
+            var(--ent-space-3)
+            calc(var(--ent-space-3) - var(--ent-tab-border-width))
+            calc(var(--ent-space-3) - var(--ent-tab-border-width))
+            calc(var(--ent-space-3) - var(--ent-tab-border-width));
 
     writing-mode: sideways-rl;
 
@@ -242,7 +272,11 @@
 
   > .ent-tab-item-container-message {
     border-bottom: var(--ent-tab-border-width) var(--ent-tab-border-style) var(--ent-tab-border-color);
-    padding: var(--ent-tab-space-y) var(--ent-tab-space-x) calc(var(--ent-tab-space-y) - var(--ent-tab-border-width)) var(--ent-tab-space-x);
+    padding:
+            var(--ent-space-3)
+            calc(var(--ent-space-3) - var(--ent-tab-border-width))
+            calc(var(--ent-space-3) - var(--ent-tab-border-width))
+            calc(var(--ent-space-3) - var(--ent-tab-border-width));
     
     
   }

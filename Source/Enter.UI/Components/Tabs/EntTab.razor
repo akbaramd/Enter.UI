@@ -8,49 +8,55 @@
         @if (ResponsiveMode)
         {
             <div class="responsive:ent-tab-item-container">
-               
-                    <div @onclick="OnToggleMenu" class="responsive:ent-tab-item-container-header">
-                        <span class="ent-tab-content">
-                            <EntButton Icon="EntIconName.Dashboard"  class="ent-tab-close-all"/>
-                            @if (Panels.Any() && _activeTab != null)
+
+                <div @onclick="OnToggleMenu" class="responsive:ent-tab-item-container-header">
+                    <span class="ent-tab-content">
+
+                        @if (Panels.Any() && _activeTab != null)
+                        {
+                            <EntButton Icon="@_activeTab.Icon" class="ent-tab-close-all"/>
+                            <span>@_activeTab.Title</span>
+                        }
+                        else
+                        {
+                            <EntButton Icon="EntIconName.Dashboard" class="ent-tab-close-all"/>
+                            <span>@TabNoContentMessage</span>
+                        }
+                   
+                        @{
+                            var expandCss = (_toggleMenu) ? "ent-tab-expand-icon expand" : "ent-tab-expand-icon collapse";
+                        }
+                        <EntButton Icon="EntIconName.ChevronDown" class="@expandCss"/>
+
+                    </span>
+                </div>
+                @if (Panels.Any())
+                {
+                    <EntExpandable @bind-Expanded="@_toggleMenu" class="responsive:ent-tab-item-container-content">
+                        <ul class="ent-tab-item-container">
+                            @foreach (var tabPanels in Panels)
                             {
-                                <span>@_activeTab.Title</span>
-                                <EntButton>@Panels.Count</EntButton>
+                                <li class="@GetItemClass(IsActiveTab(tabPanels.Id))" @onclick="() => ActivateTabAsync(tabPanels.Id)" @key="@tabPanels.Id">
+                                    <span class="ent-tab-content">
+                                        <EntButton Appearance="ButtonAppearance.Ghost" Icon="@tabPanels.Icon"/>
+                                        @if (!IconMinify)
+                                        {
+                                            <span>@tabPanels.Title</span>
+                                        }
+                                        @if (Closeable)
+                                        {
+                                            <EntButton @onclick="() => OnTabClose(tabPanels.Id)" Icon="EntIconName.Remove" class="ent-tab-close"/>
+                                        }
+                                    </span>
+                                </li>
                             }
-                            else
-                            {
-                                <span>@TabNoContentMessage</span>
-                            }
-                           
-                        </span>
-                    </div>
-                    @if (Panels.Any())
-                    {
-                        <EntExpandable @bind-Expanded="@_toogleMenu" class="responsive:ent-tab-item-container-content">
-                            <ul class="ent-tab-item-container">
-                                @foreach (var tabPanels in Panels)
-                                {
-                                    <li class="@GetItemClass(IsActiveTab(tabPanels.Id))" @onclick="() => ActivateTabAsync(tabPanels.Id)" @key="@tabPanels.Id">
-                                        <span class="ent-tab-content">
-                                            <EntIcon Icon="@tabPanels.Icon"/>
-                                            @if (!IconMinify)
-                                            {
-                                                <span>@tabPanels.Title</span>
-                                            }
-                                            @if (Closeable)
-                                            {
-                                                <EntButton @onclick="() => OnTabClose(tabPanels.Id)"  Icon="EntIconName.Remove" class="ent-tab-close"/>
-                                            }
-                                        </span>
-                                    </li>
-                                }
-                            </ul>
-                            <div class="ent-tab-item-actions">
-                                <EntButton @onclick="OnTabAllClose" Icon="EntIconName.Delete"/>
-                            </div>
-                        </EntExpandable>
-                    }
-               
+                        </ul>
+                        <div class="ent-tab-item-actions">
+                            <EntButton @onclick="OnTabAllClose" Icon="EntIconName.Delete"/>
+                        </div>
+                    </EntExpandable>
+                }
+
             </div>
         }
         else

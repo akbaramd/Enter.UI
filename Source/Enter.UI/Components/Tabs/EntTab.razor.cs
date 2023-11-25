@@ -12,7 +12,7 @@ namespace Enter.UI.Components
     {
         
         
-        private bool _toogleMenu = false;
+        private bool _toggleMenu = false;
         private string? _activeTabId = null;
         private EntTabPanel? _activeTab => Panels.FirstOrDefault(x=>x.Id.Equals(_activeTabId));
         
@@ -96,7 +96,7 @@ namespace Enter.UI.Components
             }
             if (ResponsiveMode)
             {
-                _toogleMenu = false;
+                _toggleMenu = false;
             }
             
             StateHasChanged();
@@ -151,7 +151,10 @@ namespace Enter.UI.Components
 
         private void OnToggleMenu()
         {
-            _toogleMenu = !_toogleMenu;
+            if (Panels.Any())
+            {
+                _toggleMenu = !_toggleMenu;
+            }
         }
     }
 
