@@ -1,7 +1,7 @@
-using Enter.UI.Abstractions;
+using Enter.Ui.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Enter.UI.Core;
+namespace Enter.Ui.Core;
 
 public class EntConfiguration : IEntConfiguration
 {

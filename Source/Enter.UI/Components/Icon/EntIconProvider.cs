@@ -1,6 +1,7 @@
-﻿using Enter.UI.Components.Icon;
+﻿using Enter.Ui.Components.Icon;
 
-namespace Enter.UI.Components;
+// ReSharper disable once CheckNamespace
+namespace Enter.Ui.Components;
 
 public class EntIconProvider : IEntIconProvider
 {

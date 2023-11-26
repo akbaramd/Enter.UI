@@ -1,9 +1,10 @@
 ﻿using System.Windows.Input;
-using Enter.UI.Cores.Bases;
+using Enter.Ui.Cores.Bases;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
-namespace Enter.UI.Components;
+// ReSharper disable once CheckNamespace
+namespace Enter.Ui.Components;
 
 public partial class EntOverlay : EntComponentBase
 {

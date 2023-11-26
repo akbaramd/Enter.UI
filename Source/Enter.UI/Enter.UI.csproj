@@ -4,27 +4,30 @@
         <TargetFramework>net7.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <RootNamespace>Enter.UI</RootNamespace>
         <PackageId>Enter.Ui</PackageId>
         <Version>1.0.84</Version>
         <Authors>Akbar Ahmadi</Authors>
         <Company>AhmadiCo</Company>
         <PackageReadmeFile>Readme.md</PackageReadmeFile>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <AssemblyName>Enter.Ui</AssemblyName>
+        <RootNamespace>Enter.Ui</RootNamespace>
+
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="..\..\Readme.md" Pack="true" PackagePath="."/>
+        <None Include="..\..\Readme.md" Pack="true" PackagePath="." />
     </ItemGroup>
 
     <ItemGroup>
-        <SupportedPlatform Include="browser"/>
+        <SupportedPlatform Include="browser" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.10"/>
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.10"/>
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.10"/>
+        <PackageReference Include="AspNetCore.SassCompiler" Version="1.69.5" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.10" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.10" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.10" />
     </ItemGroup>
 
     <Target Name="ToolRestore">
@@ -40,246 +43,61 @@
 
     <Target Name="CleanGeneratedFiles" BeforeTargets="Clean" Condition="'$(CleanGeneratedFiles)' != 'false'">
         <ItemGroup>
-            <FilesToClean Include="./Styles/combined/*.*"/>
-            <FilesToClean Include="./Scripts/combined/*.*"/>
-            <FilesToClean Include="./wwwroot/js/Enter.Ui.min.js"/>
-            <FilesToClean Include="./wwwroot/js/Enter.Ui.js"/>
-            <FilesToClean Include="./wwwroot/css/Enter.Ui.min.css"/>
-            <FilesToClean Include="./Styles/Enter.Ui.min.css"/>
-            <FilesToClean Include="./Styles/Enter.Ui.css"/>
+            <FilesToClean Include="./Styles/combined/*.*" />
+            <FilesToClean Include="./Scripts/combined/*.*" />
+            <FilesToClean Include="./wwwroot/js/Enter.Ui.min.js" />
+            <FilesToClean Include="./wwwroot/js/Enter.Ui.js" />
+            <FilesToClean Include="./wwwroot/js/Enter.Ui.js" />
         </ItemGroup>
-        <Delete Files="@(FilesToClean)"/>
+        <Delete Files="@(FilesToClean)" />
     </Target>
 
     <!--combine js files-->
     <Target Name="CombineJS" DependsOnTargets="CleanGeneratedFiles">
         <CreateItem Include="./Scripts/**/*.js">
-            <Output TaskParameter="Include" ItemName="jsFilesToCombine"/>
+            <Output TaskParameter="Include" ItemName="jsFilesToCombine" />
         </CreateItem>
         <ReadLinesFromFile File="%(jsFilesToCombine.FullPath)">
-            <Output TaskParameter="Lines" ItemName="jsLines"/>
+            <Output TaskParameter="Lines" ItemName="jsLines" />
         </ReadLinesFromFile>
-        <WriteLinesToFile File="./wwwroot/js/Enter.Ui.js" Lines="@(jsLines)" Overwrite="true"/>
+        <WriteLinesToFile File="./wwwroot/js/Enter.Ui.js" Lines="@(jsLines)" Overwrite="true" />
     </Target>
 
     <Target Name="WebCompiler" DependsOnTargets="ToolRestore;CombineJS">
-        <!--compile and minify scss-->
-        <Exec Command="webcompiler ./Styles/Enter.Ui.scss -c excubowebcompiler.scss.json" StandardOutputImportance="high" StandardErrorImportance="high"/>
-        <!--minify js-->
-        <Exec Command="webcompiler ./wwwroot/js/Enter.Ui.js -c excubowebcompiler.js.json" StandardOutputImportance="high" StandardErrorImportance="high"/>
+
+<!--        <Exec Command="webcompiler ./Styles/Enter.Ui.scss -c excubowebcompiler.scss.json" StandardOutputImportance="high" StandardErrorImportance="high" />-->
+        <Exec Command="webcompiler ./wwwroot/js/Enter.Ui.js -c excubowebcompiler.js.json" StandardOutputImportance="high" StandardErrorImportance="high" />
     </Target>
 
     <Target Name="IncludeGeneratedStaticFiles" DependsOnTargets="WebCompiler" BeforeTargets="BeforeBuild">
-        <!--    <Error Condition="!Exists('$(MSBuildProjectDirectory)/wwwroot/css/Enter.Ui.min.css')" Text="Missing Enter.Ui.min.css in wwwroot" />-->
-        <!--    <Error Condition="!Exists('$(MSBuildProjectDirectory)/wwwroot/js/Enter.Ui.min.js')" Text="Missing Enter.Ui.min.js in wwwroot" />-->
+<!--            <Error Condition="!Exists('$(MSBuildProjectDirectory)/wwwroot/css/Enter.Ui.min.css')" Text="Missing Enter.Ui.min.css in wwwroot" />-->
+            <Error Condition="!Exists('$(MSBuildProjectDirectory)/wwwroot/js/Enter.Ui.min.js')" Text="Missing Enter.Ui.min.js in wwwroot" />
         <ItemGroup>
             <!--Include without duplication-->
-            <_NewCompiledCssFiles Include="wwwroot/css/Enter.Ui.min.css" Exclude="@(Content)"/>
-            <_NewCompiledJsFiles Include="wwwroot/js/Enter.Ui.min.js" Exclude="@(Content)"/>
-            <_NewCompiledJsFiles Include="wwwroot/js/Enter.Ui.js" Exclude="@(Content)"/>
-            <Content Include="@(_NewCompiledCssFiles)"/>
-            <Content Include="@(_NewCompiledJsFiles)"/>
+<!--            <_NewCompiledCssFiles Include="wwwroot/css/Enter.Ui.min.css" Exclude="@(Content)" />-->
+            <_NewCompiledJsFiles Include="wwwroot/js/Enter.Ui.min.js" Exclude="@(Content)" />
+            <_NewCompiledJsFiles Include="wwwroot/js/Enter.Ui.js" Exclude="@(Content)" />
+<!--            <Content Include="@(_NewCompiledCssFiles)" />-->
+            <Content Include="@(_NewCompiledJsFiles)" />
         </ItemGroup>
     </Target>
 
     <!--Dont Include in build output-->
     <ItemGroup>
-        <Content Remove="wwwroot/DoNotRemove.txt"/>
+        <Content Remove="wwwroot/DoNotRemove.txt" />
         <!--macOS hidden file (causes problems with dotnet pack)-->
-        <Content Remove="**/*/.DS_Store"/>
-        <Content Remove="Assets\combined\**"/>
-        <Content Update="styles\components\_components.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\components\_ent_app_bar.component.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\components\_ent_button.component.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\components\_ent_card.component.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\components\_ent_drawer.component.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\components\_ent_expandable.component.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\components\_ent_form.component.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\components\_ent_icon.component.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\components\_ent_list.component.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\components\_ent_loading.component.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\components\_ent_messagebox.component.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\components\_ent_modal.component.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\components\_ent_nav_menu.component.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\components\_ent_overlay.component.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\components\_ent_pagination.component.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\components\_ent_popover.component.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\components\_ent_shimmer.component.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\components\_ent_tab.component.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\components\_ent_table.component.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\components\_ent_toast.component.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\components\_ent_toolbar.component.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\components\_ent_treeview.component.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\themes\basic.theme.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\themes\dark.theme.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\themes\light.theme.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\Enter.Ui.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\Enter.Ui.css">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-            <DependentUpon>Enter.Ui.scss</DependentUpon>
-        </Content>
-        <Content Update="styles\Enter.Ui.min.css">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-            <DependentUpon>Enter.Ui.css</DependentUpon>
-        </Content>
-        <Content Update="styles\_core.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\_fonts.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\_mixins.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\_normalize.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\_variables.scss">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\Enter.Ui.css">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="styles\Enter.Ui.min.css">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-            <DependentUpon>Enter.Ui.css</DependentUpon>
-        </Content>
-        <Content Update="styles\Enter.Ui.min.css">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
+        <Content Remove="**/*/.DS_Store" />
+        <Content Remove="Assets\combined\**" />
     </ItemGroup>
-
     <ItemGroup>
-        <!--For automatic compile on save of the scss use
-        cd ./src/MudBlazor
-        dotnet watch webcompiler ./Styles/EnterUi.scss -c excubowebcompiler.json
-        -->
-        <Watch Include="**/*.scss"/>
+      <_ContentIncludedByDefault Remove="wwwroot\css\Styles.razor.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\css\Styles.razor.css.map" />
     </ItemGroup>
-
     <ItemGroup>
-        <Folder Include="Abstractions\Components\Icon\"/>
-        <Folder Include="Abstractions\Components\Loading\"/>
-        <Folder Include="Abstractions\Components\Popover\"/>
-        <Folder Include="Styles\fonts\"/>
-        <Folder Include="wwwroot\"/>
-        <Folder Include="wwwroot\css\"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <_ContentIncludedByDefault Remove="Assets\Lib\remix\remixicon.glyph.json"/>
-        <_ContentIncludedByDefault Remove="wwwroot\combined\Enter.Ui.js"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Compile Remove="Abstractions\Services\IEntToastService.cs"/>
-        <Compile Remove="Abstractions\JsServices\IEntJsService.cs"/>
-        <Compile Remove="Abstractions\IEntConfiguration.cs"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <None Remove="Styles\base\_utilities.scss"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Watch Remove="styles\base\base.scss"/>
-        <Watch Remove="Styles\base\_utilities.scss"/>
-        <Watch Remove="styles\fonts\fonts.scss"/>
-        <Watch Remove="styles\mixins\mixins.scss"/>
-        <Watch Remove="styles\themes\theme.scss"/>
-        <Watch Remove="Styles\themes\_basic.theme.scss"/>
-        <Watch Remove="Styles\themes\_dark.theme.scss"/>
-        <Watch Remove="Styles\themes\_light.theme.scss"/>
-        <Watch Remove="styles\variables\variables.scss"/>
+      <Folder Include="wwwroot\css" />
     </ItemGroup>
 
 
+
+ 
 </Project>

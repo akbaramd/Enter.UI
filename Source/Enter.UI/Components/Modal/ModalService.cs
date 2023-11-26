@@ -1,9 +1,10 @@
-﻿using Enter.UI.Components.Modal;
-using Enter.UI.Core;
-using Enter.UI.Services;
+﻿using Enter.Ui.Components.Modal;
+using Enter.Ui.Core;
+using Enter.Ui.Services;
 using Microsoft.AspNetCore.Components;
 
-namespace Enter.UI.Components;
+// ReSharper disable once CheckNamespace
+namespace Enter.Ui.Components;
 
 public class ModalService : IEntModalService
 {

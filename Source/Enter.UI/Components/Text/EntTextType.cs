@@ -1,4 +1,4 @@
-namespace Enter.UI.Components.Text;
+namespace Enter.Ui.Components.Text;
 
 public enum EntTextType
 {

@@ -1,4 +1,4 @@
-﻿namespace Enter.UI.Components.Button;
+﻿namespace Enter.Ui.Components.Button;
 
 public enum ButtonMode
 {

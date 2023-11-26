@@ -1,0 +1,56 @@
+﻿@namespace Enter.Ui.Components
+@using Enter.Ui.Components.Toast.Services
+@inherits Enter.Ui.Cores.Bases.EntComponentBase
+
+@if (ChildContent is not null)
+{
+    <div class="ent-toast ent-toast-component @Options.AdditionalClasses" @onmouseover="TryPauseCountdown" @onmouseout="TryResumeCountdown">
+        <CascadingValue Value="this" IsFixed="true">
+            @ChildContent
+        </CascadingValue>
+
+        @if (Options is { DisableTimeout: false, ShowProgressBar: true })
+        {
+            <div class="ent-toast-progressbar">
+                <span style="width: @(_progress)%;"></span>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="ent-toast @Options.AdditionalClasses" @onclick="ToastClick" @onmouseover="TryPauseCountdown" @onmouseout="TryResumeCountdown">
+
+        @if (ShowIconDiv())
+        {
+            <i class="ent-toast-icon @Options.Icon">
+            </i>
+        }
+
+        <p class="ent-toast-message">@Message</p>
+
+        @if (Options.DisableTimeout!.Value || Options.ShowCloseButton!.Value)
+        {
+            <button type="button" class="ent-toast-close" @onclick=@Close>
+                <i aria-label="icon: close" class="ent-toast-close-icon">
+                    @if (CloseButtonContent != null)
+                    {
+                        @CloseButtonContent
+                    }
+                    else
+                    {
+                        <i class="ri-close-line">
+            </i>
+                    }
+                </i>
+            </button>
+        }
+
+        @if (Options is { DisableTimeout: false, ShowProgressBar: true })
+        {
+            <div class="ent-toast-progressbar">
+                <span style="width: @(_progress)%;"></span>
+            </div>
+        }
+    </div>
+}

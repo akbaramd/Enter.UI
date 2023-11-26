@@ -1,4 +1,4 @@
-﻿namespace Enter.UI.Components.Tabs;
+﻿namespace Enter.Ui.Components.Tabs;
 
 public class EntMdiTabInstance
 {

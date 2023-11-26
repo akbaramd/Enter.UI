@@ -1,4 +1,4 @@
-namespace Enter.UI.Components.Loading;
+namespace Enter.Ui.Components.Loading;
 
 public enum EntLoadingSize
 {

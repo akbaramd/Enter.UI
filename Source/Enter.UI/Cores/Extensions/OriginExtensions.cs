@@ -1,7 +1,7 @@
-﻿using Enter.UI.Core.Attributes;
-using Enter.UI.Core.Enums;
+﻿using Enter.Ui.Core.Attributes;
+using Enter.Ui.Core.Enums;
 
-namespace Enter.UI.Core.Extensions;
+namespace Enter.Ui.Core.Extensions;
 
 public static class OriginExtensions
 {

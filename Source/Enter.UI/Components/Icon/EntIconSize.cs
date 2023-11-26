@@ -1,4 +1,4 @@
-﻿namespace Enter.UI.Components.Icon;
+﻿namespace Enter.Ui.Components.Icon;
 
 public enum EntIconSize
 {

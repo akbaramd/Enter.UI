@@ -1,6 +1,6 @@
 using System.Linq.Expressions;
 
-namespace Enter.UI.Core;
+namespace Enter.Ui.Core;
 
 public class ParameterBuilder<TComponent>
 {

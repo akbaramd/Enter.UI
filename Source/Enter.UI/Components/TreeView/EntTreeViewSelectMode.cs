@@ -1,4 +1,4 @@
-namespace Enter.UI.Components.TreeView;
+namespace Enter.Ui.Components.TreeView;
 
 public enum EntTreeViewSelectMode
 {

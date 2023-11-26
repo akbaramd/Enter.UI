@@ -1,7 +1,7 @@
-﻿using Enter.UI.Core;
+﻿using Enter.Ui.Core;
 using Microsoft.AspNetCore.Components;
 
-namespace Enter.UI.Cores.Bases;
+namespace Enter.Ui.Cores.Bases;
 
 public abstract class EntResponsiveComponentBase : EntComponentBase
 {

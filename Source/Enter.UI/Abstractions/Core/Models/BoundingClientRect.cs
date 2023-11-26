@@ -1,4 +1,4 @@
-﻿namespace Enter.UI.Abstractions.Models;
+﻿namespace Enter.Ui.Abstractions.Models;
 
 public class BoundingClientRect
 {

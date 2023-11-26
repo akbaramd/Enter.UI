@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
-namespace Enter.UI.Core.Extensions;
+namespace Enter.Ui.Core.Extensions;
 
 internal static class EnumExtensions
 {

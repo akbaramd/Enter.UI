@@ -1,8 +1,9 @@
-﻿using Enter.UI.Components.Animator;
-using Enter.UI.Cores.Bases;
+﻿using Enter.Ui.Components.Animator;
+using Enter.Ui.Cores.Bases;
 using Microsoft.AspNetCore.Components;
 
-namespace Enter.UI.Components;
+// ReSharper disable once CheckNamespace
+namespace Enter.Ui.Components;
 
 public partial class EntAnimator : EntComponentBase
 {

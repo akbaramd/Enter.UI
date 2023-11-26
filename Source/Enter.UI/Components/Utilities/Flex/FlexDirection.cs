@@ -1,4 +1,4 @@
-﻿namespace Enter.UI.Components.Flex;
+﻿namespace Enter.Ui.Components.Flex;
 
 public enum FlexDirection
 {

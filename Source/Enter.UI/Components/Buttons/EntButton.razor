@@ -1,7 +1,8 @@
-﻿@namespace Enter.UI.Components
-@using Enter.UI.Components.Button
-@using Enter.UI.Components.Icon
-@inherits Enter.UI.Cores.Bases.EntComponentBase
+﻿
+@namespace Enter.Ui.Components
+@using Enter.Ui.Components.Button
+@using Enter.Ui.Components.Icon
+@inherits Enter.Ui.Cores.Bases.EntComponentBase
 
 <button @attributes="@AdditionalAttributes" disabled="@(Disabled ? true : false)" class="@RootClass">
     @if (Icon != null && !Loading)

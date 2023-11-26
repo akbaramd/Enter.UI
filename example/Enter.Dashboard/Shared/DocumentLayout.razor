@@ -1,15 +1,16 @@
 ﻿@inherits LayoutComponentBase
-@using Enter.UI.Components.Drawer
-@using Enter.UI.Components.Icon
-@using Enter.UI.Core.Enums
-@using Enter.UI.Services
+@using Enter.Ui.Components.Drawer
+@using Enter.Ui.Components.Icon
+@using Enter.Ui.Components.Toast.Configuration
+@using Enter.Ui.Core.Enums
+@using Enter.Ui.Services
 @implements IDisposable
 <div class="h-full border-y d-flex flex-column">
     <div class="d-flex flex-column flex-grow-1">
         <EntAppBar ShowToggle="_showToggle" ToggleClick="ToggleSidebar" Title="Enterprise Dashboard">
             <EntButton @onclick="ToggleRtl" Icon="EntIconName.AlignRight"/>
             <EntButton @onclick="ToggleDarkMode" Icon="EntIconName.Moon"/>
-            <EntButton @onclick="() => _isSideDrawerOpen = !_isSideDrawerOpen" Icon="EntIconName.Note"/>
+            <EntButton @onclick="@(() => _isSideDrawerOpen = !_isSideDrawerOpen)" Icon="EntIconName.Note"/>
         </EntAppBar>
         <EntDrawerContainer class="flex-grow-1">
             <EntDrawer HasBackdrop="HasBackdrop" @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start" Mode="_drawerMode" class="z-50">
@@ -21,6 +22,7 @@
                         <EntNavMenuTextItem class="bg-light" Text="Shimmer" Click="@(() => Navigate("/documents/shimmer"))"/>
                         <EntNavMenuTextItem class="bg-light" Text="Loading" Click="@(() => Navigate("/documents/loading"))"/>
                         <EntNavMenuTextItem class="bg-light" Text="Modals" Click="@(() => Navigate("/documents/modals"))"/>
+                        <EntNavMenuTextItem class="bg-light" Text="Toasts" Click="@(() => Navigate("/documents/toasts"))"/>
                         <EntNavMenuTextItem class="bg-light" Text="TreeView" Click="@(() => Navigate("/documents/treeview"))"/>
                         <EntNavMenuTextItem class="bg-light" Text="NavMenu" Click="@(() => Navigate("/documents/navmenu"))"/>
                         <EntNavMenuTextItem class="bg-light" Text="Table" Click="@(() => Navigate("/documents/datatable"))"/>
@@ -46,10 +48,11 @@
             </div>
         </EntDrawerContainer>
     </div>
-    <EntModalProvider/>
-    <EntPopoverProvider/>
-    <EntToastProvider/>
+
 </div>
+<EntModalProvider/>
+<EntPopoverProvider/>
+<EntToastProviders />
 
 @code {
 

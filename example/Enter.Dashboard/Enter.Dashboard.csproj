@@ -5,27 +5,21 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
-        <RootNamespace>Enter.Dashboard</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="Pages\Index.razor"/>
-        <None Include="Shared\MainLayout.razor"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.10"/>
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.10" PrivateAssets="all"/>
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.10" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.10" PrivateAssets="all" />
     </ItemGroup>
 
 
     <ItemGroup>
-        <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js"/>
+        <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
     </ItemGroup>
 
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Source\Enter.UI\Enter.UI.csproj"/>
+        <ProjectReference Include="..\..\Source\Enter.Ui\Enter.Ui.csproj" />
     </ItemGroup>
 
 

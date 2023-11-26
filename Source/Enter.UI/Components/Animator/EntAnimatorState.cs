@@ -1,4 +1,4 @@
-﻿namespace Enter.UI.Components.Animator;
+﻿namespace Enter.Ui.Components.Animator;
 
 public enum EntAnimatorState
 {

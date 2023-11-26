@@ -1,4 +1,4 @@
-namespace Enter.UI.Components.Expandable;
+namespace Enter.Ui.Components.Expandable;
 
 public enum EntExpandableDirection
 {

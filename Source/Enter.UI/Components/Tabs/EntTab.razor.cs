@@ -1,8 +1,9 @@
-using Enter.UI.Core;
-using Enter.UI.Cores.Bases;
+using Enter.Ui.Core;
+using Enter.Ui.Cores.Bases;
 using Microsoft.AspNetCore.Components;
 
-namespace Enter.UI.Components;
+// ReSharper disable once CheckNamespace
+namespace Enter.Ui.Components;
 
 public partial class EntTab : EntTabBase
 {

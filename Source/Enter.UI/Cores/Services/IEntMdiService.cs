@@ -1,7 +1,7 @@
-﻿using Enter.UI.Components.Tabs;
+﻿using Enter.Ui.Components.Tabs;
 using Microsoft.AspNetCore.Components;
 
-namespace Enter.UI.Services;
+namespace Enter.Ui.Services;
 
 public interface IEntMdiService
 {

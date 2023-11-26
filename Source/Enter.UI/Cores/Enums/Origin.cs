@@ -1,6 +1,6 @@
-﻿using Enter.UI.Core.Attributes;
+﻿using Enter.Ui.Core.Attributes;
 
-namespace Enter.UI.Core.Enums;
+namespace Enter.Ui.Core.Enums;
 
 public enum Origin
 {

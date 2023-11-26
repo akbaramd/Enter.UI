@@ -1,8 +1,8 @@
 # Enterprice Ui framework for Blazor
 
-![GitHub](https://img.shields.io/github/license/Akbarsafari00/Enter.UI?style=flat-squar&logo=github)
-![GitHub Repo forks](https://img.shields.io/github/forks/Akbarsafari00/Enter.UI?style=flat-squar&logo=github)
-![GitHub Repo stars](https://img.shields.io/github/stars/Akbarsafari00/Enter.UI?style=flat-squar&logo=github&color=594ae2)
+![GitHub](https://img.shields.io/github/license/Akbarsafari00/Enter.Ui?style=flat-squar&logo=github)
+![GitHub Repo forks](https://img.shields.io/github/forks/Akbarsafari00/Enter.Ui?style=flat-squar&logo=github)
+![GitHub Repo stars](https://img.shields.io/github/stars/Akbarsafari00/Enter.Ui?style=flat-squar&logo=github&color=594ae2)
 [![Nuget version](https://img.shields.io/nuget/v/Enter.Ui?color=ff4081&label=nuget%20version&logo=nuget&style=flat-square)](https://www.nuget.org/packages/Enter.Ui)
 
 [![My Skills](https://skillicons.dev/icons?i=dotnet,scss,js)](https://github.com/akbaramd)

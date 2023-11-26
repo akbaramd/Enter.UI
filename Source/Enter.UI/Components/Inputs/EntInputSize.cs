@@ -1,4 +1,4 @@
-namespace Enter.UI.Components.Inputs;
+namespace Enter.Ui.Components.Inputs;
 
 public enum EntInputSize
 {

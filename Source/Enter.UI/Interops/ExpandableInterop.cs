@@ -1,7 +1,7 @@
-﻿using Enter.UI.JsServices;
+﻿using Enter.Ui.JsServices;
 using Microsoft.JSInterop;
 
-namespace Enter.UI.Interops;
+namespace Enter.Ui.Interops;
 
 internal class ExpandableInterop
 {

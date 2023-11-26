@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace Enter.UI.Components.Popover;
+namespace Enter.Ui.Components.Popover;
 
 public class EntPopoverInstance
 {

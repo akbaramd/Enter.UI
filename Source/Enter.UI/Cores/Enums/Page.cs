@@ -1,4 +1,4 @@
-﻿namespace Enter.UI.Core.Enums;
+﻿namespace Enter.Ui.Core.Enums;
 
 public enum Page
 {

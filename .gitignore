@@ -18,3 +18,6 @@
 
 **/*/package-lock.json
 
+**/*/*.razor.css
+/*.razor.css
+*.razor.css

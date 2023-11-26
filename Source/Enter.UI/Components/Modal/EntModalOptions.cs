@@ -1,4 +1,4 @@
-﻿namespace Enter.UI.Components.Modal;
+﻿namespace Enter.Ui.Components.Modal;
 
 public class EntModalOptions
 {

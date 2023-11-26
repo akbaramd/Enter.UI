@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace Enter.UI.Core;
+namespace Enter.Ui.Core;
 
 public static class EventUtil
 {

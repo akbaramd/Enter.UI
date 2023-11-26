@@ -1,9 +1,10 @@
-﻿using Enter.UI.Components;
-using Enter.UI.Components.Tabs;
-using Enter.UI.Services;
+﻿using Enter.Ui.Components;
+using Enter.Ui.Components.Tabs;
+using Enter.Ui.Components.Toast.Services;
+using Enter.Ui.Services;
 using Microsoft.AspNetCore.Components;
 
-namespace Enter.UI.Cores.Bases;
+namespace Enter.Ui.Cores.Bases;
 
 public abstract class EntPageBase : ComponentBase, IDisposable
 {

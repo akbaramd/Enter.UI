@@ -1,10 +1,11 @@
-﻿using Enter.UI.Components.Popover;
-using Enter.UI.Interops;
-using Enter.UI.JsServices;
-using Enter.UI.Services;
+﻿using Enter.Ui.Components.Popover;
+using Enter.Ui.Interops;
+using Enter.Ui.JsServices;
+using Enter.Ui.Services;
 using Microsoft.AspNetCore.Components;
 
-namespace Enter.UI.Components;
+// ReSharper disable once CheckNamespace
+namespace Enter.Ui.Components;
 
 public class EntPopoverService : IEntPopoverService
 {

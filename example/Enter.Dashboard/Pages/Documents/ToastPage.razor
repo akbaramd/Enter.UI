@@ -1,0 +1,38 @@
+﻿@page "/documents/toasts"
+@using Enter.Ui.Components.Modal
+@using Enter.Ui.Core
+@using Enter.Ui.Components.Flex
+@using Enter.Ui.Components.Toast.Services
+@inherits Enter.Ui.Cores.Bases.EntPageBase
+@layout DocumentLayout
+<div class="p-4">
+    <EntCard Expandable="true" Title="Success">
+        <CardBody>
+            <EntFlex Direction="FlexDirection.Column"
+                     LaptopDirection="FlexDirection.Row"
+                     LaptopAlign="FlexAlign.StartCenter"
+                     Gap="4">
+                <EntButton type="button" @onclick="() => OpenToast(EntToastLevel.Success)">Toast Success</EntButton>
+                <EntButton type="button" @onclick="() => OpenToast(EntToastLevel.Error)">Toast Error</EntButton>
+                <EntButton type="button" @onclick="() => OpenToast(EntToastLevel.Warning)">Toast Warning</EntButton>
+                <EntButton type="button" @onclick="() => OpenToast(EntToastLevel.Info)">Toast Info</EntButton>
+            </EntFlex>
+        </CardBody>
+    </EntCard>
+
+</div>
+
+@code {
+
+    [Inject]
+    IEntToastService EntToastService { get; set; }
+    public async Task OpenToast(EntToastLevel type)
+    {
+      ToastService.ShowToast(type,"asdasd", options =>
+       {
+           options.Timeout = 50;
+           options.ShowProgressBar = true;
+       });
+    }
+
+}

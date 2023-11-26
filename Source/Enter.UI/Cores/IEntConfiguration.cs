@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Enter.UI.Abstractions;
+namespace Enter.Ui.Abstractions;
 
 public interface IEntConfiguration
 {

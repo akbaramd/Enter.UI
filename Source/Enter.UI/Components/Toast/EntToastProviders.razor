@@ -1,0 +1,29 @@
+﻿@namespace Enter.Ui.Components
+@inherits Enter.Ui.Cores.Bases.EntComponentBase
+@if (ToastList.Any())
+{
+    @foreach (var positionGroupedToasts in ToastList.GroupBy(x => x.EntToastOptions.PositionClass))
+    {
+        <div class="ent-toast-container @positionGroupedToasts.Key" @key="positionGroupedToasts.Key">
+            <CascadingValue Value=this IsFixed="true">
+                @foreach (var toast in positionGroupedToasts!.OrderBy(x => x.TimeStamp))
+                {
+                    if (toast.CustomComponent is not null)
+                    {
+                        <EntToast @key="toast" ToastId="toast.Id" Options="toast.EntToastOptions">
+                            @toast.CustomComponent
+                        </EntToast>
+                    }
+                    else
+                    {
+                        <EntToast @key="toast"
+                                       ToastId="toast.Id"
+                                       Message="toast.Message"
+                                       Level="toast.Level"
+                                       Options="toast.EntToastOptions"/>
+                    }
+                }
+            </CascadingValue>
+        </div>
+    }
+}

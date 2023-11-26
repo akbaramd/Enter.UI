@@ -1,4 +1,4 @@
-﻿namespace Enter.UI.Core.Extensions;
+﻿namespace Enter.Ui.Core.Extensions;
 
 internal static class DictionaryExtensions
 {

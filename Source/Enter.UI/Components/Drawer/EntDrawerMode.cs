@@ -1,4 +1,4 @@
-﻿namespace Enter.UI.Components.Drawer;
+﻿namespace Enter.Ui.Components.Drawer;
 
 [Flags]
 public enum EntDrawerMode

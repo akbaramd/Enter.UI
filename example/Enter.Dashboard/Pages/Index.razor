@@ -1,9 +1,10 @@
 ﻿@page "/"
 @using Enter.Dashboard.Model
-@using Enter.UI.Services
-@using Enter.UI.Components.Modal
-@using Enter.UI.Components.Toast
-@using Enter.UI.Components.Flex
+@using Enter.Ui.Services
+@using Enter.Ui.Components.Modal
+@using Enter.Ui.Components.Toast
+@using Enter.Ui.Components.Flex
+@using Enter.Ui.Components.Toast.Services
 @layout DocumentLayout
 
 <PageTitle>Index</PageTitle>
@@ -71,25 +72,7 @@
     //IsPopoverOpen = !IsPopoverOpen;
     }
 
-    public async Task OpenToast(EntToastType type)
-    {
-        switch (type)
-        {
-            case EntToastType.Info:
-                await ToastService.NotifyInfoAsync("Info", "The content we display");
-                break;
-            case EntToastType.Success:
-                await ToastService.NotifySuccessAsync("Success", "The content we display");
-                break;
-            case EntToastType.Danger:
-                await ToastService.NotifyDangerAsync("Danger", "The content we display");
-                break;
-            case EntToastType.Warning:
-                break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(type), type, null);
-        }
-    }
+    
 
     private async Task OnSearchChangeCallBack(string search)
     {

@@ -1,4 +1,4 @@
-namespace Enter.UI.Components.Shimmer;
+namespace Enter.Ui.Components.Shimmer;
 
 public enum EntShimmerType
 {

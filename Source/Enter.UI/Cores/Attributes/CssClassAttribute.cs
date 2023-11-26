@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Enter.UI.Core.Attributes;
+namespace Enter.Ui.Core.Attributes;
 
 [AttributeUsage(AttributeTargets.All)]
 public class CssClassAttribute : Attribute

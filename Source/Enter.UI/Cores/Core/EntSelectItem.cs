@@ -1,4 +1,4 @@
-﻿namespace Enter.UI.Core;
+﻿namespace Enter.Ui.Core;
 
 public class EntSelectItem<TValue>
 {

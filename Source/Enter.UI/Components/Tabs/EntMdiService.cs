@@ -1,8 +1,9 @@
-﻿using Enter.UI.Components.Tabs;
-using Enter.UI.Services;
+﻿using Enter.Ui.Components.Tabs;
+using Enter.Ui.Services;
 using Microsoft.AspNetCore.Components;
 
-namespace Enter.UI.Components;
+// ReSharper disable once CheckNamespace
+namespace Enter.Ui.Components;
 
 internal class EntMdiService : IEntMdiService
 {

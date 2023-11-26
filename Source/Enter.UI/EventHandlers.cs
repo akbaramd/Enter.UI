@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
-namespace Enter.UI;
+namespace Enter.Ui;
 
 [EventHandler("ontransitionend", typeof(EventArgs), true, false)]
 [EventHandler("onanimationend", typeof(EventArgs), true, false)]

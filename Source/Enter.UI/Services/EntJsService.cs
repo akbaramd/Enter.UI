@@ -1,7 +1,7 @@
-﻿using Enter.UI.JsServices;
+﻿using Enter.Ui.JsServices;
 using Microsoft.JSInterop;
 
-namespace Enter.UI.JsService;
+namespace Enter.Ui.JsService;
 
 public class EntJsService : IEntJsService, IAsyncDisposable
 {
@@ -26,7 +26,7 @@ public class EntJsService : IEntJsService, IAsyncDisposable
     {
         return await _jsRuntime
             .InvokeAsync<IJSObjectReference>("import",
-                $"./_content/Enter.UI/js/{path}").AsTask();
+                $"./_content/Enter.Ui/js/{path}").AsTask();
     }
 
     public async Task<IJSObjectReference> LoadReferenceAsync(string path)

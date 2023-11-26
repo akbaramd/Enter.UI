@@ -1,9 +1,9 @@
-using Enter.UI.Abstractions;
-using Enter.UI.Components.Icon;
-using Enter.UI.Providers;
+using Enter.Ui.Abstractions;
+using Enter.Ui.Components.Icon;
+using Enter.Ui.Providers;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Enter.UI;
+namespace Enter.Ui;
 
 public static class FontAwesomeIconExtensions
 {

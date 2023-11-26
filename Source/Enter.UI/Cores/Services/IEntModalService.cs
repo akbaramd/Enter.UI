@@ -1,7 +1,7 @@
-﻿using Enter.UI.Components.Modal;
+﻿using Enter.Ui.Components.Modal;
 using Microsoft.AspNetCore.Components;
 
-namespace Enter.UI.Services;
+namespace Enter.Ui.Services;
 
 public interface IEntModalService
 {
