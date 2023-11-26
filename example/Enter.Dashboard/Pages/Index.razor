@@ -1,0 +1,90 @@
+﻿@page "/"
+@using Enter.Dashboard.Model
+@using Enter.Ui.Components.Flex
+@using Enter.Ui.Components.Modal
+@using Enter.Ui.Components.Toast.Services
+@using Enter.Ui.Services
+
+@layout DocumentLayout
+
+<PageTitle>Index</PageTitle>
+
+<EntFlex class="h-full" Direction="FlexDirection.Column">
+    <div class="row p-8">
+        <div class="tablet:col-6">
+            <EntCard Title="Default" Expandable="true" class="mb-8">
+                <CardBody>
+                    <EntFlex Direction="FlexDirection.Column">
+                        <b>This page is the default in EntMdiTab</b>
+                    </EntFlex>
+                </CardBody>
+            </EntCard>
+
+        </div>
+        <div class="tablet:col-6">
+            <EntCard Title="Default" Expandable="true" class="mb-8">
+                <CardBody>
+                    <EntFlex Direction="FlexDirection.Column">
+                        <b>This page is the default in EntMdiTab</b>
+                    </EntFlex>
+                </CardBody>
+            </EntCard>
+
+        </div>
+    </div>
+</EntFlex>
+
+@code {
+
+
+    public List<string> TreeSelectedValues { get; set; } = new() { "Admin" };
+    public string TreeSelectedValue { get; set; } = "Admin";
+    public bool IsPopoverOpen { get; set; }
+    public bool IsSidebarOpen { get; set; } = true;
+    public string AutoCompleteValue { get; set; }
+    public string SelectValue { get; set; }
+
+    public List<Users> AutoCompleteDataSource { get; set; } = Constants.Users;
+    [Inject]
+    public IEntMdiService EntMdiService { get; set; }
+    [Inject]
+    public IEntModalService ModalService { get; set; }
+
+    [Inject]
+    public IEntToastService ToastService { get; set; }
+
+    public async Task OpenModal(EntModalSize size)
+    {
+        var confirmResult =  ModalService.MessageBox("Open Modal", "Are you sure to oprn Modal?", "Show", "Dismiss");
+        if ((await confirmResult.Result).Confirmed)
+        {
+    // var parameter = new ParameterBuilder<Counter>()
+    //     .Build();
+    //
+    // var result = await ModalService.ShowAsync<Counter>("sada", parameter, new EntModalOptions
+    // {
+    //     Size = size
+    // });
+        }
+    }
+
+    public void OpenPopover()
+    {
+    //IsPopoverOpen = !IsPopoverOpen;
+    }
+   
+     
+
+
+
+    private async Task OnSearchChangeCallBack(string search)
+    {
+        AutoCompleteDataSource = Constants.Users.Where(x => x.Name.Contains(search)).ToList();
+    }
+
+    public async Task ToggleDrawer()
+    {
+        IsSidebarOpen = !IsSidebarOpen;
+    }
+
+}

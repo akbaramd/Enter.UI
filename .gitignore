@@ -2,7 +2,7 @@
 **/obj/
 
 **/node_modules/
-
+.config
 .github
 .idea
 .vs
