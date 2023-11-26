@@ -19,5 +19,8 @@
 **/*/package-lock.json
 
 **/*/*.razor.css
+**/*/*.razor.css.map
 /*.razor.css
+/*.razor.css.map
 *.razor.css
+*.razor.css.map

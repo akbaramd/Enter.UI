@@ -20,13 +20,13 @@ public static class Extensions
 #endif
         
         services.AddSingleton<IEntIconProvider, EntIconProvider>();
-        services.AddSingleton<IEntMdiService, EntMdiService>();
-        services.AddSingleton<IEntModalService, ModalService>();
-        services.AddSingleton<IEntPopoverService, EntPopoverService>();
-        services.AddSingleton<IEntToastService, EntToastService>();
-        services.AddSingleton<IEntJsService, EntJsService>();
-        services.AddSingleton<IEntSharedJsService, EntSharedJsService>();
-        services.AddTransient<EntIcon>();
+        services.AddScoped<IEntMdiService, EntMdiService>();
+        services.AddScoped<IEntModalService, ModalService>();
+        services.AddScoped<IEntPopoverService, EntPopoverService>();
+        services.AddScoped<IEntToastService, EntToastService>();
+        services.AddScoped<IEntJsService, EntJsService>();
+        services.AddScoped<IEntSharedJsService, EntSharedJsService>();
+        
         return new EntConfiguration
         {
             Services = services

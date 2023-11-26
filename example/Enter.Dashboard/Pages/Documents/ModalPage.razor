@@ -3,7 +3,7 @@
 @using Enter.Ui.Core
 @using Enter.Ui.Components.Flex
 @inherits Enter.Ui.Cores.Bases.EntPageBase
-@layout DocumentLayout
+@layout DocumentLayout2
 <div class="p-4">
     <EntCard Expandable="true" Title="Modals">
         <CardBody>
@@ -26,13 +26,13 @@
 
     public async Task OpenModal(EntModalSize size)
     {
-        var confirmResult = await ModalService.MessageBoxAsync("Open Modal", "Are you sure to oprn Modal?", "Show", "Dismiss");
-        if (!confirmResult.Canceled)
+        var confirmResult =  ModalService.MessageBox("Open Modal", "Are you sure to oprn Modal?", "Show", "Dismiss");
+        if ((await confirmResult.Result).Confirmed)
         {
             var parameter = new ParameterBuilder<UploadBoxPage>()
                 .Build();
 
-            var result = await ModalService.ShowAsync<UploadBoxPage>("sada", parameter, new EntModalOptions
+            var result =  ModalService.Show<UploadBoxPage>("sada", null, new EntModalOptions
             {
                 Size = size
             });

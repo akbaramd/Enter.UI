@@ -113,12 +113,12 @@ public partial class EntTab : EntTabBase
 
     private async Task OnTabClose(string id)
     {
-        await OnTabClosedClick.InvokeAsync(id);
+        await OnTabClosed.InvokeAsync(id);
     }
 
     private async Task OnTabAllClose()
     {
-        await OnAllTabClosedClick.InvokeAsync();
+        await OnAllTabClosed.InvokeAsync();
     }
 
     private void OnToggleMenu()
@@ -157,8 +157,8 @@ public class EntTabBase : EntResponsiveComponentBase
     [Parameter] public EventCallback<string?> OnTabActivated { get; set; }
     [Parameter] public EventCallback<EntTabPanel> OnTabAdded { get; set; }
     [Parameter] public EventCallback<string> OnTabRemoved { get; set; }
-    [Parameter] public EventCallback<string> OnTabClosedClick { get; set; }
-    [Parameter] public EventCallback OnAllTabClosedClick { get; set; }
+    [Parameter] public EventCallback<string> OnTabClosed { get; set; }
+    [Parameter] public EventCallback OnAllTabClosed { get; set; }
 
     public override void Dispose()
     {
