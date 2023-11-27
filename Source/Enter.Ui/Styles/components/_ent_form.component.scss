@@ -89,6 +89,11 @@
 .ent-input-autocomplete {
   border-radius: var(--ent-card-border-radius);
   overflow: hidden;
+  border: 0;
+}
+
+.ent-input-autocomplete-input {
+  width: 100%;
 }
 
 .ent-input-autocomplete-container {

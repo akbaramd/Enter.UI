@@ -6,10 +6,10 @@
 
 @if (Visible)
 {
-    <div @attributes="@AdditionalAttributes" class="@Classname" @onclick="OnClickHandlerAsync" @onclick:stopPropagation="true">
+    <div @attributes="@AdditionalAttributes" class="@ClassNames" style="@StyleNames" @onclick="OnClickHandlerAsync" @onclick:stopPropagation="true">
         @if (LightBackground || DarkBackground)
         {
-            <div class="@ScrimClassname"></div>
+            <div class="@ScrimClassNames"></div>
         }
         @if (ChildContent is not null)
         {
