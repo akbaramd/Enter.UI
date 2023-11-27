@@ -1,40 +1,40 @@
 ﻿namespace Enter.Ui.Core;
 
-public class CssBuilder
+public class ClassBuilder
 {
     private readonly List<string> _cssClasses = new();
 
-    public CssBuilder()
+    public ClassBuilder()
     {
     }
 
-    public CssBuilder(string @class)
+    public ClassBuilder(string @class)
     {
         AddCss(@class);
     }
 
-    public CssBuilder AddCss(string @class, bool condition)
+    public ClassBuilder AddCss(string @class, bool condition)
     {
         if (condition) AddCss(@class);
 
         return this;
     }
 
-    public CssBuilder AddCss(string @class)
+    public ClassBuilder AddCss(string @class)
     {
         if (!string.IsNullOrWhiteSpace(@class) && _cssClasses.All(x => !x.Equals(@class))) _cssClasses.Add(@class);
         return this;
     }
 
 
-    public CssBuilder AddDarkModeCss(string @class, bool condition)
+    public ClassBuilder AddDarkModeCss(string @class, bool condition)
     {
         if (condition) AddDarkModeCss(@class);
 
         return this;
     }
 
-    public CssBuilder AddDarkModeCss(string @class)
+    public ClassBuilder AddDarkModeCss(string @class)
     {
         if (!string.IsNullOrWhiteSpace(@class) && _cssClasses.All(x => !x.Equals(@class)))
             _cssClasses.Add($"dark:{@class}");
@@ -42,21 +42,21 @@ public class CssBuilder
     }
 
 
-    public CssBuilder AddResponsiveModeCss(string @class, bool condition)
+    public ClassBuilder AddResponsiveModeCss(string @class, bool condition)
     {
         if (condition) AddResponsiveModeCss(@class);
 
         return this;
     }
 
-    public CssBuilder AddResponsiveModeCss(string @class)
+    public ClassBuilder AddResponsiveModeCss(string @class)
     {
         if (!string.IsNullOrWhiteSpace(@class) && _cssClasses.All(x => !x.Equals(@class)))
             _cssClasses.Add($"responsive:{@class}");
         return this;
     }
 
-    public CssBuilder Clear()
+    public ClassBuilder Clear()
     {
         _cssClasses.Clear();
         return this;
