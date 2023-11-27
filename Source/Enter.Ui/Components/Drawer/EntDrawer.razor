@@ -20,6 +20,19 @@
         base.BuildClasses(builder);
     }
 
+    protected override void OnParametersSet()
+    {
+        StyleBuilder?.CanUpdate();
+        ClassBuilder?.CanUpdate();
+        base.OnParametersSet();
+    }
+    protected override Task OnParametersSetAsync()
+    {
+        StyleBuilder?.CanUpdate();
+        ClassBuilder?.CanUpdate();
+        return base.OnParametersSetAsync();
+    }
+
     [Parameter]
     public RenderFragment ChildContent { get; set; }
 

@@ -2,25 +2,43 @@
 @using Enter.Ui.Services
 @inherits Enter.Ui.Bases.EntComponentBase
 
-<div @attributes="AdditionalAttributes" class="@ClassNames" id="@($"ent-popover-{_id}")">
+<div @attributes="@AdditionalAttributes" class="@ClassNames" id="@($"ent-popover-{_id}")">
 
 </div>
 
 @code {
 
-    private string ClassNames => ClassBuilder
-        .AddClass("ent-popover")
-        .Build();
 
-    private string _popoverClass => ClassBuilder
-        .Clean()
-        .AddClass("ent-popover-content")
-        .AddClass($"ent-popover-anchor-{Anchor.GetCssClass()}")
-        .AddClass($"ent-popover-{Transform.GetCssClass()}")
-        .AddClass("ent-popover-overflow-flip-onopen")
-        .AddClass("ent-popover-open", Open)
-        .AddClass("ent-popover-relative-width", RelativeWidth)
-        .Build();
+    public EntPopover()
+    {
+        PopoverClassBuilder = new ClassBuilder(BuildPopoverClasses);
+    }
+
+    public ClassBuilder PopoverClassBuilder { get; set; }
+    
+    public string PopoverClassNames => PopoverClassBuilder.Build();
+    
+    protected override void BuildStyles(StyleBuilder builder)
+    {
+        base.BuildStyles(builder);
+    }
+
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-popover");
+        base.BuildClasses(builder);
+    }
+    
+    protected  void BuildPopoverClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-popover-content")
+            .AddClass($"ent-popover-anchor-{Anchor.GetCssClass()}")
+            .AddClass($"ent-popover-{Transform.GetCssClass()}")
+            .AddClass("ent-popover-overflow-flip-onopen")
+            .AddClass("ent-popover-open", Open)
+            .AddClass("ent-popover-relative-width", RelativeWidth);
+        
+    }
 
     [Inject]
     public IEntPopoverService EntPopoverService { get; set; }
@@ -52,7 +70,7 @@
 
         _entPopoverService = (EntPopoverService)EntPopoverService;
 
-        _id = await EntPopoverService.RegisterAsync(ChildContent, _popoverClass, Open);
+        _id = await EntPopoverService.RegisterAsync(ChildContent, PopoverClassNames, Open);
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -66,8 +84,11 @@
 
     protected override async Task OnParametersSetAsync()
     {
+        StyleBuilder?.CanUpdate();
+        ClassBuilder?.CanUpdate();
+        PopoverClassBuilder?.CanUpdate();
         await base.OnParametersSetAsync();
-        await EntPopoverService.UpdateParameterAsync(_id, _popoverClass, Open);
+        await EntPopoverService.UpdateParameterAsync(_id, PopoverClassNames, Open);
     }
 
     protected override void Dispose(bool disposing)

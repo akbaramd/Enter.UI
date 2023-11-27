@@ -72,7 +72,7 @@ public class ClassBuilder
     /// <summary>
     /// Marks the builder as dirty to rebuild the values.
     /// </summary>
-    public ClassBuilder Clean()
+    public ClassBuilder CanUpdate()
     {
         clean = true;
         return this;
@@ -85,7 +85,7 @@ public class ClassBuilder
     /// <summary>
     /// Gets the class-names.
     /// </summary>
-    public string Build()
+    public string Build(string Tag = "")
     {
             if ( clean )
             {

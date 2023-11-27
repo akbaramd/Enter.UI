@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Components;
 // ReSharper disable once CheckNamespace
 namespace Enter.Ui.Components;
 
-public partial class EntAnimator : EntComponentBase
+public partial class EntAnimator : EntElementComponentBase
 {
-    private bool _expanded, _updateHeight;
+   
 
     internal ElementReference Reference { get; set; }
 
@@ -20,22 +20,33 @@ public partial class EntAnimator : EntComponentBase
 
     [Parameter] public EventCallback OnAnimationStart { get; set; }
 
-    // Style and Css
-    protected override void BuildClasses(ClassBuilder builder)
-    {
-        builder.AddClass("ent-animator");
-        base.BuildClasses(builder);
-    }
-
-
     // Parameters
     [Parameter] public RenderFragment ChildContent { get; set; } = default!;
+
+
+    protected override void OnParametersSet()
+    {
+        StyleBuilder?.CanUpdate();
+        ClassBuilder?.CanUpdate();
+        base.OnParametersSet();
+    }
+    protected override Task OnParametersSetAsync()
+    {
+        StyleBuilder?.CanUpdate();
+        ClassBuilder?.CanUpdate();
+        return base.OnParametersSetAsync();
+    }
+
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+    
+        base.BuildClasses(builder);
+    }
 
     private async Task OnAnimationEndCallback()
     {
         if (OnAnimationEnd.HasDelegate) await OnAnimationEnd.InvokeAsync();
     }
-
 
     private async Task OnAnimationStartCallback()
     {

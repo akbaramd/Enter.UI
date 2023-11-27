@@ -7,7 +7,7 @@ namespace Enter.Ui.Components;
 
 public partial class EntNavMenuGroup : EntComponentBase
 {
-    protected string ContainerCss => ClassBuilder.Clean() .AddClass("ent-nav-menu-group-container")
+    protected string ContainerCss => ClassBuilder.CanUpdate() .AddClass("ent-nav-menu-group-container")
         .Build();
 
     protected override void BuildClasses(ClassBuilder builder)

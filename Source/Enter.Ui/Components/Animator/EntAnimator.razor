@@ -1,6 +1,7 @@
-﻿@namespace Enter.Ui.Components
-@inherits Enter.Ui.Bases.EntComponentBase
-<div
+﻿@inherits EntElementComponentBase
+@namespace Enter.Ui.Components
+@using Enter.Ui.Bases
+<div 
     @ref="Reference"
     @onanimationend="EventUtil.AsNonRenderingEventHandler(OnAnimationEndCallback)"
     @onanimationstart="EventUtil.AsNonRenderingEventHandler(OnAnimationStartCallback)"

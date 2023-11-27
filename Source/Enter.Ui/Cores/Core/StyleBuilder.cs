@@ -61,7 +61,7 @@ public class StyleBuilder
     /// <summary>
     /// Marks the builder as dirty to rebuild the values.
     /// </summary>
-    public StyleBuilder Clear()
+    public StyleBuilder CanUpdate()
     {
         clean = true;
         return this;
@@ -74,7 +74,7 @@ public class StyleBuilder
     /// <summary>
     /// Get the styles.
     /// </summary>
-    public string Build()
+    public string Build(string Tag = "")
     {
             if ( clean )
             {

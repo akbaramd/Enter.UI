@@ -5,27 +5,28 @@
 @using Microsoft.JSInterop
 @inherits Enter.Ui.Bases.EntComponentBase
 
-<EntAnimator
-    @attributes="@AdditionalAttributes"
-    @ref="Reference"
-    id="@Id"
-    class="@ClassNames"
-    style="@StyleNames"
-    @bind-State="AnimationState"
-    OnAnimationEnd="OnAnimationEnd">
+<EntAnimator @attributes="@AdditionalAttributes"
+             @ref="Reference"
+             id="@Id"
+             class="@ClassNames"
+             style="@StyleNames"
+             @bind-State="AnimationState"
+             OnAnimationEnd="OnAnimationEnd">
     @ChildContent
 </EntAnimator>
 
 @code {
 
     private EntAnimatorState AnimationState { get; set; } = EntAnimatorState.End;
+    private EntExpandableDirection _direction = EntExpandableDirection.Vertical;
     private bool _expanded, _updateHeight;
     private double _size = 0;
-    private EntExpandableDirection _direction = EntExpandableDirection.Vertical;
     private string _cssProperty = "height";
     private bool _firstRendered = false;
 
-    internal EntAnimator Reference { get; set; }
+
+
+    internal EntAnimator Reference { get; set; } = default!;
 
     [Inject]
     internal IEntSharedJsService? SharedJsService { get; set; }
@@ -33,7 +34,6 @@
     // Style and Css
     protected override void BuildClasses(ClassBuilder builder)
     {
-
         builder.AddClass("ent-expandable")
             .AddClass("ent-expandable-horizontal", Direction == EntExpandableDirection.Horizontal)
             .AddClass("ent-expandable-vertical", Direction == EntExpandableDirection.Vertical)
@@ -50,7 +50,6 @@
             .AddStyle($"{_cssProperty} : auto", AnimationState == EntAnimatorState.Start)
             .AddStyle($"{_cssProperty} : 0px", AnimationState == EntAnimatorState.End)
             .AddStyle($"{_cssProperty} : {_size}px", AnimationState is EntAnimatorState.Ending or EntAnimatorState.Starting);
-        
         base.BuildStyles(builder);
     }
 
@@ -75,8 +74,6 @@
         get => _expanded;
         set
         {
-            StyleBuilder?.Clear();
-            ClassBuilder?.Clean();
             if (_expanded == value)
                 return;
             _expanded = value;
@@ -91,7 +88,8 @@
             {
                 AnimationState = EntAnimatorState.Start;
             }
-
+            StyleBuilder?.CanUpdate();
+            ClassBuilder?.CanUpdate();
             _ = ExpandedChanged.InvokeAsync(_expanded);
         }
     }
@@ -134,12 +132,12 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        await base.OnAfterRenderAsync(firstRender);
 
         if (firstRender)
         {
             await UpdateSize();
             _firstRendered = true;
+          
             StateHasChanged();
         }
         else if (_updateHeight && AnimationState is EntAnimatorState.Ending or EntAnimatorState.Starting)
@@ -147,6 +145,8 @@
             _updateHeight = false;
             await UpdateSize();
         }
+
+        await base.OnAfterRenderAsync(firstRender);
     }
 
 
@@ -155,9 +155,10 @@
         try
         {
             if (SharedJsService == null)
-                throw new JSException($"SharedJsService Not be Found . please in ject this service in {nameof(EntExpandable)}");
+                throw new JSException($"SharedJsService Not be Found . please in inject this service in {nameof(EntExpandable)}");
 
             var reactBounding = await SharedJsService.GetBoundingClientRectAsync(Reference.Reference);
+
             if (Direction == EntExpandableDirection.Vertical)
             {
                 _size = reactBounding?.ScrollHeight ?? 0;

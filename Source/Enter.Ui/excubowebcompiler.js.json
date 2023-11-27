@@ -1,6 +1,6 @@
 {
   "Minifiers": {
-    "GZip": false,
+    "GZip": true,
     "Enabled": true,
     "Css": {
       "CommentMode": "Important",
@@ -10,12 +10,12 @@
       "IndentSize": 2
     },
     "Javascript": {
-      "RenameLocals": false,
+      "RenameLocals": true,
       "PreserveImportantComments": true,
       "EvalTreatment": "Ignore",
       "TermSemicolons": true,
       "OutputMode": "SingleLine",
-      "IndentSize": 2
+      "IndentSize":3
     }
   },
   "Autoprefix": {

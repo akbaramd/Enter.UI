@@ -10,15 +10,40 @@ public abstract class EntInputBase<T> : InputBase<T>, IAsyncDisposable
     protected EntInputBase()
     {
         ClassBuilder = new ClassBuilder(BuildClasses);
+        StyleBuilder = new StyleBuilder(BuildStyles);
     }
 
     protected string ClassNames => ClassBuilder.Build(); 
+    protected string StyleNames => StyleBuilder.Build(); 
     protected ClassBuilder ClassBuilder { get; private set; }
+    protected StyleBuilder StyleBuilder{ get; private set; }
 
     protected virtual void BuildClasses(ClassBuilder builder)
     {
-        builder.AddClass(AdditionalAttributes.TryGetValue("class", out var @class) ? @class.ToString() : string.Empty);
+        builder.AddClass("ent-input");
+        builder.AddClass("ent-input-disable",Disabled);
+        builder.AddClass("ent-input-readonly",Readonly);
+        builder.AddClass("ent-input-valid",IsValid);
+        builder.AddClass("ent-input-modified",IsModified);
+        builder.AddClass("ent-input-validation-requested",IsModified);
+        if (AdditionalAttributes is not null)
+        {
+            builder.AddClass((AdditionalAttributes.TryGetValue("class", out var @class) ? @class.ToString() : string.Empty) ?? string.Empty);
+        }
     }
+
+    protected virtual void BuildStyles(StyleBuilder builder)
+    {
+        if (AdditionalAttributes is not null)
+        {
+            builder.AddStyle((AdditionalAttributes.TryGetValue("style", out var @class)
+                ? @class.ToString()
+                : string.Empty) ?? string.Empty);
+        }
+
+        builder.AddStyle("width: 100%",FullWidth);
+    }
+
     [Parameter] public bool UseValidation { get; set; } = true;
 
     [Parameter] public bool Readonly { get; set; }
@@ -27,12 +52,11 @@ public abstract class EntInputBase<T> : InputBase<T>, IAsyncDisposable
 
     [Parameter] public string PlaceHolder { get; set; }
 
+    [Parameter] public bool FullWidth { get; set; }
+
     internal bool IsValid { get; set; }
     internal bool ValidationRequested { get; set; }
     internal bool IsModified { get; set; }
-
-
-
 
     public string Id => AdditionalAttributes?.ContainsKey("id") == true
         ? AdditionalAttributes["id"]?.ToString() ?? $"ent-{Guid.NewGuid()}"

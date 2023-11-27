@@ -24,7 +24,7 @@ public partial class EntTab : EntTabBase
     }
 
     protected string PanelCss => ClassBuilder
-        .Clean()
+        .CanUpdate()
         .AddClass("ent-tab-panel-container")
         .AddClass("ent-tab-panel-container-resposive")
         .AddClass(PanelClass)
@@ -49,7 +49,7 @@ public partial class EntTab : EntTabBase
     public string GetItemClass(bool active)
     {
         return ClassBuilder
-            .Clean()
+            .CanUpdate()
             .AddClass("ent-tab-item")
             .AddClass("active", active)
             .AddClass("ent-tab-item-horizontal", ItemDirection == EntTabItemDirection.Horizontal)

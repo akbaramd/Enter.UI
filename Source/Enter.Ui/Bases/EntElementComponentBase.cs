@@ -11,6 +11,8 @@ public abstract class EntElementComponentBase : EntBaseAfterRenderComponent, IDi
         StyleBuilder = new StyleBuilder(BuildStyles);
     }
 
+    
+
     protected string ClassNames => ClassBuilder?.Build() ?? string.Empty;
     protected string StyleNames => StyleBuilder?.Build() ?? string.Empty;
 
@@ -21,6 +23,8 @@ public abstract class EntElementComponentBase : EntBaseAfterRenderComponent, IDi
     [Parameter(CaptureUnmatchedValues = true)]
     public Dictionary<string, object?> AdditionalAttributes { get; set; } = new();
 
+    [Parameter]
+    public string Tag { get; set; } = string.Empty;
 
     public string Id => AdditionalAttributes?.ContainsKey("id") == true
         ? AdditionalAttributes["id"]?.ToString() ?? Guid.NewGuid().ToString()

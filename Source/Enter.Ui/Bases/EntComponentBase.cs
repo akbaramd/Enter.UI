@@ -7,7 +7,6 @@ namespace Enter.Ui.Bases;
 public abstract class EntComponentBase : EntElementComponentBase, IDisposable
 {
     
-    [Parameter] public string Tag { get; set; } = default!;
 
 
     [Parameter] public bool DarkMode { get; set; }

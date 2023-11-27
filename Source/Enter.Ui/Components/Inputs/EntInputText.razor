@@ -1,11 +1,10 @@
-﻿@namespace Enter.Ui.Components
-@inherits Enter.Ui.Bases.EntInputBase<string?>
-@using Enter.Ui.Components.Inputs
+﻿@using Enter.Ui.Components.Inputs
 @using Enter.Ui.Components.Icon
 @using System.Diagnostics.CodeAnalysis
-@implements IAsyncDisposable
+@namespace Enter.Ui.Components
+@inherits Enter.Ui.Bases.EntInputBase<string?>
 
-<div @attributes="@AdditionalAttributes" class="@ClassNames" id="@Id">
+<div @attributes="@AdditionalAttributes" class="@ClassNames" style="@StyleNames" id="@Id">
     <input @ref="_elementReference" name="@ValueExpression?.GetPropertyName()" type="@(IsPassword ? "password" : "text")" class="ent-input-field" placeholder="@PlaceHolder"
            @bind="@CurrentValueAsString"
            @bind:event="@EventType" disabled="@Disabled" readonly="@Readonly"/>
@@ -24,7 +23,7 @@
 
     protected override void BuildClasses(ClassBuilder builder)
     {
-        builder.AddClass("ent-input")
+        builder
             .AddClass("ent-input-lg", Size == EntInputSize.Large)
             .AddClass("ent-input-sm", Size == EntInputSize.Small);
         

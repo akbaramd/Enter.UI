@@ -1,5 +1,6 @@
 ﻿using System.Windows.Input;
 using Enter.Ui.Bases;
+using Enter.Ui.Core;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
@@ -10,17 +11,29 @@ public partial class EntOverlay : EntComponentBase
 {
     private bool _visible;
 
-    protected string Classname =>
-        ClassBuilder.AddClass("ent-overlay")
-            .AddClass("ent-overlay-absolute", Absolute)
-            .Build();
-
-    protected string ScrimClassname =>
-        ClassBuilder.Clean()
-            .AddClass("ent-overlay-scrim")
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-overlay")
+            .AddClass("ent-overlay-absolute", Absolute);
+        base.BuildClasses(builder);
+        
+    }
+    protected  void BuildScrimClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-overlay-scrim")
             .AddClass("ent-overlay-dark", DarkBackground)
-            .AddClass("ent-overlay-light", LightBackground)
-            .Build();
+            .AddClass("ent-overlay-light", LightBackground);
+    }
+
+    public EntOverlay()
+    {
+        ScrimClassBuilder = new ClassBuilder(BuildScrimClasses);
+    }
+
+    public ClassBuilder ScrimClassBuilder { get; set; }
+    
+    public string ScrimClassNames => ScrimClassBuilder.Build();
+  
 
     [Parameter] public RenderFragment? ChildContent { get; set; }
 
