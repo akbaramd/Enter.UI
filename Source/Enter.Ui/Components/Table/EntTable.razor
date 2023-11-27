@@ -1,8 +1,8 @@
 ﻿@namespace Enter.Ui.Components
-@inherits Enter.Ui.Cores.Bases.EntComponentBase
+@inherits Enter.Ui.Bases.EntComponentBase
 @typeparam T
 <CascadingValue Value="this">
-    <table @attributes="AdditionalAttributes" class="@RootCss">
+    <table @attributes="AdditionalAttributes" class="@ClassNames">
         @if (HeaderTemplate != null)
         {
             <thead>

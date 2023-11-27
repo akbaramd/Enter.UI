@@ -1,10 +1,10 @@
 ﻿@namespace Enter.Ui.Components
-@inherits Enter.Ui.Cores.Bases.EntInputBase<string>
+@inherits Enter.Ui.Bases.EntInputBase<string>
 @using Enter.Ui.Components.Icon
 @using System.Diagnostics.CodeAnalysis
 @typeparam T
 
-<div @attributes="@AdditionalAttributes" @ref="_elementReference" class="@RootCss" id="@Id">
+<div @attributes="@AdditionalAttributes" @ref="_elementReference" class="@ClassNames" id="@Id">
 
     <EntInputText @ref="_inputReference" @onclick="@OnInputClickCallback" @onfocusin="@OnInputClickCallback"
                   Disabled="@Disabled" PlaceHolder="@PlaceHolder" class="ent-select-input" UseValidation="false" Readonly="true" @bind-Value="@Text" Icon="@EntIconName.ChevronDown"/>
@@ -44,13 +44,11 @@
 
 
 @code {
-
-    private string RootCss => CssBuilder
-        .AddCss("ent-select")
-        .AddCss(BaseCss)
-        .AddCss(ValidationCss)
-        .Build();
-
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-select");
+        base.BuildClasses(builder);
+    }
 
     private bool _showMenu = false;
     private string? _tempValue = string.Empty;

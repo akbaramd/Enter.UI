@@ -1,5 +1,6 @@
-﻿using Enter.Ui.Components.Animator;
-using Enter.Ui.Cores.Bases;
+﻿using Enter.Ui.Bases;
+using Enter.Ui.Components.Animator;
+using Enter.Ui.Core;
 using Microsoft.AspNetCore.Components;
 
 // ReSharper disable once CheckNamespace
@@ -20,11 +21,12 @@ public partial class EntAnimator : EntComponentBase
     [Parameter] public EventCallback OnAnimationStart { get; set; }
 
     // Style and Css
-    private string RootCss => CssBuilder
-        .AddCss("ent-animator")
-        .Build();
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-animator");
+        base.BuildClasses(builder);
+    }
 
-    private string RootStyle => StyleBuilder.Build();
 
     // Parameters
     [Parameter] public RenderFragment ChildContent { get; set; } = default!;
@@ -40,7 +42,6 @@ public partial class EntAnimator : EntComponentBase
         if (OnAnimationStart.HasDelegate) await OnAnimationStart.InvokeAsync();
     }
 
-    public override void Dispose()
-    {
-    }
+
+    
 }

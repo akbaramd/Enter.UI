@@ -1,41 +1,41 @@
 @namespace Enter.Ui.Components
 @using Enter.Ui.Components.Text
-@inherits Enter.Ui.Cores.Bases.EntComponentBase
+@inherits Enter.Ui.Bases.EntComponentBase
 
 @switch (Type)
 {
     case EntTextType.Text:
-        <span @attributes="@AdditionalAttributes" class="@RootClass">@ChildContent</span>
+        <span @attributes="@AdditionalAttributes" class="@ClassNames">@ChildContent</span>
         break;
     case EntTextType.Bold:
-        <b @attributes="@AdditionalAttributes" class="@RootClass">@ChildContent</b>
+        <b @attributes="@AdditionalAttributes" class="@ClassNames">@ChildContent</b>
         break;
     case EntTextType.Small:
-        <small @attributes="@AdditionalAttributes" class="@RootClass">@ChildContent</small>
+        <small @attributes="@AdditionalAttributes" class="@ClassNames">@ChildContent</small>
         break;
     case EntTextType.Paragraph:
-        <p @attributes="@AdditionalAttributes" class="@RootClass">@ChildContent</p>
+        <p @attributes="@AdditionalAttributes" class="@ClassNames">@ChildContent</p>
         break;
     case EntTextType.Heading1:
-        <h1 @attributes="@AdditionalAttributes" class="@RootClass">@ChildContent</h1>
+        <h1 @attributes="@AdditionalAttributes" class="@ClassNames">@ChildContent</h1>
         break;
     case EntTextType.Heading2:
-        <h2 @attributes="@AdditionalAttributes" class="@RootClass">@ChildContent</h2>
+        <h2 @attributes="@AdditionalAttributes" class="@ClassNames">@ChildContent</h2>
         break;
     case EntTextType.Heading3:
-        <h3 @attributes="@AdditionalAttributes" class="@RootClass">@ChildContent</h3>
+        <h3 @attributes="@AdditionalAttributes" class="@ClassNames">@ChildContent</h3>
         break;
     case EntTextType.Heading4:
-        <h4 @attributes="@AdditionalAttributes" class="@RootClass">@ChildContent</h4>
+        <h4 @attributes="@AdditionalAttributes" class="@ClassNames">@ChildContent</h4>
         break;
     case EntTextType.Heading5:
-        <h5 @attributes="@AdditionalAttributes" class="@RootClass">@ChildContent</h5>
+        <h5 @attributes="@AdditionalAttributes" class="@ClassNames">@ChildContent</h5>
         break;
     case EntTextType.Heading6:
-        <h6 @attributes="@AdditionalAttributes" class="@RootClass">@ChildContent</h6>
+        <h6 @attributes="@AdditionalAttributes" class="@ClassNames">@ChildContent</h6>
         break;
     default:
-        <span @attributes="@AdditionalAttributes" class="@RootClass">@ChildContent</span>
+        <span @attributes="@AdditionalAttributes" class="@ClassNames">@ChildContent</span>
         break;
 }
 
@@ -43,14 +43,14 @@
 
 @code {
 
-    private string RootClass => CssBuilder
-        .AddCss("ent-text")
-        .AddCss("fs-sub-heading", Size == EntTextSize.SubHeading)
-        .AddCss("fs-heading", Size == EntTextSize.Heading)
-        .AddCss("fs-title", Size == EntTextSize.Title)
-        .AddCss("fs-subtitle", Size == EntTextSize.Subtitle)
-        .AddCss("fs-description", Size == EntTextSize.Description)
-        .AddCss("fs-caption", Size == EntTextSize.Caption)
+    private string ClassNames => ClassBuilder
+        .AddClass("ent-text")
+        .AddClass("fs-sub-heading", Size == EntTextSize.SubHeading)
+        .AddClass("fs-heading", Size == EntTextSize.Heading)
+        .AddClass("fs-title", Size == EntTextSize.Title)
+        .AddClass("fs-subtitle", Size == EntTextSize.Subtitle)
+        .AddClass("fs-description", Size == EntTextSize.Description)
+        .AddClass("fs-caption", Size == EntTextSize.Caption)
         .Build();
 
     [Parameter]
@@ -62,8 +62,9 @@
     [Parameter]
     public EntTextSize Size { get; set; } = EntTextSize.Medium;
 
-    public override void Dispose()
+    protected override void Dispose(bool disposing)
     {
+        base.Dispose(disposing);
     }
 
 }

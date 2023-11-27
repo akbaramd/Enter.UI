@@ -20,6 +20,7 @@ public static class Extensions
 #endif
         
         services.AddSingleton<IEntIconProvider, EntIconProvider>();
+        services.AddScoped<IComponentDisposer, ComponentDisposer>();
         services.AddScoped<IEntMdiService, EntMdiService>();
         services.AddScoped<IEntModalService, ModalService>();
         services.AddScoped<IEntPopoverService, EntPopoverService>();

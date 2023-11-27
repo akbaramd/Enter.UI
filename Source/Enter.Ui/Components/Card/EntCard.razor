@@ -1,8 +1,8 @@
 ﻿@namespace Enter.Ui.Components
 @using Enter.Ui.Components.Icon
-@inherits Enter.Ui.Cores.Bases.EntComponentBase
+@inherits Enter.Ui.Bases.EntComponentBase
 
-<div @attributes="@AdditionalAttributes" class="@RootClass">
+<div @attributes="@AdditionalAttributes" class="@ClassNames">
     @if (Title != null)
     {
         <div @onclick="HeaderClick" class="ent-card-header">
@@ -50,9 +50,11 @@
 
 @code {
 
-    private string RootClass => CssBuilder
-        .AddCss("ent-card")
-        .Build();
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-card");
+        base.BuildClasses(builder);
+    }
 
 
     public bool CardExpand { get; set; } = true;
@@ -80,8 +82,9 @@
         CardExpand = !CardExpand;
     }
 
-    public override void Dispose()
+    protected override void Dispose(bool disposing)
     {
+        base.Dispose(disposing);
     }
 
 }

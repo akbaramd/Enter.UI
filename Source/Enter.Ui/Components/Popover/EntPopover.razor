@@ -1,25 +1,25 @@
 ﻿@namespace Enter.Ui.Components
 @using Enter.Ui.Services
-@inherits Enter.Ui.Cores.Bases.EntComponentBase
+@inherits Enter.Ui.Bases.EntComponentBase
 
-<div @attributes="AdditionalAttributes" class="@RootClass" id="@($"ent-popover-{_id}")">
+<div @attributes="AdditionalAttributes" class="@ClassNames" id="@($"ent-popover-{_id}")">
 
 </div>
 
 @code {
 
-    private string RootClass => CssBuilder
-        .AddCss("ent-popover")
+    private string ClassNames => ClassBuilder
+        .AddClass("ent-popover")
         .Build();
 
-    private string _popoverClass => CssBuilder
-        .Clear()
-        .AddCss("ent-popover-content")
-        .AddCss($"ent-popover-anchor-{Anchor.GetCssClass()}")
-        .AddCss($"ent-popover-{Transform.GetCssClass()}")
-        .AddCss("ent-popover-overflow-flip-onopen")
-        .AddCss("ent-popover-open", Open)
-        .AddCss("ent-popover-relative-width", RelativeWidth)
+    private string _popoverClass => ClassBuilder
+        .Clean()
+        .AddClass("ent-popover-content")
+        .AddClass($"ent-popover-anchor-{Anchor.GetCssClass()}")
+        .AddClass($"ent-popover-{Transform.GetCssClass()}")
+        .AddClass("ent-popover-overflow-flip-onopen")
+        .AddClass("ent-popover-open", Open)
+        .AddClass("ent-popover-relative-width", RelativeWidth)
         .Build();
 
     [Inject]
@@ -70,8 +70,9 @@
         await EntPopoverService.UpdateParameterAsync(_id, _popoverClass, Open);
     }
 
-    public override void Dispose()
+    protected override void Dispose(bool disposing)
     {
+        base.Dispose(disposing);
     }
 
 }

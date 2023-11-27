@@ -1,5 +1,5 @@
+using Enter.Ui.Bases;
 using Enter.Ui.Core;
-using Enter.Ui.Cores.Bases;
 using Microsoft.AspNetCore.Components;
 
 // ReSharper disable once CheckNamespace
@@ -13,20 +13,22 @@ public partial class EntTab : EntTabBase
     private bool _toggleMenu = false;
     private EntTabPanel? _activeTab => Panels.FirstOrDefault(x => x.Id.Equals(_activeTabId));
 
-    protected string RootCss => CssBuilder
-        .AddCss("ent-tab")
-        .AddResponsiveModeCss("ent-tab-resposive")
-        .AddCss("ent-tab-horizontal", Direction == EntTabDirection.Horizontal)
-        .AddCss("ent-tab-vertical", Direction == EntTabDirection.Vertical)
-        .AddCss("ent-tab-expandable", Expandable)
-        .Build();
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-tab")
+            .AddClass("ent-tab-resposive")
+            .AddClass("ent-tab-horizontal", Direction == EntTabDirection.Horizontal)
+            .AddClass("ent-tab-vertical", Direction == EntTabDirection.Vertical)
+            .AddClass("ent-tab-expandable", Expandable);
+        base.BuildClasses(builder);
+    }
 
-    protected string PanelCss => new CssBuilder()
-        .Clear()
-        .AddCss("ent-tab-panel-container")
-        .AddResponsiveModeCss("ent-tab-panel-container-resposive")
-        .AddCss(PanelClass)
-        .AddCss("active", Expandable && _activeTabId != null)
+    protected string PanelCss => ClassBuilder
+        .Clean()
+        .AddClass("ent-tab-panel-container")
+        .AddClass("ent-tab-panel-container-resposive")
+        .AddClass(PanelClass)
+        .AddClass("active", Expandable && _activeTabId != null)
         .Build();
 
     [Parameter] public RenderFragment ChildContent { get; set; } = default!;
@@ -46,14 +48,14 @@ public partial class EntTab : EntTabBase
 
     public string GetItemClass(bool active)
     {
-        return CssBuilder
-            .Clear()
-            .AddCss("ent-tab-item")
-            .AddCss("active", active)
-            .AddCss("ent-tab-item-horizontal", ItemDirection == EntTabItemDirection.Horizontal)
-            .AddCss("ent-tab-item-vertical", ItemDirection == EntTabItemDirection.Vertical)
-            .AddCss("ent-tab-item-minify", IconMinify)
-            .AddCss(ItemClass)
+        return ClassBuilder
+            .Clean()
+            .AddClass("ent-tab-item")
+            .AddClass("active", active)
+            .AddClass("ent-tab-item-horizontal", ItemDirection == EntTabItemDirection.Horizontal)
+            .AddClass("ent-tab-item-vertical", ItemDirection == EntTabItemDirection.Vertical)
+            .AddClass("ent-tab-item-minify", IconMinify)
+            .AddClass(ItemClass)
             .Build();
     }
 
@@ -160,7 +162,8 @@ public class EntTabBase : EntResponsiveComponentBase
     [Parameter] public EventCallback<string> OnTabClosed { get; set; }
     [Parameter] public EventCallback OnAllTabClosed { get; set; }
 
-    public override void Dispose()
+    protected override void Dispose(bool disposing)
     {
+        base.Dispose(disposing);
     }
 }

@@ -1,5 +1,5 @@
-﻿using Enter.Ui.Components.Modal;
-using Enter.Ui.Cores.Bases;
+﻿using Enter.Ui.Bases;
+using Enter.Ui.Components.Modal;
 using Enter.Ui.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Routing;
@@ -97,11 +97,14 @@ public partial class EntModalProvider : EntComponentBase
     }
     private ModalReference? GetModalReference(string id)
         => ModalInstances.SingleOrDefault(x => x.Id == id);
-    public override void Dispose()
+    protected override void Dispose(bool disposing)
     {
-        _modalService.OnModalInstanceAdded -= OnInstanceAdded;
-        _modalService.OnModalCloseRequested -= CloseInstance;
-        NavigationManager.LocationChanged -= CancelModals;
+        if (disposing)
+        {
+            _modalService.OnModalInstanceAdded -= OnInstanceAdded;
+            _modalService.OnModalCloseRequested -= CloseInstance;
+            NavigationManager.LocationChanged -= CancelModals;
+        }
     }
 
 }

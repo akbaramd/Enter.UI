@@ -1,10 +1,10 @@
 ﻿@namespace Enter.Ui.Components
-@inherits Enter.Ui.Cores.Bases.EntInputBase<string?>
+@inherits Enter.Ui.Bases.EntInputBase<string?>
 @using Enter.Ui.Components.Icon
 @using System.Diagnostics.CodeAnalysis
 @implements IAsyncDisposable
 
-<div @attributes="@AdditionalAttributes" class="@RootCss" id="@Id">
+<div @attributes="@AdditionalAttributes" class="@ClassNames" id="@Id">
     <input name="@ValueExpression?.GetPropertyName()" type="file" class="ent-input-field" placeholder="@PlaceHolder"
            @bind="@CurrentValueAsString"
            @bind:event="oninput" disabled="@Disabled" readonly="@Readonly"/>
@@ -19,11 +19,11 @@
 
 @code {
 
-    private string RootCss => CssBuilder
-        .AddCss("ent-input")
-        .AddCss(BaseCss)
-        .AddCss(ValidationCss)
-        .Build();
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-input");
+        base.BuildClasses(builder);
+    }
 
     [Parameter]
     public object Icon { get; set; }

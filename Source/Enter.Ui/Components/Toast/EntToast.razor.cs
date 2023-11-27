@@ -1,7 +1,7 @@
-﻿using Enter.Ui.Components.Toast;
+﻿using Enter.Ui.Bases;
+using Enter.Ui.Components.Toast;
 using Enter.Ui.Components.Toast.Configuration;
 using Enter.Ui.Components.Toast.Services;
-using Enter.Ui.Cores.Bases;
 using Microsoft.AspNetCore.Components;
 
 // ReSharper disable once CheckNamespace
@@ -81,9 +81,12 @@ public partial class EntToast : EntComponentBase
     private bool ShowIconDiv()
         => !string.IsNullOrWhiteSpace(Options.Icon);
 
-    public override void Dispose()
+    protected override void Dispose(bool disposing)
     {
-        _countdownTimer?.Dispose();
-        _countdownTimer = null;
+        if (disposing)
+        {
+            _countdownTimer?.Dispose();
+            _countdownTimer = null;
+        }
     }
 }

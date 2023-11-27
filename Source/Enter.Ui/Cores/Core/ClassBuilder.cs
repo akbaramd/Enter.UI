@@ -1,70 +1,105 @@
-﻿namespace Enter.Ui.Core;
+﻿using System.Text;
+using Enter.Ui.Core.Extensions;
+
+namespace Enter.Ui.Core;
 
 public class ClassBuilder
 {
-    private readonly List<string> _cssClasses = new();
+    #region Members
 
-    public ClassBuilder()
+    private const char Delimiter = ' ';
+
+    private readonly Action<ClassBuilder> buildClasses;
+
+    private StringBuilder builder = new();
+
+    private string classNames;
+
+    private bool clean = true;
+
+    #endregion
+
+    #region Constructors
+
+    /// <summary>
+    /// Default class builder constructor that accepts build action.
+    /// </summary>
+    /// <param name="buildClasses">Action responsible for building the classes.</param>
+    public ClassBuilder( Action<ClassBuilder> buildClasses )
     {
+        this.buildClasses = buildClasses;
     }
 
-    public ClassBuilder(string @class)
+    #endregion
+
+    #region Methods
+
+    /// <summary>
+    /// Appends a copy of the specified string to this instance.
+    /// </summary>
+    /// <param name="value">The string to append.</param>
+    public ClassBuilder AddClass( string value )
     {
-        AddCss(@class);
+        if ( value == null )
+            return this;
+
+        builder.Append( value ).Append( Delimiter );
+        return this;
     }
 
-    public ClassBuilder AddCss(string @class, bool condition)
+    /// <summary>
+    /// Appends a copy of the specified string to this instance if <paramref name="condition"/> is true.
+    /// </summary>
+    /// <param name="value">The string to append.</param>
+    /// <param name="condition">Condition that must be true.</param>
+    public ClassBuilder AddClass( string value, bool condition )
     {
-        if (condition) AddCss(@class);
+        if ( condition && value != null )
+            builder.Append( value ).Append( Delimiter );
 
         return this;
     }
 
-    public ClassBuilder AddCss(string @class)
+    /// <summary>
+    /// Appends a copy of the specified list of strings to this instance.
+    /// </summary>
+    /// <param name="values">The list of strings to append.</param>
+    public void AddClass( IEnumerable<string> values )
     {
-        if (!string.IsNullOrWhiteSpace(@class) && _cssClasses.All(x => !x.Equals(@class))) _cssClasses.Add(@class);
+        builder.Append( string.Join( Delimiter, values ) ).Append( Delimiter );
+    }
+
+    /// <summary>
+    /// Marks the builder as dirty to rebuild the values.
+    /// </summary>
+    public ClassBuilder Clean()
+    {
+        clean = true;
         return this;
     }
 
+    #endregion
 
-    public ClassBuilder AddDarkModeCss(string @class, bool condition)
-    {
-        if (condition) AddDarkModeCss(@class);
+    #region Properties
 
-        return this;
-    }
-
-    public ClassBuilder AddDarkModeCss(string @class)
-    {
-        if (!string.IsNullOrWhiteSpace(@class) && _cssClasses.All(x => !x.Equals(@class)))
-            _cssClasses.Add($"dark:{@class}");
-        return this;
-    }
-
-
-    public ClassBuilder AddResponsiveModeCss(string @class, bool condition)
-    {
-        if (condition) AddResponsiveModeCss(@class);
-
-        return this;
-    }
-
-    public ClassBuilder AddResponsiveModeCss(string @class)
-    {
-        if (!string.IsNullOrWhiteSpace(@class) && _cssClasses.All(x => !x.Equals(@class)))
-            _cssClasses.Add($"responsive:{@class}");
-        return this;
-    }
-
-    public ClassBuilder Clear()
-    {
-        _cssClasses.Clear();
-        return this;
-    }
-
+    /// <summary>
+    /// Gets the class-names.
+    /// </summary>
     public string Build()
     {
-        var res = string.Join(" ", _cssClasses);
-        return res;
+            if ( clean )
+            {
+                builder.Clear();
+
+                buildClasses( this );
+
+                classNames = builder.ToString().TrimEnd()?.EmptyToNull();
+
+                clean = false;
+            }
+
+            return classNames;
     }
+
+    #endregion
 }

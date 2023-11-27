@@ -5,18 +5,19 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <PackageId>Enter.Ui</PackageId>
-        <Version>1.0.86</Version>
+        <Version>1.0.87</Version>
         <Authors>Akbar Ahmadi</Authors>
         <Company>AhmadiCo</Company>
         <PackageReadmeFile>Readme.md</PackageReadmeFile>
+        <PackageIcon>logo.png</PackageIcon>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <AssemblyName>Enter.Ui</AssemblyName>
         <RootNamespace>Enter.Ui</RootNamespace>
 
     </PropertyGroup>
-
     <ItemGroup>
         <None Include="..\..\Readme.md" Pack="true" PackagePath="." />
+        <None Include="logo.png" Pack="true" PackagePath="." />
     </ItemGroup>
 
     <ItemGroup>

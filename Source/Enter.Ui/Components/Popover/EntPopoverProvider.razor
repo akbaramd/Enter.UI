@@ -1,7 +1,7 @@
 ﻿@namespace Enter.Ui.Components
 @using Enter.Ui.Services
-@inherits Enter.Ui.Cores.Bases.EntComponentBase
-<div class="@RootClass">
+@inherits Enter.Ui.Bases.EntComponentBase
+<div class="@ClassNames">
     @foreach (var item in _entPopoverService.PopoverInstances)
     {
         <div @key="@item.Key" @onclick="() => { }" class="@item.Value.PopoverClass" id="@($"ent-popover-content-{item.Key}")">
@@ -15,12 +15,14 @@
 
 @code {
 
-    private string RootClass => CssBuilder
-        .AddCss("ent-popover-provider")
-        .Build();
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-popover-provider");
+        base.BuildClasses(builder);
+    }
 
     [Inject]
-    public IEntPopoverService EntPopoverService { get; set; }
+    public IEntPopoverService EntPopoverService { get; set; } = default!;
 
 
     private EntPopoverService _entPopoverService = default!;
@@ -47,9 +49,12 @@
     }
 
 
-    public override void Dispose()
+    protected override void Dispose(bool disposing)
     {
-        _entPopoverService.FragmentsChanged -= EntPopoverServiceOnFragmentsChanged;
+        if (disposing)
+        {
+            _entPopoverService.FragmentsChanged -= EntPopoverServiceOnFragmentsChanged;
+        }
     }
 
 }

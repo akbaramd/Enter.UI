@@ -1,10 +1,10 @@
 ﻿@namespace Enter.Ui.Components
 @typeparam TValue
 @using Enter.Ui.Components.Icon
-@inherits Enter.Ui.Cores.Bases.EntComponentBase
+@inherits Enter.Ui.Bases.EntComponentBase
 
 <CascadingValue Value="this" IsFixed="true">
-    <li @attributes="@AdditionalAttributes" class="@RootCss" @onclick="Select" @onclick:stopPropagation>
+    <li @attributes="@AdditionalAttributes" class="@ClassNames" @onclick="Select" @onclick:stopPropagation>
 
         <div class="ent-treeview-item-list-icon" @onclick="OnItemExpandClickCallback" @onclick:stopPropagation>
             @if (Item.Childrens != null && Item.Childrens.Any())
@@ -47,11 +47,13 @@
 
 @code {
 
-    private string RootCss => CssBuilder
-        .AddCss("ent-treeview-item")
-        .AddCss("active", !TreeView.MultiSelect && Checked)
-        .AddCss("expanded", Expanded)
-        .Build();
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-treeview-item")
+            .AddClass("active", !TreeView.MultiSelect && Checked)
+            .AddClass("expanded", Expanded);
+        base.BuildClasses(builder);
+    }
 
     [CascadingParameter]
     public EntTreeView<TValue> TreeView { get; set; } = default!;
@@ -135,8 +137,9 @@
         TreeView.StateHasChanged();
     }
 
-    public override void Dispose()
+    protected override void Dispose(bool disposing)
     {
+        base.Dispose(disposing);
     }
 
 }

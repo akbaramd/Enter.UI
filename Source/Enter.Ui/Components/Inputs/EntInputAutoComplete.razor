@@ -1,9 +1,9 @@
 ﻿@namespace Enter.Ui.Components
-@inherits Enter.Ui.Cores.Bases.EntInputBase<string>
+@inherits Enter.Ui.Bases.EntInputBase<string>
 @using Enter.Ui.Components.Icon
 @using System.Diagnostics.CodeAnalysis
 @typeparam T
-<div @attributes="@AdditionalAttributes" class="@RootClass" @ref="_elementReference" id="@Id">
+<div @attributes="@AdditionalAttributes" class="@ClassNames" @ref="_elementReference" id="@Id">
     <EntInputText @ref="_inputReference" EventType="oninput" class="@("ent-input-autocomplete-input")"
                   Value="@Value" ValueChanged="@ValueChanged" Disabled="@Disabled" Readonly="@Readonly" @onclick="@Click" @onfocusin="@Click"
                   ValueExpression="@ValueExpression" @oninput="@OnInputCallback" Icon="@EntIconName.Search"/>
@@ -47,8 +47,8 @@
         return Task.CompletedTask;
     }
 
-    private string RootClass => CssBuilder
-        .AddCss("ent-input-autocomplete")
+    private string ClassNames => ClassBuilder
+        .AddClass("ent-input-autocomplete")
         .Build();
 
 

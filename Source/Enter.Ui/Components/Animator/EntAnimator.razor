@@ -1,11 +1,11 @@
 ﻿@namespace Enter.Ui.Components
-@inherits Enter.Ui.Cores.Bases.EntComponentBase
+@inherits Enter.Ui.Bases.EntComponentBase
 <div
     @ref="Reference"
     @onanimationend="EventUtil.AsNonRenderingEventHandler(OnAnimationEndCallback)"
     @onanimationstart="EventUtil.AsNonRenderingEventHandler(OnAnimationStartCallback)"
-    class="@RootCss"
-    style="@RootStyle"
+    class="@ClassNames"
+    style="@StyleNames"
     id="@Id">
     @ChildContent
 </div>

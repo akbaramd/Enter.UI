@@ -1,7 +1,7 @@
-﻿@inherits Enter.Ui.Cores.Bases.EntComponentBase
+﻿@inherits Enter.Ui.Bases.EntComponentBase
 @namespace Enter.Ui.Components
 
-<div @attributes="@AdditionalAttributes" class="@RootCss">
+<div @attributes="@AdditionalAttributes" class="@ClassNames">
     @if (Parent.KeepPanelAlive)
     {
         @ChildContent

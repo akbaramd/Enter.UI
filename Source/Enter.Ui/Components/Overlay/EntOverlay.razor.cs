@@ -1,5 +1,5 @@
 ﻿using System.Windows.Input;
-using Enter.Ui.Cores.Bases;
+using Enter.Ui.Bases;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
@@ -11,15 +11,15 @@ public partial class EntOverlay : EntComponentBase
     private bool _visible;
 
     protected string Classname =>
-        CssBuilder.AddCss("ent-overlay")
-            .AddCss("ent-overlay-absolute", Absolute)
+        ClassBuilder.AddClass("ent-overlay")
+            .AddClass("ent-overlay-absolute", Absolute)
             .Build();
 
     protected string ScrimClassname =>
-        CssBuilder.Clear()
-            .AddCss("ent-overlay-scrim")
-            .AddCss("ent-overlay-dark", DarkBackground)
-            .AddCss("ent-overlay-light", LightBackground)
+        ClassBuilder.Clean()
+            .AddClass("ent-overlay-scrim")
+            .AddClass("ent-overlay-dark", DarkBackground)
+            .AddClass("ent-overlay-light", LightBackground)
             .Build();
 
     [Parameter] public RenderFragment? ChildContent { get; set; }
@@ -79,7 +79,8 @@ public partial class EntOverlay : EntComponentBase
             return;
     }
 
-    public override void Dispose()
+    protected override void Dispose(bool disposing)
     {
+        base.Dispose(disposing);
     }
 }

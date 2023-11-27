@@ -1,6 +1,6 @@
 ﻿@page "/documents/datatable"
 @using Enter.Dashboard.Model
-@inherits Enter.Ui.Cores.Bases.EntPageBase
+@inherits Enter.Ui.Bases.EntPageBase
 @layout DocumentLayout
 <EntCard class="m-4" Title="جدول داده">
     <CardBody>
@@ -53,8 +53,5 @@
         StateHasChanged();
     }
 
-    public override void Dispose()
-    {
-    }
 
 }

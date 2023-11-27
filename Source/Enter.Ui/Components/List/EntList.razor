@@ -1,21 +1,25 @@
 ﻿@namespace Enter.Ui.Components
-@inherits Enter.Ui.Cores.Bases.EntComponentBase
-<ul @attributes="@AdditionalAttributes" class="@RootCss">
+@inherits Enter.Ui.Bases.EntComponentBase
+<ul @attributes="@AdditionalAttributes" class="@ClassNames">
 
     @ChildContent
 </ul>
 
 @code {
 
-    private string RootCss => CssBuilder
-        .AddCss("ent-list")
-        .Build();
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+    builder.
+        AddClass("ent-list");
+        base.BuildClasses(builder);
+    }
 
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
-    public override void Dispose()
+    protected override void Dispose(bool disposing)
     {
+        base.Dispose(disposing);
     }
 
 }

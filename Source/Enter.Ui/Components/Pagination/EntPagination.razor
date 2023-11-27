@@ -1,10 +1,10 @@
 @namespace Enter.Ui.Components
 @using Enter.Ui.Components.Icon
 @using System.Diagnostics.CodeAnalysis
-@inherits Enter.Ui.Cores.Bases.EntComponentBase
+@inherits Enter.Ui.Bases.EntComponentBase
 
 
-<ul @attributes="@AdditionalAttributes" class="@RootClass">
+<ul @attributes="@AdditionalAttributes" class="@ClassNames">
     @if (ShowFirstButton)
     {
         <li class="ent-pagination-item" @onclick="@(() => OnClickControlButton(Page.First))">
@@ -61,8 +61,8 @@
     private bool _selectedFirstSet;
     private int _selected = 1;
 
-    private string RootClass => CssBuilder
-        .AddCss("ent-pagination")
+    private string ClassNames => ClassBuilder
+        .AddClass("ent-pagination")
         .Build();
 
 
@@ -214,8 +214,9 @@
             };
     }
 
-    public override void Dispose()
+    protected override void Dispose(bool disposing)
     {
+        base.Dispose(disposing);
     }
 
 }

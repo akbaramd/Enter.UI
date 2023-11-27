@@ -1,4 +1,5 @@
-﻿using Enter.Ui.Cores.Bases;
+﻿using Enter.Ui.Bases;
+using Enter.Ui.Core;
 using Microsoft.AspNetCore.Components;
 
 // ReSharper disable once CheckNamespace
@@ -8,8 +9,11 @@ public partial class EntTable<T> : EntComponentBase
 {
     private int _currentPage = 1;
 
-    protected string RootCss => CssBuilder.AddCss("ent-table")
-        .Build();
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-table");
+        base.BuildClasses(builder);
+    }
 
     private int _totalPage => (int)Math.Ceiling(decimal.Parse(Total.ToString()) / decimal.Parse(Take.ToString()));
 
@@ -30,7 +34,8 @@ public partial class EntTable<T> : EntComponentBase
     }
 
 
-    public override void Dispose()
+    protected override void Dispose(bool disposing)
     {
+        base.Dispose(disposing);
     }
 }

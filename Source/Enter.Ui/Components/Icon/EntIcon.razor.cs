@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
+using Enter.Ui.Bases;
 using Enter.Ui.Components.Icon;
-using Enter.Ui.Cores.Bases;
+using Enter.Ui.Core;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -19,15 +20,19 @@ public partial class EntIcon : EntComponentBase
 
     [Parameter] public string ViewBox { get; set; } = "0 0 24 24";
 
-    public string RootCss => CssBuilder
-        .AddCss("ent-icon")
-        .AddCss("ent-icon-size-sm", IconSize == EntIconSize.Small)
-        .AddCss("ent-icon-size-lg", IconSize == EntIconSize.Large)
-        .Build();
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-icon")
+            .AddClass("ent-icon-size-sm", IconSize == EntIconSize.Small)
+            .AddClass("ent-icon-size-lg", IconSize == EntIconSize.Large);
+        
+        base.BuildClasses(builder);
+    }
 
     [Parameter] public EventCallback Click { get; set; }
 
-    public override void Dispose()
+    protected override void Dispose(bool disposing)
     {
+        base.Dispose(disposing);
     }
 }

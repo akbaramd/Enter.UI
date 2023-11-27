@@ -3,14 +3,14 @@
 @using Enter.Ui.Components.Expandable
 @using Enter.Ui.JsServices
 @using Microsoft.JSInterop
-@inherits Enter.Ui.Cores.Bases.EntComponentBase
+@inherits Enter.Ui.Bases.EntComponentBase
 
 <EntAnimator
     @attributes="@AdditionalAttributes"
     @ref="Reference"
     id="@Id"
-    class="@RootCss"
-    style="@RootStyle"
+    class="@ClassNames"
+    style="@StyleNames"
     @bind-State="AnimationState"
     OnAnimationEnd="OnAnimationEnd">
     @ChildContent
@@ -31,22 +31,28 @@
     internal IEntSharedJsService? SharedJsService { get; set; }
 
     // Style and Css
-    private string RootCss => CssBuilder
-        .AddCss("ent-expandable")
-        .AddCss("ent-expandable-horizontal", Direction == EntExpandableDirection.Horizontal)
-        .AddCss("ent-expandable-vertical", Direction == EntExpandableDirection.Vertical)
-        .AddCss("ent-expandable-closed", AnimationState == EntAnimatorState.End)
-        .AddCss("ent-expandable-opened", AnimationState == EntAnimatorState.Start)
-        .AddCss("ent-expandable-closing", AnimationState == EntAnimatorState.Ending)
-        .AddCss("ent-expandable-opening", AnimationState == EntAnimatorState.Starting)
-        .Build();
+    protected override void BuildClasses(ClassBuilder builder)
+    {
 
-    private string RootStyle => StyleBuilder
-        .AddStyle("transition: all 0.25s ease-in-out", AnimationState is EntAnimatorState.End or EntAnimatorState.Starting)
-        .AddStyle($"{_cssProperty} : auto", AnimationState == EntAnimatorState.Start)
-        .AddStyle($"{_cssProperty} : 0px", AnimationState == EntAnimatorState.End)
-        .AddStyle($"{_cssProperty} : {_size}px", AnimationState is EntAnimatorState.Ending or EntAnimatorState.Starting)
-        .Build();
+        builder.AddClass("ent-expandable")
+            .AddClass("ent-expandable-horizontal", Direction == EntExpandableDirection.Horizontal)
+            .AddClass("ent-expandable-vertical", Direction == EntExpandableDirection.Vertical)
+            .AddClass("ent-expandable-closed", AnimationState == EntAnimatorState.End)
+            .AddClass("ent-expandable-opened", AnimationState == EntAnimatorState.Start)
+            .AddClass("ent-expandable-closing", AnimationState == EntAnimatorState.Ending)
+            .AddClass("ent-expandable-opening", AnimationState == EntAnimatorState.Starting);
+        base.BuildClasses(builder);
+    }
+
+    protected override void BuildStyles(StyleBuilder builder)
+    {
+        builder.AddStyle("transition: all 0.25s ease-in-out", AnimationState is EntAnimatorState.End or EntAnimatorState.Starting)
+            .AddStyle($"{_cssProperty} : auto", AnimationState == EntAnimatorState.Start)
+            .AddStyle($"{_cssProperty} : 0px", AnimationState == EntAnimatorState.End)
+            .AddStyle($"{_cssProperty} : {_size}px", AnimationState is EntAnimatorState.Ending or EntAnimatorState.Starting);
+        
+        base.BuildStyles(builder);
+    }
 
     // Parameters
     [Parameter]
@@ -69,6 +75,8 @@
         get => _expanded;
         set
         {
+            StyleBuilder?.Clear();
+            ClassBuilder?.Clean();
             if (_expanded == value)
                 return;
             _expanded = value;
@@ -165,8 +173,9 @@
         }
     }
 
-    public override void Dispose()
+    protected override void Dispose(bool disposing)
     {
+        base.Dispose(disposing);
     }
 
 }

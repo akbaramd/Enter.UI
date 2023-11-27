@@ -1,4 +1,5 @@
 using Enter.Ui.Components.Tabs;
+using Enter.Ui.Core;
 using Enter.Ui.Services;
 using Microsoft.AspNetCore.Components;
 
@@ -12,9 +13,11 @@ public partial class EntMdiTab : EntTabBase, IDisposable
     private List<EntMdiTabInstance> _items = new();
     private EntTab _tab = default!;
 
-    private string RootCss => CssBuilder
-        .AddCss("ent-mdi-tab")
-        .Build();
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-mdi-tab");
+        base.BuildClasses(builder);
+    }
 
     [Inject] public IEntMdiService EntMdiService { get; set; } = default!;
 

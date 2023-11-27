@@ -1,10 +1,10 @@
 ﻿@namespace Enter.Ui.Components
 @using Enter.Ui.Components.Icon
-@inherits Enter.Ui.Cores.Bases.EntComponentBase
+@inherits Enter.Ui.Bases.EntComponentBase
 
 <CascadingValue Value="this" IsFixed="true">
     <div  @ref="_modalReference" class="ent-modal-container" @onclick="OnContainerClick">
-        <div class="@RootCss" @onclick:stopPropagation="true" @onclick="OnModalClick">
+        <div class="@ClassNames" @onclick:stopPropagation="true" @onclick="OnModalClick">
             <div class="ent-modal-header">
                 <b class="title">@Title</b>
                 @if (Options?.ShowCloseButton ?? true)

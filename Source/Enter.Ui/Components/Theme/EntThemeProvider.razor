@@ -1,10 +1,11 @@
 ﻿@using Enter.Ui.JsServices
 @using Microsoft.JSInterop
 @namespace Enter.Ui.Components
+@inherits Enter.Ui.Bases.EntElementComponentBase
 @if (_shouldRender)
 {
     <CascadingValue Value="this" IsFixed="true">
-        <div dir="@Direction" class="@RootCss">
+        <div dir="@Direction" class="@ClassNames">
             @ChildContent
         </div>
     </CascadingValue>
@@ -23,13 +24,12 @@
 
     private string Direction => RtlMode ? "rtl" : "ltr";
 
-    protected string RootCss => new CssBuilder()
-        .AddCss("ent-ui vertical-scroll")
-        .AddCss("ent-rtl", RtlMode)
-        .AddCss("ent-ltr", !RtlMode)
-        .AddCss("ent-theme-dark", DarkMode)
-        .AddCss("ent-theme-responsive", ResponsiveMode)
-        .Build();
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-ui vertical-scroll");
+        base.BuildClasses(builder);
+        
+    }
 
     [Inject]
     private IEntSharedJsService SharedJsService { get; set; } = default!;

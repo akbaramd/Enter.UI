@@ -1,5 +1,5 @@
 ﻿@using Enter.Dashboard.Model
-@inherits Enter.Ui.Cores.Bases.EntPageBase
+@inherits Enter.Ui.Bases.EntPageBase
 <EntCard class="m-4" Title="صفحه فرم">
     <CardBody>
         <EntTable DataSources="DataSource" Total="Constants.Users.Count" Take="_take" OnPaginationChange="OnPaginationChange">
@@ -44,8 +44,5 @@
         StateHasChanged();
     }
 
-    public override void Dispose()
-    {
-    }
 
 }

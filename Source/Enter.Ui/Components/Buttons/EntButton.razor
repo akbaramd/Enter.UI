@@ -2,9 +2,9 @@
 @namespace Enter.Ui.Components
 @using Enter.Ui.Components.Button
 @using Enter.Ui.Components.Icon
-@inherits Enter.Ui.Cores.Bases.EntComponentBase
+@inherits Enter.Ui.Bases.EntComponentBase
 
-<button @attributes="@AdditionalAttributes" disabled="@(Disabled ? true : false)" class="@RootClass">
+<button @attributes="@AdditionalAttributes" disabled="@(Disabled ? true : false)" class="@ClassNames">
     @if (Icon != null && !Loading)
     {
         <span class="icon-wrapper">
@@ -24,18 +24,7 @@
 
 @code {
 
-    private string RootClass => CssBuilder
-        .AddCss("ent-btn")
-        .AddCss("ent-btn-size-lg", Size == ButtonSize.Large)
-        .AddCss("ent-btn-size-md", Size == ButtonSize.Medium)
-        .AddCss("ent-btn-size-sm", Size == ButtonSize.Small)
-        .AddCss("ent-btn-outline", Appearance == ButtonAppearance.Outline)
-        .AddCss("ent-btn-ghost", Appearance == ButtonAppearance.Ghost)
-        .AddCss("ent-btn-primary", Color == ButtonColor.Primary)
-        .AddCss("ent-btn-only-icon", Icon != null && ChildContent == null)
-        .AddCss("ent-btn-disabled", Disabled)
-        .Build();
-
+  
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
@@ -58,8 +47,23 @@
     public bool Disabled { get; set; } = false;
 
 
-    public override void Dispose()
+    protected override void BuildClasses(ClassBuilder builder)
     {
+        builder.AddClass("ent-btn");
+        builder.AddClass("ent-btn-size-lg", Size == ButtonSize.Large);
+        builder.AddClass("ent-btn-size-md", Size == ButtonSize.Medium);
+        builder.AddClass("ent-btn-size-sm", Size == ButtonSize.Small);
+        builder.AddClass("ent-btn-outline", Appearance == ButtonAppearance.Outline);
+        builder.AddClass("ent-btn-ghost", Appearance == ButtonAppearance.Ghost);
+        builder.AddClass("ent-btn-primary", Color == ButtonColor.Primary);
+        builder.AddClass("ent-btn-only-icon", Icon != null && ChildContent == null);
+        builder.AddClass("ent-btn-disabled", Disabled);
+        base.BuildClasses(builder);
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        base.Dispose(disposing);
     }
 
 }

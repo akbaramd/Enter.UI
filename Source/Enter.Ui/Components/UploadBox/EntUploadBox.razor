@@ -1,11 +1,11 @@
 ﻿@namespace Enter.Ui.Components
 @using Enter.Ui.Components.Icon
-@inherits Enter.Ui.Cores.Bases.EntComponentBase
+@inherits Enter.Ui.Bases.EntComponentBase
 
 <div
     @attributes="@AdditionalAttributes"
     id="@Id"
-    class="@RootCss">
+    class="@ClassNames">
 
     <label class="upload-container" for="upload-box">
         <span>@PlaceHolder</span>
@@ -48,9 +48,11 @@
     public EventCallback<List<UploadModel>> FilesChanged { get; set; }
 
     // Style and Css
-    private string RootCss => CssBuilder
-        .AddCss("ent-upload-box")
-        .Build();
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-upload-box");
+        base.BuildClasses(builder);
+    }
 
     [Parameter]
     public string PlaceHolder { get; set; } = string.Empty;
@@ -58,8 +60,9 @@
     [Parameter]
     public bool Multiple { get; set; }
 
-    public override void Dispose()
+    protected override void Dispose(bool disposing)
     {
+        base.Dispose(disposing);
     }
 
 

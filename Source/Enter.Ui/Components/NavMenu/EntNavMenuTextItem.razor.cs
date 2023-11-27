@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Enter.Ui.Cores.Bases;
+using Enter.Ui.Bases;
+using Enter.Ui.Core;
 using Microsoft.AspNetCore.Components;
 
 // ReSharper disable once CheckNamespace
@@ -7,20 +8,33 @@ namespace Enter.Ui.Components;
 
 public partial class EntNavMenuTextItem : EntComponentBase
 {
-    protected string RootCss => CssBuilder
-        .Clear()
-        .AddCss("ent-nav-menu-item ent-nav-menu-item-text")
-        .Build();
 
-    protected string IconCss => CssBuilder
-        .Clear()
-        .AddCss("ent-nav-menu-item-icon")
-        .Build();
+    private ClassBuilder IconClassBuilder { get; set; }
+    private ClassBuilder ContentClassBuilder { get; set; }
 
-    protected string ContentCss => CssBuilder
-        .Clear()
-        .AddCss("ent-nav-menu-item-content")
-        .Build();
+    private string IconClassNames => IconClassBuilder.Build();
+    private string ContentClassNames => ContentClassBuilder.Build();
+
+    public EntNavMenuTextItem()
+    {
+        IconClassBuilder = new ClassBuilder(BuildIconClasses);
+        ContentClassBuilder = new ClassBuilder(BuildContentClasses);
+    }
+    
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-nav-menu-item ent-nav-menu-item-text");
+        base.BuildClasses(builder);
+    }
+    
+    protected virtual  void BuildIconClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-nav-menu-item-icon");
+    }
+    protected virtual  void BuildContentClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-nav-menu-item-content");
+    }
 
     [Parameter] public object Icon { get; set; }
 
@@ -29,7 +43,8 @@ public partial class EntNavMenuTextItem : EntComponentBase
 
     [Parameter] public EventCallback Click { get; set; }
 
-    public override void Dispose()
+    protected override void Dispose(bool disposing)
     {
+        base.Dispose(disposing);
     }
 }

@@ -1,5 +1,6 @@
-﻿using Enter.Ui.Components.Modal;
-using Enter.Ui.Cores.Bases;
+﻿using Enter.Ui.Bases;
+using Enter.Ui.Components.Modal;
+using Enter.Ui.Core;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
@@ -7,14 +8,17 @@ namespace Enter.Ui.Components;
 
 public partial class EntModal : EntComponentBase
 {
-    private string RootCss => CssBuilder
-        .AddCss("ent-modal")
-        .AddCss(Options?.Class ?? string.Empty,Options != null)
-        .AddCss("ent-modal-sm", Options?.Size == EntModalSize.Small)
-        .AddCss("ent-modal-md", Options?.Size == EntModalSize.Medium)
-        .AddCss("ent-modal-lg", Options?.Size == EntModalSize.Large)
-        .AddCss("ent-modal-xl", Options?.Size == EntModalSize.ExtraLarge)
-        .AddCss("ent-modal-fs", Options?.Size == EntModalSize.Fullscreen).Build();
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-modal")
+            .AddClass(Options?.Class ?? string.Empty, Options != null)
+            .AddClass("ent-modal-sm", Options?.Size == EntModalSize.Small)
+            .AddClass("ent-modal-md", Options?.Size == EntModalSize.Medium)
+            .AddClass("ent-modal-lg", Options?.Size == EntModalSize.Large)
+            .AddClass("ent-modal-xl", Options?.Size == EntModalSize.ExtraLarge)
+            .AddClass("ent-modal-fs", Options?.Size == EntModalSize.Fullscreen);
+        base.BuildClasses(builder);
+    }
 
     private ElementReference _modalReference;
     
@@ -80,7 +84,8 @@ public partial class EntModal : EntComponentBase
     {
     }
 
-    public override void Dispose()
+    protected override void Dispose(bool disposing)
     {
+        base.Dispose(disposing);
     }
 }

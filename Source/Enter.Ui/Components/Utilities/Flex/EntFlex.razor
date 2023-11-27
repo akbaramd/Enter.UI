@@ -1,55 +1,57 @@
 ﻿@namespace Enter.Ui.Components
-<div class="@RootCss">@ChildContent</div>
+<div class="@ClassNames">@ChildContent</div>
 @using Enter.Ui.Components.Flex
-@inherits Enter.Ui.Cores.Bases.EntComponentBase
+@inherits Enter.Ui.Bases.EntComponentBase
 
 @code {
     private readonly string _flexRow = "flex-row";
     public string _flexColumn = "flex-column";
 
-    public string RootCss => CssBuilder
-        .AddCss("d-flex")
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("d-flex")
 
     // flex direction css
-        .AddCss($"{_flexRow}", Direction == FlexDirection.Row)
-        .AddCss($"{_flexColumn}", Direction == FlexDirection.Column)
-        .AddCss($"mobile:{_flexRow}", MobileDirection != null && MobileDirection == FlexDirection.Row)
-        .AddCss($"mobile:{_flexColumn}", MobileDirection != null && MobileDirection == FlexDirection.Column)
-        .AddCss($"tablet:{_flexRow}", TabletDirection != null && TabletDirection == FlexDirection.Row)
-        .AddCss($"tablet:{_flexColumn}", TabletDirection != null && TabletDirection == FlexDirection.Column)
-        .AddCss($"laptop:{_flexRow}", LaptopDirection != null && LaptopDirection == FlexDirection.Row)
-        .AddCss($"laptop:{_flexColumn}", LaptopDirection != null && LaptopDirection == FlexDirection.Column)
-        .AddCss($"desktop:{_flexRow}", DesktopDirection != null && DesktopDirection == FlexDirection.Row)
-        .AddCss($"desktop:{_flexColumn}", DesktopDirection != null && DesktopDirection == FlexDirection.Column)
-        .AddCss($"screen:{_flexRow}", ScreenDirection != null && ScreenDirection == FlexDirection.Row)
-        .AddCss($"screen:{_flexColumn}", ScreenDirection != null && ScreenDirection == FlexDirection.Column)
+            .AddClass($"{_flexRow}", Direction == FlexDirection.Row)
+            .AddClass($"{_flexColumn}", Direction == FlexDirection.Column)
+            .AddClass($"mobile:{_flexRow}", MobileDirection != null && MobileDirection == FlexDirection.Row)
+            .AddClass($"mobile:{_flexColumn}", MobileDirection != null && MobileDirection == FlexDirection.Column)
+            .AddClass($"tablet:{_flexRow}", TabletDirection != null && TabletDirection == FlexDirection.Row)
+            .AddClass($"tablet:{_flexColumn}", TabletDirection != null && TabletDirection == FlexDirection.Column)
+            .AddClass($"laptop:{_flexRow}", LaptopDirection != null && LaptopDirection == FlexDirection.Row)
+            .AddClass($"laptop:{_flexColumn}", LaptopDirection != null && LaptopDirection == FlexDirection.Column)
+            .AddClass($"desktop:{_flexRow}", DesktopDirection != null && DesktopDirection == FlexDirection.Row)
+            .AddClass($"desktop:{_flexColumn}", DesktopDirection != null && DesktopDirection == FlexDirection.Column)
+            .AddClass($"screen:{_flexRow}", ScreenDirection != null && ScreenDirection == FlexDirection.Row)
+            .AddClass($"screen:{_flexColumn}", ScreenDirection != null && ScreenDirection == FlexDirection.Column)
 
     // flex align css
-        .AddCss("items-center justify-center", Align == FlexAlign.Center)
-        .AddCss("items-center justify-start", Align == FlexAlign.StartCenter)
-        .AddCss("items-center justify-end", Align == FlexAlign.EndCenter)
-        .AddCss("mobile:items-center mobile:justify-center", MobileAlign != null && MobileAlign == FlexAlign.Center)
-        .AddCss("mobile:items-center mobile:justify-start", MobileAlign != null && MobileAlign == FlexAlign.StartCenter)
-        .AddCss("mobile:items-center mobile:justify-end", MobileAlign != null && MobileAlign == FlexAlign.EndCenter)
-        .AddCss("tablet:items-center tablet:justify-center", TabletAlign != null && TabletAlign == FlexAlign.Center)
-        .AddCss("tablet:items-center tablet:justify-start", TabletAlign != null && TabletAlign == FlexAlign.StartCenter)
-        .AddCss("tablet:items-center tablet:justify-end", TabletAlign != null && TabletAlign == FlexAlign.EndCenter)
-        .AddCss("laptop:items-center laptop:justify-center", LaptopAlign != null && LaptopAlign == FlexAlign.Center)
-        .AddCss("laptop:items-center laptop:justify-start", LaptopAlign != null && LaptopAlign == FlexAlign.StartCenter)
-        .AddCss("laptop:items-center laptop:justify-end", LaptopAlign != null && LaptopAlign == FlexAlign.EndCenter)
-        .AddCss("desktop:items-center desktop:justify-center", DesktopAlign != null && DesktopAlign == FlexAlign.Center)
-        .AddCss("desktop:items-center desktop:justify-start", DesktopAlign != null && DesktopAlign == FlexAlign.StartCenter)
-        .AddCss("desktop:items-center desktop:justify-end", DesktopAlign != null && DesktopAlign == FlexAlign.EndCenter)
-        .AddCss("screen:items-center screen:justify-center", ScreenAlign != null && ScreenAlign == FlexAlign.Center)
-        .AddCss("screen:items-center screen:justify-start", ScreenAlign != null && ScreenAlign == FlexAlign.StartCenter)
-        .AddCss("screen:items-center screen:justify-end", ScreenAlign != null && ScreenAlign == FlexAlign.EndCenter)
-        .AddCss($"gap-{Gap}", Gap.HasValue)
-        .AddCss($"mobile:gap-{MobileGap}", MobileGap.HasValue)
-        .AddCss($"tablet:gap-{TabletGap}", TabletGap.HasValue)
-        .AddCss($"laptop:gap-{LaptopGap}", LaptopGap.HasValue)
-        .AddCss($"desktop:gap-{DesktopGap}", DesktopGap.HasValue)
-        .AddCss($"screen:gap-{ScreenGap}", ScreenGap.HasValue)
-        .Build();
+            .AddClass("items-center justify-center", Align == FlexAlign.Center)
+            .AddClass("items-center justify-start", Align == FlexAlign.StartCenter)
+            .AddClass("items-center justify-end", Align == FlexAlign.EndCenter)
+            .AddClass("mobile:items-center mobile:justify-center", MobileAlign != null && MobileAlign == FlexAlign.Center)
+            .AddClass("mobile:items-center mobile:justify-start", MobileAlign != null && MobileAlign == FlexAlign.StartCenter)
+            .AddClass("mobile:items-center mobile:justify-end", MobileAlign != null && MobileAlign == FlexAlign.EndCenter)
+            .AddClass("tablet:items-center tablet:justify-center", TabletAlign != null && TabletAlign == FlexAlign.Center)
+            .AddClass("tablet:items-center tablet:justify-start", TabletAlign != null && TabletAlign == FlexAlign.StartCenter)
+            .AddClass("tablet:items-center tablet:justify-end", TabletAlign != null && TabletAlign == FlexAlign.EndCenter)
+            .AddClass("laptop:items-center laptop:justify-center", LaptopAlign != null && LaptopAlign == FlexAlign.Center)
+            .AddClass("laptop:items-center laptop:justify-start", LaptopAlign != null && LaptopAlign == FlexAlign.StartCenter)
+            .AddClass("laptop:items-center laptop:justify-end", LaptopAlign != null && LaptopAlign == FlexAlign.EndCenter)
+            .AddClass("desktop:items-center desktop:justify-center", DesktopAlign != null && DesktopAlign == FlexAlign.Center)
+            .AddClass("desktop:items-center desktop:justify-start", DesktopAlign != null && DesktopAlign == FlexAlign.StartCenter)
+            .AddClass("desktop:items-center desktop:justify-end", DesktopAlign != null && DesktopAlign == FlexAlign.EndCenter)
+            .AddClass("screen:items-center screen:justify-center", ScreenAlign != null && ScreenAlign == FlexAlign.Center)
+            .AddClass("screen:items-center screen:justify-start", ScreenAlign != null && ScreenAlign == FlexAlign.StartCenter)
+            .AddClass("screen:items-center screen:justify-end", ScreenAlign != null && ScreenAlign == FlexAlign.EndCenter)
+            .AddClass($"gap-{Gap}", Gap.HasValue)
+            .AddClass($"mobile:gap-{MobileGap}", MobileGap.HasValue)
+            .AddClass($"tablet:gap-{TabletGap}", TabletGap.HasValue)
+            .AddClass($"laptop:gap-{LaptopGap}", LaptopGap.HasValue)
+            .AddClass($"desktop:gap-{DesktopGap}", DesktopGap.HasValue)
+            .AddClass($"screen:gap-{ScreenGap}", ScreenGap.HasValue);
+        base.BuildClasses(builder);
+    }
 
 
     [Parameter]
@@ -115,8 +117,9 @@
     public decimal? ScreenGap { get; set; }
 
 
-    public override void Dispose()
+    protected override void Dispose(bool disposing)
     {
+        base.Dispose(disposing);
     }
 
 }

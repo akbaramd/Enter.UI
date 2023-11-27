@@ -1,4 +1,5 @@
-using Enter.Ui.Cores.Bases;
+using Enter.Ui.Bases;
+using Enter.Ui.Core;
 using Microsoft.AspNetCore.Components;
 
 // ReSharper disable once CheckNamespace
@@ -6,11 +7,12 @@ namespace Enter.Ui.Components;
 
 public partial class EntTabPanel : EntComponentBase
 {
-    protected string RootCss => CssBuilder
-        .AddCss("ent-tab-panel")
-        .AddCss("active", Parent.IsActiveTab(Id))
-        .Build();
-
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-tab-panel")
+            .AddClass("active", Parent.IsActiveTab(Id));
+        base.BuildClasses(builder);
+    }
 
     [Parameter] public string Id { get; set; }
 
@@ -22,8 +24,9 @@ public partial class EntTabPanel : EntComponentBase
 
     [Parameter] public object Icon { get; set; }
 
-    public override void Dispose()
+    protected override void Dispose(bool disposing)
     {
+        base.Dispose(disposing);
     }
 
     protected override async Task OnInitializedAsync()

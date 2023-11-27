@@ -2,11 +2,11 @@
 
 @typeparam TValue
 @using Enter.Ui.Components.TreeView
-@inherits Enter.Ui.Cores.Bases.EntComponentBase
+@inherits Enter.Ui.Bases.EntComponentBase
 
 
 <CascadingValue Value="this" IsFixed="true">
-    <ul @attributes="@AdditionalAttributes" class="@RootCss">
+    <ul @attributes="@AdditionalAttributes" class="@ClassNames">
         @if (DataSource != null)
         {
             @foreach (var item in DataSource)
@@ -20,12 +20,14 @@
 
 @code {
 
-    private string RootCss => CssBuilder
-        .AddCss("ent-treeview")
-        .Build();
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-treeview");
+        base.BuildClasses(builder);
+    }
 
-    private string Item => new CssBuilder()
-        .AddCss("ent-treeview")
+    private string Item => ClassBuilder.Clean()
+        .AddClass("ent-treeview")
         .Build();
 
     [Parameter]
@@ -87,8 +89,9 @@
         base.StateHasChanged();
     }
 
-    public override void Dispose()
+    protected override void Dispose(bool disposing)
     {
+        base.Dispose(disposing);
     }
 
 }

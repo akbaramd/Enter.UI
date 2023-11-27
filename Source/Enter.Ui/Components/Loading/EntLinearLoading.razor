@@ -1,35 +1,45 @@
 ﻿@namespace Enter.Ui.Components
 @using Enter.Ui.Components.Loading
-@inherits Enter.Ui.Cores.Bases.EntComponentBase
-<span @attributes="@AdditionalAttributes" class="@RootClass" style="@RootStyle">
+@inherits Enter.Ui.Bases.EntComponentBase
+<span @attributes="@AdditionalAttributes" class="@ClassNames" style="@StyleNames">
     @if (Indeterminate)
     {
         <span class="indeterminate"></span>
     }
     else
     {
-        <span class="determinate" style="@ItemStyle"></span>
+        <span class="determinate" style="@ItemStyleNames"></span>
     }
 </span>
 
 
 @code {
 
-    private string RootClass => CssBuilder
-        .AddCss("ent-linear-loading")
-        .AddCss("ent-linear-loading-lg", Size == EntLoadingSize.Large)
-        .AddCss("ent-linear-loading-sm", Size == EntLoadingSize.Small)
-        .AddCss("ent-linear-loading")
-        .AddCss("animate", Animate)
-        .Build();
+    protected string ItemStyleNames => ItemStyleBuilder?.Build() ?? string.Empty;
 
-    private string RootStyle => StyleBuilder
-        .Build();
+    protected StyleBuilder? ItemStyleBuilder { get; set; }
 
-    private string ItemStyle => StyleBuilder
-        .Clear()
-        .AddStyle($"width: {Width}%")
-        .Build();
+    public EntLinearLoading()
+    {
+        ItemStyleBuilder = new StyleBuilder(BuildItemStyles);
+    }
+    
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-linear-loading")
+            .AddClass("ent-linear-loading-lg", Size == EntLoadingSize.Large)
+            .AddClass("ent-linear-loading-sm", Size == EntLoadingSize.Small)
+            .AddClass("ent-linear-loading")
+            .AddClass("animate", Animate);
+        
+        base.BuildClasses(builder);
+    }
+
+    protected virtual void BuildItemStyles(StyleBuilder builder)
+    {
+        builder.AddStyle($"width: {Width}%");
+        base.BuildStyles(builder);
+    }
 
 
     [Parameter]
@@ -44,8 +54,9 @@
     [Parameter]
     public int Width { get; set; } = 0;
 
-    public override void Dispose()
+    protected override void Dispose(bool disposing)
     {
+        base.Dispose(disposing);
     }
 
 }

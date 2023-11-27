@@ -2,23 +2,23 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 
-namespace Enter.Ui.Cores.Bases;
+namespace Enter.Ui.Bases;
 
 public abstract class EntInputBase<T> : InputBase<T>, IAsyncDisposable
 {
-    public string ValidationCss => new CssBuilder()
-        .AddCss("ent-input-validation", UseValidation)
-        .AddCss("modified", UseValidation && IsModified)
-        .AddCss("validation-requested", UseValidation && ValidationRequested)
-        .AddCss("invalid", UseValidation && !IsValid)
-        .AddCss("valid", UseValidation && IsValid)
-        .Build();
 
-    public string BaseCss => new CssBuilder()
-        .AddCss("readonly", Readonly)
-        .AddCss("disabled", Disabled)
-        .Build();
+    protected EntInputBase()
+    {
+        ClassBuilder = new ClassBuilder(BuildClasses);
+    }
 
+    protected string ClassNames => ClassBuilder.Build(); 
+    protected ClassBuilder ClassBuilder { get; private set; }
+
+    protected virtual void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass(AdditionalAttributes.TryGetValue("class", out var @class) ? @class.ToString() : string.Empty);
+    }
     [Parameter] public bool UseValidation { get; set; } = true;
 
     [Parameter] public bool Readonly { get; set; }
@@ -32,11 +32,6 @@ public abstract class EntInputBase<T> : InputBase<T>, IAsyncDisposable
     internal bool IsModified { get; set; }
 
 
-    protected CssBuilder CssBuilder =>
-        new CssBuilder()
-            .AddCss(AdditionalAttributes?.TryGetValue("class", out var @class) ?? false
-                ? @class?.ToString() ?? string.Empty
-                : string.Empty);
 
 
     public string Id => AdditionalAttributes?.ContainsKey("id") == true

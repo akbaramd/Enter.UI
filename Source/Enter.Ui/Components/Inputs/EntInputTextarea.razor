@@ -1,9 +1,9 @@
 ﻿@namespace Enter.Ui.Components
-@inherits Enter.Ui.Cores.Bases.EntInputBase<string?>
+@inherits Enter.Ui.Bases.EntInputBase<string?>
 @using System.Diagnostics.CodeAnalysis
 @implements IAsyncDisposable
 
-<div @attributes="@AdditionalAttributes" class="@RootCss" id="@Id">
+<div @attributes="@AdditionalAttributes" class="@ClassNames" id="@Id">
     <textarea @ref="_elementReference" name="@ValueExpression?.GetPropertyName()" class="ent-input-field" placeholder="@PlaceHolder"
     @bind="@CurrentValueAsString"
     rows="@Rows"
@@ -17,11 +17,11 @@
 
     private ElementReference _elementReference = default!;
 
-    private string RootCss => CssBuilder
-        .AddCss("ent-input")
-        .AddCss(BaseCss)
-        .AddCss(ValidationCss)
-        .Build();
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-input");
+        base.BuildClasses(builder);
+    }
 
 
     [Parameter]

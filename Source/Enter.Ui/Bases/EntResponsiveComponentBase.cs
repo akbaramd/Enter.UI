@@ -1,12 +1,10 @@
 ﻿using Enter.Ui.Core;
 using Microsoft.AspNetCore.Components;
 
-namespace Enter.Ui.Cores.Bases;
+namespace Enter.Ui.Bases;
 
 public abstract class EntResponsiveComponentBase : EntComponentBase
 {
-    protected new CssBuilder CssBuilder => new CssBuilder(base.CssBuilder.Build())
-        .AddCss("ent-responsive", ResponsiveMode);
 
     [Parameter] public bool ResponsiveMode { get; set; }
 
@@ -15,6 +13,12 @@ public abstract class EntResponsiveComponentBase : EntComponentBase
         await base.OnAfterRenderAsync(firstRender);
 
         if (firstRender) Handle();
+    }
+
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-responsive", ResponsiveMode);
+        base.BuildClasses(builder);
     }
 
     public void Handle()

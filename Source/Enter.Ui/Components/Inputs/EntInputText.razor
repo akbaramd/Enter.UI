@@ -1,11 +1,11 @@
 ﻿@namespace Enter.Ui.Components
-@inherits Enter.Ui.Cores.Bases.EntInputBase<string?>
+@inherits Enter.Ui.Bases.EntInputBase<string?>
 @using Enter.Ui.Components.Inputs
 @using Enter.Ui.Components.Icon
 @using System.Diagnostics.CodeAnalysis
 @implements IAsyncDisposable
 
-<div @attributes="@AdditionalAttributes" class="@RootCss" id="@Id">
+<div @attributes="@AdditionalAttributes" class="@ClassNames" id="@Id">
     <input @ref="_elementReference" name="@ValueExpression?.GetPropertyName()" type="@(IsPassword ? "password" : "text")" class="ent-input-field" placeholder="@PlaceHolder"
            @bind="@CurrentValueAsString"
            @bind:event="@EventType" disabled="@Disabled" readonly="@Readonly"/>
@@ -22,13 +22,14 @@
 
     private ElementReference _elementReference = default!;
 
-    private string RootCss => CssBuilder
-        .AddCss("ent-input")
-        .AddCss("ent-input-lg", Size == EntInputSize.Large)
-        .AddCss("ent-input-sm", Size == EntInputSize.Small)
-        .AddCss(BaseCss)
-        .AddCss(ValidationCss)
-        .Build();
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-input")
+            .AddClass("ent-input-lg", Size == EntInputSize.Large)
+            .AddClass("ent-input-sm", Size == EntInputSize.Small);
+        
+        base.BuildClasses(builder);
+    }
 
     [Parameter]
     public object Icon { get; set; }

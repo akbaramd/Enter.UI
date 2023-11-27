@@ -1,17 +1,19 @@
 ﻿@namespace Enter.Ui.Components
 @using Enter.Ui.Components.Loading
-@inherits Enter.Ui.Cores.Bases.EntComponentBase
-<span @attributes="@AdditionalAttributes" class="@RootClass">
+@inherits Enter.Ui.Bases.EntComponentBase
+<span @attributes="@AdditionalAttributes" class="@ClassNames">
 </span>
 
 @code {
 
-    private string RootClass => CssBuilder
-        .AddCss("ent-circular-loading")
-        .AddCss("ent-circular-loading-lg", Size == EntLoadingSize.Large)
-        .AddCss("ent-circular-loading-sm", Size == EntLoadingSize.Small)
-        .AddCss("animate", Animate)
-        .Build();
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-circular-loading")
+            .AddClass("ent-circular-loading-lg", Size == EntLoadingSize.Large)
+            .AddClass("ent-circular-loading-sm", Size == EntLoadingSize.Small)
+            .AddClass("animate", Animate);
+        base.BuildClasses(builder);
+    }
 
     [Parameter]
     public bool Animate { get; set; } = true;
@@ -28,8 +30,9 @@
         base.OnAfterRender(firstRender);
     }
 
-    public override void Dispose()
+    protected override void Dispose(bool disposing)
     {
+        base.Dispose(disposing);
     }
 
 }

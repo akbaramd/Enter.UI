@@ -1,7 +1,7 @@
-﻿using Enter.Ui.Components.Toast;
+﻿using Enter.Ui.Bases;
+using Enter.Ui.Components.Toast;
 using Enter.Ui.Components.Toast.Configuration;
 using Enter.Ui.Components.Toast.Services;
-using Enter.Ui.Cores.Bases;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Routing;
 
@@ -236,8 +236,7 @@ public partial class EntToastProviders : EntComponentBase
         });
     }
 
-    public override void Dispose()
+    protected override void Dispose(bool disposing)
     {
-        
     }
 }

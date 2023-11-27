@@ -1,18 +1,20 @@
 ﻿@namespace Enter.Ui.Components
-<div class="@RootCss">
+<div class="@ClassNames">
     <CascadingValue Value="this" IsFixed="true">
         @ChildContent
 
     </CascadingValue>
 
 </div>
-@inherits Enter.Ui.Cores.Bases.EntComponentBase
+@inherits Enter.Ui.Bases.EntComponentBase
 
 @code {
 
-    public string RootCss => CssBuilder
-        .AddCss("ent-drawer-container")
-        .Build();
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-drawer-container");
+        base.BuildClasses(builder);
+    }
 
     [Parameter]
     public RenderFragment ChildContent { get; set; }
@@ -20,8 +22,9 @@
     private bool HasBackdrop { get; set; } = false;
 
 
-    public override void Dispose()
+    protected override void Dispose(bool disposing)
     {
+        base.Dispose(disposing);
     }
 
 }

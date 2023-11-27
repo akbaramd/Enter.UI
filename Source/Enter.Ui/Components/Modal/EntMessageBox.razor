@@ -1,9 +1,9 @@
 ﻿@namespace Enter.Ui.Components
-@inherits Enter.Ui.Cores.Bases.EntComponentBase
+@inherits Enter.Ui.Bases.EntComponentBase
 @using Enter.Ui.Components.Text
 @using Enter.Ui.Components.Button
 @implements IDisposable
-<div class="@RootCss">
+<div class="@ClassNames">
     <EntText Type="EntTextType.Bold" class="ent-messagebox-title">@Message</EntText>
     <div class="ent-messagebox-action">
         <EntButton Color="ButtonColor.Primary" @onclick="OnConfirmClick">@ConfirmText</EntButton>
@@ -16,8 +16,11 @@
     [CascadingParameter]
     public EntModal Modal { get; set; } = default!;
 
-    private string RootCss => CssBuilder
-        .AddCss("ent-messagebox").Build();
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-list-item");
+        base.BuildClasses(builder);
+    }
 
     [Parameter]
     public string Message { get; set; }
@@ -40,8 +43,9 @@
     }
 
 
-    public override void Dispose()
+    protected override void Dispose(bool disposing)
     {
+        base.Dispose(disposing);
     }
 
 }

@@ -1,4 +1,4 @@
-﻿@inherits Enter.Ui.Cores.Bases.EntComponentBase
+﻿@inherits Enter.Ui.Bases.EntComponentBase
 @namespace Enter.Ui.Components
 
 
@@ -7,5 +7,5 @@
 {
     var icon = IconProvider.Icon(Icon, IconStyle);
 
-    <i @onclick="Click" class="@RootCss  @icon"></i>
+    <i @onclick="Click" class="@ClassNames  @icon"></i>
 }

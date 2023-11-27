@@ -1,22 +1,24 @@
 ﻿@namespace Enter.Ui.Components
 @using Enter.Ui.Components.Drawer
-@inherits Enter.Ui.Cores.Bases.EntComponentBase
+@inherits Enter.Ui.Bases.EntComponentBase
 
 
-<aside class="@RootCss">@ChildContent</aside>
+<aside class="@ClassNames">@ChildContent</aside>
 <EntOverlay Visible="HasBackdrop" DarkBackground="true" OnClick="@OnOverlayClickCallback" @ontouchstart="@OnOverlayClickCallback" LockScroll="false"/>
 
 @code {
 
-    public string RootCss => CssBuilder
-        .AddCss("ent-drawer")
-        .AddCss("ent-drawer--direction-start", Direction == EntDrawerDirection.Start)
-        .AddCss("ent-drawer--direction-end", Direction == EntDrawerDirection.End)
-        .AddCss("ent-drawer--mode-behavior", Mode == EntDrawerMode.Behavior)
-        .AddCss("ent-drawer--mode-overlay", Mode == EntDrawerMode.Overlay)
-        .AddCss("ent-drawer--open", Open)
-        .AddCss("ent-drawer--close", !Open)
-        .Build();
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-drawer")
+            .AddClass("ent-drawer--direction-start", Direction == EntDrawerDirection.Start)
+            .AddClass("ent-drawer--direction-end", Direction == EntDrawerDirection.End)
+            .AddClass("ent-drawer--mode-behavior", Mode == EntDrawerMode.Behavior)
+            .AddClass("ent-drawer--mode-overlay", Mode == EntDrawerMode.Overlay)
+            .AddClass("ent-drawer--open", Open)
+            .AddClass("ent-drawer--close", !Open);
+        base.BuildClasses(builder);
+    }
 
     [Parameter]
     public RenderFragment ChildContent { get; set; }
@@ -50,8 +52,9 @@
         StateHasChanged();
     }
 
-    public override void Dispose()
+    protected override void Dispose(bool disposing)
     {
+        base.Dispose(disposing);
     }
 
 }

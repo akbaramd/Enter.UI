@@ -4,7 +4,7 @@ using Enter.Ui.Components.Toast.Services;
 using Enter.Ui.Services;
 using Microsoft.AspNetCore.Components;
 
-namespace Enter.Ui.Cores.Bases;
+namespace Enter.Ui.Bases;
 
 public abstract class EntPageBase : ComponentBase, IDisposable
 {
