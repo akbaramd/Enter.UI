@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Components;
 // ReSharper disable once CheckNamespace
 namespace Enter.Ui.Components;
 
-public partial class EntMdiTab : EntTabBase, IDisposable
+public partial class EntMdiTab : EntTabComponentComponent, IDisposable
 {
     private string? _activeTabId = null;
    

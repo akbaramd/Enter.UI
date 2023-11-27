@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Components;
 // ReSharper disable once CheckNamespace
 namespace Enter.Ui.Components;
 
-public partial class EntNavMenu : EntComponentBase
+public partial class EntNavMenu : EntComponentComponent
 {
     private readonly List<EntNavMenuGroup> _groups = new();
 

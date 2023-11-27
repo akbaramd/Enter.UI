@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Enter.Ui.Bases;
 
-public abstract class EntResponsiveComponentBase : EntComponentBase
+public abstract class EntResponsiveComponentComponent : EntComponentComponent
 {
 
     [Parameter] public bool ResponsiveMode { get; set; }

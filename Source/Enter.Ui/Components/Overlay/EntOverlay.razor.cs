@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Components.Web;
 // ReSharper disable once CheckNamespace
 namespace Enter.Ui.Components;
 
-public partial class EntOverlay : EntComponentBase
+public partial class EntOverlay : EntComponentComponent
 {
     private bool _visible;
 

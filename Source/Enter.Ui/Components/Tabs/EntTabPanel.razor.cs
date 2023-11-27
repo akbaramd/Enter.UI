@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Components;
 // ReSharper disable once CheckNamespace
 namespace Enter.Ui.Components;
 
-public partial class EntTabPanel : EntComponentBase
+public partial class EntTabPanel : EntComponentComponent
 {
     protected override void BuildClasses(ClassBuilder builder)
     {

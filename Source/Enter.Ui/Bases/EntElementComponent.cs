@@ -3,16 +3,29 @@ using Microsoft.AspNetCore.Components;
 
 namespace Enter.Ui.Bases;
 
-public abstract class EntElementComponentBase : EntBaseAfterRenderComponent, IDisposable, IAsyncDisposable
+public abstract class EntElementComponent : EntAfterRenderComponent, IDisposable, IAsyncDisposable
 {
-    protected EntElementComponentBase()
+    protected EntElementComponent()
     {
         ClassBuilder = new ClassBuilder(BuildClasses);
         StyleBuilder = new StyleBuilder(BuildStyles);
     }
 
     
+    #region Properties
 
+    /// <summary>
+    /// Specifies the content to be rendered inside this component.
+    /// </summary>
+    [Parameter] public RenderFragment? ChildContent { get; set; } 
+
+    
+    [Parameter]
+    public string Tag { get; set; } = string.Empty;
+    
+    
+    #endregion
+    
     protected string ClassNames => ClassBuilder?.Build() ?? string.Empty;
     protected string StyleNames => StyleBuilder?.Build() ?? string.Empty;
 
@@ -23,8 +36,7 @@ public abstract class EntElementComponentBase : EntBaseAfterRenderComponent, IDi
     [Parameter(CaptureUnmatchedValues = true)]
     public Dictionary<string, object?> AdditionalAttributes { get; set; } = new();
 
-    [Parameter]
-    public string Tag { get; set; } = string.Empty;
+   
 
     public string Id => AdditionalAttributes?.ContainsKey("id") == true
         ? AdditionalAttributes["id"]?.ToString() ?? Guid.NewGuid().ToString()

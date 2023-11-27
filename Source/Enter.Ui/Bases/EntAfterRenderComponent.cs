@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Enter.Ui.Bases;
 
-public abstract class EntBaseAfterRenderComponent : ComponentBase
+public abstract class EntAfterRenderComponent : ComponentBase
 {
     #region Members
 

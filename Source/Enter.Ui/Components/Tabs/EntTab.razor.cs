@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Components;
 // ReSharper disable once CheckNamespace
 namespace Enter.Ui.Components;
 
-public partial class EntTab : EntTabBase
+public partial class EntTab : EntTabComponentComponent
 {
     private string? _activeTabId = null;
 
@@ -141,7 +141,7 @@ public enum EntTabItemDirection
     Horizontal
 }
 
-public class EntTabBase : EntResponsiveComponentBase
+public class EntTabComponentComponent : EntResponsiveComponentComponent
 {
     [Parameter] public bool KeepPanelAlive { get; set; } = false;
     [Parameter] public bool Closeable { get; set; } = false;

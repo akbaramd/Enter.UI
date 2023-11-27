@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 // ReSharper disable once CheckNamespace
 namespace Enter.Ui.Components;
 
-public partial class EntIcon : EntComponentBase
+public partial class EntIcon : EntComponentComponent
 {
     private EntIcon? _entIcon => ServiceProvider.GetService<EntIcon>();
 

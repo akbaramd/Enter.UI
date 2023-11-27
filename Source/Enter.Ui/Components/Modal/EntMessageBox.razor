@@ -1,5 +1,5 @@
 ﻿@namespace Enter.Ui.Components
-@inherits Enter.Ui.Bases.EntComponentBase
+@inherits Enter.Ui.Bases.EntComponentComponent
 @using Enter.Ui.Components.Text
 @using Enter.Ui.Components.Button
 @implements IDisposable
@@ -18,7 +18,7 @@
 
     protected override void BuildClasses(ClassBuilder builder)
     {
-        builder.AddClass("ent-list-item");
+        builder.AddClass("ent-messagebox");
         base.BuildClasses(builder);
     }
 

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Enter.Ui.Bases;
 
-public abstract class EntComponentBase : EntElementComponentBase, IDisposable
+public abstract class EntComponentComponent : EntElementComponent, IDisposable
 {
     
 
