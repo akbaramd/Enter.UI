@@ -1,11 +1,11 @@
 ﻿@namespace Enter.Ui.Components
 @using Enter.Ui.Components.Drawer
 @using Enter.Ui.Cores.Core
-@inherits Enter.Ui.Bases.EntComponentComponent
+@inherits Enter.Ui.Bases.EntBaseComponent
 
 
 <aside class="@ClassNames">@ChildContent</aside>
-<EntOverlay Visible="HasBackdrop" DarkBackground="true" OnClick="@OnOverlayClickCallback" @ontouchstart="@OnOverlayClickCallback" LockScroll="false"/>
+<EntOverlay Visible="HasBackdrop" DarkBackground="true" OnClick="@OnOverlayClickCallback" @ontouchstart="@OnOverlayClickCallback"  class="ent-drawer-overlay" LockScroll="false"/>
 
 @code {
 

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Components;
 // ReSharper disable once CheckNamespace
 namespace Enter.Ui.Components;
 
-public partial class EntToast : EntComponentComponent
+public partial class EntToast : EntBaseComponent
 {
     [CascadingParameter] private EntToastProviders ToastsContainer { get; set; } = default!;
 

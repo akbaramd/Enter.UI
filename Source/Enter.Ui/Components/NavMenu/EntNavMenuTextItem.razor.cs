@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Components;
 // ReSharper disable once CheckNamespace
 namespace Enter.Ui.Components;
 
-public partial class EntNavMenuTextItem : EntComponentComponent
+public partial class EntNavMenuTextItem : EntBaseComponent
 {
 
     private ClassBuilder IconClassBuilder { get; set; }

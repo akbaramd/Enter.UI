@@ -87,7 +87,7 @@ public class ClassBuilder
     /// </summary>
     public string Build(string Tag = "")
     {
-            if ( clean )
+            if ( true )
             {
                 builder.Clear();
 

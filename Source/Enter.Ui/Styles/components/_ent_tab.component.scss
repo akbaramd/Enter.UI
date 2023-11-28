@@ -133,7 +133,10 @@
 
   > .responsive\:ent-tab-item-container {
     background-color: var(--ent-tab-bg);
+    z-index: calc(var(--ent-z-index-3));
 
+  
+    
     > .responsive\:ent-tab-item-container-header {
 
       .ent-tab-expand-icon {
@@ -267,4 +270,8 @@
 
 .ent-tab-panel.active {
   display: block;
+}
+
+.ent-tab-overlay {
+  z-index: calc(var(--ent-z-index-3) - 1);
 }

@@ -56,9 +56,11 @@
                             <EntButton @onclick="OnTabAllClose" Icon="EntIconName.Delete"/>
                         </div>
                     </EntExpandable>
+                    
                 }
 
             </div>
+            <EntOverlay Visible="_toggleMenu" DarkBackground="true" OnClick="@OnToggleMenu" @ontouchstart="@OnToggleMenu" class="ent-tab-overlay" LockScroll="false"/>
         }
         else
         {

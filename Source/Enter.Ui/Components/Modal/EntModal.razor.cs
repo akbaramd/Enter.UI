@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Components.Web;
 
 namespace Enter.Ui.Components;
 
-public partial class EntModal : EntComponentComponent
+public partial class EntModal : EntBaseComponent
 {
     protected override void BuildClasses(ClassBuilder builder)
     {

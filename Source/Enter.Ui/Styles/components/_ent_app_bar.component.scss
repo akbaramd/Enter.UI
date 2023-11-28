@@ -1,7 +1,7 @@
 :root {
   --ent-appbar-space-y: var(--ent-space-4);
   --ent-appbar-space-x: var(--ent-space-4);
-  --ent-appbar-z-index: var(--ent-z-index-tertiary);
+  --ent-appbar-z-index: var(--ent-z-index-6);
   --ent-appbar-bg: var(--ent-bg-base);
   --ent-appbar-border-width: var(--ent-border-width);
   --ent-appbar-border-style: var(--ent-border-style);
@@ -18,7 +18,9 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-
+  .ent-app-bar-overlay {
+    z-index: calc(var(--ent-appbar-z-index) - 1);
+  }
   .ent-app-bar-content {
     flex-grow: 1;
     justify-content: end;

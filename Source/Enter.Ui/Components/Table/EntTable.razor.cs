@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Components;
 // ReSharper disable once CheckNamespace
 namespace Enter.Ui.Components;
 
-public partial class EntTable<T> : EntComponentComponent
+public partial class EntTable<T> : EntBaseComponent
 {
     private int _currentPage = 1;
 

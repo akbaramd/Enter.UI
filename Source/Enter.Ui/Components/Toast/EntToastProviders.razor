@@ -1,5 +1,5 @@
 ﻿@namespace Enter.Ui.Components
-@inherits Enter.Ui.Bases.EntComponentComponent
+@inherits Enter.Ui.Bases.EntBaseComponent
 @if (ToastList.Any())
 {
     @foreach (var positionGroupedToasts in ToastList.GroupBy(x => x.EntToastOptions.PositionClass))

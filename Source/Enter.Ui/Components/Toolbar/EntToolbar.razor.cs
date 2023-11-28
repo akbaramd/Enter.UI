@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Components;
 // ReSharper disable once CheckNamespace
 namespace Enter.Ui.Components;
 
-public partial class EntToolbar : EntComponentComponent
+public partial class EntToolbar : EntBaseComponent
 {
     protected override void BuildClasses(ClassBuilder builder)
     {

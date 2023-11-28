@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Components.Routing;
 
 namespace Enter.Ui.Components;
 
-public partial class EntModalProvider : EntComponentComponent
+public partial class EntModalProvider : EntBaseComponent
 {
     [Inject] private IEntModalService ModalService { get; set; } = default!;
     [Inject] private NavigationManager  NavigationManager { get; set; } = default!;

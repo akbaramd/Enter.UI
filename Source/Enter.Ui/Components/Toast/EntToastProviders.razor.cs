@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Components.Routing;
 // ReSharper disable once CheckNamespace
 namespace Enter.Ui.Components;
 
-public partial class EntToastProviders : EntComponentComponent
+public partial class EntToastProviders : EntBaseComponent
 {
     [Inject] private IEntToastService EntToastService { get; set; } = default!;
     [Inject] private NavigationManager NavigationManager { get; set; } = default!;

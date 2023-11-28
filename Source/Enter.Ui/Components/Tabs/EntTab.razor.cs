@@ -63,6 +63,14 @@ public partial class EntTab : EntTabComponentComponent
 
     [Parameter] public RenderFragment? DefaultPanel { get; set; } = null;
 
+    protected override Task OnParametersSetAsync()
+    {
+        StyleBuilder?.CanUpdate();
+        ClassBuilder?.CanUpdate();
+        ItemClassBuilder.CanUpdate();
+        PanelClassBuilder.CanUpdate();
+        return base.OnParametersSetAsync();
+    }
 
     public async Task AddTabAsync(EntTabPanel panel)
     {

@@ -76,7 +76,7 @@ public class StyleBuilder
     /// </summary>
     public string Build(string Tag = "")
     {
-            if ( clean )
+            if ( true )
             {
                 builder.Clear();
 

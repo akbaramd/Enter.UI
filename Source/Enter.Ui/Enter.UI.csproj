@@ -5,7 +5,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <PackageId>Enter.Ui</PackageId>
-        <Version>1.0.88</Version>
+        <Version>1.0.89</Version>
         <Authors>Akbar Ahmadi</Authors>
         <Company>AhmadiCo</Company>
         <PackageReadmeFile>Readme.md</PackageReadmeFile>
@@ -13,7 +13,6 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <AssemblyName>Enter.Ui</AssemblyName>
         <RootNamespace>Enter.Ui</RootNamespace>
-
     </PropertyGroup>
     <ItemGroup>
         <None Include="..\..\Readme.md" Pack="true" PackagePath="." />
