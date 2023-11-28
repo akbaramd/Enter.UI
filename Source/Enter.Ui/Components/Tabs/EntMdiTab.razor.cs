@@ -38,34 +38,32 @@ public partial class EntMdiTab : EntTabComponent, IDisposable
         EntMdiService.OnTabAddedAsync += OnServiceNewTabAddedAsync;
         EntMdiService.OnTabActivatedAsync += OnServiceTabActivatedAsync;
         EntMdiService.OnTabClosedAsync += OnServiceTabRemovedAsync;
-        
         base.OnInitialized();
     }
 
     protected override void OnAfterRender(bool firstRender)
     {
+      
+        
         Console.WriteLine($"{nameof(EntMdiTab)} rendred {nameof(firstRender)}: {firstRender}");
         base.OnAfterRender(firstRender);
     }
  
     private async Task OnServiceNewTabAddedAsync(EntMdiTabInstance panel)
     {
-        await InvokeAsync(async () =>
+
+       
+
+        if (_items.Any(x => x.Id == panel.Id))
+        {
+
+            await _tab.ActivateTabAsync(panel.Id, render: false);
+        }
+        else
         {
             _items.Add(panel);
-            
-            if (_items.Any(x => x.Id == panel.Id))
-            {
-                
-                await _tab.ActivateTabAsync(panel.Id,render:false);
-            }
-            else
-            {
-                StateHasChanged();
-            }
-      
-            
-        });
+            StateHasChanged();
+        }
     }
 
     private async Task OnServiceTabActivatedAsync(EntMdiTabInstance instance)

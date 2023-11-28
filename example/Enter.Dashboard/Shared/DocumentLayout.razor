@@ -5,6 +5,7 @@
 @using Enter.Ui.Components.Toast.Configuration
 @using Enter.Ui.Cores.Contracts
 @using Enter.Ui.Cores.Enums
+@using Enter.Dashboard.Pages.Documents
 
 @implements IDisposable
 @if (_isReadyForRender)
@@ -19,7 +20,7 @@
         <EntDrawerContainer class="flex-grow-1">
             <EntDrawer HasBackdrop="HasBackdrop" @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start" Mode="_drawerMode" >
                 <EntNavMenu class="border-0">
-                    <EntNavMenuTextItem class="bg-light" Text="Buttons" Click="@(() => Navigate("/documents/buttons"))"/>
+                    <EntNavMenuTextItem class="bg-light" Text="Buttons" Click="NewTab"/>
                     <EntNavMenuGroup Title="Documents">
                         <EntNavMenuTextItem class="bg-light" Text="Buttons" Click="@(() => Navigate("/documents/buttons"))"/>
                         <EntNavMenuTextItem class="bg-light" Text="Icons" Click="@(() => Navigate("/documents/icons"))"/>
@@ -81,7 +82,13 @@
     {
         Navigation?.NavigateTo(uri);
     }
-
+    public async Task NewTab()
+    {
+        for (var i = 0; i < 3; i++)
+        {
+            await EntMdiService.AddNewTabAsync<FormLayout>(Guid.NewGuid().ToString(), $"Upload Box {i}", "ri-upload-line");
+        }
+    }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
