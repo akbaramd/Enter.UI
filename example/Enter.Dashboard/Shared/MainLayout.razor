@@ -12,7 +12,7 @@
             <EntButton @onclick="() => _isSideDrawerOpen = !_isSideDrawerOpen" Icon="EntIconName.Comment" class="d-none laptop:d-flex" Size="ButtonSize.Small">Sidebar</EntButton>
         </EntAppBar>
         <EntDrawerContainer class="flex-grow-1">
-            <EntDrawer @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start" Mode="_drawerMode" class="z-50">
+            <EntDrawer @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start" Mode="_drawerMode" >
                 <EntNavMenu class="border-0">
                     <EntNavMenuGroup Title="Basic" Icon="EntIconName.Home">
                         @* <EntNavMenuTextItem class="bg-light" Icon="EntIconName.Clock" Text="Counter" Click="() => AddNewTab<Counter>()"/> *@
@@ -28,7 +28,7 @@
                 @bind-Open="_isSideDrawerOpen"
                 Direction="EntDrawerDirection.End"
                 Mode="EntDrawerMode.Overlay"
-                class="z-50">
+              >
                 <p>Default Text To Show</p>
             </EntDrawer>
             <div class="h-full">

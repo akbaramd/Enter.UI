@@ -15,7 +15,7 @@
             <EntButton @onclick="@(() => _isSideDrawerOpen = !_isSideDrawerOpen)" Icon="EntIconName.Note"/>
         </EntAppBar>
         <EntDrawerContainer class="flex-grow-1">
-            <EntDrawer HasBackdrop="HasBackdrop" @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start" Mode="_drawerMode" class="z-50">
+            <EntDrawer HasBackdrop="HasBackdrop" @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start" Mode="_drawerMode" >
                 <EntNavMenu class="border-0">
                     <EntNavMenuTextItem class="bg-light" Text="Buttons" Click="@(() => Navigate("/documents/buttons"))"/>
                     <EntNavMenuGroup Title="Documents">
