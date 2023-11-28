@@ -9,9 +9,6 @@
            PanelClass="h-full"
            ActiveClass=""
            Closeable
-           OnTabAdded="LogInstances"
-           OnTabRemoved="LogInstances"
-           OnTabActivated="LogInstances"
            class="border-0 "
            Direction="EntTabDirection.Vertical">
     <EntCard class="mt-4">
@@ -33,13 +30,17 @@
 
     public async Task NewTab()
     {
-        for (var i = 0; i < 5; i++)
+        for (var i = 0; i < 3; i++)
         {
             await MdiService.AddNewTabAsync<FormLayout>(Guid.NewGuid().ToString(), $"Upload Box {i}", "ri-upload-line");
         }
     }
 
-
+    protected override void OnAfterRender(bool firstRender)
+    {
+        Console.WriteLine($"{nameof(MdiTabPage)} rendred");
+        base.OnAfterRender(firstRender);
+    }
     public void LogInstances()
     {
         Console.WriteLine(MdiTab.GetInstance().Count);

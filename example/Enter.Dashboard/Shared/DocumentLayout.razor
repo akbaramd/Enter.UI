@@ -7,7 +7,9 @@
 @using Enter.Ui.Cores.Enums
 
 @implements IDisposable
-<div class="h-full border-y d-flex flex-column">
+@if (_isReadyForRender)
+{
+    <div class="h-full border-y d-flex flex-column">
     <div class="d-flex flex-column flex-grow-1">
         <EntAppBar ShowToggle="_showToggle" ToggleClick="ToggleSidebar" Title="Enterprise Dashboard">
             <EntButton @onclick="ToggleRtl" Icon="EntIconName.AlignRight"/>
@@ -52,6 +54,7 @@
     </div>
 
 </div>
+}
 <EntModalProvider/>
 <EntPopoverProvider/>
 <EntToastProviders />
@@ -59,6 +62,7 @@
 @code {
 
     private bool _showToggle;
+    private bool _isReadyForRender = false;
     private bool _isDrawerOpen = true;
     private bool _isSideDrawerOpen;
     private bool HasBackdrop => _showToggle && _isDrawerOpen;
@@ -79,24 +83,32 @@
     }
 
 
-    
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        
-        await base.OnInitializedAsync();
-        if (EntThemeProvider != null)
+   
+
+        if (firstRender)
         {
-            var breakpoint = await EntThemeProvider.GetBreakpointAsync();
-            HandleMobileSize(breakpoint);
+            if (EntThemeProvider != null)
+            {
+                var breakpoint = await EntThemeProvider.GetBreakpointAsync();
+                HandleMobileSize(breakpoint);
+            }
+            
         }
+        await  base.OnAfterRenderAsync(firstRender);
     }
 
+    
 
     public void HandleMobileSize(EntBreakpoint breakpoint)
     {
         _drawerMode = breakpoint > EntBreakpoint.Tablet ? EntDrawerMode.Behavior : EntDrawerMode.Overlay;
         _isDrawerOpen = breakpoint > EntBreakpoint.Tablet;
         _showToggle = breakpoint <= EntBreakpoint.Tablet;
+        _isReadyForRender = true;
+             
+        Console.WriteLine($"{nameof(DocumentLayout)} rendred");
         StateHasChanged();
     }
 

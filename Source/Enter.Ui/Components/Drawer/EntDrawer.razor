@@ -34,6 +34,11 @@
         return base.OnParametersSetAsync();
     }
 
+    protected override void OnAfterRender(bool firstRender)
+    {
+        Console.WriteLine($"{nameof(EntDrawer)} rendred");
+        base.OnAfterRender(firstRender);
+    }
 
     [Parameter]
     public EntDrawerDirection Direction { get; set; } = EntDrawerDirection.Start;

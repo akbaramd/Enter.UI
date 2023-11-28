@@ -17,6 +17,12 @@
         base.BuildClasses(builder);
     }
 
+    protected override void OnAfterRender(bool firstRender)
+    {
+        Console.WriteLine($"{nameof(EntDrawerContainer)} rendred");
+        base.OnAfterRender(firstRender);
+    }
+
 
     private bool HasBackdrop { get; set; } = false;
 

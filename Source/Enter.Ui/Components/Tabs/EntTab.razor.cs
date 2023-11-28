@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Components;
 // ReSharper disable once CheckNamespace
 namespace Enter.Ui.Components;
 
-public partial class EntTab : EntTabComponentComponent
+public partial class EntTab : EntTabComponent
 {
     private string? _activeTabId = null;
 
@@ -55,7 +55,11 @@ public partial class EntTab : EntTabComponentComponent
             .AddClass("ent-tab-item-minify", IconMinify)
             .AddClass(ItemClass);
     }
-
+    protected override void OnAfterRender(bool firstRender)
+    {
+        Console.WriteLine($"{nameof(EntTab)} rendred");
+        base.OnAfterRender(firstRender);
+    }
     [Parameter] public List<EntTabPanel> Panels { get; set; } = new();
 
     [Parameter] public EventCallback<List<EntTabPanel>> PanelsChanged { get; set; } = default!;
@@ -63,16 +67,16 @@ public partial class EntTab : EntTabComponentComponent
 
     [Parameter] public RenderFragment? DefaultPanel { get; set; } = null;
 
-    protected override Task OnParametersSetAsync()
+    protected override void OnParametersSet()
     {
         StyleBuilder?.CanUpdate();
         ClassBuilder?.CanUpdate();
         ItemClassBuilder.CanUpdate();
         PanelClassBuilder.CanUpdate();
-        return base.OnParametersSetAsync();
+        base.OnParametersSet();
     }
 
-    public async Task AddTabAsync(EntTabPanel panel)
+    public async Task AddTabAsync(EntTabPanel panel , bool render = true)
     {
         if (Panels.Any(x => x.Id.Equals(panel.Id)))
             throw new Exception(
@@ -83,11 +87,13 @@ public partial class EntTab : EntTabComponentComponent
         if (Panels.Count == 1)
             await ActivateTabAsync(panel.Id);
 
-        StateHasChanged();
+
+        if (render)
+            StateHasChanged();
         await OnTabAdded.InvokeAsync(panel);
     }
 
-    public async Task ActivateTabAsync(string id)
+    public async Task ActivateTabAsync(string id, bool render = true)
     {
         var panel = Panels.FirstOrDefault(x => x.Id.Equals(id));
 
@@ -97,13 +103,16 @@ public partial class EntTab : EntTabComponentComponent
             _activeTabId = null;
         else
             _activeTabId = panel.Id;
+        
         if (ResponsiveMode.GetValueOrDefault(false)) _toggleMenu = false;
 
-        StateHasChanged();
+  
+        if (render)
+            StateHasChanged();
         await OnTabActivated.InvokeAsync(_activeTabId);
     }
 
-    public async Task RemoveTabAsync(string? id)
+    public async Task RemoveTabAsync(string? id, bool render = true)
     {
         if (id == null) return;
 
@@ -115,8 +124,10 @@ public partial class EntTab : EntTabComponentComponent
         // navigate to next tab when active tab remove
         if (Panels.Count >= 1 && _activeTabId == id) await ActivateTabAsync(Panels.First().Id);
 
-
-        StateHasChanged();
+        if (ResponsiveMode.GetValueOrDefault(false)) _toggleMenu = false;
+        
+        if (render)
+            StateHasChanged();
         await OnTabRemoved.InvokeAsync(id);
     }
 
@@ -134,6 +145,7 @@ public partial class EntTab : EntTabComponentComponent
     private async Task OnTabAllClose()
     {
         await OnAllTabClosed.InvokeAsync();
+        
     }
 
     private void OnToggleMenu()
@@ -154,7 +166,7 @@ public enum EntTabItemDirection
     Horizontal
 }
 
-public class EntTabComponentComponent : EntResponsiveComponentComponent
+public class EntTabComponent : EntResponsiveComponent
 {
     [Parameter] public bool KeepPanelAlive { get; set; } = false;
     [Parameter] public bool Closeable { get; set; } = false;
@@ -164,7 +176,8 @@ public class EntTabComponentComponent : EntResponsiveComponentComponent
     [Parameter] public bool Expandable { get; set; } = false;
 
     [Parameter] public bool IconMinify { get; set; }
-
+    [Parameter] 
+    public bool HasBackdrop { get; set; } = false;
     [Parameter] public string TabNoContentMessage { get; set; } = "There is no content to display";
     [Parameter] public EntTabDirection Direction { get; set; } = EntTabDirection.Vertical;
     [Parameter] public EntTabItemDirection ItemDirection { get; set; } = EntTabItemDirection.Horizontal;
@@ -175,8 +188,5 @@ public class EntTabComponentComponent : EntResponsiveComponentComponent
     [Parameter] public EventCallback<string> OnTabClosed { get; set; }
     [Parameter] public EventCallback OnAllTabClosed { get; set; }
 
-    protected override void Dispose(bool disposing)
-    {
-        base.Dispose(disposing);
-    }
+   
 }
