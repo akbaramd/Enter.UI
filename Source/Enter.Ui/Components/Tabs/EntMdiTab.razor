@@ -1,4 +1,4 @@
-﻿@inherits EntTabComponentComponent
+﻿@inherits EntTabComponent
 @namespace Enter.Ui.Components
 <EntTab @ref="_tab"
         @attributes="@AdditionalAttributes"
@@ -14,6 +14,7 @@
         PanelClass="@PanelClass"
         TabNoContentMessage="@TabNoContentMessage"
         KeepPanelAlive="@KeepPanelAlive"
+        HasBackdrop="@HasBackdrop"
         OnTabActivated="OnTabActivatedCallbackAsync"
         OnTabRemoved="OnTabRemovedCallback"
         OnTabClosed="OnTabClosedCallback"

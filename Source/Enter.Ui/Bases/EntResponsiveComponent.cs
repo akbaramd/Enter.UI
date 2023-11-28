@@ -4,15 +4,14 @@ using Microsoft.AspNetCore.Components;
 
 namespace Enter.Ui.Bases;
 
-public abstract class EntResponsiveComponentComponent : EntBaseComponent
+public abstract class EntResponsiveComponent : EntBaseComponent
 {
     [Parameter] public bool? ResponsiveMode { get; set; }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override void OnInitialized()
     {
-        await base.OnAfterRenderAsync(firstRender);
-
-        if (firstRender) Handle();
+        Handle();
+        base.OnInitialized();
     }
 
     protected override void BuildClasses(ClassBuilder builder)
@@ -28,16 +27,10 @@ public abstract class EntResponsiveComponentComponent : EntBaseComponent
             if (!ResponsiveMode.HasValue)
             {
                 ResponsiveMode = EntThemeProvider.ResponsiveMode;
-                StateHasChanged();
+                Console.WriteLine("sss");
+               
             }
 
-            if (Tag == "MdiTabPage")
-            {
-                Console.WriteLine("---------------- EntComponentBase (OnInitializedAsync) ----------------");
-                Console.WriteLine("Component : " + Tag);
-                Console.WriteLine("ResponsiveMode : " + ResponsiveMode);
-                Console.WriteLine("DarkMode : " + DarkMode);
-            }
         }
     }
 

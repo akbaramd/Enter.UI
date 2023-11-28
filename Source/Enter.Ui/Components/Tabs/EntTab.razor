@@ -1,6 +1,6 @@
 ﻿@using Enter.Ui.Components.Icon
 @using Enter.Ui.Components.Button
-@inherits EntTabComponentComponent
+@inherits EntTabComponent
 @namespace Enter.Ui.Components
 <CascadingValue Value="@(this)">
     <div @attributes="@AdditionalAttributes" class="@ClassNames">
@@ -60,7 +60,10 @@
                 }
 
             </div>
-            <EntOverlay Visible="_toggleMenu" DarkBackground="true" OnClick="@OnToggleMenu" @ontouchstart="@OnToggleMenu" class="ent-tab-overlay" LockScroll="false"/>
+            if (HasBackdrop)
+            {
+                <EntOverlay Visible="_toggleMenu" DarkBackground="true" OnClick="@OnToggleMenu" @ontouchstart="@OnToggleMenu" class="ent-tab-overlay" LockScroll="false"/>
+            }
         }
         else
         {

@@ -6,12 +6,15 @@
 @namespace Enter.Ui.Components
 @inherits Enter.Ui.Bases.EntElementComponent
 
+@if (_readyForRender)
+{
     <CascadingValue Value="this" IsFixed="true">
         <div dir="@Direction" class="@ClassNames">
-            @RenderedChildContent
+            @ChildContent
         </div>
     </CascadingValue>
 
+}
 
 <style>
     :root {
@@ -21,7 +24,7 @@
 
 @code {
 
-
+    private bool _readyForRender = false;
 
     private string Direction => RtlMode ? "rtl" : "ltr";
 
@@ -39,10 +42,13 @@
     private IEntJsService EntJsService { get; set; } = default!;
 
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        await InitializeThemeConfiguration().ConfigureAwait(false);
-        await base.OnInitializedAsync();
+        if (firstRender)
+        {
+            await InitializeThemeConfiguration().ConfigureAwait(false);
+        }
+        await base.OnAfterRenderAsync(firstRender);
     }
 
     private async Task InitializeThemeConfiguration()
@@ -58,12 +64,8 @@
         }
 
         await SetDarkModeAsync(DarkMode);
-        Console.WriteLine("---------------- EntThemePtovider (OnInitializedAsync) ----------------");
-        Console.WriteLine("CurrentBreakPoint : " + CurrentBreakPoint);
-        Console.WriteLine("ResponsiveMode : " + ResponsiveMode);
-        Console.WriteLine("DarkMode : " + DarkMode);
-        Console.WriteLine("RtlMode : " + RtlMode);
-
+        _readyForRender = true;
+        Console.WriteLine($"{nameof(EntThemeProvider)} rendred");
         StateHasChanged();
     }
 
