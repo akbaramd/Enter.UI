@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Components;
 using EntModalOptions = Enter.Ui.Components.Modal.EntModalOptions;
 
-namespace Enter.Ui.Services;
+namespace Enter.Ui.Cores.Contracts;
 
 public interface IEntModalService
 {

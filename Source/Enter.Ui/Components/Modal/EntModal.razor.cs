@@ -1,6 +1,7 @@
 ﻿using Enter.Ui.Bases;
 using Enter.Ui.Components.Modal;
 using Enter.Ui.Core;
+using Enter.Ui.Cores.Core;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
@@ -24,11 +25,7 @@ public partial class EntModal : EntComponentComponent
     
     [CascadingParameter] public EntModalProvider ModalProvider { get; set; } = default!;
 
-
-
     [Parameter] public string Title { get; set; }
-
-    [Parameter] public RenderFragment ChildContent { get; set; }
 
     [Parameter] public EntModalOptions? Options { get; set; }
     
@@ -60,7 +57,6 @@ public partial class EntModal : EntComponentComponent
     /// <param name="modalResult"></param>
     public async Task CloseAsync(ModalResult modalResult)
     {
-       
         await ModalProvider.DismissInstance(Id, modalResult);
     }
 

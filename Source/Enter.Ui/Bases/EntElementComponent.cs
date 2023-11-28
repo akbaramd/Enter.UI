@@ -1,4 +1,5 @@
 ﻿using Enter.Ui.Core;
+using Enter.Ui.Cores.Core;
 using Microsoft.AspNetCore.Components;
 
 namespace Enter.Ui.Bases;
@@ -17,9 +18,10 @@ public abstract class EntElementComponent : EntAfterRenderComponent, IDisposable
     /// <summary>
     /// Specifies the content to be rendered inside this component.
     /// </summary>
-    [Parameter] public RenderFragment? ChildContent { get; set; } 
+    [Parameter] public RenderFragment? ChildContent { get; set; }
 
-    
+    public RenderFragment? RenderedChildContent => Rendered ? ChildContent : null;
+
     [Parameter]
     public string Tag { get; set; } = string.Empty;
     

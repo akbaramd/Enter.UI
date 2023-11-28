@@ -1,5 +1,5 @@
 using Enter.Ui.Bases;
-using Enter.Ui.Core.Extensions;
+using Enter.Ui.Cores.Extensions;
 using Microsoft.AspNetCore.Components;
 
 namespace Enter.Ui.Core;
@@ -68,7 +68,7 @@ internal class ComponentDisposer : IComponentDisposer
         if ( !disposePossible )
             return;
 
-        if ( component is EntBaseAfterRenderComponent afterRenderComponent && ( afterRenderComponent.Disposed || afterRenderComponent.AsyncDisposed ) )
+        if ( component is EntAfterRenderComponent afterRenderComponent && ( afterRenderComponent.Disposed || afterRenderComponent.AsyncDisposed ) )
         {
             if ( disposables.Contains( component ) )
                 disposables.Remove( component );

@@ -1,5 +1,5 @@
 ﻿using Enter.Ui.Components.Tabs;
-using Enter.Ui.Services;
+using Enter.Ui.Cores.Contracts;
 using Microsoft.AspNetCore.Components;
 
 // ReSharper disable once CheckNamespace

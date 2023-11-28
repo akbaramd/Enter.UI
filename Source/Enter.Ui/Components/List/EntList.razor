@@ -1,4 +1,5 @@
 ﻿@namespace Enter.Ui.Components
+@using Enter.Ui.Cores.Core
 @inherits Enter.Ui.Bases.EntComponentComponent
 <ul @attributes="@AdditionalAttributes" class="@ClassNames">
 
@@ -14,8 +15,6 @@
         base.BuildClasses(builder);
     }
 
-    [Parameter]
-    public RenderFragment? ChildContent { get; set; }
 
     protected override void Dispose(bool disposing)
     {

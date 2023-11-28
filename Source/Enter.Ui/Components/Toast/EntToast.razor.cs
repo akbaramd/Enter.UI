@@ -16,7 +16,6 @@ public partial class EntToast : EntComponentComponent
     [Parameter, EditorRequired] public EntToastOptions Options { get; set; } = default!;
     [Parameter] public EntToastLevel? Level { get; set; }
     [Parameter] public RenderFragment? Message { get; set; }
-    [Parameter] public RenderFragment? ChildContent { get; set; }
 
     private RenderFragment? CloseButtonContent => ToastsContainer.CloseButtonContent;
 

@@ -1,7 +1,8 @@
 ﻿@namespace Enter.Ui.Components
 @using Enter.Ui.Components.Animator
 @using Enter.Ui.Components.Expandable
-@using Enter.Ui.JsServices
+@using Enter.Ui.Cores.Contracts
+@using Enter.Ui.Cores.Core
 @using Microsoft.JSInterop
 @inherits Enter.Ui.Bases.EntComponentComponent
 
@@ -54,8 +55,6 @@
     }
 
     // Parameters
-    [Parameter]
-    public RenderFragment? ChildContent { get; set; }
 
     [Parameter]
     public EntExpandableDirection Direction

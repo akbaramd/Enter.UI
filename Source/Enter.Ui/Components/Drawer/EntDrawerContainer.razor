@@ -6,6 +6,7 @@
     </CascadingValue>
 
 </div>
+@using Enter.Ui.Cores.Core
 @inherits Enter.Ui.Bases.EntComponentComponent
 
 @code {
@@ -16,8 +17,6 @@
         base.BuildClasses(builder);
     }
 
-    [Parameter]
-    public RenderFragment ChildContent { get; set; }
 
     private bool HasBackdrop { get; set; } = false;
 

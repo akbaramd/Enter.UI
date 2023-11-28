@@ -1,5 +1,6 @@
 using Enter.Ui.Bases;
 using Enter.Ui.Core;
+using Enter.Ui.Cores.Core;
 using Microsoft.AspNetCore.Components;
 
 // ReSharper disable once CheckNamespace
@@ -13,6 +14,22 @@ public partial class EntTab : EntTabComponentComponent
     private bool _toggleMenu = false;
     private EntTabPanel? _activeTab => Panels.FirstOrDefault(x => x.Id.Equals(_activeTabId));
 
+    
+   
+
+    public EntTab()
+    {
+        PanelClassBuilder = new ClassBuilder(BuildPanelClasses);
+        ItemClassBuilder = new ClassBuilder(BuildItemClasses);
+    }
+
+    public ClassBuilder PanelClassBuilder { get; set; }
+    public ClassBuilder ItemClassBuilder { get; set; }
+    
+    public string PanelClassNames => PanelClassBuilder.Build();
+    public string ItemClassNames => ItemClassBuilder.Build();
+
+    
     protected override void BuildClasses(ClassBuilder builder)
     {
         builder.AddClass("ent-tab")
@@ -23,15 +40,21 @@ public partial class EntTab : EntTabComponentComponent
         base.BuildClasses(builder);
     }
 
-    protected string PanelCss => ClassBuilder
-        .CanUpdate()
-        .AddClass("ent-tab-panel-container")
-        .AddClass("ent-tab-panel-container-resposive")
-        .AddClass(PanelClass)
-        .AddClass("active", Expandable && _activeTabId != null)
-        .Build();
-
-    [Parameter] public RenderFragment ChildContent { get; set; } = default!;
+    protected  void BuildPanelClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-tab-panel-container")
+            .AddClass("ent-tab-panel-container-resposive")
+            .AddClass(PanelClass)
+            .AddClass("active", Expandable && _activeTabId != null);
+    }
+    protected  void BuildItemClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-tab-item")
+            .AddClass("ent-tab-item-horizontal", ItemDirection == EntTabItemDirection.Horizontal)
+            .AddClass("ent-tab-item-vertical", ItemDirection == EntTabItemDirection.Vertical)
+            .AddClass("ent-tab-item-minify", IconMinify)
+            .AddClass(ItemClass);
+    }
 
     [Parameter] public List<EntTabPanel> Panels { get; set; } = new();
 
@@ -40,24 +63,6 @@ public partial class EntTab : EntTabComponentComponent
 
     [Parameter] public RenderFragment? DefaultPanel { get; set; } = null;
 
-    protected override Task OnAfterRenderAsync(bool firstRender)
-    {
-        return base.OnAfterRenderAsync(firstRender);
-    }
-
-
-    public string GetItemClass(bool active)
-    {
-        return ClassBuilder
-            .CanUpdate()
-            .AddClass("ent-tab-item")
-            .AddClass("active", active)
-            .AddClass("ent-tab-item-horizontal", ItemDirection == EntTabItemDirection.Horizontal)
-            .AddClass("ent-tab-item-vertical", ItemDirection == EntTabItemDirection.Vertical)
-            .AddClass("ent-tab-item-minify", IconMinify)
-            .AddClass(ItemClass)
-            .Build();
-    }
 
     public async Task AddTabAsync(EntTabPanel panel)
     {
@@ -84,7 +89,7 @@ public partial class EntTab : EntTabComponentComponent
             _activeTabId = null;
         else
             _activeTabId = panel.Id;
-        if (ResponsiveMode) _toggleMenu = false;
+        if (ResponsiveMode.GetValueOrDefault(false)) _toggleMenu = false;
 
         StateHasChanged();
         await OnTabActivated.InvokeAsync(_activeTabId);

@@ -2,20 +2,21 @@
 @namespace Enter.Ui.Components
 @using Enter.Ui.Components.Button
 @using Enter.Ui.Components.Icon
+@using Enter.Ui.Cores.Core
 @inherits Enter.Ui.Bases.EntComponentComponent
 
 <button @attributes="@AdditionalAttributes" disabled="@(Disabled ? true : false)" class="@ClassNames">
     @if (Icon != null && !Loading)
     {
         <span class="icon-wrapper">
-            <EntIcon class="icon" Icon="@Icon" IconSize="EntIconSize.Medium" IconStyle="EntIconStyle.Light"/>
+            <EntIcon class="ent-btn-icon" Icon="@Icon" IconSize="EntIconSize.Medium" IconStyle="EntIconStyle.Light"/>
         </span>
     }
 
     @if (Loading)
     {
         <span class="icon-wrapper">
-            <EntCircularLoading Animate="Loading" class="icon ent-btn-loading"/>
+            <EntCircularLoading Animate="Loading" class="ent-btn-icon ent-btn-loading"/>
         </span>
     }
     @ChildContent
@@ -25,8 +26,6 @@
 @code {
 
   
-    [Parameter]
-    public RenderFragment? ChildContent { get; set; }
 
     [Parameter]
     public ButtonSize Size { get; set; } = ButtonSize.Medium;

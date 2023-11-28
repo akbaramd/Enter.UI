@@ -1,12 +1,12 @@
 ﻿using Enter.Ui.Core;
+using Enter.Ui.Cores.Core;
 using Microsoft.AspNetCore.Components;
 
 namespace Enter.Ui.Bases;
 
 public abstract class EntResponsiveComponentComponent : EntComponentComponent
 {
-
-    [Parameter] public bool ResponsiveMode { get; set; }
+    [Parameter] public bool? ResponsiveMode { get; set; }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -17,7 +17,7 @@ public abstract class EntResponsiveComponentComponent : EntComponentComponent
 
     protected override void BuildClasses(ClassBuilder builder)
     {
-        builder.AddClass("ent-responsive", ResponsiveMode);
+        builder.AddClass("ent-responsive", ResponsiveMode.GetValueOrDefault(false));
         base.BuildClasses(builder);
     }
 
@@ -25,8 +25,11 @@ public abstract class EntResponsiveComponentComponent : EntComponentComponent
     {
         if (EntThemeProvider != null)
         {
-            ResponsiveMode = EntThemeProvider.ResponsiveMode;
-            StateHasChanged();
+            if (!ResponsiveMode.HasValue)
+            {
+                ResponsiveMode = EntThemeProvider.ResponsiveMode;
+                StateHasChanged();
+            }
 
             if (Tag == "MdiTabPage")
             {

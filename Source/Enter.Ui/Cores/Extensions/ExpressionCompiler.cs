@@ -1,6 +1,6 @@
 using System.Linq.Expressions;
 
-namespace Enter.Ui.Core.Extensions;
+namespace Enter.Ui.Cores.Extensions;
 
 public static class ExpressionCompiler
 {

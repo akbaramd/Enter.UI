@@ -1,5 +1,6 @@
 ﻿using Enter.Ui.Bases;
 using Enter.Ui.Core;
+using Enter.Ui.Cores.Core;
 using Microsoft.AspNetCore.Components;
 
 // ReSharper disable once CheckNamespace
@@ -12,8 +13,6 @@ public partial class EntToolbar : EntComponentComponent
         builder.AddClass("ent-toolbar");
         base.BuildClasses(builder);
     }
-
-    [Parameter] public RenderFragment ChildContent { get; set; }
 
     protected override void Dispose(bool disposing)
     {

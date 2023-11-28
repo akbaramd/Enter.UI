@@ -1,7 +1,6 @@
-﻿using Enter.Ui.JsServices;
-using Microsoft.JSInterop;
+﻿using Microsoft.JSInterop;
 
-namespace Enter.Ui.JsService;
+namespace Enter.Ui.Cores.Services;
 
 public class EntJsService : IEntJsService, IAsyncDisposable
 {

@@ -1,6 +1,7 @@
 using Enter.Ui.Components.Tabs;
 using Enter.Ui.Core;
-using Enter.Ui.Services;
+using Enter.Ui.Cores.Contracts;
+using Enter.Ui.Cores.Core;
 using Microsoft.AspNetCore.Components;
 
 // ReSharper disable once CheckNamespace
@@ -21,7 +22,6 @@ public partial class EntMdiTab : EntTabComponentComponent, IDisposable
 
     [Inject] public IEntMdiService EntMdiService { get; set; } = default!;
 
-    [Parameter] public RenderFragment? ChildContent { get; set; }
 
     public void Dispose()
     {

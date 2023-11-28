@@ -1,4 +1,4 @@
-﻿using Enter.Ui.JsServices;
+﻿using Enter.Ui.Cores.Services;
 using Microsoft.JSInterop;
 
 namespace Enter.Ui.Interops;
@@ -21,7 +21,7 @@ internal class ExpandableInterop
         await module.InvokeVoidAsync("initialize", objectReference, id, show);
     }
 
-    public async Task ToogleAsync(string id, bool show)
+    public async Task ToggleAsync(string id, bool show)
     {
         var module = await _moduleTask.Value;
         await module.InvokeVoidAsync("toggle", id, show);

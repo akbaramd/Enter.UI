@@ -1,4 +1,5 @@
 ﻿@namespace Enter.Ui.Components
+@using Enter.Ui.Cores.Core
 @inherits Enter.Ui.Bases.EntComponentComponent
 <li @attributes="@AdditionalAttributes" class="@ClassNames">
 
@@ -12,9 +13,6 @@
         builder.AddClass("ent-list-item");
         base.BuildClasses(builder);
     }
-
-    [Parameter]
-    public RenderFragment? ChildContent { get; set; }
 
     protected override void Dispose(bool disposing)
     {

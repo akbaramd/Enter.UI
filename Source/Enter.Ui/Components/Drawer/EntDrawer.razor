@@ -1,5 +1,6 @@
 ﻿@namespace Enter.Ui.Components
 @using Enter.Ui.Components.Drawer
+@using Enter.Ui.Cores.Core
 @inherits Enter.Ui.Bases.EntComponentComponent
 
 
@@ -33,8 +34,6 @@
         return base.OnParametersSetAsync();
     }
 
-    [Parameter]
-    public RenderFragment ChildContent { get; set; }
 
     [Parameter]
     public EntDrawerDirection Direction { get; set; } = EntDrawerDirection.Start;

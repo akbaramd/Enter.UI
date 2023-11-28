@@ -1,4 +1,6 @@
-namespace Enter.Ui.Core.Extensions;
+using Enter.Ui.Cores.Core;
+
+namespace Enter.Ui.Cores.Extensions;
 
 public static class SelectExtensions
 {

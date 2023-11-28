@@ -1,5 +1,6 @@
 using Enter.Ui.Bases;
 using Enter.Ui.Core;
+using Enter.Ui.Cores.Core;
 using Microsoft.AspNetCore.Components;
 
 // ReSharper disable once CheckNamespace
@@ -18,7 +19,6 @@ public partial class EntTabPanel : EntComponentComponent
 
     [CascadingParameter] public EntTab? Parent { get; set; }
 
-    [Parameter] public RenderFragment ChildContent { get; set; }
 
     [Parameter] public string Title { get; set; }
 

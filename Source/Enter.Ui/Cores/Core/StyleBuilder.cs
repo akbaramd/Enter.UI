@@ -1,7 +1,7 @@
 ﻿using System.Text;
-using Enter.Ui.Core.Extensions;
+using Enter.Ui.Cores.Extensions;
 
-namespace Enter.Ui.Core;
+namespace Enter.Ui.Cores.Core;
 
 public class StyleBuilder
 {

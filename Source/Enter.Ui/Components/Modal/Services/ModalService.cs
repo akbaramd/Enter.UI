@@ -1,7 +1,7 @@
 ﻿using Enter.Ui.Components;
 using Enter.Ui.Components.Modal;
 using Enter.Ui.Components.Modal;
-using Enter.Ui.Services;
+using Enter.Ui.Cores.Contracts;
 using Microsoft.AspNetCore.Components;
 using EntModalOptions = Enter.Ui.Components.Modal.EntModalOptions;
 using ModalResult = Enter.Ui.Components.Modal.ModalResult;

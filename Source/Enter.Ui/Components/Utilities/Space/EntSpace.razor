@@ -1,5 +1,6 @@
 ﻿@namespace Enter.Ui.Components
 <div @attributes="AdditionalAttributes" class="@ClassNames">@ChildContent</div>
+@using Enter.Ui.Cores.Core
 @inherits Enter.Ui.Bases.EntComponentComponent
 
 @code {
@@ -34,8 +35,6 @@
             .AddClass("screen:space-y-reverse", IsScreenSpaceYReverse.HasValue && IsScreenSpaceYReverse.Value);base.BuildClasses(builder);
     }
 
-    [Parameter]
-    public RenderFragment? ChildContent { get; set; }
 
     [Parameter]
     public decimal SpaceX { get; set; } = 4;

@@ -1,6 +1,7 @@
 ﻿using System.Windows.Input;
 using Enter.Ui.Bases;
 using Enter.Ui.Core;
+using Enter.Ui.Cores.Core;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
@@ -35,7 +36,6 @@ public partial class EntOverlay : EntComponentComponent
     public string ScrimClassNames => ScrimClassBuilder.Build();
   
 
-    [Parameter] public RenderFragment? ChildContent { get; set; }
 
     [Parameter] public EventCallback<bool> VisibleChanged { get; set; }
 

@@ -5,7 +5,7 @@
 <CascadingValue Value="@(this)">
     <div @attributes="@AdditionalAttributes" class="@ClassNames">
 
-        @if (ResponsiveMode && Direction == EntTabDirection.Vertical)
+        @if (ResponsiveMode.HasValue && ResponsiveMode.Value && Direction == EntTabDirection.Vertical)
         {
             <div class="responsive:ent-tab-item-container">
 
@@ -36,7 +36,8 @@
                         <ul class="ent-tab-item-container">
                             @foreach (var tabPanels in Panels)
                             {
-                                <li class="@GetItemClass(IsActiveTab(tabPanels.Id))" @onclick="() => ActivateTabAsync(tabPanels.Id)" @key="@tabPanels.Id">
+                                var isActive = IsActiveTab(tabPanels.Id) ? "active" : "";
+                                <li class="@ItemClassNames @isActive" @onclick="() => ActivateTabAsync(tabPanels.Id)" @key="@tabPanels.Id">
                                     <span class="ent-tab-content">
                                         <EntButton Appearance="ButtonAppearance.Ghost" Icon="@tabPanels.Icon"/>
                                         @if (!IconMinify)
@@ -66,7 +67,8 @@
                 <ul class="ent-tab-item-container">
                     @foreach (var tabPanels in Panels)
                     {
-                        <li class="@GetItemClass(IsActiveTab(tabPanels.Id))" @onclick="() => ActivateTabAsync(tabPanels.Id)" @key="@tabPanels.Id">
+                        var isActive = IsActiveTab(tabPanels.Id) ? "active" : "";
+                        <li class="@ItemClassNames @isActive" @onclick="() => ActivateTabAsync(tabPanels.Id)" @key="@tabPanels.Id">
                             <span class="ent-tab-content">
                                 <EntIcon Icon="@tabPanels.Icon"/>
                                 @if (!IconMinify)
@@ -82,7 +84,7 @@
                     }
                     @if (Closeable)
                     {
-                        <li class="@GetItemClass(false)">
+                        <li class="@ItemClassNames">
                             <span @onclick="OnTabAllClose" class="ent-tab-action ">
                                 <EntIcon Icon="EntIconName.Delete" Type="EntIconType.IconTag"/>
                             </span>
@@ -99,7 +101,7 @@
         }
 
 
-        <div class="@PanelCss">
+        <div class="@PanelClassNames">
             @ChildContent
             @if (!Panels.Any())
             {

@@ -1,5 +1,4 @@
 ﻿@namespace Enter.Ui.Components
-@using Enter.Ui.Services
 @using Enter.Ui.Components.Modal
 @inherits Enter.Ui.Bases.EntComponentComponent
 
@@ -7,6 +6,7 @@
     <CascadingValue Value="this" IsFixed="true">
         @foreach (var item in ModalInstances)
         {
+            
             @item.ModalInstance
         }
     </CascadingValue>

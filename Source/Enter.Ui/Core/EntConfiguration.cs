@@ -1,4 +1,4 @@
-using Enter.Ui.Abstractions;
+using Enter.Ui.Cores;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Enter.Ui.Core;

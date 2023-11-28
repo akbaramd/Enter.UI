@@ -1,5 +1,8 @@
 ﻿@namespace Enter.Ui.Components
-@using Enter.Ui.Services
+@using Enter.Ui.Cores.Core
+@using Enter.Ui.Cores.Enums
+@using Enter.Ui.Cores.Extensions
+@using Enter.Ui.Cores.Contracts
 @inherits Enter.Ui.Bases.EntComponentComponent
 
 <div @attributes="@AdditionalAttributes" class="@ClassNames" id="@($"ent-popover-{_id}")">
@@ -43,8 +46,6 @@
     [Inject]
     public IEntPopoverService EntPopoverService { get; set; }
 
-    [Parameter]
-    public RenderFragment ChildContent { get; set; }
 
     [Parameter]
     public string PopoverClass { get; set; }

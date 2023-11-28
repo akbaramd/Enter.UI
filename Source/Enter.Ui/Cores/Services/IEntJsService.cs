@@ -1,6 +1,6 @@
 ﻿using Microsoft.JSInterop;
 
-namespace Enter.Ui.JsServices;
+namespace Enter.Ui.Cores.Services;
 
 public interface IEntJsService
 {

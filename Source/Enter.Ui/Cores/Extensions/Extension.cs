@@ -1,15 +1,13 @@
 ﻿using System.Linq.Expressions;
-using Enter.Ui.Abstractions;
 using Enter.Ui.Components;
 using Enter.Ui.Components.Icon;
 using Enter.Ui.Components.Toast.Services;
 using Enter.Ui.Core;
-using Enter.Ui.JsService;
-using Enter.Ui.JsServices;
-using Enter.Ui.Services;
+using Enter.Ui.Cores.Contracts;
+using Enter.Ui.Cores.Services;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Enter.Ui;
+namespace Enter.Ui.Cores.Extensions;
 
 public static class Extensions
 {

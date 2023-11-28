@@ -1,10 +1,10 @@
-﻿using Enter.Ui.Abstractions.Models;
-using Enter.Ui.Core.Enums;
-using Enter.Ui.JsServices;
+﻿using Enter.Ui.Cores.Contracts;
+using Enter.Ui.Cores.Enums;
+using Enter.Ui.Cores.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
-namespace Enter.Ui.JsService;
+namespace Enter.Ui.Cores.Services;
 
 internal class EntSharedJsService : IEntSharedJsService, IAsyncDisposable
 {

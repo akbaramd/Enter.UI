@@ -1,6 +1,6 @@
 ﻿using Enter.Ui.Bases;
 using Enter.Ui.Components.Modal;
-using Enter.Ui.Services;
+using Enter.Ui.Cores.Contracts;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Routing;
 

@@ -1,5 +1,6 @@
 ﻿using Enter.Ui.Bases;
 using Enter.Ui.Core;
+using Enter.Ui.Cores.Core;
 using Microsoft.AspNetCore.Components;
 
 // ReSharper disable once CheckNamespace
@@ -17,7 +18,6 @@ public partial class EntNavMenuGroup : EntComponentComponent
         base.BuildClasses(builder);
     }
 
-    [Parameter] public RenderFragment ChildContent { get; set; }
 
     [CascadingParameter] public EntNavMenu NavMenu { get; set; }
 

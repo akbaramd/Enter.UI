@@ -1,7 +1,7 @@
 ﻿using Enter.Ui.Components.Tabs;
 using Microsoft.AspNetCore.Components;
 
-namespace Enter.Ui.Services;
+namespace Enter.Ui.Cores.Contracts;
 
 public interface IEntMdiService
 {

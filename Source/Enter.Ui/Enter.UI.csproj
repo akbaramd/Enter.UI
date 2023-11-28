@@ -95,6 +95,7 @@
       <_ContentIncludedByDefault Remove="wwwroot\css\Styles.razor.css.map" />
     </ItemGroup>
     <ItemGroup>
+      <Folder Include="Cores\JsServices\" />
       <Folder Include="wwwroot\css" />
     </ItemGroup>
 

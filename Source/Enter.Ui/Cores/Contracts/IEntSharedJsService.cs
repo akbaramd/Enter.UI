@@ -1,9 +1,9 @@
-﻿using Enter.Ui.Abstractions.Models;
-using Enter.Ui.Core.Enums;
+﻿using Enter.Ui.Cores.Enums;
+using Enter.Ui.Cores.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
-namespace Enter.Ui.JsServices;
+namespace Enter.Ui.Cores.Contracts;
 
 public interface IEntSharedJsService
 {

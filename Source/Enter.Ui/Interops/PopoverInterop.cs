@@ -1,4 +1,4 @@
-﻿using Enter.Ui.JsServices;
+﻿using Enter.Ui.Cores.Services;
 using Microsoft.JSInterop;
 
 namespace Enter.Ui.Interops;

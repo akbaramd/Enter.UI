@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using Enter.Ui.Bases;
 using Enter.Ui.Components.Icon;
 using Enter.Ui.Core;
+using Enter.Ui.Cores.Core;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,7 +19,6 @@ public partial class EntIcon : EntComponentComponent
     [Parameter] public EntIconStyle IconStyle { get; set; } = EntIconStyle.Light;
     [Parameter] public EntIconSize IconSize { get; set; } = EntIconSize.Medium;
 
-    [Parameter] public string ViewBox { get; set; } = "0 0 24 24";
 
     protected override void BuildClasses(ClassBuilder builder)
     {

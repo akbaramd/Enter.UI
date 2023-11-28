@@ -2,6 +2,7 @@
 
 @typeparam TValue;
 @using System.Linq.Expressions
+@using Enter.Ui.Cores.Core
 @inherits Enter.Ui.Bases.EntComponentComponent
 
 <div @attributes="@AdditionalAttributes" class="@ClassNames" id="@Id">
@@ -30,8 +31,6 @@
     [Parameter]
     public string? Label { get; set; }
 
-    [Parameter]
-    public RenderFragment? ChildContent { get; set; }
 
     protected override void Dispose(bool disposing)
     {

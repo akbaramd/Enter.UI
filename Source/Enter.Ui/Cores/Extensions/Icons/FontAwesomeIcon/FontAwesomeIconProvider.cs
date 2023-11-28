@@ -1,6 +1,6 @@
 ﻿using Enter.Ui.Components.Icon;
 
-namespace Enter.Ui.Providers;
+namespace Enter.Ui.Cores.Extensions.Icons.FontAwesomeIcon;
 
 public class FontAwesomeIconProvider : IEntIconProvider
 {

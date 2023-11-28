@@ -1,7 +1,7 @@
 ﻿using Enter.Ui.Components.Popover;
+using Enter.Ui.Cores.Contracts;
+using Enter.Ui.Cores.Services;
 using Enter.Ui.Interops;
-using Enter.Ui.JsServices;
-using Enter.Ui.Services;
 using Microsoft.AspNetCore.Components;
 
 // ReSharper disable once CheckNamespace

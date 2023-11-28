@@ -1,15 +1,17 @@
-﻿@using Enter.Ui.JsServices
-@using Microsoft.JSInterop
+﻿@using Microsoft.JSInterop
+@using Enter.Ui.Cores.Core
+@using Enter.Ui.Cores.Enums
+@using Enter.Ui.Cores.Services
+@using Enter.Ui.Cores.Contracts
 @namespace Enter.Ui.Components
 @inherits Enter.Ui.Bases.EntElementComponent
-@if (_shouldRender)
-{
+
     <CascadingValue Value="this" IsFixed="true">
         <div dir="@Direction" class="@ClassNames">
-            @ChildContent
+            @RenderedChildContent
         </div>
     </CascadingValue>
-}
+
 
 <style>
     :root {
@@ -19,7 +21,6 @@
 
 @code {
 
-    private bool _shouldRender = false;
 
 
     private string Direction => RtlMode ? "rtl" : "ltr";
@@ -37,8 +38,6 @@
     [Inject]
     private IEntJsService EntJsService { get; set; } = default!;
 
-    [Parameter]
-    public RenderFragment ChildContent { get; set; } = default!;
 
     protected override async Task OnInitializedAsync()
     {
@@ -48,8 +47,6 @@
 
     private async Task InitializeThemeConfiguration()
     {
-        _shouldRender = false;
-
         var objRef = DotNetObjectReference.Create(this);
         await SharedJsService.InitializeBreakpointEventAsync(objRef);
 
@@ -67,7 +64,6 @@
         Console.WriteLine("DarkMode : " + DarkMode);
         Console.WriteLine("RtlMode : " + RtlMode);
 
-        _shouldRender = true;
         StateHasChanged();
     }
 
@@ -218,9 +214,6 @@
 
     #endregion
 
-    protected override bool ShouldRender()
-    {
-        return _shouldRender;
-    }
+    
 
 }

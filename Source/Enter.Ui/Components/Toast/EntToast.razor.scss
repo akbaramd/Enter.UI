@@ -11,14 +11,12 @@
     border-radius: var(--ent-border-radius-1);
     box-shadow: var(--ent-shadow-md);
     background-color: var(--ent-bg-neutral);
-    border-top: var(--ent-space-1) solid #fff;
     align-items: center;
 }
 
 .ent-toast-component {
     display: initial;
     padding: 0 0 0 0;
-    border-top: none;
 }
 
 .ent-toast .ent-toast-progressbar {
@@ -42,7 +40,6 @@
 
 
 .ent-toast-info {
-    border-top: var(--ent-space-1) solid #2563eb;
 
     .ent-toast-progressbar > span {
         background-color: #2563eb;
@@ -54,7 +51,6 @@
 }
 
 .ent-toast-success {
-    border-top: var(--ent-space-1) solid #16a34a;
     
     .ent-toast-progressbar > span {
         background-color: #16a34a;
@@ -66,7 +62,6 @@
 }
 
 .ent-toast-warning {
-    border-top: var(--ent-space-1) solid #eab308;
 
     .ent-toast-progressbar > span {
         background-color: #eab308;
@@ -78,7 +73,6 @@
 }
 
 .ent-toast-error {
-    border-top: var(--ent-space-1) solid #dc2626;
 
     .ent-toast-progressbar > span {
         background-color: #dc2626;

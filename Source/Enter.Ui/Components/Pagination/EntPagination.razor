@@ -1,6 +1,8 @@
 @namespace Enter.Ui.Components
 @using Enter.Ui.Components.Icon
 @using System.Diagnostics.CodeAnalysis
+@using Enter.Ui.Cores.Core
+@using Enter.Ui.Cores.Enums
 @inherits Enter.Ui.Bases.EntComponentComponent
 
 
@@ -61,10 +63,11 @@
     private bool _selectedFirstSet;
     private int _selected = 1;
 
-    private string ClassNames => ClassBuilder
-        .AddClass("ent-pagination")
-        .Build();
-
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-pagination");
+        base.BuildClasses(builder);
+    }
 
     private int _count = 1;
 

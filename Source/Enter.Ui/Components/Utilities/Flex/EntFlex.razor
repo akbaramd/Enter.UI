@@ -1,6 +1,7 @@
 ﻿@namespace Enter.Ui.Components
 <div class="@ClassNames">@ChildContent</div>
 @using Enter.Ui.Components.Flex
+@using Enter.Ui.Cores.Core
 @inherits Enter.Ui.Bases.EntComponentComponent
 
 @code {
@@ -54,8 +55,6 @@
     }
 
 
-    [Parameter]
-    public RenderFragment ChildContent { get; set; }
 
     // Flex Direction
     [Parameter]

@@ -1,6 +1,7 @@
 ﻿using Enter.Ui.Bases;
 using Enter.Ui.Components.Animator;
 using Enter.Ui.Core;
+using Enter.Ui.Cores.Core;
 using Microsoft.AspNetCore.Components;
 
 // ReSharper disable once CheckNamespace
@@ -21,7 +22,6 @@ public partial class EntAnimator : EntElementComponent
     [Parameter] public EventCallback OnAnimationStart { get; set; }
 
     // Parameters
-    [Parameter] public RenderFragment ChildContent { get; set; } = default!;
 
 
     protected override void OnParametersSet()

@@ -2,6 +2,7 @@
 
 @typeparam TValue
 @using Enter.Ui.Components.TreeView
+@using Enter.Ui.Cores.Core
 @inherits Enter.Ui.Bases.EntComponentComponent
 
 
@@ -26,12 +27,12 @@
         base.BuildClasses(builder);
     }
 
-    private string Item => ClassBuilder.CanUpdate()
-        .AddClass("ent-treeview")
-        .Build();
-
-    [Parameter]
-    public RenderFragment? ChildContent { get; set; }
+    protected override Task OnParametersSetAsync()
+    {
+        ClassBuilder?.CanUpdate();
+        StyleBuilder?.CanUpdate();
+        return base.OnParametersSetAsync();
+    }
 
     [Parameter]
     public bool MultiSelect { get; set; } = false;
