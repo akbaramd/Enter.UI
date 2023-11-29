@@ -1,6 +1,8 @@
 ﻿@namespace Enter.Ui.Components
 @inherits Enter.Ui.Bases.EntBaseComponent
-<div @attributes="AdditionalAttributes" class="@ClassNames" @onclick="() => Click.InvokeAsync()">
+
+
+<div @attributes="AdditionalAttributes" class="@ClassNames" @onclick="OnClick">
     <EntIcon class="@IconClassNames" Icon="@Icon"/>
     <span class="@ContentClassNames">@Text</span>
 </div>

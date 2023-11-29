@@ -10,14 +10,16 @@
   display: flex;
   flex-direction: column;
   border: var(--ent-nav-stroke-width) solid var(--ent-nav-stroke);
-  background-color: var(--ent-bg-base);
+
 
 
   .ent-nav-menu-group {
     display: flex;
     flex-direction: column;
-    border-bottom: var(--ent-nav-stroke-width) solid var(--ent-nav-stroke);
 
+
+    border-bottom: var(--ent-nav-stroke-width) solid var(--ent-nav-stroke);
+    
     &.active {
       > .ent-nav-menu-group-item {
 
@@ -30,12 +32,13 @@
     }
 
     > .ent-nav-menu-group-item {
+
       display: flex;
       justify-content: center;
       align-items: center;
       padding: .625rem 1.5rem;
       cursor: pointer;
-
+      
 
       > .ent-nav-menu-group-item-icon {
         margin-inline-end: 1rem;
@@ -88,6 +91,9 @@
 
     &:hover {
       background-color: var(--ent-bg-neutral-highlight);
+    }
+    &.active {
+      background-color: var(--ent-bg-neutral-select);
     }
 
     .ent-nav-menu-item-icon {

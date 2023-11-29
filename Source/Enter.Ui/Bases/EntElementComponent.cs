@@ -38,11 +38,21 @@ public abstract class EntElementComponent : EntAfterRenderComponent, IDisposable
     [Parameter(CaptureUnmatchedValues = true)]
     public Dictionary<string, object?> AdditionalAttributes { get; set; } = new();
 
-   
 
+    private string _id = string.Empty;
     public string Id => AdditionalAttributes?.ContainsKey("id") == true
-        ? AdditionalAttributes["id"]?.ToString() ?? Guid.NewGuid().ToString()
-        : Guid.NewGuid().ToString();
+        ? AdditionalAttributes["id"]?.ToString() ?? GetNewId()
+        : GetNewId();
+
+    private string GetNewId()
+    {
+
+        if (string.IsNullOrEmpty(_id))
+        {
+            _id = Guid.NewGuid().ToString();
+        }
+        return _id;
+    }
 
 
     protected virtual void BuildClasses(ClassBuilder builder)

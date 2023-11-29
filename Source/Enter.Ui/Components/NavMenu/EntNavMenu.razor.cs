@@ -16,6 +16,7 @@ public partial class EntNavMenu : EntBaseComponent
         base.BuildClasses(builder);
     }
 
+    public string ActiveItemId { get; set; } = string.Empty;
 
     protected override void OnAfterRender(bool firstRender)
     {

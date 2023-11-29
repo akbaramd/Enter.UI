@@ -13,6 +13,9 @@ public partial class EntNavMenuTextItem : EntBaseComponent
     private ClassBuilder IconClassBuilder { get; set; }
     private ClassBuilder ContentClassBuilder { get; set; }
 
+    [CascadingParameter]
+    public EntNavMenu NavMenu { get; set; }
+    
     private string IconClassNames => IconClassBuilder.Build();
     private string ContentClassNames => ContentClassBuilder.Build();
 
@@ -25,6 +28,7 @@ public partial class EntNavMenuTextItem : EntBaseComponent
     protected override void BuildClasses(ClassBuilder builder)
     {
         builder.AddClass("ent-nav-menu-item ent-nav-menu-item-text");
+        builder.AddClass("active",IsActive);
         base.BuildClasses(builder);
     }
     
@@ -41,11 +45,18 @@ public partial class EntNavMenuTextItem : EntBaseComponent
 
     [Required] [Parameter] public string Text { get; set; }
 
-
     [Parameter] public EventCallback Click { get; set; }
 
     protected override void Dispose(bool disposing)
     {
         base.Dispose(disposing);
+    }
+
+    internal bool IsActive => NavMenu.ActiveItemId == Id;
+    
+    private async Task OnClick()
+    {
+        NavMenu.ActiveItemId = Id;
+        await Click.InvokeAsync();
     }
 }
