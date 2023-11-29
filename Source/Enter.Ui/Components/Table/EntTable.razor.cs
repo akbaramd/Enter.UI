@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Components;
 namespace Enter.Ui.Components;
 
 public partial class EntTable<T> : EntBaseComponent
-{
+{   public override string ComponentName => this.GetType().Name;
     private int _currentPage = 1;
 
     protected override void BuildClasses(ClassBuilder builder)

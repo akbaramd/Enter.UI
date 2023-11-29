@@ -42,7 +42,7 @@
 
 
 @code {
-
+    public override string ComponentName => this.GetType().Name;
     private string ClassNames => ClassBuilder
         .AddClass("ent-text")
         .AddClass("fs-sub-heading", Size == EntTextSize.SubHeading)

@@ -57,7 +57,7 @@
 </ul>
 
 @code {
-
+    public override string ComponentName => this.GetType().Name;
     private int _middleCount = 3;
     private int _boundaryCount = 2;
     private bool _selectedFirstSet;

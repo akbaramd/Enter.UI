@@ -6,7 +6,7 @@
 </span>
 
 @code {
-
+    public override string ComponentName => nameof(EntCircularLoading);
     protected override void BuildClasses(ClassBuilder builder)
     {
         builder.AddClass("ent-circular-loading")

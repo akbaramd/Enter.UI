@@ -8,7 +8,7 @@
 <EntOverlay Visible="HasBackdrop" DarkBackground="true" OnClick="@OnOverlayClickCallback" @ontouchstart="@OnOverlayClickCallback"  class="ent-drawer-overlay" LockScroll="false"/>
 
 @code {
-
+    public override string ComponentName => nameof(EntDrawer);
     protected override void BuildClasses(ClassBuilder builder)
     {
         builder.AddClass("ent-drawer")
@@ -36,7 +36,6 @@
 
     protected override void OnAfterRender(bool firstRender)
     {
-        Console.WriteLine($"{nameof(EntDrawer)} rendred");
         base.OnAfterRender(firstRender);
     }
 

@@ -20,21 +20,21 @@
         <EntDrawerContainer class="flex-grow-1">
             <EntDrawer HasBackdrop="HasBackdrop" @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start" Mode="_drawerMode" >
                 <EntNavMenu class="border-0">
-                    <EntNavMenuTextItem class="bg-light" Text="Buttons" Click="NewTab"/>
+                    <EntNavMenuTextItem Text="Buttons" Click="NewTab"/>
                     <EntNavMenuGroup Title="Documents">
-                        <EntNavMenuTextItem class="bg-light" Text="Buttons" Click="@(() => Navigate("/documents/buttons"))"/>
-                        <EntNavMenuTextItem class="bg-light" Text="Icons" Click="@(() => Navigate("/documents/icons"))"/>
-                        <EntNavMenuTextItem class="bg-light" Text="Shimmer" Click="@(() => Navigate("/documents/shimmer"))"/>
-                        <EntNavMenuTextItem class="bg-light" Text="Loading" Click="@(() => Navigate("/documents/loading"))"/>
-                        <EntNavMenuTextItem class="bg-light" Text="Modals" Click="@(() => Navigate("/documents/modals"))"/>
-                        <EntNavMenuTextItem class="bg-light" Text="Toasts" Click="@(() => Navigate("/documents/toasts"))"/>
-                        <EntNavMenuTextItem class="bg-light" Text="TreeView" Click="@(() => Navigate("/documents/treeview"))"/>
-                        <EntNavMenuTextItem class="bg-light" Text="NavMenu" Click="@(() => Navigate("/documents/navmenu"))"/>
-                        <EntNavMenuTextItem class="bg-light" Text="Table" Click="@(() => Navigate("/documents/datatable"))"/>
-                        <EntNavMenuTextItem class="bg-light" Text="Forms" Click="@(() => Navigate("/documents/form"))"/>
-                        <EntNavMenuTextItem class="bg-light" Text="Pagination" Click="@(() => Navigate("/documents/pagination"))"/>
-                        <EntNavMenuTextItem class="bg-light" Text="MdiTab" Click="@(() => Navigate("/documents/mdi-tabs"))"/>
-                        <EntNavMenuTextItem class="bg-light" Text="Upload Box" Click="@(() => Navigate("/documents/upload-box"))"/>
+                        <EntNavMenuTextItem Text="Buttons" Click="@(() => Navigate("/documents/buttons"))"/>
+                        <EntNavMenuTextItem Text="Icons" Click="@(() => Navigate("/documents/icons"))"/>
+                        <EntNavMenuTextItem Text="Shimmer" Click="@(() => Navigate("/documents/shimmer"))"/>
+                        <EntNavMenuTextItem Text="Loading" Click="@(() => Navigate("/documents/loading"))"/>
+                        <EntNavMenuTextItem Text="Modals" Click="@(() => Navigate("/documents/modals"))"/>
+                        <EntNavMenuTextItem Text="Toasts" Click="@(() => Navigate("/documents/toasts"))"/>
+                        <EntNavMenuTextItem Text="TreeView" Click="@(() => Navigate("/documents/treeview"))"/>
+                        <EntNavMenuTextItem Text="NavMenu" Click="@(() => Navigate("/documents/navmenu"))"/>
+                        <EntNavMenuTextItem Text="Table" Click="@(() => Navigate("/documents/datatable"))"/>
+                        <EntNavMenuTextItem Text="Forms" Click="@(() => Navigate("/documents/form"))"/>
+                        <EntNavMenuTextItem Text="Pagination" Click="@(() => Navigate("/documents/pagination"))"/>
+                        <EntNavMenuTextItem Text="MdiTab" Click="@(() => Navigate("/documents/mdi-tabs"))"/>
+                        <EntNavMenuTextItem Text="Upload Box" Click="@(() => Navigate("/documents/upload-box"))"/>
                     </EntNavMenuGroup>
                     <EntNavMenuGroup Title="Api" Icon="EntIconName.Home">
                         P
@@ -115,7 +115,6 @@
         _showToggle = breakpoint <= EntBreakpoint.Tablet;
         _isReadyForRender = true;
              
-        Console.WriteLine($"{nameof(DocumentLayout)} rendred");
         StateHasChanged();
     }
 

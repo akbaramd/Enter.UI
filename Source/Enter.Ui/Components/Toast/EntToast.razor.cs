@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Components;
 namespace Enter.Ui.Components;
 
 public partial class EntToast : EntBaseComponent
-{
+{   public override string ComponentName => this.GetType().Name;
     [CascadingParameter] private EntToastProviders ToastsContainer { get; set; } = default!;
 
     [Parameter, EditorRequired] public Guid ToastId { get; set; }

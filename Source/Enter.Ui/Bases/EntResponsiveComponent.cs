@@ -27,7 +27,6 @@ public abstract class EntResponsiveComponent : EntBaseComponent
             if (!ResponsiveMode.HasValue)
             {
                 ResponsiveMode = EntThemeProvider.ResponsiveMode;
-                Console.WriteLine("sss");
                
             }
 

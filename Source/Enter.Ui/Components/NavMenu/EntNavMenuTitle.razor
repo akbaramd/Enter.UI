@@ -7,7 +7,7 @@
 </EntText>
 
 @code {
-
+    public override string ComponentName => this.GetType().Name;
     [Parameter]
     public string Title { get; set; }
 

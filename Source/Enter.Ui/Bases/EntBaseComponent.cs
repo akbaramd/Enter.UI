@@ -7,6 +7,9 @@ namespace Enter.Ui.Bases;
 
 public abstract class EntBaseComponent : EntElementComponent, IDisposable
 {
+    
+    public abstract override string ComponentName { get; }
+    
     [Parameter] public bool DarkMode { get; set; }
 
     [CascadingParameter] public EntThemeProvider? EntThemeProvider { get; set; }

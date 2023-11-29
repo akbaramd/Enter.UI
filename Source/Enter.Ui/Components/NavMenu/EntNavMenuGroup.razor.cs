@@ -8,7 +8,7 @@ namespace Enter.Ui.Components;
 
 public partial class EntNavMenuGroup : EntBaseComponent
 {
-
+    public override string ComponentName => this.GetType().Name;
     public EntNavMenuGroup()
     {
         ContainerClassBuilder = new ClassBuilder(BuildContainerClasses);

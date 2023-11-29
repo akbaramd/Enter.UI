@@ -41,7 +41,7 @@
 
 @code {
 
-
+    public override string ComponentName => this.GetType().Name;
     [Parameter]
     public List<UploadModel> Files { get; set; } = new();
 

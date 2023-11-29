@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Components;
 namespace Enter.Ui.Components;
 
 public partial class EntNavMenu : EntBaseComponent
-{
+{   public override string ComponentName => this.GetType().Name;
     private readonly List<EntNavMenuGroup> _groups = new();
 
     protected override void BuildClasses(ClassBuilder builder)

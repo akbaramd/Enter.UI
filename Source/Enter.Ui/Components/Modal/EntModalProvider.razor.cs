@@ -8,6 +8,7 @@ namespace Enter.Ui.Components;
 
 public partial class EntModalProvider : EntBaseComponent
 {
+    public override string ComponentName => this.GetType().Name;
     [Inject] private IEntModalService ModalService { get; set; } = default!;
     [Inject] private NavigationManager  NavigationManager { get; set; } = default!;
 

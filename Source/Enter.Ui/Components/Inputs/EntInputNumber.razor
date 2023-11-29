@@ -1,0 +1,62 @@
+﻿@namespace Enter.Ui.Components
+@using Enter.Ui.Cores.Extensions
+@using Enter.Ui.Cores.Core
+@using Enter.Ui.Components.Inputs
+@using System.Diagnostics.CodeAnalysis
+@using Enter.Ui.Components.Icon
+@inherits Enter.Ui.Bases.EntInputBase<int?>
+
+<div @attributes="@AdditionalAttributes" class="@ClassNames" style="@StyleNames" id="@Id">
+    <input @ref="_elementReference" name="@ValueExpression?.GetPropertyName()" type="number" class="ent-input-field" placeholder="@PlaceHolder"
+           @bind="@CurrentValueAsString"
+           @bind:event="@EventType" disabled="@Disabled" readonly="@Readonly"/>
+
+    @if (Icon != null)
+    {
+        <div class="ent-input-icon">
+            <EntIcon IconSize="EntIconSize.Medium" Icon="@Icon"/>
+        </div>
+    }
+</div>
+
+@code {
+
+    private ElementReference _elementReference;
+
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder
+            .AddClass("ent-input-lg", Size == EntInputSize.Large)
+            .AddClass("ent-input-sm", Size == EntInputSize.Small);
+
+        base.BuildClasses(builder);
+    }
+
+    [Parameter]
+    public object Icon { get; set; }
+
+    [Parameter]
+    public string EventType { get; set; } = "onchange";
+
+    [Parameter]
+    public EntInputSize Size { get; set; } = EntInputSize.Default;
+
+    [Parameter]
+    public bool IsPassword { get; set; }
+
+    [CascadingParameter]
+    public EditContext? EditContext { get; set; }
+
+    public ValueTask FocusAsync()
+    {
+        return _elementReference.FocusAsync();
+    }
+
+    protected override bool TryParseValueFromString(string? value, out int? result, [NotNullWhen(false)] out string? validationErrorMessage)
+    {
+        result = int.TryParse(value, out var val) ? val : 0;
+        validationErrorMessage = null;
+        return true;
+    }
+
+}

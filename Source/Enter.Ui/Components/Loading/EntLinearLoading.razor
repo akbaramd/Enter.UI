@@ -15,7 +15,7 @@
 
 
 @code {
-
+    public override string ComponentName => nameof(EntLinearLoading);
     protected string ItemStyleNames => ItemStyleBuilder?.Build() ?? string.Empty;
 
     protected StyleBuilder? ItemStyleBuilder { get; set; }

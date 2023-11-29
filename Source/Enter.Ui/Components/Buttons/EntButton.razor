@@ -26,7 +26,8 @@
 @code {
 
   
-
+    public override string ComponentName => nameof(EntButton);
+    
     [Parameter]
     public ButtonSize Size { get; set; } = ButtonSize.Medium;
 
@@ -65,4 +66,5 @@
         base.Dispose(disposing);
     }
 
+    
 }

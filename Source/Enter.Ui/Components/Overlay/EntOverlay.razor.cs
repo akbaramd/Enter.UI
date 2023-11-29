@@ -11,7 +11,7 @@ namespace Enter.Ui.Components;
 public partial class EntOverlay : EntBaseComponent
 {
     private bool _visible;
-
+    public override string ComponentName => this.GetType().Name;
     protected override void BuildClasses(ClassBuilder builder)
     {
         builder.AddClass("ent-overlay")

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Components;
 namespace Enter.Ui.Components;
 
 public partial class EntTabPanel : EntBaseComponent
-{
+{   public override string ComponentName => this.GetType().Name;
     protected override void BuildClasses(ClassBuilder builder)
     {
         builder.AddClass("ent-tab-panel")

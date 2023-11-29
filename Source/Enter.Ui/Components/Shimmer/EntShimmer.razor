@@ -6,7 +6,7 @@
 </span>
 
 @code {
-
+    public override string ComponentName => this.GetType().Name;
     protected override void BuildClasses(ClassBuilder builder)
     {
         builder.AddClass("ent-shimmer")

@@ -17,7 +17,7 @@
 </EntAnimator>
 
 @code {
-
+    public override string ComponentName => nameof(EntExpandable);
     private EntAnimatorState AnimationState { get; set; } = EntAnimatorState.End;
     private EntExpandableDirection _direction = EntExpandableDirection.Vertical;
     private bool _expanded, _updateHeight;

@@ -4,7 +4,7 @@
 @using Enter.Ui.Cores.Core
 @inherits Enter.Ui.Bases.EntBaseComponent
 
-@code {
+@code {   public override string ComponentName => this.GetType().Name;
     private readonly string _flexRow = "flex-row";
     public string _flexColumn = "flex-column";
 

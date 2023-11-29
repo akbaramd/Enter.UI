@@ -15,15 +15,12 @@ public abstract class EntElementComponent : EntAfterRenderComponent, IDisposable
     
     #region Properties
 
-    /// <summary>
-    /// Specifies the content to be rendered inside this component.
-    /// </summary>
+
     [Parameter] public RenderFragment? ChildContent { get; set; }
 
     public RenderFragment? RenderedChildContent => Rendered ? ChildContent : null;
 
-    [Parameter]
-    public string Tag { get; set; } = string.Empty;
+    public abstract string ComponentName { get;  }
     
     
     #endregion
@@ -43,6 +40,12 @@ public abstract class EntElementComponent : EntAfterRenderComponent, IDisposable
     public string Id => AdditionalAttributes?.ContainsKey("id") == true
         ? AdditionalAttributes["id"]?.ToString() ?? GetNewId()
         : GetNewId();
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+       // Console.WriteLine($"Component ({ComponentName} rendered)");
+        base.OnAfterRender(firstRender);
+    }
 
     private string GetNewId()
     {

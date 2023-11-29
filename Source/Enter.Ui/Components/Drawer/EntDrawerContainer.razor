@@ -10,7 +10,7 @@
 @inherits Enter.Ui.Bases.EntBaseComponent
 
 @code {
-
+    public override string ComponentName => nameof(EntDrawerContainer);
     protected override void BuildClasses(ClassBuilder builder)
     {
         builder.AddClass("ent-drawer-container");
@@ -19,7 +19,6 @@
 
     protected override void OnAfterRender(bool firstRender)
     {
-        Console.WriteLine($"{nameof(EntDrawerContainer)} rendred");
         base.OnAfterRender(firstRender);
     }
 

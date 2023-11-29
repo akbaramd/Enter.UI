@@ -57,7 +57,6 @@ public partial class EntTab : EntTabComponent
     }
     protected override void OnAfterRender(bool firstRender)
     {
-        Console.WriteLine($"{nameof(EntTab)} rendred");
         base.OnAfterRender(firstRender);
     }
     [Parameter] public List<EntTabPanel> Panels { get; set; } = new();
@@ -168,6 +167,7 @@ public enum EntTabItemDirection
 
 public class EntTabComponent : EntResponsiveComponent
 {
+    public override string ComponentName { get; }
     [Parameter] public bool KeepPanelAlive { get; set; } = false;
     [Parameter] public bool Closeable { get; set; } = false;
     [Parameter] public string ItemClass { get; set; } = string.Empty;

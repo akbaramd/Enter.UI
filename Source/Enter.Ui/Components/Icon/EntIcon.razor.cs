@@ -11,6 +11,8 @@ namespace Enter.Ui.Components;
 
 public partial class EntIcon : EntBaseComponent
 {
+    public override string ComponentName => nameof(EntIcon);
+    
     private EntIcon? _entIcon => ServiceProvider.GetService<EntIcon>();
 
     [Inject] public IServiceProvider ServiceProvider { get; set; } = default!;

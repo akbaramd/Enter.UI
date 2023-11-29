@@ -6,10 +6,6 @@
 @inherits Enter.Ui.Bases.EntBaseComponent
 
 
-@if (Tag == "MultiSelect TreeView")
-{
-    Console.WriteLine("EntTreeView Renderd");
-}
 <CascadingValue Value="this" IsFixed="true">
     <ul @attributes="@AdditionalAttributes" class="@ClassNames">
         @if (DataSource != null)
@@ -24,7 +20,7 @@
 
 
 @code {
-
+    public override string ComponentName => this.GetType().Name;
     protected override void BuildClasses(ClassBuilder builder)
     {
         builder.AddClass("ent-treeview");

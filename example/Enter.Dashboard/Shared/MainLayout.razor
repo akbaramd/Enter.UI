@@ -15,12 +15,12 @@
             <EntDrawer @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start" Mode="_drawerMode" >
                 <EntNavMenu class="border-0">
                     <EntNavMenuGroup Title="Basic" Icon="EntIconName.Home">
-                        @* <EntNavMenuTextItem class="bg-light" Icon="EntIconName.Clock" Text="Counter" Click="() => AddNewTab<Counter>()"/> *@
-                        @* <EntNavMenuTextItem class="bg-light" Icon="EntIconName.ChevronDown" Text="FetchData" Click="() => AddNewTab<FetchData>()"/> *@
+                        @* <EntNavMenuTextItem Icon="EntIconName.Clock" Text="Counter" Click="() => AddNewTab<Counter>()"/> *@
+                        @* <EntNavMenuTextItem Icon="EntIconName.ChevronDown" Text="FetchData" Click="() => AddNewTab<FetchData>()"/> *@
                     </EntNavMenuGroup>
 
                     <EntNavMenuGroup Title="Tables" Icon="EntIconName.Note">
-                        <EntNavMenuTextItem class="bg-light" Text="Table" Click="() => AddNewTab<Table>()"/>
+                        <EntNavMenuTextItem Text="Table" Click="() => AddNewTab<Table>()"/>
                     </EntNavMenuGroup>
                 </EntNavMenu>
             </EntDrawer>

@@ -21,7 +21,7 @@
 
 @code {
 
-
+    public override string ComponentName => nameof(EntInputGroup<TValue>);
     protected override void BuildClasses(ClassBuilder builder)
     {
         builder.AddClass("ent-input-group");

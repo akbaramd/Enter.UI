@@ -24,6 +24,8 @@
 
 @code {
 
+    public override string ComponentName => nameof(EntThemeProvider);
+    
     private bool _readyForRender = false;
 
     private string Direction => RtlMode ? "rtl" : "ltr";
@@ -65,7 +67,6 @@
 
         await SetDarkModeAsync(DarkMode);
         _readyForRender = true;
-        Console.WriteLine($"{nameof(EntThemeProvider)} rendred");
         StateHasChanged();
     }
 

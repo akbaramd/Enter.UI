@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Components.Routing;
 namespace Enter.Ui.Components;
 
 public partial class EntToastProviders : EntBaseComponent
-{
+{   public override string ComponentName => this.GetType().Name;
     [Inject] private IEntToastService EntToastService { get; set; } = default!;
     [Inject] private NavigationManager NavigationManager { get; set; } = default!;
 

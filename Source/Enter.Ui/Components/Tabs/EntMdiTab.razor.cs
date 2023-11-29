@@ -43,9 +43,6 @@ public partial class EntMdiTab : EntTabComponent, IDisposable
 
     protected override void OnAfterRender(bool firstRender)
     {
-      
-        
-        Console.WriteLine($"{nameof(EntMdiTab)} rendred {nameof(firstRender)}: {firstRender}");
         base.OnAfterRender(firstRender);
     }
  
@@ -104,7 +101,6 @@ public partial class EntMdiTab : EntTabComponent, IDisposable
 
     private async Task OnTabClosedCallback(string id)
     {
-        Console.WriteLine("OnTabClosedCallback");
         await _tab.RemoveTabAsync(id,render:false);
         await OnTabClosed.InvokeAsync(id);
  
@@ -112,7 +108,6 @@ public partial class EntMdiTab : EntTabComponent, IDisposable
 
     private async Task OnTabRemovedCallback(string id)
     {
-        Console.WriteLine("OnTabRemovedCallback");
         _items.RemoveAll(x => x.Id == id);
         StateHasChanged();
         await OnTabRemoved.InvokeAsync(id);

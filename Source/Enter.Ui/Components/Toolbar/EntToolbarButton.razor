@@ -22,7 +22,7 @@
 </CascadingValue>
 
 @code {
-
+    public override string ComponentName => this.GetType().Name;
     private string ClassNames => ClassBuilder
         .AddClass("ent-toolbar-button")
         .Build();

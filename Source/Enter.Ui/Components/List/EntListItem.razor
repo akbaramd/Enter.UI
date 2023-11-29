@@ -7,7 +7,7 @@
 </li>
 
 @code {
-
+    public override string ComponentName => nameof(EntListItem);
     protected override void BuildClasses(ClassBuilder builder)
     {
         builder.AddClass("ent-list-item");

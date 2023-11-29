@@ -10,7 +10,7 @@ namespace Enter.Ui.Components;
 public partial class EntAnimator : EntElementComponent
 {
    
-
+    public override string ComponentName => nameof(EntAnimator);
     internal ElementReference Reference { get; set; }
 
     [Parameter] public EntAnimatorState State { get; set; } = EntAnimatorState.Start;

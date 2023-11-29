@@ -9,7 +9,7 @@ namespace Enter.Ui.Components;
 
 public partial class EntNavMenuTextItem : EntBaseComponent
 {
-
+    public override string ComponentName => this.GetType().Name;
     private ClassBuilder IconClassBuilder { get; set; }
     private ClassBuilder ContentClassBuilder { get; set; }
 

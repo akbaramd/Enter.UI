@@ -39,12 +39,10 @@
 
     protected override void OnAfterRender(bool firstRender)
     {
-        Console.WriteLine($"{nameof(MdiTabPage)} rendred");
         base.OnAfterRender(firstRender);
     }
     public void LogInstances()
     {
-        Console.WriteLine(MdiTab.GetInstance().Count);
     }
 
 }

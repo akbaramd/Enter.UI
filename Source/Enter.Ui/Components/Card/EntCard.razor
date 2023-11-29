@@ -27,7 +27,7 @@
     }
     @if (Expandable)
     {
-        <EntExpandable Tag="@Tag" @bind-Expanded="CardExpand">
+        <EntExpandable Tag="@ComponentName" @bind-Expanded="CardExpand">
             <div class="ent-card-content">
                 @CardBody
             </div>
@@ -51,6 +51,7 @@
 
 @code {
 
+    public override string ComponentName => nameof(EntCard);
     protected override void BuildClasses(ClassBuilder builder)
     {
         builder.AddClass("ent-card");

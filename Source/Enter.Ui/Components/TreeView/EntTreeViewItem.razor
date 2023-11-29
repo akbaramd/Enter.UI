@@ -6,11 +6,6 @@
 
 @if (_readyForRender)
 {
-    if (Item.Text == "Middle Developer" && TreeView?.Tag == "MultiSelect TreeView")
-    {
-        Console.WriteLine("EntTreeViewItem : Middle Developer Item Renderd");
-    }
-
     <CascadingValue Value="this" IsFixed="true">
         <li @attributes="@AdditionalAttributes" class="@ClassNames" @onclick="() => Select()" @onclick:stopPropagation>
 
@@ -55,7 +50,7 @@
 }
 
 @code {
-
+    public override string ComponentName => this.GetType().Name;
     private bool _readyForRender = false;
 
     protected override void BuildClasses(ClassBuilder builder)

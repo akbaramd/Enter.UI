@@ -9,6 +9,8 @@ namespace Enter.Ui.Components;
 
 public partial class EntModal : EntBaseComponent
 {
+    public override string ComponentName => this.GetType().Name;
+    
     protected override void BuildClasses(ClassBuilder builder)
     {
         builder.AddClass("ent-modal")
