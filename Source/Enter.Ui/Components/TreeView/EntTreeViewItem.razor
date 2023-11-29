@@ -1,52 +1,62 @@
 ﻿@namespace Enter.Ui.Components
 @typeparam TValue
-@using Enter.Ui.Components.Icon
 @using Enter.Ui.Cores.Core
+@using Enter.Ui.Components.Icon
 @inherits Enter.Ui.Bases.EntBaseComponent
 
-<CascadingValue Value="this" IsFixed="true">
-    <li @attributes="@AdditionalAttributes" class="@ClassNames" @onclick="Select" @onclick:stopPropagation>
-
-        <div class="ent-treeview-item-list-icon" @onclick="OnItemExpandClickCallback" @onclick:stopPropagation>
-            @if (Item.Childrens != null && Item.Childrens.Any())
-            {
-                <EntIcon IconSize="EntIconSize.Medium" Icon="@EntIconName.ChevronDown"/>
-            }
-        </div>
-
-        @if (TreeView.MultiSelect)
-        {
-            <InputCheckbox class="ent-treeview-item-checkbox" Value="@Checked"
-                           ValueExpression="() => Checked"/>
-        }
-
-        @if (Item.Icon != null)
-        {
-            <div class="ent-treeview-item-icon">
-                <EntIcon IconSize="EntIconSize.Medium" Icon="@Item.Icon"/>
-            </div>
-        }
-        <span class="ent-treeview-item-text">
-            @Item.Text
-        </span>
-
-    </li>
-
-
-    @if (Item.Childrens != null && Item.Childrens.Any())
+@if (_readyForRender)
+{
+    if (Item.Text == "Middle Developer" && TreeView?.Tag == "MultiSelect TreeView")
     {
-        <EntExpandable @bind-Expanded="Expanded" class="ent-treeview-childrens">
+        Console.WriteLine("EntTreeViewItem : Middle Developer Item Renderd");
+    }
 
-            @foreach (var item in Item.Childrens)
+    <CascadingValue Value="this" IsFixed="true">
+        <li @attributes="@AdditionalAttributes" class="@ClassNames" @onclick="() => Select()" @onclick:stopPropagation>
+
+            <div class="ent-treeview-item-list-icon" @onclick="OnItemExpandClickCallback" @onclick:stopPropagation>
+                @if (Item.Childrens != null && Item.Childrens.Any())
+                {
+                    <EntIcon IconSize="EntIconSize.Medium" Icon="@EntIconName.ChevronDown"/>
+                }
+            </div>
+
+            @if (TreeView.MultiSelect)
             {
-                <EntTreeViewItem Item="@item"/>
+                <InputCheckbox class="ent-treeview-item-checkbox" Value="@Checked"
+                               ValueExpression="() => Checked"/>
             }
 
-        </EntExpandable>
-    }
-</CascadingValue>
+            @if (Item.Icon != null)
+            {
+                <div class="ent-treeview-item-icon">
+                    <EntIcon IconSize="EntIconSize.Medium" Icon="@Item.Icon"/>
+                </div>
+            }
+            <span class="ent-treeview-item-text">
+                @Item.Text
+            </span>
+
+        </li>
+
+
+        @if (Item.Childrens != null && Item.Childrens.Any())
+        {
+            <EntExpandable @bind-Expanded="Expanded" class="ent-treeview-childrens">
+
+                @foreach (var item in Item.Childrens)
+                {
+                    <EntTreeViewItem Item="@item"/>
+                }
+
+            </EntExpandable>
+        }
+    </CascadingValue>
+}
 
 @code {
+
+    private bool _readyForRender = false;
 
     protected override void BuildClasses(ClassBuilder builder)
     {
@@ -62,12 +72,14 @@
         StyleBuilder?.CanUpdate();
         return base.OnParametersSetAsync();
     }
-    
+
     [CascadingParameter]
     public EntTreeView<TValue> TreeView { get; set; } = default!;
 
     [CascadingParameter]
     public EntTreeViewItem<TValue>? ParentItem { get; set; } = null;
+
+    protected readonly ICollection<EntTreeViewItem<TValue>> ChildItems = new List<EntTreeViewItem<TValue>>();
 
     public bool Expanded { get; set; }
 
@@ -84,32 +96,68 @@
 
     protected override async Task OnInitializedAsync()
     {
+        ParentItem?.ChildItems.Add(this);
+
         await base.OnInitializedAsync();
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        await base.OnAfterRenderAsync(firstRender);
-
-        if (firstRender && Checked)
+     
+        if (firstRender)
         {
-            Expand();
-            TreeView.StateHasChanged();
+            if (Checked)
+            {
+                Expand();
+            }
+
+            _readyForRender = true;
+            StateHasChanged();
+            
+           
+
         }
+
+        await base.OnAfterRenderAsync(firstRender);
     }
 
-    public async Task Select()
+    public async Task Select(bool? check = null, bool selectChildren = true)
     {
-        if (Checked)
+        check ??= Checked;
+
+        if (ChildItems.Any() && IsMultiSelect && selectChildren && TreeView.AutoChildSelect)
+        {
+            foreach (var treeViewItem in ChildItems)
+            {
+                await treeViewItem.Select(check);
+            }
+        }
+
+        if (ParentItem != null && IsMultiSelect && TreeView.AutoParentSelect)
+        {
+            await ParentItem.Select(check, selectChildren: false);
+        }
+        
+        if (check.Value)
         {
             await TreeView.DeSelect(Item.Value);
+
+            if (TreeView.AutoExpand)
+            {
+                Collapse();
+            }
         }
         else
         {
             await TreeView.Select(Item.Value);
-
-            Expand();
+            
+            if (TreeView.AutoExpand)
+            {
+                Expand();
+            }
         }
+
+        
 
         TreeView.StateHasChanged();
     }

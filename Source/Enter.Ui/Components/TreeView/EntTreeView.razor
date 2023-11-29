@@ -1,11 +1,15 @@
 ﻿@namespace Enter.Ui.Components
 
 @typeparam TValue
-@using Enter.Ui.Components.TreeView
 @using Enter.Ui.Cores.Core
+@using Enter.Ui.Components.TreeView
 @inherits Enter.Ui.Bases.EntBaseComponent
 
 
+@if (Tag == "MultiSelect TreeView")
+{
+    Console.WriteLine("EntTreeView Renderd");
+}
 <CascadingValue Value="this" IsFixed="true">
     <ul @attributes="@AdditionalAttributes" class="@ClassNames">
         @if (DataSource != null)
@@ -36,8 +40,16 @@
 
     [Parameter]
     public bool MultiSelect { get; set; } = false;
-
-
+    
+    [Parameter]
+    public bool AutoExpand { get; set; } = false;
+    
+    [Parameter]
+    public bool AutoParentSelect { get; set; } = false;
+    
+    [Parameter]
+    public bool AutoChildSelect{ get; set; } = false;
+    
     [Parameter]
     public TValue? SelectedValue { get; set; }
 
@@ -57,12 +69,20 @@
     public IEnumerable<EntSelectItem<TValue>>? DataSource { get; set; }
 
 
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+    }
+
     public async Task Select(TValue value)
     {
         if (MultiSelect)
         {
-            SelectedValues.Add(value);
-            await SelectedValuesChanged.InvokeAsync(SelectedValues);
+            if (SelectedValues.All(x=>! x.Equals(value)))
+            {
+                SelectedValues.Add(value);
+                await SelectedValuesChanged.InvokeAsync(SelectedValues);
+            }
         }
         else
         {
@@ -75,7 +95,7 @@
     {
         if (MultiSelect)
         {
-            SelectedValues.Remove(value);
+            SelectedValues.RemoveAll(x => x != null && x.Equals(value));
             await SelectedValuesChanged.InvokeAsync(SelectedValues);
         }
         else

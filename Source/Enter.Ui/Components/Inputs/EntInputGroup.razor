@@ -13,7 +13,10 @@
     <div class="ent-input-group-content">
         @ChildContent
     </div>
-    <ValidationMessage class="ent-input-group-validation" For="@For"/>
+    @if (For != null)
+    {
+        <ValidationMessage class="ent-input-group-validation" For="@For"/>
+    }
 </div>
 
 @code {

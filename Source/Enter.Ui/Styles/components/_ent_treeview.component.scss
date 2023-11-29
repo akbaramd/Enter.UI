@@ -13,9 +13,13 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-
+    
+    &:hover {
+      background-color: var(--ent-bg-neutral-highlight);
+    }
+    
     &.active {
-      background-color: var(--ent-light-emphasis);
+      background-color: var(--ent-bg-neutral-select);
     }
 
     &.expanded {
