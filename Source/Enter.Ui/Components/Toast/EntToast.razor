@@ -1,6 +1,6 @@
 ﻿@namespace Enter.Ui.Components
 @using Enter.Ui.Components.Toast.Services
-@inherits Enter.Ui.Bases.EntBaseComponent
+@inherits Enter.Ui.Bases.EntResponsiveComponent
 
 @if (ChildContent is not null)
 {
@@ -19,7 +19,7 @@
 }
 else
 {
-    <div class="ent-toast @Options.AdditionalClasses" @onclick="ToastClick" @onmouseover="TryPauseCountdown" @onmouseout="TryResumeCountdown">
+    <div class="@ClassNames" @onclick="ToastClick" @onmouseover="TryPauseCountdown" @onmouseout="TryResumeCountdown">
 
         @if (ShowIconDiv())
         {

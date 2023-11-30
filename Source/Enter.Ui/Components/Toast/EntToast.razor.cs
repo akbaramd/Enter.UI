@@ -2,13 +2,14 @@
 using Enter.Ui.Components.Toast;
 using Enter.Ui.Components.Toast.Configuration;
 using Enter.Ui.Components.Toast.Services;
+using Enter.Ui.Cores.Core;
 using Microsoft.AspNetCore.Components;
 
 // ReSharper disable once CheckNamespace
 // ReSharper disable once CheckNamespace
 namespace Enter.Ui.Components;
 
-public partial class EntToast : EntBaseComponent
+public partial class EntToast : EntResponsiveComponent
 {   public override string ComponentName => this.GetType().Name;
     [CascadingParameter] private EntToastProviders ToastsContainer { get; set; } = default!;
 
@@ -42,6 +43,17 @@ public partial class EntToast : EntBaseComponent
         }
 
         await _countdownTimer.StartAsync();
+
+        await base.OnInitializedAsync();
+    }
+
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        base.BuildClasses(builder);
+        
+        builder.AddClass("ent-toast");
+        builder.AddClass(Options.AdditionalClasses);
+        
     }
 
     /// <summary>
