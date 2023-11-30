@@ -23,7 +23,7 @@ jobs:
     - name: Publish .NET Core Project
       run: |
         cd example/Enter.Dashboard
-        dotnet publish Enter.Dashboard.csproj -c Release -o release --nologo example/Enter.Dashboard
+        dotnet publish Enter.Dashboard.csproj -c Release -o release --nologo 
     
     # changes the base-tag in index.html from '/' to 'BlazorGitHubPagesDemo' to match GitHub Pages repository subdirectory
     - name: Change base-tag in index.html from / to Enter.Ui
