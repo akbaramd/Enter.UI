@@ -13,11 +13,12 @@ jobs:
     # uses GitHub's checkout action to checkout code form the master branch
     - uses: actions/checkout@v2
     
-    # sets up .NET Core SDK 3.1
+
     - name: Setup .NET Core SDK
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 7
+        dotnet-version: 8.x
+        include-prerelease: true
       
     # publishes Blazor project to the release-folder 
     - name: Publish .NET Core Project
