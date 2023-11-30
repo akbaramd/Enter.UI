@@ -20,7 +20,12 @@ jobs:
         dotnet-version: 3.1
 
 
+
     # publishes Blazor project to the release-folder
+    - name: cd example/Enter.Dashboard
+      run: cd example/Enter.Dashboard
+      
+    # publishes Blazor project to the release-folder 
     - name: Publish .NET Core Project
       run: dotnet publish Enter.Dashboard.csproj -c Release -o release --nologo
     
