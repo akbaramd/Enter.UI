@@ -19,7 +19,7 @@
 
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Source\Enter.Ui\Enter.Ui.csproj" />
+        <ProjectReference Include="..\..\Source\Enter.Ui\Enter.UI.csproj" />
     </ItemGroup>
 
 
