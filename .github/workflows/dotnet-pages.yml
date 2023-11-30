@@ -15,29 +15,29 @@ jobs:
         
     # publishes Blazor project to the release-folder 
     - name: Publish .NET Core Project
-      run: cp Docs/wwwroot/index.html Docs/wwwroot/404.html
+      run: cp Docs/wwwroot/index.html release/wwwroot/404.html
         
     # changes the base-tag in index.html from '/' to 'BlazorGitHubPagesDemo' to match GitHub Pages repository subdirectory
     - name: Change base-tag in index.html from / to Enter.Ui
       run: |
-        sed -i 's/<base href="\/"\/>/<base href="\/Enter.Ui\/" \/>/g' Docs/wwwroot/index.html
-        cat Docs/wwwroot/index.html
+        sed -i 's/<base href="\/"\/>/<base href="\/Enter.Ui\/" \/>/g' release/wwwroot/index.html
+        cat release/wwwroot/index.html
     
     # copy index.html to 404.html to serve the same file when a file is not found
     - name: copy index.html to 404.html
       run: |
-        cp Docs/wwwroot/index.html Docs/wwwroot/404.html
-        cat Docs/wwwroot/index.html
+        cp release/wwwroot/index.html release/wwwroot/404.html
+        cat release/wwwroot/index.html
         
     # add .nojekyll file to tell GitHub pages to not treat this as a Jekyll project. (Allow files and folders starting with an underscore)
     - name: Add .nojekyll file
       run: |
-        touch Docs/wwwroot/.nojekyll
-        cat Docs/wwwroot/index.html
+        touch release/wwwroot/.nojekyll
+        cat release/wwwroot/index.html
       
-    - name: Commit Docs to GitHub Pages
+    - name: Commit release to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: gh-pages
-        FOLDER: Docs/wwwroot
+        FOLDER: release/wwwroot
