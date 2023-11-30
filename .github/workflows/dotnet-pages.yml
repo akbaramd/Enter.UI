@@ -23,9 +23,7 @@ jobs:
     # publishes Blazor project to the release-folder 
     - name: ls
       run: |
-        ls example/Enter.Dashboard
-        ls /
-        ls Source
+        ls Source/Enter.Ui
        
         
     # publishes Blazor project to the release-folder 
