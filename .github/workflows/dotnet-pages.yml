@@ -18,16 +18,12 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 7
-
-
-
-    # publishes Blazor project to the release-folder
-    - name: cd example/Enter.Dashboard
-      run: cd example/Enter.Dashboard
       
     # publishes Blazor project to the release-folder 
     - name: Publish .NET Core Project
-      run: dotnet publish Enter.Dashboard.csproj -c Release -o release --nologo example/Enter.Dashboard
+      run: |
+        cd example/Enter.Dashboard
+        dotnet publish Enter.Dashboard.csproj -c Release -o release --nologo example/Enter.Dashboard
     
     # changes the base-tag in index.html from '/' to 'BlazorGitHubPagesDemo' to match GitHub Pages repository subdirectory
     - name: Change base-tag in index.html from / to Enter.Ui
