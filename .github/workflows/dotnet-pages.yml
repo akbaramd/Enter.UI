@@ -20,7 +20,7 @@ jobs:
     # changes the base-tag in index.html from '/' to 'BlazorGitHubPagesDemo' to match GitHub Pages repository subdirectory
     - name: Change base-tag in index.html from / to Enter.Ui
       run: |
-        sed -i 's/<base href="\/" \/>/<base href="\/Enter.Ui\/" \/>/g' Docs/wwwroot/index.html
+        sed -i 's/<base href="\/"\/>/<base href="\/Enter.Ui\/" \/>/g' Docs/wwwroot/index.html
         cat Docs/wwwroot/index.html
     
     # copy index.html to 404.html to serve the same file when a file is not found
