@@ -27,7 +27,7 @@ jobs:
       
     # publishes Blazor project to the release-folder 
     - name: Publish .NET Core Project
-      run: dotnet publish Enter.Dashboard.csproj -c Release -o release --nologo
+      run: dotnet publish Enter.Dashboard.csproj -c Release -o release --nologo example/Enter.Dashboard
     
     # changes the base-tag in index.html from '/' to 'BlazorGitHubPagesDemo' to match GitHub Pages repository subdirectory
     - name: Change base-tag in index.html from / to Enter.Ui
