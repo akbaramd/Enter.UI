@@ -15,7 +15,9 @@ jobs:
       
     # publishes Blazor project to the release-folder 
     - name: Copy .NET Core Project
-      run: cp -r Docs/wwwroot/ release/wwwroot/
+      run: |
+        mkdir release/wwwroot/
+        cp -r Docs/wwwroot/ release/wwwroot/
       
     # publishes Blazor project to the release-folder 
     - name: Publish .NET Core Project
