@@ -12,7 +12,11 @@ jobs:
     steps:
     # uses GitHub's checkout action to checkout code form the master branch
     - uses: actions/checkout@v2
-        
+      
+    # publishes Blazor project to the release-folder 
+    - name: Copy .NET Core Project
+      run: cp -r Docs/wwwroot/ release/wwwroot/
+      
     # publishes Blazor project to the release-folder 
     - name: Publish .NET Core Project
       run: cp Docs/wwwroot/index.html release/wwwroot/404.html
