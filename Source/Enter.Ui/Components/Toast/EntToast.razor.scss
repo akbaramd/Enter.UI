@@ -1,17 +1,23 @@
 ﻿
+.ent-responsive.ent-toast {
+    width: 100% !important;
+    margin-bottom: 0 !important;
+    animation: responsive-toast-anim 0.5s !important;
+}
 .ent-toast {
     display: flex;
     position: relative;
     flex-direction: row;
-    animation: fadein 1.5s;
+    animation: toast-anim 0.5s;
     margin-bottom: 1rem;
     padding: var(--ent-space-4) ;
     color: var(--ent-fg-base);
     width: 20rem;
     border-radius: var(--ent-border-radius-1);
-    box-shadow: var(--ent-shadow-md);
+    box-shadow: var(--ent-shadow-lg);
     background-color: var(--ent-bg-neutral);
     align-items: center;
+    border: var(--ent-border-1) solid var(--ent-border-color);
 }
 
 .ent-toast-component {
@@ -89,7 +95,8 @@
     display: flex;
     flex-direction: column;
     justify-content: start;
-    padding: 0 1rem 0 0;
+    padding: 0 0 0 0;
+    padding-inline-end: 1rem;
     font-size: 1.5rem;
 }
 
@@ -112,7 +119,8 @@
     display: flex;
     flex-direction: column;
     justify-content: start;
-    padding: 0 0 0 1rem;
+    padding: 0 0 0 0;
+    padding-inline-start: 1rem;
     background-color: transparent;
     border: 0;
     -webkit-appearance: none;
@@ -132,9 +140,35 @@
 @keyframes fadein {
     from {
         opacity: 0;
+        margin-bottom: -1rem;
     }
 
     to {
         opacity: 1;
+        margin-bottom: 1rem;
+    }
+}
+
+@keyframes toast-anim {
+    from {
+        opacity: 0;
+        margin-bottom: -1rem;
+    }
+
+    to {
+        opacity: 1;
+        margin-bottom: 1rem;
+    }
+}
+
+@keyframes responsive-toast-anim {
+    from {
+        opacity: 0;
+        margin-bottom: -2rem;
+    }
+
+    to {
+        opacity: 1;
+        margin-bottom: 0rem;
     }
 }

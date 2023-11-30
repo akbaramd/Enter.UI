@@ -1,4 +1,8 @@
-﻿
+﻿.ent-responsive.ent-toast-container {
+    bottom: 0 !important;
+    left: 0;
+    right: 0;
+}
 .ent-toast-container {
     display: flex;
     flex-direction: column;

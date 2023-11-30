@@ -2,13 +2,14 @@
 using Enter.Ui.Components.Toast;
 using Enter.Ui.Components.Toast.Configuration;
 using Enter.Ui.Components.Toast.Services;
+using Enter.Ui.Cores.Core;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Routing;
 
 // ReSharper disable once CheckNamespace
 namespace Enter.Ui.Components;
 
-public partial class EntToastProviders : EntBaseComponent
+public partial class EntToastProviders : EntResponsiveComponent
 {   public override string ComponentName => this.GetType().Name;
     [Inject] private IEntToastService EntToastService { get; set; } = default!;
     [Inject] private NavigationManager NavigationManager { get; set; } = default!;
@@ -50,7 +51,14 @@ public partial class EntToastProviders : EntBaseComponent
             NavigationManager.LocationChanged += ClearToasts;
         }
 
-       
+       base.OnInitialized();
+    }
+
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        base.BuildClasses(builder);
+        builder.AddClass("ent-toast-container");
+        
     }
 
     private EntToastOptions BuildCustomToastSettings(Action<EntToastOptions>? settings)
@@ -79,14 +87,15 @@ public partial class EntToastProviders : EntBaseComponent
             EntToastLevel.Warning => BuildToastSettings(toastInstanceSettings, "ent-toast-warning", WarningIcon??"ri-error-warning-line", WarningClass),
             _ => throw new ArgumentOutOfRangeException(nameof(level))
         };
+        
     }
 
     private EntToastOptions BuildToastSettings(EntToastOptions entToastInstanceOptions, string cssClassForLevel, string? configIcon, string? configAdditionalClasses)
     {
-        string? additonalClasses = string.IsNullOrEmpty(entToastInstanceOptions.AdditionalClasses) ? configAdditionalClasses : entToastInstanceOptions.AdditionalClasses;
+        string? additionalClasses = string.IsNullOrEmpty(entToastInstanceOptions.AdditionalClasses) ? configAdditionalClasses : entToastInstanceOptions.AdditionalClasses;
 
         return new EntToastOptions(
-            $"{cssClassForLevel} {additonalClasses}",
+            $"{cssClassForLevel} {additionalClasses}",
             entToastInstanceOptions.Icon ?? configIcon ?? "",
             entToastInstanceOptions.ShowProgressBar ?? ShowProgressBar,
             entToastInstanceOptions.ShowCloseButton ?? ShowCloseButton,

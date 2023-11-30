@@ -22,15 +22,10 @@ public abstract class EntResponsiveComponent : EntBaseComponent
 
     public void Handle()
     {
-        if (EntThemeProvider != null)
-        {
-            if (!ResponsiveMode.HasValue)
-            {
-                ResponsiveMode = EntThemeProvider.ResponsiveMode;
-               
-            }
-
-        }
+        if (EntThemeProvider == null) return;
+        if (ResponsiveMode.HasValue) return;
+        
+        ResponsiveMode = EntThemeProvider.ResponsiveMode;
     }
 
     protected override async Task OnInitializedAsync()
