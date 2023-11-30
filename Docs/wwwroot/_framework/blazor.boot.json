@@ -1,7 +1,7 @@
 {
   "entryAssembly": "Enter.Dashboard",
   "resources": {
-    "hash": "sha256-kW7r7osanXgag+qgx3CTWI4m9Rzy66+vxwVH6YbxR5U=",
+    "hash": "sha256-6dFfRiIpwfA4r9rpHV5MyaGAkVT9Sg0qtY4q2vIAYyY=",
     "runtime": {
       "dotnet.7.0.14.3yvdah5ha4.js": "sha256-YWGUknGRzP/fgO6YjvCJKPVQNZAPEd6ll+rHfQEIW+I=",
       "dotnet.timezones.blat": "sha256-t5xviiOQTfAsF0UDhmcyalKiaehUmf/sqJl97tmPM0M=",
@@ -12,8 +12,8 @@
     },
     "assembly": {
       "AspNetCore.SassCompiler.dll": "sha256-v7xqbTQ11qtf7YiIgdK9GkPwdBP1e6rrkKJgkSpRSTg=",
-      "Enter.Dashboard.dll": "sha256-nRNIz5WQasnscCALjZcI5Nr7NssHZhB8lX7mkVJAVyU=",
-      "Enter.Ui.dll": "sha256-kvIscted/JHLC3uktZbGUhsrPusm7nykssnTnNGXENA=",
+      "Enter.Dashboard.dll": "sha256-n76j2AhPAJ4AP4pfypPvybrB6LSxg9CW5szJPe0cSwQ=",
+      "Enter.Ui.dll": "sha256-FXr+agl0hYnaFDEGOpXAoj/H8ftikoeHWo0bCaZ6SPk=",
       "Microsoft.AspNetCore.Authorization.dll": "sha256-t7KDwXpfEy/UbmAIpuMJI0h+MMOTr8jLi1ei0lP44QI=",
       "Microsoft.AspNetCore.Components.dll": "sha256-CCnE1pQ8XDRrJWlqnelqinQo1pisIEK3lPSLNsOThy8=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-QzTuKWoRJMXfL9hnE338kn0jp1s5RyTvzlKtY1mr1ZQ=",
