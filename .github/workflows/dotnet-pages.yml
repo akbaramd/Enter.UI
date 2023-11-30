@@ -25,11 +25,15 @@ jobs:
     
     # copy index.html to 404.html to serve the same file when a file is not found
     - name: copy index.html to 404.html
-      run: cp Docs/wwwroot/index.html Docs/wwwroot/404.html
-
+      run: |
+        cp Docs/wwwroot/index.html Docs/wwwroot/404.html
+        cat Docs/wwwroot/index.html
+        
     # add .nojekyll file to tell GitHub pages to not treat this as a Jekyll project. (Allow files and folders starting with an underscore)
     - name: Add .nojekyll file
-      run: touch Docs/wwwroot/.nojekyll
+      run: |
+        touch Docs/wwwroot/.nojekyll
+        cat Docs/wwwroot/index.html
       
     - name: Commit Docs to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@3.7.1
