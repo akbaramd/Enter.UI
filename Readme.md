@@ -5,6 +5,8 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/Akbarsafari00/Enter.Ui?style=flat-squar&logo=github&color=594ae2)
 [![Nuget version](https://img.shields.io/nuget/v/Enter.Ui?color=ff4081&label=nuget%20version&logo=nuget&style=flat-square)](https://www.nuget.org/packages/Enter.Ui)
 
+![Enter UI](https://api.nuget.org/v3-flatcontainer/enter.ui/1.0.93-preview1/icon)
+
 [![My Skills](https://skillicons.dev/icons?i=dotnet,scss,js)](https://github.com/akbaramd)
 
 Enter.Ui is an open source user interface library for the Blazor framework.
@@ -17,7 +19,6 @@ which has the most functionality at the same time
 
 You can get in touch with my LinkedIn which is available in my GitHub profile to collaborate on this project.
 
-[![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/akbaramd)
 
 https://github.com/akbaramd
 
