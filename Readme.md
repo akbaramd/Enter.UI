@@ -8,7 +8,7 @@
 
 <h2>Enter.Ui (Enterprise Blazor Ui Component)</h2>
 
-[![My Skills](https://skillicons.dev/icons?i=dotnet,scss,js)](https://github.com/akbaramd)
+<img src="https://camo.githubusercontent.com/cb1dea8ae150bb4d6b0bcc7710f09b9f626683a7b229538b95e079d28d8463f2/68747470733a2f2f736b696c6c69636f6e732e6465762f69636f6e733f693d646f746e65742c736373732c6a73"/>
 
 Enter.Ui is an open source user interface library for the Blazor framework.
 
