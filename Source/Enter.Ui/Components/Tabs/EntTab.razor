@@ -5,7 +5,7 @@
 <CascadingValue Value="@(this)">
     <div @attributes="@AdditionalAttributes" class="@ClassNames">
 
-        @if (ResponsiveMode.HasValue && ResponsiveMode.Value && Direction == EntTabDirection.Vertical)
+        @if (Responsive && Direction == EntTabDirection.Vertical)
         {
             <div class="responsive:ent-tab-item-container">
 

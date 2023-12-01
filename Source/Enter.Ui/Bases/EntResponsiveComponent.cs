@@ -6,7 +6,8 @@ namespace Enter.Ui.Bases;
 
 public abstract class EntResponsiveComponent : EntBaseComponent
 {
-    [Parameter] public bool? ResponsiveMode { get; set; }
+    [Parameter] public bool Responsive { get; set; } = false;
+    [Parameter] public bool AutoResponsive { get; set; } = false;
 
     protected override void OnInitialized()
     {
@@ -16,16 +17,18 @@ public abstract class EntResponsiveComponent : EntBaseComponent
 
     protected override void BuildClasses(ClassBuilder builder)
     {
-        builder.AddClass("ent-responsive", ResponsiveMode.GetValueOrDefault(false));
+        builder.AddClass("ent-responsive", Responsive);
         base.BuildClasses(builder);
     }
 
     public void Handle()
     {
-        if (EntThemeProvider == null) return;
-        if (ResponsiveMode.HasValue) return;
-        
-        ResponsiveMode = EntThemeProvider.ResponsiveMode;
+        if (AutoResponsive)
+        {
+            if (EntThemeProvider == null) return;
+            
+            Responsive = EntThemeProvider.ResponsiveMode;
+        }
     }
 
     protected override async Task OnInitializedAsync()

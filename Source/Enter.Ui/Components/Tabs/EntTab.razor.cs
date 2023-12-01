@@ -103,7 +103,7 @@ public partial class EntTab : EntTabComponent
         else
             _activeTabId = panel.Id;
         
-        if (ResponsiveMode.GetValueOrDefault(false)) _toggleMenu = false;
+        if (Responsive) _toggleMenu = false;
 
   
         if (render)
@@ -123,7 +123,7 @@ public partial class EntTab : EntTabComponent
         // navigate to next tab when active tab remove
         if (Panels.Count >= 1 && _activeTabId == id) await ActivateTabAsync(Panels.First().Id);
 
-        if (ResponsiveMode.GetValueOrDefault(false)) _toggleMenu = false;
+        if (Responsive) _toggleMenu = false;
         
         if (render)
             StateHasChanged();

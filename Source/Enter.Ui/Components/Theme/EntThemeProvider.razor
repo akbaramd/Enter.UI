@@ -43,6 +43,7 @@
     [Inject]
     private IEntJsService EntJsService { get; set; } = default!;
 
+    
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -60,7 +61,7 @@
 
         CurrentBreakPoint = await SharedJsService.GetBreakpointAsync();
 
-        if (ResponsiveMode == false && CurrentBreakPoint <= EntBreakpoint.Tablet)
+        if (ResponsiveMode == false && CurrentBreakPoint <= ResponsiveBreakpoint)
         {
             await SetResponsiveModeAsync(true);
         }
@@ -190,6 +191,9 @@
 
     #region Breakpoint
 
+    [Parameter]
+    public EntBreakpoint ResponsiveBreakpoint { get; set; } = EntBreakpoint.Tablet;
+    
     public EntBreakpoint CurrentBreakPoint { get; set; }
 
 
