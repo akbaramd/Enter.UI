@@ -5,7 +5,7 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/Akbarsafari00/Enter.Ui?style=flat-squar&logo=github&color=594ae2)
 [![Nuget version](https://img.shields.io/nuget/v/Enter.Ui?color=ff4081&label=nuget%20version&logo=nuget&style=flat-square)](https://www.nuget.org/packages/Enter.Ui)
 
-![Enter UI](https://api.nuget.org/v3-flatcontainer/enter.ui/1.0.93-preview1/icon)
+<img src="https://api.nuget.org/v3-flatcontainer/enter.ui/1.0.93-preview1/icon" width="200" height="200" />
 
 [![My Skills](https://skillicons.dev/icons?i=dotnet,scss,js)](https://github.com/akbaramd)
 
