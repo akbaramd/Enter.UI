@@ -1,10 +1,13 @@
 
-<img src="https://api.nuget.org/v3-flatcontainer/enter.ui/1.0.93-preview1/icon" width="200" height="200" />
+<img src="https://raw.githubusercontent.com/akbaramd/Enter.UI/master/Source/Enter.Ui/logo.png" width="200" height="200" />
 
 ![GitHub](https://img.shields.io/github/license/Akbarsafari00/Enter.Ui?style=flat-squar&logo=github)
 ![GitHub Repo forks](https://img.shields.io/github/forks/Akbarsafari00/Enter.Ui?style=flat-squar&logo=github)
 ![GitHub Repo stars](https://img.shields.io/github/stars/Akbarsafari00/Enter.Ui?style=flat-squar&logo=github&color=594ae2)
-[![Nuget version](https://img.shields.io/nuget/v/Enter.Ui?color=ff4081&label=nuget%20version&logo=nuget&style=flat-square)](https://www.nuget.org/packages/Enter.Ui)
+
+![Nuget](https://img.shields.io/nuget/v/enter.ui?logo=nuget&label=Version&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FEnter.Ui%2F)
+![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/enter.ui?logo=nuget&label=Prerelease%20Version&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FEnter.Ui%2F)
+![Nuget Downloads](https://img.shields.io/nuget/dt/enter.ui?logo=nuget&)
 
 <h2>Enter.Ui (Enterprise Blazor Ui Component)</h2>
 
@@ -20,8 +23,7 @@ which has the most functionality at the same time
 
 You can get in touch with my LinkedIn which is available in my GitHub profile to collaborate on this project.
 
-
-https://github.com/akbaramd
+<a href="https://github.com/akbaramd"><img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" width="50" height="50" style="border-radius: 8px"></a>
 
 You can also fork this project and work on its development.
 
