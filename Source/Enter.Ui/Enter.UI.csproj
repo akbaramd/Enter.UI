@@ -5,7 +5,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <PackageId>Enter.Ui</PackageId>
-        <Version>1.0.93-preview4</Version>
+        <Version>1.0.93-preview5</Version>
         <Authors>Akbar Ahmadi</Authors>
         <Company>AhmadiCo</Company>
         <PackageReadmeFile>Readme.md</PackageReadmeFile>
@@ -45,7 +45,10 @@
         <ItemGroup>
             <FilesToClean Include="./Styles/combined/*.*" />
             <FilesToClean Include="./Scripts/combined/*.*" />
+            <FilesToClean Include="./wwwroot/css/Enter.Ui.css" />
+            <FilesToClean Include="./wwwroot/css/Enter.Ui.css.map" />
             <FilesToClean Include="./wwwroot/js/Enter.Ui.min.js" />
+            <FilesToClean Include="./wwwroot/js/Enter.Ui.min.js.gz" />
             <FilesToClean Include="./wwwroot/js/Enter.Ui.js" />
             <FilesToClean Include="./wwwroot/js/Enter.Ui.js" />
         </ItemGroup>

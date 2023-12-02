@@ -36,8 +36,8 @@
                         <EntNavMenuTextItem  Text="MdiTab" Click="@(() => Navigate("/documents/mdi-tabs"))"/>
                         <EntNavMenuTextItem  Text="Upload Box" Click="@(() => Navigate("/documents/upload-box"))"/>
                     </EntNavMenuGroup>
-                    <EntNavMenuGroup Title="Documents">
-                                            <EntNavMenuTextItem  Text="Upload Box" Click="@(() => Navigate("/documents/upload-box"))"/>
+                    <EntNavMenuGroup Title="Layout">
+                                            <EntNavMenuTextItem  Text="Grid System" Click="@(() => Navigate("/documents/grid-system"))"/>
                                         </EntNavMenuGroup>
                    
                 </EntNavMenu>
@@ -59,7 +59,7 @@
 }
 <EntModalProvider/>
 <EntPopoverProvider/>
-<EntToastProviders />
+<EntToastProviders AutoResponsive="true"/>
 
 @code {
 
