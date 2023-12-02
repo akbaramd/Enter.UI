@@ -23,6 +23,7 @@ public abstract class EntResponsiveComponent : EntBaseComponent
 
     public void Handle()
     {
+        
         if (AutoResponsive)
         {
             if (EntThemeProvider == null) return;
