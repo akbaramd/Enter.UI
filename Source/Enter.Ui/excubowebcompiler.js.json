@@ -1,6 +1,6 @@
 {
   "Minifiers": {
-    "GZip": true,
+    "GZip": false,
     "Enabled": true,
     "Css": {
       "CommentMode": "Important",
