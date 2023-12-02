@@ -10,7 +10,7 @@
                 {
                     if (toast.CustomComponent is not null)
                     {
-                        <EntToast @key="toast" ToastId="toast.Id" Options="toast.EntToastOptions" Responsive="@Responsive">
+                        <EntToast @key="toast" ToastId="toast.Id" Options="toast.EntToastOptions" Responsive="@Responsive" AutoResponsive="@AutoResponsive">
                             @toast.CustomComponent
                         </EntToast>
                     }
