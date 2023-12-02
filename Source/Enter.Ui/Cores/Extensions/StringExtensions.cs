@@ -12,6 +12,8 @@ public static class StringExtensions
         return string.IsNullOrEmpty( value ) ? null : value;
     }
 
+
+
     /// <summary>
     /// Converts all string characters to lower-case except for the first character.
     /// </summary>

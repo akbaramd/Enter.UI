@@ -1,5 +1,6 @@
 .ent-upload-box {
-
+  display: flex;
+  flex-direction: column;
   .upload-container {
     background-color: var(--ent-bg-neutral-highlight);
     padding: 31px;

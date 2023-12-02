@@ -1,25 +1,34 @@
 ﻿@namespace Enter.Ui.Components
-@using Enter.Ui.Components.Icon
+@using Enter.Ui.Cores.Extensions
 @using Enter.Ui.Cores.Core
+@using Enter.Ui.Components.Icon
 @inherits Enter.Ui.Bases.EntBaseComponent
 
 <div
     @attributes="@AdditionalAttributes"
     id="@Id"
     class="@ClassNames">
-
+    @if (_errorMessages.Any())
+    {
+        foreach (var errorMessage in _errorMessages)
+        {
+            <span class="mb-4">
+                @errorMessage
+            </span>
+        }
+    }
     <label class="upload-container" for="upload-box">
         <span>@PlaceHolder</span>
     </label>
     <InputFile id="upload-box" class="d-none" multiple="@Multiple" OnChange="OnFileChange2"></InputFile>
-    <ul class="files-container">
+    <ul class="files-container vertical-scroll">
         @foreach (var file in Files)
         {
             <li class="file-item">
                 <span class="file-item-icon">
-                    @if (file.DataBase64 != string.Empty)
+                    @if (file.Url != string.Empty)
                     {
-                        <img src="@($"data:{file.ContentType};base64,{file.DataBase64}")"/>
+                        <img src="@file.Url"/>
                     }
                     else
                     {
@@ -28,7 +37,7 @@
                 </span>
                 <div class="file-item-content">
                     <b>@file.Name</b>
-                    <small>@file.ContentType</small>
+                    <small>@file.Size.ToByteSizeString()</small>
                 </div>
                 <div class="file-item-action">
                     <EntButton Icon="EntIconName.Delete" @onclick="() => RemoveItem(file)"/>
@@ -41,9 +50,12 @@
 
 @code {
 
-    public override string ComponentName => this.GetType().Name;
+    public override string ComponentName => GetType().Name;
+    private List<string> _errorMessages = new();
+
     [Parameter]
     public List<UploadModel> Files { get; set; } = new();
+
 
     [Parameter]
     public EventCallback<List<UploadModel>> FilesChanged { get; set; }
@@ -59,6 +71,10 @@
     public string PlaceHolder { get; set; } = string.Empty;
 
     [Parameter]
+    public long MaxFileSize { get; set; } = 1024L * 1024 * 20;
+
+
+    [Parameter]
     public bool Multiple { get; set; }
 
     protected override void Dispose(bool disposing)
@@ -66,21 +82,34 @@
         base.Dispose(disposing);
     }
 
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
 
     private async Task OnFileChange2(InputFileChangeEventArgs e)
     {
+        _errorMessages.Clear();
         try
         {
             foreach (var file in e.GetMultipleFiles(e.FileCount))
             {
+                var url = string.Empty;
                 var imageBase64 = string.Empty;
+                var buffer = new byte[file.Size];
+
+                if (file.Size > MaxFileSize)
+                {
+                    _errorMessages.Add($"{file.Name} : you cannot upload file bigger then {MaxFileSize.ToByteSizeString()}");
+                    continue;
+                }
+                await file.OpenReadStream(MaxFileSize).ReadAsync(buffer);
+                imageBase64 = Convert.ToBase64String(buffer);
                 if (file.ContentType.Contains("image/"))
                 {
-                    var resizedImageFile = await file.RequestImageFileAsync(file.ContentType, 100, 100);
-                    var buffer = new byte[resizedImageFile.Size];
-                    await resizedImageFile.OpenReadStream().ReadAsync(buffer);
-                    imageBase64 = Convert.ToBase64String(buffer);
+                    url = $"data:{file.ContentType};base64,{imageBase64}";
                 }
+
                 var fileModel = new UploadModel
                 {
                     Name = file.Name,
@@ -89,7 +118,7 @@
                     Size = file.Size,
                     IsSent = false,
                     DataBase64 = imageBase64,
-                    Url = $"data:{file.ContentType};base64,{imageBase64}"
+                    Url = url
                 };
                 if (Multiple)
                 {
