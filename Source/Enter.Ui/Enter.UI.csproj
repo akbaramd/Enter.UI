@@ -5,7 +5,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <PackageId>Enter.Ui</PackageId>
-        <Version>1.0.93-preview5</Version>
+        <Version>1.0.93-preview6</Version>
         <Authors>Akbar Ahmadi</Authors>
         <Company>AhmadiCo</Company>
         <PackageReadmeFile>Readme.md</PackageReadmeFile>
@@ -96,12 +96,6 @@
       <_ContentIncludedByDefault Remove="wwwroot\css\Styles.razor.css" />
       <_ContentIncludedByDefault Remove="wwwroot\css\Styles.razor.css.map" />
     </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Cores\JsServices\" />
-      <Folder Include="wwwroot\css" />
-    </ItemGroup>
-
-
 
  
 </Project>
