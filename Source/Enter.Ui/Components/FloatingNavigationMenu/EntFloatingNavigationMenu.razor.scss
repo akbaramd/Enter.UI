@@ -1,0 +1,34 @@
+﻿.ent-responsive.ent-floating-navigation-menu {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.ent-floating-navigation-menu {
+  position: absolute;
+  right: 2rem;
+  bottom:2rem;
+  display: flex;
+  z-index: var(--ent-z-index-10);
+
+  border: var(--ent-border-1) solid var(--ent-border-color);
+  box-shadow: var(--ent-shadow-md);
+  margin: 0;
+  padding: 0;
+  
+  > ::deep * {
+    border-inline-end: var(--ent-border-1) solid var(--ent-border-color);
+   
+  }
+
+  > ::deep *:last-child {
+    border-inline-end: 0;
+  }
+}
+
+.ent-responsive.ent-floating-navigation-menu {
+  > ::deep * {
+    flex: 1;
+
+  }
+}

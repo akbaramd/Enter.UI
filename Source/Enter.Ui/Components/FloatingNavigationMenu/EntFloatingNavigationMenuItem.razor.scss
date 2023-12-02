@@ -1,0 +1,13 @@
+﻿.ent-floating-navigation-menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: var(--ent-bg-neutral);
+  cursor: pointer;
+}
+
+.ent-floating-navigation-menu-item:hover {
+  background-color: var(--ent-bg-neutral-highlight);
+}
+

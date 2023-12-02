@@ -1,0 +1,52 @@
+﻿@using Enter.Ui.Cores.Core
+@inherits Enter.Ui.Bases.EntElementComponent
+@namespace Enter.Ui.Components
+<li  @attributes="@AdditionalAttributes" style="@StyleNames" class="@ClassNames" @onclick="OnClick">
+    
+    <EntIcon class="icon" Icon="Icon"/>
+    
+    @if (!string.IsNullOrWhiteSpace(Title))
+    {
+        <span class="title">
+            @Title
+        </span>
+    }
+</li>
+
+@code {
+    private bool IsActive => FloatingNavigationMenu.Selected.Id == Id;
+    
+    public override string ComponentName => this.GetType().Name;
+
+    [CascadingParameter]
+    EntFloatingNavigationMenu FloatingNavigationMenu { get; set; } = default!;
+
+    [Parameter]
+    public EventCallback Click { get; set; } = default!;
+    
+    [Parameter]
+    public string Title { get; set; } = default!;
+    
+    [Parameter]
+    public object Icon { get; set; } = default!;
+    
+    protected override void OnInitialized()
+    {
+        FloatingNavigationMenu.AddItem(this);
+        base.OnInitialized();
+    }
+
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        base.BuildClasses(builder);
+        builder.AddClass("ent-floating-navigation-menu-item");
+    }
+
+    private async Task OnClick()
+    {
+        await FloatingNavigationMenu.SelectAsync(this);
+        await Click.InvokeAsync();
+        
+    }
+
+}

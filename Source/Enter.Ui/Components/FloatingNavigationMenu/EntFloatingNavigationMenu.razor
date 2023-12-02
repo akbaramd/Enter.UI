@@ -1,0 +1,40 @@
+﻿@using System.Collections.ObjectModel
+@using Enter.Ui.Cores.Core
+@inherits Enter.Ui.Bases.EntResponsiveComponent
+@namespace Enter.Ui.Components
+<CascadingValue Value="this" IsFixed="true">
+    <ul @attributes="@AdditionalAttributes" style="@StyleNames" class="@ClassNames">
+        @ChildContent
+    </ul>
+</CascadingValue>
+
+
+@code {
+    private Collection<EntFloatingNavigationMenuItem> _menuItems  = new();
+    
+    public override string ComponentName => GetType().Name;
+    
+    [Parameter]
+    public EntFloatingNavigationMenuItem Selected { get; set; } = default!;
+    
+    [Parameter]
+    public EventCallback<EntFloatingNavigationMenuItem> SelectedChanged { get; set; } = default!;
+    
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        base.BuildClasses(builder);
+        builder.AddClass("ent-floating-navigation-menu");
+    }
+    
+    public void AddItem(EntFloatingNavigationMenuItem item)
+    {
+        _menuItems.Add(item);
+    }
+
+    public async Task SelectAsync(EntFloatingNavigationMenuItem floatingNavigationMenuItem)
+    {
+        this.Selected = floatingNavigationMenuItem;
+       await SelectedChanged.InvokeAsync(Selected);
+    }
+
+}
