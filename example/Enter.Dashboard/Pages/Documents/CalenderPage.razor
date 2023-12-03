@@ -1,12 +1,26 @@
 ﻿@page "/documents/calendar"
 @using Enter.Ui.Components.Icon
+@using Enter.Ui.Components.Text
+@using Enter.Ui.Components.Flex
 @inherits Enter.Ui.Bases.EntPageBase
 @layout DocumentLayout
 <div class="p-4 row">
     <EntCard class="mb-4 ">
-        <CardBody>
-           <EntCalendar></EntCalendar>
+        <CardBody >
+            <EntFlex Direction="FlexDirection.Column">
+                  <EntCalendar @bind-SelectedDate="SelectedDate"></EntCalendar>
+                            @if (SelectedDate != DateTime.MinValue)
+                            {
+                                <EntText Type="EntTextType.Bold" class="mt-4">
+                                    @SelectedDate.ToLongDateString()
+                                </EntText>
+                            }
+            </EntFlex>
         </CardBody>
     </EntCard>
     
 </div>
+
+@code {
+    public DateTime SelectedDate { get; set; }
+}

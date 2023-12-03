@@ -1,30 +1,62 @@
-.calendar {
+.calendar-view {
     display: flex;
     flex-direction: column;
     max-width: 300px; /* Adjust the width as needed */
+    background: var(--ent-bg-neutral);
+    border: var(--ent-border-1) solid var(--ent-border-color);
+}
+
+.calendar-view > .actions {
+    padding: var(--ent-space-2) var(--ent-space-4);
+    display: flex;
+    align-items: center;
+    border-bottom: var(--ent-border-1) solid var(--ent-border-color);
+}
+.calendar-view > .actions > b{
+    flex: 1;
+    text-align: center;
+}
+
+.calendar {
+    display: flex;
+    flex-direction: column;
+   
 }
 
 .week {
     display: flex;
-    gap: 5px;
 }
 
 .day-header,
 .date {
     flex: 1;
-    padding: 10px;
-    border: 1px solid #ddd;
+    padding: var(--ent-space-2) 0;
     text-align: center;
     box-sizing: border-box; /* Include padding and border in the total width */
+    cursor: pointer;
+    font-size: var(--ent-font-size-sm);
 }
 
+
 .current-month {
-    background-color: #4285f4; /* Style for days in the current month */
-    color: white;
+    color: var(--ent-fg-base); /* Style for days in the current month */
+    background: var(--ent-bg-neutral); /* Style for days in the current month */
+}
+.current-month:hover {
+    background: var(--ent-bg-neutral-highlight);
+}
+
+.today{
+    color: var(--ent-fg-primary); /* Style for days in the current month */
+    background: var(--ent-bg-neutral-emphasis);
+}
+.active {
+    color: var(--ent-fg-base); /* Style for days in the current month */
+    background: var(--ent-bg-neutral-select);
 }
 
 .other-month {
-    color: #999; /* Style for days from previous or next month */
+    color: var(--ent-fg-disabled); /* Style for days from previous or next month */
     pointer-events: none; /* Disable pointer events for days from other months */
-    background-color: #f2f2f2; /* Optional: Background color for days from other months */
+    background-color: var(--ent-bg-disabled); /* Optional: Background color for days from other months */
 }
