@@ -1,0 +1,76 @@
+﻿@namespace Enter.Ui.Components
+@inherits Enter.Ui.Bases.EntBaseComponent
+<h3>@currentDate.ToString("MMMM yyyy")</h3>
+<div class="calendar">
+    <div class="week">
+        <div class="day-header">Sun</div>
+        <div class="day-header">Mon</div>
+        <div class="day-header">Tue</div>
+        <div class="day-header">Wed</div>
+        <div class="day-header">Thu</div>
+        <div class="day-header">Fri</div>
+        <div class="day-header">Sat</div>
+    </div>
+
+    @foreach (var week in calendarDates)
+    {
+        <div class="week">
+            @foreach (var date in week)
+            {
+                <div class="date @(date.Month == currentDate.Month ? "current-month" : "other-month")">
+                    @if (date != DateTime.MinValue)
+                    {
+                        @date.Day
+                    }
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    public override string ComponentName => this.GetType().Name;
+
+    private DateTime currentDate = DateTime.Now;
+    private DateTime[][] calendarDates;
+
+    protected override void OnInitialized()
+    {
+        UpdateCalendar();
+    }
+
+    private void UpdateCalendar()
+    {
+        calendarDates = GetCalendarDates(currentDate.Year, currentDate.Month);
+    }
+
+    private DateTime[][] GetCalendarDates(int year, int month)
+    {
+        DateTime[][] dates = new DateTime[6][];
+        int daysInMonth = DateTime.DaysInMonth(year, month);
+        DateTime firstDayOfMonth = new DateTime(year, month, 1);
+        int offset = (int)firstDayOfMonth.DayOfWeek;
+
+        // Calculate the first day to display in the calendar
+        DateTime startDate = firstDayOfMonth.AddDays(-offset);
+
+        int currentDay = 1;
+
+        for (int i = 0; i < 6; i++)
+        {
+            dates[i] = new DateTime[7];
+
+            for (int j = 0; j < 7; j++)
+            {
+                dates[i][j] = startDate.AddDays((i * 7) + j);
+
+                if (dates[i][j].Month == month)
+                {
+                    currentDay++;
+                }
+            }
+        }
+
+        return dates;
+    }
+}
