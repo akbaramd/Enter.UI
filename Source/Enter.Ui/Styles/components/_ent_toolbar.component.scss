@@ -19,9 +19,6 @@
   box-shadow: var(--ent-toolbar-box-shadow);
   z-index: var(--ent-toolbar-z-index);
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: start;
-  gap: 4px;
+  flex-direction: column;
 }
 

@@ -1,7 +1,29 @@
 ﻿@namespace Enter.Ui.Components
+@using Enter.Ui.Components.Flex
 @inherits Enter.Ui.Bases.EntBaseComponent
 <CascadingValue Value="@(this)">
     <div @attributes="AdditionalAttributes" class="@ClassNames">
-        @ChildContent
+        <EntFlex Direction="FlexDirection.Row" Align="FlexAlign.StartCenter">
+            @ChildContent
+            @if (StartContent is not null)
+            {
+                <EntFlex class="flex-grow-1" Gap="2">
+                    @StartContent
+                </EntFlex>
+            }
+
+            @if (EndContent is not null)
+            {
+                <EntFlex Direction="FlexDirection.Row" Align="FlexAlign.EndCenter" Gap="2">
+                    @EndContent
+                </EntFlex>
+            }
+        </EntFlex>
+        @if (ExpandContent is not null)
+        {
+            <EntExpandable Expanded="@Expanded" ExpandedChanged="@ExpandedChanged">
+                @ExpandContent
+            </EntExpandable>
+        }
     </div>
 </CascadingValue>
