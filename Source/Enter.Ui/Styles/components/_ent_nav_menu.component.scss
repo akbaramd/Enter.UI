@@ -23,8 +23,10 @@
     &.active {
       > .ent-nav-menu-group-item {
 
+        //border-inline-start: var(--ent-border-8) solid var(--ent-bg-primary);
+        
         > .ent-nav-menu-group-item-arrow-icon {
-          margin-inline-start: 1rem;
+         
           transform: rotate(180deg);
           transition: all 0.25s ease-in;
         }
@@ -36,12 +38,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: .625rem 1.5rem;
+      padding: var(--ent-space-3) var(--ent-space-4);
       cursor: pointer;
       
 
       > .ent-nav-menu-group-item-icon {
-        margin-inline-end: 1rem;
+        margin-inline-end: var(--ent-space-2);
       }
 
       > .ent-nav-menu-group-item-title {
@@ -62,12 +64,14 @@
       background-color: var(--ent-bg-neutral);
 
       > .ent-nav-menu-item {
-        border-inline-start: var(--ent-border-8) solid var(--ent-bg-neutral-emphasis);
+        //border-inline-start: var(--ent-border-8) solid var(--ent-bg-neutral-emphasis);
         background-color: var(--ent-bg-neutral);
+        padding-left: var(--ent-space-6);
       }
 
       > .ent-nav-menu-item.active {
-        border-inline-start: var(--ent-border-8) solid var(--ent-bg-primary);
+        color: var(--ent-fg-primary);
+        //border-inline-start: var(--ent-border-8) solid var(--ent-bg-primary);
         background-color: var(--ent-bg-neutral-select);
       }
 
@@ -89,9 +93,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.75rem 1.5rem;
+    padding: var(--ent-space-3) var(--ent-space-4);
+    padding-bottom: calc(var(--ent-space-3) - var(--ent-border-1));
     cursor: pointer;
-    border-bottom: var(--ent-nav-stroke-width) solid var(--ent-nav-stroke);
+    border-bottom: var(--ent-border-1) solid var(--ent-nav-stroke);
 
     &:hover {
       background-color: var(--ent-bg-neutral-highlight);
@@ -101,6 +106,7 @@
     }
 
     .ent-nav-menu-item-icon {
+      margin-inline-end: var(--ent-space-2);
     }
 
     .ent-nav-menu-item-content {

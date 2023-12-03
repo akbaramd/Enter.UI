@@ -20,25 +20,25 @@
         <EntDrawerContainer class="flex-grow-1">
             <EntDrawer HasBackdrop="HasBackdrop" @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start" Mode="_drawerMode" >
                 <EntNavMenu class="border-0">
-                    <EntNavMenuTextItem  Text="Buttons" Click="NewTab"/>
-                    <EntNavMenuGroup Title="Documents">
-                        <EntNavMenuTextItem  Text="Buttons" Click="@(() => Navigate("/documents/buttons"))"/>
-                        <EntNavMenuTextItem  Text="Icons" Click="@(() => Navigate("/documents/icons"))"/>
-                        <EntNavMenuTextItem  Text="Shimmer" Click="@(() => Navigate("/documents/shimmer"))"/>
-                        <EntNavMenuTextItem  Text="Loading" Click="@(() => Navigate("/documents/loading"))"/>
-                        <EntNavMenuTextItem  Text="Modals" Click="@(() => Navigate("/documents/modals"))"/>
-                        <EntNavMenuTextItem  Text="Toasts" Click="@(() => Navigate("/documents/toasts"))"/>
-                        <EntNavMenuTextItem  Text="TreeView" Click="@(() => Navigate("/documents/treeview"))"/>
-                        <EntNavMenuTextItem  Text="NavMenu" Click="@(() => Navigate("/documents/navmenu"))"/>
-                        <EntNavMenuTextItem  Text="Table" Click="@(() => Navigate("/documents/datatable"))"/>
-                        <EntNavMenuTextItem  Text="Calendar" Click="@(() => Navigate("/documents/calendar"))"/>
-                        <EntNavMenuTextItem  Text="Forms" Click="@(() => Navigate("/documents/form"))"/>
-                        <EntNavMenuTextItem  Text="Pagination" Click="@(() => Navigate("/documents/pagination"))"/>
-                        <EntNavMenuTextItem  Text="MdiTab" Click="@(() => Navigate("/documents/mdi-tabs"))"/>
-                        <EntNavMenuTextItem  Text="Upload Box" Click="@(() => Navigate("/documents/upload-box"))"/>
+                    <EntNavMenuTextItem Icon="@EntIconName.Dashboard"  Text="Buttons" Click="NewTab"/>
+                    <EntNavMenuGroup Icon="@EntIconName.Dashboard" Title="Documents">
+                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Buttons" Click="@(() => Navigate("/documents/buttons"))"/>
+                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Icons" Click="@(() => Navigate("/documents/icons"))"/>
+                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Shimmer" Click="@(() => Navigate("/documents/shimmer"))"/>
+                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Loading" Click="@(() => Navigate("/documents/loading"))"/>
+                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Modals" Click="@(() => Navigate("/documents/modals"))"/>
+                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Toasts" Click="@(() => Navigate("/documents/toasts"))"/>
+                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="TreeView" Click="@(() => Navigate("/documents/treeview"))"/>
+                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="NavMenu" Click="@(() => Navigate("/documents/navmenu"))"/>
+                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Table" Click="@(() => Navigate("/documents/datatable"))"/>
+                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Calendar" Click="@(() => Navigate("/documents/calendar"))"/>
+                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Forms" Click="@(() => Navigate("/documents/form"))"/>
+                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Pagination" Click="@(() => Navigate("/documents/pagination"))"/>
+                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="MdiTab" Click="@(() => Navigate("/documents/mdi-tabs"))"/>
+                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Upload Box" Click="@(() => Navigate("/documents/upload-box"))"/>
                     </EntNavMenuGroup>
-                    <EntNavMenuGroup Title="Layout">
-                                            <EntNavMenuTextItem  Text="Grid System" Click="@(() => Navigate("/documents/grid-system"))"/>
+                    <EntNavMenuGroup Icon="@EntIconName.Dashboard" Title="Layout">
+                                            <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Grid System" Click="@(() => Navigate("/documents/grid-system"))"/>
                                         </EntNavMenuGroup>
                    
                 </EntNavMenu>

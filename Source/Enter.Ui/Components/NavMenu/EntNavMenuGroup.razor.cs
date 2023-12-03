@@ -20,6 +20,7 @@ public partial class EntNavMenuGroup : EntBaseComponent
     protected override void BuildClasses(ClassBuilder builder)
     {
         builder.AddClass("ent-nav-menu-group");
+        builder.AddClass("active",IsShow);
         base.BuildClasses(builder);
     }
     
