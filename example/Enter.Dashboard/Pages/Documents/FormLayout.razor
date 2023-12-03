@@ -1,12 +1,40 @@
 @page "/documents/form"
 
 <div class="p-4">
-    <EntToolbar class="my-4">
-        <EntButton Appearance="ButtonAppearance.Default" Color="ButtonColor.Primary" Icon="EntIconName.Add">Add</EntButton>
-        <EntButton Appearance="ButtonAppearance.Outline" Icon="EntIconName.Delete" Loading="true">Delete</EntButton>
-        <EntButton Appearance="ButtonAppearance.Outline" Icon="EntIconName.Note"></EntButton>
+    <EntToolbar  @bind-Expanded="@Expanded">
+        <StartContent>
+                     <EntButton Appearance="ButtonAppearance.Default" Color="ButtonColor.Primary" Icon="EntIconName.Add">Add</EntButton>
+                    <EntButton Appearance="ButtonAppearance.Outline" Icon="EntIconName.Delete" Loading="true">Delete</EntButton>
+        </StartContent>
+        <EndContent>
+            <EntButton Appearance="ButtonAppearance.Outline" Icon="EntIconName.Search" @onclick="() => { Expanded = !Expanded;}"></EntButton>
+        </EndContent>
+        <ExpandContent>
+            <div class="py-4">
+                <EditForm class="ent-edit-form" Model="Input" OnSubmit="@OnSubmit">
+                                <EntInputGroup
+                                    class="tablet:col-12 mb-4"
+                                    Label="Small Input"
+                                    For="() => Input.User">
+                                    <EntInputText size="@EntInputSize.Small" @bind-Value="Input.Age"/>
+                                </EntInputGroup>
+                                <EntInputGroup
+                                    class="tablet:col-12 mb-4"
+                                    Label="Input"
+                                    For="() => Input.Age">
+                                    <EntInputText @bind-Value="Input.Age"/>
+                                </EntInputGroup>
+                                <EntInputGroup
+                                    class="tablet:col-12 mb-4"
+                                    Label="Large Input"
+                                    For="() => Input.Age">
+                                    <EntInputText size="@EntInputSize.Large" @bind-Value="Input.Age"/>
+                                </EntInputGroup>
+                            </EditForm>
+            </div>
+        </ExpandContent>
     </EntToolbar>
-    <EntCard Expandable="true" Title="Form Layout" class="mb-4">
+    <EntCard Expandable="true" Title="Form Layout" class="my-4">
         <CardBody>
             <EditForm class="ent-edit-form" Model="Input" OnSubmit="@OnSubmit">
                 <DataAnnotationsValidator/>
@@ -110,6 +138,8 @@
 
 @code {
 
+    public bool Expanded { get; set; }
+    
     public EntInputAutoComplete<Users> _autoCompleteReference { get; set; }
 
     public class InputModel
