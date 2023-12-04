@@ -1,7 +1,7 @@
 ﻿@namespace Enter.Ui.Components
 @using Enter.Ui.Components.Drawer
 @using Enter.Ui.Cores.Core
-@inherits Enter.Ui.Bases.EntBaseComponent
+@inherits Enter.Ui.Bases.EntResponsiveComponent
 
 
 <aside class="@ClassNames" style="@StyleNames">@ChildContent</aside>
@@ -20,10 +20,11 @@
             .AddClass("ent-drawer--close", !Open);
         base.BuildClasses(builder);
     }
+    
 
     protected override void BuildStyles(StyleBuilder builder)
     {
-        builder.AddStyle($"--ent-drawer-width: {Width}px");
+        builder.AddStyle($"--ent-drawer-width: {DrawerContainer?.DrawersWidth}px");
         base.BuildStyles(builder);
        
     }
@@ -43,20 +44,25 @@
 
     protected override void OnAfterRender(bool firstRender)
     {
-        if (WidthType is not null && firstRender)
+        if (firstRender)
         {
-            switch (WidthType)
+            if (Responsive)
+            {
+                Mode = EntDrawerMode.Overlay;
+            }
+            
+            switch (DrawerContainer.DrawersWidthType)
             {
                 case EntDrawerWidthType.Custom:
                     break;
                 case EntDrawerWidthType.Full:
-                    Width = DrawerContainer?.BoundingClientRect.ScrollWidth ?? 0;
+                    DrawerContainer.DrawersWidth = DrawerContainer?.BoundingClientRect.ScrollWidth ?? 0;
                     break;
                 case EntDrawerWidthType.Half:
-                    Width = DrawerContainer?.BoundingClientRect.ScrollWidth / 2 ??0;
+                    DrawerContainer.DrawersWidth = DrawerContainer?.BoundingClientRect.ScrollWidth / 2 ??0;
                     break;
                 case EntDrawerWidthType.Quarter:
-                    Width = DrawerContainer?.BoundingClientRect.ScrollWidth / 4 ??0;
+                    DrawerContainer.DrawersWidth = DrawerContainer?.BoundingClientRect.ScrollWidth / 4 ??0;
                     break;
                 case null:
                     break;
@@ -74,15 +80,11 @@
 
     [Parameter]
     public EntDrawerMode Mode { get; set; } = EntDrawerMode.Behavior;
-    
-    [Parameter]
-    public EntDrawerWidthType? WidthType { get; set; } = EntDrawerWidthType.Custom;
-    
-    [Parameter]
-    public double Width { get; set; } = 300;
-    
+
+
+
     [CascadingParameter]
-    public EntDrawerContainer? DrawerContainer { get; set; }
+    public EntDrawerContainer DrawerContainer { get; set; } = default!;
 
     private bool _open = false;
 

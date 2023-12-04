@@ -11,7 +11,8 @@
 @using Enter.Ui.Cores.Contracts
 @using Enter.Ui.Cores.Core
 @using Enter.Ui.Cores.Models
-@inherits Enter.Ui.Bases.EntBaseComponent
+@using Enter.Ui.Components.Drawer
+@inherits Enter.Ui.Bases.EntResponsiveComponent
 
 @code {
 
@@ -21,6 +22,13 @@
     [Inject]
     public IEntSharedJsService SharedJsService { get; set; } = default!;
 
+    [Parameter]
+    public EntDrawerWidthType? DrawersWidthType { get; set; } = EntDrawerWidthType.Custom;
+    
+    [Parameter]
+    public double DrawersWidth { get; set; } = 300;
+    
+    
     public BoundingClientRect BoundingClientRect { get; set; } = default!;
 
     public override string ComponentName => nameof(EntDrawerContainer);
@@ -30,7 +38,12 @@
         builder.AddClass("ent-drawer-container");
         base.BuildClasses(builder);
     }
-
+    protected override void BuildStyles(StyleBuilder builder)
+    {
+        builder.AddStyle($"--ent-drawer-width: {DrawersWidth}px");
+        base.BuildStyles(builder);
+       
+    }
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
