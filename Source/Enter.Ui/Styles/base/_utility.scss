@@ -118,6 +118,7 @@
   flex: 1;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
+  overflow-y: auto;
 }
 
 .horizontal-scroll {
@@ -126,6 +127,7 @@
   flex: 1;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
+  overflow-x: auto;
 }
 
 .cursor-pointer {
