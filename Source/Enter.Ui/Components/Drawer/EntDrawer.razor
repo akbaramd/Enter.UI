@@ -4,9 +4,12 @@
 @inherits Enter.Ui.Bases.EntResponsiveComponent
 
 
-<aside class="@ClassNames" style="@StyleNames">@ChildContent</aside>
-<EntOverlay Visible="HasBackdrop" DarkBackground="true" OnClick="@OnOverlayClickCallback" @ontouchstart="@OnOverlayClickCallback"  class="ent-drawer-overlay" LockScroll="false"/>
+@if (RenderIsReady)
+{
+    <aside class="@ClassNames" style="@StyleNames">@ChildContent</aside>
+    <EntOverlay Visible="HasBackdrop" DarkBackground="true" OnClick="@OnOverlayClickCallback" @ontouchstart="@OnOverlayClickCallback"  class="ent-drawer-overlay" LockScroll="false"/>
 
+}
 @code {
     public override string ComponentName => nameof(EntDrawer);
     protected override void BuildClasses(ClassBuilder builder)
@@ -44,37 +47,33 @@
         return base.OnParametersSetAsync();
     }
 
-    protected override void OnAfterRender(bool firstRender)
+    protected override void OnFirstAfterRender()
     {
-        if (firstRender)
+        switch (DrawerContainer.DrawersWidthType)
         {
-            if (Responsive)
-            {
-                Mode = EntDrawerMode.Overlay;
-            }
-            
-            switch (DrawerContainer.DrawersWidthType)
-            {
-                case EntDrawerWidthType.Custom:
-                    break;
-                case EntDrawerWidthType.Full:
-                    DrawerContainer.DrawersWidth = DrawerContainer?.BoundingClientRect.ScrollWidth ?? 0;
-                    break;
-                case EntDrawerWidthType.Half:
-                    DrawerContainer.DrawersWidth = DrawerContainer?.BoundingClientRect.ScrollWidth / 2 ??0;
-                    break;
-                case EntDrawerWidthType.Quarter:
-                    DrawerContainer.DrawersWidth = DrawerContainer?.BoundingClientRect.ScrollWidth / 4 ??0;
-                    break;
-                case null:
-                    break;
+            case EntDrawerWidthType.Custom:
+                break;
+            case EntDrawerWidthType.Full:
+                DrawerContainer.DrawersWidth = DrawerContainer?.BoundingClientRect.ScrollWidth ?? 0;
+                break;
+            case EntDrawerWidthType.Half:
+                DrawerContainer.DrawersWidth = DrawerContainer?.BoundingClientRect.ScrollWidth / 2 ??0;
+                break;
+            case EntDrawerWidthType.Quarter:
+                DrawerContainer.DrawersWidth = DrawerContainer?.BoundingClientRect.ScrollWidth / 4 ??0;
+                break;
+            case null:
+                break;
              
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-            StateHasChanged();
+            default:
+                throw new ArgumentOutOfRangeException();
         }
-        base.OnAfterRender(firstRender);
+        if (Responsive)
+        {
+            Mode = EntDrawerMode.Overlay;
+        }
+        
+        base.OnFirstAfterRender();
     }
 
     [Parameter]

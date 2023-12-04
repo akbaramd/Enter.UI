@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Enter.Ui.Bases;
 
-public abstract class EntElementComponent : EntAfterRenderComponent, IDisposable, IAsyncDisposable
+public abstract class EntElementComponent : ComponentBase
 {
     protected EntElementComponent()
     {
@@ -12,13 +12,9 @@ public abstract class EntElementComponent : EntAfterRenderComponent, IDisposable
         StyleBuilder = new StyleBuilder(BuildStyles);
     }
 
-    
     #region Properties
 
-
     [Parameter] public RenderFragment? ChildContent { get; set; }
-
-    public RenderFragment? RenderedChildContent => Rendered ? ChildContent : null;
 
     public abstract string ComponentName { get;  }
     
@@ -69,28 +65,5 @@ public abstract class EntElementComponent : EntAfterRenderComponent, IDisposable
             ? style.ToString()
             : string.Empty);
     }
-
-
-    protected override void Dispose(bool disposing)
-    {
-        if (disposing)
-        {
-            ClassBuilder = null;
-            StyleBuilder = null;
-        }
-
-        base.Dispose(disposing);
-    }
-
-    /// <inheritdoc />
-    protected override ValueTask DisposeAsync(bool disposing)
-    {
-        if (disposing)
-        {
-            ClassBuilder = null;
-            StyleBuilder = null;
-        }
-
-        return base.DisposeAsync(disposing);
-    }
+    
 }

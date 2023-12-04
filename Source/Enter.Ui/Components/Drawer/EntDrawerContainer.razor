@@ -1,10 +1,9 @@
 ﻿@namespace Enter.Ui.Components
 <div @ref="Reference" class="@ClassNames" style="@StyleNames" id="@Id">
-    @if (_componentIsReady)
+    @if (RenderIsReady)
     {
         <CascadingValue Value="this" IsFixed="true">
             @ChildContent
-
         </CascadingValue>
     }
 </div>
@@ -16,7 +15,6 @@
 
 @code {
 
-    private bool _componentIsReady = false;
     internal ElementReference Reference { get; set; }
 
     [Inject]
@@ -44,16 +42,13 @@
         base.BuildStyles(builder);
        
     }
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            BoundingClientRect = await SharedJsService.GetBoundingClientRectAsync(Reference);
 
-            _componentIsReady = true;
-            StateHasChanged();
-        }
-        base.OnAfterRender(firstRender);
+    protected override async Task OnFirstAfterRenderAsync()
+    {
+        Console.WriteLine("OnFirstAfterRenderAsync");
+        BoundingClientRect = await SharedJsService.GetBoundingClientRectAsync(Reference);
+        Console.WriteLine(BoundingClientRect.Width);
+        await base.OnFirstAfterRenderAsync();
     }
 
 

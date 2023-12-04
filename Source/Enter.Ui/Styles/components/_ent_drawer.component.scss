@@ -12,9 +12,7 @@
 .ent-drawer-container {
   overflow: hidden;
   position: relative;
-  > .ent-drawer-transparent {
-    background-color: transparent;
-  }
+  
   > .ent-drawer {
     position: absolute;
     bottom: 0;
@@ -113,7 +111,9 @@
 
   }
 
-
+  > .ent-drawer-transparent {
+    background-color: transparent !important;
+  }
 }
 
 .ent-drawer-overlay {

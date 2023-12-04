@@ -4,9 +4,9 @@
 @using Enter.Ui.Cores.Services
 @using Enter.Ui.Cores.Contracts
 @namespace Enter.Ui.Components
-@inherits Enter.Ui.Bases.EntElementComponent
+@inherits Enter.Ui.Bases.EntBaseComponent
 
-@if (_readyForRender)
+@if (RenderIsReady)
 {
     <CascadingValue Value="this" IsFixed="true">
         <div dir="@Direction" class="@ClassNames">
@@ -15,17 +15,10 @@
     </CascadingValue>
 }
 
-<style>
-    :root {
-      --ent-drawer-width : @(DrawerDefaultWidth)px;  
-    }
-</style>
-
 @code {
 
     public override string ComponentName => nameof(EntThemeProvider);
     
-    private bool _readyForRender = false;
 
     private string Direction => RtlMode ? "rtl" : "ltr";
 
@@ -42,13 +35,10 @@
     [Inject]
     private IEntJsService EntJsService { get; set; } = default!;
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override async Task OnFirstAfterRenderAsync()
     {
-        if (firstRender)
-        {
-            await InitializeThemeConfiguration().ConfigureAwait(false);
-        }
-        await base.OnAfterRenderAsync(firstRender);
+        await InitializeThemeConfiguration();
+        await base.OnFirstAfterRenderAsync();
     }
 
     private async Task InitializeThemeConfiguration()
@@ -64,7 +54,6 @@
         }
 
         await SetDarkModeAsync(DarkMode);
-        _readyForRender = true;
         StateHasChanged();
     }
 
