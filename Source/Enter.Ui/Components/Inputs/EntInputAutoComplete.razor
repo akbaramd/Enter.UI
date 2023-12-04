@@ -73,6 +73,12 @@
 
     [Parameter]
     public EventCallback<string> OnSearchChange { get; set; }
+    
+    [Parameter]
+    public EventCallback<string> OnItemSelect { get; set; }
+    
+    [Parameter]
+    public EventCallback<bool> OnInputFocusChange { get; set; }
 
     private ElementReference _elementReference;
 
@@ -88,27 +94,34 @@
         return _inputReference.FocusAsync();
     }
 
-    private void OnInputCallback()
+    private async Task OnInputCallback()
     {
         _showMenu = true;
-        OnSearchChange.InvokeAsync(CurrentValueAsString);
+
+        await OnSearchChange.InvokeAsync(CurrentValueAsString);
+        await OnInputFocusChange.InvokeAsync(true);
     }
 
-    private void CloseOverlay()
+    private async Task CloseOverlay()
     {
         _showMenu = false;
+        await OnInputFocusChange.InvokeAsync(false);
     }
 
     private async Task OnItemClickCallback(T t)
     {
-        CurrentValueAsString = ValueFunc.Invoke(t).ToString();
+        var value = ValueFunc.Invoke(t);
+        CurrentValueAsString = value.ToString();
+        await OnItemSelect.InvokeAsync(CurrentValueAsString);
         _showMenu = false;
+        await OnInputFocusChange.InvokeAsync(false);
     }
 
     private async Task Click()
     {
         _showMenu = true;
         await _elementReference.FocusAsync();
+        await OnInputFocusChange.InvokeAsync(true);
     }
 
 }

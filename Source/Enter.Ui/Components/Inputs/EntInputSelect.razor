@@ -73,7 +73,14 @@
     [Parameter]
     public RenderFragment<T>? ItemTemplate { get; set; }
 
+    [Parameter]
+    public EventCallback<T> OnItemSelect { get; set; }
+    
+    [Parameter]
+    public EventCallback<bool> OnInputFocusChange { get; set; }
+    
     private ElementReference _elementReference;
+    
     private EntInputText _inputReference;
 
     protected override async Task OnInitializedAsync()
@@ -113,26 +120,29 @@
     private async Task OnInputClickCallback()
     {
         _showMenu = true;
+        await OnInputFocusChange.InvokeAsync(true);
     }
 
-    private void OnOverlayClickCallback()
+    private async Task OnOverlayClickCallback()
     {
         _showMenu = false;
+        await OnInputFocusChange.InvokeAsync(false);
     }
 
     private async Task OnItemClickCallback(T value)
     {
         _showMenu = false;
-        SelectItem(value, true);
+        await OnInputFocusChange.InvokeAsync(false);
+      await  SelectItem(value, true);
     }
 
-    private void SelectItem(T value, bool updateTempValue = false)
+    private async Task SelectItem(T value, bool updateTempValue = false)
     {
         if (ValueFunc == null)
             throw new ArgumentNullException("please add ValueFunc parameter to EntSelect");
 
         CurrentValueAsString = ValueFunc.Invoke(value);
-
+        
         if (updateTempValue)
         {
             _tempValue = CurrentValueAsString;
@@ -142,6 +152,8 @@
             throw new ArgumentNullException("please add TextFunc parameter to EntSelect");
 
         Text = TextFunc.Invoke(value);
+        
+        await OnItemSelect.InvokeAsync(value);
     }
 
 }
