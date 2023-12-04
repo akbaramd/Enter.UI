@@ -23,7 +23,7 @@
     private bool _expanded, _updateHeight;
     private double _size = 0;
     private string _cssProperty = "height";
-    private bool _firstRendered = false;
+    private bool _componentIsReady = false;
 
 
 
@@ -77,7 +77,7 @@
                 return;
             _expanded = value;
 
-            if (_firstRendered)
+            if (_componentIsReady)
             {
                 AnimationState = _expanded ? EntAnimatorState.Starting : EntAnimatorState.Ending;
                 _ = UpdateSize();
@@ -135,16 +135,10 @@
         if (firstRender)
         {
             await UpdateSize();
-            _firstRendered = true;
-          
+
+            _componentIsReady = true;
             StateHasChanged();
         }
-        else if (_updateHeight && AnimationState is EntAnimatorState.Ending or EntAnimatorState.Starting)
-        {
-            _updateHeight = false;
-            await UpdateSize();
-        }
-
         await base.OnAfterRenderAsync(firstRender);
     }
 

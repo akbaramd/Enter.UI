@@ -6,6 +6,7 @@
   --ent-drawer-border-color: var(--ent-border-color);
   --ent-drawer-border-width: var(--ent-border-width);
   --ent-drawer-border-style: var(--ent-border-style);
+  --ent-drawer-width: 20rem;
 }
 
 .ent-drawer-container {
@@ -20,8 +21,8 @@
     background-color: var(--ent-drawer-bg);
     z-index: var(--ent-drawer-z-index);
     box-shadow: var(--ent-drawer-box-shadow);
-
- 
+    width: var(--ent-drawer-width);
+  
     &.ent-drawer--direction-start {
 
       border-inline-end: var(--ent-drawer-border-width) var(--ent-drawer-border-style) var(--ent-drawer-border-color);

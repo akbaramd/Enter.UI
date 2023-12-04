@@ -11,7 +11,7 @@ public class EntJsService : IEntJsService, IAsyncDisposable
     public EntJsService(IJSRuntime jsRuntime)
     {
         _jsRuntime = jsRuntime;
-        _moduleTask = new Lazy<Task<IJSObjectReference>>(() => ImportJsFileAsync("Enter.Ui.min.js"));
+        _moduleTask = new Lazy<Task<IJSObjectReference>>(() => ImportJsFileAsync("Enter.Ui.js"));
     }
 
 
