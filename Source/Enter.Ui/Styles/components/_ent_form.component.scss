@@ -91,6 +91,9 @@
   overflow: hidden;
   border: 0;
 }
+.ent-input-autocomplete-input.focus {
+   z-index: calc(var(--ent-z-index-10) + 1);
+ }
 
 .ent-input-autocomplete-input {
   width: 100%;
@@ -133,6 +136,9 @@
       color: var(--ent-input-color-placeholder);
     }
   }
+}
+.ent-select-input.focus {
+  z-index: calc(var(--ent-z-index-10) + 1);
 }
 
 .ent-select-container {

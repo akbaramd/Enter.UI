@@ -8,8 +8,12 @@
 
 <div @attributes="@AdditionalAttributes" @ref="_elementReference" class="@ClassNames" id="@Id">
 
-    <EntInputText @ref="_inputReference" @onclick="@OnInputClickCallback" @onfocusin="@OnInputClickCallback"
-                  Disabled="@Disabled" PlaceHolder="@PlaceHolder" class="ent-select-input" UseValidation="false" Readonly="true" @bind-Value="@Text" Icon="@EntIconName.ChevronDown"/>
+     @{
+            var inputClass = _showMenu ? "ent-select-input focus":"ent-select-input";
+        }
+    
+    <EntInputText @ref="_inputReference" @onclick="@OnInputClickCallback" @onfocusin="@OnInputClickCallback" 
+                  Disabled="@Disabled" PlaceHolder="@PlaceHolder" class="@inputClass" UseValidation="false" Readonly="true" @bind-Value="@Text" Icon="@EntIconName.ChevronDown"/>
 
     <input type="hidden" @bind="@Value"/>
 
