@@ -5,7 +5,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <PackageId>Enter.Ui</PackageId>
-        <Version>1.0.94-preview-6</Version>
+        <Version>1.0.94-preview-8</Version>
         <Authors>Akbar Ahmadi</Authors>
         <Company>AhmadiCo</Company>
         <PackageReadmeFile>Readme.md</PackageReadmeFile>
