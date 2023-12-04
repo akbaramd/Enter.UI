@@ -4,7 +4,7 @@
 @inherits Enter.Ui.Bases.EntBaseComponent
 
 
-<aside class="@ClassNames">@ChildContent</aside>
+<aside class="@ClassNames" style="@StyleNames">@ChildContent</aside>
 <EntOverlay Visible="HasBackdrop" DarkBackground="true" OnClick="@OnOverlayClickCallback" @ontouchstart="@OnOverlayClickCallback"  class="ent-drawer-overlay" LockScroll="false"/>
 
 @code {
@@ -19,6 +19,13 @@
             .AddClass("ent-drawer--open", Open)
             .AddClass("ent-drawer--close", !Open);
         base.BuildClasses(builder);
+    }
+
+    protected override void BuildStyles(StyleBuilder builder)
+    {
+        builder.AddStyle($"width: {Width}px");
+        base.BuildStyles(builder);
+       
     }
 
     protected override void OnParametersSet()
@@ -36,6 +43,29 @@
 
     protected override void OnAfterRender(bool firstRender)
     {
+        if (WidthType is not null && firstRender)
+        {
+            switch (WidthType)
+            {
+                case EntDrawerWidthType.Custom:
+                    break;
+                case EntDrawerWidthType.Full:
+                    Width = DrawerContainer?.BoundingClientRect.ScrollWidth??0;
+                    break;
+                case EntDrawerWidthType.Half:
+                    Width = DrawerContainer?.BoundingClientRect.ScrollWidth / 2 ??0;
+                    break;
+                case EntDrawerWidthType.Quarter:
+                    Width = DrawerContainer?.BoundingClientRect.ScrollWidth / 4 ??0;
+                    break;
+                case null:
+                    break;
+             
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            StateHasChanged();
+        }
         base.OnAfterRender(firstRender);
     }
 
@@ -44,7 +74,12 @@
 
     [Parameter]
     public EntDrawerMode Mode { get; set; } = EntDrawerMode.Behavior;
-
+    
+    [Parameter]
+    public EntDrawerWidthType? WidthType { get; set; } = EntDrawerWidthType.Custom;
+    
+    [Parameter]
+    public double Width { get; set; } = 300;
     [CascadingParameter]
     public EntDrawerContainer? DrawerContainer { get; set; }
 

@@ -18,7 +18,7 @@
             <EntButton @onclick="@(() => _isSideDrawerOpen = !_isSideDrawerOpen)" Icon="EntIconName.Note"/>
         </EntAppBar>
         <EntDrawerContainer class="flex-grow-1">
-            <EntDrawer HasBackdrop="HasBackdrop" @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start" Mode="_drawerMode" >
+            <EntDrawer Width="300"  HasBackdrop="HasBackdrop" @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start" Mode="_drawerMode" >
                 <EntNavMenu class="border-0">
                     <EntNavMenuTextItem Icon="@EntIconName.Dashboard"  Text="Buttons" Click="NewTab"/>
                     <EntNavMenuGroup Icon="@EntIconName.Dashboard" Title="Documents">
@@ -43,13 +43,14 @@
                    
                 </EntNavMenu>
             </EntDrawer>
-            @* <EntDrawer  *@
-            @*     Open="true"  *@
-            @*     Direction="EntDrawerDirection.End"  *@
-            @*     Mode="EntDrawerMode.Behavior" *@
-            @*     class="z-50"> *@
-            @*     <p class="p-4">Default Text To Show</p> *@
-            @* </EntDrawer> *@
+            <EntDrawer
+                Open="true"
+                WidthType="EntDrawerWidthType.Half"
+                Direction="EntDrawerDirection.End"
+                Mode="EntDrawerMode.Behavior"
+                class="z-50">
+                <p class="p-4">Default Text To Show</p>
+            </EntDrawer>
             <div class="h-full">
                 @Body
             </div>

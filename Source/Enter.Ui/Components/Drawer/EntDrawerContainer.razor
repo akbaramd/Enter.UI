@@ -1,24 +1,45 @@
 ﻿@namespace Enter.Ui.Components
-<div class="@ClassNames">
-    <CascadingValue Value="this" IsFixed="true">
-        @ChildContent
+<div @ref="Reference" class="@ClassNames" style="@StyleNames" id="@Id">
+    @if (_componentIsReady)
+    {
+        <CascadingValue Value="this" IsFixed="true">
+            @ChildContent
 
-    </CascadingValue>
-
+        </CascadingValue>
+    }
 </div>
+@using Enter.Ui.Cores.Contracts
 @using Enter.Ui.Cores.Core
+@using Enter.Ui.Cores.Models
 @inherits Enter.Ui.Bases.EntBaseComponent
 
 @code {
+
+    private bool _componentIsReady = false;
+    internal ElementReference Reference { get; set; }
+
+    [Inject]
+    public IEntSharedJsService SharedJsService { get; set; } = default!;
+
+    public BoundingClientRect BoundingClientRect { get; set; } = default!;
+
     public override string ComponentName => nameof(EntDrawerContainer);
+
     protected override void BuildClasses(ClassBuilder builder)
     {
         builder.AddClass("ent-drawer-container");
         base.BuildClasses(builder);
     }
 
-    protected override void OnAfterRender(bool firstRender)
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
+        if (firstRender)
+        {
+            BoundingClientRect = await SharedJsService.GetBoundingClientRectAsync(Reference);
+
+            _componentIsReady = true;
+            StateHasChanged();
+        }
         base.OnAfterRender(firstRender);
     }
 

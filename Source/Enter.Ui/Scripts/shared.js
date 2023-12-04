@@ -26,6 +26,7 @@
 
     getBoundingClientRect(element) {
 
+        console.log(element);
         if (!element) return;
 
         var rect = JSON.parse(JSON.stringify(element.getBoundingClientRect()));
