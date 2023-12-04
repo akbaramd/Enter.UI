@@ -96,10 +96,14 @@
 
     private async Task OnInputCallback()
     {
-        _showMenu = true;
+        if (_showMenu == false)
+        {
+            _showMenu = true;
+            await OnInputFocusChange.InvokeAsync(true);
+        }
 
         await OnSearchChange.InvokeAsync(CurrentValueAsString);
-        await OnInputFocusChange.InvokeAsync(true);
+        
     }
 
     private async Task CloseOverlay()
