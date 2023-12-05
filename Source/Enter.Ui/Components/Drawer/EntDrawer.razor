@@ -17,6 +17,7 @@
         builder
             .AddClass("ent-drawer")
             .AddClass("ent-drawer-transparent",Transparent)
+            .AddClass("ent-drawer-overflow-hidden",OverflowHidden)
             .AddClass("ent-drawer--direction-start", Direction == EntDrawerDirection.Start)
             .AddClass("ent-drawer--direction-end", Direction == EntDrawerDirection.End)
             .AddClass("ent-drawer--mode-behavior", Mode == EntDrawerMode.Behavior)
@@ -76,7 +77,8 @@
     
     [Parameter]
     public bool Transparent { get; set; }
-
+    [Parameter]
+    public bool OverflowHidden { get; set; }
     [Parameter]
     public bool HasBackdrop { get; set; }
 

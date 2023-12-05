@@ -20,6 +20,8 @@ public abstract class EntBaseComponent : EntElementComponent, IDisposable, IAsyn
     protected internal bool AsyncInitialized { get; private set; } = false;
     protected internal bool RenderIsReady => AsyncInitialized && AsyncFirstRendered & FirstRendered && Initialized;
     [Parameter] public bool DarkMode { get; set; }
+    [Parameter] public bool VerticalScroll { get; set; } = false;
+    [Parameter] public bool HorizontalScroll { get; set; } = false;
 
     [CascadingParameter] public EntThemeProvider? EntThemeProvider { get; set; }
 
@@ -62,6 +64,8 @@ public abstract class EntBaseComponent : EntElementComponent, IDisposable, IAsyn
     protected override void BuildClasses(ClassBuilder builder)
     {
         builder.AddClass("ent-dark", DarkMode);
+        builder.AddClass("vertical-scroll", VerticalScroll);
+        builder.AddClass("horizontal-scroll", HorizontalScroll);
         base.BuildClasses(builder);
     }
     
