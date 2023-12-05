@@ -35,10 +35,13 @@
     [Inject]
     private IEntJsService EntJsService { get; set; } = default!;
 
-    protected override async Task OnFirstAfterRenderAsync()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        await InitializeThemeConfiguration();
-        await base.OnFirstAfterRenderAsync();
+        if (firstRender)
+        {
+            await InitializeThemeConfiguration();
+        }
+        await base.OnAfterRenderAsync(firstRender);
     }
 
     private async Task InitializeThemeConfiguration()

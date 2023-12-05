@@ -22,11 +22,11 @@
 
     [Parameter]
     public EntDrawerWidthType? DrawersWidthType { get; set; } = EntDrawerWidthType.Custom;
-    
+
     [Parameter]
     public double DrawersWidth { get; set; } = 300;
-    
-    
+
+
     public BoundingClientRect BoundingClientRect { get; set; } = default!;
 
     public override string ComponentName => nameof(EntDrawerContainer);
@@ -38,18 +38,46 @@
     }
     protected override void BuildStyles(StyleBuilder builder)
     {
-        builder.AddStyle($"--ent-drawer-width: {DrawersWidth}px");
+        builder.AddStyle($"--ent-drawer-width: {DrawersWidth}px",RenderIsReady);
         base.BuildStyles(builder);
-       
+
     }
 
-    protected override async Task OnFirstAfterRenderAsync()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        Console.WriteLine("OnFirstAfterRenderAsync");
-        BoundingClientRect = await SharedJsService.GetBoundingClientRectAsync(Reference);
-        Console.WriteLine(BoundingClientRect.Width);
-        await base.OnFirstAfterRenderAsync();
+        if (firstRender)
+        {
+            if (DrawersWidthType is not null)
+            {
+                BoundingClientRect = await SharedJsService.GetBoundingClientRectAsync(Reference);
+                
+                switch (DrawersWidthType)
+                {
+                    case EntDrawerWidthType.Custom:
+                        break;
+                    case EntDrawerWidthType.Full:
+                        DrawersWidth = BoundingClientRect.ScrollWidth ;
+                        break;
+                    case EntDrawerWidthType.Half:
+                        DrawersWidth = BoundingClientRect.ScrollWidth / 2;
+                        break;
+                    case EntDrawerWidthType.Quarter:
+                        DrawersWidth = BoundingClientRect.ScrollWidth / 4;
+                        break;
+                    case null:
+                        break;
+             
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+        
+           
+        }
+        await base.OnAfterRenderAsync(firstRender);
     }
+
+  
 
 
     private bool HasBackdrop { get; set; } = false;

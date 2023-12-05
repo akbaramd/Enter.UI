@@ -127,11 +127,13 @@
         return Task.CompletedTask;
     }
 
-
-    protected override async Task OnFirstAfterRenderAsync()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        await UpdateSize();
-        await base.OnFirstAfterRenderAsync();
+        if (firstRender)
+        {
+            await UpdateSize();
+        }
+        await base.OnAfterRenderAsync(firstRender);
     }
 
     internal async Task UpdateSize()

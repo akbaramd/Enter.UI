@@ -21,8 +21,8 @@
             .AddClass("ent-drawer--direction-end", Direction == EntDrawerDirection.End)
             .AddClass("ent-drawer--mode-behavior", Mode == EntDrawerMode.Behavior)
             .AddClass("ent-drawer--mode-overlay", Mode == EntDrawerMode.Overlay)
-            .AddClass("ent-drawer--open", Open)
-            .AddClass("ent-drawer--close", !Open);
+            .AddClass("ent-drawer--open", Open && RenderIsReady)
+            .AddClass("ent-drawer--close", !Open && RenderIsReady);
         base.BuildClasses(builder);
     }
     
@@ -47,33 +47,15 @@
         return base.OnParametersSetAsync();
     }
 
-    protected override void OnFirstAfterRender()
+    protected override Task OnAfterRenderAsync(bool firstRender)
     {
-        switch (DrawerContainer.DrawersWidthType)
-        {
-            case EntDrawerWidthType.Custom:
-                break;
-            case EntDrawerWidthType.Full:
-                DrawerContainer.DrawersWidth = DrawerContainer?.BoundingClientRect.ScrollWidth ?? 0;
-                break;
-            case EntDrawerWidthType.Half:
-                DrawerContainer.DrawersWidth = DrawerContainer?.BoundingClientRect.ScrollWidth / 2 ??0;
-                break;
-            case EntDrawerWidthType.Quarter:
-                DrawerContainer.DrawersWidth = DrawerContainer?.BoundingClientRect.ScrollWidth / 4 ??0;
-                break;
-            case null:
-                break;
-             
-            default:
-                throw new ArgumentOutOfRangeException();
+        if (firstRender)
+        {   if (Responsive)
+            {
+                Mode = EntDrawerMode.Overlay;
+            }
         }
-        if (Responsive)
-        {
-            Mode = EntDrawerMode.Overlay;
-        }
-        
-        base.OnFirstAfterRender();
+        return base.OnAfterRenderAsync(firstRender);
     }
 
     [Parameter]
@@ -90,7 +72,7 @@
     private bool _open = false;
 
     [Parameter]
-    public bool Open { get; set; }
+    public bool Open { get; set; } = true;
     
     [Parameter]
     public bool Transparent { get; set; }

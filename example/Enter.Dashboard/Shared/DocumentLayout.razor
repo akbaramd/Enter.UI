@@ -44,8 +44,8 @@
                 </EntNavMenu>
             </EntDrawer>
             <EntDrawer
-                Open="true"
-               
+                @bind-Open="_isSideDrawerOpen"
+                AutoResponsive
                 Direction="EntDrawerDirection.End"
                 Mode="EntDrawerMode.Behavior"
                 class="z-50">
@@ -72,7 +72,7 @@
     private bool _showToggle;
     private bool _isReadyForRender = false;
     private bool _isDrawerOpen = true;
-    private bool _isSideDrawerOpen;
+    private bool _isSideDrawerOpen = true;
     private bool HasBackdrop => _showToggle && _isDrawerOpen;
     private EntDrawerMode _drawerMode = EntDrawerMode.Behavior;
 

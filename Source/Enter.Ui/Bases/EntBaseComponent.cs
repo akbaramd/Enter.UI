@@ -13,9 +13,12 @@ public abstract class EntBaseComponent : EntElementComponent, IDisposable, IAsyn
 
     protected internal bool AsyncDisposed { get; private set; }
 
+    protected internal bool IsFirstRender { get; private set; } = false;
     protected internal bool FirstRendered { get; private set; } = false;
+    protected internal bool AsyncFirstRendered { get; private set; } = false;
     protected internal bool Initialized { get; private set; } = false;
-    protected internal bool RenderIsReady  => Initialized && FirstRendered;
+    protected internal bool AsyncInitialized { get; private set; } = false;
+    protected internal bool RenderIsReady => AsyncInitialized && AsyncFirstRendered & FirstRendered && Initialized;
     [Parameter] public bool DarkMode { get; set; }
 
     [CascadingParameter] public EntThemeProvider? EntThemeProvider { get; set; }
@@ -28,16 +31,16 @@ public abstract class EntBaseComponent : EntElementComponent, IDisposable, IAsyn
 
     protected override Task OnInitializedAsync()
     {
-        Initialized = true;
+        AsyncInitialized = true;
         return base.OnInitializedAsync();
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
+        IsFirstRender = firstRender;
         if (firstRender)
         {
-            await OnFirstAfterRenderAsync();
-            FirstRendered = true;
+            AsyncFirstRendered = true;
             StateHasChanged();
         }
         await base.OnAfterRenderAsync(firstRender);
@@ -45,18 +48,15 @@ public abstract class EntBaseComponent : EntElementComponent, IDisposable, IAsyn
 
     protected override void OnAfterRender(bool firstRender)
     {
+        IsFirstRender = firstRender;
         if (firstRender)
         {
-            OnFirstAfterRender();
             FirstRendered = true;
             StateHasChanged();
         }
         base.OnAfterRender(firstRender);
     }
 
-    protected virtual void OnFirstAfterRender(){}
-
-    protected virtual Task OnFirstAfterRenderAsync()=> Task.CompletedTask;
        
     
     protected override void BuildClasses(ClassBuilder builder)
