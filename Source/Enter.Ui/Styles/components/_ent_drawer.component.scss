@@ -11,6 +11,7 @@
 
 .ent-drawer-container {
   overflow: hidden;
+  position: relative;
   
   > .ent-drawer {
     position: absolute;
