@@ -1,78 +1,82 @@
 ﻿@inherits LayoutComponentBase
 
 @using Enter.Ui.Components.Drawer
-@using Enter.Ui.Components.Icon
-@using Enter.Ui.Components.Toast.Configuration
 @using Enter.Ui.Cores.Contracts
 @using Enter.Ui.Cores.Enums
 @using Enter.Dashboard.Pages.Documents
-
 @implements IDisposable
 @if (_isReadyForRender)
 {
     <div class="h-full border-y d-flex flex-column">
-    <div class="d-flex flex-column flex-grow-1">
-        <EntAppBar ShowToggle="_showToggle" ToggleClick="ToggleSidebar" Title="Enterprise Dashboard">
-            <EntButton @onclick="ToggleRtl" Icon="EntIconName.AlignRight"/>
-            <EntButton @onclick="ToggleDarkMode" Icon="EntIconName.Moon"/>
-            <EntButton @onclick="@(() => _isSideDrawerOpen = !_isSideDrawerOpen)" Icon="EntIconName.Note"/>
-        </EntAppBar>
-        <EntDrawerContainer DrawersWidthType="EntDrawerWidthType.Quarter" class="flex-grow-1">
-            <EntDrawer  HasBackdrop="HasBackdrop" @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start" AutoResponsive>
-                <EntNavMenu class="border-0">
-                    <EntNavMenuTextItem Icon="@EntIconName.Dashboard"  Text="Buttons" Click="NewTab"/>
-                    <EntNavMenuGroup Icon="@EntIconName.Dashboard" Title="Documents">
-                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Buttons" Click="@(() => Navigate("/documents/buttons"))"/>
-                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Icons" Click="@(() => Navigate("/documents/icons"))"/>
-                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Shimmer" Click="@(() => Navigate("/documents/shimmer"))"/>
-                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Loading" Click="@(() => Navigate("/documents/loading"))"/>
-                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Modals" Click="@(() => Navigate("/documents/modals"))"/>
-                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Toasts" Click="@(() => Navigate("/documents/toasts"))"/>
-                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="TreeView" Click="@(() => Navigate("/documents/treeview"))"/>
-                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="NavMenu" Click="@(() => Navigate("/documents/navmenu"))"/>
-                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Table" Click="@(() => Navigate("/documents/datatable"))"/>
-                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Calendar" Click="@(() => Navigate("/documents/calendar"))"/>
-                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Forms" Click="@(() => Navigate("/documents/form"))"/>
-                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Pagination" Click="@(() => Navigate("/documents/pagination"))"/>
-                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="MdiTab" Click="@(() => Navigate("/documents/mdi-tabs"))"/>
-                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Upload Box" Click="@(() => Navigate("/documents/upload-box"))"/>
-                    </EntNavMenuGroup>
-                    <EntNavMenuGroup Icon="@EntIconName.Dashboard" Title="Layout">
-                                            <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Grid System" Click="@(() => Navigate("/documents/grid-system"))"/>
-                                        </EntNavMenuGroup>
-                   
-                </EntNavMenu>
-            </EntDrawer>
-            <EntDrawer
-                @bind-Open="_isSideDrawerOpen"
-                AutoResponsive
-                Direction="EntDrawerDirection.End"
-                Mode="EntDrawerMode.Behavior"
-                class="z-50">
-                <p class="p-4">Default Text To Show</p>
-            </EntDrawer>
-            <div class="h-full">
-                @Body
-            </div>
-        </EntDrawerContainer>
-    </div>
+        <div class="d-flex flex-column flex-grow-1">
+            <EntAppBar ShowToggle="_showToggle" ToggleClick="ToggleSidebar" Title="Enterprise Dashboard">
+                <EntButton @onclick="ToggleRtl" Icon="EntIconName.AlignRight"/>
+                <EntButton @onclick="ToggleDarkMode" Icon="EntIconName.Moon"/>
+                <EntButton @onclick="@(() => _isSideDrawerOpen = !_isSideDrawerOpen)" Icon="EntIconName.Note"/>
+            </EntAppBar>
+            <EntDrawerContainer DrawersWidthType="EntDrawerWidthType.Quarter"  class="flex-grow-1" AutoResponsive>
+                <EntDrawer HasBackdrop="HasBackdrop" @bind-Open="_isDrawerOpen" Direction="EntDrawerDirection.Start" AutoResponsive>
+                    <EntNavMenu class="border-0">
+                        <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Buttons" Click="NewTab"/>
+                        <EntNavMenuGroup Icon="@EntIconName.Dashboard" Title="Documents">
+                            <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Buttons" Click="@(() => Navigate("/documents/buttons"))"/>
+                            <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Icons" Click="@(() => Navigate("/documents/icons"))"/>
+                            <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Shimmer" Click="@(() => Navigate("/documents/shimmer"))"/>
+                            <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Loading" Click="@(() => Navigate("/documents/loading"))"/>
+                            <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Modals" Click="@(() => Navigate("/documents/modals"))"/>
+                            <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Toasts" Click="@(() => Navigate("/documents/toasts"))"/>
+                            <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="TreeView" Click="@(() => Navigate("/documents/treeview"))"/>
+                            <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="NavMenu" Click="@(() => Navigate("/documents/navmenu"))"/>
+                            <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Table" Click="@(() => Navigate("/documents/datatable"))"/>
+                            <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Calendar" Click="@(() => Navigate("/documents/calendar"))"/>
 
-</div>
+                            <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Pagination" Click="@(() => Navigate("/documents/pagination"))"/>
+                            <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="MdiTab" Click="@(() => Navigate("/documents/mdi-tabs"))"/>
+                            <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Upload Box" Click="@(() => Navigate("/documents/upload-box"))"/>
+                        </EntNavMenuGroup>
+                        <EntNavMenuGroup Icon="@EntIconName.Dashboard" Title="Layout">
+                            <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Grid System" Click="@(() => Navigate("/documents/grid-system"))"/>
+                        </EntNavMenuGroup>
+                        <EntNavMenuGroup Icon="@EntIconName.Edit" Title="Forms">
+                            <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Forms" Click="@(() => Navigate("/documents/form"))"/>
+                            <EntNavMenuTextItem Icon="@EntIconName.Dashboard" Text="Forms V2" Click="@(() => Navigate("/documents/form-v2"))"/>
+                        </EntNavMenuGroup>
+
+                    </EntNavMenu>
+                </EntDrawer>
+                <EntDrawer
+                    @bind-Open="_isSideDrawerOpen"
+                    Direction="EntDrawerDirection.End"
+                    HasBackdrop
+                    IsFixed
+                    Mode="EntDrawerMode.Overlay"
+                    AutoResponsive
+                  >
+                    <p class="p-4">Default Text To Show</p>
+                </EntDrawer>
+                <div class="h-full">
+                    @Body
+                </div>
+            </EntDrawerContainer>
+        </div>
+
+    </div>
 }
 <EntModalProvider/>
 <EntPopoverProvider/>
 <EntToastProviders AutoResponsive="true"/>
-<EntFloatingNavigationMenu AutoResponsive >
-    <EntFloatingNavigationMenuItem  Icon="EntIconName.Home"/>
+<EntFloatingNavigationMenu AutoResponsive>
+    <EntFloatingNavigationMenuItem Icon="EntIconName.Home"/>
     <EntFloatingNavigationMenuItem Icon="EntIconName.Bars"/>
-    <EntFloatingNavigationMenuItem  Icon="EntIconName.Comment"/>
+    <EntFloatingNavigationMenuItem Icon="EntIconName.Comment"/>
 </EntFloatingNavigationMenu>
+
 @code {
 
     private bool _showToggle;
-    private bool _isReadyForRender = false;
+    private bool _isReadyForRender;
     private bool _isDrawerOpen = true;
-    private bool _isSideDrawerOpen = true;
+    private bool _isSideDrawerOpen = false;
     private bool HasBackdrop => _showToggle && _isDrawerOpen;
     private EntDrawerMode _drawerMode = EntDrawerMode.Behavior;
 
@@ -89,6 +93,7 @@
     {
         Navigation?.NavigateTo(uri);
     }
+
     public async Task NewTab()
     {
         for (var i = 0; i < 3; i++)
@@ -99,8 +104,6 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-   
-
         if (firstRender)
         {
             if (EntThemeProvider != null)
@@ -108,12 +111,10 @@
                 var breakpoint = await EntThemeProvider.GetBreakpointAsync();
                 HandleMobileSize(breakpoint);
             }
-            
         }
-        await  base.OnAfterRenderAsync(firstRender);
+        await base.OnAfterRenderAsync(firstRender);
     }
 
-    
 
     public void HandleMobileSize(EntBreakpoint breakpoint)
     {
@@ -121,7 +122,7 @@
         _isDrawerOpen = breakpoint > EntBreakpoint.Tablet;
         _showToggle = breakpoint <= EntBreakpoint.Tablet;
         _isReadyForRender = true;
-             
+
         Console.WriteLine($"{nameof(DocumentLayout)} rendred");
         StateHasChanged();
     }
@@ -153,7 +154,6 @@
 
     public void Dispose()
     {
-
     }
 
 }

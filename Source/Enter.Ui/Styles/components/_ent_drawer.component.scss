@@ -11,7 +11,7 @@
 
 .ent-drawer-container {
   position: relative;
-  
+  overflow: hidden;
   > .ent-drawer {
     position: absolute;
     bottom: 0;
@@ -105,6 +105,14 @@
 
   > .ent-drawer-transparent {
     background-color: transparent !important;
+  }
+  > .ent-drawer-fixed {
+    --ent-drawer-z-index: var(--ent-z-index-7);
+    position: fixed;
+  }
+  > .ent-drawer-fixed ~ .ent-drawer-overlay  {
+    z-index: calc(var(--ent-z-index-7) - 1);
+    position: fixed;
   }
   > .ent-drawer-overflow-hidden {
       overflow: hidden;

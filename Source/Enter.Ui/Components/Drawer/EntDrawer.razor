@@ -7,7 +7,7 @@
 @if (RenderIsReady)
 {
     <aside class="@ClassNames" style="@StyleNames">@ChildContent</aside>
-    <EntOverlay Visible="HasBackdrop" DarkBackground="true" OnClick="@OnOverlayClickCallback" @ontouchstart="@OnOverlayClickCallback"  class="ent-drawer-overlay" LockScroll="false"/>
+    <EntOverlay Visible="@(HasBackdrop && Open && Mode == EntDrawerMode.Overlay)" DarkBackground="true" OnClick="@OnOverlayClickCallback" @ontouchstart="@OnOverlayClickCallback"  class="ent-drawer-overlay" LockScroll="false"/>
 
 }
 @code {
@@ -17,6 +17,7 @@
         builder
             .AddClass("ent-drawer")
             .AddClass("ent-drawer-transparent",Transparent)
+            .AddClass("ent-drawer-fixed",IsFixed)
             .AddClass("ent-drawer-overflow-hidden",OverflowHidden)
             .AddClass("ent-drawer--direction-start", Direction == EntDrawerDirection.Start)
             .AddClass("ent-drawer--direction-end", Direction == EntDrawerDirection.End)
@@ -74,7 +75,8 @@
 
     [Parameter]
     public bool Open { get; set; } = true;
-    
+    [Parameter]
+    public bool IsFixed { get; set; } = false;
     [Parameter]
     public bool Transparent { get; set; }
     [Parameter]

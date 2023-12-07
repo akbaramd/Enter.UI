@@ -1,0 +1,118 @@
+﻿@using System.Diagnostics.CodeAnalysis
+@using Enter.Ui.Components.Icon
+@using Enter.Ui.Cores.Core
+@using Enter.Ui.Cores.Enums
+@using Enter.Ui.Cores.Services
+@using Enter.Ui.Interops
+@using Microsoft.JSInterop
+@inherits Bases.EntInputBase<string?>
+@namespace Enter.Ui.Components
+
+<div @attributes="@AdditionalAttributes" class="@ClassNames" style="@StyleNames"  id="@Id">
+    <input @ref="_inputReference" id="@InputId"  name="@InputName" type="text"  class="@InputClass" style="@InputStyle"/>
+    <EntIcon Icon="EntIconName.Search"/>
+    
+    <EntPopover Open="_showPopover" RelativeWidth="true" Anchor="Origin.BottomCenter" Transform="Origin.TopCenter" PopoverClass="@("ent-input-autocomplete-popover")">
+    
+            <div class="ent-input-autocomplete-container">
+                
+            </div>
+    
+    </EntPopover>
+        <EntOverlay Visible="_showPopover" OnClick="@CloseOverlay" @ontouchstart="@CloseOverlay" LockScroll="false"/>
+</div>
+
+
+@code {
+
+    private StyleBuilder _inputStyleBuilder;
+    private ClassBuilder _inputClassBuilder;
+    private ElementReference _inputReference;
+    private AutoCompleteInterop _interop;
+    private bool _showPopover;
+    public EntInputAutoCompleteV2()
+    {
+        _inputStyleBuilder = new StyleBuilder(BuildInputStyles);
+        _inputClassBuilder = new ClassBuilder(BuildInputClasses);
+    }
+    
+    [Parameter]
+    public string InputId { get; set; } = default!;
+    
+    [Parameter]
+    public string InputName { get; set; } = default!;
+
+    [Parameter]
+    public string InputClass { get; set; } = default!;
+    
+    [Parameter]
+    public string InputStyle { get; set; } = default!;
+
+    [Inject]
+    public IEntJsService JsService { get; set; }
+    protected override void OnInitialized()
+    {
+        _interop = new AutoCompleteInterop(JsService);
+        if (string.IsNullOrWhiteSpace(InputId))
+        {
+            InputId = Guid.NewGuid().ToString();
+        }
+        
+        base.OnInitialized();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+     
+        await base.OnInitializedAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await _interop.InitializeAsync(this, _inputReference);
+        }
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    protected override void BuildClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-input-autocomplete-v2");
+        base.BuildClasses(builder);
+    }
+
+    protected override void BuildStyles(StyleBuilder builder)
+    {
+        base.BuildStyles(builder);
+    }
+
+    private void BuildInputClasses(ClassBuilder builder)
+    {
+        builder.AddClass("ent-input-autocomplete-v2");
+    }
+
+    private void BuildInputStyles(StyleBuilder builder)
+    {
+       
+    }
+
+    [JSInvokable("OnInputChange")]
+    public void OnInputChange(string value)
+    {
+        Console.WriteLine(value);
+        StateHasChanged();
+    }
+    protected override bool TryParseValueFromString(string? value, out string? result, out string? validationErrorMessage)
+    {
+        result = value;
+        validationErrorMessage = null;
+        return true;
+    }
+
+    private void CloseOverlay()
+    {
+        _showPopover = false;
+    }
+
+}

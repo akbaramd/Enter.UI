@@ -1,0 +1,84 @@
+@page "/documents/form-v2"
+
+<div class="p-4">
+    <EntCard Expandable="true" Title="Form Layout" class="my-4">
+        <CardBody>
+            <EditForm class="ent-edit-form" Model="Input" OnSubmit="@OnSubmit">
+                <DataAnnotationsValidator/>
+                <div class="row">
+                   
+                    <EntInputGroup For="() => Input.User" Label="نام" class="tablet:col-4 mb-4">
+
+                        <EntInputAutoCompleteV2
+                            @ref="_autoCompleteReference"
+                            @bind-Value="Input.User"/>
+
+                    </EntInputGroup>
+                    
+                </div>
+                <div class="row">
+                    <div class="tablet:col-4">
+                        <EntButton type="submit">ارسال</EntButton>
+                    </div>
+                </div>
+            </EditForm>
+        </CardBody>
+
+    </EntCard>
+
+</div>
+
+@code {
+
+    public bool Expanded { get; set; }
+    
+    public EntInputAutoCompleteV2 _autoCompleteReference { get; set; }
+
+    public class InputModel
+    {
+        public string Id { get; set; } = Guid.NewGuid().ToString();
+
+        [Required(ErrorMessage = "کاربر اجباری میباشد")]
+        public string User { get; set; }
+
+
+        [Required(ErrorMessage = "سن اجباری میباشد")]
+        public string Age { get; set; }
+
+        [Required(ErrorMessage = "نقش اجباری میباشد")]
+        public string Role { get; set; }
+    }
+
+    public InputModel Input { get; set; } = new()
+    {
+        User = "اکبر",
+        Role = "Admin"
+    };
+
+    private async Task OnSubmit()
+    {
+        Input.Role = "Developer";
+        StateHasChanged();
+    }
+
+
+    public List<Users> DataSource = new();
+
+
+    protected override void OnInitialized()
+    {
+        DataSource = Constants.Users;
+
+        base.OnInitialized();
+    }
+
+    private void OnLastNameSearchChange(string search)
+    {
+        if (search is null)
+            return;
+        DataSource = Constants.Users.Where(x => x.LastName.ToLower().Contains(search.ToLower())).ToList();
+
+        StateHasChanged();
+    }
+
+}
