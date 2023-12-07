@@ -46,28 +46,37 @@
     {
         if (firstRender)
         {
-            if (DrawersWidthType is not null)
+            if (DrawersWidthType is not null )
             {
                 BoundingClientRect = await SharedJsService.GetBoundingClientRectAsync(Reference);
-                
-                switch (DrawersWidthType)
+                Console.WriteLine(BoundingClientRect.ScrollWidth);
+                Console.WriteLine(Responsive);
+                if (!Responsive)
                 {
-                    case EntDrawerWidthType.Custom:
-                        break;
-                    case EntDrawerWidthType.Full:
-                        DrawersWidth = BoundingClientRect.ScrollWidth ;
-                        break;
-                    case EntDrawerWidthType.Half:
-                        DrawersWidth = BoundingClientRect.ScrollWidth / 2;
-                        break;
-                    case EntDrawerWidthType.Quarter:
-                        DrawersWidth = BoundingClientRect.ScrollWidth / 4;
-                        break;
-                    case null:
-                        break;
+                    switch (DrawersWidthType)
+                    {
+                        case EntDrawerWidthType.Custom:
+                            break;
+                        case EntDrawerWidthType.Full:
+                            DrawersWidth = BoundingClientRect.ScrollWidth ;
+                            break;
+                        case EntDrawerWidthType.Half:
+                            DrawersWidth = BoundingClientRect.ScrollWidth / 2;
+                            break;
+                        case EntDrawerWidthType.Quarter:
+                            DrawersWidth = BoundingClientRect.ScrollWidth / 4;
+                            break;
+                        case null:
+                            break;
              
-                    default:
-                        throw new ArgumentOutOfRangeException();
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+                else
+                {
+  
+                    DrawersWidth = (BoundingClientRect.ScrollWidth * 90) / 100;
                 }
             }
         
